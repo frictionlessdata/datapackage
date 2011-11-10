@@ -1,9 +1,11 @@
-=====================
-Existing Related Work
-=====================
-
+===================
 Changes and Syncing
 ===================
+
+:todo: Add material about CouchDB etc
+
+Existing Work
+=============
 
 * SLEEP_ (Syncable Lightweight Event Emitting Persistence)
 * CouchDB `change notifications`_
