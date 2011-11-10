@@ -12,10 +12,11 @@ Data Wranglers and Scientists of the World Unite
 ================================================
 
 We, data wranglers and data scientists of the world, will attempt to agree on
-common open protocols for:
+common open protocols for activities such as:
 
-a) performing SQL-like queries over HTTP
-b) remotely syncing tabular databases
+* Remotely syncing databases
+* Performing SQL-like queries over HTTP
+* Publishing and acquiring data
 
 The intention is to use these to improve the user experience for people who use
 web-based data processing and analytics software from different vendors
