@@ -15,7 +15,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   existing
+   syncing
 
 Indices and tables
 ==================
