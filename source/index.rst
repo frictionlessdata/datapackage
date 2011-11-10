@@ -15,6 +15,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   packages
    syncing
 
 Indices and tables
