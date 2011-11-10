@@ -6,9 +6,11 @@ distributed development of data.
 
 Things like:
 
+  * Data packaging, publication and installation
   * Protocols for sharing and syncing data changes and sync protocol
   * Protocols for diffing and merging data
   * Web-oriented query languages for data
+  * Webhooks and webservices for data transformation
 
 Contents:
 
