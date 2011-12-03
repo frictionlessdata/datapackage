@@ -9,6 +9,7 @@ convenient delivery, installation and management of datasets.
 Those familiar with code package can think of a Data Package as analogous
 distribution format for datasets.
 
+
 How It Fits into the Ecosystem
 ==============================
 
@@ -18,34 +19,57 @@ How It Fits into the Ecosystem
 * Tools (based on code libraries) integrate with these indexes (and storage) to
   download and upload material
 
-[[File:Data package system.png]]
+.. image:: https://docs.google.com/drawings/pub?id=1W0s91bQGS-bmGOLm519mMq9zDJvRhP71pwuJtkflRws&w=896&h=660
+   :align: center
+   :alt: Data Packages and the Wider Ecosystem
+   :width: 90%
+
 
 Concepts
 ========
 
-* (Data) Package - This idea is rather difficult to define, but is a bit like a
-  data project, that is a set of information that the packager believed had
-  something in common. The package then is an abstract idea, and what is in the
-  package could change completely over course of the life of the package. The
-  package then is a little bit like a namespace, having itself no content other
-  than a string (the package name) and the data it contains. A '''Package has a
-  Package name'''.
-* PackageRevision - a specific revision of the Package corresponding to some
-  particular actual set of data for a particular package at a particular point
-  in time. By actual, we mean stuff that can be read as bytes. As we add and
-  remove data from the package, the instantiation changes. In version control,
-  the instantiation would be the particular state of the working tree at any
-  moment, whether this has been committed or not.
-* Package Bundle - The (package) bundle is something that can deliver the bytes
-  of a particular Package Revision. For example, if you have a package named
-  "interesting-images", you might have a revision of that package identified by
-  revision id "f745dc2" and tagged with "version-0.2". There might be a bundle
-  of that instantiation that is a zipfile interesting-images-version-0.2.zip.
-  There might also be a directory on an http server with the same contents
-  http://my.server.org/packages/interesting-images/version-9.2. When I unpack
-  the zipfile onto my hard disk, I might have a directory
-  /my/home/packages/interesting-images/version-0.2. Now this path is a provider
-  bundle.
+.. note::
+
+   when people talk of a data package they will usually mean what we define
+   below as a Package Bundle, that is a concrete instance of a Package at a
+   particular revision with data associated. This is similar to software.  When
+   someone says install software package X what they really mean is install the
+   software package 'Bundle' (e.g. zipped up set of files or special installer
+   file) for package X at a specific revision or version.
+
+(Data) Package
+--------------
+
+Strictly, the Data Package itself is something of an abstract idea, and is a
+bit like a data project, that is a set of information that the packager
+believed has something in common. The precise contents of a package could
+change completely over course of its life. The package then is a little bit
+like a namespace, having itself no content other than a string (the package
+name) and the data it contains. So the one essential feature of a package is
+that is **has a Package name**.
+
+Package Revision
+----------------
+
+A specific revision of the Package corresponding to some particular actual set
+of data for a particular package at a particular point in time. 'Actual' here
+means 'stuff' that can be read as bytes. As we add and remove data from the
+package, the instantiation changes. In version control, the instantiation would
+be the particular state of the working tree at any moment, whether this has
+been committed or not.
+
+Package Bundle
+--------------
+
+The (package) bundle is something that can deliver the bytes of a particular
+Package Revision. For example, if you have a package named
+"interesting-images", you might have a revision of that package identified by
+revision id "f745dc2" and tagged with "version-0.2". There might be a bundle of
+that instantiation that is a zipfile interesting-images-version-0.2.zip.  There
+might also be a directory on an http server with the same contents
+http://my.server.org/packages/interesting-images/version-9.2. When I unpack the
+zipfile onto my hard disk, I might have a directory
+/my/home/packages/interesting-images/version-0.2.
 
 
 Specification
@@ -194,7 +218,9 @@ Data Package Manager
 A command line utility and library supporting the data package spec is
 available: dpm.
 
-* Data package manager (dpm): https://github.com/okfn/dpm
+* Data package manager (dpm): http://dpm.readthedocs.org/
+
+  * Source code: https://github.com/okfn/dpm
 
 
 Inspiration and Existing Work
