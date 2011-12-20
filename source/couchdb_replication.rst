@@ -112,9 +112,10 @@ Algorithm
 Filter replication
 ------------------
 
-    The replication can be filtered by passing the `_filter` parameter
-    to the changes feeds. This will call a function on each changes. If
-    this function return True, the document will be added to the feed.
+    The replication can be filtered by passing the `filter` parameter to
+    the changes feeds with a function name. This will call a function on
+    each changes. If this function return True, the document will be
+    added to the feed.
 
 
 Reference:
