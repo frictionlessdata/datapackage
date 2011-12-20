@@ -33,7 +33,7 @@ Definitions
 -----------
 
 ID:
-    An identifier (could be an UUID) as described in :rfc:4122
+    An identifier (could be an UUID) as described in :rfc:`4122`
 
 Sequence:
     An ID provided by the changes feed. It can be numeric but non
@@ -49,8 +49,8 @@ Database
     A collection of document with a unique URI
 
 URI
-    An uri is defined by the :rfc:2396 . It can be an URL as defined
-    in :rfc:1738.
+    An uri is defined by the :rfc:`2396` . It can be an URL as defined
+    in :rfc:`1738`.
 
 Source
     Database from where the Documents are replicated
