@@ -108,8 +108,8 @@ Algorithm
 
 .. note::
 
-    - Even if some revisions have been ignored the sequence should be take
-    in consideration for the Checkpoint.
+    - Even if some revisions have been ignored the sequence should be
+      take in consideration for the Checkpoint.
 
     - To compare non numeric sequence ordering, you will have to keep an
       ordered list of the sequences IDS as they appear in the _changes
