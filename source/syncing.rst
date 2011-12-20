@@ -4,6 +4,13 @@ Changes and Syncing
 
 :todo: Add material about CouchDB etc
 
+
+.. toctree::
+   :maxdepth: 2
+
+   couchdb_replication
+
+
 Existing Work
 =============
 
