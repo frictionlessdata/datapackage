@@ -36,7 +36,8 @@ ID:
     An identifier (could be an UUID) as described in :rfc:4122
 
 Sequence:
-    (to define)
+    An ID provided by the changes feed. It can be numeric but non
+    necessarly.
 
 Revision:
     (to define)
@@ -73,7 +74,9 @@ Algorithm
    previous replication process. 
 
 3. Get the Source changes feed by passing it the Checkpoint using the
-   `since` parameter by calling the `/<source>/_changes` URL.
+   `since` parameter by calling the `/<source>/_changes` URL. The
+   changes feed only return a list of current revisions.
+
 
 .. note::
 
@@ -105,9 +108,12 @@ Algorithm
 
 .. note::
 
-    Even if some revisions have been ignored the sequence should be take
+    - Even if some revisions have been ignored the sequence should be take
     in consideration for the Checkpoint.
 
+    - To compare non numeric sequence ordering, you will have to keep an
+      ordered list of the sequences IDS as they appear in the _changes
+      feed and compare their indices.
 
 Filter replication
 ------------------
@@ -117,6 +123,16 @@ Filter replication
     each changes. If this function return True, the document will be
     added to the feed.
 
+
+Optimisations
+-------------
+
+    - The system should run each steps in parallel to reduce the
+      latency.
+
+    - The number of revisions passed to the step 3 and 6 should be large
+      enough to reduce the bandwidth and make sure to reduce the
+      latency.
 
 Reference:
 ----------
