@@ -116,6 +116,14 @@ Filter replication
     to the changes feeds. This will call a function on each changes. If
     this function return True, the document will be added to the feed.
 
+
+Reference:
+----------
+
+    * `TouchDB Ios wiki <https://github.com/couchbaselabs/TouchDB-iOS/wiki/Replication-Algorithm>`_
+    * `CouchDB documentation
+      <http://wiki.apache.org/couchdb/Replication>`_
+
 .. _CouchDB: http://couchdb.apache.org
 .. _Erlang: http://erlang.org
 .. _couch_replicator: https://github.com/apache/couchdb/tree/master/src/couch_replicator
