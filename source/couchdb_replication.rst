@@ -9,7 +9,7 @@ Language
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in :rfc:2119.
+document are to be interpreted as described in :rfc:`2119`.
 
 
 Goals
@@ -118,28 +118,26 @@ Algorithm
 Filter replication
 ------------------
 
-    The replication can be filtered by passing the `filter` parameter to
-    the changes feeds with a function name. This will call a function on
-    each changes. If this function return True, the document will be
-    added to the feed.
+The replication can be filtered by passing the `filter` parameter to the
+changes feeds with a function name. This will call a function on each
+changes. If this function return True, the document will be added to the
+feed.
 
 
 Optimisations
 -------------
 
-    - The system should run each steps in parallel to reduce the
-      latency.
+- The system should run each steps in parallel to reduce the latency.
 
-    - The number of revisions passed to the step 3 and 6 should be large
-      enough to reduce the bandwidth and make sure to reduce the
-      latency.
+- The number of revisions passed to the step 3 and 6 should be large
+  enough to reduce the bandwidth and make sure to reduce the latency.
 
 Reference:
 ----------
 
-    * `TouchDB Ios wiki <https://github.com/couchbaselabs/TouchDB-iOS/wiki/Replication-Algorithm>`_
-    * `CouchDB documentation
-      <http://wiki.apache.org/couchdb/Replication>`_
+* `TouchDB Ios wiki <https://github.com/couchbaselabs/TouchDB-iOS/wiki/Replication-Algorithm>`_
+* `CouchDB documentation
+  <http://wiki.apache.org/couchdb/Replication>`_
 
 .. _CouchDB: http://couchdb.apache.org
 .. _Erlang: http://erlang.org
