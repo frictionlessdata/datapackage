@@ -2,6 +2,8 @@
 Data Packages
 =============
 
+.. sectionauthor:: Rufus Pollock (Open Knowledge Foundation)
+
 A Data Package (or DataPackage) is a cohesive wrapping of a collection of data
 and possibly other assets into a single form. It provides the basis for
 convenient delivery, installation and management of datasets.
@@ -72,8 +74,18 @@ zipfile onto my hard disk, I might have a directory
 /my/home/packages/interesting-images/version-0.2.
 
 
-Specification
-=============
+Specification (Draft)
+=====================
+
+**Version: 0.2 (Draft)**
+
+.. note::
+
+   This is a draft specification and under active development. If you have
+   comments or suggestions please file them in the issue tracker at:
+   https://github.com/okfn/dataprotocols/issues. If you have explicit changes
+   please `fork the repo <https://github.com/okfn/dataprotocols>` and submit a
+   pull request.
 
 Aims:
 
@@ -172,13 +184,13 @@ To illustrate::
       /data/ <--- where resources are downloaded to
       # optionally
       /README.txt
-      /.dpm/config <--- ini style information about where the data package came from
+      /.dpm/config <--- only required for source bundles
 
 .dpm/config format
 ~~~~~~~~~~~~~~~~~~
 
   [paths]
-  default = http://thedatahub.org/{username}/{dataset}
+  default = http://thedatahub.org/dataset/{dataset-name}
 
 
 Catalogs and Discovery
