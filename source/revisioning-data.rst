@@ -4,8 +4,9 @@ Revisioning (Versioning) for Data
 
 .. sectionauthor: Rufus Pollock (Open Knowledge Foundation)
 
-The following develops a changeset approach similar to that found in mercurial
-and git.
+The following develops a changeset approach for revisioning databases
+(data/datasets). The approach taken has some similariteis to that found in
+source control for software, especially mercurial and git.
 
 It is agnostic about format of versioning (i.e. copy-on-Write versus diffs).
 For more on this, see Appendix below on Recording Changes to the Database.
@@ -16,7 +17,7 @@ The Changeset Model
 Key Concepts
 ============
 
-  * Changeset - a change to the domain model
+  * Changeset - a change to the database
 
     * includes metadata about this change
     * aggregates changes to domain objects in a ChangesetManifest
@@ -35,7 +36,7 @@ Optional (?) additional items:
 Remarks: Changesets form a directed acyclic graph.
 
 Changeset
-=========
+---------
 
   * id: 160-bit number usually representing as 40 digit hex string (a SHA1 hash)
   * parents = ordered list of ids
@@ -46,10 +47,10 @@ Changeset
   * manifest - dict of ChangeObjects keyed by object_id
 
 ChangeObject
-============
+------------
 
   * object_id - a tuple forming a unique identifier for this object *within*
-    the domain model
+    the database
   * operation_type: delete | update | create | (move? copy?)
   * data_type: full | diff | snapshot
 
@@ -116,8 +117,8 @@ Technical
 What's Different from Git?
 --------------------------
 
-We don't store a current state of the domain model on each commit (rather we
-store changes to the domain model and copies or diffs of domain objects).
+We don't store a current state of the database on each commit (rather we
+store changes to the database and copies or diffs of domain objects).
 
 
 Reading
@@ -197,10 +198,10 @@ copy-on-write to relevant changed "objects". The advantage of doing this is
 that it limits the the changes we have to store (in essence objects unchanged
 between revision X and revision Y get "merged" into a single object).
 
-For example, if our domain model had Person, Address, Job, a change to Person X
+For example, if our database had Person, Address, Job, a change to Person X
 would only require a copy of Person X record (an even more standard example is
 wiki pages). Obviously, for this to work, one needs to able to partition the
-data (domain model). With normal domain model this is trivial: pick the object
+data (database). With a normal database this is trivial: pick the object
 types e.g. Person, Address, Job etc. However, for a graph setup (as with RDF)
 this is not so trivial. 
 
