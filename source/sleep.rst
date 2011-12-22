@@ -1,9 +1,13 @@
-Syncocol
-========
+SLEEP
+=====
 
 A proposed simple specification for syncing tabular data over HTTP via JSON transaction logs.
 
-(Originally made by Christopher Groskopf of the Panda Project and Francis Irving of ScraperWiki)
+(Originally drafted explicitly by Christopher Groskopf of the Panda Project and
+Francis Irving of ScraperWiki on 21st December 2011. Concept by Max Ogden.
+Named by Isaac Z. Schlueter)
+
+Motivation document by Max Ogden: https://gist.github.com/1246804
 
 
 HTTP endpoint
