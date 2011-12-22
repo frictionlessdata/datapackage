@@ -1,5 +1,8 @@
-couchdb replication protocol
 ============================
+CouchDB Replication Protocol
+============================
+
+.. sectionauthor:: Benoit Chesneau 
 
 The **CouchDB Replication protocol** is a protocol for synchronizing
 documents between 2 peers over HTTP/1.1. 
@@ -36,8 +39,8 @@ ID:
     An identifier (could be an UUID) as described in :rfc:`4122`
 
 Sequence:
-    An ID provided by the changes feed. It can be numeric but non
-    necessarly.
+    An ID provided by the changes feed. It can be numeric but not
+    necessarily.
 
 Revision:
     (to define)
@@ -46,7 +49,7 @@ Document
     A document is JSON entity with a unique ID and revision.
 
 Database
-    A collection of document with a unique URI
+    A collection of documents with a unique URI
 
 URI
     An uri is defined by the :rfc:`2396` . It can be an URL as defined
@@ -132,13 +135,16 @@ Optimisations
 - The number of revisions passed to the step 3 and 6 should be large
   enough to reduce the bandwidth and make sure to reduce the latency.
 
-Reference:
-----------
+Reference
+---------
 
 * `TouchDB Ios wiki <https://github.com/couchbaselabs/TouchDB-iOS/wiki/Replication-Algorithm>`_
 * `CouchDB documentation
   <http://wiki.apache.org/couchdb/Replication>`_
+* CouchDB `change notifications`_
 
 .. _CouchDB: http://couchdb.apache.org
 .. _Erlang: http://erlang.org
 .. _couch_replicator: https://github.com/apache/couchdb/tree/master/src/couch_replicator
+.. _change notifications: http://guide.couchdb.org/draft/notifications.html
+
