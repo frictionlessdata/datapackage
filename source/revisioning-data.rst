@@ -38,13 +38,19 @@ Remarks: Changesets form a directed acyclic graph.
 Changeset
 ---------
 
-  * id: 160-bit number usually representing as 40 digit hex string (a SHA1 hash)
-  * parents = ordered list of ids
+At its simplest changeset is just an id plus timestamp (for ordering --
+timestamp can be dropped if ids are orderable):
+
+  * id: uuid
   * timestamp
-  * author
-  * message
+
+In addition systems can include fields such as:
+
+  * author - name of user creating change
+  * message - summary message describing change
   * metadata - arbitrary key/value metadata
   * manifest - dict of ChangeObjects keyed by object_id
+  * [optional] parents = ordered list of ids
 
 ChangeObject
 ------------

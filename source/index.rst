@@ -20,8 +20,8 @@ Contents
    :maxdepth: 2
 
    manifesto
-   revisioning-data
    syncing
+   revisioning-data
    packages
 
 
