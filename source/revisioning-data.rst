@@ -127,64 +127,6 @@ We don't store a current state of the database on each commit (rather we
 store changes to the database and copies or diffs of domain objects).
 
 
-Reading
-=======
-
-Mercurial
----------
-
-Overview of the Mercurial model:
-
-  * http://mercurial.selenic.com/wiki/UnderstandingMercurial
-  * http://hgbook.red-bean.com/read/behind-the-scenes.html
-  * (Longer) http://mercurial.selenic.com/wiki/Mercurial?action=AttachFile&do=get&target=Hague2009.pdf
-  * Octopus merges: http://arrenbrecht.ch/mercurial/pbranch/octopus.htm
-
-Key concepts:
-
-  * changeset / changelog (our changeset)
-  * manifest
-  * file
-
-Details of `Mercurial hash generation`_:
-
-> Mercurial hashes both the contents of an object and the hash of its parents
-> to create an identifier that uniquely identifies an object's contents and
-> history.  This greatly simplifies merging of histories because it avoid graph
-> cycles that can occur when a object is reverted to an earlier state.
-
-> All file revisions have an associated hash value (the nodeid). These are
-> listed in the manifest of a given project revision, and the manifest hash is
-> listed in the changeset. The changeset hash (the changeset ID) is again a
-> hash of the changeset contents and its parents, so it uniquely identifies the
-> entire history of the project to that point.
-
-.. Mercurial hash generation: http://mercurial.selenic.com/wiki/FAQ#FAQ.2BAC8-TechnicalDetails.How_do_Mercurial_hashes_get_calculated.3F
-
-Git
----
-
-  * Glossary: http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html
-  * Technical Docs: http://repo.or.cz/w/git.git?a=tree;f=Documentation/technical;hb=HEAD
-  * http://eagain.net/articles/git-for-computer-scientists/
-
-Key features:
-
-  * blob (bistreams)
-  * tree
-  * commit (changeset)
-    * has metadata (e.g. parents)
-    * points to a tree
- 
-Extras:
-
-  * references (pointers into commit tree)
-  * tags
-
-Git hash computation::
-
-    sha1("blob " + filesize + "\0" + data)
-
 
 Appendix: Recording Changes to the Database
 ###########################################
@@ -253,4 +195,63 @@ Todo
 ====
 
 Discuss application of tree algorithms to structured data (such as XML).
+
+
+Existing Systems
+================
+
+Mercurial
+---------
+
+Overview of the Mercurial model:
+
+  * http://mercurial.selenic.com/wiki/UnderstandingMercurial
+  * http://hgbook.red-bean.com/read/behind-the-scenes.html
+  * (Longer) http://mercurial.selenic.com/wiki/Mercurial?action=AttachFile&do=get&target=Hague2009.pdf
+  * Octopus merges: http://arrenbrecht.ch/mercurial/pbranch/octopus.htm
+
+Key concepts:
+
+  * changeset / changelog (our changeset)
+  * manifest
+  * file
+
+Details of `Mercurial hash generation`_:
+
+> Mercurial hashes both the contents of an object and the hash of its parents
+> to create an identifier that uniquely identifies an object's contents and
+> history.  This greatly simplifies merging of histories because it avoid graph
+> cycles that can occur when a object is reverted to an earlier state.
+
+> All file revisions have an associated hash value (the nodeid). These are
+> listed in the manifest of a given project revision, and the manifest hash is
+> listed in the changeset. The changeset hash (the changeset ID) is again a
+> hash of the changeset contents and its parents, so it uniquely identifies the
+> entire history of the project to that point.
+
+.. Mercurial hash generation: http://mercurial.selenic.com/wiki/FAQ#FAQ.2BAC8-TechnicalDetails.How_do_Mercurial_hashes_get_calculated.3F
+
+Git
+---
+
+  * Glossary: http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html
+  * Technical Docs: http://repo.or.cz/w/git.git?a=tree;f=Documentation/technical;hb=HEAD
+  * http://eagain.net/articles/git-for-computer-scientists/
+
+Key features:
+
+  * blob (bistreams)
+  * tree
+  * commit (changeset)
+    * has metadata (e.g. parents)
+    * points to a tree
+ 
+Extras:
+
+  * references (pointers into commit tree)
+  * tags
+
+Git hash computation::
+
+    sha1("blob " + filesize + "\0" + data)
 
