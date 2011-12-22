@@ -12,7 +12,7 @@ A strawman specification for transaction log based syncing of tabular data with 
 .. toctree::
    :maxdepth: 2
 
-   syncocol
+   sleep
 
 
 CouchDB
