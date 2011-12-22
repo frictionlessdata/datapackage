@@ -365,11 +365,11 @@ should be present for each package.
 * checksums - Hash of package checksums. This checksum is used by package
   manager tools to verify the integrity of a package. For example::
 
- checksums: {
-   "md5": "841959b03e98c92d938cdeade9e0784d",
-   "sha1": " f8919b549295a259a6cef5b06e7c86607a3c3ab7",
-   "sha256": "1abb530034bc88162e8427245839ec17c5515e01a5dede6e702932bbebbfe8a7"
- }
+   checksums: {
+     "md5": "841959b03e98c92d938cdeade9e0784d",
+     "sha1": " f8919b549295a259a6cef5b06e7c86607a3c3ab7",
+     "sha256": "1abb530034bc88162e8427245839ec17c5515e01a5dede6e702932bbebbfe8a7"
+   }
 
 This checksum is meant to be automatically added by the catalog service
 
