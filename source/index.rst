@@ -8,8 +8,8 @@ distributed development of data.
 Things like:
 
   * Data packaging, publication and installation
+  * Revisioning of databases and datasets including diffing and merging
   * Protocols for sharing and syncing data changes
-  * Protocols for diffing and merging data
   * Web-oriented query languages for data
   * Webhooks and webservices for data transformation
 
@@ -20,8 +20,9 @@ Contents
    :maxdepth: 2
 
    manifesto
-   packages
+   revisioning-data
    syncing
+   packages
 
 
 Indices and tables
