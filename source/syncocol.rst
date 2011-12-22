@@ -21,16 +21,14 @@ There are some extra URL parameters that a client can include:
 Wire protocol
 -------------
 
-JSON representing part of the transaction log of changes to the tabular data.
+JSON representing part of the transaction log of changes to the tabular data.::
 
-<pre>
-{ 
-    seq: 10, 
-    id: "07acde3002cb1f62a08de5469160b912", 
-    deleted: false, 
-    data: { first_name: "Ryan", last_name: "Pitts", employer: "The Spokesman-Review" } 
-}
-</pre>
+    { 
+        seq: 10, 
+        id: "07acde3002cb1f62a08de5469160b912", 
+        deleted: false, 
+        data: { first_name: "Ryan", last_name: "Pitts", employer: "The Spokesman-Review" } 
+    }
 
 * seq - the sequence in the transaction log
 * id - unique identifier of the row
@@ -54,22 +52,18 @@ Note that as it is JSON, the keys can be in any order and change order.
 * Dates, a string containing an ISO 8601 date or date/time. Only in UTC no timezones.
 
 Optional - by convention name variables storing WGS 84 latitude/longitude so
-they end \_lat and \_lng. e.g. 
-<pre>
+they end \_lat and \_lng. e.g. ::
     data: { city: "Liverpool", centre_lat: 53.4, centre_lng: -3 }
-</pre>
 
 
 Errors
 ------
 
-Return error messages in a JSON dictionary with the key error, value an arbitary string.
+Return error messages in a JSON dictionary with the key error, value an arbitary string.::
 
-<pre>
-{
-    error: "Datastore timed out"
-}
-</pre>
+    {
+        error: "Datastore timed out"
+    }
 
 
 Todo
