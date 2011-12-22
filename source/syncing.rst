@@ -2,8 +2,11 @@
 Changes and Syncing
 ===================
 
-:todo: Add material about CouchDB etc
+The current focus of this section is the documentation of existing change and sync protocols rather than the specification of a new protocol.
 
+
+CouchDB
+=======
 
 .. toctree::
    :maxdepth: 2
@@ -11,13 +14,16 @@ Changes and Syncing
    couchdb_replication
 
 
-Existing Work
-=============
+SLEEP (Syncable Lightweight Event Emitting Persistence)
+=======================================================
 
-* SLEEP_ (Syncable Lightweight Event Emitting Persistence)
-* CouchDB `change notifications`_
-* MVCC and WAL for databases
+At the present time SLEEP_ (Syncable Lightweight Event Emitting Persistence) is more a call for proposals than a spec.
 
 .. _SLEEP: https://gist.github.com/1246804
-.. _change notifications: http://guide.couchdb.org/draft/notifications.html
+
+
+MVCC and WAL for databases
+==========================
+
+Forthcoming.
 
