@@ -20,11 +20,14 @@ Key Concepts
   * Changeset - a change to the database
 
     * includes metadata about this change
-    * aggregates changes to domain objects in a ChangesetManifest
+    * lists set of changes to database (e.g. changes to individual
+      documents/rows) in the form of ChangeObjects
 
-  * [omitted - exists implicitly rather than explicitly] ChangesetManifest - a
-    manifest with a (structured) list of ChangeObject(s)
-  * ChangeObject - a description of a change to a domain object
+  * ChangeObject - a description of a change to an individual database object
+    (e.g. row in relational DB or document in a document DB)
+
+In addition we have:
+
   * Working Copy - the representation of the current state of the system
     resulting the application of specified set of changesets
 
@@ -58,12 +61,8 @@ ChangeObject
   * object_id - a tuple forming a unique identifier for this object *within*
     the database
   * operation_type: delete | update | create | (move? copy?)
-  * data_type: full | diff | snapshot
-
-    * This relates to how changes are stored (copy-on-write versus diff etc) -
-      see Appendix
-    
-  * representation: serialization of this change either as full dump of object (copy-on-write) or diff
+  * representation: serialization of this change either as full dump of object
+    (copy-on-write) or diff
 
 Doing Things
 ============
@@ -229,7 +228,7 @@ Details of `Mercurial hash generation`_:
 > hash of the changeset contents and its parents, so it uniquely identifies the
 > entire history of the project to that point.
 
-.. Mercurial hash generation: http://mercurial.selenic.com/wiki/FAQ#FAQ.2BAC8-TechnicalDetails.How_do_Mercurial_hashes_get_calculated.3F
+.. _Mercurial hash generation: http://mercurial.selenic.com/wiki/FAQ#FAQ.2BAC8-TechnicalDetails.How_do_Mercurial_hashes_get_calculated.3F
 
 Git
 ---

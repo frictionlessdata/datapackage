@@ -12,8 +12,7 @@ A strawman specification for transaction log based syncing of tabular data with 
 .. toctree::
    :maxdepth: 2
 
-   syncocol
-
+   sleep
 
 CouchDB
 =======
@@ -28,4 +27,13 @@ MVCC and WAL for databases
 ==========================
 
 Forthcoming.
+
+
+General Overview of Changes / Revisioning for Data
+==================================================
+
+.. toctree::
+   :maxdepth: 2
+
+   revisioning-data
 

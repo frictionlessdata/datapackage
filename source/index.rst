@@ -21,7 +21,6 @@ Contents
 
    manifesto
    syncing
-   revisioning-data
    packages
 
 
