@@ -1,6 +1,6 @@
-=================================
-Revisioning (Versioning) for Data
-=================================
+=========================================
+Revisioning (Versioning) for Data: Theory
+=========================================
 
 .. sectionauthor: Rufus Pollock (Open Knowledge Foundation)
 
