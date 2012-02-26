@@ -7,6 +7,10 @@ queries to (heterogeneous) databases over HTTP. It is the need for support for
 querying over HTTP that makes this a protocol rather than just a language
 though it will build on or require a data query language of some form.
 
+The kind of use cases we're thinking of are: Visualisation tools calling
+databases of data scraping tools. Crowd sourcing tools augmenting information
+dynamically pulled from a data catalogue.
+
 
 Existing Work
 =============
@@ -21,6 +25,13 @@ Designed to expose RDBMS over RESTful HTTP.
 * Supports RESTful style as well as full SQL
 
 .. _Webstore: http://github.com/okfn/webstore
+
+SQL
+---
+
+Raw SQL over HTTP.
+
+This is one in Scraperwiki and the Webstore_.
 
 DAP
 ---
@@ -57,10 +68,12 @@ URI Fragment Identifiers for the text/csv Media Type
 * Status: draft
 * Published: 26 April 2011
 
-SQL
----
+Google Visualization API Query Language
+---------------------------------------
 
-Raw SQL over HTTP.
+Another restricted SQL. Has advantage of one existing implementation - so would
+immediately work with Google Spreadsheets and Fusion Tables, presumably? Also
 
-This is one in Scraperwiki and the Webstore_.
+* http://code.google.com/apis/chart/interactive/docs/querylanguage.html#Language_Syntax
+
 
