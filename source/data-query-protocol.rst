@@ -7,13 +7,93 @@ queries to (heterogeneous) databases over HTTP. It is the need for support for
 querying over HTTP that makes this a protocol rather than just a language
 though it will build on or require a data query language of some form.
 
-The kind of use cases we're thinking of are: Visualisation tools calling
-databases of data scraping tools. Crowd sourcing tools augmenting information
-dynamically pulled from a data catalogue.
+The kind of use cases we are thinking of are:
+
+  * Data viewers calling databases to get data to display.
+  * Visualisation tools calling databases or data scraping tools.
+  * Crowd sourcing tools augmenting information dynamically pulled from a data
+    catalogue.
+
+Introduction
+============
+
+Query support would involve supporting things like:
+
+* size (limit)
+* from (offset)
+* sorting (ordering by)
+* filtering
+* aggregation (sum, count, distinct)
+
+Proposal
+========
+
+The proposal divides into 2 parts. First, the definition of a JSON-serializable
+query object. Second, the presentation of that data to a web accessible query
+endpoint.
+
+Query Object
+------------
+
+The Proposal is heavily based on `ElasticSearch query language`_
+
+.. _ElasticSearch query language: http://www.elasticsearch.org/guide/reference/api/search/
+
+Query object has the following key attributes:
+
+* size (=limit): number of results to return
+* from (=offset): offset into result set -
+  http://www.elasticsearch.org/guide/reference/api/search/from-size.html
+* sort: sort order -
+  http://www.elasticsearch.org/guide/reference/api/search/sort.html
+* query: Query in ES Query DSL
+  http://www.elasticsearch.org/guide/reference/api/search/query.html
+* fields: set of fields to return -
+  http://www.elasticsearch.org/guide/reference/api/search/fields.html
+* facets: - see http://www.elasticsearch.org/guide/reference/api/search/facets/
+
+Additions:
+
+* q: either straight text or a hash will map directly onto a [query_string
+  query](http://www.elasticsearch.org/guide/reference/query-dsl/query-string-query.html)
+  in backend
+
+  * Of course this can be re-interpreted by different backends. E.g. some may
+    just pass this straight through e.g. for an SQL backend this could be the
+    full SQL query
+
+* filters: dict of fields with for each one specified a filter like term,
+  terms, prefix, range. This provides a quick way to do filtering.
+
+  * Value for a field can just be text in which case this becomes a term query
+    on that field
+
+    * E.g. my-field: 'abc' - would only match results with abc in that field
+
+
+Examples
+~~~~~~~~
+
+::
+
+  {
+     q: 'quick brown fox',
+     filters: {
+       'owner': 'jones'
+     }
+  }
 
 
 Existing Work
 =============
+
+ElasticSearch
+-------------
+
+JSON oriented document store and search index.
+
+* http://www.elasticsearch.org/guide/reference/api/search/
+* http://www.elasticsearch.org/guide/reference/query-dsl/
 
 Webstore
 --------
@@ -75,5 +155,4 @@ Another restricted SQL. Has advantage of one existing implementation - so would
 immediately work with Google Spreadsheets and Fusion Tables, presumably? Also
 
 * http://code.google.com/apis/chart/interactive/docs/querylanguage.html#Language_Syntax
-
 
