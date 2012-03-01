@@ -22,6 +22,7 @@ Contents
    manifesto
    syncing
    data-query-protocol
+   refining
    packages
 
 
