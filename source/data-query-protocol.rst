@@ -2,12 +2,14 @@
 Data Query Protocol
 ===================
 
-This document is about providing a proposal for a standardized way of making
-queries to (heterogeneous) databases over HTTP. It is the need for support for
-querying over HTTP that makes this a protocol rather than just a language
-though it will build on or require a data query language of some form.
+This document provides a list of all current efforts to create a query protocol
+which can be used over HTTP. After discussing the existing work, a proposal
+discusses some good practices for the future.
 
-The kind of use cases we are thinking of are:
+It is the need for support for querying over HTTP that makes this a protocol rather
+than just a language, though it will build on or require a data query language of some form.
+
+The kind of use cases that might benefit from a query protocol are:
 
   * Data viewers calling databases to get data to display.
   * Visualisation tools calling databases or data scraping tools.
@@ -17,75 +19,61 @@ The kind of use cases we are thinking of are:
 Introduction
 ============
 
-Query support would involve supporting things like:
+Before diving deeper into existing data query protocols, an introduction will discuss
+various aspects of querying data over HTTP.
 
-* size (limit)
-* from (offset)
-* sorting (ordering by)
-* filtering
-* aggregation (sum, count, distinct)
+Querying
+--------
 
-Proposal
-========
+Querying a dataset over HTTP, whether these data are tabular or not, involves manipulating
+the response in several ways. Functionality that is needed for querying a dataset:
 
-The proposal divides into 2 parts. First, the definition of a JSON-serializable
-query object. Second, the presentation of that data to a web accessible query
-endpoint.
+1. selecting
+2. limiting
+3. ordering by
+4. filtering
+5. aggregating (sum, count, distinct)
 
-Query Object
-------------
+An extra for querying data over HTTP is joining data on different HTTP servers.
 
-The Proposal is heavily based on `ElasticSearch query language`_
+Identifying resources
+---------------------
 
-.. _ElasticSearch query language: http://www.elasticsearch.org/guide/reference/api/search/
+A first question that needs to be brought forward is how the dataset that is going to be
+manipulated is identified. Many languages, such as SQL, identify a dataset using a
+simple name. Other languages, such as SPARQL, identify a dataset using URIs.
 
-Query object has the following key attributes:
+When URIs are chosen to identify resources, the protocol might also choose to embrace
+the RESTful principles. It can become an extra layer upon REST (these protocols usually
+come with an end-point), or it can become part of REST (extra request parameters are
+sent with the request).
 
-* size (=limit): number of results to return
-* from (=offset): offset into result set -
-  http://www.elasticsearch.org/guide/reference/api/search/from-size.html
-* sort: sort order -
-  http://www.elasticsearch.org/guide/reference/api/search/sort.html
-* query: Query in ES Query DSL
-  http://www.elasticsearch.org/guide/reference/api/search/query.html
-* fields: set of fields to return -
-  http://www.elasticsearch.org/guide/reference/api/search/fields.html
-* facets: - see http://www.elasticsearch.org/guide/reference/api/search/facets/
+Big Data vs. Small Data
+-----------------------
 
-Additions:
+Small Data are data that can be returned within one HTTP response. These data can be 
+scraped from a website, can be the result from a query on a RDBMS, can be a static CSV file...
 
-* q: either straight text or a hash will map directly onto a [query_string
-  query](http://www.elasticsearch.org/guide/reference/query-dsl/query-string-query.html)
-  in backend
+Big Data are data that cannot be maintained on one single machine.
 
-  * Of course this can be re-interpreted by different backends. E.g. some may
-    just pass this straight through e.g. for an SQL backend this could be the
-    full SQL query
+A third kind are data that are data stored in a RDBMS.
 
-* filters: dict of fields with for each one specified a filter like term,
-  terms, prefix, range. This provides a quick way to do filtering.
+Not all protocols can handle the three kinds of data. Some protocols only perform queries on
+what would have been returned in a HTTP response. Others translate the HTTP query string
+to the query language of their big data or RDBMS back-end.
 
-  * Value for a field can just be text in which case this becomes a term query
-    on that field
+The Semantic Web
+----------------
 
-    * E.g. my-field: 'abc' - would only match results with abc in that field
+The Semantic Web has been the subject of academic research for several years. RDF triples 
+are used to store data in triplestores. A triple is a series of 3 URIs which identify an 
+object, a predicate and a subject.
 
-
-Examples
-~~~~~~~~
-
-::
-
-  {
-     q: 'quick brown fox',
-     filters: {
-       'owner': 'jones'
-     }
-  }
-
+The Semantic Web gives a new dimension to query languages. We could for instance filter on
+all elements that happen to be a schema:Library.
 
 Existing Work
-=============
+============= 
 
 ElasticSearch
 -------------
@@ -155,4 +143,83 @@ Another restricted SQL. Has advantage of one existing implementation - so would
 immediately work with Google Spreadsheets and Fusion Tables, presumably? Also
 
 * http://code.google.com/apis/chart/interactive/docs/querylanguage.html#Language_Syntax
+
+SPARQL
+------
+
+SPARQL is the de facto standard query language for triple stores. It uses URIs to identify
+resources. Anyone can directly execute SPARQL queries over HTTP using the end-point.
+
+The DataTank and SPECTQL
+------------------------
+
+The DataTank is a 5 minute RESTful API. It comes with a query language, based on HTSQL, which
+provides an easy way to structure the response to be able to directly use it inside your app
+or visualisation.
+
+For example:
+
+ http://data.irail.be/spectql/Airports/Liveboard/LCY/2012/03/04/12/00/departures{iso8601,delay-,direction}:csv
+
+Selects the time, delay and direction of planes leaving at the airport of London. Sorted by delay (DESC) 
+and with CSV as the output format.
+
+
+Proposal
+========
+
+The proposal divides into 2 parts. First, the definition of a JSON-serializable
+query object. Second, the presentation of that data to a web accessible query
+endpoint.
+
+Query Object
+------------
+
+The Proposal is heavily based on `ElasticSearch query language`_
+
+.. _ElasticSearch query language: http://www.elasticsearch.org/guide/reference/api/search/
+
+Query object has the following key attributes:
+
+* size (=limit): number of results to return
+* from (=offset): offset into result set -
+  http://www.elasticsearch.org/guide/reference/api/search/from-size.html
+* sort: sort order -
+  http://www.elasticsearch.org/guide/reference/api/search/sort.html
+* query: Query in ES Query DSL
+  http://www.elasticsearch.org/guide/reference/api/search/query.html
+* fields: set of fields to return -
+  http://www.elasticsearch.org/guide/reference/api/search/fields.html
+* facets: - see http://www.elasticsearch.org/guide/reference/api/search/facets/
+
+Additions:
+
+* q: either straight text or a hash will map directly onto a [query_string
+  query](http://www.elasticsearch.org/guide/reference/query-dsl/query-string-query.html)
+  in backend
+
+  * Of course this can be re-interpreted by different backends. E.g. some may
+    just pass this straight through e.g. for an SQL backend this could be the
+    full SQL query
+
+* filters: dict of fields with for each one specified a filter like term,
+  terms, prefix, range. This provides a quick way to do filtering.
+
+  * Value for a field can just be text in which case this becomes a term query
+    on that field
+
+    * E.g. my-field: 'abc' - would only match results with abc in that field
+
+
+Examples
+~~~~~~~~
+
+::
+
+  {
+     q: 'quick brown fox',
+     filters: {
+       'owner': 'jones'
+     }
+  }
 
