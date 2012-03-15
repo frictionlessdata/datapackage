@@ -109,7 +109,7 @@ html_domain_indices = False
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-    '**':  ['globaltoc.html']
+    '**':  ['globaltoc.html', 'contribute.html']
 }
 
 # The name for this set of Sphinx documents.  If None, it defaults to
