@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Data Protocols'
-copyright = u'2011, Data Protocols Team'
+copyright = u'&copy; 2011, Data Protocols Team. Licensed under a Creative Commons, Attribution License v3.0 (all jurisdictions).'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -106,6 +106,11 @@ html_theme_options = {
         'git_repo': 'https://github.com/okfn/dataprotocols'
     }
 html_domain_indices = False
+
+# Custom sidebar templates, maps document names to template names.
+html_sidebars = {
+    '**':  ['globaltoc.html']
+}
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
