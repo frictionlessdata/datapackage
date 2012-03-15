@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Data Protocols'
-copyright = u'2011, Data Protocols Team'
+copyright = u'&copy; 2011, Data Protocols Team. Licensed under a Creative Commons, Attribution License v3.0 (all jurisdictions).'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -93,24 +93,28 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
-html_theme = 'flask'
-
+html_theme = 'sphinx-theme-okfn'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {}
 html_theme_options = {
-        'index_logo': False
+        'logo_icon': 'http://assets.okfn.org/p/opendatahandbook/img/data-wrench-inverted.png',
+        'show_okfn_logo': False,
+        'google_analytics_id': 'UA-8271754-41',
+        'git_repo': 'https://github.com/okfn/dataprotocols'
     }
-html_use_modindex = False
+html_domain_indices = False
 
-# Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+# Custom sidebar templates, maps document names to template names.
+html_sidebars = {
+    '**':  ['globaltoc.html', 'contribute.html']
+}
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = 'Simple Protocols for Collaborative, Distributed Development of Data'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None

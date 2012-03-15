@@ -1,5 +1,8 @@
-Manifesto: Data Wranglers and Scientists of the World Unite
-===========================================================
+========================
+Data Protocols Manifesto
+========================
+
+Data Wranglers and Scientists of the World Unite!
 
 We, data wranglers and data scientists of the world, will attempt to agree on
 common open protocols for activities such as:

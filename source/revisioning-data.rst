@@ -17,19 +17,19 @@ The Changeset Model
 Key Concepts
 ============
 
-  * Changeset - a change to the database
+* Changeset - a change to the database
 
-    * includes metadata about this change
-    * lists set of changes to database (e.g. changes to individual
-      documents/rows) in the form of ChangeObjects
+  * includes metadata about this change
+  * lists set of changes to database (e.g. changes to individual
+    documents/rows) in the form of ChangeObjects
 
-  * ChangeObject - a description of a change to an individual database object
-    (e.g. row in relational DB or document in a document DB)
+* ChangeObject - a description of a change to an individual database object
+  (e.g. row in relational DB or document in a document DB)
 
 In addition we have:
 
-  * Working Copy - the representation of the current state of the system
-    resulting the application of specified set of changesets
+* Working Copy - the representation of the current state of the system
+  resulting the application of specified set of changesets
 
 Optional (?) additional items:
 
@@ -44,25 +44,25 @@ Changeset
 At its simplest changeset is just an id plus timestamp (for ordering --
 timestamp can be dropped if ids are orderable):
 
-  * id: uuid
-  * timestamp
+* id: uuid
+* timestamp
 
 In addition systems can include fields such as:
 
-  * author - name of user creating change
-  * message - summary message describing change
-  * metadata - arbitrary key/value metadata
-  * manifest - dict of ChangeObjects keyed by object_id
-  * [optional] parents = ordered list of ids
+* author - name of user creating change
+* message - summary message describing change
+* metadata - arbitrary key/value metadata
+* manifest - dict of ChangeObjects keyed by object_id
+* [optional] parents = ordered list of ids
 
 ChangeObject
 ------------
 
-  * object_id - a tuple forming a unique identifier for this object *within*
-    the database
-  * operation_type: delete | update | create | (move? copy?)
-  * representation: serialization of this change either as full dump of object
-    (copy-on-write) or diff
+* object_id - a tuple forming a unique identifier for this object *within* the
+  database
+* operation_type: delete | update | create | (move? copy?)
+* representation: serialization of this change either as full dump of object
+  (copy-on-write) or diff
 
 Doing Things
 ============
@@ -78,12 +78,12 @@ Reconstructing the repository at a given changeset/revision
 Specifically we require to reconstruct a given object at that changeset. The
 process:
 
-  1. Get object ID
-  2. If using CoW (copy-on-write): find first changeset <= {given-changeset} in
-     which there is a ChangeObject entry containing the object ID and return
-     this. END.
-  3. If using diff: find all ChangeObjects with changesets <= {given-changeset}
-     and concatenate. Return resulting object.
+1. Get object ID
+2. If using CoW (copy-on-write): find first changeset <= {given-changeset} in
+   which there is a ChangeObject entry containing the object ID and return
+   this. END.
+3. If using diff: find all ChangeObjects with changesets <= {given-changeset}
+   and concatenate. Return resulting object.
 
 Get all changes to a given object
 ---------------------------------
@@ -107,16 +107,16 @@ Questions
 Practical
 ---------
 
-  * How do we cherry-pick? I.e. select certain changesets and not others (they
-    depend 
-  * How do we transplant? Ie. copy a set of changesets from one line of
-    development to another?
+* How do we cherry-pick? I.e. select certain changesets and not others (they
+  depend 
+* How do we transplant? Ie. copy a set of changesets from one line of
+  development to another?
 
 Technical
 
-  * How do we compute changeset ids (and changeobject ids)?
-  * Does the ordering of ChangeObjects in a ChangesetManifest matter? Current
-    answer: No.
+* How do we compute changeset ids (and changeobject ids)?
+* Does the ordering of ChangeObjects in a ChangesetManifest matter? Current
+  answer: No.
 
 
 What's Different from Git?
@@ -132,8 +132,8 @@ Appendix: Recording Changes to the Database
 
 There are several ways to record a specific change to a database / dataset:
 
-  * Copy on write - so one has a 'full' copy of the model/DB at each version.
-  * Diffs: store diffs between versions (plus, usually, a full version of the model at a given point in time e.g. store HEAD)
+* Copy on write - so one has a 'full' copy of the model/DB at each version.
+* Diffs: store diffs between versions (plus, usually, a full version of the model at a given point in time e.g. store HEAD)
 
 
 Copy on write
@@ -184,11 +184,11 @@ model -- e.g. the RDF case discussed above.
 Usage
 =====
 
-  * Wikis: Many wikis implement a full copy-on-write model with a full copy of
-    each page being made on each write.
-  * Source control: diff model (usually with HEAD cached and backwards diffs)
-  * vdm: copy-on-write using SQL tables as core 'domain objects'
-  * ordf (http://packages.python.org/ordf): (RDF) diffs (with HEAD caching)
+* Wikis: Many wikis implement a full copy-on-write model with a full copy of
+  each page being made on each write.
+* Source control: diff model (usually with HEAD cached and backwards diffs)
+* vdm: copy-on-write using SQL tables as core 'domain objects'
+* ordf (http://packages.python.org/ordf): (RDF) diffs (with HEAD caching)
 
 Todo
 ====
@@ -204,16 +204,16 @@ Mercurial
 
 Overview of the Mercurial model:
 
-  * http://mercurial.selenic.com/wiki/UnderstandingMercurial
-  * http://hgbook.red-bean.com/read/behind-the-scenes.html
-  * (Longer) http://mercurial.selenic.com/wiki/Mercurial?action=AttachFile&do=get&target=Hague2009.pdf
-  * Octopus merges: http://arrenbrecht.ch/mercurial/pbranch/octopus.htm
+* http://mercurial.selenic.com/wiki/UnderstandingMercurial
+* http://hgbook.red-bean.com/read/behind-the-scenes.html
+* (Longer) http://mercurial.selenic.com/wiki/Mercurial?action=AttachFile&do=get&target=Hague2009.pdf
+* Octopus merges: http://arrenbrecht.ch/mercurial/pbranch/octopus.htm
 
 Key concepts:
 
-  * changeset / changelog (our changeset)
-  * manifest
-  * file
+* changeset / changelog (our changeset)
+* manifest
+* file
 
 Details of `Mercurial hash generation`_:
 
@@ -233,22 +233,22 @@ Details of `Mercurial hash generation`_:
 Git
 ---
 
-  * Glossary: http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html
-  * Technical Docs: http://repo.or.cz/w/git.git?a=tree;f=Documentation/technical;hb=HEAD
-  * http://eagain.net/articles/git-for-computer-scientists/
+* Glossary: http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html
+* Technical Docs: http://repo.or.cz/w/git.git?a=tree;f=Documentation/technical;hb=HEAD
+* http://eagain.net/articles/git-for-computer-scientists/
 
 Key features:
 
-  * blob (bistreams)
-  * tree
-  * commit (changeset)
-    * has metadata (e.g. parents)
-    * points to a tree
- 
+* blob (bistreams)
+* tree
+* commit (changeset)
+  * has metadata (e.g. parents)
+  * points to a tree
+
 Extras:
 
-  * references (pointers into commit tree)
-  * tags
+* references (pointers into commit tree)
+* tags
 
 Git hash computation::
 
