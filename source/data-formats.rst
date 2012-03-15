@@ -1,3 +1,9 @@
+=========================
+Web-Oriented Data Formats
+=========================
+
+This document reviews existing web-oriented data formats.
+
 Dataset Publishing Language
 ===========================
 
@@ -9,27 +15,27 @@ Metadata Structure
 
 Basic dataset metadata
 
+* Name
+* Description
+* Url
+* Provider
+
   * Name
-  * Description
-  * Url
-  * Provider
+  * URL
 
-    * Name
-    * URL
-
-  * Topics (aka tags)
+* Topics (aka tags)
 
 Data metadata is organized around Concepts which are Dimensions (attributes) and Metrics (values).
 
 Concept:
 
-  * Id
-  * Info
+* Id
+* Info
 
-    * Name
-    * Description
+  * Name
+  * Description
 
-  * Type
+* Type
 
 .. note:
 
@@ -39,8 +45,8 @@ Slices = collections of concepts. Define what is a metric and what is a dimensio
 
 Tables = definition of a CSV file.
 
-  * Can define defaults for columns
-  * Can define formats (e.g. for data columns ...)
+* Can define defaults for columns
+* Can define formats (e.g. for data columns ...)
 
 Comments
 ========

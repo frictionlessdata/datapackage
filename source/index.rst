@@ -24,6 +24,7 @@ Contents
    data-query-protocol
    refining
    packages
+   data-formats
 
 
 Indices and tables
