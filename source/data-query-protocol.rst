@@ -9,10 +9,10 @@ though it will build on or require a data query language of some form.
 
 The kind of use cases we are thinking of are:
 
-  * Data viewers calling databases to get data to display.
-  * Visualisation tools calling databases or data scraping tools.
-  * Crowd sourcing tools augmenting information dynamically pulled from a data
-    catalogue.
+* Data viewers calling databases to get data to display.
+* Visualisation tools calling databases or data scraping tools.
+* Crowd sourcing tools augmenting information dynamically pulled from a data
+  catalogue.
 
 Introduction
 ============
@@ -130,7 +130,7 @@ Unstructured Query Language
 * UnQL means Unstructured Query Language. It's an open query language for JSON, semi-structured and document databases.
 * http://www.unqlspec.org/display/UnQL/Home
 
-UnQL is a query language not a query protocol so provides no information 
+UnQL is a query language not a query protocol so provides no information on how clients and servers interact.
 
 HTSQL
 -----
@@ -138,7 +138,7 @@ HTSQL
 * http://htsql.org/
 * A database query language based on SQL
 
- * HTSQL is a URI-based high-level query language for relational databases. HTSQL wraps your database with a web service layer, translating HTTP requests into SQL and returning results as HTML, JSON, etc.
+  * HTSQL is a URI-based high-level query language for relational databases. HTSQL wraps your database with a web service layer, translating HTTP requests into SQL and returning results as HTML, JSON, etc.
 
 URI Fragment Identifiers for the text/csv Media Type
 ----------------------------------------------------

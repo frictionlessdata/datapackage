@@ -7,11 +7,11 @@ distributed development of data.
 
 Things like:
 
-  * Revisioning of databases and datasets including diffing and merging
-  * Protocols for sharing and syncing data changes
-  * Web-oriented query protocols for data
-  * Data packaging, publication and installation
-  * Webhooks and webservices for data transformation
+* Revisioning of databases and datasets including diffing and merging
+* Protocols for sharing and syncing data changes
+* Web-oriented query protocols for data
+* Data packaging, publication and installation
+* Webhooks and webservices for data transformation
 
 Contents
 ========

@@ -84,7 +84,7 @@ Specification (Draft)
    This is a draft specification and under active development. If you have
    comments or suggestions please file them in the issue tracker at:
    https://github.com/okfn/dataprotocols/issues. If you have explicit changes
-   please `fork the repo <https://github.com/okfn/dataprotocols>` and submit a
+   please fork the repo (https://github.com/okfn/dataprotocols>) and submit a
    pull request.
 
 Aims:
