@@ -4,6 +4,20 @@ Web-Oriented Data Formats
 
 This document reviews existing web-oriented data formats.
 
+HTML microformats
+====================================
+
+* microformats overview: http://microformats.org/about and http://microformats.org/wiki
+* additional similar approaches: RDFa and microdata
+* microformats-2: latest iteration based on lessons learned from above
+
+  * http://microformats.org/wiki/microformats-2
+
+* relationships between data, documents, using standard rel attribute values
+* semantic class names re-using well established vocabularies (e.g. vCard, iCalendar)
+* additional vocabularies developed with an open scientific process and community, CC0 public domain
+
+
 Dataset Publishing Language (Google)
 ====================================
 
