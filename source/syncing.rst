@@ -28,6 +28,20 @@ MVCC and WAL for databases
 
 Forthcoming.
 
+Diff-based syncing
+==================
+
+The toolchain used for syncing text-based projects
+(such as the github repository this website is developed in)
+is diffing, patching, and 3-way merges, building up
+to distributed revision control.  It is possible to
+do the same with tabular data.
+
+.. toctree::
+   :maxdepth: 2
+
+   diff
+
 
 General Overview of Changes / Revisioning for Data
 ==================================================
