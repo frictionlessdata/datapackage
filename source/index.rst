@@ -25,6 +25,7 @@ Contents
    refining
    packages
    data-formats
+   simple-data-format
 
 
 Indices and tables
