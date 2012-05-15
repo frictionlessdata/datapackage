@@ -8,8 +8,10 @@ publishing and sharing data.
 Key Design Features and Principles
 ==================================
 
-The format's focus is simplicity and web usage -- that is, usage online with
-access and transmission *over HTTP*.
+The format's focus is on simplicity and web usage -- that is, usage online with
+access and transmission *over HTTP*. In addition the format is focused on data
+that can be presented in a tabular structure and in making it easy to produce
+(and consume) this format from spreadsheets and relational databases.
 
 The key features of this format are the following:
 
@@ -22,9 +24,10 @@ The key features of this format are the following:
   tables and definition of links between files)
 
 .. note:: this specification owes a great deal to the excellent Dataset
-          Publishing Language (DSPL) put forward by Google. This specification
-          differs from that in utilizing JSON instead of XML and in using
-          linked data / semantic web schemas but is otherwise very similar.
+          Publishing Language (DSPL) put forward by Google. The main difference
+          is in using JSON instead of XML for the schema and re-using as far as
+          possible the JSON-LD schema language (based on linked-data) rather
+          than inventing a new type and schema structure.
 
 Why CSV
 -------
@@ -33,9 +36,9 @@ Why CSV
 2. CSV is tabular-oriented. Most data structures are either tabular or can be
    transformed to a tabular structure by some form of normalization
 3. It is open and the "standard" is well-known
-4. It is widely supported - practically every spreadsheet program and
-   relational database program in existence can handle CSV in some form or
-   other
+4. It is widely supported - practically every spreadsheet program, relational
+   database and programming language in existence can handle CSV in some form
+   or other
 5. It is text-based and therefore amenable to manipulation and access from a
    wide range of standard tools (including revision control systems such as
    git, mercurial and subversion)
@@ -80,18 +83,20 @@ to be valid JSON)::
 
   {
     "year": {
-      "@type": "...:year",  // @type as per JSON-LD
+      "@type": "xsd:gYear",  // @type as per JSON-LD
       "simpletype": "date", // simple type (see below)
       "format": "yyyy", // simple format information
       "label": "Year
     },
     "series": {
-      "@type": ???,
+      "@type": xsd:string,
       "simpletype": "string"
     },
     "series_id": {
-      "@type": @id",
-      "@id": "reference do document / dataset?"
+      // no appropriate type here so can ignore (could invent one)
+      // "@type": @id",
+      // "@id": "reference to document / dataset"
+      "simpletype": "key",
       "foreign_key": "series.csv" // values in this field are key to data in referenced file series.csv
     },
     "value": {
@@ -110,8 +115,8 @@ to be valid JSON)::
 
 Here is the series data::
 
-  id,label,source,type,format,high_is_good,icon,description@en,description@it,description@es,description@pt,description@de
-    employment1,Employment rate in the age group 24-60,"NOI Italia, URL: http://noi-italia.istat.it/index.php?id=7&user_100ind_pi1[id_pagina]=97&cHash=6d0562ec5f67ebd9a2556e0fcab6efe8",float,percentage,TRUE,http://thenounproject.com/noun/briefcase/#icon-No401,"The employment rate of the population between 20 and 64 is one of the indicators in the strategy Europe 2020 for economic development and employment.","Il tasso di occupazione della popolazione tra 20 e 64 anni è uno degli indicatori previsti dalla strategia Europa 2020 per lo sviluppo e l’occupazione.","La tasa de empleo es calculada dividiendo el numero de personas empleadas con edades comprendidas entre los 20 y los 64 por el total de personas en ese mismo grupo.","A taxa de emprego é calculada dividindo o número de pessoas empregadas com idades compreendidas entre os 20 e os 64 pelo total de pessoas desde mesmo grupo.","Die Beschäftigungsquote wird berechnet, indem die Anzahl der Personen im Alter zwischen 20 und 64 Jahren durch die Gesamtbevölkerung derselben Altersgruppe dividiert wird."
+  id,label,source,type,format,description@en,description@it,description@es,description@pt
+    employment1,Employment rate in the age group 24-60,"NOI Italia",float,percentage,"The employment rate of the population between 20 and 64","Il tasso di occupazione della popolazione tra 20 e 64 anni","La tasa de empleo es calculada dividiendo el numero de personas empleadas con edades comprendidas entre los 20 y los 64 por el total de personas en ese mismo grupo.","A taxa de emprego é calculada dividindo o número de pessoas empregadas com idades compreendidas entre os 20 e os 64 pelo total de pessoas desde mesmo grupo."
 
 .. todo:: google docs spreadsheet example of all in one.
 
