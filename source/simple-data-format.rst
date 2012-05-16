@@ -108,7 +108,7 @@ to be valid JSON)::
     },
     "value_normalized": {
       "@type": "xsd:double",
-      "@simpletype": "float",
+      "simpletype": "float",
       "description": "Value normalized to be between 0 and 1"
     }
   }
@@ -176,7 +176,7 @@ Special keys on each field:
 
 * @type: JSON-LD type (if any for this field)
 * label: human readable name / label for this field
-* simple_type: one of::
+* simpletype: one of::
   
     string | integer | float | date | datetime | object | list
 
