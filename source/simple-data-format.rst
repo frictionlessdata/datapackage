@@ -135,8 +135,9 @@ Files
   the form of the schema file is provided below. Schema files must be named
   after their associated data files appending ``.schema.json`` (or
   ``.schema.csv`` in case of CSV version)
-* Each dataset MAY provide general metadata. If so it should do by
-  providing it in conformance with the Data Package specification.
+* Each dataset MAY provide general metadata (title, description, keywords). If
+  so it should do by providing it in conformance with the :doc:`Data Package
+  specification <data-packages>`.
 
 
 CSV Definition
