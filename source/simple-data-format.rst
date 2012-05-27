@@ -5,6 +5,14 @@ Simple Data Format (SDF)
 This document defines a simple data publishing format (Simple Data Format) for
 publishing and sharing data.
 
+**Status: Draft**
+
+Contribute
+==========
+
+Comments, suggestions and discussion welcome - see sidebar for various options
+on how to contribute including mailing list, twitter and issue tracker.
+
 Key Design Features and Principles
 ==================================
 
@@ -143,9 +151,9 @@ Files
 CSV Definition
 --------------
 
-CSV has never been formally standardized (TODO: check) and various varieties
-are often used. The following restrictions regarding CSV structure are part of
-this specification:
+There is an RFC for CSV (:rfc:`4180` - Common Format and MIME Type for
+Comma-Separated Values (CSV) Files). The following additional restrictions
+regarding CSV structure are part of this specification:
 
 * CSV files MUST use commas as field delimiters
 * CSV files MUST contain one and only one header row
