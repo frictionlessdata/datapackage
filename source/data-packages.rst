@@ -126,10 +126,9 @@ Future spec
 This is very closely based on the Common JS spec (also a json based format).
 That spec in turn shared many common attributes with Debs, Python etc.
 
-* name - the name of the package.
-* description - a brief description of the package. By convention, the first
-  sentence (up to the first ". ") should be usable as a package title in
-  listings.
+* name - the name of the package. This should be short and url-usable (so containing no spaces or special characters)
+* title - a title or one sentence description for this package
+* description - a description of the package. The first paragraph (up to the first double should be usable as summary information for the package)
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
 * keywords - an Array of string keywords to assist users searching for the
