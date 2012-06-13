@@ -23,7 +23,7 @@ Contents
    syncing
    data-query-protocol
    refining
-   packages
+   data-packages
    data-formats
    simple-data-format
 
