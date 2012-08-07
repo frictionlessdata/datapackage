@@ -95,7 +95,7 @@ Algorithm
 
 5. GET each revisions from the source Database by calling the URL
    `/<source>/<docid>?revs=true&rev=<revision>` . This
-   will get the document with teh parent revisions. Also don't forget to
+   will get the document with the parent revisions. Also don't forget to
    get attachements that aren't already stored at the target. As an
    optimisation you can use the HTTP multipart api to get all.
 
