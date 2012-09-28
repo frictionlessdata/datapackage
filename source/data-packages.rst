@@ -4,13 +4,179 @@ Data Packages
 
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation)
 
-A Data Package (or DataPackage) is a cohesive wrapping of a collection of data
+A Data Package (or DataPackage) is a coherent collection of data
 and possibly other assets into a single form. It provides the basis for
 convenient delivery, installation and management of datasets.
 
-Those familiar with code package can think of a Data Package as analogous
-distribution format for datasets.
+Specification
+=============
 
+**Version: 0.2 (Draft)**
+
+.. note::
+
+   This is a draft specification and under active development. If you have
+   comments or suggestions please file them in the issue tracker at:
+   https://github.com/okfn/dataprotocols/issues. If you have explicit changes
+   please fork the repo (https://github.com/okfn/dataprotocols>) and submit a
+   pull request.
+
+A data package must provide package descriptor metadata. As a file this should
+be named "datapackage.json" and placed in the top-level directory. Additional
+files such as a README and data files may be provided. A data package has the
+following structure on disk::
+
+    # (required) metadata and data schemas for this data package
+    datapackage.json <-- data package metadata
+    # (optional) README in markdown format
+    # Used to generate a short summary (first sentence), longer summary
+    # (first paragraph) and general description (complete file)
+    /README.md
+    # directory for data files
+    /data/
+    # directory for code scripts
+    /scripts/
+
+datapackage.json
+----------------
+
+`datapackage.json` is the central file in a Data Package as it provides both
+general metadata and schema information in a structured form that is machine
+usable. It is a JSON file with the following structure::
+
+  {
+    # required
+    "metadata": {
+      ... described below ...
+    },
+    # optional
+    "files": {
+      "url or path to data file": {
+        ... file info described below ...
+      }
+    },
+    # optional
+    ... additional keys ...
+  }
+
+Metadata
+--------
+
+The metadata hash may have the following keys and values:
+
+* name (*) - short url-usable name of the package (so no spaces or special characters)
+* title (*) - a title or one sentence description for this package
+* description - a description of the package. The first paragraph (up to the
+  first double should be usable as summary information for the package)
+* version - a version string conforming to the Semantic Versioning requirements
+  (http://semver.org/).
+* keywords - an Array of string keywords to assist users searching for the
+  package in catalogs.
+* licenses - array of licenses under which the package is provided. Each
+  license is a hash with a "type" property specifying the type of license and a
+  url property linking to the actual text.
+* contributors - an Array of hashes each containing the details of a
+  contributor. Format is the same as for author. By convention, the first
+  contributor is the original author of the package.
+* credit: a string for crediting
+* creator (publisher?)
+* image: a link to an image to use for this data package
+
+Extension attributes
+~~~~~~~~~~~~~~~~~~~~
+
+* maintainers - Array of maintainers of the package. Each maintainer is a hash
+  which must have a "name" property and may optionally provide "email" and
+  "web" properties.
+* dependencies - Hash of prerequisite packages on which this package depends in
+  order to install and run. Each dependency defines the lowest compatible
+  MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with
+  which the package has been tested and is assured to work. The version may be
+  a simple version string (see the version property for acceptable forms), or
+  it may be a hash group of dependencies which define a set of options, any one
+  of which satisfies the dependency. The ordering of the group is significant
+  and earlier entries have higher priority.
+
+File Info
+---------
+
+This will vary by file type.
+
+For CSV files it is a hash with the following structure::
+
+  {
+    # ordered list of the fields/columns in the file
+    "fields": [
+      {
+        "id": "field/column name in CSV file",
+        "label": "A nicer human readable label for the field",
+        "type": "A string specifying the type - see below",
+        "format": "A string specifying a format - see below"
+      }
+    ]
+  }
+
+Types are one of:
+
+* string
+* decimal - all decimals must be provided without any formatting (e.g. commans)
+  and must use '.' as the decimal separator
+* date
+* dateTime
+* geojson
+* geolon
+* geolat
+
+Format is a string specifying the specific structure of a field e.g. date may
+have format "yyyy".
+  
+
+Catalogs and Discovery
+======================
+
+In order to find Data Packages tools may make use of a "consolidated" catalog,
+usually at "HOME/.dpm/catalog.json".
+
+catalog.json has the following format::
+
+ {
+    version: ...
+    packages:
+      {name}: {
+        {version}:
+          metadata: {metadata},
+          bundles: [
+            url: ...
+            type: file, url, ckan, zip, tgz
+          ]
+ }
+
+When Package metadata is added to the catalog a field called bundle is added
+pointing to a bundle source for this item.
+
+
+Tools
+=====
+
+Data Package Manager
+--------------------
+
+A command line utility and library supporting the data package spec is
+available: dpm.
+
+* Data package manager (dpm): http://dpm.readthedocs.org/
+
+  * Source code: https://github.com/okfn/dpm
+
+Aims
+====
+
+* Simple
+* Extensible
+* Human editable (for metadata)
+* Machine usable (easily parsable and editable)
+* Based on existing standard formats
+* Not linked to a particular language or system
 
 How It Fits into the Ecosystem
 ==============================
@@ -25,7 +191,6 @@ How It Fits into the Ecosystem
    :align: center
    :alt: Data Packages and the Wider Ecosystem
    :width: 90%
-
 
 Concepts
 ========
@@ -73,165 +238,6 @@ http://my.server.org/packages/interesting-images/version-9.2. When I unpack the
 zipfile onto my hard disk, I might have a directory
 /my/home/packages/interesting-images/version-0.2.
 
-
-Specification (Draft)
-=====================
-
-**Version: 0.2 (Draft)**
-
-.. note::
-
-   This is a draft specification and under active development. If you have
-   comments or suggestions please file them in the issue tracker at:
-   https://github.com/okfn/dataprotocols/issues. If you have explicit changes
-   please fork the repo (https://github.com/okfn/dataprotocols>) and submit a
-   pull request.
-
-Aims:
-
-* Simple
-* Extensible
-* Human editable (for metadata)
-* Machine usable (easily parsable and editable)
-* Based on existing standard formats
-* Not linked to a particular language or system
-
-Current Format
-==============
-
-Each package must provide package descriptor metadata. As a file this should be
-named "datapackage.json" and placed in the top-level directory.
-
-Package Metadata
-----------------
-
-The current spec has the following attributes (this is heavily based on python
-distributions):
-
-* version
-* license
-* author
-* author_email
-* maintainer
-* maintainer_email
-* url
-* notes
-* tags
-* resources - urls where package data can be obtained
-* extras - arbitrary additional metadata
-
-Future spec
-~~~~~~~~~~~
-
-This is very closely based on the Common JS spec (also a json based format).
-That spec in turn shared many common attributes with Debs, Python etc.
-
-* name - the name of the package. This should be short and url-usable (so containing no spaces or special characters)
-* title - a title or one sentence description for this package
-* description - a description of the package. The first paragraph (up to the first double should be usable as summary information for the package)
-* version - a version string conforming to the Semantic Versioning requirements
-  (http://semver.org/).
-* keywords - an Array of string keywords to assist users searching for the
-  package in catalogs.
-* maintainers - Array of maintainers of the package. Each maintainer is a hash
-  which must have a "name" property and may optionally provide "email" and
-  "web" properties.
-* licenses - array of licenses under which the package is provided. Each
-  license is a hash with a "type" property specifying the type of license and a
-  url property linking to the actual text.
-* repositories - Array of repositories where the package can be located. Each
-  repository is a hash with properties for the "type" and "url" location of the
-  repository to clone/checkout the package. A "path" property may also be
-  specified to locate the package in the repository if it does not reside at
-  the root.
-* dependencies - Hash of prerequisite packages on which this package depends in
-  order to install and run. Each dependency defines the lowest compatible
-  MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with
-  which the package has been tested and is assured to work. The version may be
-  a simple version string (see the version property for acceptable forms), or
-  it may be a hash group of dependencies which define a set of options, any one
-  of which satisfies the dependency. The ordering of the group is significant
-  and earlier entries have higher priority.
-
-Optional attributes:
-
-* contributors - an Array of hashes each containing the details of a
-  contributor. Format is the same as for author. By convention, the first
-  contributor is the original author of the package.
-
-Package Bundle Format
----------------------
-
-This is relevant when the Package is serialized to disk. A serialization of a
-Package on disk is known as a '''Package Bundle'''.  Note that not all packages
-will be serialized to disk. For example, some packages could provide their data
-via an API.
-
-Directory Layout
-~~~~~~~~~~~~~~~~
-
-A Data Package Bundle will observe the following:
-
-* A datapackage.json file must be in the top level directory
-* Data files should be in the "data" directory
-* Documentation should be under the "doc" directory
-
-To illustrate::
-
-  /{data-package-name}
-      /datapackage.json <-- data package metadata
-      /data/ <--- where resources are downloaded to
-      # optionally
-      /README.txt
-      /.dpm/config <--- only required for source bundles
-
-.dpm/config format
-~~~~~~~~~~~~~~~~~~
-
-  [paths]
-  default = http://thedatahub.org/dataset/{dataset-name}
-
-
-Catalogs and Discovery
-----------------------
-
-In order to find Data Packages tools may make use of a "consolidated" catalog,
-usually at "HOME/.dpm/catalog.json".
-
-catalog.json has the following format::
-
- {
-    version: ...
-    packages:
-      {name}: {
-        {version}:
-          metadata: {metadata},
-          bundles: [
-            url: ...
-            type: file, url, ckan, zip, tgz
-          ]
- }
-
-When Package metadata is added to the catalog a field called bundle is added
-pointing to a bundle source for this item.
-
-Deferred
---------
-
-*To be decided*
-
-* More convention for layout of the Package Bundle
-
-
-Data Package Manager
-====================
-
-A command line utility and library supporting the data package spec is
-available: dpm.
-
-* Data package manager (dpm): http://dpm.readthedocs.org/
-
-  * Source code: https://github.com/okfn/dpm
 
 
 Inspiration and Existing Work
