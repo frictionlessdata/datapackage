@@ -2,7 +2,7 @@
 Data Packages
 =============
 
-.. sectionauthor:: Rufus Pollock (Open Knowledge Foundation)
+.. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY)
 
 A Data Package (or DataPackage) is a coherent collection of data
 and possibly other assets into a single form. It provides the basis for
@@ -11,14 +11,14 @@ convenient delivery, installation and management of datasets.
 Specification
 =============
 
-**Version: 0.2 (Draft)**
+**Version: 0.3 (Draft)**
 
 .. note::
 
    This is a draft specification and under active development. If you have
    comments or suggestions please file them in the issue tracker at:
    https://github.com/okfn/dataprotocols/issues. If you have explicit changes
-   please fork the repo (https://github.com/okfn/dataprotocols>) and submit a
+   please fork the repo (https://github.com/okfn/dataprotocols) and submit a
    pull request.
 
 A data package must provide package descriptor metadata. As a file this should
@@ -26,16 +26,14 @@ be named "datapackage.json" and placed in the top-level directory. Additional
 files such as a README and data files may be provided. A data package has the
 following structure on disk::
 
-    # (required) metadata and data schemas for this data package
-    datapackage.json <-- data package metadata
-    # (optional) README in markdown format
-    # Used to generate a short summary (first sentence), longer summary
-    # (first paragraph) and general description (complete file)
-    /README.md
-    # directory for data files
-    /data/
-    # directory for code scripts
-    /scripts/
+    |  # (required) metadata and data schemas for this data package
+    +--datapackage.json <-- data package metadata
+    |  # (optional) README in markdown format
+    +--README.md
+    |  # directory for data files
+    +--data/
+    |  # directory for code scripts
+    +--scripts/
 
 datapackage.json
 ----------------
@@ -56,7 +54,7 @@ usable. It is a JSON file with the following structure::
       }
     },
     # optional
-    ... additional keys ...
+    ... additional information ...
   }
 
 Metadata
@@ -64,10 +62,11 @@ Metadata
 
 The metadata hash may have the following keys and values:
 
-* name (*) - short url-usable name of the package (so no spaces or special characters)
-* title (*) - a title or one sentence description for this package
+* name (required) - short url-usable name of the package (so no spaces or
+  special characters)
+* title (required) - a title or one sentence description for this package
 * description - a description of the package. The first paragraph (up to the
-  first double should be usable as summary information for the package)
+  first double line break should be usable as summary information for the package)
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
 * keywords - an Array of string keywords to assist users searching for the
@@ -76,11 +75,21 @@ The metadata hash may have the following keys and values:
   license is a hash with a "type" property specifying the type of license and a
   url property linking to the actual text.
 * contributors - an Array of hashes each containing the details of a
-  contributor. Format is the same as for author. By convention, the first
-  contributor is the original author of the package.
-* credit: a string for crediting
-* creator (publisher?)
-* image: a link to an image to use for this data package
+  contributor. Must contain a 'name' property and MAY contain an email and web
+  property. By convention, the first contributor is the original author of the
+  package. Example::
+
+    "contributors":[ {
+      "name": "Joe Bloggs",
+      "email": "joe@bloggs.com",
+      "web": "http://www.bloggs.com"
+    }]
+
+* publisher - like contributors 
+* credit - a simple string for crediting
+* source - the source of data in the data package. Either a simple string or a
+  a hash with url and name attributes
+* image - a link to an image to use for this data package
 
 Extension attributes
 ~~~~~~~~~~~~~~~~~~~~
@@ -119,7 +128,7 @@ For CSV files it is a hash with the following structure::
 Types are one of:
 
 * string
-* decimal - all decimals must be provided without any formatting (e.g. commans)
+* decimal - all decimals must be provided without any formatting (e.g. commas)
   and must use '.' as the decimal separator
 * date
 * dateTime
@@ -134,14 +143,18 @@ have format "yyyy".
 Catalogs and Discovery
 ======================
 
-In order to find Data Packages tools may make use of a "consolidated" catalog,
-usually at "HOME/.dpm/catalog.json".
+In order to find Data Packages tools may make use of a "consolidated" catalog
+either online or locally.
 
-catalog.json has the following format::
+A general specification for (online) Data Catalogs can be found at
+http://spec.datacatalogs.org/.
+
+For local catalogs on disk we suggest locating at "HOME/.dpm/catalog.json" and
+having the following structure::
 
  {
     version: ...
-    packages:
+    datasets:
       {name}: {
         {version}:
           metadata: {metadata},
@@ -152,24 +165,13 @@ catalog.json has the following format::
  }
 
 When Package metadata is added to the catalog a field called bundle is added
-pointing to a bundle source for this item.
+pointing to a bundle for this item (see below for more on bundles).
 
-
-Tools
-=====
-
-Data Package Manager
---------------------
-
-A command line utility and library supporting the data package spec is
-available: dpm.
-
-* Data package manager (dpm): http://dpm.readthedocs.org/
-
-  * Source code: https://github.com/okfn/dpm
+Background
+==========
 
 Aims
-====
+----
 
 * Simple
 * Extensible
@@ -179,7 +181,7 @@ Aims
 * Not linked to a particular language or system
 
 How It Fits into the Ecosystem
-==============================
+------------------------------
 
 * Minimal wrapping to provide for machine automated sharing and obtaining of
   data
@@ -239,9 +241,22 @@ zipfile onto my hard disk, I might have a directory
 /my/home/packages/interesting-images/version-0.2.
 
 
+Tools
+=====
 
-Inspiration and Existing Work
-=============================
+Data Package Manager
+--------------------
+
+A command line utility and library supporting the data package spec is
+available: dpm.
+
+* Data package manager (dpm): http://dpm.readthedocs.org/
+
+  * Source code: https://github.com/okfn/dpm
+
+
+Existing Work
+=============
 
 The specification is heavily inspired by various software packaging formats
 including the Debian 'Debs' format, Python Distributions and CommonsJS
