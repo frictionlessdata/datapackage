@@ -156,3 +156,14 @@ immediately work with Google Spreadsheets and Fusion Tables, presumably? Also
 
 * http://code.google.com/apis/chart/interactive/docs/querylanguage.html#Language_Syntax
 
+JSONiq
+------
+
+JSONiq extends XQuery, a mature W3C standard, with native JSON support. Like
+XQuery and SQL, JSONiq is declarative: Expressions can nest with full
+composability.
+
+* http://www.jsoniq.org/
+
+Notes: as of Autumn 2012 lacks implementations in any mainstream language.
+
