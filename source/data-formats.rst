@@ -88,7 +88,10 @@ Google Visualization API Data Format
 CKAN Data API
 =============
 
-Based on ElasticSearch. See http://docs.ckan.org/en/latest/storage/datastore.html.
+See http://docs.ckan.org/en/latest/datastore.html and http://docs.ckan.org/en/latest/datastore-api.html.
+
+* JSON based
+* Tabular oriented
 
 OData (Microsoft)
 =================
