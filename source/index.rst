@@ -62,12 +62,14 @@ this is both feasible and needed - be that in terms of standards, use of HTTP
 and REST, browser maturity, or, in terms of ad-hoc development in tools that is
 ripe for "standardization".
 
-Data Protocols was started in Autumn 2011 and arose out of discussions with, among others,
-Francis Irving and Aidan McGuire of ScraperWiki_, Max Ogden (then a `Code for
-America`_ fellow), Chris Taggart of OpenCorporates_, Richard Cyganiak of
-DERI_ and members of the `W3C GLD Working Group` and has subsequently benefitted
-from input from numerous other individuals.
+Data Protocols was started in Autumn 2011 and arose out of discussions with,
+among others, Rufus Pollock and Friedrich Lindenberg of the `Open Knowledge
+Foundation`_, Francis Irving and Aidan McGuire of ScraperWiki_, Max Ogden (then
+a `Code for America`_ fellow), Chris Taggart of OpenCorporates_, Richard
+Cyganiak of DERI_ and members of the `W3C GLD Working Group` and has
+subsequently benefitted from input from numerous other individuals.
 
+.. _Open Knowledge Foundation: http://okfn.org/
 .. _ScraperWiki: http://scraperwiki.com/
 .. _Code for America: http://codeforamerica.com/
 .. _OpenCorporates: http://opencorporates.com/
