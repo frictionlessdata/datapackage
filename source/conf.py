@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Data Protocols'
+project = u'Open Data Protocols - Simple Open Standards for Open Data'
 copyright = u'&copy; 2011, Data Protocols Team. Licensed under a Creative Commons, Attribution License v3.0 (all jurisdictions).'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -115,7 +115,7 @@ html_sidebars = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'Simple Protocols for Collaborative, Distributed Development of Data'
+html_title = 'Open Data Protocols - Simple Open Standards for Open Data'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
