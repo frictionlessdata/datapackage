@@ -17,8 +17,8 @@ Specification
 
    This is a draft specification and under active development. If you have
    comments or suggestions please file them in the issue tracker at:
-   https://github.com/okfn/dataprotocols/issues. If you have explicit changes
-   please fork the repo (https://github.com/okfn/dataprotocols) and submit a
+   https://github.com/dataprotocols/dataprotocols/issues. If you have explicit changes
+   please fork the repo (https://github.com/dataprotocols/dataprotocols) and submit a
    pull request.
 
 A data package must provide package descriptor metadata. As a file this should
@@ -27,12 +27,12 @@ files such as a README and data files may be provided. A data package has the
 following structure on disk::
 
     |  # (required) metadata and data schemas for this data package
-    +--datapackage.json <-- data package metadata
+    +--datapackage.json
     |  # (optional) README in markdown format
     +--README.md
-    |  # directory for data files
+    |  # the directory for data files
     +--data/
-    |  # directory for code scripts
+    |  # the directory for code scripts
     +--scripts/
 
 datapackage.json
