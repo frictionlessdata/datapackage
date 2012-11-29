@@ -93,6 +93,49 @@ See http://docs.ckan.org/en/latest/datastore.html and http://docs.ckan.org/en/la
 * JSON based
 * Tabular oriented
 
+JSON-Stat
+=========
+
+http://json-stat.org/ with the detailed specification at http://json-stat.org/doc/
+
+* "The ultimate goal of json-stat.org is to define a JSON schema for statistical dissemination or at least some guidelines and good practices when dealing with stats in JSON."
+* JSON based and cube oriented
+
+Example (reasonably complex)::
+
+  {
+     "dataset" : {
+        "value" : [4729, 4832, 9561],
+        "dimension" : {
+           "id" : ["metric", "time", "geo", "sex"],
+           "size" : [1, 1, 1, 3],
+           "metric" : {
+              "category" : {
+                 "label" : {
+                    "pop" : "Population"
+                 },
+                 "unit" : {
+                    "type" : {
+                       "pop" : "count"
+                    }, 
+                    "base" : {
+                       "pop" : "Person"
+                    },
+                    "symbol" : {
+                       "pop" : null
+                    },
+                    "mult" : {
+                       "pop" : 0
+                    }
+                 },
+              }
+           },
+           …
+        }
+     }
+  }
+
+
 OData (Microsoft)
 =================
 
