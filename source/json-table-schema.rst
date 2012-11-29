@@ -2,8 +2,6 @@
 JSON Table Schema
 =================
 
-:Authors: Rufus Pollock
-
 This RFC defines a simple schema for tabular data. The schema is designed to be expressible in JSON.
 
 Concepts
@@ -123,4 +121,28 @@ The type list is as follows:
 * **any**: value of field may be any type
 
 .. _Elasticsearch geo_point: http://www.elasticsearch.org/guide/reference/mapping/geo-point-type.html
+
+Appendix: Related Work
+======================
+
+See :doc:`Web-Oriented Data Formats <data-formats>` for more details and links for each format.
+
+* SQL
+* DSPL
+* JSON-Stat
+
+Appendix: Type Lists
+====================
+
+DSPL
+----
+
+See https://developers.google.com/public-data/docs/schema/dspl18. Allowed values:
+
+* string  
+* float 
+* integer 
+* boolean 
+* date  
+* concept
 
