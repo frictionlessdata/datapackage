@@ -22,6 +22,7 @@ Work topics include:
    :hidden:
  
    data-packages
+   json-table-schema
    syncing
    simple-data-format
    data-query-protocol
