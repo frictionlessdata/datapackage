@@ -130,9 +130,9 @@ See :doc:`Web-Oriented Data Formats <data-formats>` for more details and links f
 * SQL
 * DSPL
 * JSON-Stat
+* `Google BigQuery`_ (JSON format section)
 
-Appendix: Type Lists
-====================
+.. _Google BigQuery: https://developers.google.com/bigquery/docs/import#jsonformat
 
 DSPL
 ----
@@ -145,4 +145,32 @@ See https://developers.google.com/public-data/docs/schema/dspl18. Allowed values
 * boolean 
 * date  
 * concept
+
+Google BigQuery
+---------------
+
+Example schema::
+
+      'schema': {
+        'fields':[
+           {
+              "mode": "nullable",
+              "name": "placeName",
+              "type": "string"
+           },
+           {
+              "mode": "nullable",
+              "name": "kind",
+              "type": "string"
+           },  ...
+         ]
+       }
+
+Types:
+
+* string - UTF-8 encoded string up to 64K of data (as opposed to 64K characters).
+* integer - IEEE 64-bit signed integers: [-263-1, 263-1]
+* float - IEEE 754-2008 formatted floating point values
+* boolean - "true" or "false", case-insensitive
+* record (JSON only) - a JSON object; also known as a nested record
 

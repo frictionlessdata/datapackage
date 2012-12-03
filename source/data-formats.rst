@@ -85,6 +85,14 @@ Google Visualization API Data Format
   * rows: a list of rows
   * p: arbitrary key/value pairs.
 
+Google BigQuery
+===============
+
+https://developers.google.com/bigquery/
+
+* Format documentation (for import / export): https://developers.google.com/bigquery/docs/import
+* CSV and JSON as data, schema as JSON
+
 CKAN Data API
 =============
 
