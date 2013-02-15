@@ -43,10 +43,10 @@ general metadata and schema information in a structured form that is machine
 usable. It is a JSON file with the following structure::
 
   {
-    # required
-    "metadata": {
-      ... described below ...
-    },
+    # general "metadata" like title, sources etc
+    name: "a unique human readable and url-usable identifier",
+    title: "A nice title",
+    sources: [...],
     # optional
     "files": {
       "url or path to data file": {
