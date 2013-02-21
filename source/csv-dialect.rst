@@ -2,6 +2,9 @@
 CSV Dialect Description Format (CSVDDF)
 =======================================
 
+:**Version**: 1.0
+:**Date**: 20 February 2013
+
 This RFC defines a simple JSON format to describe the
 various dialects of CSV files; it aims to deal with a reasonably large
 subset of the features which differ between dialects (terminator
@@ -35,6 +38,12 @@ simplifies the implementation of CSV readers, which must juggle
 dialect inference, schema inference, unseekable input streams, character
 encoding issues, and the lazy reading of very large input streams.
 
+For example, a curator might take a file published by a third party in
+CSV format, work out what dialect the file is in, and package this file
+alongside a file in CSVDDF, such that a programme reading the package
+can know which options to pass to its CSV reader module or to its SQL
+bulk load statement, without danger of corrupting the data.
+
 Example
 =======
 
@@ -43,11 +52,10 @@ Here's an example::
   {
     "csvddf_version": 1.0,
     "dialect": {
-	  "delimiter": ",",
+      "delimiter": ",",
       "doublequote": false,
       "lineterminator": "\r\n",
       "quotechar": "\"",
-      "quoting": 0,
       "skipinitialspace": false
     }
   }
@@ -56,17 +64,30 @@ Here's an example::
 Specification
 =============
 
-**delimiter**: specifies a one-character string to use as the field separator
-**doublequote**: controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
-**escapechar**
-**lineterminator**: specifies the character sequence which should terminate rows
-**quotechar**: specifies a one-character string to use as the quoting character. 
-**quoting**
-**skipinitialspace**: specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field
+The format is a JSON file comprising a dictionary with two members:
+
+:**csvddf_version**: a number, in n.n format, e.g., 1.0
+
+:**dialect**: a JSON dictionary (specified below)
+
+The "dialect" member must be a dictionary with the following mandatory keys:
+
+:**delimiter**: specifies a one-character string to use as the field separator
+
+:**doublequote**: controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
+
+:**lineterminator**: specifies the character sequence which should terminate rows
+
+:**quotechar**: specifies a one-character string to use as the quoting character. 
+
+:**skipinitialspace**: specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field
 
 
-.. _Elasticsearch geo_point: http://www.elasticsearch.org/guide/reference/mapping/geo-point-type.html
+Links
+=====
 
-.. _Comparison of csv dialect support: https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing
+`Comparison of csv dialect support <https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing>`_
 
-.. _Example of similar JSON format: http://panda.readthedocs.org/en/latest/api.html#data-uploads
+`Example of similar JSON format <http://panda.readthedocs.org/en/latest/api.html#data-uploads>`_
+
+`PEP 305 <http://www.python.org/dev/peps/pep-0305/>`_
