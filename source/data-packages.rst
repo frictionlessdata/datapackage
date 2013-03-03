@@ -2,38 +2,41 @@
 Data Packages
 =============
 
-.. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY)
+.. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
+
+:**Version**: 1.0beta
+:**Date**: 15 February 2013
 
 A Data Package (or DataPackage) is a coherent collection of data
 and possibly other assets into a single form. It provides the basis for
 convenient delivery, installation and management of datasets.
 
-Specification
-=============
-
-**Version: 0.3 (Draft)**
-
 .. note::
 
-   This is a draft specification and under active development. If you have
+   This is a draft specification and still under development. If you have
    comments or suggestions please file them in the issue tracker at:
    https://github.com/dataprotocols/dataprotocols/issues. If you have explicit changes
    please fork the repo (https://github.com/dataprotocols/dataprotocols) and submit a
    pull request.
+
+
+Specification
+=============
 
 A data package must provide package descriptor metadata. As a file this should
 be named "datapackage.json" and placed in the top-level directory. Additional
 files such as a README and data files may be provided. A data package has the
 following structure on disk::
 
-    |  # (required) metadata and data schemas for this data package
-    +--datapackage.json
-    |  # (optional) README in markdown format
-    +--README.md
-    |  # the directory for data files
-    +--data/
-    |  # the directory for code scripts
-    +--scripts/
+    datapackage.json  # (required) metadata and schemas for this data package
+    README.md         # (optional) README in markdown format
+
+    # data files may go either in data subdirectory or in main directory
+    mydata.csv
+    data/otherdata.csv         
+
+    # the directory for code scripts - again these can go in the base directory
+    scripts/
 
 datapackage.json
 ----------------
@@ -60,6 +63,9 @@ usable. It is a JSON file with the following structure::
 Metadata
 --------
 
+Core Attributes
+~~~~~~~~~~~~~~~
+
 The metadata hash may have the following keys and values:
 
 * name (required) - short url-usable name of the package (so no spaces or
@@ -69,11 +75,27 @@ The metadata hash may have the following keys and values:
   first double line break should be usable as summary information for the package)
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
-* keywords - an Array of string keywords to assist users searching for the
-  package in catalogs.
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with a "type" property specifying the type of license and a
   url property linking to the actual text.
+* sources - an array of source hashes. Each source hash may have name, web and email attributes. Example::
+
+    "sources": [{
+      "name": "World Bank and OECD",
+      "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+    }],
+    
+* keywords - an Array of string keywords to assist users searching for the
+  package in catalogs.
+* last_updated: iso 8601 formatted date (or datetime) when this data package was last updated
+* image - a link to an image to use for this data package
+
+Extension attributes
+~~~~~~~~~~~~~~~~~~~~
+
+* maintainers - Array of maintainers of the package. Each maintainer is a hash
+  which must have a "name" property and may optionally provide "email" and
+  "web" properties.
 * contributors - an Array of hashes each containing the details of a
   contributor. Must contain a 'name' property and MAY contain an email and web
   property. By convention, the first contributor is the original author of the
@@ -86,17 +108,6 @@ The metadata hash may have the following keys and values:
     }]
 
 * publisher - like contributors 
-* credit - a simple string for crediting
-* source - the source of data in the data package. Either a simple string or a
-  a hash with url and name attributes
-* image - a link to an image to use for this data package
-
-Extension attributes
-~~~~~~~~~~~~~~~~~~~~
-
-* maintainers - Array of maintainers of the package. Each maintainer is a hash
-  which must have a "name" property and may optionally provide "email" and
-  "web" properties.
 * dependencies - Hash of prerequisite packages on which this package depends in
   order to install and run. Each dependency defines the lowest compatible
   MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with
@@ -109,35 +120,22 @@ Extension attributes
 File Info
 ---------
 
-This will vary by file type.
+This will be a JSON serializable structure. Exact attributes will vary by file
+type.
 
-For CSV files it is a hash with the following structure::
+For tabular data we expect it to contain schema information conforming to the
+:doc:`JSON Table Schema <json-table-schema`.
+
+Here is an example for a CSV file::
 
   {
-    # ordered list of the fields/columns in the file
-    "fields": [
-      {
-        "id": "field/column name in CSV file",
-        "label": "A nicer human readable label for the field",
-        "type": "A string specifying the type - see below",
-        "format": "A string specifying a format - see below"
-      }
-    ]
+    // one of url or path should be present
+    url:     # url to the file
+    path:    # relative path to the file relative to the directory in which datapackage.json resides
+    
+    dialect: # as per CSV Dialect specification
+    schema:  # hash as per JSON Table Schema 
   }
-
-Types are one of:
-
-* string
-* decimal - all decimals must be provided without any formatting (e.g. commas)
-  and must use '.' as the decimal separator
-* date
-* dateTime
-* geojson
-* geolon
-* geolat
-
-Format is a string specifying the specific structure of a field e.g. date may
-have format "yyyy".
   
 
 Catalogs and Discovery
