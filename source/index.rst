@@ -23,6 +23,7 @@ Work topics include:
  
    data-packages
    json-table-schema
+   csv-dialect
    syncing
    simple-data-format
    data-query-protocol
