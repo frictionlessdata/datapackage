@@ -68,8 +68,11 @@ Core Attributes
 
 The metadata hash may have the following keys and values:
 
-* name (required) - short url-usable name of the package (so no spaces or
-  special characters)
+* name (required) - short url-usable (and preferably human-readable) name of
+  the package. This must be lowercase alpha-numeric name without spaces. It may
+  include "." or "_" or "-" characters. It will function as a unique identifier
+  and therefore should be unique in relation to any registry in which this
+  package will be deposited (and preferably globally unique).
 * title (required) - a title or one sentence description for this package
 * description - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
