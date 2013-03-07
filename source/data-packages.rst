@@ -51,11 +51,11 @@ usable. It is a JSON file with the following structure::
     title: "A nice title",
     sources: [...],
     # optional
-    "files": {
-      "url or path to data file": {
+    "files": [
+      {
         ... file info described below ...
       }
-    },
+    ],
     # optional
     ... additional information ...
   }
@@ -93,8 +93,8 @@ The metadata hash may have the following keys and values:
 * last_updated: iso 8601 formatted date (or datetime) when this data package was last updated
 * image - a link to an image to use for this data package
 
-Extension attributes
-~~~~~~~~~~~~~~~~~~~~
+Additional attributes
+~~~~~~~~~~~~~~~~~~~~~
 
 * maintainers - Array of maintainers of the package. Each maintainer is a hash
   which must have a "name" property and may optionally provide "email" and
@@ -127,7 +127,7 @@ This will be a JSON serializable structure. Exact attributes will vary by file
 type.
 
 For tabular data we expect it to contain schema information conforming to the
-:doc:`JSON Table Schema <json-table-schema`.
+:doc:`JSON Table Schema <json-table-schema>`.
 
 Here is an example for a CSV file::
 
@@ -137,7 +137,7 @@ Here is an example for a CSV file::
     path:    # relative path to the file relative to the directory in which datapackage.json resides
     
     dialect: # as per CSV Dialect specification
-    schema:  # hash as per JSON Table Schema 
+    schema:  # as per JSON Table Schema 
   }
   
 
