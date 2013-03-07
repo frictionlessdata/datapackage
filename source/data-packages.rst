@@ -79,8 +79,13 @@ The metadata hash may have the following keys and values:
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
 * licenses - array of licenses under which the package is provided. Each
-  license is a hash with a "type" property specifying the type of license and a
-  url property linking to the actual text.
+  license is a hash with an id (based on http://OpenDefinition.org/licenses) and/or a url property linking to the actual text. Example::
+
+      "licenses": [{
+        "id": "odc-pddl",
+        "url": "http://opendatacommons.org/licenses/pddl/"
+      }]
+
 * sources - an array of source hashes. Each source hash may have name, web and email attributes. Example::
 
     "sources": [{
