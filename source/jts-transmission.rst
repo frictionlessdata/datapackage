@@ -71,6 +71,6 @@ Disregarding the one-time overhead of transmitting the JSON Table Schema, this r
 Alternatively, if the order of the fields is guaranteed to be uniform for all rows and in accordance with the order given in the schema, then the field identifiers can be omitted and inferred by the order of the columns. The data can then be sent as a mixed-type array, reducing the example message even further to::
 
     [["John", "Smith", 34, "brown"],
-     {"Cyndi", "Roe", 41, "blue"]]
+     ["Cyndi", "Roe", 41, "blue"]]
 
 The message is now approximately 50% of its original size.
