@@ -23,15 +23,16 @@ To illustrate here's a classic spreadsheet table::
       
        A     |    B    |    C    |    D      <--- Row
        ------------------------------------
-       valA  |   valB  |  valC   |   valD    <--- Row
+       valA1 |   valB1 |  valC1  |   valD1   <--- Row
+       valA2 |   valB2 |  valC2  |   valD2   <--- Row
        ...
       
 
 In JSON::
 
   [
-    { "A": value, "B": value, ... },
-    { "A": value, "B": value, ... },
+    { "A": valA1, "B": valB1, "C": valC1, "D": valD1 },
+    { "A": valA2, "B": valB2, "C": valC2, "D": valD2 },
     ...
   ]
 
@@ -42,7 +43,7 @@ Specification
 Top-Level
 ---------
 
-A JSON Table schema has the following structure::
+A JSON Table Schema has the following structure::
 
 
   {
