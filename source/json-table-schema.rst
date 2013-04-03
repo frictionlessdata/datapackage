@@ -23,16 +23,15 @@ To illustrate here's a classic spreadsheet table::
       
        A     |    B    |    C    |    D      <--- Row
        ------------------------------------
-       valA1 |   valB1 |  valC1  |   valD1   <--- Row
-       valA2 |   valB2 |  valC2  |   valD2   <--- Row
+       valA  |   valB  |  valC   |   valD    <--- Row
        ...
       
 
 In JSON::
 
   [
-    { "A": valA1, "B": valB1, "C": valC1, "D": valD1 },
-    { "A": valA2, "B": valB2, "C": valC2, "D": valD2 },
+    { "A": value, "B": value, ... },
+    { "A": value, "B": value, ... },
     ...
   ]
 
