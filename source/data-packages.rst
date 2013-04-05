@@ -24,9 +24,21 @@ Specification
 =============
 
 A data package must provide package descriptor metadata. As a file this should
-be named "datapackage.json" and placed in the top-level directory. Additional
-files such as a README and data files may be provided. A data package has the
-following structure on disk::
+be named "datapackage.json" and placed in the top-level directory. Here is a
+minimal data package on disk::
+
+    datapackage.json  # (required) metadata and schemas for this data package
+
+Here we do not even have a data file which would make this a not very useful
+data package. Thus, a slightly less minimal version would be::
+
+    datapackage.json
+    # a data file (CSV in this case)
+    data.csv
+
+Additional files such as a README, scripts (for processing or analyzing the
+data) and other material may be provided. By convention scripts go in a scripts
+directory and thus, a more elaborate data package could look like this::
 
     datapackage.json  # (required) metadata and schemas for this data package
     README.md         # (optional) README in markdown format
@@ -36,14 +48,14 @@ following structure on disk::
     data/otherdata.csv         
 
     # the directory for code scripts - again these can go in the base directory
-    scripts/
+    scripts/my-preparation-script.py
 
 datapackage.json
 ----------------
 
 `datapackage.json` is the central file in a Data Package as it provides both
-general metadata and schema information in a structured form that is machine
-usable. It is a JSON file with the following structure::
+general metadata and schema information about data in a structured form that is
+machine usable. Here is an illustrative example of a datapackage JSON file::
 
   {
     # general "metadata" like title, sources etc
@@ -144,7 +156,10 @@ Here is an example for a CSV file::
     dialect: # as per CSV Dialect specification
     schema:  # as per JSON Table Schema 
   }
-  
+
+See :doc:`Simple Data Format <simple-data-format>` for a specification that
+builds on this data package specification adding specific requirements for
+files and file info.
 
 Catalogs and Discovery
 ======================
