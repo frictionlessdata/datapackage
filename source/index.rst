@@ -33,7 +33,7 @@ Work topics include:
    :hidden:
 
    data-formats
-   refining
+   reconciliation
 
 Background and Context
 ======================

@@ -1,11 +1,11 @@
-===================
-Refining Protocol
-===================
+=======================
+Reconciliation Protocol
+=======================
 
 This document is about providing a standardized way of (fuzzily) matching a
 column in one dataset to a column in another dataset. 
 
-This is called "refining" or "reconciling".
+This is called "reconciling".
 
 
 Refine API
