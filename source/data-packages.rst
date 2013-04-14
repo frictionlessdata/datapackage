@@ -448,12 +448,3 @@ pieces of information stored in the manifest are:
 * If a file stored in the package is encrypted, the information required to
   decrypt the file is stored in the manifest.
 
-
-Other Information
-=================
-
-Matthew Brett's thoughts:
-
-* https://github.com/nipy/nibabel/blob/master/doc/source/devel/data_pkg_discuss.rst
-* https://github.com/nipy/nibabel/blob/master/doc/source/devel/data_pkg_uses.rst
-
