@@ -4,8 +4,8 @@ Data Packages
 
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
-:**Version**: 1.0beta
-:**Date**: 15 February 2013
+:**Version**: 1.0beta2
+:**Date**: 14 April 2013
 
 A Data Package (or DataPackage) is a coherent collection of data
 and possibly other assets into a single form. It provides the basis for
@@ -23,14 +23,25 @@ convenient delivery, installation and management of datasets.
 Specification
 =============
 
-A data package must provide package descriptor metadata. As a file this should
-be named "datapackage.json" and placed in the top-level directory. Here is a
-minimal data package on disk::
+A data package MUST provide a data package "descriptor" file named
+datapackage.json.
+
+This file should be placed in the top-level directory (relative to any other
+files provided as part of the data package).
+
+A data package will normally include other files (e.g. data files) but the Data
+Package specification does NOT impose any requirements on their form or
+structure.
+
+Illustrative Structure
+----------------------
+
+A minimal data package on disk would be a directory containing a single file::
 
     datapackage.json  # (required) metadata and schemas for this data package
 
-Here we do not even have a data file which would make this a not very useful
-data package. Thus, a slightly less minimal version would be::
+Obviously lacking a single piece of actual data would make this of doubtful
+use. A slightly less minimal version would be::
 
     datapackage.json
     # a data file (CSV in this case)
@@ -50,19 +61,43 @@ directory and thus, a more elaborate data package could look like this::
     # the directory for code scripts - again these can go in the base directory
     scripts/my-preparation-script.py
 
-datapackage.json
-----------------
+Several exemplar data packages can be found in the `datasets organization on github`, including:
 
-`datapackage.json` is the central file in a Data Package as it provides both
-general metadata and schema information about data in a structured form that is
-machine usable. Here is an illustrative example of a datapackage JSON file::
+* `World GDP`_
+* `ISO 3166-2 country codes`_ 
+
+.. _datasets organization on github: https://github.com/datasets
+.. _World GDP: https://github.com/datasets/gdp 
+.. _ISO 3166-2 country codes: https://github.com/datasets/country-codes
+
+
+Descriptor (datapackage.json)
+-----------------------------
+
+`datapackage.json` is the central file in a Data Package. It provides:
+
+* General metadata such as the name of the package, its license, its publisher etc
+* A list of the data files that make up this data package (plus, possibly, additional schema information about these data files in a structured form)
+
+The Package descriptor MUST be a valid JSON file. (JSON is defined in `RFC 4627`_).
+
+.. _RFC 4627: http://www.ietf.org/rfc/rfc4627.txt
+
+It MAY contain any number of attributes. All attributes at the first level not
+otherwise specified here are considered `metadata` attributes.
+
+The hash MUST contain a `files` attribute and metadata attributes defined as
+'required' below.
+  
+Here is an illustrative example of a datapackage JSON file::
 
   {
     # general "metadata" like title, sources etc
     name: "a unique human readable and url-usable identifier",
     title: "A nice title",
+    licenses: [...],
     sources: [...],
-    # optional
+    # the file info
     "files": [
       {
         ... file info described below ...
@@ -78,14 +113,14 @@ Metadata
 Core Attributes
 ~~~~~~~~~~~~~~~
 
-The metadata hash may have the following keys and values:
+The metadata may have the following keys and values:
 
 * name (required) - short url-usable (and preferably human-readable) name of
   the package. This must be lowercase alpha-numeric name without spaces. It may
   include "." or "_" or "-" characters. It will function as a unique identifier
   and therefore should be unique in relation to any registry in which this
   package will be deposited (and preferably globally unique).
-* title (required) - a title or one sentence description for this package
+* title (optional) - a title or one sentence description for this package
 * description - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
 * version - a version string conforming to the Semantic Versioning requirements
@@ -140,10 +175,36 @@ Additional attributes
 File Info
 ---------
 
-This will be a JSON serializable structure. Exact attributes will vary by file
-type.
+File information MUST be a JSON serializable hash.
 
-For tabular data we expect it to contain schema information conforming to the
+File information MUST contain (at least) one of the following attributes which
+specify the location of the associated data file (either online or 'local'):
+
+* url: url of this data file
+* path: relative path to the file relative to the directory in which datapackage.json resides
+
+.. note:: the use of a url allows a data package to reference data not
+          necessarily contained locally in the Data Package. Conversely, the
+          path attribute may be used for Data Packages located online (in this
+          case determines the relative URL).
+
+There are NO other required fields. However, there are a variety of common attributes that can be used.
+
+Common fields
+~~~~~~~~~~~~~
+
+* name: a simple name to be used for this file
+* fileformat: 'csv', 'xls' etc. Would be expected to be the the standard file extension for this type of file.
+* mimetype: 'text/csv', 'application/vnd.ms-excel'as 
+* bytes: size of the file in bytes
+* schema: a schema for the file
+* hash: hash for this file
+* lastmodified: ISO 8601 string for last modified timestamp of the file
+
+Tabular Data
+~~~~~~~~~~~~
+
+For tabular data the file information MAY contain schema information conforming to the
 :doc:`JSON Table Schema <json-table-schema>`.
 
 Here is an example for a CSV file::
@@ -215,69 +276,9 @@ How It Fits into the Ecosystem
    :alt: Data Packages and the Wider Ecosystem
    :width: 90%
 
-Concepts
-========
 
-.. note::
-
-   when people talk of a data package they will usually mean what we define
-   below as a Package Bundle, that is a concrete instance of a Package at a
-   particular revision with data associated. This is similar to software.  When
-   someone says install software package X what they really mean is install the
-   software package 'Bundle' (e.g. zipped up set of files or special installer
-   file) for package X at a specific revision or version.
-
-(Data) Package
---------------
-
-Strictly, the Data Package itself is something of an abstract idea, and is a
-bit like a data project, that is a set of information that the packager
-believed has something in common. The precise contents of a package could
-change completely over course of its life. The package then is a little bit
-like a namespace, having itself no content other than a string (the package
-name) and the data it contains. So the one essential feature of a package is
-that is **has a Package name**.
-
-Package Revision
-----------------
-
-A specific revision of the Package corresponding to some particular actual set
-of data for a particular package at a particular point in time. 'Actual' here
-means 'stuff' that can be read as bytes. As we add and remove data from the
-package, the instantiation changes. In version control, the instantiation would
-be the particular state of the working tree at any moment, whether this has
-been committed or not.
-
-Package Bundle
---------------
-
-The (package) bundle is something that can deliver the bytes of a particular
-Package Revision. For example, if you have a package named
-"interesting-images", you might have a revision of that package identified by
-revision id "f745dc2" and tagged with "version-0.2". There might be a bundle of
-that instantiation that is a zipfile interesting-images-version-0.2.zip.  There
-might also be a directory on an http server with the same contents
-http://my.server.org/packages/interesting-images/version-9.2. When I unpack the
-zipfile onto my hard disk, I might have a directory
-/my/home/packages/interesting-images/version-0.2.
-
-
-Tools
-=====
-
-Data Package Manager
---------------------
-
-A command line utility and library supporting the data package spec is
-available: dpm.
-
-* Data package manager (dpm): http://dpm.readthedocs.org/
-
-  * Source code: https://github.com/okfn/dpm
-
-
-Existing Work
-=============
+Appendix: Review of Existing Packaging Work
+===========================================
 
 The specification is heavily inspired by various software packaging formats
 including the Debian 'Debs' format, Python Distributions and CommonsJS
