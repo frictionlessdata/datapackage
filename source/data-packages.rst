@@ -27,9 +27,9 @@ A data package MUST provide a data package "descriptor" file named
 datapackage.json.
 
 This file should be placed in the top-level directory (relative to any other
-files provided as part of the data package).
+resources provided as part of the data package).
 
-A data package will normally include other files (e.g. data files) but the Data
+A data package will normally include other resources (e.g. data files) but the Data
 Package specification does NOT impose any requirements on their form or
 structure.
 
@@ -77,7 +77,7 @@ Descriptor (datapackage.json)
 `datapackage.json` is the central file in a Data Package. It provides:
 
 * General metadata such as the name of the package, its license, its publisher etc
-* A list of the data files that make up this data package (plus, possibly, additional schema information about these data files in a structured form)
+* A list of the data resources that make up this data package (plus, possibly, additional schema information about these data resources in a structured form)
 
 The Package descriptor MUST be a valid JSON file. (JSON is defined in `RFC 4627`_).
 
@@ -86,7 +86,7 @@ The Package descriptor MUST be a valid JSON file. (JSON is defined in `RFC 4627`
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-The hash MUST contain a `files` attribute and metadata attributes defined as
+The hash MUST contain a `resources` attribute and metadata attributes defined as
 'required' below.
   
 Here is an illustrative example of a datapackage JSON file::
@@ -97,10 +97,10 @@ Here is an illustrative example of a datapackage JSON file::
     title: "A nice title",
     licenses: [...],
     sources: [...],
-    # the file info
-    "files": [
+    # list of the data resources in this data package
+    "resources": [
       {
-        ... file info described below ...
+        ... resource info described below ...
       }
     ],
     # optional
@@ -172,47 +172,51 @@ Additional attributes
   of which satisfies the dependency. The ordering of the group is significant
   and earlier entries have higher priority.
 
-File Info
----------
+Resource Information
+--------------------
 
-File information MUST be a JSON serializable hash.
+Resource information MUST be a JSON serializable hash.
 
-File information MUST contain (at least) one of the following attributes which
+Resource information MUST contain (at least) one of the following attributes which
 specify the location of the associated data file (either online or 'local'):
 
-* url: url of this data file
-* path: relative path to the file relative to the directory in which datapackage.json resides
+* url: url of this data resource
+* path: path to the resource. It should be a relative path, that is relative to
+  the directory in which the descriptor file (datapackage.json) listing this
+  file resides
 
 .. note:: the use of a url allows a data package to reference data not
           necessarily contained locally in the Data Package. Conversely, the
           path attribute may be used for Data Packages located online (in this
           case determines the relative URL).
 
-There are NO other required fields. However, there are a variety of common attributes that can be used.
+There are NO other required fields. However, there are a variety of common
+attributes that can be used.
 
 Common fields
 ~~~~~~~~~~~~~
 
-* name: a simple name to be used for this file
-* fileformat: 'csv', 'xls' etc. Would be expected to be the the standard file extension for this type of file.
+* name: a simple name to be used for this resource
+* fileformat: 'csv', 'xls' etc. Would be expected to be the the standard file
+  extension for this type of resource.
 * mimetype: 'text/csv', 'application/vnd.ms-excel'as 
 * bytes: size of the file in bytes
-* schema: a schema for the file
-* hash: hash for this file
-* lastmodified: ISO 8601 string for last modified timestamp of the file
+* schema: a schema for the resource
+* hash: hash for this resource
+* lastmodified: ISO 8601 string for last modified timestamp of the resource
 
 Tabular Data
 ~~~~~~~~~~~~
 
-For tabular data the file information MAY contain schema information conforming to the
+For tabular data the resource information MAY contain schema information conforming to the
 :doc:`JSON Table Schema <json-table-schema>`.
 
 Here is an example for a CSV file::
 
   {
     // one of url or path should be present
-    url:     # url to the file
-    path:    # relative path to the file relative to the directory in which datapackage.json resides
+    url:
+    path:
     
     dialect: # as per CSV Dialect specification
     schema:  # as per JSON Table Schema 
