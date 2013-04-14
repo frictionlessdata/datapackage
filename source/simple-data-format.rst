@@ -5,7 +5,16 @@ Simple Data Format (SDF)
 This document defines a simple data publishing format (Simple Data Format) for
 publishing and sharing tabular-style data.
 
-**Status: Draft**
+:**Version**: 1.0beta
+:**Date**: 14 April 2013
+
+.. note::
+
+   This is a draft specification and still under development. If you have
+   comments or suggestions please file them in the issue tracker at:
+   https://github.com/dataprotocols/dataprotocols/issues. If you have explicit changes
+   please fork the repo (https://github.com/dataprotocols/dataprotocols) and submit a
+   pull request.
 
 Contribute
 ==========
@@ -69,14 +78,14 @@ specification <data-packages>`. It has the additional requirements such as:
 Files
 -----
 
-* A dataset in Simple Data Format is a data package and MUST therefore have a
-  datapackage.json file (and that file MUST contain the metadata required by
+* A dataset in Simple Data Format is a data package and MUST therefore have a package descriptor (datapackage.json) file (and that file MUST contain the metadata required by
   the Data Package specification)
 * A dataset MUST contain at least one or more *data files*
-* A data file MUST be in CSV format.
-* It's file name MUST end with ``.csv``.
-* It must have a single header row which is the first row in the file. Further
-  details of the CSV format below.
+
+Each data file:
+
+* MUST be in CSV format and its file name MUST end with ``.csv``.
+* MUST have a single header row. This row MUST be the first row in the file.
 
   * Terminology: each column in the CSV file is termed a *field* and its *id*
     is the string in that column in the header row.
@@ -84,9 +93,9 @@ Files
   * There are no further restrictions on the form of the id but it is
     RECOMMENDED that it contain only alphanumeric characters together with " .-_"
 
-* Associated to each file MUST be an entry in the files attribute in the datapackage.json
+* Associated to each file MUST be an entry in the resources attribute in the datapackage.json
   file.
-* The schema attribute of each files attribute MUST be present and its value
+* The schema attribute of each resources entry in the package descriptor MUST be present and its value
   MUST conform to the JSON Table Schema and MUST describe the fields in the
   associated data file.
 
