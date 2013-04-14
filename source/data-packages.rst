@@ -222,32 +222,6 @@ See :doc:`Simple Data Format <simple-data-format>` for a specification that
 builds on this data package specification adding specific requirements for
 files and file info.
 
-Catalogs and Discovery
-======================
-
-In order to find Data Packages tools may make use of a "consolidated" catalog
-either online or locally.
-
-A general specification for (online) Data Catalogs can be found at
-http://spec.datacatalogs.org/.
-
-For local catalogs on disk we suggest locating at "HOME/.dpm/catalog.json" and
-having the following structure::
-
- {
-    version: ...
-    datasets:
-      {name}: {
-        {version}:
-          metadata: {metadata},
-          bundles: [
-            url: ...
-            type: file, url, ckan, zip, tgz
-          ]
- }
-
-When Package metadata is added to the catalog a field called bundle is added
-pointing to a bundle for this item (see below for more on bundles).
 
 Background
 ==========
