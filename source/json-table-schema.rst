@@ -42,7 +42,7 @@ Specification
 Top-Level
 ---------
 
-A JSON Table schema has the following structure::
+A JSON Table Schema has the following structure::
 
 
   {
