@@ -2,8 +2,8 @@
 JSON Table Schema
 =================
 
-:**Version**: 1.0
-:**Date**: 2 March 2013
+:**Version**: 1.0 beta2
+:**Date**: 17 April 2013
 
 This RFC defines a simple schema for tabular data. The schema is designed to be expressible in JSON.
 
@@ -54,7 +54,8 @@ A JSON Table schema has the following structure::
         "id": "field unique name / id",
         "label": "A nicer human readable label for the field",
         "type": "A string specifying the type",
-        "format": "A string specifying a format"
+        "format": "A string specifying a format",
+        "description": "A description for the field"
         ...
       },
       ... more field descriptors
@@ -72,6 +73,7 @@ That is, a JSON Table Schema is:
 
   * label: A nicer human readable label for the field
   * type: the type of the field (string, number etc) - see below
+  * description: A description for this field e.g. "The recipient of the funds"
 
 Types
 -----
