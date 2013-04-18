@@ -93,7 +93,7 @@ The type list is as follows:
 * **integer**: an integer.
 * **date**: a date. The preferred format is YYYY-MM-DD.
 * **time**: a time without a date
-* **date-time (datetime, timestamp)**: a date-time. It is recommended this be in ISO 8601
+* **datetime**: a date-time. It is recommended this be in ISO 8601
   format of YYYY-MM- DDThh:mm:ssZ in UTC time.
 * **boolean**
 * **binary**: base64 representation of binary data.
