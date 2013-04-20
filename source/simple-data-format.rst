@@ -2,68 +2,84 @@
 Simple Data Format (SDF)
 ========================
 
+:**Version**: 1.0 beta
+:**Date**: 18 April 2013
+
 This document defines a simple data publishing format (Simple Data Format) for
 publishing and sharing tabular-style data.
 
-:**Version**: 1.0beta
-:**Date**: 14 April 2013
-
-.. note::
-
-   This is a draft specification and still under development. If you have
-   comments or suggestions please file them in the issue tracker at:
-   https://github.com/dataprotocols/dataprotocols/issues. If you have explicit changes
-   please fork the repo (https://github.com/dataprotocols/dataprotocols) and submit a
-   pull request.
-
-Contribute
-==========
-
-Comments, suggestions and discussion welcome - see sidebar for various options
-on how to contribute including mailing list, twitter and issue tracker.
-
-Key Design Features and Principles
-==================================
-
-The format's focus is on simplicity and web usage -- that is, usage online with
-access and transmission *over HTTP*. In addition the format is focused on data
-that can be presented in a tabular structure and in making it easy to produce
-(and consume) this format from spreadsheets and relational databases.
+The format's focus is on simplicity and ease of use over the web -- that is,
+usage online with access and transmission *over HTTP*. In addition the format
+is focused on data that can be presented in a tabular structure and in making
+it easy to produce (and consume) this format from spreadsheets and relational
+databases.
 
 The key features of this format are the following:
 
-* CSV (comma separated variables) as the base data format
-* JSON as the base format for schema definition
-* Reuse wherever possible of existing work including other Data Protocols specifications
+* CSV (comma separated variables) for data
+* Single JSON file (datapackage.json) to describe the dataset including a
+  schema for data files
+* Reuse wherever possible of existing work including other Data Protocols
+  specifications
+
+.. note::
+
+   If you have comments or suggestions please file them in the issue tracker at:
+   https://github.com/dataprotocols/dataprotocols/issues.
 
 
-Why CSV
--------
+Quick Start
+===========
 
-1. CSV is very simple - it is perhaps *the* most simple data format
-2. CSV is tabular-oriented. Most data structures are either tabular or can be
-   transformed to a tabular structure by some form of normalization
-3. It is open and the "standard" is well-known
-4. It is widely supported - practically every spreadsheet program, relational
-   database and programming language in existence can handle CSV in some form
-   or other
-5. It is text-based and therefore amenable to manipulation and access from a
-   wide range of standard tools (including revision control systems such as
-   git, mercurial and subversion)
-6. It is line-oriented which means it can be incrementally processed -- you do
-   not need to read an entire file to extract a single row. For similar reasons
-   it means that the format supports streaming.
+A Simple Data Format dataset has:
 
-Why JSON
---------
+* Data files in CSV
+* (Minimal) dataset information in JSON (including a schema for the CSV)
 
-* JSON is simple
-* JSON supports rich structure including nesting and basic types
-* JSON is very widely used and supported (all major programming languages can
-  handle JSON)
-* JSON is web-native (every browser can access and manipulate JSON)
-* JSON is readable as simple text making it amenable to management and
-  processing using simple text tools
+Here's an example of a minimal simple data format dataset::
+
+  2 files
+
+  data.csv
+  datapackage.json
+
+  
+  data.csv
+  --------
+
+  var1,var2,var3
+  A,1,2
+  B,3,4
+  
+  datapackage.json
+  ----------------
+
+  {
+    "name": "my-dataset",
+    # here we list the data files in this dataset
+    "resources": [
+      {
+        "path": "data.csv",
+        "schema": {
+          "fields": [
+            {
+              "id": "var1",
+              "type": "string"
+            },
+            {
+              "id": "var1",
+              "type": "integer"
+            },
+            {
+              "id": "var1",
+              "type": "number"
+            }
+          ]
+        }
+      }
+    ]
+  }
+
 
 Specification
 =============
@@ -118,6 +134,50 @@ structure:
 
 If the CSV file does not follow these dialect information MUST be provided in
 the file entry as per :doc:`CSV Dialect Description Format <csv-dialect>`.
+
+
+Key Design Features and Principles
+==================================
+
+The format's focus is on simplicity and web usage -- that is, usage online with
+access and transmission *over HTTP*. In addition the format is focused on data
+that can be presented in a tabular structure and in making it easy to produce
+(and consume) this format from spreadsheets and relational databases.
+
+The key features of this format are the following:
+
+* CSV (comma separated variables) as the base data format
+* JSON as the base format for schema definition
+* Reuse wherever possible of existing work including other Data Protocols specifications
+
+
+Why CSV
+-------
+
+1. CSV is very simple - it is perhaps *the* most simple data format
+2. CSV is tabular-oriented. Most data structures are either tabular or can be
+   transformed to a tabular structure by some form of normalization
+3. It is open and the "standard" is well-known
+4. It is widely supported - practically every spreadsheet program, relational
+   database and programming language in existence can handle CSV in some form
+   or other
+5. It is text-based and therefore amenable to manipulation and access from a
+   wide range of standard tools (including revision control systems such as
+   git, mercurial and subversion)
+6. It is line-oriented which means it can be incrementally processed -- you do
+   not need to read an entire file to extract a single row. For similar reasons
+   it means that the format supports streaming.
+
+Why JSON
+--------
+
+* JSON is simple
+* JSON supports rich structure including nesting and basic types
+* JSON is very widely used and supported (all major programming languages can
+  handle JSON)
+* JSON is web-native (every browser can access and manipulate JSON)
+* JSON is readable as simple text making it amenable to management and
+  processing using simple text tools
 
 
 Open Issues
