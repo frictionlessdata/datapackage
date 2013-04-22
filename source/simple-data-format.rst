@@ -3,7 +3,8 @@ Simple Data Format (SDF)
 ========================
 
 :**Version**: 1.0 beta
-:**Date**: 18 April 2013
+:**Last Updated**: 18 April 2013
+:**Created**: May 7 2012
 
 This document defines a simple data publishing format (Simple Data Format) for
 publishing and sharing tabular-style data.

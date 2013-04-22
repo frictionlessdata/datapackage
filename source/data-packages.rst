@@ -5,7 +5,8 @@ Data Packages
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
 :**Version**: 1.0beta2
-:**Date**: 14 April 2013
+:**Lasted Updated**: 14 April 2013
+:**Created**: 12 November 2007
 
 A Data Package (or DataPackage) is a coherent collection of data
 and possibly other assets into a single form. It provides the basis for
@@ -181,9 +182,9 @@ Resource information MUST contain (at least) one of the following attributes whi
 specify the location of the associated data file (either online or 'local'):
 
 * url: url of this data resource
-* path: path to the resource. It should be a relative path, that is relative to
-  the directory in which the descriptor file (datapackage.json) listing this
-  file resides
+* path: unix-style ('/') path to the resource. Path MUST be a relative path,
+  that is relative to the directory in which the descriptor file
+  (datapackage.json) listing this file resides
 
 .. note:: the use of a url allows a data package to reference data not
           necessarily contained locally in the Data Package. Conversely, the

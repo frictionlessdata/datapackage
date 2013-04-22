@@ -3,7 +3,8 @@ JSON Table Schema
 =================
 
 :**Version**: 1.0 beta2
-:**Date**: 17 April 2013
+:**Last Updated**: 17 April 2013
+:**Created**: 12 November 2012
 
 This RFC defines a simple schema for tabular data. The schema is designed to be expressible in JSON.
 
