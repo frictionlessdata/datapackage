@@ -10,10 +10,10 @@ existing tools and services**.
 Work topics include:
 
 * Data catalog interoperability - see the `Data Catalog Interoperability Protocol`_
-* Web-oriented data APIs including those for accessing and querying data
 * Data packages, publication and installation - see the :doc:`Data packages spec <data-packages>`
-* Sharing and syncing data changes - see :doc:`Protocols for sharing and syncing data <syncing>`
-* Simple formats for facilitating data exchange over the web
+* Simple formats for facilitating data exchange over the web - see the :doc:`Simple Data Format <simple-data-format>`
+* Web-oriented data APIs including those for accessing and querying data
+* An overview of sharing and syncing data changes - see :doc:`Protocols for sharing and syncing data <syncing>`
 * Webhooks and webservices for data transformation
 
 .. _Data Catalog Interoperability Protocol: http://spec.datacatalogs.org/
@@ -22,18 +22,18 @@ Work topics include:
    :hidden:
  
    data-packages
+   simple-data-format
    json-table-schema
    csv-dialect
-   syncing
-   simple-data-format
-   data-query-protocol
-   revisioning-data
 
 .. toctree::
    :hidden:
 
-   data-formats
+   revisioning-data
+   syncing
    reconciliation
+   data-query-protocol
+   data-formats
 
 Background and Context
 ======================
