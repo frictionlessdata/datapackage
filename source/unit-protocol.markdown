@@ -143,12 +143,12 @@ Note: UIDs are case sensitive, owing to their conformance in the majority of cas
 
 <table>
   <tr>
-    <td>UID</td>
-    <td>Name</td>
-    <td>Symbol</td>
-    <td>Physical quantity</td>
-    <td>Dimensions</td>
-    <td>Description</td>
+    <th>UID</th>
+    <th>Name</th>
+    <th>Symbol</th>
+    <th>Physical quantity</th>
+    <th>Dimensions</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>η</td>
@@ -1548,6 +1548,13 @@ Note: UIDs are case sensitive, owing to their conformance in the majority of cas
 
 
 <table>
+  <tr>
+    <th>UID</th>
+    <th>Name</th>
+    <th>Symbol</th>
+    <th>Factor</th>
+    <th>Description</th>
+  </tr>
   <tr>
     <td>da</td>
     <td>deca</td>
