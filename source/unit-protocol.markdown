@@ -119,15 +119,15 @@ Compound units represent the result of combining units via multiplication, divis
   
   * using a forward-slash character to delimit all numerator units from denoninator units, e.g.
 
-        "m/s"              #=> metres per second
-        "kg m^2/s^2"       #=> joule
-        "kg/t km"          #=> kilograms per tonne kilometre
+            "m/s"              #=> metres per second
+            "kg m^2/s^2"       #=> joule
+            "kg/t km"          #=> kilograms per tonne kilometre
 
   * using a negative power on individual units
 
-        "m s^-1"           #=> metres per second
-        "kg m^2 s^-2"      #=> joule
-        "kg t^-1 km^-1"    #=> kilograms per tonne kilometre
+            "m s^-1"           #=> metres per second
+            "kg m^2 s^-2"      #=> joule
+            "kg t^-1 km^-1"    #=> kilograms per tonne kilometre
 
 * Base units within compound units can be ordered in any way. The only constraint on unit ordering is where a single "/" is used to delimit numerator from denominator. In this case, all denominator units must follow the delimiter and all numerator units must precede it, although the order of units within the numerator and denominators is arbitrary.
 
