@@ -4,8 +4,8 @@ Data Packages
 
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
-:**Version**: 1.0beta2
-:**Last Updated**: 14 April 2013
+:**Version**: 1.0-beta.3
+:**Last Updated**: 6 May 2013
 :**Created**: 12 November 2007
 
 A Data Package (or DataPackage) is a coherent collection of data
@@ -132,6 +132,9 @@ The metadata SHOULD have the following keys and values:
         "id": "odc-pddl",
         "url": "http://opendatacommons.org/licenses/pddl/"
       }]
+* datapackage_version - the version of the data package specification this
+  datapackage.json conforms to. It should follow the Semantic Versioning
+  requirements (http://semver.org/).
 
 The metadata MAY have the following keys and values:
 
