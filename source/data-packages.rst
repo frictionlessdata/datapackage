@@ -187,24 +187,39 @@ specify the location of the associated data file (either online or 'local'):
   (datapackage.json) listing this file resides
 
 .. note:: the use of a url allows a data package to reference data not
-          necessarily contained locally in the Data Package. Conversely, the
-          path attribute may be used for Data Packages located online (in this
-          case determines the relative URL).
+          necessarily contained locally in the Data Package. Of course, the
+          path attribute may still be used for Data Packages located online (in
+          this case it determines the relative URL).
 
 There are NO other required fields. However, there are a variety of common
-attributes that can be used.
+fields that can be used.
 
-Common fields
-~~~~~~~~~~~~~
+Recommended fields
+~~~~~~~~~~~~~~~~~~
 
-* name: a simple name to be used for this resource
-* fileformat: 'csv', 'xls' etc. Would be expected to be the the standard file
+A resource SHOULD contain the following fields:
+
+* id: a resource SHOULD contain an id attribute. The id is a simple name or
+  identifier to be used for this resource. The should be usable in a url path
+  and is subject to the same restrictions as the data package name (see above).
+  It would be common for the id to correspond to the file name (minus the
+  extension) of the data file the resource describes.
+
+Optional fields
+~~~~~~~~~~~~~~~
+
+A data package MAY contain any number of additional fields. Common fields include:
+
+* format: 'csv', 'xls' etc. Would be expected to be the the standard file
   extension for this type of resource.
 * mimetype: 'text/csv', 'application/vnd.ms-excel'as 
 * bytes: size of the file in bytes
-* schema: a schema for the resource
+* schema: a schema for the resource - see below for more on this in the case of
+  tabular data.
 * hash: hash for this resource
 * lastmodified: ISO 8601 string for last modified timestamp of the resource
+* sources: as for data package metadata.
+* licenses: as for data package metadata. If not specified the resource inherits from the data package.
 
 Tabular Data
 ~~~~~~~~~~~~
