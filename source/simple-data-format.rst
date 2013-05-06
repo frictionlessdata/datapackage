@@ -169,6 +169,16 @@ Why CSV
    not need to read an entire file to extract a single row. For similar reasons
    it means that the format supports streaming.
 
+More informally:
+
+> CSV is the data Kalashnikov: not pretty, but many wars have been fought with it and kids can use it. [`@pudo`_ (Friedrich Lindenberg)]
+
+> CSV is the ultimate simple, standard data format - streamable, text-based, no need for proprietary tools etc [`@rufuspollock` (Rufus Pollock)]
+
+.. _@pudo: https://twitter.com/pudo/status/248473299741446144
+.. _@rufuspollock: https://twitter.com/rufuspollock/status/206051216927625217
+
+
 Why JSON
 --------
 
