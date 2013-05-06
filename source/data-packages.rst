@@ -114,18 +114,17 @@ Metadata
 Core Attributes
 ~~~~~~~~~~~~~~~
 
-The metadata may have the following keys and values:
+The metadata MUST have the following keys and values:
 
 * name (required) - short url-usable (and preferably human-readable) name of
   the package. This must be lowercase alpha-numeric name without spaces. It may
   include "." or "_" or "-" characters. It will function as a unique identifier
   and therefore should be unique in relation to any registry in which this
   package will be deposited (and preferably globally unique).
-* title (optional) - a title or one sentence description for this package
-* description - a description of the package. The first paragraph (up to the
-  first double line break should be usable as summary information for the package)
-* version - a version string conforming to the Semantic Versioning requirements
-  (http://semver.org/).
+
+The metadata SHOULD have the following keys and values:
+
+* title - a title or one sentence description for this package
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with an id (based on http://OpenDefinition.org/licenses) and/or a url property linking to the actual text. Example::
 
@@ -134,6 +133,13 @@ The metadata may have the following keys and values:
         "url": "http://opendatacommons.org/licenses/pddl/"
       }]
 
+The metadata MAY have the following keys and values:
+
+* title - a title or one sentence description for this package
+* description - a description of the package. The first paragraph (up to the
+  first double line break should be usable as summary information for the package)
+* version - a version string conforming to the Semantic Versioning requirements
+  (http://semver.org/).
 * sources - an array of source hashes. Each source hash may have name, web and email attributes. Example::
 
     "sources": [{
@@ -143,7 +149,7 @@ The metadata may have the following keys and values:
     
 * keywords - an Array of string keywords to assist users searching for the
   package in catalogs.
-* last_updated: iso 8601 formatted date (or datetime) when this data package was last updated
+* last_modified: iso 8601 formatted date (or datetime) when this data package was last updated
 * image - a link to an image to use for this data package
 
 Additional attributes
@@ -217,7 +223,7 @@ A data package MAY contain any number of additional fields. Common fields includ
   of utf8) 
 * bytes: size of the file in bytes
 * hash: the md5 hash for this resource
-* lastmodified: ISO 8601 string for last modified timestamp of the resource
+* last_modified: ISO 8601 string for last modified timestamp of the resource
 * schema: a schema for the resource - see below for more on this in the case of
   tabular data.
 * sources: as for data package metadata.
