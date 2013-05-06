@@ -68,11 +68,11 @@ Here's an example of a minimal simple data format dataset::
               "type": "string"
             },
             {
-              "id": "var1",
+              "id": "var2",
               "type": "integer"
             },
             {
-              "id": "var1",
+              "id": "var3",
               "type": "number"
             }
           ]

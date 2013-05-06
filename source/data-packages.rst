@@ -5,7 +5,7 @@ Data Packages
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
 :**Version**: 1.0beta2
-:**Lasted Updated**: 14 April 2013
+:**Last Updated**: 14 April 2013
 :**Created**: 12 November 2007
 
 A Data Package (or DataPackage) is a coherent collection of data
