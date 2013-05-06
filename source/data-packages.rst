@@ -212,14 +212,17 @@ A data package MAY contain any number of additional fields. Common fields includ
 
 * format: 'csv', 'xls' etc. Would be expected to be the the standard file
   extension for this type of resource.
-* mimetype: 'text/csv', 'application/vnd.ms-excel'as 
+* mimetype: the mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
+* encoding: character encoding of the resource data file (default is assumption
+  of utf8) 
 * bytes: size of the file in bytes
-* schema: a schema for the resource - see below for more on this in the case of
-  tabular data.
 * hash: the md5 hash for this resource
 * lastmodified: ISO 8601 string for last modified timestamp of the resource
+* schema: a schema for the resource - see below for more on this in the case of
+  tabular data.
 * sources: as for data package metadata.
-* licenses: as for data package metadata. If not specified the resource inherits from the data package.
+* licenses: as for data package metadata. If not specified the resource
+  inherits from the data package.
 
 Tabular Data
 ~~~~~~~~~~~~
