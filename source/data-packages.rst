@@ -216,7 +216,7 @@ A data package MAY contain any number of additional fields. Common fields includ
 * bytes: size of the file in bytes
 * schema: a schema for the resource - see below for more on this in the case of
   tabular data.
-* hash: hash for this resource
+* hash: the md5 hash for this resource
 * lastmodified: ISO 8601 string for last modified timestamp of the resource
 * sources: as for data package metadata.
 * licenses: as for data package metadata. If not specified the resource inherits from the data package.
