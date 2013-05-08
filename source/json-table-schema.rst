@@ -73,8 +73,9 @@ That is, a JSON Table Schema is:
 * specific attributes that MAY be included in the Hash and whose meaning is defined in this spec are:
 
   * label: A nicer human readable label for the field
-  * type: the type of the field (string, number etc) - see below
+  * type: The type of the field (string, number etc) - see below
   * description: A description for this field e.g. "The recipient of the funds"
+  * format: A description of the format e.g. "DD.MM.YYYY" for a date
 
 Types
 -----
