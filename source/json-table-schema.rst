@@ -2,8 +2,8 @@
 JSON Table Schema
 =================
 
-:**Version**: 1.0 beta2
-:**Last Updated**: 17 April 2013
+:**Version**: 1.0-beta.3
+:**Last Updated**: 11 May 2013
 :**Created**: 12 November 2012
 
 This RFC defines a simple schema for tabular data. The schema is designed to be expressible in JSON.
@@ -28,7 +28,7 @@ To illustrate here's a classic spreadsheet table::
        ...
       
 
-In JSON::
+In JSON a table would be::
 
   [
     { "A": value, "B": value, ... },
@@ -72,10 +72,12 @@ That is, a JSON Table Schema is:
 * the field descriptor Hash MAY contain any number of other attributes
 * specific attributes that MAY be included in the Hash and whose meaning is defined in this spec are:
 
+  * type: The type of the field (string, number etc) - see below for more
+    detail. If type is not provided a consumer should assume a type of "string"
   * label: A nicer human readable label for the field
-  * type: The type of the field (string, number etc) - see below
   * description: A description for this field e.g. "The recipient of the funds"
-  * format: A description of the format e.g. "DD.MM.YYYY" for a date
+  * format: A description of the format e.g. "DD.MM.YYYY" for a date. See below
+    for more detail.
 
 Types
 -----
@@ -93,41 +95,37 @@ The type list is as follows:
 * **string**: a string (of arbitrary length)
 * **number**: a number including floating point numbers.
 * **integer**: an integer.
-* **date**: a date. The preferred format is YYYY-MM-DD.
+* **date**: a date. This MUST be in ISO6801 format YYYY-MM-DD or, if not,
+  a format field must be provided describing the structure.
 * **time**: a time without a date
-* **datetime**: a date-time. It is recommended this be in ISO 8601
-  format of YYYY-MM- DDThh:mm:ssZ in UTC time.
-* **boolean**
+* **datetime**: a date-time. This MUST be in ISO 8601 format of YYYY-MM-
+  DDThh:mm:ssZ in UTC time or, if not, a format field must be provided.
+* **boolean**: a boolean value (1/0, true/false).
 * **binary**: base64 representation of binary data.
-* **geopoint**: as per `Elasticsearch geo_point`_
-  That is a field (in these examples named location) that has one of the
-  following structures::
+* **object**: (alias json) an JSON-encoded object
+* **geopoint**: has one of the following structures::
 
-      location: {
-        lon: ...
-        lat: ...
-      }
+      { lon: ..., lat: ... }
       
-      location: [lon,lat]
+      [lon,lat]
       
-      location: "lat, lng"
-
-  As bonus there is also support for (beyond the ES style geo_point)::
-
-      // geonames style
-      location: {
-        lng: ...
-        lat: ...
-      }
-      // found on the web
-      location: "(lat, lon)"
+      "lon, lat"
 
 * **geojson**: as per <http://geojson.org/>
 * **array**: an array
-* **object (json)**: an object
 * **any**: value of field may be any type
 
-.. _Elasticsearch geo_point: http://www.elasticsearch.org/guide/reference/mapping/geo-point-type.html
+Formats
+=======
+
+The format field can be used to describe the format, especially for dates. Possible examples are:
+
+    # "type": "date"
+    "format": "yyyy"
+
+    # type=string
+    "format": "markdown"
+
 
 Appendix: Related Work
 ======================
