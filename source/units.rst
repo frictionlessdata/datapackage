@@ -1,4 +1,4 @@
-Unit protocol
+Units
 =============
 
 Authors: Andrew Berkeley, Rufus Pollock (Open Knowledge Foundation), James Smith (Open Data Institute)
@@ -25,7 +25,7 @@ This is a draft specification and still under development. If you have comments 
 
 
 Specification
-=============
+-------------
 
 * A unit description must be specified as a string containing references to 1 or more of the valid units defined in this protocol (see below). 
 
@@ -35,7 +35,7 @@ Specification
 
 
 Examples
-========
+--------
 =============== ====================================================================
 unit            description
 =============== ====================================================================
@@ -55,7 +55,7 @@ unit            description
 =============== ====================================================================
 
 Compound unit syntax
-====================
+--------------------
 
 Compound units represent the result of combining units via multiplication, division and raising to powers.
 
@@ -95,7 +95,7 @@ Compound units represent the result of combining units via multiplication, divis
 
 
 Valid units
-===========
+-----------
 
 Accepted units together with their unique identifers and other descriptive information are listed below.
 
@@ -286,7 +286,7 @@ sphere         sphere                                sphere      solid angle
 
 
 Valid unit prefixes
-===================
+-------------------
 
 ============== ===================================== =========== ===================
 UID            name                                  symbol      factor
@@ -315,10 +315,10 @@ y              yocto                                 y           1.0e-24
 
 
 Appendix
-========
+--------
 
 ### Related work
-----------------
+^^^^^^^^^^^^^^^^
 
 * Quantify Rubygem (https://github.com/spatchcock/quantify)
 * JScience SI (http://jscience.org/api/javax/measure/unit/SI.html)
