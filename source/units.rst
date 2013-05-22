@@ -1,4 +1,3 @@
-=============
 Unit protocol
 =============
 
@@ -8,8 +7,6 @@ Authors: Andrew Berkeley, Rufus Pollock (Open Knowledge Foundation), James Smith
 :**Last Updated**: 22 May 2013
 :**Created**: 05 May 2013
 
-Abstract
-========
 
 This document provides a proposal for a standardized way of describing units associated with numeric quantities.
 
@@ -30,11 +27,11 @@ This is a draft specification and still under development. If you have comments 
 Specification
 =============
 
-* A unit description must be specified as a string containing references to 1 or more of the :ref:`valid-units` defined in this protocol (see below). 
+* A unit description must be specified as a string containing references to 1 or more of the valid units defined in this protocol (see below). 
 
-* Unit identifiers can be prefixed using :ref:`valid-unit-prefixes`.
+* Unit identifiers can be prefixed using valid unit prefixes.
 
-* Where a compound unit (a unit comprising more than 1 base unit) is described, unit identifiers must be combined according to the :ref:`compound-unit-syntax` defined herein.
+* Where a compound unit (a unit comprising more than 1 base unit) is described, unit identifiers must be combined according to the compound unit syntax defined herein.
 
 
 Examples
@@ -56,8 +53,6 @@ unit            description
 "deg_c h^-1"    degrees celsius per hour (alternative denominator delimiter)
 "GBP/USD"       exchange rate
 =============== ====================================================================
-
-.. _compound-unit-syntax:
 
 Compound unit syntax
 ====================
@@ -98,7 +93,6 @@ Compound units represent the result of combining units via multiplication, divis
 
 * Only a single "/" is permitted in any unit description.
 
-.. _valid-units:
 
 Valid units
 ===========
@@ -107,7 +101,7 @@ Accepted units together with their unique identifers and other descriptive infor
 
 In many cases the unique identifier ("UID") for each unit is simply the internationally recognised unit symbol (e.g. m, kg, K, J, Pa, etc.). Exceptions to this include cases where exotic characters are used (e.g. "°") or where variants of identically named units exist (e.g. US and UK versions of the gallon, ton, barrel)). 
 
-These units and their proposed UIDs follow the implementation found in the [Quantify Rubygem library](#appendix), which in-turn follows (and extends) the specifications the [JScience library](#appendix).
+These units and their proposed UIDs follow the implementation found in the Quantify Rubygem library (link below), which in-turn follows (and extends) the specifications the JScience library (links below).
 
 Note: UIDs are case sensitive, owing to their conformance in the majority of cases to standard unit descriptors.
 
@@ -291,8 +285,6 @@ sphere         sphere                                sphere      solid angle
 ============== ===================================== =========== ============================= ====================================================
 
 
-.. _valid-unit-prefixes:
-
 Valid unit prefixes
 ===================
 
@@ -322,10 +314,12 @@ y              yocto                                 y           1.0e-24
 ============== ===================================== =========== ===================
 
 
-## <a name="appendix"></a>Appendix
+Appendix
+========
 
 ### Related work
+----------------
 
-* [Quantify Rubygem](https://github.com/spatchcock/quantify)
-* [JScience SI](http://jscience.org/api/javax/measure/unit/SI.html)
-* [JScience Non-SI](http://jscience.org/api/javax/measure/unit/NonSI.html)
+* Quantify Rubygem (https://github.com/spatchcock/quantify)
+* JScience SI (http://jscience.org/api/javax/measure/unit/SI.html)
+* JScience Non-SI (http://jscience.org/api/javax/measure/unit/NonSI.html)
