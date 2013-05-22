@@ -317,7 +317,7 @@ y              yocto                                 y           1.0e-24
 Appendix
 --------
 
-### Related work
+Related work
 ^^^^^^^^^^^^^^^^
 
 * Quantify Rubygem (https://github.com/spatchcock/quantify)
