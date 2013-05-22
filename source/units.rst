@@ -37,8 +37,10 @@ Specification
 * Where a compound unit (a unit comprising more than 1 base unit) is described, unit identifiers must be combined according to the :ref:`compound-unit-syntax` defined herein.
 
 
-### <a name="examples"></a>Examples
-
+Examples
+========
+=============== ===================================================================
+unit            description
 =============== ===================================================================
 "m"             metre
 "kW h           kilowatt hour
