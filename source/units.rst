@@ -112,7 +112,7 @@ These units and their proposed UIDs follow the implementation found in the [Quan
 Note: UIDs are case sensitive, owing to their conformance in the majority of cases to standard unit descriptors.
 
 ============== ===================================== =========== ============================= ====================================================
-label          name                                  symbol      physical quantity             dimensions
+UID            name                                  symbol      physical quantity             dimensions
 ============== ===================================== =========== ============================= ====================================================
 η              amagat                                η           number density                length^-3 x item
 Bq             bequerel                              Bq          radioactivity                 time^-1
@@ -297,7 +297,7 @@ Valid unit prefixes
 ===================
 
 ============== ===================================== =========== ===================
-label          name                                  symbol      factor
+UID            name                                  symbol      factor
 ============== ===================================== =========== ===================
 da             deca                                  da          10.0                          
 h              hecto                                 h           100.0                         
