@@ -5,8 +5,8 @@ Unit protocol
 Authors: Andrew Berkeley, Rufus Pollock (Open Knowledge Foundation), James Smith (Open Data Institute)
 
 :**Version**: 0.1
-:**Last Updated**:22 May 2013
-:**Created**:05 May 2013
+:**Last Updated**: 22 May 2013
+:**Created**: 05 May 2013
 
 Abstract
 ========
@@ -39,60 +39,21 @@ Specification
 
 ### <a name="examples"></a>Examples
 
-<table>
-  <tr>
-    <td>"m"</td>
-    <td>metre</td>
-  </tr>
-  <tr>
-    <td>"kW h"</td>
-    <td>kilowatt hour</td>
-  </tr>
-  <tr>
-    <td>"kg m^2 s^-2"</td>
-    <td>implied joule </td>
-  </tr>
-  <tr>
-    <td>"kg m^2/s^2"</td>
-    <td>implied joule (alternative denominator delimiter)</td>
-  </tr>
-  <tr>
-    <td>"J"</td>
-    <td>joule</td>
-  </tr>
-  <tr>
-    <td>"btu_39f/lb"</td>
-    <td>British thermal units per pound</td>
-  </tr>
-  <tr>
-    <td>"btu_39f lb^-1"</td>
-    <td>British thermal units per pound (alternative denominator delimiter)</td>
-  </tr>
-  <tr>
-    <td>"t km"</td>
-    <td>metric tonne kilometre</td>
-  </tr>
-  <tr>
-    <td>"ton_uk km"</td>
-    <td>imperial ton kilometre</td>
-  </tr>
-  <tr>
-    <td>"ton_us km"</td>
-    <td>imperial ton kilometre</td>
-  </tr>
-  <tr>
-    <td>"deg_c/h"</td>
-    <td>degrees celsius per hour</td>
-  </tr>
-  <tr>
-    <td>"deg_c h^-1"</td>
-    <td>degrees celsius per hour (alternative denominator delimiter)</td>
-  </tr>
-  <tr>
-    <td>"GBP/USD"</td>
-    <td>exchange rate</td>
-  </tr>
-</table>
+=============== ===================================================================
+"m"             metre
+"kW h           kilowatt hour
+"kg m^2 s^-2"   implied joule
+"kg m^2/s^2"    implied joule (alternative denominator delimiter)
+"J"             joule
+"btu_39f/lb"    British thermal units per pound
+"btu_39f lb^-1" British thermal units per pound (alternative denominator delimiter)
+"t km"          metric tonne kilometre
+"ton_uk km"     imperial ton kilometre
+"ton_us km"     imperial ton kilometre
+"deg_c/h"       degrees celsius per hour
+"deg_c h^-1"    degrees celsius per hour (alternative denominator delimiter)
+"GBP/USD"       exchange rate
+=============== ====================================================================
 
 .. _compound-unit-syntax:
 
@@ -319,7 +280,7 @@ degree         degree                                °           plane angle
 grad           grad                                  grad        plane angle                   
 rev            revolution                            rev         plane angle                   
 sphere         sphere                                sphere      solid angle   
-============== ===================================== =========== ============================ ==============================================================                      
+============== ===================================== =========== ============================ ====================================================
 
 
 .. _valid-unit-prefixes:
