@@ -124,7 +124,6 @@ The metadata MUST have the following keys and values:
 
 The metadata SHOULD have the following keys and values:
 
-* title - a title or one sentence description for this package
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with an id (based on http://OpenDefinition.org/licenses) and/or a url property linking to the actual text. Example::
 
