@@ -89,7 +89,7 @@ This specification is in large part a refinement of the :doc:`Data Packages
 specification <data-packages>`. It has the additional requirements such as:
 
 * All data files MUST be in CSV format
-* A schema following JSON Table Schema MUST be provided for each data file that
+* A schema following :doc:`JSON Table Schema <json-table-schema>` MUST be provided for each data file that
   is part of the data package
 
 Files
