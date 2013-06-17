@@ -117,7 +117,7 @@ Core Attributes
 The metadata MUST have the following keys and values:
 
 * name (required) - short url-usable (and preferably human-readable) name of
-  the package. This must be lowercase alpha-numeric name without spaces. It may
+  the package. This must be a lower-case alphanumeric name without spaces. It may
   include "." or "_" or "-" characters. It will function as a unique identifier
   and therefore should be unique in relation to any registry in which this
   package will be deposited (and preferably globally unique).
