@@ -4,8 +4,8 @@ Data Packages
 
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
-:**Version**: 1.0-beta.3
-:**Last Updated**: 6 May 2013
+:**Version**: 1.0-beta.4
+:**Last Updated**: 23 June 2013
 :**Created**: 12 November 2007
 
 A Data Package (or DataPackage) is a coherent collection of data
@@ -117,10 +117,10 @@ Core Attributes
 The metadata MUST have the following keys and values:
 
 * name (required) - short url-usable (and preferably human-readable) name of
-  the package. This must be lowercase alpha-numeric name without spaces. It may
-  include "." or "_" or "-" characters. It will function as a unique identifier
-  and therefore should be unique in relation to any registry in which this
-  package will be deposited (and preferably globally unique).
+  the package. This must be lowercase and contain only alphanumeric characters
+  along with ".", "_" or "-" characters. It will function as a unique
+  identifier and therefore should be unique in relation to any registry in
+  which this package will be deposited (and preferably globally unique).
 
 The metadata SHOULD have the following keys and values:
 
@@ -207,18 +207,22 @@ Recommended fields
 
 A resource SHOULD contain the following fields:
 
-* id: a resource SHOULD contain an id attribute. The id is a simple name or
-  identifier to be used for this resource. The should be usable in a url path
-  and is subject to the same restrictions as the data package name (see above).
-  It would be common for the id to correspond to the file name (minus the
-  extension) of the data file the resource describes.
+* name: a resource SHOULD contain an name attribute. The name is a simple name or
+  identifier to be used for this resource.
+
+  * If present, the name MUST be unique amongst all resources in this data
+    package.
+  * The name SHOULD be usable in a url path and SHOULD therefore consist only
+    of alphanumeric characters plus ".", "-" and "_".
+  * It would be usual for the name to correspond to the file name (minus the
+    extension) of the data file the resource describes.
 
 Optional fields
 ~~~~~~~~~~~~~~~
 
 A data package MAY contain any number of additional fields. Common fields include:
 
-* format: 'csv', 'xls' etc. Would be expected to be the the standard file
+* format: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
 * mimetype: the mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
 * encoding: character encoding of the resource data file (default is assumption
