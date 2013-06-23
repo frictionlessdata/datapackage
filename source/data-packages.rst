@@ -94,7 +94,7 @@ Here is an illustrative example of a datapackage JSON file::
 
   {
     # general "metadata" like title, sources etc
-    name: "a unique human readable and url-usable identifier",
+    name: "a-unique-human-readable-and-url-usable-identifier",
     title: "A nice title",
     licenses: [...],
     sources: [...],
@@ -117,10 +117,14 @@ Core Attributes
 The metadata MUST have the following keys and values:
 
 * name (required) - short url-usable (and preferably human-readable) name of
-  the package. This must be lowercase and contain only alphanumeric characters
+  the package. This must be lower-case and contain only alphanumeric characters
   along with ".", "_" or "-" characters. It will function as a unique
   identifier and therefore should be unique in relation to any registry in
   which this package will be deposited (and preferably globally unique).
+  the package. This must be a lower-case alphanumeric name without spaces. It may
+  include "." or "_" or "-" characters. It will function as a unique identifier
+  and therefore should be unique in relation to any registry in which this
+  package will be deposited (and preferably globally unique).
 
 The metadata SHOULD have the following keys and values:
 
