@@ -296,12 +296,12 @@ Example 2 - inline CSV::
        ]
     }
 
-
 Tabular Data
 ~~~~~~~~~~~~
 
-For tabular data the resource information MAY contain schema information conforming to the
-:doc:`JSON Table Schema <json-table-schema>`.
+For tabular data the resource information MAY contain schema information in an
+attribute named ``schema``. If ``schema`` is provided its value MUST confirm to
+the :doc:`JSON Table Schema <json-table-schema>`.
 
 Here is an example for a CSV file::
 
@@ -314,9 +314,11 @@ Here is an example for a CSV file::
     schema:  # as per JSON Table Schema 
   }
 
-See :doc:`Simple Data Format <simple-data-format>` for a specification that
-builds on this data package specification adding specific requirements for
-files and file info.
+The :doc:`Simple Data Format <simple-data-format>` provides a specification
+focused on tabular data. It builds on this data package specification (Simple
+Data Format datasets are Data Packages) and provides additional specific
+requirements for the format and structure of data files and the resource
+information in the datapackage.json.
 
 
 Background
