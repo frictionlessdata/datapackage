@@ -140,6 +140,7 @@ The metadata MAY have the following keys and values:
 * title - a title or one sentence description for this package
 * description - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
+* homepage - URL string for the data packages web site
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
 * sources - an array of source hashes. Each source hash may have name, web and email attributes. Example::
