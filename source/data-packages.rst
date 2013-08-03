@@ -200,6 +200,12 @@ specify the location of the associated data file (either online or 'local'):
           path attribute may still be used for Data Packages located online (in
           this case it determines the relative URL).
 
+.. note:: When more than one of url, path or data are specified consumers need
+          to determine which option to use (or in which order to try them). The
+          recommendation is to utilize the following order: data, path, url. A
+          consumer should also stop processing once one of these options yields
+          data.
+
 There are NO other required fields. However, there are a variety of common
 fields that can be used.
 
