@@ -121,10 +121,6 @@ The metadata MUST have the following keys and values:
   along with ".", "_" or "-" characters. It will function as a unique
   identifier and therefore should be unique in relation to any registry in
   which this package will be deposited (and preferably globally unique).
-  the package. This must be a lower-case alphanumeric name without spaces. It may
-  include "." or "_" or "-" characters. It will function as a unique identifier
-  and therefore should be unique in relation to any registry in which this
-  package will be deposited (and preferably globally unique).
 
 The metadata SHOULD have the following keys and values:
 
