@@ -4,8 +4,8 @@ Data Packages
 
 .. sectionauthor:: Rufus Pollock (Open Knowledge Foundation), Matthew Brett (NiPY), Martin Keegan (Open Knowledge Foundation Labs)
 
-:**Version**: 1.0-beta.4
-:**Last Updated**: 23 June 2013
+:**Version**: 1.0-beta.5
+:**Last Updated**: 3 August 2013
 :**Created**: 12 November 2007
 
 A Data Package (or DataPackage) is a coherent collection of data and possibly
@@ -30,9 +30,11 @@ datapackage.json.
 This file should be placed in the top-level directory (relative to any other
 resources provided as part of the data package).
 
-A data package will normally include other resources (e.g. data files) but the Data
-Package specification does NOT impose any requirements on their form or
-structure.
+A data package will normally include other resources (e.g. data files) but the
+Data Package specification does NOT impose any requirements on their form or
+structure. (As described below it is also possible to 'inline' data into the
+datapackage.json in which case the datapackage.json is both the descriptor and
+the data).
 
 Illustrative Structure
 ----------------------
@@ -188,12 +190,15 @@ Resource Information
 Resource information MUST be a JSON serializable hash.
 
 Resource information MUST contain (at least) one of the following attributes which
-specify the location of the associated data file (either online or 'local'):
+specify the location of the associated data file (either online, 'relative'
+(local), or 'inline'):
 
 * url: url of this data resource
-* path: unix-style ('/') path to the resource. Path MUST be a relative path,
-  that is relative to the directory in which the descriptor file
+* path: unix-style ('/') relative path to the resource. Path MUST be a relative
+  path, that is relative to the directory in which the descriptor file
   (datapackage.json) listing this file resides
+* data: (inline) a field containing the data directly inline in the
+  datapackage.json file. Further details below.
 
 .. note:: the use of a url allows a data package to reference data not
           necessarily contained locally in the Data Package. Of course, the
@@ -242,6 +247,55 @@ A data package MAY contain any number of additional fields. Common fields includ
 * sources: as for data package metadata.
 * licenses: as for data package metadata. If not specified the resource
   inherits from the data package.
+
+Inline Data
+~~~~~~~~~~~
+
+Resource data rather than being stored in external files can be shipped
+'inline' on a Resource using the ``data`` attribute.
+
+The value of the data attribute  can be any type of data. However, restrictions
+of JSON require that the value be a string so for binary data you will need to
+encode (e.g. to Base64). Information on the type and encoding of the value of
+the data attribute SHOULD be provided by the format (or mediatype) attribute
+and the encoding attribute.
+
+Specifically: the value of the data attribute MUST be:
+
+* EITHER: a JSON array or hash - the data is then assumed to be JSON data and SHOULD be processed as such
+* OR: a JSON string - in this case the format or mediatype attributes MUST be provided.
+
+Thus, a consumer of resource hash MAY assume if no format or mediatype
+attribute is provided that the data is JSON and attempt to process it as such.
+
+Examples 1 - inline JSON::
+
+    {
+       ...
+       resources: [
+         {
+            "format": "json",
+            # some json data e.g. 
+            "data": [
+               { "a": 1, "b": 2 },
+               { .... }
+            ]
+         }
+       ]
+    }
+
+Example 2 - inline CSV::
+
+    {
+       ...
+       resources: [
+         {
+            "format": "csv",
+            "data": "A,B,C\n1,2,3\n4,5,6"
+         }
+       ]
+    }
+
 
 Tabular Data
 ~~~~~~~~~~~~
