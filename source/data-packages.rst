@@ -8,9 +8,9 @@ Data Packages
 :**Last Updated**: 23 June 2013
 :**Created**: 12 November 2007
 
-A Data Package (or DataPackage) is a coherent collection of data
-and possibly other assets into a single form. It provides the basis for
-convenient delivery, installation and management of datasets.
+A Data Package (or DataPackage) is a coherent collection of data and possibly
+other assets in a single 'package'. It provides the basis for convenient
+delivery, installation and management of datasets.
 
 .. note::
 
@@ -207,7 +207,7 @@ specify the location of the associated data file (either online or 'local'):
           data.
 
 There are NO other required fields. However, there are a variety of common
-fields that can be used.
+fields that can be used which we detail below.
 
 Recommended fields
 ~~~~~~~~~~~~~~~~~~
@@ -231,12 +231,12 @@ A data package MAY contain any number of additional fields. Common fields includ
 
 * format: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
-* mimetype: the mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
+* mediatype: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
 * encoding: character encoding of the resource data file (default is assumption
   of utf8) 
 * bytes: size of the file in bytes
 * hash: the md5 hash for this resource
-* last_modified: ISO 8601 string for last modified timestamp of the resource
+* modified: ISO 8601 string for last modified timestamp of the resource
 * schema: a schema for the resource - see below for more on this in the case of
   tabular data.
 * sources: as for data package metadata.
