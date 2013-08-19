@@ -224,6 +224,12 @@ A resource SHOULD contain the following fields:
 
   * If present, the name MUST be unique amongst all resources in this data
     package.
+  * The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
+    package is updated, unless the new package version should be considered a
+    distinct package, e.g. due to significant changes in structure or
+    interpretation. Version distinction SHOULD be left to the version field. As
+    a corollary, the name also SHOULD NOT include an indication of time range
+    covered.
   * The name SHOULD be usable in a url path and SHOULD therefore consist only
     of alphanumeric characters plus ".", "-" and "_".
   * It would be usual for the name to correspond to the file name (minus the
