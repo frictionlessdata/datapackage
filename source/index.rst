@@ -25,6 +25,7 @@ Work topics include:
    simple-data-format
    json-table-schema
    csv-dialect
+   tabular-diff-format
 
 .. toctree::
    :hidden:
