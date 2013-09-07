@@ -113,10 +113,10 @@ Here is an illustrative example of a datapackage JSON file::
 Metadata
 --------
 
-Core Attributes
-~~~~~~~~~~~~~~~
+Core Fields
+~~~~~~~~~~~
 
-The metadata MUST have the following keys and values:
+The metadata MUST have the following fields:
 
 * name (required) - short url-usable (and preferably human-readable) name of
   the package. This must be lower-case and contain only alphanumeric characters
@@ -124,7 +124,7 @@ The metadata MUST have the following keys and values:
   identifier and therefore should be unique in relation to any registry in
   which this package will be deposited (and preferably globally unique).
 
-The metadata SHOULD have the following keys and values:
+The metadata SHOULD have the following fields:
 
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with an id (based on http://OpenDefinition.org/licenses) and/or a url property linking to the actual text. Example::
@@ -145,7 +145,7 @@ The metadata MAY have the following keys and values:
 * homepage - URL string for the data packages web site
 * version - a version string conforming to the Semantic Versioning requirements
   (http://semver.org/).
-* sources - an array of source hashes. Each source hash may have name, web and email attributes. Example::
+* sources - an array of source hashes. Each source hash may have name, web and email fields. Example::
 
     "sources": [{
       "name": "World Bank and OECD",
@@ -157,8 +157,8 @@ The metadata MAY have the following keys and values:
 * last_modified: iso 8601 formatted date (or datetime) when this data package was last updated
 * image - a link to an image to use for this data package
 
-Additional attributes
-~~~~~~~~~~~~~~~~~~~~~
+Additional fields 
+~~~~~~~~~~~~~~~~~
 
 * maintainers - Array of maintainers of the package. Each maintainer is a hash
   which must have a "name" property and may optionally provide "email" and
@@ -183,6 +183,25 @@ Additional attributes
   it may be a hash group of dependencies which define a set of options, any one
   of which satisfies the dependency. The ordering of the group is significant
   and earlier entries have higher priority.
+
+.. note:: 
+
+    A Data Package author MAY add any number of additional fields beyond those
+    listed in the specification here.  For example, suppose you were storing
+    time series data and want to list the temporal coverage of the data in the
+    Data Package you could add a field ``temporal`` (cf Dublin Core)::
+
+        "temporal": {
+          "name": "19th Century",
+          "start": "1800-01-01",
+          "end": "1899-12-31"
+        }
+    
+    This flexibility enables specific communities to extend Data Packages as
+    appropriate for the data they manage. As an example, the :doc:`Simple Data
+    Format <simple-data-format>` specification extends Data Package to the case
+    where all the data is tabular and stored in CSV.
+
 
 Resource Information
 --------------------
