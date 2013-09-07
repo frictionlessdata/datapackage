@@ -13,6 +13,7 @@ Change History
 
 * 1.0-pre3.1: breaking changes.
   * ``label`` changed to ``title`` - see `Closer alignment with JSON Schema <https://github.com/dataprotocols/dataprotocols/issues/46>`
+  * ``id`` changed to ``name`` (with slight alteration in semantics - viz SHOULD be unique (but not MUST be unique)
 
 Concepts
 ========
@@ -58,7 +59,7 @@ A JSON Table Schema has the following structure::
     "fields": [
       # a field-descriptor
       {
-        "id": "field unique name / id",
+        "name": "name of field (e.g. column name)",
         "title": "A nicer human readable label or title for the field",
         "type": "A string specifying the type",
         "format": "A string specifying a format",
@@ -74,7 +75,10 @@ That is, a JSON Table Schema is:
 * a Hash which ``MUST`` contain a key ``fields``
 * ``fields`` MUST be an array where each entry in the array is a field descriptor
 * a field descriptor MUST be a Hash
-* the field descriptor Hash MUST contain an ``id`` attribute. This attribute ``MUST`` be unique among all the fields.
+* the field descriptor Hash MUST contain a ``name`` attribute. This attribute
+  ``SHOULD`` correspond to the name of field/column in the data file (if it has
+  a name). As such it ``SHOULD`` be unique (though it is possible, but very bad
+  practice, for the data file to have multiple columns with the same name)
 * the field descriptor Hash MAY contain any number of other attributes
 * specific attributes that MAY be included in the Hash and whose meaning is defined in this spec are:
 
