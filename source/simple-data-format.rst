@@ -64,15 +64,15 @@ Here's an example of a minimal simple data format dataset::
         "schema": {
           "fields": [
             {
-              "id": "var1",
+              "name": "var1",
               "type": "string"
             },
             {
-              "id": "var2",
+              "name": "var2",
               "type": "integer"
             },
             {
-              "id": "var3",
+              "name": "var3",
               "type": "number"
             }
           ]
@@ -104,10 +104,10 @@ Each data file:
 * MUST be in CSV format and its file name MUST end with ``.csv``.
 * MUST have a single header row. This row MUST be the first row in the file.
 
-  * Terminology: each column in the CSV file is termed a *field* and its *id*
+  * Terminology: each column in the CSV file is termed a *field* and its ``name``
     is the string in that column in the header row.
-  * The id MUST be unique amongst fields and MUST contain at least one character
-  * There are no further restrictions on the form of the id but it is
+  * The ``name`` MUST be unique amongst fields and MUST contain at least one character
+  * There are no further restrictions on the form of the ``name`` but it is
     RECOMMENDED that it contain only alphanumeric characters together with " .-_"
 
 * Associated to each file MUST be an entry in the resources attribute in the datapackage.json
