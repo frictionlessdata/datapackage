@@ -12,8 +12,9 @@ Change History
 ==============
 
 * 1.0-pre3.1: breaking changes.
-  * ``label`` changed to ``title`` - see `Closer alignment with JSON Schema <https://github.com/dataprotocols/dataprotocols/issues/46>`
-  * ``id`` changed to ``name`` (with slight alteration in semantics - viz SHOULD be unique (but not MUST be unique)
+
+  * ``label`` changed to ``title`` - see `Closer alignment with JSON Schema <https://github.com/dataprotocols/dataprotocols/issues/46>`_
+  * ``id`` changed to ``name`` (with slight alteration in semantics - i.e. SHOULD be unique but no longer MUST be unique)
 
 Concepts
 ========
