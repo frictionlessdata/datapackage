@@ -121,8 +121,15 @@ The metadata MUST have the following fields:
 * name (required) - short url-usable (and preferably human-readable) name of
   the package. This must be lower-case and contain only alphanumeric characters
   along with ".", "_" or "-" characters. It will function as a unique
-  identifier and therefore should be unique in relation to any registry in
+  identifier and therefore SHOULD be unique in relation to any registry in
   which this package will be deposited (and preferably globally unique).
+
+  The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
+  package is updated, unless the new package version should be considered a
+  distinct package, e.g. due to significant changes in structure or
+  interpretation. Version distinction SHOULD be left to the version field. As
+  a corollary, the name also SHOULD NOT include an indication of time range
+  covered.
 
 The metadata SHOULD have the following fields:
 
