@@ -17,6 +17,10 @@
   <link href="http://okfnlabs.org/css/labs.css" rel="stylesheet" />
   <link href="/css/style.css" rel="stylesheet" />
 
+{% if page.redirect %}
+  <meta http-equiv="refresh" content="0; url={{ page.redirect }}">
+{% endif %}
+
 </head>
 <body>
 <div class="container">
