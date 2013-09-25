@@ -1,3 +1,4 @@
 name: DataProtocols
 pygments: true
 markdown: kramdown
+baseurl: /dataprotocols
