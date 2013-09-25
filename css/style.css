@@ -1,0 +1,21 @@
+.banner {
+  padding: 25px;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.sidebar .toc ul {
+  margin-left: 18px;
+}
+
+.sidebar h3:first-child {
+  margin-top: 0;
+}
+
+body {
+  font-size: 16px;
+}
