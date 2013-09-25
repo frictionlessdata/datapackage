@@ -3,7 +3,7 @@ title: Welcome to Open Data Protocols
 layout: default
 ---
 
-This site is a the home of **simple protocols and formats for working
+This site is the home of **simple protocols and formats for working
 with open data**. Our mission is both to make it **easier to develop
 tools and services for working with data**, and, to ensure **greater
 interoperability between new and existing tools and services**.
