@@ -19,3 +19,17 @@
 body {
   font-size: 16px;
 }
+
+.meta { 
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ddd;
+  margin: 20px;
+  border-radius: 4px;
+}
+.meta td { 
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.meta tr td:first-child { 
+  font-weight: bold;
+}

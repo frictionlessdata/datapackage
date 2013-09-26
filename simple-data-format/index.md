@@ -3,14 +3,12 @@ title: Simple Data Format (SDF)
 layout: default
 ---
 
-\*\*Version\*\*
-:   1.0 beta
+<div class="meta" markdown="block">
+Version | 1.0 beta
+Last Updated | 18 April 2013
+Created | May 7 2012
 
-\*\*Last Updated\*\*
-:   18 April 2013
-
-\*\*Created\*\*
-:   May 7 2012
+</div>
 
 This document defines a simple data publishing format (Simple Data
 Format) for publishing and sharing tabular-style data.

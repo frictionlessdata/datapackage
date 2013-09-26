@@ -3,14 +3,12 @@ title: Coopy highlighter diff format for tables
 layout: default
 ---
 
-\*\*Version\*\*
-:   0.7
+<div class="meta" markdown="block">
+Version | 0.7
+Last Updated | 24 August 2013
+Created | 16 December 2011
 
-\*\*Last Updated\*\*
-:   24 August 2013
-
-\*\*Created\*\*
-:   16 December 2011
+</div>
 
 <style> 
 .highlighter .add { 

@@ -3,11 +3,11 @@ title: CSV Dialect Description Format (CSVDDF)
 layout: default
 ---
 
-\*\*Version\*\*
-:   1.0
+<div class="meta" markdown="block">
+Version | 1.0
+Date | 20 February 2013
 
-\*\*Date\*\*
-:   20 February 2013
+</div>
 
 This RFC defines a simple JSON format to describe the various dialects
 of CSV files; it aims to deal with a reasonably large subset of the

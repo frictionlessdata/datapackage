@@ -3,14 +3,12 @@ title: JSON Table Schema
 layout: default
 ---
 
-\*\*Version\*\*
-:   1.0-pre3.1
+<div class="meta" markdown="block">
+Version | 1.0-pre3.1
+Last Updated | 07 September 2013
+Created | 12 November 2012
 
-\*\*Last Updated\*\*
-:   07 September 2013
-
-\*\*Created\*\*
-:   12 November 2012
+</div>
 
 This RFC defines a simple schema for tabular data. The schema is
 designed to be expressible in JSON.
