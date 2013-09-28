@@ -16,13 +16,11 @@ h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
   padding-top: 25px;
 }
 
-.banner {
-  text-align: center;
-}
-
-.banner h1 {
+.page-header h1 {
   font-size: 45px;
   font-weight: bold;
+  color: #0088cc;
+  text-align: center;
 }
 
 .sidebar .toc ul {
@@ -49,13 +47,27 @@ h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
   font-weight: bold;
 }
 
+pre {
+  font-size: 13px;
+}
+
+blockquote {
+  font-style: italic;
+  background-color: #ddd;
+  border-left: 10px solid #ccc;
+  padding: 10px;
+}
+blockquote p {
+  font-size: 14px;
+}
+
 /**********************************************************
   * Navigation
   *********************************************************/
 
 .brand img {
   margin-top: -3px;
-  height: 33px;
+  height: 30px;
   margin-right: 3px;
 }
 
@@ -95,10 +107,11 @@ h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
   *********************************************************/
 
 footer {
+  font-size: 90%;
   background-color: #f5f5f5;
   padding: 20px 0px;
+  margin-top: 20px;
   border-top: solid 1px #ddd;
-  font-size: 90%;
 }
 
 .feedback {

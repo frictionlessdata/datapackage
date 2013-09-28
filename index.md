@@ -1,5 +1,6 @@
 ---
-title: Welcome to Open Data Protocols
+title: Data Protocols
+subtitle: Lightweight Standards and Patterns for (Open) Data
 layout: default
 ---
 
@@ -10,17 +11,35 @@ interoperability between new and existing tools and services**.
 
 Work topics include:
 
--   Data catalog interoperability - see the [Data Catalog
-    Interoperability Protocol](http://spec.datacatalogs.org/)
--   Data packages, publication and installation - see the
-    Data packages spec \<data-packages\>
--   Simple formats for facilitating data exchange over the web - see the
-    Simple Data Format \<simple-data-format\>
--   Web-oriented data APIs including those for accessing and querying
-    data
--   An overview of sharing and syncing data changes - see
-    Protocols for sharing and syncing data \<syncing\>
--   Webhooks and webservices for data transformation
+- Data packages, publication and installation
+- Simple formats for facilitating data exchange over the web
+- Web-oriented data APIs including those for accessing and querying data
+- An overview of sharing and syncing data changes
+- Webhooks and webservices for data transformation
+- Data catalog interoperability - see the [Data Catalog Interoperability
+  Protocol](http://spec.datacatalogs.org/)
+
+<div class="toc">
+  <h3>Table of Contents</h3>
+
+  <h4>Proposals</h4>
+  <ul>
+    <li><a href="{{site.baseurl}}/data-packages/">Data Packages</a></li>
+    <li><a href="{{site.baseurl}}/simple-data-format/">Simple Data Format (SDF)</a></li>
+    <li><a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a></li>
+    <li><a href="{{site.baseurl}}/csv-dialect/">CSV Dialect Description Format (CSVDDF)</a></li>
+    <li><a href="{{site.baseurl}}/tabular-diff-format/">Coopy highlighter diff format for tables</a></li>
+  </ul>
+
+  <h4>Research and Patterns</h4>
+  <ul>
+    <li><a href="{{site.baseurl}}/revisioning-data/">Revisioning (Versioning) for Data</a></li>
+    <li><a href="{{site.baseurl}}/syncing/">Changes and Syncing</a></li>
+    <li><a href="{{site.baseurl}}/reconciliation/">Reconciliation Protocol</a></li>
+    <li><a href="{{site.baseurl}}/data-query-protocol/">Data Query Protocol</a></li>
+    <li><a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a></li>
+  </ul>
+</div>
 
 Background and Context
 ======================
@@ -63,14 +82,18 @@ has subsequently benefitted from input from numerous other individuals.
 Participate and Contribute
 ==========================
 
-Participation and contributions are welcome. Most work proceeds in an
-RFC-style manner with discussion on the [mailing
-list](http://lists.okfn.org/mailman/listinfo/data-protocols).
+This effort is community-run and contributions, comments and corrections are warmly welcomed.
 
-Material is kept in a git repo on github:
-<https://github.com/dataprotocols/dataprotocols> - fork and submit a
-pull request to add material.
+Most work proceeds in an RFC-style manner with discussion on the [mailing
+list][list].
 
-There is also an issue tracker at
-<https://github.com/dataprotocols/dataprotocols/issues> which can be
-used for specific issues or suggestions.
+Material is kept in a [git repo on github][repo] - fork and submit a pull
+request to add material.
+
+There is also an [issue tracker][issues] which can be used for specific issues
+or suggestions.
+
+[list]: http://lists.okfn.org/mailman/listinfo/data-protocols
+[repo]: https://github.com/dataprotocols/dataprotocols
+[issues]: https://github.com/dataprotocols/dataprotocols/issues
+

@@ -30,34 +30,59 @@
         Data Protocols
         <small>Lightweight Standards and Patterns for Data</small>
       </a>
-    </div>
-  </div>
-</div>
-<div class="container">
-<div class="content">
-  <div class="row">
-    <div class="span6 offset1">
-      <h1>{{page.title}}</h1>
-      {{content}}
-    </div>
-    <div class="span4 sidebar">
-      <div class="well">
-      {% include sidebar.html %}
+      <ul class="nav pull-right">
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="http://lists.okfn.org/mailman/listinfo/data-protocols" title="Join the discussion">Mailing List</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://github.com/dataprotocols/dataprotocols/issues" title="Report issues, suggestions and improvements">Issue Tracker</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://github.com/dataprotocols/dataprotocols" title="Fork and pull to submit new material or corrections">Repo</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://twitter.com/OKFNLabs">Twitter</a>
+        </li>
+        <li class="divider-vertical"></li>
+        </ul>
       </div>
     </div>
   </div>
-</div><!-- /content -->
-</div>
-
-<footer>
   <div class="container">
-    <p>
-      Supported as part of the work of the <a href="http://okfn.org">Open
-        Knowledge Foundation and its community</a>
-      &ndash;
-      <a href="http://github.com/dataprotocols/">Source Code</a>
-    </p>
-    <p>
+  <div class="content">
+    <div class="row">
+      <div class="span6 offset3">
+        <div class="banner page-header">
+          <h1>
+            {{page.title}}
+            {% if page.subtitle %}
+            <br />
+            <small>
+              {{page.subtitle}}
+            </small>
+            {% endif %}
+          </h1>
+        </div>
+
+        {{content}}
+      </div>
+    </div>
+  </div><!-- /content -->
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>
+        Supported as part of the work of the <a href="http://okfn.org">Open
+          Knowledge Foundation and its community</a>
+        &ndash;
+        <a href="http://github.com/dataprotocols/">Source Code</a>
+      </p>
+      <p>
       <a href="http://opendefinition.org/okd/" title="Open Content">
         <img src="http://assets.okfn.org/images/ok_buttons/oc_80x15_blue.png" alt="" border="" /></a>
       <a href="http://opendefinition.org/ossd/" title="Open Online Software Service">
