@@ -205,3 +205,9 @@ Types:
 -   float - IEEE 754-2008 formatted floating point values
 -   boolean - "true" or "false", case-insensitive
 -   record (JSON only) - a JSON object; also known as a nested record
+
+Type Lists
+----------
+
+See HTML5 Forms: http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type
+
