@@ -183,12 +183,12 @@ Why CSV
 
 More informally:
 
-\> CSV is the data Kalashnikov: not pretty, but many wars have been
+> CSV is the data Kalashnikov: not pretty, but many wars have been
 fought with it and kids can use it.
 [[@pudo](https://twitter.com/pudo/status/248473299741446144) (Friedrich
 Lindenberg)]
 
-\> CSV is the ultimate simple, standard data format - streamable,
+> CSV is the ultimate simple, standard data format - streamable,
 text-based, no need for proprietary tools etc [@rufuspollock (Rufus
 Pollock)]
 
