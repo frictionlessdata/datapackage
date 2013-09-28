@@ -6,15 +6,14 @@
     {{page.title}} - Data Protocols - Open Knowledge Foundation
   </title>
   <meta name="author" content="Open Knowledge Foundation and others">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <link href="http://okfnlabs.org/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="http://okfnlabs.org/css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="http://okfnlabs.org/css/labs.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="{{site.baseurl}}/css/style.css" rel="stylesheet" />
 
 {% if page.redirect %}
@@ -23,19 +22,21 @@
 
 </head>
 <body>
+<div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="{{site.baseurl}}/">
+        <img src="http://assets.okfn.org/p/opendatahandbook/img/data-wrench.png" alt="" />
+        Data Protocols
+        <small>Lightweight Standards and Patterns for Data</small>
+      </a>
+    </div>
+  </div>
+</div>
 <div class="container">
 <div class="content">
-  <div class="banner page-header">
-    <h1>
-      <a href="{{site.baseurl}}/">Data Protocols</a>
-      <br />
-      <small>
-        Lightweight Standards and Patterns for (Open) Data
-      </small>
-    </h1>
-  </div>
   <div class="row">
-    <div class="span8">
+    <div class="span6 offset1">
       <h1>{{page.title}}</h1>
       {{content}}
     </div>
@@ -46,8 +47,10 @@
     </div>
   </div>
 </div><!-- /content -->
+</div>
 
-  <footer>
+<footer>
+  <div class="container">
     <p>
       Supported as part of the work of the <a href="http://okfn.org">Open
         Knowledge Foundation and its community</a>
@@ -61,8 +64,8 @@
         <img src="http://assets.okfn.org/images/ok_buttons/os_80x15_orange_grey.png" alt="" border="" />
       </a>
     </p>
-  </footer>
-</div><!-- /container -->
+  </div><!-- /container -->
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://assets.okfn.org/themes/okfn/collapse.min.js" type="text/javascript"></script>
