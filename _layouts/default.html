@@ -19,6 +19,9 @@
 {% if page.redirect %}
   <meta http-equiv="refresh" content="0; url={{ page.redirect }}">
 {% endif %}
+{% if page.internal_redirect %}
+  <meta http-equiv="refresh" content="0; url={{ site.baseurl }}{{ page.internal_redirect }}">
+{% endif %}
 
 </head>
 <body>
