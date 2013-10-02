@@ -1,14 +1,11 @@
 ---
 title: Coopy highlighter diff format for tables
 layout: default
+version: 0.7
+last_update: 24 August 2013
+created: 16 December 2011
+author: Paul Fitzpatrick (Data Commons Co-op)
 ---
-
-<div class="meta" markdown="block">
-Version | 0.7
-Last Updated | 24 August 2013
-Created | 16 December 2011
-
-</div>
 
 <style> 
 .highlighter .add { 
@@ -48,12 +45,14 @@ Created | 16 December 2011
 }
 .highlighter tr:first-child td {
   border-top: 1px solid #2D4068;
+  background-color: #eee;
 }
 .highlighter td:first-child { 
   border-left: 1px solid #2D4068;
 }
 .highlighter td {
   empty-cells: show;
+  background-color: #fff;
 }
 .highlighter table {
   margin: 0px auto;
@@ -66,12 +65,12 @@ Created | 16 December 2011
 }
 .highlighter td.desc {
   border: none;
-  background-color: white;
+  background-color: #eee;
   font-style: italic;
 }
 .highlighter tr.blank td {
   border: none;
-  background-color: white;
+  background-color: #eee;
 }
 </style>
 The highlighter diff format is a format for expressing the difference
@@ -84,43 +83,48 @@ compare them is to describe the changes needed to modify `LOCAL` to
 match `REMOTE`. For the highlighter diff format, we can express the
 following kinds of changes:
 
-> -   Inserted or deleted rows.
-> -   Inserted, deleted, or renamed columns.
-> -   Modified cell values.
-> -   Reordered rows or columns (if they have a defined order).
+ -   Inserted or deleted rows.
+ -   Inserted, deleted, or renamed columns.
+ -   Modified cell values.
+ -   Reordered rows or columns (if they have a defined order).
 
 Changes in formatting and systematic transformation of data (such as
 capitalization) are not expressible.
 
-General structure
-=================
+### Table of Contents 
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## General structure
 
 The diff contains rows and columns from the tables being compared. As in
 regular text diffs, there is flexibility in what data is given and what
 is omitted.
 
-> -   A column or row that is common to the tables being compared should
->     appear at most once.
-> -   Any column or row containing a modified cell should be included in
->     the diff, and the modified cell should be represented using the
->     procedure in expressing a modified cell value\_.
-> -   Columns or rows that are present in one table and not in the other
->     should be included in the diff.
-> -   Columns or rows that are unchanged and unneeded for context may be
->     omitted, at the diff creator's discretion.
-> -   Omitted blocks of rows or columns should be marked with a
->     row/column full of |ldquo|...|rdquo| cells.
+ -   A column or row that is common to the tables being compared should
+     appear at most once.
+ -   Any column or row containing a modified cell should be included in
+     the diff, and the modified cell should be represented using the
+     procedure in [Expressing a modified cell value](#modified-cell).
+ -   Columns or rows that are present in one table and not in the other
+     should be included in the diff.
+ -   Columns or rows that are unchanged and unneeded for context may be
+     omitted, at the diff creator's discretion.
+ -   Omitted blocks of rows or columns should be marked with a
+     row/column full of "..." cells.
 
 In addition, the diff contains the following special rows and columns:
 
-> -   The *action* column. This is always present, and is the first
->     column in the diff if columns are ordered. If columns are *not*
->     ordered, it is the column named `__hilite_diff__`.
-> -   A *header* row with column names. This row can be recognized since
->     it will have the tag `@@` in the action column.
-> -   A *schema* row that is needed when the column structure differs
->     between tables. This row can be recognized since it will have the
->     tag `!` in the action column.
+ -   The *action* column. This is always present, and is the first
+     column in the diff if columns are ordered. If columns are *not*
+     ordered, it is the column named `__hilite_diff__`.
+ -   A *header* row with column names. This row can be recognized since
+     it will have the tag `@@` in the action column.
+ -   A *schema* row that is needed when the column structure differs
+     between tables. This row can be recognized since it will have the
+     tag `!` in the action column.
 
 Here's an example diff, where the tables being compared share the same
 three columns:
@@ -165,15 +169,14 @@ We see that a schema row is added above the header row to represent the
 changes in columns. With this general anatomy of a diff in mind, let's
 look at the details of how to interpret it.
 
-> **note**
->
-> If writing a rule to "sniff" a file to see if it is a highlighter
-> diff, the `@@` tag is a handy tell-tale. But watch out for that schema
-> row! Also, to allow for future evolution of this format, please try to
-> be robust to a few extra rows or columns appearing before the `@@`.
+<div class="alert alert-info" markdown="block">
+NOTE: If writing a rule to "sniff" a file to see if it is a highlighter
+diff, the `@@` tag is a handy tell-tale. But watch out for that schema
+row! Also, to allow for future evolution of this format, please try to
+be robust to a few extra rows or columns appearing before the `@@`.
+</div>
 
-Expressing inserted and deleted columns
-=======================================
+## Expressing inserted and deleted columns
 
 An inserted column is expressed simply by including that column in the
 diff, and placing `+++` in the schema row above the corresponding column
@@ -209,8 +212,7 @@ inserted columns blank. Similarly, any rows in the diff that are present
 only in the `REMOTE` table will leave deleted columns blank. Rows that
 are present in both tables will have values in all cells.
 
-Expressing inserted and deleted rows
-====================================
+## Expressing inserted and deleted rows
 
 An inserted row is expressed simply by placing `+++` in the action
 column, and placing cell values in the appropriate columns. If there are
@@ -270,18 +272,18 @@ The `:` tag signifies the context row was moved (and its location is now
 as in the `REMOTE` table). The `+` signifies that there are cells added
 on that row.
 
-> **note**
->
-> To avoid burdening human readers with too much arcana, tags are *not*
-> combined when multiple kinds of actions apply to a row. So for
-> example, a context row that was moved and had a cell added will *not*
-> be tagged as `:+` or `+:` or such-like, but rather by `:`. Cell
-> addition can be determined from the schema row. These weak tags are
-> included as aids for highlighting to express the most significant
-> thing to know about a row.
+<div class="alert alert-info" markdown="block">
+To avoid burdening human readers with too much arcana, tags are *not*
+combined when multiple kinds of actions apply to a row. So for
+example, a context row that was moved and had a cell added will *not*
+be tagged as `:+` or `+:` or such-like, but rather by `:`. Cell
+addition can be determined from the schema row. These weak tags are
+included as aids for highlighting to express the most significant
+thing to know about a row.
+</div>
 
-Expressing a modified cell value
-================================
+## Expressing a modified cell value
+{: #modified-cell}
 
 If a row contains a cell whose value is different in the compared
 tables, then that row should be shown in the diff, with a tag in the
@@ -309,33 +311,32 @@ type of the cell value. One distinction that may be important to retain
 is the difference between a NULL or empty cell, and the empty string.
 The highlighter diff uses the following encoding:
 
-> -   A NULL value, if available, represents itself.
-> -   The encoded string `NULL` represents a NULL value.
-> -   The encoded string `_NULL` represents the string "NULL".
-> -   The encoded string `__NULL` represents the string "\_NULL".
-> -   ...
+ -   A NULL value, if available, represents itself.
+ -   The encoded string `NULL` represents a NULL value.
+ -   The encoded string `_NULL` represents the string "NULL".
+ -   The encoded string `__NULL` represents the string "\_NULL".
+ -   ...
 
 The goal is that the diff can be safely converted to and from CSV by
 existing tools without changing its meaning. To that end:
 
-> -   For matching (e.g. on context lines) blank cells in the diff
->     (either the NULL value or an empty string) should be treated as
->     ambiguous, and match *either* of NULL or an empty string if an
->     exact match is not available.
-> -   When using a diff as a patch, and inserting new cells, a blank
->     cell in the diff (either the NULL value or an empty string) should
->     be treated as ambiguous, and the "right" thing done given the
->     column type. If either value could be inserted, then the blank
->     string should be inserted (since the encoded string `NULL` is
->     available to specifically identify the NULL value).
+ -   For matching (e.g. on context lines) blank cells in the diff
+     (either the NULL value or an empty string) should be treated as
+     ambiguous, and match *either* of NULL or an empty string if an
+     exact match is not available.
+ -   When using a diff as a patch, and inserting new cells, a blank
+     cell in the diff (either the NULL value or an empty string) should
+     be treated as ambiguous, and the "right" thing done given the
+     column type. If either value could be inserted, then the blank
+     string should be inserted (since the encoded string `NULL` is
+     available to specifically identify the NULL value).
 
 Note that if the diff is being expressed in a table that allows nested
 structure (e.g. a JSON representation), a list representation for
 modified cells might be used to avoid this issue. There is no
 specification for that at this time.
 
-Reference: action column tags
-=============================
+## Reference: action column tags
 
 |---
 |Symbol | Meaning
@@ -351,8 +352,7 @@ Reference: action column tags
 | ``:`` | A reordered row. |
 |---
 
-Reference: Schema row tags
-==========================
+## Reference: Schema row tags
 
 |---
 |Symbol | Meaning

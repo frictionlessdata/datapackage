@@ -1,6 +1,7 @@
 ---
 title: CouchDB Replication Protocol
 layout: default
+author: Benoit Chesneau
 ---
 
 The **CouchDB Replication protocol** is a protocol for synchronizing

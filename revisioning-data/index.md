@@ -1,6 +1,7 @@
 ---
 title: Revisioning (Versioning) for Data - Theory
 layout: default
+author: Rufus Pollock (Open Knowledge Foundation)
 ---
 
 The following develops a changeset approach for revisioning databases

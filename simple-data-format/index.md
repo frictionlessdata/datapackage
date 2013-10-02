@@ -1,14 +1,10 @@
 ---
 title: Simple Data Format (SDF)
 layout: default
+version: 1.0 beta
+last_update: 18 April 2013
+created: May 7 2012
 ---
-
-<div class="meta" markdown="block">
-Version | 1.0 beta
-Last Updated | 18 April 2013
-Created | May 7 2012
-
-</div>
 
 This document defines a simple data publishing format (Simple Data
 Format) for publishing and sharing tabular-style data.
@@ -27,13 +23,19 @@ The key features of this format are the following:
 -   Reuse wherever possible of existing work including other Data
     Protocols specifications
 
-> **note**
->
-> If you have comments or suggestions please file them in the issue
-> tracker at: <https://github.com/dataprotocols/dataprotocols/issues>.
+<div class="alert alert-info" markdown="block">
+ If you have comments or suggestions please file them in the issue
+ tracker at: <https://github.com/dataprotocols/dataprotocols/issues>.
+</div>
 
-Quick Start
-===========
+### Table of Contents 
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+
+## Quick Start
 
 A Simple Data Format dataset has:
 
@@ -85,15 +87,14 @@ Here's an example of a minimal simple data format dataset:
       ]
     }
 
-Specification
-=============
+## Specification
 
-This specification is in large part a refinement of the Data Packages
-specification \<data-packages\>. It has the additional requirements such
+This specification is in large part a refinement of the
+<a href="{{site.baseurl}}/data-packages/">Data Packages specification</a>. It has the additional requirements such
 as:
 
 -   All data files MUST be in CSV format
--   A schema following JSON Table Schema \<json-table-schema\> MUST be
+-   A schema following <a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a> MUST be
     provided for each data file that is part of the data package
 
 Files
@@ -145,10 +146,9 @@ structure:
 
 If the CSV file does not follow these dialect information MUST be
 provided in the file entry as per
-CSV Dialect Description Format \<csv-dialect\>.
+<a href="{{site.baseurl}}/csv-dialect/">CSV Dialect Description Format</a>.
 
-Key Design Features and Principles
-==================================
+## Key Design Features and Principles
 
 The format's focus is on simplicity and web usage -- that is, usage
 online with access and transmission *over HTTP*. In addition the format
@@ -203,14 +203,12 @@ Why JSON
 -   JSON is readable as simple text making it amenable to management and
     processing using simple text tools
 
-Open Issues
-===========
+## Open Issues
 
 -   Foreign keys between files
 -   Primary keys and uniqueness
 
-Alternatives Discussion
-=======================
+## Alternatives Discussion
 
 What alternatives are there for the data portion of the Simple Data
 format?
@@ -226,15 +224,14 @@ format?
     -   (-) lack of support (e.g. from spreadsheets), no streaming, not
         accessible with text tools etc
 
-> **note**
->
-> this specification owes a great deal to the excellent Dataset
-> Publishing Language (DSPL) put forward by Google. The main
->     difference is in using JSON instead of XML for the schema and
->     re-using as far as possible the JSON-LD schema language (based on
->     linked-data) rather than inventing a new type and schema
->     structure.
->
+<div class="alert alert-info" markdown="block">
+NOTE: this specification owes a great deal to the excellent Dataset
+Publishing Language (DSPL) put forward by Google. The main
+difference is in using JSON instead of XML for the schema and
+re-using as far as possible the JSON-LD schema language (based on
+linked-data) rather than inventing a new type and schema
+structure.
+</div>
 
 ### Alternative CSV format
 

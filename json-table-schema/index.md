@@ -1,14 +1,10 @@
 ---
 title: JSON Table Schema
 layout: default
+version: 1.0-pre3.1
+last_update: 07 September 2013
+created: 12 November 2012
 ---
-
-<div class="meta" markdown="block">
-Version | 1.0-pre3.1
-Last Updated | 07 September 2013
-Created | 12 November 2012
-
-</div>
 
 This RFC defines a simple schema for tabular data. The schema is
 designed to be expressible in JSON.
@@ -147,14 +143,14 @@ Formats
 The format field can be used to describe the format, especially for
 dates. Possible examples are:
 
-> \# "type": "date" "format": "yyyy"
->
-> \# type=string "format": "markdown"
+     # "type": "date" "format": "yyyy"
+     
+     # type=string "format": "markdown"
 
 Appendix: Related Work
 ======================
 
-See Web-Oriented Data Formats \<data-formats\> for more details and
+See <a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a>  for more details and
 links for each format.
 
 -   SQL
@@ -209,5 +205,5 @@ Types:
 Type Lists
 ----------
 
-See HTML5 Forms: http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type
+See HTML5 Forms: <http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type>
 
