@@ -24,20 +24,12 @@ Work topics include:
 
   <h4>Proposals</h4>
   <ul>
-    <li><a href="{{site.baseurl}}/data-packages/">Data Packages</a></li>
-    <li><a href="{{site.baseurl}}/simple-data-format/">Simple Data Format (SDF)</a></li>
-    <li><a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a></li>
-    <li><a href="{{site.baseurl}}/csv-dialect/">CSV Dialect Description Format (CSVDDF)</a></li>
-    <li><a href="{{site.baseurl}}/tabular-diff-format/">Coopy highlighter diff format for tables</a></li>
+    {% include proposals.html %}
   </ul>
 
   <h4>Research and Patterns</h4>
   <ul>
-    <li><a href="{{site.baseurl}}/revisioning-data/">Revisioning (Versioning) for Data</a></li>
-    <li><a href="{{site.baseurl}}/syncing/">Changes and Syncing</a></li>
-    <li><a href="{{site.baseurl}}/reconciliation/">Reconciliation Protocol</a></li>
-    <li><a href="{{site.baseurl}}/data-query-protocol/">Data Query Protocol</a></li>
-    <li><a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a></li>
+    {% include research.html %}
   </ul>
 </div>
 
