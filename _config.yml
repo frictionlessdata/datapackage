@@ -1,4 +1,4 @@
-name: DataProtocols
+name: Data Protocols
 pygments: true
 markdown: kramdown
-baseurl: /dataprotocols
+baseurl: 
