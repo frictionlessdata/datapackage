@@ -2,9 +2,13 @@
 
 body {
   font-size: 14px;
-  font-family: Merriweather, serif;
+  font-family: Merriweather, Georgia, serif;
   font-weight: 300;
   background-color: #eee;
+}
+
+body, p, li {
+  line-height: 22px;
 }
 
 h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
