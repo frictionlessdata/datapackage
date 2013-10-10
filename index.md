@@ -74,16 +74,13 @@ has subsequently benefitted from input from numerous other individuals.
 Participate and Contribute
 ==========================
 
-This effort is community-run and contributions, comments and corrections are warmly welcomed.
-
-Most work proceeds in an RFC-style manner with discussion on the [mailing
-list][list].
+This effort is community-run and contributions, comments and corrections are
+warmly welcomed. Most work proceeds in an RFC-style manner with discussion on
+the [mailing list][list].
 
 Material is kept in a [git repo on github][repo] - fork and submit a pull
-request to add material.
-
-There is also an [issue tracker][issues] which can be used for specific issues
-or suggestions.
+request to add material. There is also an [issue tracker][issues] which can be
+used for specific issues or suggestions.
 
 [list]: http://lists.okfn.org/mailman/listinfo/data-protocols
 [repo]: https://github.com/dataprotocols/dataprotocols
