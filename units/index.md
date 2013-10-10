@@ -25,12 +25,16 @@ following:
 -   An inventory of standardised units with unique identifiers.
 -   A standardized syntax for describing compound units
 
+{% include meta.html %}
+
+<div class="alert">
 This is a draft specification and still under development. If you have
 comments or suggestions please file them in the issue tracker at:
 <https://github.com/dataprotocols/dataprotocols/issues>. If you have
 explicit changes please fork the repo
 (<https://github.com/dataprotocols/dataprotocols>) and submit a pull
 request.
+</div>
 
 Specification
 =============

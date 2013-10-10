@@ -1,0 +1,15 @@
+<table class="table table-striped meta">
+  {% if page.author %}
+    <tr><td>Author</td><td>{% for author in page.author %}{{author}}<br />{% endfor %}</td></tr>
+  {% endif %}
+  {% if page.version %}
+    <tr><td>Version</td><td>{{page.version}}</td></tr>
+  {% endif %}
+  {% if page.last_update %}
+    <tr><td>Last Updated</td><td>{{page.last_update}}</td></tr>
+  {% endif %}
+  {% if page.created %}
+    <tr><td>Created</td><td>{{page.created}}</td></tr>
+  {% endif %}
+</table>
+

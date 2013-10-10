@@ -4,8 +4,10 @@ layout: default
 author: Rufus Pollock (Open Knowledge Foundation)
 ---
 
+{% include meta.html %}
+
 The following develops a changeset approach for revisioning databases
-(data/datasets). The approach taken has some similariteis to that found
+(data/datasets). The approach taken has some similarities to that found
 in source control for software, especially mercurial and git.
 
 It is agnostic about format of versioning (i.e. copy-on-Write versus

@@ -78,6 +78,8 @@ between two tables. It is itself a table. Like the classic diff formats
 used for text, it is intended both for visual inspection by a human, and
 to be processed by programs.
 
+{% include meta.html %}
+
 Assume we have two tables, called `LOCAL` and `REMOTE`. One way to
 compare them is to describe the changes needed to modify `LOCAL` to
 match `REMOTE`. For the highlighter diff format, we can express the
