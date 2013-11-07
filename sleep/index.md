@@ -32,12 +32,14 @@ Wire protocol
 JSON representing part of the transaction log of changes to the tabular
 data.:
 
+{% highlight js %}
     { 
         seq: 10, 
         id: "07acde3002cb1f62a08de5469160b912", 
         deleted: false, 
         data: { first_name: "Ryan", last_name: "Pitts", employer: "The Spokesman-Review" } 
     }
+{% endhighlight %}
 
 -   seq - the sequence in the transaction log
 -   id - unique identifier of the row
@@ -63,8 +65,11 @@ Note that as it is JSON, the keys can be in any order and change order.
     UTC no timezones.
 
 Optional - by convention name variables storing WGS 84
-latitude/longitude so they end \_lat and \_lng. e.g. :: data: { city:
-"Liverpool", centre\_lat: 53.4, centre\_lng: -3 }
+latitude/longitude so they end \_lat and \_lng. e.g.
+
+{% highlight js %}
+    data: { city: "Liverpool", centre_lat: 53.4, centre_lng: -3 }
+{% endhighlight %}
 
 Errors
 ======
@@ -72,9 +77,11 @@ Errors
 Return error messages in a JSON dictionary with the key error, value an
 arbitary string.:
 
+{% highlight js %}
     {
         error: "Datastore timed out"
     }
+{% endhighlight %}
 
 Todo
 ====
