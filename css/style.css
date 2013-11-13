@@ -99,6 +99,7 @@ blockquote p {
   border-right: 1px solid #f5f7f8;
   width: 1px;
   margin: 0;
+  height: 43px;
 }
 
 .navbar .nav > li > a {
