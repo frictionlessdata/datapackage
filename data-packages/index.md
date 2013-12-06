@@ -33,17 +33,30 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 # Specification
 
-A data package MUST provide a data package "descriptor" file named
-datapackage.json.
+A data package consists of:
+
+* Data package metadata that describes the structure and contents of the package
+* Optionally, additional resources, including data files, that make up the package
+
+A valid data package MUST provide a data package "descriptor" file named
+`datapackage.json`.
 
 This file should be placed in the top-level directory (relative to any other
 resources provided as part of the data package).
 
+The data package descriptor is used to provide metadata about the data package and to 
+describe its contents. The descriptor should follow the structure described in the 
+rest of this document.
+
 A data package will normally include other resources (e.g. data files) but the
 Data Package specification does NOT impose any requirements on their form or
-structure. (As described below it is also possible to 'inline' data into the
-datapackage.json in which case the datapackage.json is both the descriptor and
-the data).
+structure. 
+
+The data included in the package may be provided as:
+
+* Files bundled into the package itself
+* Remote resources, referenced by URL
+* "Inline" data (see below) which is included directly in the `datapackage.json` file
 
 ## Illustrative Structure
 
@@ -96,8 +109,8 @@ The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627]
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-The hash MUST contain a `resources` attribute and metadata attributes defined as
-'required' below.
+A valid descriptor MUST contain both a `name` and a `resources` attibute. These fields, and additional 
+metadata attributes, are described in the "Required Fields" section below.
 
 Here is an illustrative example of a datapackage JSON file:
 
@@ -119,12 +132,12 @@ Here is an illustrative example of a datapackage JSON file:
 
 ## Metadata
 
-### Core Fields
+### Required Fields
 
-The metadata MUST have the following fields:
+A valid package MUST include the following fields:
 
-* name (required) - short url-usable (and preferably human-readable) name of
-  the package. This must be lower-case and contain only alphanumeric characters
+* `name` (required) - short url-usable (and preferably human-readable) name of
+  the package. This MUST be lower-case and contain only alphanumeric characters
   along with ".", "_" or "-" characters. It will function as a unique
   identifier and therefore SHOULD be unique in relation to any registry in
   which this package will be deposited (and preferably globally unique).
@@ -136,45 +149,53 @@ The metadata MUST have the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
-The metadata SHOULD have the following fields:
+* `resources` (required) - a JSON array of hashes that describe the contents of 
+  the package. The structure of the resource hash is described in the "Resource Information"
+  section.
 
-* licenses - array of licenses under which the package is provided. Each
-  license is a hash with an id (based on http://OpenDefinition.org/licenses) and/or a url property linking to the actual text. Example:
+In addition to the above fields, it is recommended that the following fields SHOULD 
+be included in every package descriptor:
+
+* `licenses` - array of licenses under which the package is provided. Each
+  license is a hash with an `id` (based on http://OpenDefinition.org/licenses) and/or a `url` property linking to the actual text. Example:
 
       "licenses": [{
         "id": "odc-pddl",
         "url": "http://opendatacommons.org/licenses/pddl/"
       }]
-* datapackage_version - the version of the data package specification this
+* `datapackage_version` - the version of the data package specification this
   datapackage.json conforms to. It should follow the Semantic Versioning
-  requirements (http://semver.org/).
+  requirements (http://semver.org/). The current version of this specification is given at 
+  the top of this document.
 
-The metadata MAY have the following keys and values:
+### Recommended Fields
 
-* title - a title or one sentence description for this package
-* description - a description of the package. The first paragraph (up to the
+Additionally, a package descriptor MAY include the following keys and values:
+
+* `title` - a title or one sentence description for this package
+* `description` - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
-* homepage - URL string for the data packages web site
-* version - a version string conforming to the Semantic Versioning requirements
+* `homepage` - URL string for the data packages web site
+* `version` - a version string identifying the version of the package. It should conform to the Semantic Versioning requirements
   (http://semver.org/).
-* sources - an array of source hashes. Each source hash may have name, web and email fields. Example:
+* `sources` - an array of source hashes. Each source hash may have `name`, `web` and `email` fields. Example:
 
       "sources": [{
         "name": "World Bank and OECD",
         "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
       }]
     
-* keywords - an Array of string keywords to assist users searching for the
+* `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
-* last_modified: iso 8601 formatted date (or datetime) when this data package was last updated
-* image - a link to an image to use for this data package
+* `last_modified`: iso 8601 formatted date (or datetime) when this data package was last updated
+* `image` - a link to an image to use for this data package
 
-### Additional fields 
+### Optional Fields 
 
-* maintainers - Array of maintainers of the package. Each maintainer is a hash
+* `maintainers` - Array of maintainers of the package. Each maintainer is a hash
   which must have a "name" property and may optionally provide "email" and
   "web" properties.
-* contributors - an Array of hashes each containing the details of a
+* `contributors` - an Array of hashes each containing the details of a
   contributor. Must contain a 'name' property and MAY contain an email and web
   property. By convention, the first contributor is the original author of the
   package. Example:
@@ -185,8 +206,8 @@ The metadata MAY have the following keys and values:
         "web": "http://www.bloggs.com"
       }]
 
-* publisher - like contributors 
-* dependencies - Hash of prerequisite packages on which this package depends in
+* `publisher` - like contributors 
+* `dependencies` - Hash of prerequisite packages on which this package depends in
   order to install and run. Each dependency defines the lowest compatible
   MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with
   which the package has been tested and is assured to work. The version may be
@@ -218,41 +239,45 @@ where all the data is tabular and stored in CSV.
 
 ## Resource Information
 
-Resource information MUST be a JSON serializable hash.
+Packaged data resources are described in the `resources` property of the package descriptor. 
+This property is an array of values. Each value describes a single resource and 
+MUST be a JSON hash.
+
+### Required Fields
 
 Resource information MUST contain (at least) one of the following attributes which
 specify the location of the associated data file (either online, 'relative'
 (local), or 'inline'):
 
-* url: url of this data resource
-* path: unix-style ('/') relative path to the resource. Path MUST be a relative
+* `url`: url of this data resource
+* `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
   path, that is relative to the directory in which the descriptor file
-  (datapackage.json) listing this file resides
-* data: (inline) a field containing the data directly inline in the
-  datapackage.json file. Further details below.
+  (`datapackage.json`) listing this file resides
+* `data`: (inline) a field containing the data directly inline in the
+  `datapackage.json` file. Further details below.
 
 <div class="alert" markdown="block">
-NOTE: the use of a url allows a data package to reference data not necessarily
-contained locally in the Data Package. Of course, the path attribute may still
+NOTE: the use of a `url` allows a data package to reference data not necessarily
+contained locally in the Data Package. Of course, the `path` attribute may still
 be used for Data Packages located online (in this case it determines the
 relative URL).
 </div>
 
 <div class="alert" markdown="block">
-NOTE: When more than one of url, path or data are specified consumers need to
+NOTE: When more than one of `url`, `path` or `data` are specified consumers need to
 determine which option to use (or in which order to try them). The
-recommendation is to utilize the following order: data, path, url. A consumer
+recommendation is to utilize the following order: `data`, `path`, `url`. A consumer
 should also stop processing once one of these options yields data.
 </div>
 
 There are NO other required fields. However, there are a variety of common
 fields that can be used which we detail below.
 
-### Recommended fields
+### Recommended Fields
 
-A resource SHOULD contain the following fields:
+It is recommended that a resource SHOULD contain the following fields:
 
-* name: a resource SHOULD contain an name attribute. The name is a simple name or
+* `name`: a resource SHOULD contain an `name` attribute. The name is a simple name or
   identifier to be used for this resource.
 
   * If present, the name MUST be unique amongst all resources in this data
@@ -262,22 +287,22 @@ A resource SHOULD contain the following fields:
   * It would be usual for the name to correspond to the file name (minus the
     extension) of the data file the resource describes.
 
-### Optional fields
+### Optional Fields
 
 A data package MAY contain any number of additional fields. Common fields include:
 
-* format: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
+* `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
-* mediatype: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
+* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
 * encoding: character encoding of the resource data file (default is assumption
   of utf8) 
-* bytes: size of the file in bytes
-* hash: the md5 hash for this resource
-* modified: ISO 8601 string for last modified timestamp of the resource
-* schema: a schema for the resource - see below for more on this in the case of
+* `bytes`: size of the file in bytes
+* `hash`: the md5 hash for this resource
+* `modified`: ISO 8601 string for last modified timestamp of the resource
+* `schema`: a schema for the resource - see below for more on this in the case of
   tabular data.
-* sources: as for data package metadata.
-* licenses: as for data package metadata. If not specified the resource
+* `sources`: as for data package metadata.
+* `licenses`: as for data package metadata. If not specified the resource
   inherits from the data package.
 
 ### Inline Data
