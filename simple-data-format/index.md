@@ -10,18 +10,6 @@ This document defines a simple data publishing format (Simple Data
 Format) for publishing and sharing tabular-style data.
 
 The format's focus is on simplicity and ease of use over the web -- that
-is, usage online with access ---
-title: Simple Data Format (SDF)
-layout: default
-version: 1.0 beta
-last_update: 18 April 2013
-created: May 7 2012
----
-
-This document defines a simple data publishing format (Simple Data
-Format) for publishing and sharing tabular-style data.
-
-The format's focus is on simplicity and ease of use over the web -- that
 is, usage online with access and transmission *over HTTP*. In addition
 the format is focused on data that can be presented in a tabular
 structure and in making it easy to produce (and consume) this format
