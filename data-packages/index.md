@@ -109,8 +109,10 @@ The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627]
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-A valid descriptor MUST contain both a `name` and a `resources` attibute. These fields, and additional 
+A valid descriptor MUST contain a `name` attibute. These fields, and additional 
 metadata attributes, are described in the "Required Fields" section below.
+
+A valid descriptor MAY contain a `resources` attribute.
 
 Here is an illustrative example of a datapackage JSON file:
 
@@ -149,12 +151,12 @@ A valid package MUST include the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
-* `resources` (required) - a JSON array of hashes that describe the contents of 
-  the package. The structure of the resource hash is described in the "Resource Information"
-  section.
-
 In addition to the above fields, it is recommended that the following fields SHOULD 
 be included in every package descriptor:
+
+* `resources` - a JSON array of hashes that describe the contents of 
+  the package. The structure of the resource hash is described in the "Resource Information"
+  section.
 
 * `licenses` - array of licenses under which the package is provided. Each
   license is a hash with an `id` (based on http://OpenDefinition.org/licenses) and/or a `url` property linking to the actual text. Example:
