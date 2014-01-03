@@ -1,8 +1,8 @@
 ---
 title: Data Packages
 layout: default
-version: 1.0-beta.5
-last_update: 3 August 2013
+version: 1.0-beta.6
+last_update: 3 January 2014
 created: 12 November 2007
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
@@ -24,6 +24,10 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 [issues]: https://github.com/dataprotocols/dataprotocols/issues
 [repo]: https://github.com/dataprotocols/dataprotocols
+
+### Changelog
+
+- `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
 ### Table of Contents 
 {:.no_toc}
