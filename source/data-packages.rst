@@ -161,7 +161,6 @@ The metadata MAY have the following keys and values:
     
 * keywords - an Array of string keywords to assist users searching for the
   package in catalogs.
-* last_modified: iso 8601 formatted date (or datetime) when this data package was last updated
 * image - a link to an image to use for this data package
 
 Additional fields 
@@ -267,7 +266,6 @@ A data package MAY contain any number of additional fields. Common fields includ
   of utf8) 
 * bytes: size of the file in bytes
 * hash: the md5 hash for this resource
-* modified: ISO 8601 string for last modified timestamp of the resource
 * schema: a schema for the resource - see below for more on this in the case of
   tabular data.
 * sources: as for data package metadata.
