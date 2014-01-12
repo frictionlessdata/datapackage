@@ -1,7 +1,7 @@
 ---
 title: Data Packages
 layout: default
-version: 1.0-beta.7
+version: 1.0-beta.8
 last_update: 12 January 2014
 created: 12 November 2007
 author:
@@ -27,6 +27,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
 - `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
 - `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
@@ -194,7 +195,6 @@ Additionally, a package descriptor MAY include the following keys and values:
     
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
-* `last_modified`: iso 8601 formatted date (or datetime) when this data package was last updated
 * `image` - a link to an image to use for this data package
 
 ### Optional Fields 
@@ -321,7 +321,6 @@ A data package MAY contain any number of additional fields. Common fields includ
   of utf8) 
 * `bytes`: size of the file in bytes
 * `hash`: the md5 hash for this resource
-* `modified`: ISO 8601 string for last modified timestamp of the resource
 * `schema`: a schema for the resource - see below for more on this in the case of
   tabular data.
 * `sources`: as for data package metadata.
