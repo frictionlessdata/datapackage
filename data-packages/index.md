@@ -1,8 +1,8 @@
 ---
 title: Data Packages
 layout: default
-version: 1.0-beta.6
-last_update: 3 January 2014
+version: 1.0-beta.7
+last_update: 12 January 2014
 created: 12 November 2007
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
@@ -27,6 +27,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
 - `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
 ### Table of Contents 
@@ -217,14 +218,25 @@ Additionally, a package descriptor MAY include the following keys and values:
   the event that the actual data files specified by those resource paths are not
   located in the same directory in which the descriptor file (`datapackage.json`)
   resides.
-* `dependencies` - Hash of prerequisite packages on which this package depends in
-  order to install and run. Each dependency defines the lowest compatible
-  MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with
-  which the package has been tested and is assured to work. The version may be
-  a simple version string (see the version property for acceptable forms), or
-  it may be a hash group of dependencies which define a set of options, any one
-  of which satisfies the dependency. The ordering of the group is significant
-  and earlier entries have higher priority.
+* `dataDependencies` - Hash of prerequisite data packages on which this package
+  depends in order to install. Follows same format as CommonJS Packages spec
+  v1.1.Each dependency defines the lowest compatible MAJOR[.MINOR[.PATCH]]
+  dependency versions (only one per MAJOR version) with which the package has
+  been tested and is assured to work. The version may be a simple version
+  string (see the version property for acceptable forms), or it may be a hash
+  group of dependencies which define a set of options, any one of which
+  satisfies the dependency. The ordering of the group is significant and
+  earlier entries have higher priority. Example:
+
+      "dataDependencies": {
+         "country-codes": "",
+         "unemployment": "2.1",
+         "geo-boundaires": {
+           "acmecorp-geo-boundaries": ["1.0", "2.0"],
+           "othercorp-geo-boundaries": "0.9.8",
+         },
+      }
+ 
 
 <div class="alert" markdown="block">
 NOTE: A Data Package author MAY add any number of additional fields beyond those
