@@ -2,27 +2,34 @@
 title: JSON Table Schema
 layout: default
 version: 1.0-pre3.2
-last_update: 07 September 2013
+last_update: 12 January 2013
 created: 12 November 2012
 ---
 
 This RFC defines a simple schema for tabular data. The schema is
 designed to be expressible in JSON.
 
-Change History
-==============
+{% include meta.html %}
 
--   1.0-pre3.2: (not breaking) add primary key support (see this
+### Changelog
+
+- 1.0-pre3.2: (not breaking) add primary key support (see this
     [issue](https://github.com/dataprotocols/dataprotocols/issues/21))
--   1.0-pre3.1: breaking changes.
 
-    -   `label` changed to `title` - see [Closer alignment with JSON
-        Schema](https://github.com/dataprotocols/dataprotocols/issues/46)
-    -   `id` changed to `name` (with slight alteration in semantics -
-        i.e. SHOULD be unique but no longer MUST be unique)
+- 1.0-pre3.1: breaking changes.
 
-Concepts
-========
+  - `label` changed to `title` - see [Closer alignment with JSON
+    Schema](https://github.com/dataprotocols/dataprotocols/issues/46)
+  - `id` changed to `name` (with slight alteration in semantics - i.e. SHOULD
+    be unique but no longer MUST be unique)
+
+### Table of Contents 
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+# Concepts
 
 A Table consists of a set of rows. Each row has a set of fields
 (columns). We usually expect that each Row has the same set of fields
@@ -53,11 +60,9 @@ In JSON a table would be:
       ...
     ]
 
-Specification
-=============
+# Specification
 
-Top-Level
----------
+## Top-Level
 
 A JSON Table Schema has the following structure:
 
@@ -107,8 +112,7 @@ That is, a JSON Table Schema is:
 -   the Hash `MAY` contain an attribute `primaryKey` (specification and meaning
     is detailed below)
 
-Types
------
+## Types
 
 The type attribute is a string indicating the type of this field.
 
@@ -144,8 +148,7 @@ The type list is as follows:
 -   **array**: an array
 -   **any**: value of field may be any type
 
-Formats
--------
+## Formats
 
 The format field can be used to describe the format, especially for
 dates. Possible examples are:
@@ -154,8 +157,7 @@ dates. Possible examples are:
      
      # type=string "format": "markdown"
 
-Primary Key
------------
+## Primary Key
 
 A primary key is a field or set of fields that uniquely identifies each row in
 the table.
@@ -215,8 +217,7 @@ Here's an example with an array primary key:
 
 ----
 
-Appendix: Related Work
-======================
+# Appendix: Related Work
 
 See <a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a>  for more details and
 links for each format.
@@ -228,8 +229,7 @@ links for each format.
     BigQuery](https://developers.google.com/bigquery/docs/import#jsonformat)
     (JSON format section)
 
-DSPL
-----
+## DSPL
 
 See <https://developers.google.com/public-data/docs/schema/dspl18>.
 Allowed values:
@@ -241,8 +241,7 @@ Allowed values:
 -   date
 -   concept
 
-Google BigQuery
----------------
+## Google BigQuery
 
 Example schema:
 
@@ -270,8 +269,7 @@ Types:
 -   boolean - "true" or "false", case-insensitive
 -   record (JSON only) - a JSON object; also known as a nested record
 
-Type Lists
-----------
+## Type Lists
 
 See HTML5 Forms: <http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type>
 
