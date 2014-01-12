@@ -269,7 +269,30 @@ Types:
 -   boolean - "true" or "false", case-insensitive
 -   record (JSON only) - a JSON object; also known as a nested record
 
+## XML Schema
+
+See <http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes>
+
+* string
+* boolean
+* decimal
+* float
+* double
+* duration
+* dateTime
+* time
+* date
+* gYearMonth
+* gYear
+* gMonthDay
+* gDay
+* gMonth
+* hexBinary
+* base64Binary
+* anyURI
+
 ## Type Lists
 
-See HTML5 Forms: <http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type>
+* HTML5 Forms: <http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type>
+
 
