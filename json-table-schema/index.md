@@ -1,7 +1,7 @@
 ---
 title: JSON Table Schema
 layout: default
-version: 1.0-pre3.1
+version: 1.0-pre3.2
 last_update: 07 September 2013
 created: 12 November 2012
 ---
@@ -12,6 +12,8 @@ designed to be expressible in JSON.
 Change History
 ==============
 
+-   1.0-pre3.2: (not breaking) add primary key support (see this
+    [issue](https://github.com/dataprotocols/dataprotocols/issues/21))
 -   1.0-pre3.1: breaking changes.
 
     -   `label` changed to `title` - see [Closer alignment with JSON
@@ -73,7 +75,9 @@ A JSON Table Schema has the following structure:
           ...
         },
         ... more field descriptors
-      ]
+      ],
+      # (optional) specification of the primary key
+      "primaryKey": ...
     }
 
 That is, a JSON Table Schema is:
@@ -99,6 +103,9 @@ That is, a JSON Table Schema is:
         the funds"
     -   format: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
+
+-   the Hash `MAY` contain an attribute `primaryKey` (specification and meaning
+    is detailed below)
 
 Types
 -----
@@ -138,7 +145,7 @@ The type list is as follows:
 -   **any**: value of field may be any type
 
 Formats
-=======
+-------
 
 The format field can be used to describe the format, especially for
 dates. Possible examples are:
@@ -146,6 +153,67 @@ dates. Possible examples are:
      # "type": "date" "format": "yyyy"
      
      # type=string "format": "markdown"
+
+Primary Key
+-----------
+
+A primary key is a field or set of fields that uniquely identifies each row in
+the table.
+
+The `primaryKey` entry in the schema Hash is optional. If present it specifies
+the primary key for this table.
+
+The `primaryKey`, if present, MUST be:
+
+* Either: an array of strings with each string corresponding to one of the
+  field `name` values in the `fields` array (denoting that the primary key is
+  made up of those fields). It is acceptable to have an array with a single
+  value (indicating just one field in the primary key). Strictly, order of
+  values in the array does not matter. However, it is RECOMMENDED that one
+  follow the order the fields in the `fields` has as client applications may
+  utitlize the order of the primary key list (e.g. in concatenating values
+  together).
+* Or: a single string corresponding to one of the field `name` values in
+  the `fields` array (indicating that this field is the primary key). Note that
+  this version corresponds to the array form with a single value (and can be
+  seen as simply a more convenient way of specifying a single field primary
+  key).
+
+Here's an example:
+
+    {
+      "schema": {
+        "fields": [
+          {
+            "name": "a"
+          },
+          ...
+        ]
+        "primaryKey": "a"
+       }
+    }
+
+Here's an example with an array primary key:
+
+    {
+      "schema": {
+        "fields": [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          },
+          {
+            "name": "c"
+          },
+          ...
+        ]
+        "primaryKey": ["a", "c"]
+       }
+    }
+
+----
 
 Appendix: Related Work
 ======================
