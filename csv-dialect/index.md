@@ -1,7 +1,7 @@
 ---
 title: CSV Dialect Description Format (CSVDDF)
 layout: default
-version: 1.0
+version: 1.1
 created: 20 February 2013
 ---
 
@@ -50,13 +50,13 @@ Example
 Here's an example:
 
     {
-      "csvddf_version": 1.0,
+      "csvddfVersion": 1.0,
       "dialect": {
         "delimiter": ",",
-        "doublequote": false,
-        "lineterminator": "\r\n",
-        "quotechar": "\"",
-        "skipinitialspace": false
+        "doubleQuote": false,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
       }
     }
 
@@ -65,7 +65,7 @@ Specification
 
 The format is a JSON file comprising a dictionary with two members:
 
-csvddf_version   | a number, in n.n format, e.g., 1.0
+csvddfVersion    | a number, in n.n format, e.g., 1.0
 dialect          | a JSON dictionary (specified below)
 {:.table .table-striped .table-bordered .table-condensed .table-definitions}
 
@@ -73,10 +73,10 @@ The "dialect" member must be a dictionary with the following mandatory
 keys:
 
 delimiter        | specifies a one-character string to use as the field separator
-doublequote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
-lineterminator   | specifies the character sequence which should terminate rows
-quotechar        | specifies a one-character string to use as the quoting character.
-skipinitialspace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field
+doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
+lineTerminator   | specifies the character sequence which should terminate rows
+quoteChar        | specifies a one-character string to use as the quoting character.
+skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field
 {:.table .table-striped .table-bordered .table-condensed .table-definitions}
 
 Links
