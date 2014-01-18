@@ -516,8 +516,8 @@ the following fields in its package descriptor file.
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with a "type" property specifying the type of license and a
   url property linking to the actual text. If the license is one of the
-  [http://www.opensource.org/licenses/alphabetical official open source
-  licenses] the official license name or its abbreviation may be explicated
+  [official open source licenses](http://www.opensource.org/licenses/alphabetical)
+  the official license name or its abbreviation may be explicated
   with the "type" property.  If an abbreviation is provided (in parentheses),
   the abbreviation must be used.
 * repositories - Array of repositories where the package can be located. Each
