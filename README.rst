@@ -3,9 +3,9 @@ distributed development of data.
 
 Things like:
 
-  * Protocols for sharing and syncing data changes and sync protocol
-  * Protocols for diffing and merging data
-  * Web-oriented query languages for data
+* Protocols for sharing and syncing data changes and sync protocol
+* Protocols for diffing and merging data
+* Web-oriented query languages for data
 
 
 Data Wranglers and Scientists of the World Unite
