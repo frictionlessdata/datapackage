@@ -1,8 +1,8 @@
 ---
 title: Data Packages
 layout: default
-version: 1.0-beta.8
-last_update: 12 January 2014
+version: 1.0-beta.9
+last_update: 27 January 2014
 created: 12 November 2007
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
@@ -317,8 +317,8 @@ A data package MAY contain any number of additional fields. Common fields includ
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
-* encoding: character encoding of the resource data file (default is assumption
-  of utf8) 
+* `encoding`: specify the character encoding of a resource data file. The values should be one of 
+ the "Preferred MIME Names" for [a character encoding registered with IANA][iana].
 * `bytes`: size of the file in bytes
 * `hash`: the md5 hash for this resource
 * `schema`: a schema for the resource - see below for more on this in the case of
@@ -326,6 +326,8 @@ A data package MAY contain any number of additional fields. Common fields includ
 * `sources`: as for data package metadata.
 * `licenses`: as for data package metadata. If not specified the resource
   inherits from the data package.
+
+[iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 
 ### Inline Data
 
