@@ -20,7 +20,9 @@ Excluded
 ========
 
 CSVDDF has nothing to do with the names, contents or types of the
-headers or data within the CSV file, only how it is formatted.
+headers or data within the CSV file, only how it is formatted. However,  
+CSVDDF does allow the presence or absence of a header to be specified, 
+similarly to [RFC4180](http://www.ietf.org/rfc/rfc4180.txt) 
 
 CSVDDF is also orthogonal to the character encoding used in the CSV
 file. Note that it is possible for files in CSV format to contain data
@@ -52,6 +54,7 @@ Here's an example:
     {
       "csvddfVersion": 1.0,
       "dialect": {
+	"header": true
         "delimiter": ",",
         "doubleQuote": false,
         "lineTerminator": "\r\n",
@@ -72,6 +75,7 @@ dialect          | a JSON dictionary (specified below)
 The "dialect" member must be a dictionary with the following mandatory
 keys:
 
+header        	 | indicates whether the file includes a header row. If true the first row in the file is a header row, not data. If unspecified the value is assumed to be true
 delimiter        | specifies a one-character string to use as the field separator
 doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
 lineTerminator   | specifies the character sequence which should terminate rows
