@@ -75,7 +75,7 @@ dialect          | a JSON dictionary (specified below)
 The "dialect" member must be a dictionary with the following mandatory
 keys:
 
-header        	 | indicates whether the file includes a header row. If true the first row in the file is a header row, not data. If unspecified the value is assumed to be false
+header        	 | indicates whether the file includes a header row. If true the first row in the file is a header row, not data. If unspecified the value is assumed to be true
 delimiter        | specifies a one-character string to use as the field separator
 doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
 lineTerminator   | specifies the character sequence which should terminate rows
