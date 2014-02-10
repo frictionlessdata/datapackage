@@ -318,7 +318,8 @@ A data package MAY contain any number of additional fields. Common fields includ
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
 * `encoding`: specify the character encoding of a resource data file. The values should be one of 
- the "Preferred MIME Names" for [a character encoding registered with IANA][iana].
+ the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
+ value for this key is specified then the default is UTF-8.
 * `bytes`: size of the file in bytes
 * `hash`: the md5 hash for this resource
 * `schema`: a schema for the resource - see below for more on this in the case of
