@@ -1,7 +1,7 @@
 ---
 title: JSON Table Schema
 layout: default
-version: 1.0-pre3.2
+version: 1.0-pre4
 last_update: 12 January 2013
 created: 12 November 2012
 ---
@@ -13,12 +13,15 @@ designed to be expressible in JSON.
 
 ### Changelog
 
-- 1.0-pre3.2: (not breaking) add primary key support (see this
+- 1.0-pre4: add foreign key support - see this
+  [issue](https://github.com/dataprotocols/dataprotocols/issues/23)
+
+- 1.0-pre3.2: add primary key support (see this
     [issue](https://github.com/dataprotocols/dataprotocols/issues/21))
 
 - 1.0-pre3.1: breaking changes.
 
-  - `label` changed to `title` - see [Closer alignment with JSON
+  - `label` (breaking) changed to `title` - see [Closer alignment with JSON
     Schema](https://github.com/dataprotocols/dataprotocols/issues/46)
   - `id` changed to `name` (with slight alteration in semantics - i.e. SHOULD
     be unique but no longer MUST be unique)
@@ -109,8 +112,10 @@ That is, a JSON Table Schema is:
     -   format: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
 
--   the Hash `MAY` contain an attribute `primaryKey` (specification and meaning
-    is detailed below)
+-   the Hash `MAY` contain an attribute `primaryKey` (structure and usage
+    specified below)
+-   the Hash `MAY` contain an attribute `foreignKeys` (structure and usage
+    specified below)
 
 ## Types
 
@@ -183,37 +188,79 @@ The `primaryKey`, if present, MUST be:
 
 Here's an example:
 
-    {
-      "schema": {
-        "fields": [
-          {
-            "name": "a"
-          },
-          ...
-        ]
-        "primaryKey": "a"
-       }
-    }
+      "fields": [
+        {
+          "name": "a"
+        },
+        ...
+      ]
+      "primaryKey": "a"
 
 Here's an example with an array primary key:
 
-    {
-      "schema": {
-        "fields": [
-          {
-            "name": "a"
-          },
-          {
-            "name": "b"
-          },
-          {
-            "name": "c"
-          },
-          ...
-        ]
-        "primaryKey": ["a", "c"]
-       }
-    }
+    "schema": {
+      "fields": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "b"
+        },
+        {
+          "name": "c"
+        },
+        ...
+      ]
+      "primaryKey": ["a", "c"]
+     }
+
+## Foreign Keys
+
+<div class="alert alert-success">
+Foreign Keys by necessity must be able to reference other data objects. These
+data objects require a specific structure for the spec to work. This spec
+assumes the data objects being referenced are <a href="/data-packages/">Data
+Packages</a>. Thus, to use Foreign Keys you must be referencing Data Packages.
+</div>
+
+A foreign key is a reference where entries in a given field (or fields) on this
+table ('resource' in data package terminology) is a reference to an entry in a
+field (or fields) on a separate resource.
+
+The `foreignKeys` attribute, if present, MUST be an Array. Each entry in the
+array must be a `foreignKey`. A `foreignKey` MUST be a Hash and:
+
+* `MUST` have an attribute `fields`. `fields` is a string or array specifying the 
+  field or fields on this resource that form the source part of the foreign
+  key. The structure of the string or array is as per `primaryKey` above.
+* `MUST` have an attribute `reference` which MUST be a Hash. The Hash
+  * `MAY` have an attribute `datapackage`. This attribute is a string being a url or
+    name to a datapackage. If absent the implication is that this is a
+    reference to a resource within the current data package.
+  * `MUST` have an attribute `resource` which is the name of the resource
+    within the referenced data package
+  * `MUST` have an attribute `fields` which is a string or array describing the
+    field (or fields) references on the destination resource. The structure of
+    the string or array is as per `primaryKey` above.
+
+Here's an example:
+
+
+      "fields": [
+        {
+          "name": "state"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "fields": "state"
+          "reference": {
+            "datapackage": "http://data.okfn.org/data/mydatapackage/",
+            "resource": "the-resource",
+            "fields": "state_id"
+          }
+        }
+      ]
 
 ----
 
