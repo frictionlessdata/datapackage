@@ -1,8 +1,9 @@
 ---
 title: CSV Dialect Description Format (CSVDDF)
 layout: default
-version: 1.1
+version: 1.2
 created: 20 February 2013
+last_update: 25 February 2014
 ---
 
 This RFC defines a simple JSON format to describe the various dialects
@@ -15,6 +16,15 @@ and Postgres bulk load facilities at the time of writing (February
 
 The keys of the "dialect" member of the JSON dictionary are intended to
 be very close to the arguments to Python's csv.Dialect class.
+
+{% include meta.html %}
+
+### Changelog
+
+- 1.2: (breaking) - for details see this
+[issue](https://github.com/dataprotocols/dataprotocols/issues/99)
+  - remove dialect attribute moving all other attributes up one level up one level
+  - specify defaults for most attributes
 
 Excluded
 ========
@@ -51,32 +61,24 @@ Here's an example:
 
     {
       "csvddfVersion": 1.0,
-      "dialect": {
-        "delimiter": ",",
-        "doubleQuote": false,
-        "lineTerminator": "\r\n",
-        "quoteChar": "\"",
-        "skipInitialSpace": false
-      }
+      "delimiter": ",",
+      "doubleQuote": true,
+      "lineTerminator": "\r\n",
+      "quoteChar": "\"",
+      "skipInitialSpace": true
     }
 
 Specification
 =============
 
-The format is a JSON file comprising a dictionary with two members:
+The format is a JSON hash comprising
 
-csvddfVersion    | a number, in n.n format, e.g., 1.0
-dialect          | a JSON dictionary (specified below)
-{:.table .table-striped .table-bordered .table-condensed .table-definitions}
-
-The "dialect" member must be a dictionary with the following mandatory
-keys:
-
-delimiter        | specifies a one-character string to use as the field separator
-doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one
-lineTerminator   | specifies the character sequence which should terminate rows
-quoteChar        | specifies a one-character string to use as the quoting character.
-skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field
+csvddfVersion    | a number, in n.n format, e.g., 1.0 | optional, if not present defaults to latest schema version
+delimiter        | specifies a one-character string to use as the field separator | default = ,
+doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one | default = true
+lineTerminator   | specifies the character sequence which should terminate rows | default = \r\n
+quoteChar        | specifies a one-character string to use as the quoting character. | default = "
+skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field | default = true
 {:.table .table-striped .table-bordered .table-condensed .table-definitions}
 
 Links
