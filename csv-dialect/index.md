@@ -30,7 +30,9 @@ Excluded
 ========
 
 CSVDDF has nothing to do with the names, contents or types of the
-headers or data within the CSV file, only how it is formatted.
+headers or data within the CSV file, only how it is formatted. However,  
+CSVDDF does allow the presence or absence of a header to be specified, 
+similarly to [RFC4180](http://www.ietf.org/rfc/rfc4180.txt) 
 
 CSVDDF is also orthogonal to the character encoding used in the CSV
 file. Note that it is possible for files in CSV format to contain data
@@ -65,7 +67,8 @@ Here's an example:
       "doubleQuote": true,
       "lineTerminator": "\r\n",
       "quoteChar": "\"",
-      "skipInitialSpace": true
+      "skipInitialSpace": true,
+      "header": true
     }
 
 Specification
@@ -73,12 +76,14 @@ Specification
 
 The format is a JSON hash comprising
 
-csvddfVersion    | a number, in n.n format, e.g., 1.0 | optional, if not present defaults to latest schema version
-delimiter        | specifies a one-character string to use as the field separator | default = ,
-doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one | default = true
-lineTerminator   | specifies the character sequence which should terminate rows | default = \r\n
-quoteChar        | specifies a one-character string to use as the quoting character. | default = "
-skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field | default = true
+
+csvddfVersion    | a number, in n.n format, e.g., 1.0. If not present, consumers should assume latest schema version.
+delimiter        | specifies a one-character string to use as the field separator. Default = ,
+doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = true
+lineTerminator   | specifies the character sequence which should terminate rows. Default = \r\n
+quoteChar        | specifies a one-character string to use as the quoting character. Default = "
+skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if False, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = true
+header        	 | indicates whether the file includes a header row. If true the first row in the file is a header row, not data. Default = true
 {:.table .table-striped .table-bordered .table-condensed .table-definitions}
 
 Links
