@@ -239,7 +239,8 @@ array must be a `foreignKey`. A `foreignKey` MUST be a Hash and:
     reference to a resource within the current data package.
   * `MUST` have an attribute `resource` which is the name of the resource
     within the referenced data package
-  * `MUST` have an attribute `fields` which is a string or array describing the
+  * `MUST` have an attribute `fields` which is a string if the outer `fields` is a
+    string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
     the string or array is as per `primaryKey` above.
 
