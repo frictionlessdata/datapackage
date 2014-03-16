@@ -251,12 +251,12 @@ Data Package you could add a field `temporal` (cf [Dublin Core][dc-temporal]):
     }
 
 This flexibility enables specific communities to extend Data Packages as
-appropriate for the data they manage. As an example, the [Simple Data
-Format][sdf] specification extends Data Package to the case
+appropriate for the data they manage. As an example, the [Tabular Data
+Package][tdp] specification extends Data Package to the case
 where all the data is tabular and stored in CSV.
 </div>
 
-[sdf]: /simple-data-format/
+[tdp]: /tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
 
 ## Resource Information
@@ -396,8 +396,8 @@ Here is an example for a CSV file:
       schema:  # as per JSON Table Schema 
     }
 
-The [Simple Data Format][sdf] provides a specification focused on tabular data.
-It builds on this data package specification (Simple Data Format datasets are
+The [Tabular Data Package][tdp] provides a specification focused on tabular data.
+It builds on this data package specification (Tabular Data Package datasets are
 Data Packages) and provides additional specific requirements for the format and
 structure of data files and the resource information in the datapackage.json.
 
