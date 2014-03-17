@@ -124,10 +124,10 @@ Here is an illustrative example of a datapackage JSON file:
 
     {
       # general "metadata" like title, sources etc
-      name: "a-unique-human-readable-and-url-usable-identifier",
-      title: "A nice title",
-      licenses: [...],
-      sources: [...],
+      "name" : "a-unique-human-readable-and-url-usable-identifier",
+      "title" : "A nice title",
+      "licenses" : [...],
+      "sources" : [...],
       # list of the data resources in this data package
       "resources": [
         {
