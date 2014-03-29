@@ -1,15 +1,15 @@
 ---
 title: JSON Table Schema
-layout: default
+layout: spec
 version: 1.0-pre4
 last_update: 12 January 2013
 created: 12 November 2012
+summary: This RFC defines a simple schema for tabular data. The schema is
+  designed to be expressible in JSON.
+well_defined_keywords: true
+
 ---
 
-This RFC defines a simple schema for tabular data. The schema is
-designed to be expressible in JSON.
-
-{% include meta.html %}
 
 ### Changelog
 

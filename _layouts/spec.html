@@ -1,0 +1,15 @@
+{% include header.html %}
+
+{% if page.summary %}
+  <p>{{ page.summary | markdownify }}</p>
+{% endif %}
+
+{% include meta.html %}
+
+{% if page.well_defined_keywords %}
+  {% capture language %}{% include language.md %}{% endcapture %}
+  {{ language | markdownify }}
+{% endif %}
+
+{{content}}
+{% include footer.html %}

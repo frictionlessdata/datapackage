@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> 
+    {{page.title}} - Data Protocols - Open Knowledge Foundation
+  </title>
+  <meta name="author" content="Open Knowledge Foundation and others">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <link href="{{site.baseurl}}/css/style.css" rel="stylesheet" />
+
+{% if page.redirect %}
+  <meta http-equiv="refresh" content="0; url={{ page.redirect }}">
+{% endif %}
+{% if page.internal_redirect %}
+  <meta http-equiv="refresh" content="0; url={{ site.baseurl }}{{ page.internal_redirect }}">
+{% endif %}
+
+</head>
+<body>
+<div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="{{site.baseurl}}/">
+        <img src="http://assets.okfn.org/p/opendatahandbook/img/data-wrench.png" alt="" />
+        Data Protocols
+        <small>Lightweight Standards and Patterns for Data</small>
+      </a>
+      <ul class="nav pull-right">
+        <li class="divider-vertical"></li>
+        <li class="dropdown">
+	  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Protocols <b class="caret"></b></a>
+   	  <ul class="dropdown-menu">
+	    {% include proposals.html %}
+	    <li class="divider"></li>
+	    {% include research.html %}
+          </ul>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="http://lists.okfn.org/mailman/listinfo/data-protocols" title="Join the discussion">Mailing List</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://github.com/dataprotocols/dataprotocols/issues" title="Report issues, suggestions and improvements">Issue Tracker</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://github.com/dataprotocols/dataprotocols" title="Fork and pull to submit new material or corrections">Repo</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://twitter.com/OKFNLabs">Twitter</a>
+        </li>
+        <li class="divider-vertical"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span6 offset3">
+        <div class="banner page-header">
+          <h1>
+            {{page.title}}
+            {% if page.subtitle %}
+            <br />
+            <small>
+              {{page.subtitle}}
+            </small>
+            {% endif %}
+          </h1>
+        </div>
+

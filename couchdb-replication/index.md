@@ -1,20 +1,13 @@
 ---
 title: CouchDB Replication Protocol
-layout: default
+layout: spec
 author: Benoit Chesneau
+summary: The **CouchDB Replication protocol** is a protocol for synchronizing
+  documents between 2 peers over HTTP/1.1.
+well_defined_keywords: true
+
 ---
 
-The **CouchDB Replication protocol** is a protocol for synchronizing
-documents between 2 peers over HTTP/1.1.
-
-{% include meta.html %}
-
-Language
-========
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in 2119.
 
 Goals
 =====
