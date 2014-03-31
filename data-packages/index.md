@@ -1,20 +1,18 @@
 ---
 title: Data Packages
-layout: default
+layout: spec
 version: 1.0-beta.9
 last_update: 27 January 2014
 created: 12 November 2007
+well_defined_keywords: true
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
  - Matthew Brett (NiPY)
  - Martin Keegan (Open Knowledge Foundation Labs)
+summary: A Data Package (or DataPackage) is a coherent collection of data 
+ and possibly other assets in a single 'package'. It provides the basis 
+ for convenient delivery, installation and management of datasets.
 ---
-
-A Data Package (or DataPackage) is a coherent collection of data and possibly
-other assets in a single 'package'. It provides the basis for convenient
-delivery, installation and management of datasets.
-
-{% include meta.html %}
 
 <div class="alert" markdown="block">
 NOTE: This is a draft specification and still under development. If you have comments
