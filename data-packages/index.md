@@ -1,8 +1,8 @@
 ---
 title: Data Packages
 layout: spec
-version: 1.0-beta.9
-last_update: 27 January 2014
+version: 1.0-beta.10
+last_update: 12 April 2014
 created: 12 November 2007
 well_defined_keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
 - `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
 - `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
 - `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
@@ -162,17 +163,38 @@ be included in every package descriptor:
   the package. The structure of the resource hash is described in the "Resource Information"
   section.
 
-* `licenses` - array of licenses under which the package is provided. Each
-  license is a hash with an `id` (based on http://OpenDefinition.org/licenses) and/or a `url` property linking to the actual text. Example:
+* `license` (or `licenses`) - is a field specifying the license (or licenses)
+  under which the package is provided. You MAY specify either a `license` field
+  or a `licenses` field but NOT both.  **This property is not legally binding
+  and does not necessarily mean your package is licensed under the terms you
+  define in this property.** (This, among other reasons, is why you should
+  include license information either in your README or in a LICENSE file at the
+  top level in your package.)
+  
+  * `license` MUST be a string and its value SHOULD be an [Open Definition license
+    ID][od-license] (preferably one that is [Open Definition
+    approved][od-approved].
 
-      "licenses": [{
-        "id": "odc-pddl",
-        "url": "http://opendatacommons.org/licenses/pddl/"
-      }]
+        { "license" : "PDDL-1.0" }
+
+  * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and a
+    `url` property linking to the actual text. The `type` SHOULD be an [Open
+    Definition license ID][od-license] if an ID exists for the license and
+    otherwise may be the general license name or identifier. Here is an
+    Example:
+
+        "licenses": [{
+          "type": "PDDL-1.0",
+          "url": "http://opendatacommons.org/licenses/pddl/"
+        }]
+
 * `datapackage_version` - the version of the data package specification this
   datapackage.json conforms to. It should follow the Semantic Versioning
   requirements (http://semver.org/). The current version of this specification is given at 
   the top of this document.
+
+[spdx-license]: https://spdx.org/licenses/
+[od-license]: http://opendefinition.org/licenses/
 
 ### Recommended Fields
 
