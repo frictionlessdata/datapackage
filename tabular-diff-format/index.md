@@ -1,10 +1,15 @@
 ---
 title: Coopy highlighter diff format for tables
-layout: default
+layout: spec
 version: 0.7
 last_update: 24 August 2013
 created: 16 December 2011
 author: Paul Fitzpatrick (Data Commons Co-op)
+summary: The highlighter diff format is a format for expressing the difference
+  between two tables. It is itself a table. Like the classic diff formats
+  used for text, it is intended both for visual inspection by a human, and
+  to be processed by programs.
+
 ---
 
 <style> 
@@ -73,12 +78,6 @@ author: Paul Fitzpatrick (Data Commons Co-op)
   background-color: #eee;
 }
 </style>
-The highlighter diff format is a format for expressing the difference
-between two tables. It is itself a table. Like the classic diff formats
-used for text, it is intended both for visual inspection by a human, and
-to be processed by programs.
-
-{% include meta.html %}
 
 Assume we have two tables, called `LOCAL` and `REMOTE`. One way to
 compare them is to describe the changes needed to modify `LOCAL` to

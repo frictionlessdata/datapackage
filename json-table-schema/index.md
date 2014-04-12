@@ -1,17 +1,20 @@
 ---
 title: JSON Table Schema
-layout: default
+layout: spec
 version: 1.0-pre4
 last_update: 12 January 2013
 created: 12 November 2012
+summary: This RFC defines a simple schema for tabular data. The schema is
+  designed to be expressible in JSON.
+well_defined_keywords: true
+
 ---
 
-This RFC defines a simple schema for tabular data. The schema is
-designed to be expressible in JSON.
-
-{% include meta.html %}
 
 ### Changelog
+
+- 1.0-pre5: add type validation
+  [issue](https://github.com/dataprotocols/dataprotocols/issues/95)
 
 - 1.0-pre4: add foreign key support - see this
   [issue](https://github.com/dataprotocols/dataprotocols/issues/23)
@@ -65,9 +68,19 @@ In JSON a table would be:
 
 # Specification
 
-## Top-Level
+A JSON Table Schema consists of:
 
-A JSON Table Schema has the following structure:
+* a required list of _field descriptors_
+* optionally, a _primary key_ description
+* optionally, a _foreign _key_ description
+
+A schema is described using JSON. This might exist as a standalone document
+or may be embedded within another JSON structure, e.g. as part of a 
+data package description.
+
+## Schema
+
+A schema has the following structure:
 
     {
       # fields is an ordered list of field descriptors
@@ -86,13 +99,42 @@ A JSON Table Schema has the following structure:
       ],
       # (optional) specification of the primary key
       "primaryKey": ...
+      # (optional) specification of the foreign keys
+      "foreignKeys": ...
+
     }
 
 That is, a JSON Table Schema is:
 
 -   a Hash which `MUST` contain a key `fields`
 -   `fields` MUST be an array where each entry in the array is a field
-    descriptor
+    descriptor. (Structure and usage described below)
+-   the Hash `MAY` contain an attribute `primaryKey` (structure and usage
+    specified below)
+-   the Hash `MAY` contain an attribute `foreignKeys` (structure and usage
+    specified below)
+
+## Field Descriptors
+
+A field descriptor is a simple JSON hash that describes a single field. The 
+descriptor provides additional human-readable documentation for a field, as 
+well as additional information that may be used to validate the field or create 
+a user interface for data entry.
+
+At a minimum a field descriptor will contain at least a `name` key, but MAY 
+have additional keys as described below:
+
+    {
+      "name": "name of field (e.g. column name)",
+      "title": "A nicer human readable label or title for the field",
+      "type": "A string specifying the type",
+      "format": "A string specifying a format",
+      "description": "A description for the field",
+      "constraints": {
+          # a constraints-descriptor
+      }
+    }
+
 -   a field descriptor MUST be a Hash
 -   the field descriptor Hash MUST contain a `name` attribute. This
     attribute `SHOULD` correspond to the name of field/column in the
@@ -103,21 +145,53 @@ That is, a JSON Table Schema is:
 -   specific attributes that MAY be included in the Hash and whose
     meaning is defined in this spec are:
 
-    -   type: The type of the field (string, number etc) - see below for
-        more detail. If type is not provided a consumer should assume a
-        type of "string"
-    -   title: A nicer human readable label or title for the field
+    -   `title`: A nicer human readable label or title for the field
     -   description: A description for this field e.g. "The recipient of
         the funds"
-    -   format: A description of the format e.g. "DD.MM.YYYY" for a
+    -   `type`: The type of the field (string, number etc) - see below for
+        more detail. If type is not provided a consumer should assume a
+        type of "string"
+    -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
+    -   `constraints`: A constraints descriptor that can be used by consumers 
+        to validate field values
 
--   the Hash `MAY` contain an attribute `primaryKey` (structure and usage
-    specified below)
--   the Hash `MAY` contain an attribute `foreignKeys` (structure and usage
-    specified below)
+### Field Constraints
 
-## Types
+A set of constraints can be associated with a field. These constraints can be used 
+to validate data against a JSON Table Schema. The constraints might be used by consumers 
+to validate, for example, the contents of a data package, or as a means to validate 
+data being collected or updated via a data entry interface.
+
+A constraints descriptor is a JSON hash. It `MAY` contain any of the following 
+keys.
+
+- `required` -- A boolean value which indicates whether a field must have a value 
+  in every row of the table. An empty string is considered to be a missing value.
+- `minLength` -- An integer that specifies the minimum number of characters for a value
+- `maxLength` -- An integer that specifies the maximum number of characters for a value
+- `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the 
+  data file in which it is found. This defines a unique key for a row although a row could 
+  potentially have several such keys.
+- `pattern` -- A regular expression that can be used to test field values. If the regular 
+  expression matches then the value is valid. Values will be treated as a string of characters. 
+  It is recommended that values of this field conform to the standard 
+  [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also 
+  [this reference](http://www.regular-expressions.info/xml.html).
+- `minimum` -- specifies a minimum value for a field. This is different to `minLength` which 
+  checks number of characters. A `minimum` value constraint checks whether a field value is greater than 
+  or equal to the specified value. The range checking depends on the `type` of the field. E.g. an 
+  integer field may have a minimum value of 100; a date field might have a minimum date. If a 
+  `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key
+- `maximum` -- as above, but specifies a maximum value for a field.
+
+A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply 
+all the constraints when determining if a field value is valid.
+
+A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid 
+according to their declared `type` and `constraints`.
+
+### Field Types
 
 The type attribute is a string indicating the type of this field.
 
@@ -153,7 +227,7 @@ The type list is as follows:
 -   **array**: an array
 -   **any**: value of field may be any type
 
-## Formats
+### Field Formats
 
 The format field can be used to describe the format, especially for
 dates. Possible examples are:
