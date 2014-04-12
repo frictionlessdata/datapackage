@@ -165,14 +165,13 @@ be included in every package descriptor:
 
 * `license` (or `licenses`) - is a field specifying the license (or licenses)
   under which the package is provided. You MAY specify either a `license` field
-  or a `licenses` field but NOT both.  **This property is not legally binding
-  and does not necessarily mean your package is licensed under the terms you
-  define in this property.** (This, among other reasons, is why you should
-  include license information either in your README or in a LICENSE file at the
-  top level in your package.)
+  or a `licenses` field but NOT both.
+  
+  **This property is not legally binding and does not necessarily mean your
+  package is licensed under the terms you define in this property.**
   
   * `license` MUST be a string and its value SHOULD be an [Open Definition license
-    ID][od-license] (preferably one that is [Open Definition
+    ID][od-licenses] (preferably one that is [Open Definition
     approved][od-approved].
 
         { "license" : "PDDL-1.0" }
@@ -193,8 +192,8 @@ be included in every package descriptor:
   requirements (http://semver.org/). The current version of this specification is given at 
   the top of this document.
 
-[spdx-license]: https://spdx.org/licenses/
-[od-license]: http://opendefinition.org/licenses/
+[od-licenses]: http://licenses.opendefinition.org/
+[od-approved]: http://opendefinition.org/licenses/
 
 ### Recommended Fields
 
