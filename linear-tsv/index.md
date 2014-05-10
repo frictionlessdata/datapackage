@@ -1,11 +1,11 @@
 ---
 title: Linear TSV
 subtitle: simple, line-oriented, tabular data
+author: Jason Dusek <jason.dusek@gmail.com>
 layout: spec
 version: 1.0-beta
 last_update: 6 May 2014
 created: 6 May 2014
-well_defined_keywords: true
 summary: This document defines a format for tabular data.
 
 ---
@@ -46,6 +46,9 @@ separated with ASCII tab (`0x09`). It is permitted but discouraged to separate
 records with carriage-return-newline (`0x0d` and `0x0a`). (A literal carriage
 return in any other position is non-conforming.)
 
+A zero-length file is a valid linear TSV file, containing no records. Empty
+lines are ignored in linear TSV files.
+
 Linear TSV provides for escape sequences, instead of quoting, so that
 implementations can naively split on the byte values of the separators. To
 include newlines, tabs, carriage returns and backslashes in field data, the
@@ -65,28 +68,14 @@ record. To indicate missing data for a field, the character sequence `\N`
 character sequence is exactly that used by SQL databases to indicate SQL
 `NULL` in their tab-separated output mode.
 
-A zero-length file is a valid linear TSV file, containing no records. Empty
-lines are ignored in linear TSV files.
-
 If a single backslash is encountered at the end of a field, it is an error. If
 a backslash precedes another character but does not form one of the escape
 sequences above, it is a "superfluous backslash" and is removed from the field
 on read. Such a "superfluous backslash" must never be written by a conforming
 implementation.
 
-### Header Lines
-
-In CSV files, there are commonly header lines, naming the fields; but in this
-format no provision is made for header lines. One reason is that naive
-filtering, sorting and concatenation with line-oriented tools could easily mix
-headers with data.
-
-Another is that the amount of information provided by a header line is rarely
-sufficient for interoperable parsing. The [Data Package][dp] spec provides a
-mechanism for bundling column names, types and format information with data.
-
-[dp]: ../data-packages/
-
+While CSV files commonly have a header line, giving names to each of the
+columns, in this format no provision is made for such a header.
 
 ## Motivation
 
@@ -132,4 +121,16 @@ motivate the author to promote another tabular data format:
 * CSV is ambiguous in many small areas -- the presence or absence of a header
   line, the choice of quote character (single or double?) and even the choice
   of separator character are all axes of variability.
+
+### A Note About Headers
+
+Header lines are excluded to simplify line-oriented processing. The naive
+filtering, sorting and concatenation of TSV files with line-oriented tools
+could easily mix headers with data.
+
+The amount of information provided by a header line is rarely sufficient for
+interoperable parsing. The [Data Package][dp] spec provides a mechanism for
+bundling column names, types and format information with data.
+
+[dp]: ../data-packages/
 
