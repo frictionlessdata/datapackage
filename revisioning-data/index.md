@@ -133,7 +133,7 @@ Copy on write
 -------------
 
 In its simplest form copy-on-write (CoW) would copy entire DB on each
-change. However, this is cleary very inefficient and hence one usually
+change. However, this is clearly very inefficient and hence one usually
 restricts the copy-on-write to relevant changed "objects". The advantage
 of doing this is that it limits the the changes we have to store (in
 essence objects unchanged between revision X and revision Y get "merged"
