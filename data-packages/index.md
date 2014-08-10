@@ -178,11 +178,14 @@ be included in every package descriptor:
 
         { "license" : "PDDL-1.0" }
 
-  * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and 
-    MAY include a
-    `url` property linking to the actual text. The `type` SHOULD be an [Open
-    Definition license ID][od-license] if an ID exists for the license and
-    otherwise may be the general license name or identifier. Here is an
+  * `licenses` MUST be an array. Each entry MUST be a hash with a `type`.
+    The `type` SHOULD be an [Open Definition license ID][od-license] if
+    an ID exists for the license. If another license name or identifier
+    is used as `type` then the `url` property MUST link to the actual 
+    license text. The `url` property MAY be specified when used in combination
+    with an [Open Definition license ID][od-license].
+
+    Here is an
     Example:
 
         "licenses": [{
