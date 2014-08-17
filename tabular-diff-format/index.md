@@ -1,8 +1,8 @@
 ---
 title: Coopy highlighter diff format for tables
 layout: spec
-version: 0.7
-last_update: 24 August 2013
+version: 0.8
+last_update: 27 May 2014
 created: 16 December 2011
 author: Paul Fitzpatrick (Data Commons Co-op)
 summary: The highlighter diff format is a format for expressing the difference
@@ -13,6 +13,12 @@ summary: The highlighter diff format is a format for expressing the difference
 ---
 
 <style> 
+.highlighter td {
+  empty-cells: show;
+}
+.highlighter tr {
+  background-color: #fff;
+}
 .highlighter .add { 
   background-color: #7fff7f;
 }
@@ -55,10 +61,6 @@ summary: The highlighter diff format is a format for expressing the difference
 .highlighter td:first-child { 
   border-left: 1px solid #2D4068;
 }
-.highlighter td {
-  empty-cells: show;
-  background-color: #fff;
-}
 .highlighter table {
   margin: 0px auto;
   margin-bottom: 20px;
@@ -79,6 +81,18 @@ summary: The highlighter diff format is a format for expressing the difference
 }
 </style>
 
+### Changelog
+
+- `0.7` -> `0.8`: Clean up row/column reordering, see [#123](https://github.com/dataprotocols/dataprotocols/issues/123)
+
+### Table of Contents 
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+### Summary
+
 Assume we have two tables, called `LOCAL` and `REMOTE`. One way to
 compare them is to describe the changes needed to modify `LOCAL` to
 match `REMOTE`. For the highlighter diff format, we can express the
@@ -87,16 +101,14 @@ following kinds of changes:
  -   Inserted or deleted rows.
  -   Inserted, deleted, or renamed columns.
  -   Modified cell values.
- -   Reordered rows or columns (if they have a defined order).
+
+If the order of the rows or columns of the the table are meaningful,
+then we can also express:
+
+ -   Reordered rows or columns.
 
 Changes in formatting and systematic transformation of data (such as
 capitalization) are not expressible.
-
-### Table of Contents 
-{:.no_toc}
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## General structure
 
@@ -185,9 +197,7 @@ name in the header row. Similarly, a deleted column is expressed by
 including that column in the diff, and placing `---` in the schema row
 above the corresponding column name. As a special case, a renamed column
 is represented by simply placing its old name in parentheses in the
-schema row, and a column that have been moved is marked with a `:` tag
-in the schema row and placed in the order it appears in the `REMOTE`
-table.
+schema row.
 
 In our earlier example, `LOCAL` has the columns *bridge*, *designer*,
 and *length*, while `REMOTE` has the columns *bridge*, *opened*, and
@@ -273,16 +283,6 @@ The `:` tag signifies the context row was moved (and its location is now
 as in the `REMOTE` table). The `+` signifies that there are cells added
 on that row.
 
-<div class="alert alert-info" markdown="block">
-To avoid burdening human readers with too much arcana, tags are *not*
-combined when multiple kinds of actions apply to a row. So for
-example, a context row that was moved and had a cell added will *not*
-be tagged as `:+` or `+:` or such-like, but rather by `:`. Cell
-addition can be determined from the schema row. These weak tags are
-included as aids for highlighting to express the most significant
-thing to know about a row.
-</div>
-
 ## Expressing a modified cell value
 {: #modified-cell}
 
@@ -336,6 +336,40 @@ Note that if the diff is being expressed in a table that allows nested
 structure (e.g. a JSON representation), a list representation for
 modified cells might be used to avoid this issue. There is no
 specification for that at this time.
+
+## Expressing a moved row
+
+*This can be ignored for tables for which row order is meaningless, e.g. 
+in typical relational databases.*
+
+A row that have been moved in a table for which row
+order is meaningful is marked with a `:` tag
+in the action column and placed in the order it appears in the `REMOTE`
+table.
+
+<div class="alert alert-info" markdown="block">
+To avoid burdening human readers with too much arcana, tags are *not*
+combined when multiple kinds of actions apply to a row or column. So for
+example, a context row that was moved and had a cell added will *not*
+be tagged as `:+` or `+:` or such-like, but rather by `:`. Cell
+addition can be determined from the schema row. These weak tags are
+included as aids for highlighting to express the most significant
+thing to know about a row.
+</div>
+
+## Expressing a moved column
+
+*This can be ignored for tables for which column order is meaningless.*
+
+A column that have been moved in a table for which column
+order is meaningful is marked with a `:` tag
+in the schema row and placed in the order it appears in the `REMOTE`
+table.
+
+If a diff that contains a `:` tag is used to patch a table
+for which column order is not meaningful, that tag should simply be 
+ignored.
+
 
 ## Reference: action column tags
 
