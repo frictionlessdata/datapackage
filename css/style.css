@@ -1,10 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700|Merriweather:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400italic,400,700);
 
 body {
-  font-size: 15px;
-  font-family: Merriweather, Georgia, serif;
-  font-weight: 300;
-  background-color: #eee;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: Lato, Georgia, serif;
 }
 
 body, p, li {
@@ -13,7 +13,7 @@ body, p, li {
 
 h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
 {
-	font-family: 'News Cycle', Arial, sans-serif;
+	font-family: Lato, Arial, sans-serif;
 }
 
 .content {
@@ -23,8 +23,7 @@ h1, h2, h3, h4, h5, h6, .navbar, form, .btn, input, button, select, textarea
 .page-header h1 {
   font-size: 45px;
   font-weight: bold;
-  color: #0088cc;
-  text-align: center;
+  line-height: 52px;
 }
 
 .sidebar .toc ul {
@@ -74,13 +73,9 @@ blockquote p {
   *********************************************************/
 
 .brand img {
-  margin-top: -3px;
   height: 30px;
+  margin-top: -3px;
   margin-right: 3px;
-}
-
-.brand {
-  padding-right: 8px;
 }
 
 .navbar-inner {
@@ -89,9 +84,10 @@ blockquote p {
 }
 
 .navbar-inner .brand {
+  font-size: 22px;
   color: #434C50;
-  padding-top: 7px;
-  padding-bottom: 6px;
+  padding-top: 9px;
+  padding-bottom: 4px;
 }
 
 .navbar .divider-vertical {
