@@ -114,7 +114,7 @@ The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627]
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-A valid descriptor MUST contain a `name` attibute. These fields, and additional 
+A valid descriptor MUST contain a `name` attribute. These fields, and additional 
 metadata attributes, are described in the "Required Fields" section below.
 
 A valid descriptor MAY contain a `resources` attribute.
