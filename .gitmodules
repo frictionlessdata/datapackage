@@ -1,3 +1,0 @@
-[submodule "data-packages"]
-	path = data-packages
-	url = https://github.com/dataprotocols/data-packages.git
