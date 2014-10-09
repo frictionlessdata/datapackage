@@ -11,5 +11,10 @@
   {{ language | markdownify }}
 {% endif %}
 
+{% if page.title %}
+{% capture target %}{{ "# " | append: page.title  | markdownify }}{% endcapture %}
+{{ content | replace: target, '' }}
+{% else %}
 {{content}}
+{% endif %}
 {% include footer.html %}

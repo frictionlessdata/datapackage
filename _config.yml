@@ -2,3 +2,9 @@ name: Data Protocols
 pygments: true
 markdown: kramdown
 baseurl: 
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "spec"
