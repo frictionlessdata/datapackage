@@ -122,8 +122,7 @@ requirements:
 -   All data files MUST be in CSV format, see below for additional rules on CSV file naming and structure
 -   Every resource MUST have a `schema` following the <a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a> specification
 
-CSV Files
----------
+### CSV Files
 
 As a starting point, CSV files included in a Tabular Data Package package must conform to the RFC for CSV (4180 - Common Format and MIME Type for Comma-Separated Values (CSV) Files). In addition:
 
@@ -175,8 +174,7 @@ The key features of this format are the following:
 -   Reuse wherever possible of existing work including other Data
     Protocols specifications
 
-Why CSV
--------
+### Why CSV
 
 1.  CSV is very simple - it is perhaps *the* most simple data format
 2.  CSV is tabular-oriented. Most data structures are either tabular or
@@ -204,8 +202,7 @@ Lindenberg)]
 text-based, no need for proprietary tools etc [@rufuspollock (Rufus
 Pollock)]
 
-Why JSON
---------
+### Why JSON for the Schema
 
 -   JSON is simple
 -   JSON supports rich structure including nesting and basic types
@@ -215,47 +212,3 @@ Why JSON
 -   JSON is readable as simple text making it amenable to management and
     processing using simple text tools
 
-## Open Issues
-
--   Foreign keys between files
--   Primary keys and uniqueness
-
-## Alternatives Discussion
-
-What alternatives are there for the data portion of the format?
-
--   Use line oriented JSON (?)
-
-    -   Greater flexibility and complexity on types and objects
-    -   No support from spreadsheets
-
--   Use SQLite
-
-    -   (+) compact, full DB in one
-    -   (-) lack of support (e.g. from spreadsheets), no streaming, not
-        accessible with text tools etc
-
-<div class="alert alert-info" markdown="block">
-NOTE: this specification owes a great deal to the excellent Dataset
-Publishing Language (DSPL) put forward by Google. The main
-difference is in using JSON instead of XML for the schema and
-re-using as far as possible the JSON-LD schema language (based on
-linked-data) rather than inventing a new type and schema
-structure.
-</div>
-
-### Alternative CSV format
-
-This describes a possible alternative CSV-based format for serializing
-the metadata. It has the advantage that you could then put a single
-dataset in one spreadsheet (using multiple sheets).
-
-In this format each key in the JSON file becomes a column. In addition
-there is one initial column named @key@. Values for this column are then
-attribute names. To illustrate (spacing for illustrative purposes only):
-
-    @key@, year, series, ...
-    @type, ...,  xsd:string
-    simpletype, date, string
-    label, ....
-    ...
