@@ -27,6 +27,17 @@
 
 </head>
 <body>
+{% capture remove_blank_lines %}
+  {% assign details = site.data.details.site_default %}
+  {% assign have_subsite = false %}
+  {% assign terms = page.title | downcase | split: ' ' %}
+  {% for term in terms  %}
+    {% if site.data.details[term] %}
+      {% assign details = site.data.details[term] %}
+      {% assign have_subsite = true %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
 <div class="navbar navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
@@ -45,22 +56,26 @@
 	    {% include research.html %}
           </ul>
         </li>
+	{% unless have_subsite %}
         <li class="divider-vertical"></li>
         <li>
           <a href="http://lists.okfn.org/mailman/listinfo/data-protocols" title="Join the discussion">Mailing List</a>
         </li>
+	{% endunless %}
         <li class="divider-vertical"></li>
         <li>
-          <a href="https://github.com/dataprotocols/dataprotocols/issues" title="Report issues, suggestions and improvements">Issue Tracker</a>
+          <a href="{{details.tracker}}" title="Report issues, suggestions and improvements">{% if have_subsite %}{{details.label}} {%endif%}Issue Tracker</a>
         </li>
         <li class="divider-vertical"></li>
         <li>
-          <a href="https://github.com/dataprotocols/dataprotocols" title="Fork and pull to submit new material or corrections">Repo</a>
+          <a href="{{details.repo}}" title="Fork and pull to submit new material or corrections">{% if have_subsite %}{{details.label}} {%endif%}Repo</a>
         </li>
+	{% unless have_subsite %}
         <li class="divider-vertical"></li>
         <li>
           <a href="https://twitter.com/OKFNLabs">Twitter</a>
         </li>
+	{% endunless %}
         <li class="divider-vertical"></li>
       </ul>
     </div>

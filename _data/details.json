@@ -1,0 +1,12 @@
+{
+    "site_default": {
+	"label": "Main",
+	"repo": "https://github.com/dataprotocols/dataprotocols",
+	"tracker": "https://github.com/dataprotocols/dataprotocols/issues"
+    },
+    "ndjson": {
+	"label": "NDJSON",
+	"repo": "https://github.com/ndjson/ndjson-spec",
+	"tracker": "https://github.com/ndjson/ndjson-spec/issues"
+    }
+}
