@@ -8,3 +8,8 @@ defaults:
       path: ""
     values:
       layout: "spec"
+  -
+    scope:
+      path: "ndjson"
+    values:
+      permalink: "/ndjson/index.html"
