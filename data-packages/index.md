@@ -331,7 +331,7 @@ It is recommended that a resource SHOULD contain the following fields:
 
 ### Optional Fields
 
-A data package MAY contain any number of additional fields. Common fields include:
+A resource MAY contain any number of additional fields. Common fields include:
 
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
