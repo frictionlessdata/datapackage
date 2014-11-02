@@ -2,3 +2,14 @@ name: Data Protocols
 pygments: true
 markdown: kramdown
 baseurl: 
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "spec"
+  -
+    scope:
+      path: "ndjson"
+    values:
+      permalink: "/ndjson/index.html"
