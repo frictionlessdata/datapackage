@@ -399,7 +399,7 @@ Example 2 - inline CSV:
 ### Tabular Data
 
 For tabular data the resource information MAY contain schema information in an
-attribute named `schema`. If `schema` is provided its value MUST confirm to
+attribute named `schema`. If `schema` is provided its value MUST conform to
 the [JSON Table Schema][jts].
 
 [jts]: /json-table-schema/
