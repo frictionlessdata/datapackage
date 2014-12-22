@@ -367,8 +367,8 @@ Allowed values:
 
 Example schema:
 
-    'schema': {
-      'fields':[
+    "schema": {
+      "fields":[
          {
             "mode": "nullable",
             "name": "placeName",
