@@ -250,7 +250,7 @@ Additionally, a package descriptor MAY include the following keys and values:
       "dataDependencies": {
          "country-codes": "",
          "unemployment": "2.1",
-         "geo-boundaires": {
+         "geo-boundaries": {
            "acmecorp-geo-boundaries": ["1.0", "2.0"],
            "othercorp-geo-boundaries": "0.9.8",
          },
