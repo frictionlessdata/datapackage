@@ -22,7 +22,7 @@ For example, consider the `dpm` (the Data Package Manager) has commands like:
     # gdp is a data package identifier
     dpm info gdp
     # https://github.com/datasets/gold-prices is a data package identifier
-    dpm install 
+    dpm install https://github.com/datasets/gold-prices
 
 ## Identifier Object Structure
 
