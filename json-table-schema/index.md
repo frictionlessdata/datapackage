@@ -373,7 +373,7 @@ The datetime type supports several formats.
 * **any**: Any parsable representation of a datetime. The implementing library
   can attempt to parse the datetime via a range of strategies. An example is
   `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:{PATTERN}**: A special format that allows declaring a datetime pattern
+* ***fmt:PATTERN**: A special format that allows declaring a datetime pattern
   after the `fmt:` keyword. PATTERN is a string template pattern for the datetime.
 
 
@@ -396,7 +396,7 @@ The date type supports several formats.
 * **any**: Any parsable representation of a date. The implementing library
   can attempt to parse the date via a range of strategies. An example is
   `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:{PATTERN}**: A special format that allows declaring a date pattern
+* ***fmt:PATTERN**: A special format that allows declaring a date pattern
   after the `fmt:` keyword. PATTERN is a string template pattern for the date.
 
 
@@ -419,7 +419,7 @@ The time type supports several formats.
 * **any**: Any parsable representation of a time. The implementing library
   can attempt to parse the date via a range of strategies. An example is
   `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:{PATTERN}**: A special format that allows declaring a time pattern
+* ***fmt:PATTERN**: A special format that allows declaring a time pattern
   after the `fmt:` keyword. PATTERN is a string template pattern for the time.
 
 
@@ -438,11 +438,11 @@ A geopoint represented as one of the supported formats.
 
 The geopoint type supports several formats.
 
-* **default**: A string of the pattern "lon, lat", where lon is the longitude
-  and lat is the latitude. Equivalent to not declaring a format.
+* **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+  and `lat` is the latitude. Equivalent to not declaring a format.
 * **array**: An array of exactly two items, where each item is either a number,
-  or a string parsable as a number, and the first item is lon and the second
-  item is lat.
+  or a string parsable as a number, and the first item is `lon` and the second
+  item is `lat`.
 * **object**: An object with exactly two keys, `lat` and `lon`
 
 
