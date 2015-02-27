@@ -313,6 +313,8 @@ null:
 
 The null type only supports the default format.
 
+* **default**: Equivalent to not declaring a format.
+
 
 #### Object
 
