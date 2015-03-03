@@ -263,7 +263,7 @@ The type and format list is as follows:
           library can attempt to parse the datetime via a range of strategies.
           An example is `dateutil.parser.parse` from the `python-dateutils`
           library.
-        * ***fmt:[PATTERN]**: A special format that allows declaring a string pattern
+        * **fmt:[PATTERN]**: A special format that allows declaring a string pattern
           `[PATTERN]` for the type. For example: "DD/MM/YYYY"
           * **NOTE:** Needs further specification to make it clear what
             patterns a library should be able to support
