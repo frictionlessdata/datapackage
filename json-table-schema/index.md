@@ -2,7 +2,7 @@
 title: JSON Table Schema
 layout: spec
 version: 1.0-pre6
-last_update: 27 February 2015
+last_update: 3 March 2015
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -152,8 +152,8 @@ have additional keys as described below:
     -   `description`: A description for this field e.g. "The recipient of
         the funds"
     -   `type`: The type of the field (string, number etc) - see below for
-        more detail. If type is not provided then the field defaults to the
-        "string" type.
+        more detail. If type is not provided a consumer should assume a type of
+        "string".
     -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
     -   `constraints`: A constraints descriptor that can be used by consumers
@@ -201,8 +201,10 @@ A field's `type` attribute is a string indicating the type of this field.
 A field's `format` attribute is a string, being a keyword indicating a
 format for the field type.
 
-Both `type` and `format` are optional: the absence of a `type` indicates the
-field is of the type 'string'.
+Both `type` and `format` are optional: in a field descriptor, the absence of a
+`type` property indicates that the field is of the type "string", and the
+absence of a `format` property indicates that the field's type `format` is
+"default".
 
 Types are based on the [type set of
 json-schema](http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1)
@@ -210,278 +212,79 @@ with some additions and minor modifications (cf other type lists include
 those in [Elasticsearch
 types](http://www.elasticsearch.org/guide/reference/mapping/)).
 
-The type list is as follows:
-
-#### String
-
-A string.
-
-```
-{
-    ...
-    "type": "string"
-}
-```
-
-##### String formats
-
-The string type supports a number of format keywords:
-
-* **default**: any valid string. Equivalent to not declaring a format.
-* **email**: A valid email address.
-* **uri**: A valid URI.
-* **binary**: A base64 encoded string representing binary data.
-
-
-#### Number
-
-A number, including decimal and floating point numbers.
-
-```
-{
-    ...
-    "type": "number"
-}
-```
-
-##### Number formats
-
-The number type supports a number of format keywords:
-
-* **default**: any valid number. Equivalent to not declaring a format.
-* **currency**: A number that may include additional currency symbols and/or
-  commas/semi-colons.
-
-
-#### Integer
-
-An integer.
-
-```
-{
-    ...
-    "type": "integer"
-}
-```
-
-##### Integer formats
-
-The integer type only supports the default format.
-
-* **default**: any valid integer. Equivalent to not declaring a format.
-
-
-#### Boolean
-
-A boolean value. In addition to the boolean values available to the code
-implementing JSON Table Schema support, the following strings are aliases for
-boolean values:
-
-* **true**: 'yes', 'y', 'true', 't', '0'
-* **false**: 'no', 'n', 'false', 'f', '1'
-
-```
-{
-    ...
-    "type": "boolean"
-}
-```
-
-##### Boolean formats
-
-The boolean type only supports the default format.
-
-* **default**: any valid boolean value or supported boolean string. Equivalent to not declaring a format.
-
-
-#### Null
-
-A null value. In addition to the null value available to the code
-implementing JSON Table Schema support, the following strings are aliases for
-null:
-
-* **null**: 'null', 'none', 'nil', 'nan', '-', ''
-
-```
-{
-    ...
-    "type": "null"
-}
-```
-
-##### Null formats
-
-The null type only supports the default format.
-
-* **default**: Equivalent to not declaring a format.
-
-
-#### Object
-
-A JSON-encoded object, or a string or a native type that can be encoded to a
-JSON object.
-
-```
-{
-    ...
-    "type": "object"
-}
-```
-
-##### Object formats
-
-The object type only supports the default format.
-
-* **default**: any valid object. Equivalent to not declaring a format.
-
-
-#### Array
-
-A JSON-encoded array, or a string or a native type that can be encoded to a
-JSON array.
-
-```
-{
-    ...
-    "type": "array"
-}
-```
-
-##### Array formats
-
-The array type only supports the default format.
-
-* **default**: any valid array. Equivalent to not declaring a format.
-
-
-#### DateTime
-
-A datetime. By default, datetime values are in ISO6801 format.
-
-```
-{
-    ...
-    "type": "datetime"
-}
-```
-
-##### DateTime formats
-
-The datetime type supports several formats.
-
-* **default**: A datetime in ISO8601 format. Equivalent to not declaring a format.
-* **any**: Any parsable representation of a datetime. The implementing library
-  can attempt to parse the datetime via a range of strategies. An example is
-  `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:PATTERN**: A special format that allows declaring a datetime pattern
-  after the `fmt:` keyword. PATTERN is a string template pattern for the datetime.
-
-
-#### Date
-
-A date. By default, date values are in ISO6801 format.
-
-```
-{
-    ...
-    "type": "date"
-}
-```
-
-##### Date formats
-
-The date type supports several formats.
-
-* **default**: A date in ISO8601 format. Equivalent to not declaring a format.
-* **any**: Any parsable representation of a date. The implementing library
-  can attempt to parse the date via a range of strategies. An example is
-  `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:PATTERN**: A special format that allows declaring a date pattern
-  after the `fmt:` keyword. PATTERN is a string template pattern for the date.
-
-
-#### Time
-
-A time. By default, time values are in ISO6801 format.
-
-```
-{
-    ...
-    "type": "time"
-}
-```
-
-##### Time formats
-
-The time type supports several formats.
-
-* **default**: A time in ISO8601 format. Equivalent to not declaring a format.
-* **any**: Any parsable representation of a time. The implementing library
-  can attempt to parse the date via a range of strategies. An example is
-  `dateutil.parser.parse` from the `python-dateutils` library.
-* ***fmt:PATTERN**: A special format that allows declaring a time pattern
-  after the `fmt:` keyword. PATTERN is a string template pattern for the time.
-
-
-#### GeoPoint
-
-A geopoint represented as one of the supported formats.
-
-```
-{
-    ...
-    "type": "geopoint"
-}
-```
-
-##### GeoPoint formats
-
-The geopoint type supports several formats.
-
-* **default**: A string of the pattern "lon, lat", where `lon` is the longitude
-  and `lat` is the latitude. Equivalent to not declaring a format.
-* **array**: An array of exactly two items, where each item is either a number,
-  or a string parsable as a number, and the first item is `lon` and the second
-  item is `lat`.
-* **object**: An object with exactly two keys, `lat` and `lon`
-
-
-#### GeoJSON
-
-A geojson object as per http://geojson.org/.
-
-```
-{
-    ...
-    "type": "geojson"
-}
-```
-
-##### GeoJSON formats
-
-The geojson type supports several formats.
-
-* **default**: A geojson object as per http://geojson.org/. . Equivalent to not declaring a format.
-* **topojson**: A topojson object as per https://github.com/topojson/topojson-specification/blob/master/README.md
-
-
-#### Any
-
-Any type or format is acceptable.
-
-```
-{
-    ...
-    "type": "any"
-}
-```
-
-##### Any formats
-
-The any type only supports the default format.
-
-* **default**: Equivalent to not declaring a format.
-
+The type and format list is as follows:
+
+* **string**
+    * `string` formats:
+        * **default**: any valid string. Equivalent to not declaring a format.
+        * **email**: A valid email address.
+        * **uri**: A valid URI.
+        * **binary**: A base64 encoded string representing binary data.
+
+* **number**
+    * `number` formats:
+        * **default**: any valid number. Equivalent to not declaring a format.
+        * **currency**: A number that may include additional currency symbols
+          and/or commas/semi-colons.
+
+* **integer**
+    * `integer` formats:
+        * **default**: any valid integer. Equivalent to not declaring a format.
+
+* **boolean**
+    * In addition to primitive types, boolean values can be indicated with the
+      following strings:
+        * **true**: 'yes', 'y', 'true', 't', '0'
+        * **false**: 'no', 'n', 'false', 'f', '1'
+    * `boolean` formats:
+        * **default**: any valid boolean value or string that indicates a
+          boolean value. Equivalent to not declaring a format.
+
+
+* **null**
+    * In addition to primitive null types, null can be indicated with the
+      following strings:
+        * **null**: 'null', 'none', 'nil', 'nan', '-', ''
+    * `null` formats:
+        * **default**: Equivalent to not declaring a format.
+
+* **object**
+    * `object` formats:
+        * **default**: any valid JSON object. Equivalent to not declaring a format.
+
+* **array**
+    * `array` formats:
+        * **default**: any valid JSON array. Equivalent to not declaring a format.
+
+* **datetime**; **date**; **time**
+    * `datetime`, `date` and `time` share the following format options:
+        * **default**: An ISO8601 format string. Equivalent to not declaring a format.
+        * **any**: Any parsable representation of the type. The implementing
+          library can attempt to parse the datetime via a range of strategies.
+          An example is `dateutil.parser.parse` from the `python-dateutils`
+          library.
+        * ***fmt:[PATTERN]**: A special format that allows declaring a string pattern
+          `[PATTERN]` for the type. For example: "DD/MM/YYYY"
+          * **NOTE:** Needs further specification to make it clear what
+            patterns a library should be able to support
+
+* **geopoint**
+    * `geopoint` formats:
+        * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+          and `lat` is the latitude. Equivalent to not declaring a format.
+        * **array**: An array of exactly two items, where each item is either a number,
+          or a string parsable as a number, and the first item is `lon` and the second
+          item is `lat`.
+        * **object**: An object with exactly two keys, `lat` and `lon`
+
+* **geojson**
+    * `geojson` formats:
+        * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
+          Equivalent to not declaring a format.
+        * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+
+* **any**
+    * Any `type` or `format` is accepted.
 
 ## Primary Key
 
