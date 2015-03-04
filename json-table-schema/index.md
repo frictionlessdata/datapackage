@@ -1,8 +1,8 @@
 ---
 title: JSON Table Schema
 layout: spec
-version: 1.0-pre4
-last_update: 12 January 2013
+version: 1.0-pre6
+last_update: 3 March 2015
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -12,6 +12,9 @@ well_defined_keywords: true
 
 
 ### Changelog
+
+- 1.0-pre6: clarify types and formats
+  [issue](https://github.com/dataprotocols/dataprotocols/issues/159)
 
 - 1.0-pre5: add type validation
   [issue](https://github.com/dataprotocols/dataprotocols/issues/95)
@@ -29,7 +32,7 @@ well_defined_keywords: true
   - `id` changed to `name` (with slight alteration in semantics - i.e. SHOULD
     be unique but no longer MUST be unique)
 
-### Table of Contents 
+### Table of Contents
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
@@ -75,7 +78,7 @@ A JSON Table Schema consists of:
 * optionally, a _foreign _key_ description
 
 A schema is described using JSON. This might exist as a standalone document
-or may be embedded within another JSON structure, e.g. as part of a 
+or may be embedded within another JSON structure, e.g. as part of a
 data package description.
 
 ## Schema
@@ -116,12 +119,12 @@ That is, a JSON Table Schema is:
 
 ## Field Descriptors
 
-A field descriptor is a simple JSON hash that describes a single field. The 
-descriptor provides additional human-readable documentation for a field, as 
-well as additional information that may be used to validate the field or create 
+A field descriptor is a simple JSON hash that describes a single field. The
+descriptor provides additional human-readable documentation for a field, as
+well as additional information that may be used to validate the field or create
 a user interface for data entry.
 
-At a minimum a field descriptor will contain at least a `name` key, but MAY 
+At a minimum a field descriptor will contain at least a `name` key, but MAY
 have additional keys as described below:
 
     {
@@ -146,54 +149,62 @@ have additional keys as described below:
     meaning is defined in this spec are:
 
     -   `title`: A nicer human readable label or title for the field
-    -   description: A description for this field e.g. "The recipient of
+    -   `description`: A description for this field e.g. "The recipient of
         the funds"
     -   `type`: The type of the field (string, number etc) - see below for
-        more detail. If type is not provided a consumer should assume a
-        type of "string"
+        more detail. If type is not provided a consumer should assume a type of
+        "string".
     -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
-    -   `constraints`: A constraints descriptor that can be used by consumers 
+    -   `constraints`: A constraints descriptor that can be used by consumers
         to validate field values
 
 ### Field Constraints
 
-A set of constraints can be associated with a field. These constraints can be used 
-to validate data against a JSON Table Schema. The constraints might be used by consumers 
-to validate, for example, the contents of a data package, or as a means to validate 
+A set of constraints can be associated with a field. These constraints can be used
+to validate data against a JSON Table Schema. The constraints might be used by consumers
+to validate, for example, the contents of a data package, or as a means to validate
 data being collected or updated via a data entry interface.
 
-A constraints descriptor is a JSON hash. It `MAY` contain any of the following 
+A constraints descriptor is a JSON hash. It `MAY` contain any of the following
 keys.
 
-- `required` -- A boolean value which indicates whether a field must have a value 
+- `required` -- A boolean value which indicates whether a field must have a value
   in every row of the table. An empty string is considered to be a missing value.
 - `minLength` -- An integer that specifies the minimum number of characters for a value
 - `maxLength` -- An integer that specifies the maximum number of characters for a value
-- `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the 
-  data file in which it is found. This defines a unique key for a row although a row could 
+- `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the
+  data file in which it is found. This defines a unique key for a row although a row could
   potentially have several such keys.
-- `pattern` -- A regular expression that can be used to test field values. If the regular 
-  expression matches then the value is valid. Values will be treated as a string of characters. 
-  It is recommended that values of this field conform to the standard 
-  [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also 
+- `pattern` -- A regular expression that can be used to test field values. If the regular
+  expression matches then the value is valid. Values will be treated as a string of characters.
+  It is recommended that values of this field conform to the standard
+  [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also
   [this reference](http://www.regular-expressions.info/xml.html).
-- `minimum` -- specifies a minimum value for a field. This is different to `minLength` which 
-  checks number of characters. A `minimum` value constraint checks whether a field value is greater than 
-  or equal to the specified value. The range checking depends on the `type` of the field. E.g. an 
-  integer field may have a minimum value of 100; a date field might have a minimum date. If a 
+- `minimum` -- specifies a minimum value for a field. This is different to `minLength` which
+  checks number of characters. A `minimum` value constraint checks whether a field value is greater than
+  or equal to the specified value. The range checking depends on the `type` of the field. E.g. an
+  integer field may have a minimum value of 100; a date field might have a minimum date. If a
   `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key
 - `maximum` -- as above, but specifies a maximum value for a field.
 
-A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply 
+A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply
 all the constraints when determining if a field value is valid.
 
-A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid 
+A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid
 according to their declared `type` and `constraints`.
 
-### Field Types
+### Field Types and Formats
 
-The type attribute is a string indicating the type of this field.
+A field's `type` attribute is a string indicating the type of this field.
+
+A field's `format` attribute is a string, being a keyword indicating a
+format for the field type.
+
+Both `type` and `format` are optional: in a field descriptor, the absence of a
+`type` property indicates that the field is of the type "string", and the
+absence of a `format` property indicates that the field's type `format` is
+"default".
 
 Types are based on the [type set of
 json-schema](http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1)
@@ -201,40 +212,79 @@ with some additions and minor modifications (cf other type lists include
 those in [Elasticsearch
 types](http://www.elasticsearch.org/guide/reference/mapping/)).
 
-The type list is as follows:
+The type and format list is as follows:
 
--   **string**: a string (of arbitrary length)
--   **number**: a number including floating point numbers.
--   **integer**: an integer.
--   **date**: a date. This MUST be in ISO6801 format YYYY-MM-DD or, if
-    not, a format field must be provided describing the structure.
--   **time**: a time without a date
--   **datetime**: a date-time. This MUST be in ISO 8601 format of
-    YYYY-MM-DDThh:mm:ssZ in UTC time or, if not, a format field must be
-    provided.
--   **boolean**: a boolean value (1/0, true/false).
--   **binary**: base64 representation of binary data.
--   **object**: (alias json) an JSON-encoded object
--   **geopoint**: has one of the following structures:
+* **string**
+    * `string` formats:
+        * **default**: any valid string. Equivalent to not declaring a format.
+        * **email**: A valid email address.
+        * **uri**: A valid URI.
+        * **binary**: A base64 encoded string representing binary data.
 
-        { lon: ..., lat: ... }
+* **number**
+    * `number` formats:
+        * **default**: any valid number. Equivalent to not declaring a format.
+        * **currency**: A number that may include additional currency symbols
+          and/or commas/semi-colons.
 
-        [lon,lat]
+* **integer**
+    * `integer` formats:
+        * **default**: any valid integer. Equivalent to not declaring a format.
 
-        "lon, lat"
+* **boolean**
+    * In addition to primitive types, boolean values can be indicated with the
+      following strings:
+        * **true**: 'yes', 'y', 'true', 't', '0'
+        * **false**: 'no', 'n', 'false', 'f', '1'
+    * `boolean` formats:
+        * **default**: any valid boolean value or string that indicates a
+          boolean value. Equivalent to not declaring a format.
 
--   **geojson**: as per \<<http://geojson.org/>\>
--   **array**: an array
--   **any**: value of field may be any type
 
-### Field Formats
+* **null**
+    * In addition to primitive null types, null can be indicated with the
+      following strings:
+        * **null**: 'null', 'none', 'nil', 'nan', '-', ''
+    * `null` formats:
+        * **default**: Equivalent to not declaring a format.
 
-The format field can be used to describe the format, especially for
-dates. Possible examples are:
+* **object**
+    * `object` formats:
+        * **default**: any valid JSON object. Equivalent to not declaring a format.
 
-     # "type": "date" "format": "yyyy"
-     
-     # type=string "format": "markdown"
+* **array**
+    * `array` formats:
+        * **default**: any valid JSON array. Equivalent to not declaring a format.
+
+* **datetime**; **date**; **time**
+    * `datetime`, `date` and `time` share the following format options:
+        * **default**: An ISO8601 format string. Equivalent to not declaring a format.
+        * **any**: Any parsable representation of the type. The implementing
+          library can attempt to parse the datetime via a range of strategies.
+          An example is `dateutil.parser.parse` from the `python-dateutils`
+          library.
+        * **fmt:[PATTERN]**: A special format that allows declaring a string pattern
+          `[PATTERN]` for the type. For example: "DD/MM/YYYY"
+          * **NOTE:** Needs further specification to make it clear what
+            patterns a library should be able to support
+
+* **geopoint**
+    * `geopoint` formats:
+        * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+          and `lat` is the latitude. Equivalent to not declaring a format.
+        * **array**: An array of exactly two items, where each item is either a number,
+          or a string parsable as a number, and the first item is `lon` and the second
+          item is `lat`.
+        * **object**: An object with exactly two keys, `lat` and `lon`
+
+* **geojson**
+    * `geojson` formats:
+        * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
+          Equivalent to not declaring a format.
+        * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+
+* **any**
+    * Any `type` or `format` is accepted.
 
 ## Primary Key
 
@@ -304,7 +354,7 @@ field (or fields) on a separate resource.
 The `foreignKeys` attribute, if present, MUST be an Array. Each entry in the
 array must be a `foreignKey`. A `foreignKey` MUST be a Hash and:
 
-* `MUST` have an attribute `fields`. `fields` is a string or array specifying the 
+* `MUST` have an attribute `fields`. `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
 * `MUST` have an attribute `reference` which MUST be a Hash. The Hash
@@ -416,5 +466,3 @@ See <http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes>
 ## Type Lists
 
 * HTML5 Forms: <http://www.whatwg.org/specs/web-apps/current-work/#attr-input-type>
-
-
