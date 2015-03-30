@@ -18,5 +18,5 @@ The Service defines a Restfull interface on things, locations, datastreams, sens
 References
 ==========
 
--   [OGC CSW Specification](http://ogc-iot.github.io/ogc-iot-api/)
+* [OGC CSW Specification](http://ogc-iot.github.io/ogc-iot-api/)
 

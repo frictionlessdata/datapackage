@@ -18,14 +18,14 @@ GeoPackage is a database schema in SQLite. The database at least has a table 'gp
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer](http://geoserver.org)
 
-Clients
+_Clients_
 * [QGIS](http://qgis.org)
 * [GPKG viewer](http://demo.luciad.com/GeoPackage)
 
-Libraries
+_Libraries_
 * [OGR/GDAL](http://gdal.org)
 * [libgpkg](https://bitbucket.org/luciad/libgpkg)
 

@@ -20,7 +20,7 @@ The Service has the following operations (for full details check the specificati
 * GetObservation
 * GetResult
 * GetDataAvailability
-* ... 
+
 
 SOS is part of a stack of services, named [Sensor Web Enablement](http://www.opengeospatial.org/projects/groups/sensorwebdwg).
 
@@ -37,6 +37,6 @@ Implementations
 References
 ==========
 
--   [OGC CSW Specification](www.opengeospatial.org/standards/sos)
--	[CITE complience testing](https://github.com/opengeospatial/teamengine)
+*  [OGC CSW Specification](www.opengeospatial.org/standards/sos)
+*	[CITE complience testing](https://github.com/opengeospatial/teamengine)
 

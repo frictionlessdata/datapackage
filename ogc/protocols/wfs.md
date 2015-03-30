@@ -25,17 +25,17 @@ Most common is the use of GML as encoding of feature data. However most of the i
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer](http://geoserver.org)
 * [Mapserver](http://mapserver.org)
 * [deegree](http://deegree.org)
 
-Clients
+_Clients_
 * [OpenLayers](http://openlayers.org)
 * [QGIS](http://qgis.org) (for WFS2 you need to install [WFS2 extension](https://plugins.qgis.org/plugins/wfsclient))
 * [Udig](http://udig.org)
 
-Libraries
+_Libraries_
 * [OWSLib](http://geopython.github.io/OWSLib)
 * [GeoTools](http://geotools.org)
 * [OGR/GDAL](http://gdal.org)

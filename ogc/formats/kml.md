@@ -13,14 +13,14 @@ A standardised representation of (spatial) data + drawing styling in a human & m
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer](http://geoserver.org)
 
-Clients
+_Clients_
 * [OpenLayers](http://openlayers.org)
 * [QGIS](http://qgis.org)
 
-Libraries
+_Libraries_
 * [OGR/GDAL](http://gdal.org)
 
 References

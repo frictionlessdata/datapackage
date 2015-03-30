@@ -23,12 +23,12 @@ The Service has the following operations (for full details check the specificati
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer (GeoWebCache)](http://geoserver.org)
 * [MapCache](http://mapserver.org/el/mapcache)
 * [Mapproxy](http://mapproxy.org)
 
-Clients
+_Clients_
 * [Leaflet](http://leafletjs.com)
 * [OpenLayers](http://openlayers.org)
 * [ArcBrutile](https://arcbrutile.codeplex.com/) (popular tile layers in ArcGIS)
@@ -42,5 +42,5 @@ There are a couple of competing alternatives for this standard; TMS and WMS-c. M
 References
 ==========
 
--   [OGC WMTS Specification](http://www.opengeospatial.org/standards/wmts)
--	[CITE complience testing](https://github.com/opengeospatial/teamengine)
+*   [OGC WMTS Specification](http://www.opengeospatial.org/standards/wmts)
+*	[CITE complience testing](https://github.com/opengeospatial/teamengine)

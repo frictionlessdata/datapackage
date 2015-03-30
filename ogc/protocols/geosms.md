@@ -10,14 +10,8 @@ Goals
 
 Goal is to unify the exchange of location data using the SMS protocol
 
-Definition
-==========
-
-Implementations
-===============
-
 References
 ==========
 
--   [OGC CSW Specification](http://www.opengeospatial.org/standards/opengeosms)
+*  [OGC CSW Specification](http://www.opengeospatial.org/standards/opengeosms)
 

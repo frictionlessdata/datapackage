@@ -10,11 +10,6 @@ Goals
 
 A representation of sensor data (xml) exchanged in a [Sensor Observation Service](../protocols/sos.md)
 
-Definition
-==========
-
-Superset of [waterml]()
-
 Implementations
 ===============
 

@@ -14,6 +14,7 @@ Definition
 ==========
 
 OpenLS is a set of service around location services.
+
 * Directory Service
 * Gateway Service
 * Geocoder Service 
@@ -22,6 +23,6 @@ OpenLS is a set of service around location services.
 References
 ==========
 
--   [OGC CSW Specification](http://www.opengeospatial.org/standards/ols)
--	[CITE complience testing](https://github.com/opengeospatial/teamengine)
+*   [OGC CSW Specification](http://www.opengeospatial.org/standards/ols)
+*	[CITE complience testing](https://github.com/opengeospatial/teamengine)
 

@@ -18,15 +18,15 @@ These days webdevelopers are moving away from XML and prefer the json alternativ
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer (GeoWebCache)](http://geoserver.org)
 * [deegree](http://deegree.org)
 
-Clients
+_Clients_
 * [OpenLayers](http://openlayers.org)
 * [QGIS](http://qgis.org)
 
-Libraries
+_Libraries_
 * [OGR/GDAL](http://gdal.org)
 * [npm-gdal](https://www.npmjs.com/package/gdal)
 * [Fiona (python)](https://pypi.python.org/pypi/Fiona)

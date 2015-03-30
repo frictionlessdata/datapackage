@@ -15,11 +15,11 @@ Implementations
 
 WKT is used as geometry representation in standards like GeoJSON, iso19139, Simple Features SQL, spatial CSV
 
-Clients
+_Clients_
 * [Leaflet](http://leafletjs.com)
 * [OpenLayers](http://openlayers.org)
 
-Libraries
+_Libraries_
 * [OGR/GDAL](http://gdal.org)
 
 References

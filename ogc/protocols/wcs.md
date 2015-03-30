@@ -10,8 +10,6 @@ Goals
 
 Goal is to unify the exchange of multi-dimensional coverage data over the web.
 
-
-
 Definition
 ==========
 
@@ -28,6 +26,6 @@ Implementations
 References
 ==========
 
--   [OGC CSW Specification](www.opengeospatial.org/standards/wcs)
--	[CITE complience testing](https://github.com/opengeospatial/teamengine)
+*   [OGC CSW Specification](www.opengeospatial.org/standards/wcs)
+*	[CITE complience testing](https://github.com/opengeospatial/teamengine)
 

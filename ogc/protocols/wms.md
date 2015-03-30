@@ -23,13 +23,13 @@ The Service has the following operations (for full details check the specificati
 Implementations
 ===============
 
-Servers
+_Servers_
 * [GeoServer (GeoWebCache)](http://geoserver.org)
 * [MapServer](http://mapserver.org)
 * [deegree](http://deegree.org)
 * [QGIS server](http://qgis.org)
 
-Clients
+_Clients_
 * [Leaflet]()
 * [OpenLayers]()
 * Google Earth
@@ -38,6 +38,6 @@ Clients
 References
 ==========
 
--   [OGC WMS Specification](http://www.opengeospatial.org/standards/wms)
--	[CITE complience testing](https://github.com/opengeospatial/teamengine)
+*   [OGC WMS Specification](http://www.opengeospatial.org/standards/wms)
+*	[CITE complience testing](https://github.com/opengeospatial/teamengine)
 
