@@ -18,24 +18,24 @@ Protocols
 =========
 
 * [Catalog Service for the Web](protocols/csw.md)
-* [GeoSMS](geosms.md)
-* [Sensor Things](iot.md)
-* [Open Location Services](openls.md)
-* [Sensor Observation Services](sos.md)
-* [Web Coverage Service](wcs.md)
-* [Web Feature Service](wfs.md)
-* [Web Map Service](wms.md)
-* [Web Map Tile Service](wmts.md) (also mentioned; TMS, WMS-c, vector-tiles)
+* [GeoSMS](protocols/geosms.md)
+* [Sensor Things](protocols/iot.md)
+* [Open Location Services](protocols/openls.md)
+* [Sensor Observation Services](protocols/sos.md)
+* [Web Coverage Service](protocols/wcs.md)
+* [Web Feature Service](protocols/wfs.md)
+* [Web Map Service](protocols/wms.md)
+* [Web Map Tile Service](protocols/wmts.md) (also mentioned; TMS, WMS-c, vector-tiles)
 
 Formats
 =======
 
-* [Augmented Reality Markup Language](arml.md)
-* [GeoPackage](geopackage.md)
-* [Geography Markup Language](gml.md) (also mentioned; geojson, topojson, geobuf) 
-* [Keyhole Markup Language](kml.md)
-* [Observations and Measurements](om.md)
-* [Well Known Text](wkt.md)
+* [Augmented Reality Markup Language](formats/arml.md)
+* [GeoPackage](formats/geopackage.md)
+* [Geography Markup Language](formats/gml.md) (also mentioned; geojson, topojson, geobuf) 
+* [Keyhole Markup Language](formats/kml.md)
+* [Observations and Measurements](formats/om.md)
+* [Well Known Text](formats/wkt.md)
  
 
 Compliance testing
