@@ -1,6 +1,6 @@
 ---
 title: OGC protocols and formats
-layout: intro
+layout: default
 author: OGC
 summary: Open Geospatial Consortium has agreed on a set of open standards that are commonly used in the spatial industry to exchange data over the web
 ---
@@ -17,25 +17,25 @@ On these pages a summary on each of the spatial protocols & formats with links t
 Protocols
 =========
 
-* [Catalog Service for the Web](protocols/csw.md)
-* [GeoSMS](protocols/geosms.md)
-* [Sensor Things](protocols/iot.md)
-* [Open Location Services](protocols/openls.md)
-* [Sensor Observation Services](protocols/sos.md)
-* [Web Coverage Service](protocols/wcs.md)
-* [Web Feature Service](protocols/wfs.md)
-* [Web Map Service](protocols/wms.md)
-* [Web Map Tile Service](protocols/wmts.md) (also mentioned; TMS, WMS-c, vector-tiles)
+* [Catalog Service for the Web](protocols/csw.html)
+* [GeoSMS](protocols/geosms.html)
+* [Sensor Things](protocols/iot.html)
+* [Open Location Services](protocols/openls.html)
+* [Sensor Observation Services](protocols/sos.html)
+* [Web Coverage Service](protocols/wcs.html)
+* [Web Feature Service](protocols/wfs.html)
+* [Web Map Service](protocols/wms.html)
+* [Web Map Tile Service](protocols/wmts.html) (also mentioned; TMS, WMS-c, vector-tiles)
 
 Formats
 =======
 
-* [Augmented Reality Markup Language](formats/arml.md)
-* [GeoPackage](formats/geopackage.md)
-* [Geography Markup Language](formats/gml.md) (also mentioned; geojson, topojson, geobuf) 
-* [Keyhole Markup Language](formats/kml.md)
-* [Observations and Measurements](formats/om.md)
-* [Well Known Text](formats/wkt.md)
+* [Augmented Reality Markup Language](formats/arml.html)
+* [GeoPackage](formats/geopackage.html)
+* [Geography Markup Language](formats/gml.html) (also mentioned; geojson, topojson, geobuf) 
+* [Keyhole Markup Language](formats/kml.html)
+* [Observations and Measurements](formats/om.html)
+* [Well Known Text](formats/wkt.html)
  
 
 Compliance testing

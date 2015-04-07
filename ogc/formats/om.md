@@ -8,7 +8,7 @@ summary: Format definition by the Open Geospatial Consortium that defines
 Goals
 =====
 
-A representation of sensor data (xml) exchanged in a [Sensor Observation Service](../protocols/sos.md)
+A representation of sensor data (xml) exchanged in a [Sensor Observation Service](../protocols/sos.html)
 
 Implementations
 ===============

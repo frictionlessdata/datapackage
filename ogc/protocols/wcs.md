@@ -13,7 +13,7 @@ Goal is to unify the exchange of multi-dimensional coverage data over the web.
 Definition
 ==========
 
-The Service has the folowing operations (for full details check the specification)
+The Service has the following operations (for full details check the specification)
 
 * GetCapabilities (Advertises supported coverages, projections, formats, etc)
 * 

@@ -25,5 +25,5 @@ _Libraries_
 References
 ==========
 
--   [OGC WKT Specification](http://www.opengeospatial.org/standards/wkt)
+-   [OGC WKT Specification](http://en.wikipedia.org/wiki/Well-known_text)
 

@@ -13,7 +13,7 @@ Goal is to unify the exchange of metadata describing datasets and services over 
 Definition
 ==========
 
-The Service has the folowing operations (for full details check the specification)
+The Service has the following operations (for full details check the specification)
 
 * GetCapabilities (advertises the supported operations, schemas and formats)
 * DescribeRecord
@@ -53,7 +53,7 @@ _Libraries_
 References
 ==========
 
-* [OGC CSW Specification](http://www.opengeospatial.org/standards/csw)
-*  [INSPIRE discovery Service](http://inspire.ec.europa.eu/documents/Network_Services/Technical%20Guidance%20Discovery%20Services%20v2.0.pdf)
-*	[CITE compliance testing](https://github.com/opengeospatial/teamengine)
+* [OGC CSW Specification](http://www.opengeospatial.org/standards/cat)
+* [INSPIRE discovery Service](http://inspire.ec.europa.eu/documents/Network_Services/Technical%20Guidance%20Discovery%20Services%20v2.0.pdf)
+* [CITE compliance testing](https://github.com/opengeospatial/teamengine)
 

@@ -1,5 +1,5 @@
 ---
-title: Augmenten Reality Markup Language
+title: Augmented Reality Markup Language
 layout: spec
 author: OGC
 summary: Format definition by the Open Geospatial Consortium that represents augmented reality data
