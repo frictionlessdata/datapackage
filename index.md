@@ -62,14 +62,20 @@ where this is both feasible and needed - be that in terms of standards,
 use of HTTP and REST, browser maturity, or, in terms of ad-hoc
 development in tools that is ripe for "standardization".
 
+{% capture initial_contributors %}
 Data Protocols was started in Autumn 2011 and arose out of discussions
 with, among others, Rufus Pollock and Friedrich Lindenberg of the [Open
 Knowledge Foundation](http://okfn.org/), Francis Irving and Aidan
 McGuire of [ScraperWiki](http://scraperwiki.com/), Max Ogden (then a
 [Code for America](http://codeforamerica.com/) fellow), Chris Taggart of
 [OpenCorporates](http://opencorporates.com/), Richard Cyganiak of
-[DERI](http://www.deri.ie/) and members of the W3C GLD Working Group and
-has subsequently benefitted from input from numerous other individuals.
+[DERI](http://www.deri.ie/) and members of the W3C GLD Working Group.
+Paul Fitzpatrick of the [Data Commons Co-op](http://datacommons.coop)
+has helped out.{% endcapture %}
+
+{{ initial_contributors }}
+Other contributors include
+{% for person in site.data.contributors %}{% unless initial_contributors contains person.name] %}{% if forloop.last %}and {% endif %}{{ person.name }}{% unless forloop.last %}, {% endunless %}{% endunless %}{% endfor %}.
 
 Participate and Contribute
 ==========================
