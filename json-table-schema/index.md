@@ -387,6 +387,53 @@ Here's an example:
         }
       ]
 
+## Languages and translations
+
+### Translation fields in data
+
+JSON Table Schema supports translations using `@{lang-code}` syntax for field names.
+
+Any field with an `@` is a translation field for another field in the data.
+
+Translation fields that do not match a field in the data `SHOULD` be ignored.
+
+Translation fields are not delcared in a schema `fields` array. Each translation field
+
+`MUST` match the `type` and `format` of the field it translations. Translation fields are never required.
+
+### Declaring languages in a schema
+
+The default language is English (en).A schema can declare that the data contains
+multiple languages, or a different default language via a top-level `languages` property.
+`languages` `MUST` be an array, and the first item in the array is the
+default (non-translated) language.
+
+Having a language in the `languages` array does not ensure that the data
+contains one or more fields in that language.
+
+Here are some examples:
+
+```
+# declaring that the default language is Spanish
+
+{
+    "fields": [
+        ...
+    ],
+    "languages": ["es"]
+}
+
+# a default language of English, with translations in Arabic and French
+{
+    "fields": [
+        ...
+    ],
+    "languages": ["en", "ar", "fr"]
+}
+
+```
+
+
 ----
 
 # Appendix: Related Work
