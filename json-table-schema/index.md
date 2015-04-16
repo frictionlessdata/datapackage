@@ -223,6 +223,7 @@ The type and format list is as follows:
         * **email**: A valid email address.
         * **uri**: A valid URI.
         * **binary**: A base64 encoded string representing binary data.
+        * **uuid**: A string that is a uuid.
 
 * **number**
     * `number` formats:
