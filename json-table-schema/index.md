@@ -242,8 +242,8 @@ The type and format list is as follows:
 * **boolean**
     * In addition to primitive types, boolean values can be indicated with the
       following strings:
-        * **true**: 'yes', 'y', 'true', 't', '0'
-        * **false**: 'no', 'n', 'false', 'f', '1'
+        * **true**: 'yes', 'y', 'true', 't', '1'
+        * **false**: 'no', 'n', 'false', 'f', '0'
     * `boolean` formats:
         * **default**: any valid boolean value or string that indicates a
           boolean value. Equivalent to not declaring a format.
