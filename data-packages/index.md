@@ -340,7 +340,11 @@ A resource MAY contain any number of additional fields. Common fields include:
  the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
  value for this key is specified then the default is UTF-8.
 * `bytes`: size of the file in bytes
-* `hash`: the md5 hash for this resource
+* `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
+  the hash's value with the algorithm name in lower-case. For example:
+
+      "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
+
 * `schema`: a schema for the resource - see below for more on this in the case of
   tabular data.
 * `sources`: as for data package metadata.
