@@ -13,6 +13,8 @@ well_defined_keywords: true
 
 ### Changelog
 
+- 1.0-pre8: Rename contraints.oneOf to contraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
+
 - 1.0-pre7: Add contraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
 
 - 1.0-pre6: clarify types and formats
@@ -192,8 +194,8 @@ keys.
   integer field may have a minimum value of 100; a date field might have a minimum date. If a
   `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key
 - `maximum` -- as above, but specifies a maximum value for a field.
-- `oneOf` -- An array of values, where each value `MUST` comply with the type and format of the field.
-The field value must exactly match a value in the `oneOf` array.
+- `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
+The field value must exactly match a value in the `enum` array.
 
 A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply
 all the constraints when determining if a field value is valid.
