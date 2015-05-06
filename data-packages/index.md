@@ -107,14 +107,14 @@ Several exemplar data packages can be found in the [datasets organization on git
 * General metadata such as the name of the package, its license, its publisher etc
 * A list of the data resources that make up this data package (plus, possibly, additional schema information about these data resources in a structured form)
 
-The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627][].
+The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627][]).
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-A valid descriptor MUST contain a `name` attibute. These fields, and additional 
+A valid descriptor MUST contain a `name` attribute. These fields, and additional
 metadata attributes, are described in the "Required Fields" section below.
 
 A valid descriptor MAY contain a `resources` attribute.
@@ -188,12 +188,13 @@ be included in every package descriptor:
         }]
 
 * `datapackage_version` - the version of the data package specification this
-  datapackage.json conforms to. It should follow the Semantic Versioning
-  requirements (http://semver.org/). The current version of this specification is given at 
+  datapackage.json conforms to. It should follow the [Semantic Versioning][semver]
+  requirements. The current version of this specification is given at
   the top of this document.
 
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
+[semver]: http://semver.org
 
 ### Recommended Fields
 
@@ -203,8 +204,7 @@ Additionally, a package descriptor MAY include the following keys and values:
 * `description` - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
 * `homepage` - URL string for the data packages web site
-* `version` - a version string identifying the version of the package. It should conform to the Semantic Versioning requirements
-  (http://semver.org/).
+* `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
 * `sources` - an array of source hashes. Each source hash may have `name`, `web` and `email` fields. Example:
 
       "sources": [{
