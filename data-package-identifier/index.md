@@ -50,23 +50,32 @@ TODO: describe minimum requirements for validity
 
 ## Identifier String
 
-A Identifier String is a single string (rather than JSON object). A Identifier String can be:
+A Identifier String is a single string (rather than JSON object). A Identifier String can be, in decreasing order of explicitness:
 
-* A direct URL to a datapackage (with or without the `datapackage.json`) e.g.
+* A direct URL to a datapackage.json
 
-       http://mywebsite.com/mydatapackage/
-       // or with the datapackage.json
        http://mywebsite.com/mydatapackage/datapackage.json
 
+* A direct URL to a datapackage
+
+       http://mywebsite.com/mydatapackage/
+       
+*which resolves to:*
+
+       http://mywebsite.com/mydatapackage/datapackage.json
+       
 * A Github URL
 
        http://github.com/datasets/gold-prices
 
-* A single name
+*which resolves to:*
+
+       https://github.com/datasets/gold-prices/blob/master/datapackage.json
+
+* A name of a dataset in the core datasets registry
 
        gold-prices
 
-   In this case the data package must be in the core datasets in the primary registry.
+*which resolves to:* 
 
-TODO: describe the algorithm for parsing a specifier string to a valid specifier object.
-
+       http://data.okfn.org/data/core/gold-prices/datapackage.json
