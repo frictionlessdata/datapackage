@@ -325,7 +325,7 @@ Here's an example:
           "name": "a"
         },
         ...
-      ]
+      ],
       "primaryKey": "a"
 
 Here's an example with an array primary key:
@@ -342,7 +342,7 @@ Here's an example with an array primary key:
           "name": "c"
         },
         ...
-      ]
+      ],
       "primaryKey": ["a", "c"]
      }
 
