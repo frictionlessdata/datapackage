@@ -156,7 +156,7 @@ A valid package MUST include the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
-### Recommended Fields
+### Strongly Recommended Fields
 
 In addition to the above fields, the following fields SHOULD be included in
 every package descriptor:
@@ -200,7 +200,7 @@ every package descriptor:
 
 ### Recommended Fields
 
-Additionally, a package descriptor MAY include the following keys and values:
+The following are commonly used fields that the package descriptor MAY contain:
 
 * `title` - a title or one sentence description for this package
 * `description` - a description of the package. The first paragraph (up to the
@@ -216,10 +216,12 @@ Additionally, a package descriptor MAY include the following keys and values:
     
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
-* `image` - a link to an image to use for this data package
 
 ### Optional Fields 
 
+A package descriptor MAY contain the following fields:
+
+* `image` - a link to an image to use for this data package
 * `maintainers` - Array of maintainers of the package. Each maintainer is a hash
   which must have a "name" property and may optionally provide "email" and
   "web" properties.
