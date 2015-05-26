@@ -13,9 +13,9 @@ ietf-keywords: true
 
 ### Changelog
 
-- 1.0-pre8: Rename contraints.oneOf to contraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
+- 1.0-pre8: Rename constraints.oneOf to constraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
 
-- 1.0-pre7: Add contraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
+- 1.0-pre7: Add constraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
 
 - 1.0-pre6: clarify types and formats
   [issue](https://github.com/dataprotocols/dataprotocols/issues/159)
