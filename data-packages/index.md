@@ -1,7 +1,7 @@
 ---
 layout: spec
 title: Data Packages
-version: 1.0-beta.12
+version: 1.0.0-beta.12
 updated: 26 May 2015
 created: 12 November 2007
 ietf-keywords: true
@@ -24,12 +24,12 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
-- `1.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
-- `1.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
-- `1.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
-- `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
-- `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
-- `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
+- `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
+- `1.0.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
+- `1.0.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
+- `1.0.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
+- `1.0.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
+- `1.0.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
 ### Table of Contents 
 {:.no_toc}
