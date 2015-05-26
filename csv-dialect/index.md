@@ -3,7 +3,7 @@ title: CSV Dialect Description Format (CSVDDF)
 layout: default
 version: 1.2
 created: 20 February 2013
-last_update: 7 May 2015
+updated: 7 May 2015
 ---
 
 This RFC defines a simple JSON format to describe the various dialects

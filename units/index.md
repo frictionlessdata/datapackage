@@ -6,7 +6,7 @@ author:
  - Rufus Pollock (Open Knowledge Foundation)
  - James Smith (Open Data Institute)
 version: 0.1
-last_update: 22 May 2013
+updated: 22 May 2013
 created: 05 May 2013
 ---
 

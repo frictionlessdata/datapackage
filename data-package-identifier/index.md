@@ -2,7 +2,7 @@
 layout: spec
 title: Data Package Identifiers
 version: 1.0-alpha
-last_update: 02 November 2014
+updated: 02 November 2014
 created: 17 August 2014
 author:
  - Rufus Pollock (Open Knowledge Labs)

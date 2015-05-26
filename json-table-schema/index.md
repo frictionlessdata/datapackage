@@ -2,11 +2,11 @@
 title: JSON Table Schema
 layout: spec
 version: 1.0-pre6
-last_update: 3 March 2015
+updated: 3 March 2015
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
-well_defined_keywords: true
+ietf-keywords: true
 
 ---
 

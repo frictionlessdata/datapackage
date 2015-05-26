@@ -3,9 +3,9 @@ title: Tabular Data Package
 subtitle: (previously known as Simple Data Format)
 layout: spec
 version: 1.0-beta-2
-last_update: 16 March 2014
+updated: 16 March 2014
 created: May 7 2012
-well_defined_keywords: true
+ietf-keywords: true
 summary: This document defines a simple data publishing format (Tabular Data
   Package) for publishing and sharing tabular-style data.
 

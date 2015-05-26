@@ -2,9 +2,9 @@
 layout: spec
 title: Data Packages
 version: 1.0-beta.10
-last_update: 12 April 2014
+updated: 12 April 2014
 created: 12 November 2007
-well_defined_keywords: true
+ietf-keywords: true
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
  - Matthew Brett (NiPY)
