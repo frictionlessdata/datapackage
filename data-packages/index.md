@@ -156,19 +156,21 @@ A valid package MUST include the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
-In addition to the above fields, it is recommended that the following fields SHOULD 
-be included in every package descriptor:
+### Recommended Fields
 
-* `resources` - a JSON array of hashes that describe the contents of 
-  the package. The structure of the resource hash is described in the "Resource Information"
-  section.
+In addition to the above fields, the following fields SHOULD be included in
+every package descriptor:
+
+* `resources` - a JSON array of hashes that describe the contents of the
+  package. The structure of the resource hash is described in the "Resource
+  Information" section.
 
 * `license` (or `licenses`) - is a field specifying the license (or licenses)
   under which the package is provided. You MAY specify either a `license` field
   or a `licenses` field but NOT both.
   
-  **This property is not legally binding and does not necessarily mean your
-  package is licensed under the terms you define in this property.**
+  **This property is not legally binding and does not guarantee the package is
+  licensed under the terms defined in this property.**
   
   * `license` MUST be a string and its value SHOULD be an [Open Definition license
     ID][od-licenses] (preferably one that is [Open Definition
