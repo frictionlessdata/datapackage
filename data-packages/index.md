@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
 - `1.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
 - `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
 - `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
@@ -189,7 +190,7 @@ every package descriptor:
           "url": "http://opendatacommons.org/licenses/pddl/"
         }]
 
-* `datapackage_version` - the version of the data package specification this
+* `datapackage\_version` - the version of the data package specification this
   datapackage.json conforms to. It should follow the [Semantic Versioning][semver]
   requirements. The current version of this specification is given at
   the top of this document.
@@ -213,30 +214,52 @@ The following are commonly used fields that the package descriptor MAY contain:
         "name": "World Bank and OECD",
         "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
       }]
-    
+* `author` and `contributors` - these are fields for describing people or
+  organizations who contributed to this Data Package. `author` is a single
+  person / organization whilst `contributors` is an array. By convention, the
+  first contributor is the original author of the package unless `author` is
+  also present - in this sense, `author` is simply a convenience that allows
+  for single line entries like the following:
+
+      "author": "Joe Bloggs <joe@bloggs.com>"
+
+  A "person" or "organization" is a hash OR string. It MUST contain a `name`
+  property and MAY contain `web` and `email`. An example of the hash structure
+  is as follows:
+
+      {
+        "name": "Joe Bloggs",
+        "email": "joe@bloggs.com",
+        "web": "http://www.bloggs.com"
+      }
+
+  The string version has the following structure:
+  
+      NAME <EMAIL> (WEB)
+  
+  Example:
+  
+      Joe Bloggs <joe@bloggs.com> (http://www.bloggs.com/)
+  
+  Email and web are optional in the string version as well e.g.:
+  
+      Joe Bloggs
+      Joe Bloggs <joe@bloggs.com>
+      Joe Bloggs (http://www.bloggs.com)
+  
+  Note on semantics: use of the "author" field does not imply that that person
+  was the original creator of the data in the data package - merely that they
+  created and/or maintain the data package. It is common for data packages to
+  "package" up data from elsewhere. The original origin of the data can be
+  indicated with the `sources` field - see above.
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
 
-### Optional Fields 
+### Optional Fields
 
 A package descriptor MAY contain the following fields:
 
 * `image` - a link to an image to use for this data package
-* `maintainers` - Array of maintainers of the package. Each maintainer is a hash
-  which must have a "name" property and may optionally provide "email" and
-  "web" properties.
-* `contributors` - an Array of hashes each containing the details of a
-  contributor. Must contain a 'name' property and MAY contain an email and web
-  property. By convention, the first contributor is the original author of the
-  package. Example:
-
-      "contributors":[ {
-        "name": "Joe Bloggs",
-        "email": "joe@bloggs.com",
-        "web": "http://www.bloggs.com"
-      }]
-
-* `publisher` - like contributors 
 * `base` - a base URI used to resolve `resources` that specify relative paths in
   the event that the actual data files specified by those resource paths are not
   located in the same directory in which the descriptor file (`datapackage.json`)
