@@ -1,14 +1,13 @@
 ---
 layout: spec
 title: Data Packages
-version: 1.0-beta.10
-last_update: 12 April 2014
+version: 1.0.0-beta.12
+updated: 26 May 2015
 created: 12 November 2007
-well_defined_keywords: true
+ietf-keywords: true
 author:
- - Rufus Pollock (Open Knowledge Foundation Labs)
- - Matthew Brett (NiPY)
- - Martin Keegan (Open Knowledge Foundation Labs)
+ - Rufus Pollock (Open Knowledge Labs)
+ - Martin Keegan (Open Knowledge Labs)
 summary: A Data Package (or DataPackage) is a coherent collection of data 
  and possibly other assets in a single 'package'. It provides the basis 
  for convenient delivery, installation and management of datasets.
@@ -25,10 +24,12 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
-- `1.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
-- `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
-- `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
-- `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
+- `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
+- `1.0.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
+- `1.0.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
+- `1.0.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
+- `1.0.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
+- `1.0.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
 ### Table of Contents 
 {:.no_toc}
@@ -107,14 +108,14 @@ Several exemplar data packages can be found in the [datasets organization on git
 * General metadata such as the name of the package, its license, its publisher etc
 * A list of the data resources that make up this data package (plus, possibly, additional schema information about these data resources in a structured form)
 
-The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627][].
+The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627][]).
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-A valid descriptor MUST contain a `name` attibute. These fields, and additional 
+A valid descriptor MUST contain a `name` attribute. These fields, and additional
 metadata attributes, are described in the "Required Fields" section below.
 
 A valid descriptor MAY contain a `resources` attribute.
@@ -156,19 +157,21 @@ A valid package MUST include the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
-In addition to the above fields, it is recommended that the following fields SHOULD 
-be included in every package descriptor:
+### Strongly Recommended Fields
 
-* `resources` - a JSON array of hashes that describe the contents of 
-  the package. The structure of the resource hash is described in the "Resource Information"
-  section.
+In addition to the above fields, the following fields SHOULD be included in
+every package descriptor:
+
+* `resources` - a JSON array of hashes that describe the contents of the
+  package. The structure of the resource hash is described in the "Resource
+  Information" section.
 
 * `license` (or `licenses`) - is a field specifying the license (or licenses)
   under which the package is provided. You MAY specify either a `license` field
   or a `licenses` field but NOT both.
   
-  **This property is not legally binding and does not necessarily mean your
-  package is licensed under the terms you define in this property.**
+  **This property is not legally binding and does not guarantee the package is
+  licensed under the terms defined in this property.**
   
   * `license` MUST be a string and its value SHOULD be an [Open Definition license
     ID][od-licenses] (preferably one that is [Open Definition
@@ -187,52 +190,71 @@ be included in every package descriptor:
           "url": "http://opendatacommons.org/licenses/pddl/"
         }]
 
-* `datapackage_version` - the version of the data package specification this
-  datapackage.json conforms to. It should follow the Semantic Versioning
-  requirements (http://semver.org/). The current version of this specification is given at 
-  the top of this document.
-
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
+[semver]: http://semver.org
 
 ### Recommended Fields
 
-Additionally, a package descriptor MAY include the following keys and values:
+The following are commonly used fields that the package descriptor MAY contain:
 
 * `title` - a title or one sentence description for this package
 * `description` - a description of the package. The first paragraph (up to the
   first double line break should be usable as summary information for the package)
 * `homepage` - URL string for the data packages web site
-* `version` - a version string identifying the version of the package. It should conform to the Semantic Versioning requirements
-  (http://semver.org/).
+* `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
 * `sources` - an array of source hashes. Each source hash may have `name`, `web` and `email` fields. Example:
 
       "sources": [{
         "name": "World Bank and OECD",
         "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
       }]
-    
-* `keywords` - an Array of string keywords to assist users searching for the
-  package in catalogs.
-* `image` - a link to an image to use for this data package
+* `author` and `contributors` - these are fields for describing people or
+  organizations who contributed to this Data Package. `author` is a single
+  person / organization whilst `contributors` is an array. By convention, the
+  first contributor is the original author of the package unless `author` is
+  also present - in this sense, `author` is simply a convenience that allows
+  for single line entries like the following:
 
-### Optional Fields 
+      "author": "Joe Bloggs <joe@bloggs.com>"
 
-* `maintainers` - Array of maintainers of the package. Each maintainer is a hash
-  which must have a "name" property and may optionally provide "email" and
-  "web" properties.
-* `contributors` - an Array of hashes each containing the details of a
-  contributor. Must contain a 'name' property and MAY contain an email and web
-  property. By convention, the first contributor is the original author of the
-  package. Example:
+  A "person" or "organization" is a hash OR string. It MUST contain a `name`
+  property and MAY contain `web` and `email`. An example of the hash structure
+  is as follows:
 
-      "contributors":[ {
+      {
         "name": "Joe Bloggs",
         "email": "joe@bloggs.com",
         "web": "http://www.bloggs.com"
-      }]
+      }
 
-* `publisher` - like contributors 
+  The string version has the following structure:
+  
+      NAME <EMAIL> (WEB)
+  
+  Example:
+  
+      Joe Bloggs <joe@bloggs.com> (http://www.bloggs.com/)
+  
+  Email and web are optional in the string version as well e.g.:
+  
+      Joe Bloggs
+      Joe Bloggs <joe@bloggs.com>
+      Joe Bloggs (http://www.bloggs.com)
+  
+  Note on semantics: use of the "author" field does not imply that that person
+  was the original creator of the data in the data package - merely that they
+  created and/or maintain the data package. It is common for data packages to
+  "package" up data from elsewhere. The original origin of the data can be
+  indicated with the `sources` field - see above.
+* `keywords` - an Array of string keywords to assist users searching for the
+  package in catalogs.
+
+### Optional Fields
+
+A package descriptor MAY contain the following fields:
+
+* `image` - a link to an image to use for this data package
 * `base` - a base URI used to resolve `resources` that specify relative paths in
   the event that the actual data files specified by those resource paths are not
   located in the same directory in which the descriptor file (`datapackage.json`)

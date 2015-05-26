@@ -4,7 +4,7 @@ subtitle: simple, line-oriented, tabular data
 author: Jason Dusek <jason.dusek@gmail.com>
 layout: spec
 version: 1.0-beta
-last_update: 6 May 2014
+updated: 6 May 2014
 created: 6 May 2014
 summary: This document defines a format for tabular data.
 

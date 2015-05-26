@@ -2,7 +2,7 @@
 title: Coopy highlighter diff format for tables
 layout: spec
 version: 0.8
-last_update: 27 May 2014
+updated: 27 May 2014
 created: 16 December 2011
 author: Paul Fitzpatrick (Data Commons Co-op)
 summary: The highlighter diff format is a format for expressing the difference
