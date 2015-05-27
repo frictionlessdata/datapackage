@@ -13,6 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0.pre10: Add support for translations/languages [issue](https://github.com/dataprotocols/dataprotocols/issues/171)
 - 1.0.0-pre9: make date formats stricter for default
   [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
   value of fmt:PATTERN for dates
@@ -406,25 +407,21 @@ Here's an example:
 
 ### Translation fields in data
 
-JSON Table Schema supports translations using `@{lang-code}` syntax for field names.
+JSON Table Schema supports translations using `{field_name}@{lang-code}` syntax for field names.
 
-Any field with an `@` is a translation field for another field in the data.
+Any field with a `@` symbol `MUST` be a translation field for another field in the data, and `MUST` follow the `{field_name}@{lang-code}` pattern.
 
-Translation fields that do not match a field in the data `SHOULD` be ignored.
+If a translation field is found in the data that does have a corresponding field, it `SHOULD` be ignored.
 
-Translation fields are not delcared in a schema `fields` array. Each translation field
-
-`MUST` match the `type` and `format` of the field it translations. Translation fields are never required.
+Translation fields are not delcared in a schema `fields` array. Rather, each translation field `MUST` match the `type`, `format` and `constraints` of the field it translates, with one exception: Translation fields are never required, and therefore `constraints.required` is always `false` for a translation field.
 
 ### Declaring languages in a schema
 
-The default language is English (en).A schema can declare that the data contains
-multiple languages, or a different default language via a top-level `languages` property.
-`languages` `MUST` be an array, and the first item in the array is the
-default (non-translated) language.
+The default language in JSON Table Schema is English (`en`).
 
-Having a language in the `languages` array does not ensure that the data
-contains one or more fields in that language.
+A schema can declare that the data contains multiple languages, or a different default language, via a top-level `languages` property. `languages` `MUST` be an array, and the first item in the array is the default (non-translated) language.
+
+Having a language in the `languages` array does not ensure that the data contains one or more translation fields in that language.
 
 Here are some examples:
 
@@ -446,6 +443,10 @@ Here are some examples:
     "languages": ["en", "ar", "fr"]
 }
 
+# An example data file with translation fields
+id,name,name@es
+1,Sun,Sol
+1,Moon,Luna
 ```
 
 
