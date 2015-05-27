@@ -357,7 +357,7 @@ Here's an example with an array primary key:
 <div class="alert alert-success">
 Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes two assumptions:
 
-* You have a Foreign Key to *self*, so no further meta data is required, and a special `__self__` keyword is employed.
+* You have a Foreign Key to *self*, so no further meta data is required, and a special `self` keyword is employed.
 * You have a Foreign Key to data objects "elsewhere", in which case, the data objects being referenced must be <a href="/data-packages/">Data
 Packages</a>.
 </div>
@@ -377,7 +377,7 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
     name to a datapackage. If absent the implication is that this is a
     reference to a resource within the current data package. For self-referencing foreign keys, the value of `datapackage` `MUST` be empty.
   * `MUST` have an attribute `resource` which is the name of the resource
-    within the referenced data package. For self-referencing foreign keys, the value of `resource` `MUST` be `__self__`.
+    within the referenced data package. For self-referencing foreign keys, the value of `resource` `MUST` be `self`.
   * `MUST` have an attribute `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
@@ -417,7 +417,7 @@ An example of a self-referencing foreign key:
           "fields": "parent"
           "reference": {
             "datapackage": "",
-            "resource": "__self__",
+            "resource": "self",
             "fields": "id"
           }
         }
