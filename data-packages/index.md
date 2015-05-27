@@ -1,7 +1,7 @@
 ---
 layout: spec
 title: Data Packages
-version: 1.0.0-beta.12
+version: 1.0.0-beta.13
 updated: 26 May 2015
 created: 12 November 2007
 ietf-keywords: true
@@ -24,6 +24,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.13`: add support for sharing schemas across resources via schema references as per [issue #71](https://github.com/dataprotocols/dataprotocols/issues/71)
 - `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
 - `1.0.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
 - `1.0.0-beta.10`: `license` introduced and `licenses` updated as per this [issue](https://github.com/dataprotocols/data-packages/issues/1)
@@ -277,6 +278,8 @@ A package descriptor MAY contain the following fields:
            "othercorp-geo-boundaries": "0.9.8",
          },
       }
+* `schemas`: a Hash containing schemas keyed by a name. See the [Resource
+  Schemas](#resource-schemas) section below.
  
 
 <div class="alert" markdown="block">
@@ -367,8 +370,8 @@ A resource MAY contain any number of additional fields. Common fields include:
 
       "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
 
-* `schema`: a schema for the resource - see below for more on this in the case of
-  tabular data.
+* `schema`: a schema or a pointer to the schema for the resource - see below
+  for more on this attribute
 * `sources`: as for data package metadata.
 * `licenses`: as for data package metadata. If not specified the resource
   inherits from the data package.
@@ -421,6 +424,76 @@ Example 2 - inline CSV:
          }
        ]
     }
+
+### Resource Schemas
+
+The value for the `schema` field on a `resource` MUST be a Hash or a string
+that "references" a Hash as detailed below.
+
+<div class="alert" markdown="block">
+NOTE: the Data Package specification places no restrictions on the form of this
+Hash. This flexibility enables specific communities to define schemas
+appropriate for the data they manage. As an example, the [Tabular Data
+Package][tdp] specification requires the schema value to conform to [JSON Table
+Schema][jts].
+</div>
+
+#### Schema References
+
+If `schema` is a string it is a "reference" to a Hash and MUST be:
+
+* EITHER: a URL. The URL MUST:
+
+  * EITHER: resolve to a JSON document that is the schema
+  * OR: include a fragment identifier which conforms to to [JSON
+    Pointer](http://tools.ietf.org/html/rfc6901) notation. The URL must then
+    resolve to a JSON document and the schema is obtained by resolving within
+    that JSON document using the fragment identifier as the JSON pointer as per
+    section 6 of the JSON pointer specification.  URL.
+
+* OR: a simple string name which MUST correspond to the 'name' (key) in the
+  `schemas` hash in the same datapackage.json file - see next section.
+
+#### `schemas` Property
+
+A Data Package MAY have a `schemas` property. The value of the property MUST be
+a Hash. Each key in the Hash is the name of a schema. A schema name MUST consist only of
+lower-case alphanumeric letters, together with
+- and \_.
+
+Each value for an entry in the `schemas` Hash must be a must be a Hash
+specifying an appropriate schema.
+
+#### Examples
+
+```
+{
+  "resources": [
+    {
+    ...
+      "schema": http://url-to/datapackage.json#schemas/schema-name
+      }
+    }
+  ],
+...
+}
+```
+
+```
+{
+  "resources": [
+    {
+    ...
+      "schema": "xyz-schema"
+    }
+  ],
+  "schemas": {
+    "xyz-schema": {
+      schema goes here ...
+    }
+  }
+}
+```
 
 ### Tabular Data
 

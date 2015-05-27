@@ -13,24 +13,21 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre9: make date formats stricter for default
+  [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
+  value of fmt:PATTERN for dates
+  [issue](https://github.com/dataprotocols/dataprotocols/issues/200)
 - 1.0-pre8: Rename constraints.oneOf to constraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
-
 - 1.0-pre7: Add constraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
-
 - 1.0-pre6: clarify types and formats
   [issue](https://github.com/dataprotocols/dataprotocols/issues/159)
-
 - 1.0-pre5: add type validation
   [issue](https://github.com/dataprotocols/dataprotocols/issues/95)
-
 - 1.0-pre4: add foreign key support - see this
   [issue](https://github.com/dataprotocols/dataprotocols/issues/23)
-
 - 1.0-pre3.2: add primary key support (see this
     [issue](https://github.com/dataprotocols/dataprotocols/issues/21))
-
 - 1.0-pre3.1: breaking changes.
-
   - `label` (breaking) changed to `title` - see [Closer alignment with JSON
     Schema](https://github.com/dataprotocols/dataprotocols/issues/46)
   - `id` changed to `name` (with slight alteration in semantics - i.e. SHOULD
@@ -269,14 +266,18 @@ The type and format list is as follows:
 * **datetime**; **date**; **time**
     * `datetime`, `date` and `time` share the following format options:
         * **default**: An ISO8601 format string. Equivalent to not declaring a format.
+          * date: This MUST be in ISO6801 format YYYY-MM-DD
+          * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
+          * time: a time without a date
         * **any**: Any parsable representation of the type. The implementing
           library can attempt to parse the datetime via a range of strategies.
           An example is `dateutil.parser.parse` from the `python-dateutils`
           library.
-        * **fmt:[PATTERN]**: A special format that allows declaring a string pattern
-          `[PATTERN]` for the type. For example: "DD/MM/YYYY"
-          * **NOTE:** Needs further specification to make it clear what
-            patterns a library should be able to support
+        * **fmt:PATTERN**: date/time values in this field conform to
+          `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
+          / C strptime][strptime]. (That is, values in the this field should be
+          parseable by Python / C standard `strptime` using `PATTERN`).
+          Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
 
 * **geopoint**
     * `geopoint` formats:
@@ -295,6 +296,9 @@ The type and format list is as follows:
 
 * **any**
     * Any `type` or `format` is accepted.
+
+[strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
+
 
 ## Primary Key
 
