@@ -1,6 +1,8 @@
 ---
 title: Data Query Protocol
 layout: default
+research: true
+listed: true
 ---
 
 This document is about providing a proposal for a standardized way of

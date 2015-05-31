@@ -1,3 +1,13 @@
-{% include header.html %}
+---
+layout: container
+---
+{% if page.dir != "/reference" %}
+  {% if page.reference %}
+    <div class="reference-tag"><div><a href="{{site.baseurl}}/reference/">Reference Section</a></div></div>
+  {% endif %}
+  {% if page.research %}
+    <div class="reference-tag"><div><a href="{{site.baseurl}}/reference/">Research Section</a></div></div>
+  {% endif %}
+{% endif %}
+
 {{content}}
-{% include footer.html %}

@@ -2,6 +2,7 @@
 title: Tabular Data Package
 subtitle: (previously known as Simple Data Format)
 layout: spec
+listed: true
 version: 1.0-beta-2
 updated: 16 March 2014
 created: May 7 2012

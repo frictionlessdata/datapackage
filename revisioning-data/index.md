@@ -2,6 +2,8 @@
 title: Revisioning (Versioning) for Data - Theory
 layout: default
 author: Rufus Pollock (Open Knowledge Foundation)
+research: true
+listed: true
 ---
 
 {% include meta.html %}

@@ -27,7 +27,12 @@ Work topics include:
     {% include proposals.html %}
   </ul>
 
-  <h4>Research and Patterns</h4>
+  <h4>Reference</h4>
+  <ul>
+    {% include reference.html %}
+  </ul>
+
+  <h4>Research</h4>
   <ul>
     {% include research.html %}
   </ul>

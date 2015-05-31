@@ -1,0 +1,8 @@
+{% assign pages = site.pages | sort: 'title' %}
+{% for p in pages %}
+  {% if p.reference %}
+    {% if p.listed %}
+<li><a href="{{site.baseurl}}{{ p.url }}">{{ p.title }}</a>{% if include.detail %}{% if p.listed_summary %} - {{p.listed_summary}}{% endif %}{% endif %}</li>
+    {% endif %}
+  {% endif %}
+{% endfor %}

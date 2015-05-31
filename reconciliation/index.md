@@ -1,6 +1,8 @@
 ---
 title: Reconciliation Protocol
 layout: default
+reference: true
+listed: true
 ---
 
 This document is about providing a standardized way of (fuzzily)
