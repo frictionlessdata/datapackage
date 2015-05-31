@@ -12,16 +12,12 @@ We welcome new entries in this reference library. If you would like to submit a 
 
 # Reference
 
-* [OGC Geospatial Standards][ogc] - this section provides a summary on each of the OGC spatial protocols & formats with links to the relevant documentation.
-* [Web Oriented Data Formats][dataformats]
-* [Reconciliation Protocol][reconciliation]
+<ul>
+{% include reference.html detail='true' %}
+</ul>
 
 # Research
 
-* [Revisioning and Versioning for Data][revisioning]
-
-[ogc]: /ogc/
-[dataformats]: /data-formats/
-[reconciliation]: /reconciliation/
-[revisioning]: /revisioning-data/
-
+<ul>
+{% include research.html detail='true' %}
+</ul>

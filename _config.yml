@@ -2,6 +2,8 @@ name: Data Protocols
 pygments: true
 markdown: kramdown
 baseurl: 
+exclude: ["ndjson/index.md"]
+include: ["ndjson/README.md"]
 defaults:
   -
     scope:
@@ -13,3 +15,9 @@ defaults:
       path: "ndjson"
     values:
       permalink: "/ndjson/index.html"
+      listed: true
+  -
+    scope:
+      path: "reference"
+    values:
+      reference: true

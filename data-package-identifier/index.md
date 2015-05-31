@@ -1,6 +1,7 @@
 ---
 layout: spec
 title: Data Package Identifiers
+listed: true
 version: 1.0-alpha
 updated: 02 November 2014
 created: 17 August 2014

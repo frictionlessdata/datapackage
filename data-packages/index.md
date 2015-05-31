@@ -1,6 +1,7 @@
 ---
 layout: spec
 title: Data Packages
+listed: true
 version: 1.0.0-beta.13
 updated: 26 May 2015
 created: 12 November 2007
