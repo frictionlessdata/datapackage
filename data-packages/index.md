@@ -358,6 +358,8 @@ It is recommended that a resource SHOULD contain the following fields:
 
 A resource MAY contain any number of additional fields. Common fields include:
 
+* `title`: a title or label for the title.
+* `description`: a description of this resource.
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
