@@ -1,11 +1,8 @@
-    <li><a href="{{site.baseurl}}/data-packages/">Data Packages</a></li>
-    <li><a href="{{site.baseurl}}/tabular-data-package/">Tabular Data Package</a></li>
-    <li><a href="{{site.baseurl}}/data-package-identifier/">Data Package Identifiers</a></li>
-    <li><a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a></li>
-    <li><a href="{{site.baseurl}}/csv-dialect/">CSV Dialect Description Format (CSVDDF)</a></li>
-    <li><a href="{{site.baseurl}}/tabular-diff-format/">Coopy highlighter diff format for tables</a></li>
-    <li><a href="{{site.baseurl}}/units/">Units for Data</a></li>
-    <li><a href="{{site.baseurl}}/sleep/">SLEEP</a></li>
-    <li><a href="{{site.baseurl}}/couchdb-replication/">CouchDB Replication Protocol</a></li>
-    <li><a href="{{site.baseurl}}/linear-tsv/">Linear TSV</a></li>
-    <li><a href="{{site.baseurl}}/ndjson/">NDJSON - Newline delimited JSON</a></li>
+{% assign pages = site.pages | sort: 'title' %}
+{% for p in pages %}
+  {% if p.listed %}
+    {% unless p.research or p.reference %}
+      <li><a href="{{site.baseurl}}{{ p.url }}">{{ p.title }}</a></li>
+    {% endunless %}
+  {% endif %}
+{% endfor %}

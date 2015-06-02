@@ -1,6 +1,7 @@
 ---
 title: Coopy highlighter diff format for tables
 layout: spec
+listed: true
 version: 0.8
 updated: 27 May 2014
 created: 16 December 2011

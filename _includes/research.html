@@ -1,4 +1,8 @@
-    <li><a href="{{site.baseurl}}/revisioning-data/">Revisioning (Versioning) for Data</a></li>
-    <li><a href="{{site.baseurl}}/reconciliation/">Reconciliation Protocol</a></li>
-    <li><a href="{{site.baseurl}}/data-query-protocol/">Data Query Protocol</a></li>
-    <li><a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a></li>
+{% assign pages = site.pages | sort: 'title' %}
+{% for p in pages %}
+  {% if p.research %}
+    {% if p.listed %}
+      <li><a href="{{site.baseurl}}{{ p.url }}">{{ p.title }}</a>{% if include.detail %}{% if p.listed_summary %} - {{p.listed_summary}}{% endif %}{% endif %}</li>
+    {% endif %}
+  {% endif %}
+{% endfor %}

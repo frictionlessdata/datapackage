@@ -1,6 +1,7 @@
 ---
 title: JSON Table Schema
 layout: spec
+listed: true
 version: 1.0-pre6
 updated: 3 March 2015
 created: 12 November 2012

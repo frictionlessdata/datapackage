@@ -1,6 +1,7 @@
 ---
 title: Units
 layout: default
+listed: true
 author:
  - Andrew Berkeley
  - Rufus Pollock (Open Knowledge Foundation)

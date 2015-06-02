@@ -1,6 +1,8 @@
 ---
 title: Web-Oriented Data Formats
 layout: default
+reference: true
+listed: true
 ---
 
 This document reviews existing web-oriented data formats.

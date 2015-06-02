@@ -1,6 +1,7 @@
 ---
 title: SLEEP
 layout: default
+listed: true
 ---
 
 A proposed simple specification for syncing tabular data over HTTP via
