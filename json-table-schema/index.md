@@ -14,12 +14,13 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0.pre10: Add support for translations/languages [issue](https://github.com/dataprotocols/dataprotocols/issues/171)
 - 1.0.0-pre9: make date formats stricter for default
   [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
   value of fmt:PATTERN for dates
   [issue](https://github.com/dataprotocols/dataprotocols/issues/200)
-- 1.0-pre8: Rename contraints.oneOf to contraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
-- 1.0-pre7: Add contraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
+- 1.0-pre8: Rename constraints.oneOf to constraints.enum [issue](https://github.com/dataprotocols/dataprotocols/issues/191)
+- 1.0-pre7: Add constraints.oneOf [issue](https://github.com/dataprotocols/dataprotocols/issues/175)
 - 1.0-pre6: clarify types and formats
   [issue](https://github.com/dataprotocols/dataprotocols/issues/159)
 - 1.0-pre5: add type validation
@@ -279,7 +280,7 @@ The type and format list is as follows:
           / C strptime][strptime]. (That is, values in the this field should be
           parseable by Python / C standard `strptime` using `PATTERN`).
           Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
-          
+
 * **geopoint**
     * `geopoint` formats:
         * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
@@ -401,6 +402,54 @@ Here's an example:
           }
         }
       ]
+
+
+## Languages and translations
+
+### Translation fields in data
+
+JSON Table Schema supports translations using `{field_name}@{lang-code}` syntax for field names.
+
+Any field with a `@` symbol `MUST` be a translation field for another field in the data, and `MUST` follow the `{field_name}@{lang-code}` pattern.
+
+If a translation field is found in the data that does have a corresponding field, it `SHOULD` be ignored.
+
+Translation fields are not delcared in a schema `fields` array. Rather, each translation field `MUST` match the `type`, `format` and `constraints` of the field it translates, with one exception: Translation fields are never required, and therefore `constraints.required` is always `false` for a translation field.
+
+### Declaring languages in a schema
+
+The default language in JSON Table Schema is English (`en`).
+
+A schema can declare that the data contains multiple languages, or a different default language, via a top-level `languages` property. `languages` `MUST` be an array, and the first item in the array is the default (non-translated) language.
+
+Having a language in the `languages` array does not ensure that the data contains one or more translation fields in that language.
+
+Here are some examples:
+
+```
+# declaring that the default language is Spanish
+
+{
+    "fields": [
+        ...
+    ],
+    "languages": ["es"]
+}
+
+# a default language of English, with translations in Arabic and French
+{
+    "fields": [
+        ...
+    ],
+    "languages": ["en", "ar", "fr"]
+}
+
+# An example data file with translation fields
+id,name,name@es
+1,Sun,Sol
+1,Moon,Luna
+```
+
 
 ----
 
