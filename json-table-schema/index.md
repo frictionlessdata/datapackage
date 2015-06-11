@@ -279,7 +279,7 @@ The type and format list is as follows:
           / C strptime][strptime]. (That is, values in the this field should be
           parseable by Python / C standard `strptime` using `PATTERN`).
           Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
-          
+
 * **geopoint**
     * `geopoint` formats:
         * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
@@ -356,18 +356,19 @@ Here's an example with an array primary key:
 ## Foreign Keys
 
 <div class="alert alert-success">
-Foreign Keys by necessity must be able to reference other data objects. These
-data objects require a specific structure for the spec to work. This spec
-assumes the data objects being referenced are <a href="/data-packages/">Data
-Packages</a>. Thus, to use Foreign Keys you must be referencing Data Packages.
+Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes two assumptions:
+
+* You have a Foreign Key to *self*, so no further meta data is required, and a special `self` keyword is employed.
+* You have a Foreign Key to data objects "elsewhere", in which case, the data objects being referenced must be <a href="/data-packages/">Data
+Packages</a>.
 </div>
 
 A foreign key is a reference where entries in a given field (or fields) on this
 table ('resource' in data package terminology) is a reference to an entry in a
 field (or fields) on a separate resource.
 
-The `foreignKeys` attribute, if present, MUST be an Array. Each entry in the
-array must be a `foreignKey`. A `foreignKey` MUST be a Hash and:
+The `foreignKeys` attribute, if present, `MUST` be an Array. Each entry in the
+array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
 
 * `MUST` have an attribute `fields`. `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
@@ -375,9 +376,9 @@ array must be a `foreignKey`. A `foreignKey` MUST be a Hash and:
 * `MUST` have an attribute `reference` which MUST be a Hash. The Hash
   * `MAY` have an attribute `datapackage`. This attribute is a string being a url or
     name to a datapackage. If absent the implication is that this is a
-    reference to a resource within the current data package.
+    reference to a resource within the current data package. For self-referencing foreign keys, the value of `datapackage` `MUST` be empty.
   * `MUST` have an attribute `resource` which is the name of the resource
-    within the referenced data package
+    within the referenced data package. For self-referencing foreign keys, the value of `resource` `MUST` be `self`.
   * `MUST` have an attribute `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
@@ -398,6 +399,27 @@ Here's an example:
             "datapackage": "http://data.okfn.org/data/mydatapackage/",
             "resource": "the-resource",
             "fields": "state_id"
+          }
+        }
+      ]
+
+An example of a self-referencing foreign key:
+
+      "fields": [
+        {
+          "name": "parent"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "fields": "parent"
+          "reference": {
+            "datapackage": "",
+            "resource": "self",
+            "fields": "id"
           }
         }
       ]
