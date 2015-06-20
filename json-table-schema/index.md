@@ -2,7 +2,7 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre6
+version: 1.0-pre9
 updated: 3 March 2015
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
