@@ -114,10 +114,12 @@ That is, a JSON Table Schema is:
 -   a Hash which `MUST` contain a key `fields`
 -   `fields` MUST be an array where each entry in the array is a field
     descriptor. (Structure and usage described below)
--   the Hash `MAY` contain an attribute `primaryKey` (structure and usage
+-   the Hash `MAY` contain a property `primaryKey` (structure and usage
     specified below)
--   the Hash `MAY` contain an attribute `foreignKeys` (structure and usage
+-   the Hash `MAY` contain a property `foreignKeys` (structure and usage
     specified below)
+-   the Hash `MAY` contain any number of other properties (not defined in this
+    spec)
 
 ## Field Descriptors
 
@@ -141,16 +143,16 @@ have additional keys as described below:
     }
 
 -   a field descriptor MUST be a Hash
--   the field descriptor Hash MUST contain a `name` attribute. This
-    attribute `SHOULD` correspond to the name of field/column in the
+-   the field descriptor Hash MUST contain a `name` property. This
+    property `SHOULD` correspond to the name of field/column in the
     data file (if it has a name). As such it `SHOULD` be unique (though
     it is possible, but very bad practice, for the data file to have
     multiple columns with the same name). Additionally, `name` `SHOULD`
     be considered case sensitive. In practice, case sensistivity for names
     can be limiting in certain scenarios, so consumers `MAY` choose to ignore
     case sensitivity for `name` values.
--   the field descriptor Hash MAY contain any number of other attributes
--   specific attributes that MAY be included in the Hash and whose
+-   the field descriptor Hash MAY contain any number of other properties
+-   specific properties that MAY be included in the Hash and whose
     meaning is defined in this spec are:
 
     -   `title`: A nicer human readable label or title for the field
@@ -203,9 +205,9 @@ according to their declared `type` and `constraints`.
 
 ### Field Types and Formats
 
-A field's `type` attribute is a string indicating the type of this field.
+A field's `type` property is a string indicating the type of this field.
 
-A field's `format` attribute is a string, being a keyword indicating a
+A field's `format` property is a string, being a keyword indicating a
 format for the field type.
 
 Both `type` and `format` are optional: in a field descriptor, the absence of a
@@ -367,19 +369,19 @@ A foreign key is a reference where entries in a given field (or fields) on this
 table ('resource' in data package terminology) is a reference to an entry in a
 field (or fields) on a separate resource.
 
-The `foreignKeys` attribute, if present, `MUST` be an Array. Each entry in the
+The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
 array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
 
-* `MUST` have an attribute `fields`. `fields` is a string or array specifying the
+* `MUST` have a property `fields`. `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
-* `MUST` have an attribute `reference` which MUST be a Hash. The Hash
-  * `MAY` have an attribute `datapackage`. This attribute is a string being a url or
+* `MUST` have a property `reference` which MUST be a Hash. The Hash
+  * `MAY` have a property `datapackage`. This property is a string being a url or
     name to a datapackage. If absent the implication is that this is a
     reference to a resource within the current data package. For self-referencing foreign keys, the value of `datapackage` `MUST` be empty.
-  * `MUST` have an attribute `resource` which is the name of the resource
+  * `MUST` have a property `resource` which is the name of the resource
     within the referenced data package. For self-referencing foreign keys, the value of `resource` `MUST` be `self`.
-  * `MUST` have an attribute `fields` which is a string if the outer `fields` is a
+  * `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
     the string or array is as per `primaryKey` above.
