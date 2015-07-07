@@ -87,13 +87,13 @@ Participate and Contribute
 
 This effort is community-run and contributions, comments and corrections are
 warmly welcomed. Most work proceeds in an RFC-style manner with discussion on
-the [mailing list][list].
+the [forum][forum].
 
 Material is kept in a [git repo on github][repo] - fork and submit a pull
 request to add material. There is also an [issue tracker][issues] which can be
 used for specific issues or suggestions.
 
-[list]: http://lists.okfn.org/mailman/listinfo/data-protocols
+[forum]: https://discuss.okfn.org/c/open-knowledge-labs/data-packages
 [repo]: https://github.com/dataprotocols/dataprotocols
 [issues]: https://github.com/dataprotocols/dataprotocols/issues
 
