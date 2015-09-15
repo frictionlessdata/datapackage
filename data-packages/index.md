@@ -179,7 +179,7 @@ every package descriptor:
     ID][od-licenses] (preferably one that is [Open Definition
     approved][od-approved].
 
-        { "license" : "PDDL-1.0" }
+        { "license" : "ODC-PDDL-1.0" }
 
   * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and a
     `url` property linking to the actual text. The `type` SHOULD be an [Open
@@ -188,7 +188,7 @@ every package descriptor:
     Example:
 
         "licenses": [{
-          "type": "PDDL-1.0",
+          "type": "ODC-PDDL-1.0",
           "url": "http://opendatacommons.org/licenses/pddl/"
         }]
 
