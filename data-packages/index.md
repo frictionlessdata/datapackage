@@ -168,29 +168,28 @@ every package descriptor:
   package. The structure of the resource hash is described in the "Resource
   Information" section.
 
-* `license` (or `licenses`) - is a field specifying the license (or licenses)
-  under which the package is provided. You MAY specify either a `license` field
-  or a `licenses` field but NOT both.
+* `license` - is a field specifying the license under which the package is
+  provided.
   
   **This property is not legally binding and does not guarantee the package is
   licensed under the terms defined in this property.**
   
-  * `license` MUST be a string and its value SHOULD be an [Open Definition license
-    ID][od-licenses] (preferably one that is [Open Definition
-    approved][od-approved].
+  * `license` is a hash OR string. The value of the string version SHOULD be
+  an [Open Definition license ID][od-licenses] (preferably one that is
+  [Open Definition approved][od-approved]. An example of the string version
+  is as follows:
 
         { "license" : "ODC-PDDL-1.0" }
 
-  * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and a
-    `url` property linking to the actual text. The `type` SHOULD be an [Open
-    Definition license ID][od-license] if an ID exists for the license and
-    otherwise may be the general license name or identifier. Here is an
-    Example:
+  The hash structure MUST contain a `type` property and a `url` property
+  linking to the actual text. The `type` SHOULD be an
+  [Open Definition license ID][od-license] if an ID exists for the license and
+  otherwise may be the general license name or identifier. Here is an example:
 
-        "licenses": [{
+        "license": {
           "type": "ODC-PDDL-1.0",
           "url": "http://opendatacommons.org/licenses/pddl/"
-        }]
+        }
 
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
