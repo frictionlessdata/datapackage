@@ -375,7 +375,7 @@ A resource MAY contain any number of additional fields. Common fields include:
 * `schema`: a schema or a pointer to the schema for the resource - see below
   for more on this attribute
 * `sources`: as for data package metadata.
-* `licenses`: as for data package metadata. If not specified the resource
+* `license`: as for data package metadata. If not specified the resource
   inherits from the data package.
 
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
