@@ -194,6 +194,8 @@ keys.
 - `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
 The field value must exactly match a value in the `enum` array.
 
+The constraints listed above may also define a list of supported field types. Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
+
 A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply
 all the constraints when determining if a field value is valid.
 
