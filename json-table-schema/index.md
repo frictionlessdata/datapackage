@@ -178,8 +178,8 @@ keys.
 
 - `required` -- A boolean value which indicates whether a field must have a value
   in every row of the table. An empty string is considered to be a missing value.
-- `minLength` -- An integer that specifies the minimum number of characters for a value
-- `maxLength` -- An integer that specifies the maximum number of characters for a value
+- `minLength` -- An integer that specifies the minimum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
+- `maxLength` -- An integer that specifies the maximum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
 - `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the
   data file in which it is found. This defines a unique key for a row although a row could
   potentially have several such keys.
@@ -189,10 +189,7 @@ keys.
   [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also
   [this reference](http://www.regular-expressions.info/xml.html).
 - `minimum` -- specifies a minimum value for a field. This is different to `minLength` which
-  checks number of characters. A `minimum` value constraint checks whether a field value is greater than
-  or equal to the specified value. The range checking depends on the `type` of the field. E.g. an
-  integer field may have a minimum value of 100; a date field might have a minimum date. If a
-  `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key
+  checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
 - `maximum` -- as above, but specifies a maximum value for a field.
 - `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
 The field value must exactly match a value in the `enum` array.
