@@ -189,7 +189,7 @@ keys.
   [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also
   [this reference](http://www.regular-expressions.info/xml.html).
 - `minimum` -- specifies a minimum value for a field. This is different to `minLength` which
-  checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
+  checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.
 - `maximum` -- as above, but specifies a maximum value for a field.
 - `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
 The field value must exactly match a value in the `enum` array.
