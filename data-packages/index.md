@@ -165,8 +165,8 @@ A valid package MUST include the following fields:
 In addition to the above fields, the following fields SHOULD be included in
 every package descriptor:
 
-* `resources` - a JSON array of hashes that describe the contents of the
-  package. The structure of the resource hash is described in the "Resource
+* `resources` - a JSON array of objects that describe the contents of the
+  package. The structure of the resource object is described in the "Resource
   Information" section.
 
 * `license` - is a field specifying the license under which the package is
@@ -175,14 +175,14 @@ every package descriptor:
   **This property is not legally binding and does not guarantee the package is
   licensed under the terms defined in this property.**
   
-  * `license` is a hash OR string. The value of the string version SHOULD be
+  * `license` is an object OR string. The value of the string version SHOULD be
   an [Open Definition license ID][od-licenses] (preferably one that is
   [Open Definition approved][od-approved]. An example of the string version
   is as follows:
 
         { "license" : "ODC-PDDL-1.0" }
 
-  The hash structure MUST contain a `type` property and a `url` property
+  The object structure MUST contain a `type` property and a `url` property
   linking to the actual text. The `type` SHOULD be an
   [Open Definition license ID][od-license] if an ID exists for the license and
   otherwise may be the general license name or identifier. Here is an example:
@@ -205,7 +205,7 @@ The following are commonly used fields that the package descriptor MAY contain:
   first double line break should be usable as summary information for the package)
 * `homepage` - URL string for the data packages web site
 * `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
-* `sources` - an array of source hashes. Each source hash may have `name`, `web` and `email` fields. Example:
+* `sources` - an array of source objects. Each source object may have `name`, `web` and `email` fields. Example:
 
       "sources": [{
         "name": "World Bank and OECD",
@@ -220,8 +220,8 @@ The following are commonly used fields that the package descriptor MAY contain:
 
       "author": "Joe Bloggs <joe@bloggs.com>"
 
-  A "person" or "organization" is a hash OR string. It MUST contain a `name`
-  property and MAY contain `web` and `email`. An example of the hash structure
+  A "person" or "organization" is an object OR string. It MUST contain a `name`
+  property and MAY contain `web` and `email`. An example of the object structure
   is as follows:
 
       {
@@ -261,12 +261,12 @@ A package descriptor MAY contain the following fields:
   the event that the actual data files specified by those resource paths are not
   located in the same directory in which the descriptor file (`datapackage.json`)
   resides.
-* `dataDependencies` - Hash of prerequisite data packages on which this package
+* `dataDependencies` - Object of prerequisite data packages on which this package
   depends in order to install. Follows same format as CommonJS Packages spec
   v1.1.Each dependency defines the lowest compatible MAJOR[.MINOR[.PATCH]]
   dependency versions (only one per MAJOR version) with which the package has
   been tested and is assured to work. The version may be a simple version
-  string (see the version property for acceptable forms), or it may be a hash
+  string (see the version property for acceptable forms), or it may be an object
   group of dependencies which define a set of options, any one of which
   satisfies the dependency. The ordering of the group is significant and
   earlier entries have higher priority. Example:
@@ -279,7 +279,7 @@ A package descriptor MAY contain the following fields:
            "othercorp-geo-boundaries": "0.9.8",
          },
       }
-* `schemas`: a Hash containing schemas keyed by a name. See the [Resource
+* `schemas`: an Object containing schemas keyed by a name. See the [Resource
   Schemas](#resource-schemas) section below.
  
 
@@ -308,7 +308,7 @@ where all the data is tabular and stored in CSV.
 
 Packaged data resources are described in the `resources` property of the package descriptor. 
 This property is an array of values. Each value describes a single resource and 
-MUST be a JSON hash.
+MUST be a JSON object.
 
 ### Required Fields
 
@@ -394,10 +394,10 @@ and the encoding attribute.
 
 Specifically: the value of the data attribute MUST be:
 
-* EITHER: a JSON array or hash - the data is then assumed to be JSON data and SHOULD be processed as such
+* EITHER: a JSON array or object - the data is then assumed to be JSON data and SHOULD be processed as such
 * OR: a JSON string - in this case the format or mediatype attributes MUST be provided.
 
-Thus, a consumer of resource hash MAY assume if no format or mediatype
+Thus, a consumer of resource object MAY assume if no format or mediatype
 attribute is provided that the data is JSON and attempt to process it as such.
 
 Examples 1 - inline JSON:
@@ -430,12 +430,12 @@ Example 2 - inline CSV:
 
 ### Resource Schemas
 
-The value for the `schema` field on a `resource` MUST be a Hash or a string
-that "references" a Hash as detailed below.
+The value for the `schema` field on a `resource` MUST be an Object or a string
+that "references" an Object as detailed below.
 
 <div class="alert" markdown="block">
 NOTE: the Data Package specification places no restrictions on the form of this
-Hash. This flexibility enables specific communities to define schemas
+Object. This flexibility enables specific communities to define schemas
 appropriate for the data they manage. As an example, the [Tabular Data
 Package][tdp] specification requires the schema value to conform to [JSON Table
 Schema][jts].
@@ -443,7 +443,7 @@ Schema][jts].
 
 #### Schema References
 
-If `schema` is a string it is a "reference" to a Hash and MUST be:
+If `schema` is a string it is a "reference" to an Object and MUST be:
 
 * EITHER: a URL. The URL MUST:
 
@@ -455,16 +455,16 @@ If `schema` is a string it is a "reference" to a Hash and MUST be:
     section 6 of the JSON pointer specification.  URL.
 
 * OR: a simple string name which MUST correspond to the 'name' (key) in the
-  `schemas` hash in the same datapackage.json file - see next section.
+  `schemas` object in the same datapackage.json file - see next section.
 
 #### `schemas` Property
 
 A Data Package MAY have a `schemas` property. The value of the property MUST be
-a Hash. Each key in the Hash is the name of a schema. A schema name MUST consist only of
+an Object. Each key in the Object is the name of a schema. A schema name MUST consist only of
 lower-case alphanumeric letters, together with
 - and \_.
 
-Each value for an entry in the `schemas` Hash must be a must be a Hash
+Each value for an entry in the `schemas` Object must be a must be an Object
 specifying an appropriate schema.
 
 #### Examples
