@@ -15,7 +15,7 @@ summary: A Data Package (or DataPackage) is a coherent collection of data
 ---
 
 <div class="alert" markdown="block">
-NOTE: This is a draft specification and still under development. If you have comments
+NOTE: This is a draft specification - though nearing v1.0. If you have comments
 or suggestions please file them in the [issue tracker][issues]. If you have
 explicit changes please fork the [git repo][repo] and submit a pull request.
 </div>
