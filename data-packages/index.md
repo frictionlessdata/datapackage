@@ -2,8 +2,8 @@
 layout: spec
 title: Data Packages
 listed: true
-version: 1.0.0-beta.13
-updated: 26 May 2015
+version: 1.0.0-beta.14
+updated: 23 September 2015
 created: 12 November 2007
 ietf-keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.14`: drop `licenses` in favour of `license` as per [issue #214](https://github.com/dataprotocols/dataprotocols/issues/214)
 - `1.0.0-beta.13`: add support for sharing schemas across resources via schema references as per [issue #71](https://github.com/dataprotocols/dataprotocols/issues/71)
 - `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
 - `1.0.0-beta.11`: introduce `author`, integrate with `contributors` and remove `maintainers` and `publishers` as per this [issue](https://github.com/dataprotocols/dataprotocols/issues/130)
@@ -168,29 +169,28 @@ every package descriptor:
   package. The structure of the resource hash is described in the "Resource
   Information" section.
 
-* `license` (or `licenses`) - is a field specifying the license (or licenses)
-  under which the package is provided. You MAY specify either a `license` field
-  or a `licenses` field but NOT both.
+* `license` - is a field specifying the license under which the package is
+  provided.
   
   **This property is not legally binding and does not guarantee the package is
   licensed under the terms defined in this property.**
   
-  * `license` MUST be a string and its value SHOULD be an [Open Definition license
-    ID][od-licenses] (preferably one that is [Open Definition
-    approved][od-approved].
+  * `license` is a hash OR string. The value of the string version SHOULD be
+  an [Open Definition license ID][od-licenses] (preferably one that is
+  [Open Definition approved][od-approved]. An example of the string version
+  is as follows:
 
-        { "license" : "PDDL-1.0" }
+        { "license" : "ODC-PDDL-1.0" }
 
-  * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and a
-    `url` property linking to the actual text. The `type` SHOULD be an [Open
-    Definition license ID][od-license] if an ID exists for the license and
-    otherwise may be the general license name or identifier. Here is an
-    Example:
+  The hash structure MUST contain a `type` property and a `url` property
+  linking to the actual text. The `type` SHOULD be an
+  [Open Definition license ID][od-license] if an ID exists for the license and
+  otherwise may be the general license name or identifier. Here is an example:
 
-        "licenses": [{
-          "type": "PDDL-1.0",
+        "license": {
+          "type": "ODC-PDDL-1.0",
           "url": "http://opendatacommons.org/licenses/pddl/"
-        }]
+        }
 
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
@@ -376,7 +376,7 @@ A resource MAY contain any number of additional fields. Common fields include:
 * `schema`: a schema or a pointer to the schema for the resource - see below
   for more on this attribute
 * `sources`: as for data package metadata.
-* `licenses`: as for data package metadata. If not specified the resource
+* `license`: as for data package metadata. If not specified the resource
   inherits from the data package.
 
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
