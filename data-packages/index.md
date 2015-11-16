@@ -404,7 +404,7 @@ Examples 1 - inline JSON:
 
     {
        ...
-       resources: [
+       "resources": [
          {
             "format": "json",
             # some json data e.g. 
@@ -420,7 +420,7 @@ Example 2 - inline CSV:
 
     {
        ...
-       resources: [
+       "resources": [
          {
             "format": "csv",
             "data": "A,B,C\n1,2,3\n4,5,6"
@@ -509,12 +509,12 @@ the [JSON Table Schema][jts].
 Here is an example for a CSV file:
 
     {
-      // one of url or path should be present
-      url:
-      path:
+      # one of url or path should be present
+      "url":
+      "path":
       
-      dialect: # as per CSV Dialect specification
-      schema:  # as per JSON Table Schema 
+      "dialect": # as per CSV Dialect specification
+      "schema":  # as per JSON Table Schema 
     }
 
 The [Tabular Data Package][tdp] provides a specification focused on tabular data.
