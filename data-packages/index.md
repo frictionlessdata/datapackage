@@ -464,7 +464,7 @@ an Object. Each key in the Object is the name of a schema. A schema name MUST co
 lower-case alphanumeric letters, together with
 - and \_.
 
-Each value for an entry in the `schemas` Object must be a must be an Object
+Each value for an entry in the `schemas` Object must be an Object
 specifying an appropriate schema.
 
 #### Examples
