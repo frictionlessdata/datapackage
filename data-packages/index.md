@@ -129,7 +129,7 @@ Here is an illustrative example of a datapackage JSON file:
       # general "metadata" like title, sources etc
       "name" : "a-unique-human-readable-and-url-usable-identifier",
       "title" : "A nice title",
-      "licenses" : [...],
+      "license" : "The package's license",
       "sources" : [...],
       # list of the data resources in this data package
       "resources": [
