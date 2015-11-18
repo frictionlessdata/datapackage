@@ -2,8 +2,8 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre9
-updated: 3 March 2015
+version: 1.0-pre10
+updated: 18 November 2015
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -14,6 +14,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre10: additional types e.g. duration, gYear etc
 - 1.0.0-pre9: make date formats stricter for default
   [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
   value of fmt:PATTERN for dates
@@ -222,82 +223,81 @@ types](http://www.elasticsearch.org/guide/reference/mapping/)).
 
 The type and format list is as follows:
 
-* **string**
-    * `string` formats:
-        * **default**: any valid string. Equivalent to not declaring a format.
-        * **email**: A valid email address.
-        * **uri**: A valid URI.
-        * **binary**: A base64 encoded string representing binary data.
-        * **uuid**: A string that is a uuid.
+* **string**: the field contains strings, that is, sequences of characters.
+  * `string` formats:
+    * **default**: any valid string. Equivalent to not declaring a format.
+    * **email**: A valid email address.
+    * **uri**: A valid URI.
+    * **binary**: A base64 encoded string representing binary data.
+    * **uuid**: A string that is a uuid.
 
-* **number**
-    * `number` formats:
-        * **default**: any valid number. Equivalent to not declaring a format.
-        * **currency**: A number that may include additional currency symbols
-          and/or commas/semi-colons.
+* **number**: the field contains numbers of any kind including decimals.
+  * `number` formats:
+    * **default**: any valid number. Equivalent to not declaring a format.
+    * **currency**: A number that may include additional currency symbols
+      and/or commas/semi-colons.
 
-* **integer**
-    * `integer` formats:
-        * **default**: any valid integer. Equivalent to not declaring a format.
+* **integer**: the field contains integers - that is whole numbers.
+  * `integer` formats:
+    * **default**: any valid integer. Equivalent to not declaring a format.
 
-* **boolean**
-    * In addition to primitive types, boolean values can be indicated with the
-      following strings:
-        * **true**: 'yes', 'y', 'true', 't', '1'
-        * **false**: 'no', 'n', 'false', 'f', '0'
-    * `boolean` formats:
-        * **default**: any valid boolean value or string that indicates a
-          boolean value. Equivalent to not declaring a format.
-
+* **boolean**: the field contains boolean (true/false) data.
+  * In addition to primitive types, boolean values can be indicated with the
+    following strings:
+    * **true**: 'yes', 'y', 'true', 't', '1'
+    * **false**: 'no', 'n', 'false', 'f', '0'
+  * `boolean` formats:
+    * **default**: any valid boolean value or string that indicates a
+      boolean value. Equivalent to not declaring a format.
 
 * **null**
-    * In addition to primitive null types, null can be indicated with the
-      following strings:
-        * **null**: 'null', 'none', 'nil', 'nan', '-', ''
-    * `null` formats:
-        * **default**: Equivalent to not declaring a format.
+  * In addition to primitive null types, null can be indicated with the
+    following strings:
+    * **null**: 'null', 'none', 'nil', 'nan', '-', ''
+  * `null` formats:
+    * **default**: Equivalent to not declaring a format.
 
-* **object**
-    * `object` formats:
-        * **default**: any valid JSON object. Equivalent to not declaring a format.
+* **object**: the field contains data which are JSON.
+  * `object` formats:
+    * **default**: any valid JSON object. Equivalent to not declaring a format.
 
-* **array**
-    * `array` formats:
-        * **default**: any valid JSON array. Equivalent to not declaring a format.
+* **array**: the field contains data in JSON format arrays.
+  * `array` formats:
+    * **default**: any valid JSON array. Equivalent to not declaring a format.
 
-* **datetime**; **date**; **time**
-    * `datetime`, `date` and `time` share the following format options:
-        * **default**: An ISO8601 format string. Equivalent to not declaring a format.
-          * date: This MUST be in ISO6801 format YYYY-MM-DD
-          * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
-          * time: a time without a date
-        * **any**: Any parsable representation of the type. The implementing
-          library can attempt to parse the datetime via a range of strategies.
-          An example is `dateutil.parser.parse` from the `python-dateutils`
-          library.
-        * **fmt:PATTERN**: date/time values in this field conform to
-          `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
-          / C strptime][strptime]. (That is, values in the this field should be
-          parseable by Python / C standard `strptime` using `PATTERN`).
-          Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
+* **datetime**; **date**; **time**: the field contains temporal values such as 
+  dates, times and date-times.
+  * `datetime`, `date` and `time` share the following format options:
+    * **default**: An ISO8601 format string. Equivalent to not declaring a format.
+      * date: This MUST be in ISO6801 format YYYY-MM-DD
+      * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
+      * time: a time without a date
+    * **any**: Any parsable representation of the type. The implementing
+      library can attempt to parse the datetime via a range of strategies.
+      An example is `dateutil.parser.parse` from the `python-dateutils`
+      library.
+    * **fmt:PATTERN**: date/time values in this field conform to
+      `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
+      / C strptime][strptime]. (That is, values in the this field should be
+      parseable by Python / C standard `strptime` using `PATTERN`).
+      Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
 
-* **geopoint**
-    * `geopoint` formats:
-        * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
-          and `lat` is the latitude. Equivalent to not declaring a format.
-        * **array**: An array of exactly two items, where each item is either a number,
-          or a string parsable as a number, and the first item is `lon` and the second
-          item is `lat`.
-        * **object**: An object with exactly two keys, `lat` and `lon`
+* **geopoint**: the field contains data describing a geographic point
+  * `geopoint` formats:
+    * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+      and `lat` is the latitude. Equivalent to not declaring a format.
+    * **array**: An array of exactly two items, where each item is either a number,
+      or a string parsable as a number, and the first item is `lon` and the second
+      item is `lat`.
+    * **object**: An object with exactly two keys, `lat` and `lon`
 
-* **geojson**
-    * `geojson` formats:
-        * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
-          Equivalent to not declaring a format.
-        * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+* **geojson**: the field contains a JSON object according to GeoJSON or TopoJSON spec
+  * `geojson` formats:
+    * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
+      Equivalent to not declaring a format.
+    * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
-* **any**
-    * Any `type` or `format` is accepted.
+* **any**: Any `type` or `format` is accepted.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 
