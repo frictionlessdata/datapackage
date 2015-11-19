@@ -372,10 +372,11 @@ Here's an example with an array primary key:
 
 <div class="alert alert-success">
 Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes two assumptions:
-
-* You have a Foreign Key to *self*, so no further meta data is required, and a special `self` keyword is employed.
-* You have a Foreign Key to data objects "elsewhere", in which case, the data objects being referenced must be <a href="/data-packages/">Data
-Packages</a>.
+<ul>
+<li>You have a Foreign Key to <em>self</em>, so no further meta data is required, and a special <code>self</code> keyword is employed.</li>
+<li>You have a Foreign Key to data objects "elsewhere", in which case, the data objects being referenced must be <a href="/data-packages/">Data
+Packages</a>.</li>
+</ul>
 </div>
 
 A foreign key is a reference where entries in a given field (or fields) on this
