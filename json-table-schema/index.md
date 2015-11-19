@@ -14,7 +14,7 @@ ietf-keywords: true
 
 ### Changelog
 
-- 1.0.0-pre10: additional types e.g. duration, gYear etc
+- 1.0.0-pre10: add new field types: duration (#210)
 - 1.0.0-pre9: make date formats stricter for default
   [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
   value of fmt:PATTERN for dates
@@ -282,6 +282,19 @@ The type and format list is as follows:
       parseable by Python / C standard `strptime` using `PATTERN`).
       Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
 
+* **duration**: a duration of time.
+  * `duration` formats:
+    * **default**: the lexical representation for duration is the [ISO
+      8601][iso8601-duration] extended format PnYnMnDTnHnMnS, where nY
+      represents the number of years, nM the number of months, nD the number of
+      days, 'T' is the date/time separator, nH the number of hours, nM the
+      number of minutes and nS the number of seconds. The number of seconds can
+      include decimal digits to arbitrary precision. Date and time elements
+      including their designator may be omitted if their value is zero, and
+      lower order elements may also be omitted for reduced precision. Here we
+      follow the definition of [XML Schema duration datatype][xsd-duration]
+      directly and that definition is implicitly inlined here.
+
 * **geopoint**: the field contains data describing a geographic point
   * `geopoint` formats:
     * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
@@ -300,6 +313,8 @@ The type and format list is as follows:
 * **any**: Any `type` or `format` is accepted.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
+[iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
+[xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
 
 
 ## Primary Key
