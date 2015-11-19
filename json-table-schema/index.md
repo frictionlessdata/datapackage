@@ -225,7 +225,7 @@ The type and format list is as follows:
 
 * **string**: the field contains strings, that is, sequences of characters.
   * `string` formats:
-    * **default**: any valid string. Equivalent to not declaring a format.
+    * **default**: any valid string.
     * **email**: A valid email address.
     * **uri**: A valid URI.
     * **binary**: A base64 encoded string representing binary data.
@@ -233,13 +233,13 @@ The type and format list is as follows:
 
 * **number**: the field contains numbers of any kind including decimals.
   * `number` formats:
-    * **default**: any valid number. Equivalent to not declaring a format.
+    * **default**: any valid number.
     * **currency**: A number that may include additional currency symbols
       and/or commas/semi-colons.
 
 * **integer**: the field contains integers - that is whole numbers.
   * `integer` formats:
-    * **default**: any valid integer. Equivalent to not declaring a format.
+    * **default**: any valid integer.
 
 * **boolean**: the field contains boolean (true/false) data.
   * In addition to primitive types, boolean values can be indicated with the
@@ -248,27 +248,27 @@ The type and format list is as follows:
     * **false**: 'no', 'n', 'false', 'f', '0'
   * `boolean` formats:
     * **default**: any valid boolean value or string that indicates a
-      boolean value. Equivalent to not declaring a format.
+      boolean value.
 
 * **null**
   * In addition to primitive null types, null can be indicated with the
     following strings:
     * **null**: 'null', 'none', 'nil', 'nan', '-', ''
   * `null` formats:
-    * **default**: Equivalent to not declaring a format.
+    * **default**: any valid string indicating a null value.
 
 * **object**: the field contains data which are JSON.
   * `object` formats:
-    * **default**: any valid JSON object. Equivalent to not declaring a format.
+    * **default**: any valid JSON object.
 
 * **array**: the field contains data in JSON format arrays.
   * `array` formats:
-    * **default**: any valid JSON array. Equivalent to not declaring a format.
+    * **default**: any valid JSON array.
 
 * **datetime**; **date**; **time**: the field contains temporal values such as 
   dates, times and date-times.
   * `datetime`, `date` and `time` share the following format options:
-    * **default**: An ISO8601 format string. Equivalent to not declaring a format.
+    * **default**: An ISO8601 format string.
       * date: This MUST be in ISO6801 format YYYY-MM-DD
       * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
       * time: a time without a date
@@ -298,7 +298,7 @@ The type and format list is as follows:
 * **geopoint**: the field contains data describing a geographic point
   * `geopoint` formats:
     * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
-      and `lat` is the latitude. Equivalent to not declaring a format.
+      and `lat` is the latitude.
     * **array**: An array of exactly two items, where each item is either a number,
       or a string parsable as a number, and the first item is `lon` and the second
       item is `lat`.
@@ -307,7 +307,6 @@ The type and format list is as follows:
 * **geojson**: the field contains a JSON object according to GeoJSON or TopoJSON spec
   * `geojson` formats:
     * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
-      Equivalent to not declaring a format.
     * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
 * **any**: Any `type` or `format` is accepted.
