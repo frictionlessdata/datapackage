@@ -371,11 +371,17 @@ Here's an example with an array primary key:
 ## Foreign Keys
 
 <div class="alert alert-success">
-Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes two assumptions:
+Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes one of two assumptions:
 <ul>
-<li>You have a Foreign Key to <em>self</em>, so no further meta data is required, and a special <code>self</code> keyword is employed.</li>
-<li>You have a Foreign Key to data objects "elsewhere", in which case, the data objects being referenced must be <a href="/data-packages/">Data
-Packages</a>.</li>
+<li>Your Foreign Key points to another field/fields within the current JSON
+Table Schema. In this case you use a special <code>self</code> keyword is
+employed.</li>
+<li>Your Foreign Key points to a field/fields in a JSON Table Schema
+"elsewhere". In this case, the JSON Table Schema must be inside of a resource
+on <a href="/data-packages/">Data Package</a>. There are two situations here:
+EITHER this JSON Table Schema is already situated within a (Tabular) Data
+Package and the reference is to a resource within this Data Package; OR we are
+pointing out to a (Tabular) Data Package stored elsewhere e.g. online.</li>
 </ul>
 </div>
 
@@ -390,11 +396,13 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
 * `MUST` have a property `reference` which MUST be a Hash. The Hash
-  * `MAY` have a property `datapackage`. This property is a string being a url or
-    name to a datapackage. If absent the implication is that this is a
-    reference to a resource within the current data package. For self-referencing foreign keys, the value of `datapackage` `MUST` be empty.
-  * `MUST` have a property `resource` which is the name of the resource
-    within the referenced data package. For self-referencing foreign keys, the value of `resource` `MUST` be `self`.
+  * `MAY` have a property `datapackage`. This property is a string being a url
+    pointing to a Data Package or is the name of a datapackage. If absent the
+    implication is that this is a reference to a resource within the current
+    data package or this is self-referencing foreign key.
+  * `MUST` have a property `resource` which is the name of the resource within
+    the referenced data package. For self-referencing foreign keys, the value
+    of `resource` `MUST` be `self`.
   * `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
