@@ -149,7 +149,7 @@ have additional keys as described below:
     data file (if it has a name). As such it `SHOULD` be unique (though
     it is possible, but very bad practice, for the data file to have
     multiple columns with the same name). Additionally, `name` `SHOULD`
-    be considered case sensitive. In practice, case sensistivity for names
+    be considered case sensitive. In practice, case sensitivity for names
     can be limiting in certain scenarios, so consumers `MAY` choose to ignore
     case sensitivity for `name` values.
 -   the field descriptor Hash MAY contain any number of other properties
