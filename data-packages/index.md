@@ -359,12 +359,12 @@ It is recommended that a resource SHOULD contain the following fields:
 
 A resource MAY contain any number of additional fields. Common fields include:
 
-* `title`: a title or label for the title.
-* `description`: a description of this resource.
-* `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
+* `title`: a title or label for the resource.
+* `description`: a description of the resource.
+* `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
   extension for this type of resource.
-* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
-* `encoding`: specify the character encoding of a resource data file. The values should be one of 
+* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
+* `encoding`: specify the character encoding of the resource's data file. The values should be one of 
  the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
  value for this key is specified then the default is UTF-8.
 * `bytes`: size of the file in bytes
