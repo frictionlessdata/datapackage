@@ -2,8 +2,8 @@
 layout: spec
 title: Data Packages
 listed: true
-version: 1.0.0-beta.14
-updated: 23 September 2015
+version: 1.0.0-beta.15
+updated: 29 January 2016
 created: 12 November 2007
 ietf-keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.15`: remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
 - `1.0.0-beta.14`: drop `licenses` in favour of `license` as per [issue #214](https://github.com/dataprotocols/dataprotocols/issues/214)
 - `1.0.0-beta.13`: add support for sharing schemas across resources via schema references as per [issue #71](https://github.com/dataprotocols/dataprotocols/issues/71)
 - `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
@@ -257,10 +258,6 @@ The following are commonly used fields that the package descriptor MAY contain:
 A package descriptor MAY contain the following fields:
 
 * `image` - a link to an image to use for this data package
-* `base` - a base URI used to resolve `resources` that specify relative paths in
-  the event that the actual data files specified by those resource paths are not
-  located in the same directory in which the descriptor file (`datapackage.json`)
-  resides.
 * `dataDependencies` - Object of prerequisite data packages on which this package
   depends in order to install. Follows same format as CommonJS Packages spec
   v1.1.Each dependency defines the lowest compatible MAJOR[.MINOR[.PATCH]]
@@ -319,16 +316,15 @@ specify the location of the associated data file (either online, 'relative'
 * `url`: url of this data resource
 * `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
   path, that is relative to the directory in which the descriptor file
-  (`datapackage.json`) listing this file resides, or relative to the URI specified
-  by the optional `base` property (if it is defined).
+  (`datapackage.json`) listing this file resides.
 * `data`: (inline) a field containing the data directly inline in the
   `datapackage.json` file. Further details below.
 
 <div class="alert" markdown="block">
 NOTE: the use of a `url` allows a data package to reference data not necessarily
 contained locally in the Data Package. Of course, the `path` attribute may still
-be used for Data Packages located online (in this case it determines the
-relative URL) in combination with the optional `base` property if it is defined.
+be used for Data Packages located online -- in this case it determines the
+relative URL.
 </div>
 
 <div class="alert" markdown="block">
