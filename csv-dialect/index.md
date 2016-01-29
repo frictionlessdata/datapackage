@@ -83,7 +83,9 @@ csvddfVersion    | a number, in n.n format, e.g., `1.0`. If not present, consume
 delimiter        | specifies a one-character string to use as the field separator. Default = `,`
 doubleQuote      | controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = `true`
 lineTerminator   | specifies the character sequence which should terminate rows. Default = `\r\n`
+nullSequence     | specifies the null sequence (for example `\N`). Not set by default
 quoteChar        | specifies a one-character string to use as the quoting character. Default = `"`
+escapeChar       | specifies a one-character string to use for escaping (for example, `\`), mutually exclusive with `quoteChar`. Not set by default
 skipInitialSpace | specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `true`
 header        	 | indicates whether the file includes a header row. If `true` the first row in the file is a header row, not data. Default = `true`
 caseSensitiveHeader | indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
