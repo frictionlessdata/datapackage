@@ -2,19 +2,19 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre10
-updated: 18 November 2015
+version: 1.0-pre11
+updated: 30 January 2016
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
 ietf-keywords: true
-
 ---
 
 
 ### Changelog
 
-- 1.0.0-pre10: add new field types: duration (#210)
+- 1.0.0-pre11: add new field property: rdfType ([#217](https://github.com/dataprotocols/dataprotocols/issues/217))
+- 1.0.0-pre10: add new field types: duration ([#210](https://github.com/dataprotocols/dataprotocols/issues/210))
 - 1.0.0-pre9: make date formats stricter for default
   [issue](https://github.com/dataprotocols/dataprotocols/issues/104). Define
   value of fmt:PATTERN for dates
@@ -314,6 +314,34 @@ The type and format list is as follows:
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
 [xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
+
+### Rich Field Types
+
+A richer, "semantic", description of the "type" of data in a given column MAY
+be provided using a `rdfType` property on a field descriptor.
+
+The value of of the `rdfType` property MUST be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
+
+Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
+
+| Country | Year Date | Value |
+| ------- | --------- | ----- |
+| US      | 2010      | ...   |
+
+
+    # JSON Table Schema
+    {
+      fields: [
+        {
+          "name": "Country",
+          "type": "string",
+          "rdfType": "http://schema.org/Country"
+        }
+        ... 
+      }
+    }
+
+[rdfs-class]: https://www.w3.org/TR/rdf-schema/#ch_class
 
 
 ## Primary Key
