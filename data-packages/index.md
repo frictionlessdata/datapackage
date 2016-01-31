@@ -25,7 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
-- `1.0.0-beta.15`: remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
+- `1.0.0-beta.15`: only one of `url`, `path`, `data` present on as per [issue #223](https://github.com/dataprotocols/dataprotocols/issues/223); remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
 - `1.0.0-beta.14`: drop `licenses` in favour of `license` as per [issue #214](https://github.com/dataprotocols/dataprotocols/issues/214)
 - `1.0.0-beta.13`: add support for sharing schemas across resources via schema references as per [issue #71](https://github.com/dataprotocols/dataprotocols/issues/71)
 - `1.0.0-beta.12`: remove `datapackage_version` as per [issue #140](https://github.com/dataprotocols/dataprotocols/issues/140)
@@ -309,9 +309,9 @@ MUST be a JSON object.
 
 ### Required Fields
 
-Resource information MUST contain (at least) one of the following attributes which
-specify the location of the associated data file (either online, 'relative'
-(local), or 'inline'):
+Resource information MUST contain one (and only one) of the following
+attributes which specify the location of the associated data file (either
+online, 'relative' (local), or 'inline'):
 
 * `url`: url of this data resource
 * `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
@@ -321,17 +321,11 @@ specify the location of the associated data file (either online, 'relative'
   `datapackage.json` file. Further details below.
 
 <div class="alert" markdown="block">
-NOTE: the use of a `url` allows a data package to reference data not necessarily
-contained locally in the Data Package. Of course, the `path` attribute may still
-be used for Data Packages located online -- in this case it determines the
-relative URL.
-</div>
-
-<div class="alert" markdown="block">
-NOTE: When more than one of `url`, `path` or `data` are specified consumers need to
-determine which option to use (or in which order to try them). The
-recommendation is to utilize the following order: `data`, `path`, `url`. A consumer
-should also stop processing once one of these options yields data.
+NOTE: the use of a `url` allows a data package to reference data not
+necessarily contained locally in the Data Package. Of course, the `path`
+attribute may still be used for Data Packages located online -- in this case it
+determines the relative URL to the file relative to the directory in which the
+`datapackage.json` file is located.
 </div>
 
 There are NO other required fields. However, there are a variety of common
