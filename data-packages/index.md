@@ -315,17 +315,16 @@ online, 'relative' (local), or 'inline'):
 
 * `url`: url of this data resource
 * `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
-  path, that is relative to the directory in which the descriptor file
+  path, that is relative to the directory or URL in which the descriptor file
   (`datapackage.json`) listing this file resides.
 * `data`: (inline) a field containing the data directly inline in the
   `datapackage.json` file. Further details below.
 
 <div class="alert" markdown="block">
 NOTE: the use of a `url` allows a data package to reference data not
-necessarily contained locally in the Data Package. Of course, the `path`
-attribute may still be used for Data Packages located online -- in this case it
-determines the relative URL to the file relative to the directory in which the
-`datapackage.json` file is located.
+contained locally in the Data Package. The `path` attribute may also
+be used for Data Packages located online -- in this case it determines
+the resource file's URL relative to the `datapackage.json`'s URL.
 </div>
 
 There are NO other required fields. However, there are a variety of common
