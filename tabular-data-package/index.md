@@ -175,7 +175,7 @@ The key features of this format are the following:
 -   Reuse wherever possible of existing work including other Data
     Protocols specifications
 
-### Why CSV
+### Why CSV
 
 1.  CSV is very simple - it is perhaps *the* most simple data format
 2.  CSV is tabular-oriented. Most data structures are either tabular or
