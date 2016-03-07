@@ -4,6 +4,7 @@ layout: default
 author: Rufus Pollock (Open Knowledge Foundation)
 research: true
 listed: true
+redirect_from: /revisioning-data/
 ---
 
 {% include meta.html %}
