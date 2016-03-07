@@ -194,6 +194,7 @@ keys.
 - `maximum` -- as above, but specifies a maximum value for a field.
 - `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
 The field value must exactly match a value in the `enum` array.
+- `decimalSeparator` -- A single character which is the symbol used to separate the integer part from the fractional part of a number written in decimal form. Usually `.` or `,` will be used. If not specified, a default value of `.` should be assumed. Only supported field type is `number`.
 
 The constraints listed above may also define a list of supported field types. Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 
