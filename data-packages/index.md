@@ -206,7 +206,7 @@ The following are commonly used fields that the package descriptor MAY contain:
 * `description` - a description of the package. The description MUST be
   [markdown][] formatted -- this also allows for simple plain text as plain
   text is itself valid markdown. The first paragraph (up to the first double
-  line break should be usable as summary information for the package). 
+  line break) should be usable as summary information for the package.
 * `homepage` - URL string for the data packages web site
 * `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
 * `sources` - an array of source objects. Each source object may have `name`, `web` and `email` fields. Example:
