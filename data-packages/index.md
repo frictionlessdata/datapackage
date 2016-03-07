@@ -2,8 +2,8 @@
 layout: spec
 title: Data Packages
 listed: true
-version: 1.0.0-beta.15
-updated: 29 January 2016
+version: 1.0.0-beta.16
+updated: 7 March 2016
 created: 12 November 2007
 ietf-keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.16`: description is markdown formatted as per [issue #152](https://github.com/dataprotocols/dataprotocols/issues/152);
 - `1.0.0-beta.15`: only one of `url`, `path`, `data` present on as per [issue #223](https://github.com/dataprotocols/dataprotocols/issues/223); remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
 - `1.0.0-beta.14`: drop `licenses` in favour of `license` as per [issue #214](https://github.com/dataprotocols/dataprotocols/issues/214)
 - `1.0.0-beta.13`: add support for sharing schemas across resources via schema references as per [issue #71](https://github.com/dataprotocols/dataprotocols/issues/71)
@@ -202,8 +203,10 @@ every package descriptor:
 The following are commonly used fields that the package descriptor MAY contain:
 
 * `title` - a title or one sentence description for this package
-* `description` - a description of the package. The first paragraph (up to the
-  first double line break should be usable as summary information for the package)
+* `description` - a description of the package. The description MUST be
+  [markdown][] formatted -- this also allows for simple plain text as plain
+  text is itself valid markdown. The first paragraph (up to the first double
+  line break should be usable as summary information for the package). 
 * `homepage` - URL string for the data packages web site
 * `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
 * `sources` - an array of source objects. Each source object may have `name`, `web` and `email` fields. Example:
@@ -252,6 +255,8 @@ The following are commonly used fields that the package descriptor MAY contain:
   indicated with the `sources` field - see above.
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
+
+[markdown]: http://commonmark.org/
 
 ### Optional Fields
 
