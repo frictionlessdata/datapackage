@@ -3,6 +3,7 @@ title: Web-Oriented Data Formats
 layout: default
 reference: true
 listed: true
+redirect_from: /data-formats/
 ---
 
 This document reviews existing web-oriented data formats.

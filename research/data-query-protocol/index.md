@@ -3,6 +3,7 @@ title: Data Query Protocol
 layout: default
 research: true
 listed: true
+redirect_from: /data-query-protocol/
 ---
 
 This document is about providing a proposal for a standardized way of
