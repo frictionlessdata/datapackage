@@ -46,28 +46,28 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 A data package consists of:
 
-* Data package metadata that describes the structure and contents of the package
-* Optionally, additional resources, including data files, that make up the package
+* Metadata that describes the structure and contents of the package
+* Resources such as data files that form the contents of the package
 
 A valid data package MUST provide a data package "descriptor" file named
-`datapackage.json`.
+`datapackage.json`. This file SHOULD be placed in the top-level directory
+(relative to any other resources provided as part of the data package).
 
-This file should be placed in the top-level directory (relative to any other
-resources provided as part of the data package).
+The data package descriptor provides general metadata about the data package
+and describes the resources that make up its contents. The structure of the
+descriptor is specified below.
 
-The data package descriptor is used to provide metadata about the data package and to 
-describe its contents. The descriptor should follow the structure described in the 
-rest of this document.
-
-A data package will normally include other resources (e.g. data files) but the
-Data Package specification does NOT impose any requirements on their form or
-structure. 
+In addition to this descriptor a data package will include other resources such
+as data files. The Data Package specification does NOT impose any requirements
+on their form or structure and can therefore be used for packaging **any kind
+of data**.
 
 The data included in the package may be provided as:
 
-* Files bundled into the package itself
+* Files bundled locally with the package descriptor
 * Remote resources, referenced by URL
-* "Inline" data (see below) which is included directly in the `datapackage.json` file
+* "Inline" data (see below) which is included directly in the
+  `datapackage.json` file
 
 ## Illustrative Structure
 
@@ -110,8 +110,10 @@ Several exemplar data packages can be found in the [datasets organization on git
 
 `datapackage.json` is the central file in a Data Package. It provides:
 
-* General metadata such as the name of the package, its license, its publisher etc
-* A list of the data resources that make up this data package (plus, possibly, additional schema information about these data resources in a structured form)
+* General metadata such as the package's title, license, publisher etc
+* A list of the data "resources" that make up the package including their
+  location on disk or online and other relevant information (including,
+  possibly, schema information about these data resources in a structured form)
 
 The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627][]).
 
