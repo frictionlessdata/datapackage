@@ -494,35 +494,12 @@ specifying an appropriate schema.
 }
 ```
 
-### Tabular Data
-
-For tabular data the resource information MAY contain schema information in an
-attribute named `schema`. If `schema` is provided its value MUST conform to
-the [JSON Table Schema][jts].
-
-[jts]: /json-table-schema/
-
-Here is an example for a CSV file:
-
-    {
-      # one of url or path should be present
-      "url":
-      "path":
-      
-      "dialect": # as per CSV Dialect specification
-      "schema":  # as per JSON Table Schema 
-    }
-
-The [Tabular Data Package][tdp] provides a specification focused on tabular data.
-It builds on this data package specification (Tabular Data Package datasets are
-Data Packages) and provides additional specific requirements for the format and
-structure of data files and the resource information in the datapackage.json.
-
 ## MediaType
 
 The MediaType [RFC4288] for a Data Package SHOULD be *application/vnd.datapackage*.
 
-# Background
+
+# Appendices
 
 ## Aims
 
@@ -543,8 +520,8 @@ The MediaType [RFC4288] for a Data Package SHOULD be *application/vnd.datapackag
 
 <img src="https://docs.google.com/drawings/pub?id=1W0s91bQGS-bmGOLm519mMq9zDJvRhP71pwuJtkflRws&w=896&h=660" align="center" alt="Data Packages and the Wider Ecosystem" width="90%" />
 
-
-# Appendix
+## Prior Work
 
 The specification is heavily inspired by various software packaging formats.
 [Read the Appendix](/data-packages/appendix/).
+
