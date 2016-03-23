@@ -2,8 +2,8 @@
 layout: spec
 title: Data Packages
 listed: true
-version: 1.0.0-beta.16
-updated: 7 March 2016
+version: 1.0.0-beta.17
+updated: 23 March 2016
 created: 12 November 2007
 ietf-keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.17`: make resources property required as per [issues #253](https://github.com/dataprotocols/dataprotocols/issues/253)
 - `1.0.0-beta.16`: description is markdown formatted as per [issue #152](https://github.com/dataprotocols/dataprotocols/issues/152); MimeType for Data Packages is vnd.datapackage [issue #245](https://github.com/dataprotocols/dataprotocols/issues/245)
 - `1.0.0-beta.15`: only one of `url`, `path`, `data` present on as per [issue #223](https://github.com/dataprotocols/dataprotocols/issues/223); remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
 - `1.0.0-beta.14`: drop `licenses` in favour of `license` as per [issue #214](https://github.com/dataprotocols/dataprotocols/issues/214)
@@ -164,14 +165,15 @@ A valid package MUST include the following fields:
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
+* `resources` - a JSON array of zero or more JSON objects. Each JSON object
+  describes one of the data resources in the package and MUST follow the
+  specification for resource objects in the "Resource Information" section
+  below.
+
 ### Strongly Recommended Fields
 
 In addition to the above fields, the following fields SHOULD be included in
 every package descriptor:
-
-* `resources` - a JSON array of objects that describe the contents of the
-  package. The structure of the resource object is described in the "Resource
-  Information" section.
 
 * `license` - is a field specifying the license under which the package is
   provided.
