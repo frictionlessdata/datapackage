@@ -269,7 +269,7 @@ The type and format list is as follows:
   dates, times and date-times.
   * `datetime`, `date` and `time` share the following format options:
     * **default**: An ISO8601 format string.
-      * date: This MUST be in ISO6801 format YYYY-MM-DD
+      * date: This MUST be in ISO8601 format YYYY-MM-DD
       * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
       * time: a time without a date
     * **any**: Any parsable representation of the type. The implementing
