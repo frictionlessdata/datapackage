@@ -221,95 +221,133 @@ with some additions and minor modifications (cf other type lists include
 those in [Elasticsearch
 types](http://www.elasticsearch.org/guide/reference/mapping/)).
 
-The type and format list is as follows:
+The type list with associated formats and other related properties is as
+follows.
 
-* **string**: the field contains strings, that is, sequences of characters.
-  * `string` formats:
-    * **default**: any valid string.
-    * **email**: A valid email address.
-    * **uri**: A valid URI.
-    * **binary**: A base64 encoded string representing binary data.
-    * **uuid**: A string that is a uuid.
+#### string
 
-* **number**: the field contains numbers of any kind including decimals.
-  * `number` formats:
-    * **default**: any valid number.
-    * **currency**: A number that may include additional currency symbols
-      and/or commas/semi-colons.
+The field contains strings, that is, sequences of characters.
 
-* **integer**: the field contains integers - that is whole numbers.
-  * `integer` formats:
-    * **default**: any valid integer.
+`format`:
 
-* **boolean**: the field contains boolean (true/false) data.
-  * In addition to primitive types, boolean values can be indicated with the
-    following strings:
-    * **true**: 'yes', 'y', 'true', 't', '1'
-    * **false**: 'no', 'n', 'false', 'f', '0'
-  * `boolean` formats:
-    * **default**: any valid boolean value or string that indicates a
-      boolean value.
+* **default**: any valid string.
+* **email**: A valid email address.
+* **uri**: A valid URI.
+* **binary**: A base64 encoded string representing binary data.
+* **uuid**: A string that is a uuid.
 
-* **null**
-  * In addition to primitive null types, null can be indicated with the
-    following strings:
-    * **null**: 'null', 'none', 'nil', 'nan', '-', ''
-  * `null` formats:
-    * **default**: any valid string indicating a null value.
+#### number
 
-* **object**: the field contains data which are JSON.
-  * `object` formats:
-    * **default**: any valid JSON object.
+The field contains numbers of any kind including decimals.
 
-* **array**: the field contains data in JSON format arrays.
-  * `array` formats:
-    * **default**: any valid JSON array.
+`format`: none (other than the default).
 
-* **datetime**; **date**; **time**: the field contains temporal values such as 
-  dates, times and date-times.
-  * `datetime`, `date` and `time` share the following format options:
-    * **default**: An ISO8601 format string.
-      * date: This MUST be in ISO8601 format YYYY-MM-DD
-      * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
-      * time: a time without a date
-    * **any**: Any parsable representation of the type. The implementing
-      library can attempt to parse the datetime via a range of strategies.
-      An example is `dateutil.parser.parse` from the `python-dateutils`
-      library.
-    * **fmt:PATTERN**: date/time values in this field conform to
-      `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
-      / C strptime][strptime]. (That is, values in the this field should be
-      parseable by Python / C standard `strptime` using `PATTERN`).
-      Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
+Other properties:
 
-* **duration**: a duration of time.
-  * `duration` formats:
-    * **default**: the lexical representation for duration is the [ISO
-      8601][iso8601-duration] extended format PnYnMnDTnHnMnS, where nY
-      represents the number of years, nM the number of months, nD the number of
-      days, 'T' is the date/time separator, nH the number of hours, nM the
-      number of minutes and nS the number of seconds. The number of seconds can
-      include decimal digits to arbitrary precision. Date and time elements
-      including their designator may be omitted if their value is zero, and
-      lower order elements may also be omitted for reduced precision. Here we
-      follow the definition of [XML Schema duration datatype][xsd-duration]
-      directly and that definition is implicitly inlined here.
+* **currency**: A number that may include additional currency symbols
+  and/or commas/semi-colons.
 
-* **geopoint**: the field contains data describing a geographic point
-  * `geopoint` formats:
-    * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
-      and `lat` is the latitude.
-    * **array**: An array of exactly two items, where each item is either a number,
-      or a string parsable as a number, and the first item is `lon` and the second
-      item is `lat`.
-    * **object**: An object with exactly two keys, `lat` and `lon`
+#### integer
 
-* **geojson**: the field contains a JSON object according to GeoJSON or TopoJSON spec
-  * `geojson` formats:
-    * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
-    * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+The field contains integers - that is whole numbers.
 
-* **any**: Any `type` or `format` is accepted.
+Integer values are indicated in the standard way for any valid integer.
+
+`format`: none (other than the default).
+
+#### boolean
+
+The field contains boolean (true/false) data.
+
+Boolean values can be indicated with the following strings:
+
+* **true**: 'yes', 'y', 'true', 't', '1'
+* **false**: 'no', 'n', 'false', 'f', '0'
+
+`format`: none (other than the default).
+
+#### null
+
+In addition to primitive null types, null can be indicated with the following
+strings: 'null', 'none', 'nil', 'nan', '-', ''
+
+`format`: none (other than the default).
+
+#### object
+
+The field contains data which is valid JSON.
+
+`format`: none (other than the default).
+
+#### array
+
+The field contains data that is a valid JSON format arrays.
+
+`format`: none (other than the default).
+
+#### date
+
+**datetime**; **date**; **time**
+
+Tthe field contains temporal values such as dates, times and date-times.
+
+`format`: (`datetime`, `date` and `time` share the these same options)
+
+* **default**: An ISO8601 format string.
+  * date: This MUST be in ISO8601 format YYYY-MM-DD
+  * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
+  * time: a time without a date
+* **any**: Any parsable representation of the type. The implementing
+  library can attempt to parse the datetime via a range of strategies.
+  An example is `dateutil.parser.parse` from the `python-dateutils`
+  library.
+* **fmt:PATTERN**: date/time values in this field conform to
+  `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
+  / C strptime][strptime]. (That is, values in the this field should be
+  parseable by Python / C standard `strptime` using `PATTERN`).
+  Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
+
+#### duration
+
+A duration of time.
+
+The lexical representation for duration is the [ISO 8601][iso8601-duration]
+extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the
+number of months, nD the number of days, 'T' is the date/time separator, nH the
+number of hours, nM the number of minutes and nS the number of seconds. The
+number of seconds can include decimal digits to arbitrary precision. Date and
+time elements including their designator may be omitted if their value is zero,
+and lower order elements may also be omitted for reduced precision. Here we
+follow the definition of [XML Schema duration datatype][xsd-duration] directly
+and that definition is implicitly inlined here.
+
+`format`: none (other than the default).
+
+#### geopoint
+
+The field contains data describing a geographic point.
+
+`format`:
+
+* **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+  and `lat` is the latitude.
+* **array**: An array of exactly two items, where each item is either a number,
+  or a string parsable as a number, and the first item is `lon` and the second
+  item is `lat`.
+* **object**: A JSON object with exactly two keys, `lat` and `lon`
+
+#### geojson
+
+The field contains a JSON object according to GeoJSON or TopoJSON spec.
+
+`format`:
+
+* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
+* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+
+#### any
+
+Any `type` or `format` is accepted.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
