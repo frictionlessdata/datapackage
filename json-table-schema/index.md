@@ -2,8 +2,8 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre11
-updated: 30 January 2016
+version: 1.0-pre12
+updated: 18 April 2016
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -13,6 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
 - 1.0.0-pre11: add new field property: rdfType ([#217](https://github.com/dataprotocols/dataprotocols/issues/217))
 - 1.0.0-pre10: add new field types: duration ([#210](https://github.com/dataprotocols/dataprotocols/issues/210))
 - 1.0.0-pre9: make date formats stricter for default
@@ -240,12 +241,40 @@ The field contains strings, that is, sequences of characters.
 
 The field contains numbers of any kind including decimals.
 
+The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a
+non-empty finite-length sequence of decimal digits separated by a period as a
+decimal indicator. An optional leading sign is allowed. If the sign is omitted,
+"+" is assumed. Leading and trailing zeroes are optional. If the fractional
+part is zero, the period and following zero(es) can be omitted. For example:
+'-1.23', '12678967.543233', '+100000.00', '210'. 
+
+The following special string values are permitted (case need not be respected):
+
+* NaN: not a number
+* INF: positive infinity
+* -INF: negative infinity
+
+A number MAY also have a trailing:
+
+* exponent: this MUST consist of an E followed by an optional + or - sign
+  followed by one or more decimal digits (0-9)
+* percentage: the percentage sign: "%. In conversion percentages should be
+  divided by 100.
+
+If both exponent and percentages are present the percentage MUST follow the
+exponent e.g. '53E10%' (equals 5.3).
+
+This lexical formatting may be modified using these additional properties:
+
+* **decimalChar**: A string whose value is used to represent a decimal point
+  within the number. The default value is ".".
+* **groupChar**: A string whose value is used to group digits within the
+  number. The default value is null. A common value is "," e.g. "100,000".
+* **currency**: A number that may include additional currency symbols.
+
 `format`: none (other than the default).
 
-Other properties:
-
-* **currency**: A number that may include additional currency symbols
-  and/or commas/semi-colons.
+[xsd-decimal]: https://www.w3.org/TR/xmlschema-2/#decimal
 
 #### integer
 
