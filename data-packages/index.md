@@ -439,7 +439,10 @@ Package][tdp] specification requires the schema value to conform to [JSON Table
 Schema][jts].
 </div>
 
-#### Schema References
+
+[jts]: /json-table-schema/
+
+#### Schema References
 
 If `schema` is a string it is a "reference" to an Object and MUST be:
 
@@ -455,7 +458,7 @@ If `schema` is a string it is a "reference" to an Object and MUST be:
 * OR: a simple string name which MUST correspond to the 'name' (key) in the
   `schemas` object in the same datapackage.json file - see next section.
 
-#### `schemas` Property
+#### `schemas` Property
 
 A Data Package MAY have a `schemas` property. The value of the property MUST be
 an Object. Each key in the Object is the name of a schema. A schema name MUST consist only of
