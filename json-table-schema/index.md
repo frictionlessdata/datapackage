@@ -272,7 +272,7 @@ This lexical formatting may be modified using these additional properties:
   number. The default value is null. A common value is "," e.g. "100,000".
 * **currency**: A number that may include additional currency symbols.
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 [xsd-decimal]: https://www.w3.org/TR/xmlschema-2/#decimal
 
@@ -282,7 +282,7 @@ The field contains integers - that is whole numbers.
 
 Integer values are indicated in the standard way for any valid integer.
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### boolean
 
@@ -294,26 +294,26 @@ so, for example, "Y" and "y" are both acceptable):
 * **true**: 'yes', 'y', 'true', 't', '1'
 * **false**: 'no', 'n', 'false', 'f', '0'
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### null
 
 In addition to primitive null types, null can be indicated with the following
 strings: 'null', 'none', 'nil', 'nan', '-', ''
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### object
 
 The field contains data which is valid JSON.
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### array
 
 The field contains data that is a valid JSON format arrays.
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### date
 
@@ -351,7 +351,7 @@ and lower order elements may also be omitted for reduced precision. Here we
 follow the definition of [XML Schema duration datatype][xsd-duration] directly
 and that definition is implicitly inlined here.
 
-`format`: none (other than the default).
+`format`: no options (other than the default).
 
 #### geopoint
 
