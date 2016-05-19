@@ -288,7 +288,8 @@ Integer values are indicated in the standard way for any valid integer.
 
 The field contains boolean (true/false) data.
 
-Boolean values can be indicated with the following strings:
+Boolean values can be indicated with the following strings (case-insensitive
+so, for example, "Y" and "y" are both acceptable):
 
 * **true**: 'yes', 'y', 'true', 't', '1'
 * **false**: 'no', 'n', 'false', 'f', '0'
