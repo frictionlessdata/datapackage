@@ -2,8 +2,8 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre12
-updated: 18 April 2016
+version: 1.0-pre13
+updated: 19 May 2016
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -13,6 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
 - 1.0.0-pre11: add new field property: rdfType ([#217](https://github.com/dataprotocols/dataprotocols/issues/217))
 - 1.0.0-pre10: add new field types: duration ([#210](https://github.com/dataprotocols/dataprotocols/issues/210))
@@ -293,13 +294,6 @@ so, for example, "Y" and "y" are both acceptable):
 
 * **true**: 'yes', 'y', 'true', 't', '1'
 * **false**: 'no', 'n', 'false', 'f', '0'
-
-`format`: no options (other than the default).
-
-#### null
-
-In addition to primitive null types, null can be indicated with the following
-strings: 'null', 'none', 'nil', 'nan', '-', ''
 
 `format`: no options (other than the default).
 
