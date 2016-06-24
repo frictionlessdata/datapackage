@@ -2,6 +2,7 @@
 title: SLEEP
 layout: default
 listed: true
+redirect_to: http://specs.okfnlabs.org/sleep/
 ---
 
 A proposed simple specification for syncing tabular data over HTTP via

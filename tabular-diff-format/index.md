@@ -10,7 +10,7 @@ summary: The highlighter diff format is a format for expressing the difference
   between two tables. It is itself a table. Like the classic diff formats
   used for text, it is intended both for visual inspection by a human, and
   to be processed by programs.
-
+redirect_to: http://specs.okfnlabs.org/tabular-diff-format/
 ---
 
 <style> 

@@ -5,6 +5,7 @@ author: Rufus Pollock (Open Knowledge Foundation)
 research: true
 listed: true
 redirect_from: /revisioning-data/
+redirect_to: http://specs.okfnlabs.org/research/revisioning-data/
 ---
 
 {% include meta.html %}
