@@ -1,8 +1,9 @@
 ---
-title: Data Protocols
-subtitle: Lightweight Standards and Patterns for (Open) Data
+title: Frictionless Data
+subtitle: Specifications for Packaging and Transporting Data
 layout: default
 ---
+
 
 This site is the home of **simple protocols and formats for working
 with open data**. Our mission is both to make it **easier to develop
@@ -94,6 +95,6 @@ request to add material. There is also an [issue tracker][issues] which can be
 used for specific issues or suggestions.
 
 [forum]: https://discuss.okfn.org/c/open-knowledge-labs/data-packages
-[repo]: https://github.com/dataprotocols/dataprotocols
-[issues]: https://github.com/dataprotocols/dataprotocols/issues
+[repo]: https://github.com/frictionlessdata/specs
+[issues]: https://github.com/frictionlessdata/specs/issues
 
