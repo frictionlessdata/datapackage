@@ -1,5 +1,5 @@
-name: Data Protocols
-pygments: true
+name: Frictionless Data
+highlighter: rouge
 markdown: kramdown
 baseurl: 
 exclude: ["ndjson/index.md"]
