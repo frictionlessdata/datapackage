@@ -8,7 +8,7 @@ version: 1.0-beta
 updated: 6 May 2014
 created: 6 May 2014
 summary: This document defines a format for tabular data.
-
+redirect_to: http://specs.okfnlabs.org/linear-tsv/
 ---
 
 Summary

@@ -9,6 +9,7 @@ author:
 version: 0.1
 updated: 22 May 2013
 created: 05 May 2013
+redirect_to: http://specs.okfnlabs.org/units/
 ---
 
 This document provides a proposal for a standardized way of describing

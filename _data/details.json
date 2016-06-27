@@ -1,8 +1,8 @@
 {
     "site_default": {
 	"label": "Main",
-	"repo": "https://github.com/dataprotocols/dataprotocols",
-	"tracker": "https://github.com/dataprotocols/dataprotocols/issues"
+	"repo": "https://github.com/frictionlessdata/specs",
+	"tracker": "https://github.com/frictionlessdata/specs/issues"
     },
     "ndjson": {
 	"label": "NDJSON",

@@ -542,7 +542,7 @@ An example of a self-referencing foreign key:
 
 # Appendix: Related Work
 
-See <a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a>  for more details and
+See <a href="{{site.baseurl}}/reference/data-formats/">Web-Oriented Data Formats</a>  for more details and
 links for each format.
 
 -   SQL

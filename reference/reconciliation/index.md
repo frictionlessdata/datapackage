@@ -4,6 +4,7 @@ layout: default
 reference: true
 listed: true
 redirect_from: /reconciliation/
+redirect_to: http://specs.okfnlabs.org/reference/reconciliation/
 ---
 
 This document is about providing a standardized way of (fuzzily)

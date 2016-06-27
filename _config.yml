@@ -1,5 +1,7 @@
-name: Data Protocols
-pygments: true
+name: Frictionless Data
+highlighter: rouge
+gems:
+  - jekyll-redirect-from
 markdown: kramdown
 baseurl: 
 exclude: ["ndjson/index.md"]
