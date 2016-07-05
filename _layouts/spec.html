@@ -2,6 +2,11 @@
 layout: default
 ---
 
+{% if page.redirect_to %}
+<p>Moved: <a href="{{ page.redirect_to }}">{{ page.redirect_to }}</a></p>
+<hr>
+{% else %}
+
 {% if page.summary %}
   <p>{{ page.summary | markdownify }}</p>
 {% endif %}
@@ -18,4 +23,5 @@ layout: default
 {{ content | replace: target, '' }}
 {% else %}
 {{content}}
+{% endif %}
 {% endif %}
