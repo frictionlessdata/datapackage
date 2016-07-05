@@ -39,7 +39,7 @@ As suggested by the name, Tabular Data Package extends and specializes the
 
 <div class="alert alert-info" markdown="block">
 If you have comments or suggestions please file them in the issue
-tracker at: <https://github.com/dataprotocols/dataprotocols/issues>.
+tracker at: <https://github.com/frictionlessdata/specs/issues>.
 </div>
 
 ### Changelog
