@@ -1,6 +1,6 @@
 {% assign pages = site.pages | sort: 'title' %}
 {% for p in pages %}
-  {% if p.title == "JSON Table Schema" or p.title == "Tabular Data Package" or p.title == "Data Package Identifiers" or p.title == "CSV Dialect Description Format (CSVDDF)" or p.title == "Data Packages" %}
+  {% if p.title == "JSON Table Schema" or p.title == "Tabular Data Package" or p.title == "Data Package Identifiers" or p.title == "CSV Dialect Description Format (CSVDDF)" or p.title == "Data Packages" or p.title == "JSON Table Schema Transmission" %}
     <li><a href="{{site.baseurl}}{{ p.url }}">{{ p.title }}</a></li>
   {% endif %}
 {% endfor %}
