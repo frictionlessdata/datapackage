@@ -508,7 +508,7 @@ Here's an example:
       ],
       "foreignKeys": [
         {
-          "fields": "state"
+          "fields": "state",
           "reference": {
             "datapackage": "http://data.okfn.org/data/mydatapackage/",
             "resource": "the-resource",
