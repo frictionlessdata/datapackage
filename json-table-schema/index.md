@@ -421,8 +421,8 @@ The `primaryKey`, if present, MUST be:
   made up of those fields). It is acceptable to have an array with a single
   value (indicating just one field in the primary key). Strictly, order of
   values in the array does not matter. However, it is RECOMMENDED that one
-  follow the order the fields in the `fields` has as client applications may
-  utitlize the order of the primary key list (e.g. in concatenating values
+  follows the order of entries in the `fields` array as client applications 
+  may utilize the order of the primary key list (e.g. in concatenating values
   together).
 * Or: a single string corresponding to one of the field `name` values in
   the `fields` array (indicating that this field is the primary key). Note that
