@@ -71,7 +71,7 @@ A Identifier String is a single string (rather than JSON object). A Identifier S
 
 *which resolves to:*
 
-       https://github.com/datasets/gold-prices/blob/master/datapackage.json
+       https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
 
 * A name of a dataset in the core datasets registry
 
