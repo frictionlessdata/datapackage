@@ -2,8 +2,8 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre13
-updated: 19 May 2016
+version: 1.0-pre14
+updated: 11 August 2016
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -13,6 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre14: add support for `missingValues` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
 - 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
 - 1.0.0-pre11: add new field property: rdfType ([#217](https://github.com/dataprotocols/dataprotocols/issues/217))
@@ -139,6 +140,7 @@ have additional keys as described below:
       "title": "A nicer human readable label or title for the field",
       "type": "A string specifying the type",
       "format": "A string specifying a format",
+      "missingValue": "",
       "description": "A description for the field",
       "constraints": {
           # a constraints-descriptor
@@ -166,6 +168,7 @@ have additional keys as described below:
         "string".
     -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
         date. See below for more detail.
+    -   `missingValue`: a field value which should be interpreted as missing data (`null`). See below for
     -   `constraints`: A constraints descriptor that can be used by consumers
         to validate field values
 
@@ -376,6 +379,42 @@ Any `type` or `format` is accepted.
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
 [xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
+
+### Missing Values
+
+By "missing" we simply mean null or "not present for whatever reason". Many
+datasets arrive with missing data values, either because a value was not
+collected or it never existed.
+
+Missing values may be indicated simply by the value being empty in other cases
+a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
+
+The `missingValue` property provides a way to indicate that these values should
+be interpreted as equivalent to null.
+
+Strings that indicate missing (null) data values for a field `MAY` be provided
+for a field using the the `missingValue` property.
+
+If present, the `missingValue` MUST be a single string or an array of strings,
+for example:
+
+    "missingValue": ""
+    "missingValue": "-"
+    "missingValue": ["Nan", "-"]
+
+**Note**: `missingValue` are strings rather than being the data type of
+the particular field. This allows for comparison prior to casting and for
+fields to have missing value which are not of their type, for example a
+`number` field to have missing values indicated by `-`.
+
+The default value of `missingValue` for a non-string type field is the empty
+string `""`. For string type fields there is no default for `missingValue` (for
+string fields the empty string `""` is a valid value and need not indicate
+null).
+
+**Processing**: if a missing value is encountered it SHOULD be converted into
+the NULL or equivalent value.
+
 
 ### Rich Field Types
 
