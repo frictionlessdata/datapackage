@@ -13,7 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
-- 1.0.0-pre14: add support for `missingValues` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
+- 1.0.0-pre14: add support for `missingValue` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
 - 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
 - 1.0.0-pre11: add new field property: rdfType ([#217](https://github.com/dataprotocols/dataprotocols/issues/217))
