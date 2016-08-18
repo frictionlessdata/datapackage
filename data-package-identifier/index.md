@@ -20,63 +20,66 @@ want to take a Data Package Identifier as an argument.
 
 For example, consider the `dpm` (the Data Package Manager) has commands like:
 
-    # gdp is a data package identifier
+    # gdp is a Data Package identifier
     dpm info gdp
-    # https://github.com/datasets/gold-prices is a data package identifier
+    
+    # https://github.com/datasets/gold-prices is a Data Package identifier
     dpm install https://github.com/datasets/gold-prices
 
 ## Identifier Object Structure
 
-The Object structure looks like:
+The object structure looks like:
 
-    {
-      // URL to base of the Data Package
-      // This URL will *always* have a trailing /
-      url: ...
-      // URL to datapackage.json
-      dataPackageJsonUrl: ...
-      // name of the Data Package
-      name: ...
-      // version of the Data Package
-      version: ...
-      // if parsed from a Identifier String this is the original specString
-      original: 
-    }
+{% highlight javascript %}
+{
+  // URL to base of the Data Package
+  // This URL should *always* have a trailing slash ('/')
+  url: ...
+  // URL to datapackage.json
+  dataPackageJsonUrl: ...
+  // name of the Data Package
+  name: ...
+  // version of the Data Package
+  version: ...
+  // if parsed from a Identifier String this is the original 
+  // specString
+  original: 
+}
+{% endhighlight %}
 
 It can be parsed (and less importantly) serialized to a simple string. Spec
 strings will be frequently used on e.g. the command line to identify a data
 package.
 
-TODO: describe minimum requirements for validity
-
 ## Identifier String
 
-A Identifier String is a single string (rather than JSON object). A Identifier String can be, in decreasing order of explicitness:
+An Identifier String is a single string (rather than JSON object) that points to a Data Package.  An Identifier String can be, in decreasing order of explicitness:
 
-* A direct URL to a datapackage.json
+* A URL that points directly to the `datapackage.json` (no resolution needed):
 
-       http://mywebsite.com/mydatapackage/datapackage.json
+      http://mywebsite.com/mydatapackage/datapackage.json
+  
+* A URL that points directly to the Data Package (that is, the directory containing the `datapackage.json`):
 
-* A direct URL to a datapackage
-
-       http://mywebsite.com/mydatapackage/
+      http://mywebsite.com/mydatapackage/
+  
+  resolves to: 
+  
+      http://mywebsite.com/mydatapackage/datapackage.json
        
-*which resolves to:*
+* A GitHub URL:
 
-       http://mywebsite.com/mydatapackage/datapackage.json
-       
-* A Github URL
+      http://github.com/datasets/gold-prices
 
-       http://github.com/datasets/gold-prices
+  resolves to: 
+  
+      https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
 
-*which resolves to:*
+* The `name` of a dataset in the [Core Datasets registry](http://data.okfn.org/data):
 
-       https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
+      gold-prices
+  
+  resolves to: 
+  
+      http://data.okfn.org/data/core/gold-prices/datapackage.json
 
-* A name of a dataset in the core datasets registry
-
-       gold-prices
-
-*which resolves to:* 
-
-       http://data.okfn.org/data/core/gold-prices/datapackage.json
