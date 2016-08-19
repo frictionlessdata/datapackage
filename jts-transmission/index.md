@@ -1,6 +1,7 @@
 ---
 title: JSON Table Schema Transmission
 layout: default
+redirect_to: http://specs.okfnlabs.org/jts-transmission/
 ---
 
 Concepts
