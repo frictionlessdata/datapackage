@@ -1,0 +1,78 @@
+{
+  "name": "my-openspending-datapackage",
+  "title": "My OpenSpending Data Package",
+  "resources": [
+    {
+      "name": "budget",
+      "title": "Budget",
+      "path": "budget.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "level1_id",
+            "type": "string"
+          },
+          {
+            "name": "level1_title",
+            "type": "string"
+          },
+          {
+            "name": "level2_id",
+            "type": "string"
+          },
+          {
+            "name": "level2_title",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "number"
+          },
+          {
+            "name": "budget_date",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  ],
+  "model": {
+    "measures": {
+      "amount": {       
+        "source": "amount",
+        "currency": "USD",
+        "factor": 1
+      }
+    },
+    "dimensions": {
+      "date": {
+        "attributes": {
+          "date": {
+            "source": "budget_date"
+          }
+        },
+        "primaryKey": "date"
+      },
+      "classification": {
+        "attributes": {
+          "level1_id": {        
+            "source": "level1_id"
+          },
+          "level1_title": {      
+            "source": "level1_title",
+            "labelfor": "level1_id"
+          },
+          "level2_id": {      
+            "source": "level2_id",
+            "parent": "level1_id"
+          },
+          "level2_title": {      
+            "source": "level2_title",
+            "labelfor": "level2_id"       
+          }
+        },
+        "primaryKey": ["level1_id", "level2_id"]
+      }
+    }
+  }
+}

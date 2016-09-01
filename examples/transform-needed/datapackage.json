@@ -1,0 +1,67 @@
+{
+  "name": "transform-needed",
+  "title": "Transform Needed",
+  "resources": [
+    {
+      "name": "budget",
+      "path": "budget.csv",
+      "format": "csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "program",
+            "type": "string"
+          },
+          {
+            "name": "expenditure",
+            "type": "integer"
+          },
+          {
+            "name": "year",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  ],
+  "model": {
+    "measures": {
+      "amount": {
+        "source": "expenditure",
+        "currency": "EUR",
+        "factor": 1
+      }
+    },
+    "dimensions": {
+      "date": {
+        "attributes": {
+          "year": {
+            "source": "year"
+          }
+        },
+        "primaryKey": "year"
+      },
+      "program": {
+        "attributes": {
+          "title": {
+            "source": "program"
+          }
+        },
+        "primaryKey": "title"
+        
+      },
+      "payee": {
+        "attributes": {
+          "title": {
+            "source": "country"
+          }
+        },
+        "primaryKey": "title"
+      }
+    }
+  }
+}
