@@ -8,6 +8,7 @@ author:
  - Tryggvi Björgvinsson (Open Knowledge)
  - Neil Ashton (Open Knowledge)
 summary: Budget Data Package is a lightweight and user-oriented format for budget data and associated metadata.
+redirect_from: /fiscal-data-package/spec/
 ---
 
 ## Abstract

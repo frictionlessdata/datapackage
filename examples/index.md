@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Examples
+redirect_from: /fiscal-data-package/examples/
 ---
 
 {% assign sorted_pages = site.pages | sort:"url" %}

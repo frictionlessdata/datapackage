@@ -1,6 +1,6 @@
 ---
 layout: spec
-title: Specification - Fiscal Data Package
+title: Fiscal Data Package
 version: 0.3.0
 updated: 28 January 2016
 created: 14 March 2014
@@ -10,6 +10,7 @@ author:
  - Paul Walsh (Open Knowledge)
  - Steve Bennett (Open Knowledge Australia)
 summary: Fiscal Data Package is a lightweight and user-oriented format for publishing and consuming fiscal data. Fiscal data packages are made of simple and universal components. They can be produced from ordinary spreadsheet software and used in any environment.
+redirect_from: /fiscal-data-package/spec/
 ---
 
 <div class="alert alert-info" markdown="block">
