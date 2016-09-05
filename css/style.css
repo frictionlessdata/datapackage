@@ -228,3 +228,26 @@ footer {
 .reference-tag a { 
   color: white;
 }
+
+table {
+  border: solid 1px black;
+}
+
+table td, table th {
+  border: solid 1px black;
+  padding: 3px;
+}
+
+table.meta td, table.meta th {
+  border: none;
+}
+
+table th {
+  background: #333;
+  color: white;
+}
+
+.content .gist-it-gist .gist-file .gist-meta, .gister-gist .gist-file .gist-meta {
+  font-size: 65%;
+}
+

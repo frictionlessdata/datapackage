@@ -1,0 +1,43 @@
+{
+  "name": "my-openspending-datapackage",
+  "title": "My OpenSpending Data Package",
+  "resources": [
+    {
+      "name": "budget",
+      "title": "Budget",
+      "path": "budget.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "expenditure",
+            "type": "number",
+            "format": "currency"
+          },
+          {
+            "name": "year",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  ],
+  "model": {
+    "measures": {
+      "amount": {       
+        "source": "expenditure",
+        "currency": "USD",
+        "factor": 1
+      }
+    },
+    "dimensions": {
+      "date": {
+        "attributes": {
+          "year": {
+            "source": "year"
+          }
+        },
+        "primaryKey": "year"
+      }
+    }
+  }
+}
