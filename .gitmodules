@@ -1,0 +1,3 @@
+[submodule "fiscal-data-package"]
+	path = fiscal-data-package
+	url = https://github.com/openspending/fiscal-data-package.git
