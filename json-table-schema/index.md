@@ -460,8 +460,8 @@ The `primaryKey`, if present, MUST be:
   made up of those fields). It is acceptable to have an array with a single
   value (indicating just one field in the primary key). Strictly, order of
   values in the array does not matter. However, it is RECOMMENDED that one
-  follows the order of entries in the `fields` array as client applications 
-  may utilize the order of the primary key list (e.g. in concatenating values
+  follow the order the fields in the `fields` has as client applications may
+  utitlize the order of the primary key list (e.g. in concatenating values
   together).
 * Or: a single string corresponding to one of the field `name` values in
   the `fields` array (indicating that this field is the primary key). Note that
@@ -547,7 +547,7 @@ Here's an example:
       ],
       "foreignKeys": [
         {
-          "fields": "state",
+          "fields": "state"
           "reference": {
             "datapackage": "http://data.okfn.org/data/mydatapackage/",
             "resource": "the-resource",
@@ -581,7 +581,7 @@ An example of a self-referencing foreign key:
 
 # Appendix: Related Work
 
-See <a href="{{site.baseurl}}/reference/data-formats/">Web-Oriented Data Formats</a>  for more details and
+See <a href="{{site.baseurl}}/data-formats/">Web-Oriented Data Formats</a>  for more details and
 links for each format.
 
 -   SQL
