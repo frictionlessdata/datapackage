@@ -1,3 +1,0 @@
-[submodule "ndjson"]
-	path = ndjson
-	url = https://github.com/ndjson/ndjson-spec.git
