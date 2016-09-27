@@ -17,14 +17,21 @@ on existing practices for publishing open-source software.
 For more info about the project as a whole, please visit
 [frictionlessdata.io](http://frictionlessdata.io).
 
-<div class="toc">
-  <h3>Specifications</h3>
-  <ul>
-    {% include specifications.html %}
-  </ul>
-</div>
+## Specifications
 
-### DataProtocols
+### Core
+
+- [Data Packages](/data-packages/)
+- [JSON Table Schema](/json-table-schema/)
+- [CSV Dialect Description](/csv-dialect/)
+- [Data Package Identifiers](/data-package-identifier/)
+
+### Data Package Profiles
+
+- [Tabular Data Package](/tabular-data-package/)
+- [Fiscal Data Package](/fiscal-data-package/)
+
+## DataProtocols
 
 The Frictionless Data specifications grew out of **DataProtocols**, a
 community effort for defining **simple protocols and formats for
@@ -33,7 +40,7 @@ working with open data** originally hosted at **dataprotocols.org**.
 All other specifications can still be found at the new home for
 DataProtocols, [specs.okfnlabs.org](http://specs.okfnlabs.org).
 
-### Participate and Contribute
+## Participate and Contribute
 
 This effort is community-run and contributions, comments and corrections are
 warmly welcomed. Most work proceeds in an RFC-style manner with discussion on
