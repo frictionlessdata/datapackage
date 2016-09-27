@@ -4,20 +4,12 @@ gems:
   - jekyll-redirect-from
 markdown: kramdown
 baseurl: 
-exclude: ["ndjson/index.md"]
-include: ["ndjson/README.md"]
 defaults:
   -
     scope:
       path: ""
     values:
       layout: "spec"
-  -
-    scope:
-      path: "ndjson"
-    values:
-      permalink: "/ndjson/index.html"
-      listed: true
   -
     scope:
       path: "reference"
