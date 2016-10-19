@@ -190,7 +190,7 @@ every package descriptor:
 
   The object structure MUST contain a `type` property and a `url` property
   linking to the actual text. The `type` SHOULD be an
-  [Open Definition license ID][od-license] if an ID exists for the license and
+  [Open Definition license ID][od-licenses] if an ID exists for the license and
   otherwise may be the general license name or identifier. Here is an example:
 
         "license": {
