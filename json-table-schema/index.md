@@ -2,8 +2,8 @@
 title: JSON Table Schema
 layout: spec
 listed: true
-version: 1.0-pre14
-updated: 11 August 2016
+version: 1.0-pre15
+updated: 17 November 2016
 created: 12 November 2012
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
@@ -13,6 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
+- 1.0.0-pre15: add calendar units `gYear*` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105))
 - 1.0.0-pre14: add support for `missingValue` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
 - 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
@@ -333,6 +334,23 @@ Tthe field contains temporal values such as dates, times and date-times.
   / C strptime][strptime]. (That is, values in the this field should be
   parseable by Python / C standard `strptime` using `PATTERN`).
   Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
+
+#### gYear
+
+A calendar year as per [XMLSchema `gYear`][xsd-gyear].
+
+Usual lexical reprentation is `YYYY`. There are no format options.
+
+[xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
+
+#### gYearMonth
+
+A specific month in a specific year as per [XMLSchema
+`gYearMonth`][xsd-gyearmonth].
+
+Usual lexical representation is: `YYYY-MM`. There are no format options.
+
+[xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
 
 #### duration
 
