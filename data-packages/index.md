@@ -2,8 +2,8 @@
 layout: spec
 title: Data Packages
 listed: true
-version: 1.0.0-beta.17
-updated: 23 March 2016
+version: 1.0.0-beta.18
+updated: 17 November 2016
 created: 12 November 2007
 ietf-keywords: true
 author:
@@ -25,6 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0.0-beta.18`: (!) merge resource property url with path [issues #250](https://github.com/frictionlessdata/specs/issues/250)
 - `1.0.0-beta.17`: make resources property required as per [issues #253](https://github.com/dataprotocols/dataprotocols/issues/253)
 - `1.0.0-beta.16`: description is markdown formatted as per [issue #152](https://github.com/dataprotocols/dataprotocols/issues/152); MimeType for Data Packages is vnd.datapackage [issue #245](https://github.com/dataprotocols/dataprotocols/issues/245)
 - `1.0.0-beta.15`: only one of `url`, `path`, `data` present on as per [issue #223](https://github.com/dataprotocols/dataprotocols/issues/223); remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
@@ -316,70 +317,61 @@ Packaged data resources are described in the `resources` property of the package
 This property is an array of values. Each value describes a single resource and 
 MUST be a JSON object.
 
-### Required Fields
+### Required Fields - Data Location
 
-Resource information MUST contain one (and only one) of the following
-attributes which specify the location of the associated data file (either
-online, 'relative' (local), or 'inline'):
+Data associated to a resource can be located in the following places:
 
-* `url`: url of this data resource
-* `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
-  path, that is relative to the directory or URL in which the descriptor file
-  (`datapackage.json`) listing this file resides.
-* `data`: (inline) a field containing the data directly inline in the
-  `datapackage.json` file. Further details below.
+* online
+* locally on disk
+* inline in the `datapackage.json` itself
+
+Resource information MUST contain a property describing the location of the
+data associated to the resource. The location of resource data MUST be
+specified by the presence of one (and only one) of these two properties:
+
+* `path`: for data in files located online or locally on disk.
+* `data`: for data inline in the `datapackage.json` descriptor itself.
+
+#### Data in Files - `path`
+
+`path` the location of the data specified either as a fully qualified url or a
+relative unix-style path ('/' as separator). A relative path should be
+interpreted relative to the directory or URL in which the descriptor
+`datapackage.json` listing this resource resides. A relative `path` MUST NOT
+start with `/` or `.` (this eliminates `../`).
+
+Examples:
+
+```
+# fully qualified url
+"path": "http://ex.datapackages.org/big-csv/my-big.csv"
+
+# relative path
+"path": "my-data-directory/my-csv.csv"
+```
 
 <div class="alert" markdown="block">
-NOTE: the use of a `url` allows a data package to reference data not
-contained locally in the Data Package. The `path` attribute may also
-be used for Data Packages located online -- in this case it determines
-the resource file's URL relative to the `datapackage.json`'s URL.
+SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to
+avoid security vulnerabilities when implementing data package tools. These
+limitations on resource `path` are there to ensure that resource paths only
+point to files within the data package directory and its subdirectories. This
+helps prevent data package tools being exploited by a malicious user to gain
+unintended access to sensitive information. To illustrate, a data package
+hosting service which stores packages on disk and allows access via an API. A
+malicious user uploads a data package with a resource path like `/etc/passwd`.
+The user then requests the data for that resource and the server naively opens
+`/etc/passwd` and returns that data to the caller.
 </div>
 
-There are NO other required fields. However, there are a variety of common
-fields that can be used which we detail below.
+<div class="alert info" markdown="block">
+IMPLEMENTORS: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url`
+property distinct from `path`. In order to support backwards compatability,
+implementors MAY want to automatically convert a `url` property to a `path`
+property and issue a warning.
+</div>
 
-### Recommended Fields
 
-It is recommended that a resource SHOULD contain the following fields:
-
-* `name`: a resource SHOULD contain an `name` attribute. The name is a simple name or
-  identifier to be used for this resource.
-
-  * If present, the name MUST be unique amongst all resources in this data
-    package.
-  * The name SHOULD be usable in a url path and SHOULD therefore consist only
-    of alphanumeric characters plus ".", "-" and "_".
-  * It would be usual for the name to correspond to the file name (minus the
-    extension) of the data file the resource describes.
-
-### Optional Fields
-
-A resource MAY contain any number of additional fields. Common fields include:
-
-* `title`: a title or label for the resource.
-* `description`: a description of the resource.
-* `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
-  extension for this type of resource.
-* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
-* `encoding`: specify the character encoding of the resource's data file. The values should be one of 
- the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
- value for this key is specified then the default is UTF-8.
-* `bytes`: size of the file in bytes
-* `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
-  the hash's value with the algorithm name in lower-case. For example:
-
-      "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
-
-* `schema`: a schema or a pointer to the schema for the resource - see below
-  for more on this attribute
-* `sources`: as for data package metadata.
-* `license`: as for data package metadata. If not specified the resource
-  inherits from the data package.
-
-[iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
-
-### Inline Data
+#### Inline Data - `data`
 
 Resource data rather than being stored in external files can be shipped
 'inline' on a Resource using the `data` attribute.
@@ -425,6 +417,47 @@ Example 2 - inline CSV:
          }
        ]
     }
+
+
+### Recommended Fields
+
+It is recommended that a resource SHOULD contain the following fields:
+
+* `name`: a resource SHOULD contain an `name` attribute. The name is a simple name or
+  identifier to be used for this resource.
+
+  * If present, the name MUST be unique amongst all resources in this data
+    package.
+  * The name SHOULD be usable in a url path and SHOULD therefore consist only
+    of alphanumeric characters plus ".", "-" and "_".
+  * It would be usual for the name to correspond to the file name (minus the
+    extension) of the data file the resource describes.
+
+### Optional Fields
+
+A resource MAY contain any number of additional fields. Common fields include:
+
+* `title`: a title or label for the resource.
+* `description`: a description of the resource.
+* `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
+  extension for this type of resource.
+* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
+* `encoding`: specify the character encoding of the resource's data file. The values should be one of 
+ the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
+ value for this key is specified then the default is UTF-8.
+* `bytes`: size of the file in bytes
+* `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
+  the hash's value with the algorithm name in lower-case. For example:
+
+      "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
+
+* `schema`: a schema or a pointer to the schema for the resource - see below
+  for more on this attribute
+* `sources`: as for data package metadata.
+* `license`: as for data package metadata. If not specified the resource
+  inherits from the data package.
+
+[iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 
 ### Resource Schemas
 
