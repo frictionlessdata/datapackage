@@ -317,15 +317,9 @@ Packaged data resources are described in the `resources` property of the package
 This property is an array of values. Each value describes a single resource and 
 MUST be a JSON object.
 
-### Required Fields - Data Location
+### Data Location
 
-Data associated to a resource can be located in the following places:
-
-* online
-* locally on disk
-* inline in the `datapackage.json` itself
-
-Resource information MUST contain a property describing the location of the
+A resource MUST contain a property describing the location of the
 data associated to the resource. The location of resource data MUST be
 specified by the presence of one (and only one) of these two properties:
 
