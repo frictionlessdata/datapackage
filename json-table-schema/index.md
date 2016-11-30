@@ -13,7 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
-- 1.0.0-pre15: add calendar units `gYear*` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105))
+- 1.0.0-pre15: add calendar units `gyear` and `gyearmonth` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105))
 - 1.0.0-pre14: add support for `missingValue` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
 - 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
@@ -335,7 +335,7 @@ Tthe field contains temporal values such as dates, times and date-times.
   parseable by Python / C standard `strptime` using `PATTERN`).
   Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
 
-#### gYear
+#### gyear
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
@@ -343,7 +343,7 @@ Usual lexical reprentation is `YYYY`. There are no format options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
-#### gYearMonth
+#### gyearmonth
 
 A specific month in a specific year as per [XMLSchema
 `gYearMonth`][xsd-gyearmonth].
