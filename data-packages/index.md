@@ -533,7 +533,7 @@ specifying an appropriate schema.
   "resources": [
     {
     ...
-      "schema": http://url-to/datapackage.json#schemas/schema-name
+      "schema": "http://url-to/datapackage.json#schemas/schema-name"
       }
     }
   ],
