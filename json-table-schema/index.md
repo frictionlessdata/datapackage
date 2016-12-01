@@ -13,7 +13,7 @@ ietf-keywords: true
 
 ### Changelog
 
-- 1.0.0-pre15: add calendar units `gyear` and `gyearmonth` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105))
+- 1.0.0-pre15: add calendar units `gyear` and `gyearmonth` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105)), tweak pattern support for date/time types [#260](https://github.com/frictionlessdata/specs/issues/260)
 - 1.0.0-pre14: add support for `missingValue` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))
 - 1.0.0-pre13: remove `null` datatype ([#262](https://github.com/dataprotocols/dataprotocols/issues/262))
 - 1.0.0-pre12: add support for new number properties such as `decimalChar`([#246](https://github.com/dataprotocols/dataprotocols/issues/246))
@@ -329,11 +329,11 @@ Tthe field contains temporal values such as dates, times and date-times.
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
-* **fmt:PATTERN**: date/time values in this field conform to
-  `PATTERN` where `[PATTERN]` follows the syntax of [standard Python
-  / C strptime][strptime]. (That is, values in the this field should be
-  parseable by Python / C standard `strptime` using `PATTERN`).
-  Example: `fmt:%d %b %y` would correspond to dates like: `30 Nov 14`
+* **{PATTERN}**: date/time values in this field can be parsed according to
+  `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C
+  strptime][strptime]. (That is, values in the this field should be parseable
+  by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y`
+  would correspond to dates like: `30 Nov 14`
 
 #### gyear
 
