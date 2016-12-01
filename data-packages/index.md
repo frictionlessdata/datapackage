@@ -124,7 +124,7 @@ The Package descriptor MUST be a valid JSON file. (JSON is defined in [RFC 4627]
 It MAY contain any number of attributes. All attributes at the first level not
 otherwise specified here are considered `metadata` attributes.
 
-A valid descriptor MUST contain a `name` attribute. These fields, and additional
+A valid descriptor MUST contain a `name` attribute. These properties, and additional
 metadata attributes, are described in the "Required Fields" section below.
 
 A valid descriptor MAY contain a `resources` attribute.
@@ -151,7 +151,7 @@ Here is an illustrative example of a datapackage JSON file:
 
 ### Required Fields
 
-A valid package MUST include the following fields:
+A valid package MUST include the following properties:
 
 * `name` (required) - short url-usable (and preferably human-readable) name of
   the package. This MUST be lower-case and contain only alphanumeric characters
@@ -162,7 +162,7 @@ A valid package MUST include the following fields:
   The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
   package is updated, unless the new package version should be considered a
   distinct package, e.g. due to significant changes in structure or
-  interpretation. Version distinction SHOULD be left to the version field. As
+  interpretation. Version distinction SHOULD be left to the version property. As
   a corollary, the name also SHOULD NOT include an indication of time range
   covered.
 
@@ -173,10 +173,10 @@ A valid package MUST include the following fields:
 
 ### Strongly Recommended Fields
 
-In addition to the above fields, the following fields SHOULD be included in
+In addition to the above properties, the following properties SHOULD be included in
 every package descriptor:
 
-* `license` - is a field specifying the license under which the package is
+* `license` - is a property specifying the license under which the package is
   provided.
   
   **This property is not legally binding and does not guarantee the package is
@@ -205,7 +205,7 @@ every package descriptor:
 
 ### Recommended Fields
 
-The following are commonly used fields that the package descriptor MAY contain:
+The following are commonly used properties that the package descriptor MAY contain:
 
 * `title` - a title or one sentence description for this package
 * `description` - a description of the package. The description MUST be
@@ -214,13 +214,13 @@ The following are commonly used fields that the package descriptor MAY contain:
   line break) should be usable as summary information for the package.
 * `homepage` - URL string for the data packages web site
 * `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
-* `sources` - an array of source objects. Each source object may have `name`, `web` and `email` fields. Example:
+* `sources` - an array of source objects. Each source object may have `name`, `web` and `email` properties. Example:
 
       "sources": [{
         "name": "World Bank and OECD",
         "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
       }]
-* `author` and `contributors` - these are fields for describing people or
+* `author` and `contributors` - these are properties for describing people or
   organizations who contributed to this Data Package. `author` is a single
   person / organization whilst `contributors` is an array. By convention, the
   first contributor is the original author of the package unless `author` is
@@ -253,11 +253,11 @@ The following are commonly used fields that the package descriptor MAY contain:
       Joe Bloggs <joe@bloggs.com>
       Joe Bloggs (http://www.bloggs.com)
   
-  Note on semantics: use of the "author" field does not imply that that person
+  Note on semantics: use of the "author" property does not imply that that person
   was the original creator of the data in the data package - merely that they
   created and/or maintain the data package. It is common for data packages to
   "package" up data from elsewhere. The original origin of the data can be
-  indicated with the `sources` field - see above.
+  indicated with the `sources` property - see above.
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
 
@@ -265,7 +265,7 @@ The following are commonly used fields that the package descriptor MAY contain:
 
 ### Optional Fields
 
-A package descriptor MAY contain the following fields:
+A package descriptor MAY contain the following properties:
 
 * `image` - a link to an image to use for this data package
 * `dataDependencies` - Object of prerequisite data packages on which this package
@@ -291,10 +291,10 @@ A package descriptor MAY contain the following fields:
  
 
 <div class="alert" markdown="block">
-NOTE: A Data Package author MAY add any number of additional fields beyond those
+NOTE: A Data Package author MAY add any number of additional properties beyond those
 listed in the specification here.  For example, suppose you were storing
 time series data and want to list the temporal coverage of the data in the
-Data Package you could add a field `temporal` (cf [Dublin Core][dc-temporal]):
+Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
 
     "temporal": {
       "name": "19th Century",
@@ -415,7 +415,7 @@ Example 2 - inline CSV:
 
 ### Recommended Fields
 
-It is recommended that a resource SHOULD contain the following fields:
+It is recommended that a resource SHOULD contain the following properties:
 
 * `name`: a resource SHOULD contain an `name` attribute. The name is a simple name or
   identifier to be used for this resource.
@@ -429,7 +429,7 @@ It is recommended that a resource SHOULD contain the following fields:
 
 ### Optional Fields
 
-A resource MAY contain any number of additional fields. Common fields include:
+A resource MAY contain any number of additional properties. Common properties include:
 
 * `title`: a title or label for the resource.
 * `description`: a description of the resource.
@@ -455,8 +455,8 @@ A resource MAY contain any number of additional fields. Common fields include:
 
 ### Resource Schemas
 
-The value for the `schema` field on a `resource` MUST be an Object or a string
-that "references" an Object as detailed below.
+The value for the `schema` property on a `resource` MUST be an Object or a
+string that "references" an Object as detailed below.
 
 <div class="alert" markdown="block">
 NOTE: the Data Package specification places no restrictions on the form of this
