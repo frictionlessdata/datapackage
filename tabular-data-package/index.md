@@ -3,8 +3,8 @@ title: Tabular Data Package
 subtitle: (previously known as Simple Data Format)
 layout: spec
 listed: true
-version: 1.0-beta-3
-updated: 7 March 2016
+version: 1.0-beta-4
+updated: 30 November 2016
 created: May 7 2012
 ietf-keywords: true
 summary: This document defines a simple data publishing format (Tabular Data
@@ -44,6 +44,8 @@ tracker at: <https://github.com/frictionlessdata/specs/issues>.
 
 ### Changelog
 
+- `1.0-beta-4`: no substantive changes but clarify schema referencing
+  ([#264](https://github.com/frictionlessdata/specs/issues/264)
 - `1.0-beta-3`: no substantive changes but clarify where we differ from CSV RFC
   ([#204](https://github.com/dataprotocols/dataprotocols/issues/204))
 - `1.0-beta-2`: renamed from Simple Data Format to Tabular Data Package
@@ -123,7 +125,13 @@ requirements:
 
 -   It MUST contain at least one *data file*
 -   All data files MUST be in CSV format, see below for additional rules on CSV file naming and structure
--   Every resource MUST have a `schema` following the <a href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a> specification
+-   Every resource MUST have a `schema` property whose value MUST follow the <a
+    href="{{site.baseurl}}/json-table-schema/">JSON Table Schema</a>
+    specification. The schema can be directly inlined, or pointed to for
+    dereferencing as per the [schemas section of the Data Package
+    spec][dp-schema]
+
+[dp-schema]: ../data-packages/#resource-schemas
 
 ### CSV Files
 
