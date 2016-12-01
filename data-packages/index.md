@@ -25,7 +25,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
-- `1.0.0-beta.18`: (!) merge resource property url with path [issues #250](https://github.com/frictionlessdata/specs/issues/250)
+- `1.0.0-beta.18`: (!) merge resource property url with path [issues #250](https://github.com/frictionlessdata/specs/issues/250), allow for multiple data files per resource [issue #228](https://github.com/frictionlessdata/specs/issues/228)
 - `1.0.0-beta.17`: make resources property required as per [issues #253](https://github.com/dataprotocols/dataprotocols/issues/253)
 - `1.0.0-beta.16`: description is markdown formatted as per [issue #152](https://github.com/dataprotocols/dataprotocols/issues/152); MimeType for Data Packages is vnd.datapackage [issue #245](https://github.com/dataprotocols/dataprotocols/issues/245)
 - `1.0.0-beta.15`: only one of `url`, `path`, `data` present on as per [issue #223](https://github.com/dataprotocols/dataprotocols/issues/223); remove `base` property as per [issue #232](https://github.com/dataprotocols/dataprotocols/issues/232)
@@ -326,13 +326,18 @@ specified by the presence of one (and only one) of these two properties:
 * `path`: for data in files located online or locally on disk.
 * `data`: for data inline in the `datapackage.json` descriptor itself.
 
-#### Data in Files - `path`
+#### Data in Files `path`
 
-`path` the location of the data specified either as a fully qualified url or a
-relative unix-style path ('/' as separator). A relative path should be
-interpreted relative to the directory or URL in which the descriptor
-`datapackage.json` listing this resource resides. A relative `path` MUST NOT
-start with `/` or `.` (this eliminates `../`).
+`path` MUST be a string -- or an array of strings (see "Data in Multiple
+Files"). Strings MUST be one of:
+
+- A fully qualified url
+- A relative unix-style path ('/' as separator)
+
+A relative path MUST be interpreted relative to the directory or URL in which
+the descriptor `datapackage.json` listing this resource resides. A relative
+`path` MUST NOT start with `/` or `.` (which eliminates relative parent paths
+such as `../`).
 
 Examples:
 
@@ -341,31 +346,57 @@ Examples:
 "path": "http://ex.datapackages.org/big-csv/my-big.csv"
 
 # relative path
+# note: this will work both a relative path on disk and online
 "path": "my-data-directory/my-csv.csv"
 ```
 
-<div class="alert" markdown="block">
+<div class="alert security" markdown="block">
 SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to
 avoid security vulnerabilities when implementing data package tools. These
-limitations on resource `path` are there to ensure that resource paths only
-point to files within the data package directory and its subdirectories. This
-helps prevent data package tools being exploited by a malicious user to gain
-unintended access to sensitive information. To illustrate, a data package
-hosting service which stores packages on disk and allows access via an API. A
-malicious user uploads a data package with a resource path like `/etc/passwd`.
-The user then requests the data for that resource and the server naively opens
-`/etc/passwd` and returns that data to the caller.
+limitations on resource `path` ensure that resource paths only point to files
+within the data package directory and its subdirectories. This prevents
+data package tools being exploited by a malicious user to gain unintended
+access to sensitive information.
+
+For example, suppose a data package hosting service stores packages on disk and
+allows access via an API. A malicious user uploads a data package with a
+resource path like `/etc/passwd`.  The user then requests the data for that
+resource and the server naively opens `/etc/passwd` and returns that data to
+the caller.
 </div>
 
-<div class="alert info" markdown="block">
-IMPLEMENTORS: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url`
+<div class="alert implementor" markdown="block">
+IMPLEMENTOR: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url`
 property distinct from `path`. In order to support backwards compatability,
 implementors MAY want to automatically convert a `url` property to a `path`
 property and issue a warning.
 </div>
 
+##### Data in Multiple Files
 
-#### Inline Data - `data`
+Usually, a resource will have only a single file associated to it. However,
+sometimes it may be convenient to have a single resource whose data is split
+across multiple files -- perhaps the data is large and having it in one file
+would be inconvenient.
+
+To support this use case the `path` property MAY be an array of strings rather
+than a single string:
+
+```
+"path": [ "myfile1.csv", "myfile2.csv" ]
+```
+
+It is NOT permitted to mix fully qualified URLs and relative paths in a `path`
+array: strings MUST either all be relative paths or all URLs.
+
+<div class="alert implementor" markdown="block">
+NOTE: all files in the array MUST be similar in terms of structure, format etc.
+Implementors SHOULD be able simply concatenate the files together and treat the
+result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
+</div>
+
+
+#### Inline Data `data`
 
 Resource data rather than being stored in external files can be shipped
 'inline' on a Resource using the `data` attribute.
