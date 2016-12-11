@@ -11,3 +11,5 @@ on existing practices for publishing open-source software.
 
 For more info about the project as a whole, please visit
 [frictionlessdata.io](http://frictionlessdata.io).
+
+Frictionless Data is an [Open Knowledge International](https://okfn.org/) project.
