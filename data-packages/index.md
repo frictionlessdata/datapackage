@@ -398,51 +398,50 @@ result as one large file. For tabular data there is the issue of header rows. Se
 
 #### Inline Data `data`
 
-Resource data rather than being stored in external files can be shipped
-'inline' on a Resource using the `data` attribute.
+Resource data rather than being stored in external files can be shipped 'inline' on a Resource using the `data` attribute.
 
-The value of the data attribute  can be any type of data. However, restrictions
-of JSON require that the value be a string so for binary data you will need to
-encode (e.g. to Base64). Information on the type and encoding of the value of
-the data attribute SHOULD be provided by the format (or mediatype) attribute
-and the encoding attribute.
+The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`.
 
-Specifically: the value of the data attribute MUST be:
+For a *Tabular* resource, this means that the value of `data` `MUST` be an array.
 
-* EITHER: a JSON array or object - the data is then assumed to be JSON data and SHOULD be processed as such
-* OR: a JSON string - in this case the format or mediatype attributes MUST be provided.
+For other resource types, the appropriate value `MAY` be a Base64 encoded string, an object, or an array.
 
-Thus, a consumer of resource object MAY assume if no format or mediatype
-attribute is provided that the data is JSON and attempt to process it as such.
+Examples:
 
-Examples 1 - inline JSON:
+```
+# resource descriptors
 
-    {
-       ...
-       "resources": [
-         {
-            "format": "json",
-            # some json data e.g. 
-            "data": [
-               { "a": 1, "b": 2 },
-               { .... }
-            ]
-         }
-       ]
-    }
+# tabular
+{
+  "name": "my-table-data",
+  "data": [
+    {"a": 1, "b": 2},
+    { ... }
+  ]
+}
 
-Example 2 - inline CSV:
+# other resource types
+{
+  "name": "my-binary",
+  "data": "iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1
+Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo ....{AND SO ON}"
+}
 
-    {
-       ...
-       "resources": [
-         {
-            "format": "csv",
-            "data": "A,B,C\n1,2,3\n4,5,6"
-         }
-       ]
-    }
+{
+  "name": "my-custom-object-source",
+  "data": {
+    "fields": {
+      "title": "My blog post",
+      "content": "My post content."
+    },
+    "type": "post"
+  }
+}
 
+```
 
 ### Recommended Fields
 
