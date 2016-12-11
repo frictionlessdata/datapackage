@@ -1,3 +1,5 @@
 build/*
 .*.swp
 _site/*
+.DS_Store
+TAGS
