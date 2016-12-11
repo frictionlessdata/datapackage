@@ -125,3 +125,131 @@ Some examples of the `_cache` property.
   ]
 }
 ```
+
+# Language support for descriptors and data
+
+## Overview
+
+Language support is a different concern to translation support. Language support deals with declaring the default language of a descriptor and the data it contains in the resources array. Language support makes no claim about the presence of translations when one or more languages are supported in a descriptor or in data. Via the introduction of a `languages` array to any descriptor, we can declare the default language, and any other languages that `SHOULD` be found in the descriptor and the data.
+
+## Implementations
+
+There are no known implementations of this pattern at present.
+
+## Specification
+
+Any Frictionless Data descriptor can declare the language configuration of its metadata and data with the `languages` array.
+
+`languages` `MUST` be an array, and the first item in the array is the default (non-translated) language.
+
+If no `languages` array is present, the default language is English (`en`), and therefore is equivalent to:
+
+```
+{
+  "name": "my-package",
+  "languages": ["en"]
+}
+```
+
+The presence of a languages array does not ensure that the metadata or the data has translations for all supported languages.
+
+The descriptor and data sources `MUST` be in the default language. The descriptor and data sources `MAY` have translations for the other languages in the array, using the same language code. `IF` a translation is not present, implementing code `MUST` fallback to the default language string.
+
+Example usage of `languages`, implemented in the metadata of a descriptor:
+
+```
+{
+  "name": "sun-package",
+  "languages": ["es", "en"],
+  "title": "Sol"
+  }
+}
+
+# which is equivalent to
+{
+  "name": "sun-package",
+  "languages": ["es", "en"],
+  "title": {
+    "": "Sol",
+    "en": "Sun"
+  }
+}
+```
+
+Example usage of `languages` implemented in the data described by a resource:
+
+```
+# resource descriptor
+{
+  "name": "solar-system",
+  "path": "solar-system.csv"
+  "fields": [
+    ...
+  ],
+  "languages": ["es", "en", "he", "fr", "ar"]
+}
+
+# data source
+# some languages have translations, some do not
+# assumes a certain translation pattern, see the related section
+id,name,name@fr,name@he,name@en
+1,Sol,Soleil,שמש,Sun
+2,Luna,Lune,ירח,Moon
+```
+
+# Translation support for data
+
+## Overview
+
+Following on from a general pattern for language support, and the explicit support of metadata translations in Frictionless Data descriptors, it would be desirable to support translations in source data.
+
+We currently have two patterns for this in discussion. Both patterns arise from real-world implementations that are not specifically tied to Frictionless Data.
+
+One pattern suggests inline translations with the source data, reserving the `@` symbol in the naming of fields to denote translations.
+
+The other describes a pattern for storing additional translation sources, co-located with the "source" file described in a descriptor `path`.
+
+## Implementations
+
+There are no known implementations of this pattern in the Frictionless Data core libraries at present.
+
+## Specification
+
+## Inline
+
+**Uses a column naming convention for accessing translations**.
+
+Tabular resource descriptors support translations using `{field_name}@{lang_code}` syntax for translated field names. `lang_code` `MUST` be present in the `languages` array that applies to the resource.
+
+Any field with the `@` symbol `MUST` be a translation field for another field of data, and `MUST` be parsable according to the `{field_name}@{lang_code}` pattern.
+
+If a translation field is found in the data that does not have a corresponding `field` (e.g.: `title@es` but no `title`), then the translation field `SHOULD` be ignored.
+
+If a translation field is found in the data that uses a `lang_code` *not* declared in the applied `languages` array, then the translation field `SHOULD` be ignored.
+
+Translation fields `MUST NOT` be described in a schema `fields` array.
+
+Translation fields `MUST` match the `type`, `format` and `constraints` of the field they translate, with a single exception: Translation fields are never required, and therefore `constraints.required` is always `false` for a translation field.
+
+## Co-located translation sources
+
+**Uses a file storage convention for accessing translations**.
+
+To be contributed by @jheeffer
+
+- Has to handle local and remote resources
+- Has to be explicit about the translation key/value  pattern in the translation files
+
+```
+# local
+data/file1.csv
+data/lang/file1-en.csv
+data/lang/file1-es.csv
+
+# remote
+http://example/com/data/file2.csv
+http://example/com/data/lang/file2-en.csv
+http://example/com/data/lang/file2-es.csv
+```
+
+?
