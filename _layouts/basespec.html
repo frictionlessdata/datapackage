@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+{% if page.redirect_to %}
+<p>Moved: <a href="{{ page.redirect_to }}">{{ page.redirect_to }}</a></p>
+<hr>
+{% else %}
+
+{% capture abstract %}{% include abstract.md %}{% endcapture %}
+{{ abstract | markdownify }}
+
+{% capture meta %}{% include meta.html %}{% endcapture %}
+{{ meta | markdownify }}
+
+{% capture language %}{% include language.md %}{% endcapture %}
+{{ language | markdownify }}
+
+<h1>Specification</h1>
+
+{% capture descriptor %}{% include descriptor.md %}{% endcapture %}
+{{ descriptor | markdownify }}
+
+{% if page.title %}
+{% capture target %}{{ "# " | append: page.title  | markdownify }}{% endcapture %}
+{{ content | replace: target, '' }}
+{% else %}
+{{ content }}
+{% endif %}
+
+{% capture examples %}{% include examples.md %}{% endcapture %}
+{{ examples | markdownify }}
+
+{% capture properties %}{% include properties.md %}{% endcapture %}
+{{ properties | markdownify }}
+
+{% capture notes %}{% include notes.md %}{% endcapture %}
+{{ notes | markdownify }}
+
+{% capture security %}{% include security.md %}{% endcapture %}
+{{ security | markdownify }}
+
+{% endif %}
+
