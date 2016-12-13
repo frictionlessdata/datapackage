@@ -6,6 +6,7 @@ version: 1.0.0-beta.18
 updated: 17 November 2016
 created: 12 November 2007
 ietf-keywords: true
+mediatype: application/vnd.datapackage+json
 author:
  - Rufus Pollock (Open Knowledge Labs)
  - Martin Keegan (Open Knowledge Labs)
@@ -70,6 +71,8 @@ The data included in the package may be provided as:
 * Remote resources, referenced by URL
 * "Inline" data (see below) which is included directly in the
   `datapackage.json` file
+
+A Data Package `MUST` have a media type of `{{ page.mediatype }}`.
 
 ## Illustrative Structure
 
