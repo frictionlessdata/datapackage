@@ -10,3 +10,5 @@ The descriptor `MUST` be in one of the following forms:
 Where a {{ page.title }} descriptor is a file with references to additional co-located resources on a file system, the `{{ page.descriptor.file }}` descriptor `MUST` be at the top-level directory, with those resources in a relative location to the descriptor file.
 
 All Frictionless Data descriptors `MUST` be serialised as JSON.
+
+The media type for {{ page.title }} descriptors as files `MUST` be `{{ page.mediatype }}`.

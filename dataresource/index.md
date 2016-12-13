@@ -5,6 +5,7 @@ subtitle: A simple format to describe data and metadata.
 layout: basespec
 listed: true
 version: 1.0-alpha-1
+mediatype: application/vnd.dataresource+json
 updated: 11 December 2017
 created: 11 December 2017
 authors:
