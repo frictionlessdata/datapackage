@@ -85,7 +85,12 @@
     },
     "path": {
       "title": "Path",
-      "description": "The relative path to this resource.",
+      "description": "A URI to this data source, being either an HTTP address or a file path.",
+      "examples": [
+        "\"path\": \"file.csv\"",
+        "path\": \"http://example.com/file.csv\"",
+      ],
+      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly.",
       "type": "string"
     },
     "data": {
