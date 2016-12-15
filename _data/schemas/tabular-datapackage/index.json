@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tabular Data Package",
+  "description": "Tabular Data Package is a simple specification for data access and delivery of tabular data.",
+  "type": "object",
+  "required": [ "name", "resources" ],
+  "properties": {
+    "name": {
+      "$ref": "definitions.json#/define/name",
+      "propertyOrder": 10
+    },
+    "title": {
+      "$ref": "definitions.json#/define/title",
+      "propertyOrder": 20
+    },
+    "description": {
+      "$ref": "definitions.json#/define/description",
+      "format": "textarea",
+      "propertyOrder": 30
+    },
+    "homepage": {
+      "$ref": "definitions.json#/define/homepage",
+      "propertyOrder": 40
+    },
+    "version": {
+      "$ref": "definitions.json#/define/version",
+      "propertyOrder": 50
+    },
+    "license": {
+      "$ref": "definitions.json#/define/license",
+      "propertyOrder": 60
+    },
+    "author": {
+      "$ref": "definitions.json#/define/author",
+      "propertyOrder": 70
+    },
+    "contributors": {
+      "$ref": "definitions.json#/define/contributors",
+      "propertyOrder": 80,
+      "options": { "hidden": true }
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "The data resources that this package describes.",
+      "type": "array",
+      "propertyOrder": 90,
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "definitions.json#/define/name",
+            "propertyOrder": 10
+          },
+          "title": {
+            "$ref": "definitions.json#/define/title",
+            "propertyOrder": 20
+          },
+          "description": {
+            "$ref": "definitions.json#/define/description",
+            "propertyOrder": 30,
+            "format": "textarea"
+          },
+          "schema": {
+            "$ref": "definitions.json#/define/schema",
+            "propertyOrder": 40
+          },
+          "url": {
+            "$ref": "definitions.json#/define/url",
+            "propertyOrder": 50
+          },
+          "path": {
+            "$ref": "definitions.json#/define/path",
+            "propertyOrder": 60
+          },
+          "data": {
+            "$ref": "definitions.json#/define/data",
+            "propertyOrder": 70
+          },
+          "format": {
+            "$ref": "definitions.json#/define/format",
+            "propertyOrder": 80
+          },
+          "mediatype": {
+            "$ref": "definitions.json#/define/mediatype",
+            "propertyOrder": 90
+          },
+          "encoding": {
+            "$ref": "definitions.json#/define/encoding",
+            "propertyOrder": 100
+          },
+          "bytes": {
+            "$ref": "definitions.json#/define/bytes",
+            "propertyOrder": 110,
+            "options": { "hidden": true }
+          },
+          "hash": {
+            "$ref": "definitions.json#/define/hash",
+            "propertyOrder": 120,
+            "options": { "hidden": true }
+          },
+          "dialect": {
+            "$ref": "definitions.json#/define/dialect",
+            "propertyOrder": 130,
+            "options": { "hidden": true }
+          },
+          "sources": {
+            "$ref": "definitions.json#/define/sources",
+            "propertyOrder": 140,
+            "options": { "hidden": true }
+          },
+          "license": {
+            "$ref": "definitions.json#/define/license",
+            "description": "The license under which the resource is published.",
+            "propertyOrder": 150,
+            "options": { "hidden": true }
+          }
+        },
+        "anyOf": [
+          { "title": "url required", "required": ["url"] },
+          { "title": "path required", "required": ["path"] },
+          { "title": "data required", "required": ["data"] }
+        ],
+        "required": [ "schema" ]
+      }
+    },
+    "keywords": {
+      "$ref": "definitions.json#/define/keywords",
+      "propertyOrder": 100
+    },
+    "sources": {
+      "$ref": "definitions.json#/define/sources",
+      "propertyOrder": 110,
+      "options": { "hidden": true }
+    },
+    "image": {
+      "$ref": "definitions.json#/define/image",
+      "propertyOrder": 120,
+      "options": { "hidden": true }
+    },
+    "dataDependencies": {
+      "$ref": "definitions.json#/define/dataDependencies",
+      "propertyOrder": 140,
+      "options": { "hidden": true }
+    }
+  }
+}

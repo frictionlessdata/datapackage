@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "JSON Table Schema",
+  "description": "JSON Table Schema is a specification for describing tabular data.",
+  "type": "object",
+  "properties": {
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "type": {
+            "enum": [
+              "string",
+              "number",
+              "integer",
+              "date",
+              "time",
+              "datetime",
+              "boolean",
+              "object",
+              "geopoint",
+              "geojson",
+              "array",
+              "duration",
+              "any"
+            ]
+          },
+          "rdfType": {"type": "string" },
+          "format": { "type": "string" },
+          "constraints": {
+            "type": "object",
+            "properties": {
+              "required": { "type": "boolean" },
+              "minLength": { "type": "integer" },
+              "maxLength": { "type": "integer" },
+              "unique": { "type": "boolean" },
+              "pattern": { "type": "string" },
+              "minimum": {
+                "oneOf": [ { "type": "string" }, { "type": "number" } ]
+              },
+              "maximum": {
+                "oneOf": [ {"type": "string"}, {"type": "number"} ]
+              },
+              "enum": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "primaryKey": {
+      "oneOf": [ { "type": "string" }, { "type": "array" } ]
+    },
+    "foreignKeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [ "fields", "reference" ],
+        "properties": {
+          "fields": { "oneOf": [ { "type": "string" }, { "type": "array" } ] },
+          "reference": {
+            "type": "object",
+            "required": [ "resource", "fields" ],
+            "properties": {
+              "resource": { "type": "string" },
+              "fields": { "oneOf": [ { "type": "string" }, { "type": "array" } ] }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [ "fields" ]
+}

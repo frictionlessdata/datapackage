@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CSVDDF",
+  "description": "JSON Schema for validating CSVDDF dialect structures",
+  "type": "object",
+  "properties": {
+    "delimiter": {
+      "type": "string"
+    },
+    "doublequote": {
+      "type": "boolean"
+    },
+    "lineterminator": {
+      "type": "string"
+    },
+    "quotechar": {
+      "type": "string"
+    },
+    "skipinitialspace": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "delimiter",
+    "doublequote",
+    "lineterminator",
+    "quotechar",
+    "skipinitialspace"
+  ]
+}
