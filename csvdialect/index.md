@@ -1,6 +1,6 @@
 ---
+layout: spec
 title: CSV Dialect Description Format (CSVDDF)
-layout: default
 listed: true
 version: 1.2
 created: 20 February 2013

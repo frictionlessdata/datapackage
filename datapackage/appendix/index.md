@@ -1,6 +1,6 @@
 ---
 title: Data Packages Appendix
-layout: default
+layout: spec
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
  - Matthew Brett (NiPY)

@@ -1,0 +1,7 @@
+{% if page.chagelog %}
+<ul>
+  {% for change in page.changelog %}
+  <li>{{ change }}</li>
+  {% endfor %}
+</ul>
+{% endif %}

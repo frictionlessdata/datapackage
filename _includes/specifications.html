@@ -1,7 +1,4 @@
-<li><a href="/data-packages">Data Packages</a></li>
-<li><a href="/json-table-schema">JSON Table Schema</a></li>
-<li><a href="/csv-dialect">CSV Dialect Description</a></li>
-<li><a href="/data-package-identifier">Data Package Identifiers</a></li>
-<li><a href="/tabular-data-package">Tabular Data Package</a></li>
-<li><a href="/fiscal-data-package">Fiscal Data Package</a></li>
+{% for spec in site.specifications %}
+<li><a href="/{{ spec.slug }}/">{{ spec.name }}</a></li>
+{% endfor %}
 
