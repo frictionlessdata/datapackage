@@ -1,0 +1,30 @@
+A minimal {{ page.title }} example using the `data` property to inline data looks as follows.
+
+```
+{
+  "name": "resource-name",
+  "data": [
+    {
+      "id": 1,
+      "first_name": "Louise"
+    },
+    {
+      "id": 2,
+      "first_name": "Julia"
+    }
+  ],
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "integer"
+      },
+      {
+        "name": "first_name",
+        "type": "string"
+      }
+    ],
+    "primaryKey": "id"
+  }
+}
+```

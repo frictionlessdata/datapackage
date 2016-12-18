@@ -2,9 +2,10 @@
 layout: spec
 title: Data Resource
 slug: dataresource
+mediatype: application/vnd.dataresource+json
 subtitle: A simple format to describe data and its metadata.
 version: 1.0-alpha-1
-updated: 15 December 2017
+updated: 18 December 2017
 created: 11 December 2017
 authors:
   -
@@ -36,16 +37,12 @@ examples:
   - examples/dataresource_1.md
   - examples/dataresource_2.md
   - examples/dataresource_3.md
+profiles:
+  - tabular-dataresource
 changelog:
-notes:
-  - Prior to Nov 17 2016, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.
-  - When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).
-  - When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file.
 abstract: >
   Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of recommended and optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
 ---
-
-## Contents
 
 A **{{ page.title }}** is a simple container format that describes and packages a data source with additional information about that source.
 
@@ -54,3 +51,13 @@ At a minimum, a {{ page.title }} requires a `name` property, and one of the `pat
 A range of other properties can be declared to provide a richer set of metadata.
 
 Full information on **required**, **recommended**, and **optional** properties for a {{ page.title }} descriptor is provided in the [**Properties**](#properties) section below.
+
+As part of the Frictionless Data project, we publish a number of {{ page.title }} profiles. See the following links for more information.
+
+{% for spec in site.specifications %}
+{% for page in page.profiles %}
+{% if spec.slug == page %}
+<li><a href="/{{ spec.slug }}/">{{ spec.name }}</a></li>
+{% endif %}
+{% endfor %}
+{% endfor %}
