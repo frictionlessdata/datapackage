@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Package",
+  "description": "Data Package is a simple specification for data access and delivery.",
+  "type": "object",
+  "allOf": [
+    { "$ref": "#/definitions/baseDescriptor" },
+    {
+      "properties": {
+        "resources": {
+          "$ref": "concepts.json#/definitions/dataResources"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tabular Data Package",
+  "description": "Tabular Data Package is a simple specification for data access and delivery of tabular data.",
+  "type": "object",
+  "allOf": [
+    { "$ref": "#/definitions/baseDescriptor" },
+    {
+      "properties": {
+        "resources": {
+          "$ref": "concepts.json#/definitions/tabularDataResources"
+        }
+      }
+    }
+  ]
+}
