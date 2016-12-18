@@ -2,11 +2,14 @@
 layout: base
 ---
 
+{% capture meta %}{% include meta.html %}{% endcapture %}
+{{ meta | markdownify }}
+
 {% capture abstract %}{% include abstract.md %}{% endcapture %}
 {{ abstract | markdownify }}
 
-{% capture meta %}{% include meta.html %}{% endcapture %}
-{{ meta | markdownify }}
+{% capture goals %}{% include goals.md %}{% endcapture %}
+{{ goals | markdownify }}
 
 {% capture changelog %}{% include changelog.html %}{% endcapture %}
 {{ changelog | markdownify }}
@@ -19,11 +22,13 @@ layout: base
 {% capture descriptor %}{% include descriptor.md %}{% endcapture %}
 {{ descriptor | markdownify }}
 
+<h2>Contents</h2>
+
 {% if page.title %}
 {% capture target %}{{ "# " | append: page.title  | markdownify }}{% endcapture %}
-{{ content | replace: target, '' }}
+{{ content | replace: target, '' | markdownify }}
 {% else %}
-{{ content }}
+{{ content | markdownify }}
 {% endif %}
 
 {% capture examples %}{% include examples.md %}{% endcapture %}
@@ -31,9 +36,6 @@ layout: base
 
 {% capture properties %}{% include properties.md %}{% endcapture %}
 {{ properties | markdownify }}
-
-{% capture notes %}{% include notes.md %}{% endcapture %}
-{{ notes | markdownify }}
 
 {% capture security %}{% include security.md %}{% endcapture %}
 {{ security | markdownify }}
