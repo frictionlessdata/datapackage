@@ -34,7 +34,6 @@ properties:
     - contributors
   optional:
     - image
-    - dataDependencies
     - schemas
 examples:
   - examples/tabular-datapackage_1.md

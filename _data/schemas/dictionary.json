@@ -201,14 +201,6 @@
       "type": "string",
       "format": "uri"
     },
-    "dataDependencies": {
-      "title": "Data Dependencies",
-      "description": "Additional Data Packages required to install this package.",
-      "type": "object",
-      "examples": [
-        "\"dataDependencies\": { \"country-codes\": \"\", \"unemployment\": \"2.1\", \"geo-boundaries\": { \"acmecorp-geo-boundaries\": [\"1.0\", \"2.0\"], \"othercorp-geo-boundaries\": \"0.9.8\" } }"
-      ]
-    },
     "countryCode": {
       "title": "ISO 3166-1 Alpha-2 Country code",
       "description": "A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.",

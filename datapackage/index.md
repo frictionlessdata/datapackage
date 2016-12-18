@@ -34,7 +34,6 @@ properties:
     - contributors
   optional:
     - image
-    - dataDependencies
     - schemas
 examples:
   - examples/datapackage_1.md
