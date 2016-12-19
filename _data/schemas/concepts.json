@@ -135,6 +135,10 @@
             "propertyOrder": 30,
             "format": "textarea"
           },
+          "web": {
+            "$ref": "dictionary.json#/definitions/web",
+            "propertyOrder": 40
+          },
           "sources": {
             "$ref": "dictionary.json#/definitions/sources",
             "propertyOrder": 140,

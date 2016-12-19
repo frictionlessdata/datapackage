@@ -39,13 +39,27 @@
         "# My Package description\nAll about my package."
       ]
     },
-    "homepage": {
-      "title": "Home Page",
-      "description": "The URL for this data package's website.",
-      "type": "string",
-      "format": "uri",
+    "web": {
+      "title": "Web",
+      "description": "The home on the web that is related to this data package.",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      ],
       "examples": [
-        "\"homepage\": \"http://www.example.com\""
+        "\"web\": \"http://www.example.com\"",
+        "\"web\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
       ]
     },
     "version": {

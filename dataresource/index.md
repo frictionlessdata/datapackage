@@ -34,6 +34,7 @@ properties:
     - schema
     - sources
     - licenses
+    - web
 examples:
   - examples/dataresource_1.md
   - examples/dataresource_2.md
