@@ -196,13 +196,13 @@
       "type": "object",
       "properties": {
         "name": { "type": "string" },
-        "web": { "type": "string" },
-        "email": { "type": "string" }
+        "path": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" }
       },
       "anyOf": [
-        { "title": "name required", "required": ["name"] },
-        { "title": "web required", "required": ["web"] },
-        { "title": "email required", "required": ["email"] }
+        { "title": "name required", "required": [ "name" ] },
+        { "title": "path required", "required": [ "path" ] },
+        { "title": "email required", "required": [ "email" ] }
       ]
     },
     "sources": {
@@ -212,7 +212,7 @@
       "minItems": 0,
       "items": { "$ref": "#/definitions/source" },
       "examples": [
-        "\"sources\": [{ \"name\": \"World Bank and OECD\", \"web\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" }]"
+        "\"sources\": [{ \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" }]"
       ]
     },
     "keywords": {
