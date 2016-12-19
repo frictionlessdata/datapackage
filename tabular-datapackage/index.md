@@ -27,7 +27,7 @@ properties:
   recommended:
     - title
     - description
-    - web
+    - homepage
     - version
     - sources
     - licenses

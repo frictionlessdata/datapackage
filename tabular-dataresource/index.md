@@ -34,7 +34,7 @@ properties:
     - hash
     - sources
     - licenses
-    - web
+    - homepage
     - created
 examples:
   - examples/tabular-dataresource_1.md

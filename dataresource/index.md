@@ -34,7 +34,7 @@ properties:
     - schema
     - sources
     - licenses
-    - web
+    - homepage
     - created
 examples:
   - examples/dataresource_1.md

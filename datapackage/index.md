@@ -27,7 +27,7 @@ properties:
     - profile
     - title
     - description
-    - web
+    - homepage
     - version
     - sources
     - licenses

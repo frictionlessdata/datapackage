@@ -39,8 +39,8 @@
         "# My Package description\nAll about my package."
       ]
     },
-    "web": {
-      "title": "Web",
+    "homepage": {
+      "title": "Home Page",
       "description": "The home on the web that is related to this data package.",
       "oneOf": [
         { "type": "string", "format": "uri" },
@@ -58,8 +58,8 @@
         }
       ],
       "examples": [
-        "\"web\": \"http://www.example.com\"",
-        "\"web\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+        "\"homepage\": \"http://www.example.com\"",
+        "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
       ]
     },
     "version": {
