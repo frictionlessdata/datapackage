@@ -143,8 +143,8 @@
           "type": "object",
           "properties": {
             "name": { "type": "string" },
-            "email": { "type": "string" },
-            "web": { "type": "string" }
+            "path": { "type": "string", "format": "uri" },
+            "email": { "type": "string", "format": "email" }
           },
           "required": [ "name" ]
         }
@@ -152,7 +152,7 @@
       "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself.",
       "examples": [
         "\"author\": \"Joe Bloggs <joe@bloggs.com>\"",
-        "{ \"name\": \"Joe Bloggs\", \"email\": \"joe@bloggs.com\", \"web\": \"http://www.bloggs.com\" }"
+        "{ \"name\": \"Joe Bloggs\", \"email\": \"joe@bloggs.com\", \"path\": \"http://www.bloggs.com\" }"
       ]
     },
     "contributors": {
