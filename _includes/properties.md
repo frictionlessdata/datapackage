@@ -1,5 +1,5 @@
-{% assign definitions = site.data.schemas.definitions.define %}
-{% assign spec = site.data.schemas[slug].index %}
+{% assign definitions = site.data.schemas.dictionary.definitions %}
+{% assign spec = site.data.schemas[slug] %}
 
 ## Properties
 

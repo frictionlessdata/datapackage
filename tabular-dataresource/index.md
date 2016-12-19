@@ -42,8 +42,6 @@ abstract: >
   Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of recommended and optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
 ---
 
-## Contents
-
 A **{{ page.title }}** is a simple container format that describes and packages a data source with additional information about that source.
 
 At a minimum, a {{ page.title }} requires a `name` property, and one of the `path` or `data` properties. `name` provides a human and machine-readable identifier for the {{ page.title }}. `data` provides the data source inlined directly into the descriptor. `path` is a URI or an array of URIs: to a file(s) on a file system, or over HTTP.
