@@ -134,6 +134,13 @@
       "description": "The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.",
       "pattern": "^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$"
     },
+    "created": {
+      "title": "Created",
+      "description": "The datetime on which this descriptor was created.",
+      "context": "The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)",
+      "type": "string",
+      "format": "date-time"
+    },
     "author": {
       "title": "Author",
       "description": "A contributor to this descriptor.",

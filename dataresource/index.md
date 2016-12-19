@@ -35,6 +35,7 @@ properties:
     - sources
     - licenses
     - web
+    - created
 examples:
   - examples/dataresource_1.md
   - examples/dataresource_2.md

@@ -35,6 +35,7 @@ properties:
     - sources
     - licenses
     - web
+    - created
 examples:
   - examples/tabular-dataresource_1.md
   - examples/tabular-dataresource_2.md

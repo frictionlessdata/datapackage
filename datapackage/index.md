@@ -36,6 +36,7 @@ properties:
   optional:
     - image
     - schemas
+    - created
 examples:
   - examples/datapackage_1.md
   - examples/datapackage_2.md

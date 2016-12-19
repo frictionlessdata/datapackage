@@ -36,6 +36,7 @@ properties:
   optional:
     - image
     - schemas
+    - created
 examples:
   - examples/tabular-datapackage_1.md
   - examples/tabular-datapackage_2.md
