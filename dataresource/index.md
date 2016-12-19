@@ -22,6 +22,7 @@ properties:
     - path
     - data
   recommended:
+    - profile
   optional:
     - title
     - description

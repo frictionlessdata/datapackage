@@ -23,6 +23,7 @@ properties:
   required:
     - name
     - resources
+    - profile
   recommended:
     - title
     - description

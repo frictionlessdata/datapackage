@@ -22,6 +22,7 @@ properties:
     - path
     - data
     - schema
+    - profile
   recommended:
   optional:
     - title

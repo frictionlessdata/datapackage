@@ -31,6 +31,11 @@ layout: base
 {{ content | markdownify }}
 {% endif %}
 
+{% if page.profiles %}
+{% capture profiles %}{% include profiles.md %}{% endcapture %}
+{{ profiles | markdownify }}
+{% endif %}
+
 {% capture examples %}{% include examples.md %}{% endcapture %}
 {{ examples | markdownify }}
 

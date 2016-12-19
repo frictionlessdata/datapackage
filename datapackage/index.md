@@ -24,6 +24,7 @@ properties:
     - name
     - resources
   recommended:
+    - profile
     - title
     - description
     - homepage
@@ -91,17 +92,3 @@ For example, suppose you were storing time series data and want to list the temp
 ```
 
 This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage.
-
-## Profiles
-
-Some extensions of {{ page.title }} may be formalised as a **profile**, which has a formal specification of its own.
-
-As part of the Frictionless Data project, we publish a number of {{ page.title }} profiles. See the following links for more information.
-
-{% for spec in site.specifications %}
-{% for page in page.profiles %}
-{% if spec.slug == page %}
-<li><a href="/{{ spec.slug }}/">{{ spec.name }}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}

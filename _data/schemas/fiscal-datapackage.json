@@ -6,7 +6,7 @@
   "allOf": [
     { "$ref": "#/definitions/baseDescriptor" },
     {
-      "required": [ "resources", "model" ],
+      "required": [ "resources", "model", "profile" ],
       "properties": {
         "resources": { "$ref": "concepts.json#/definitions/tabularDataResources" },
         "model": { "$ref": "concepts.json#/definitions/fiscalModel" },
