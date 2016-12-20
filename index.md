@@ -31,6 +31,12 @@ For more info about the project as a whole, please visit
 - [Tabular Data Package](/tabular-data-package/)
 - [Fiscal Data Package](/fiscal-data-package/)
 
+## Patterns
+
+Usage of the Frictionless Data specifications has led to the emerge of certain patterns to facilitate common data handling use cases. The patterns we identify here are those that are either implemented in the core libraries for Frictionless Data in Python and JavaScript, or, are commonly used and are candidates for inclusion in the specifications at a later stage.
+
+- [Patterns](/patterns/)
+
 ## DataProtocols
 
 The Frictionless Data specifications grew out of **DataProtocols**, a
