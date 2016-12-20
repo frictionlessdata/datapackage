@@ -5,6 +5,7 @@ listed: true
 version: 1.0-pre15
 updated: 17 November 2016
 created: 12 November 2012
+mediatype: application/vnd.tableschema+json
 summary: This RFC defines a simple schema for tabular data. The schema is
   designed to be expressible in JSON.
 ietf-keywords: true
@@ -87,6 +88,9 @@ A JSON Table Schema consists of:
 A schema is described using JSON. This might exist as a standalone document
 or may be embedded within another JSON structure, e.g. as part of a
 data package description.
+
+
+A JSON Table Schema descriptor `MUST` have a media type of `{{ page.mediatype }}`.
 
 ## Schema
 
