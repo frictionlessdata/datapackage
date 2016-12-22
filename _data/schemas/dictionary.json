@@ -121,7 +121,8 @@
     "encoding": {
       "title": "Encoding",
       "description": "The file encoding of this resource.",
-      "type": "string"
+      "type": "string",
+      "default": "utf-8"
     },
     "bytes": {
       "title": "Bytes",

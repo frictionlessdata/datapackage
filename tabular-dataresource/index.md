@@ -51,4 +51,11 @@ At a minimum, a {{ page.title }} requires a `name` property, and one of the `pat
 
 A range of other properties can be declared to provide a richer set of metadata.
 
-Full information on **required**, **recommended**, and **optional** properties for a {{ page.title }} descriptor is provided in the [**Properties**](#properties) section below.
+### CSV file requirements
+
+CSV files in the wild come in a bewildering array of formats. There is a standard for CSV files described in [RFC 4180](https://tools.ietf.org/html/rfc4180), but unfortunately this standard does not reflect reality. In {{ page.title }}, CSV files `MUST` follow RFC 4180 with the following important exceptions allowed:
+
+- Files are encoded as UTF-8 by default, or they must be encoded according to the `encoding` property of the {{ page.title }} (the RFC requires 7-bit ASCII encoding)
+- Dialect conformance `SHOULD` be declared on the `dialect` property of the {{ page.title }}, which is a [CSV Dialect](/csvdialect/) descriptor
+
+
