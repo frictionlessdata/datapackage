@@ -13,6 +13,6 @@ All Frictionless Data descriptors `MUST` be valid JSON (JSON is defined in [RFC 
 
 The JSON Pointer specification as described in [RFC 6901](https://tools.ietf.org/html/rfc6901) is fully supported for all Frictionless Data descriptors. This means that any property that can be a URI can be a JSON Pointer to a specific property in the same descriptor, or any other JSON object that can be referenced.
 
-The media type for {{ page.title }} descriptors as files `MUST` be `{{ page.mediatype }}`.
+The media type for {{ page.title }} descriptors as `MUST` be `{{ page.mediatype }}`.
 
 All Frictionless Data descriptors `MAY` include any number of properties in addition to those defined as *required*, *recommended*, and *optional* fields.
