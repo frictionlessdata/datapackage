@@ -15,12 +15,12 @@
     },
     "name": {
       "title": "Name",
-      "description": "An identifier for this descriptor. Lower case characters with '.', '_' and '-' are allowed.",
+      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
       "type": "string",
       "pattern": "^([a-z0-9._-])+$",
-      "context": "This is ideally a url-usable and human-readable name for the package. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when a data package is updated.",
+      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
       "examples": [
-        "\"name\": \"my-package-name\""
+        "\"name\": \"my-nice-name\""
       ]
     },
     "title": {
@@ -173,16 +173,16 @@
     "license": {
       "title": "License",
       "description": "A license for this descriptor.",
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/definitions/name" },
+        "path": { "$ref": "#/definitions/path" },
+        "title": { "$ref": "#/definitions/title" }
+      },
       "oneOf": [
-        { "type": "string" },
-        {
-          "type": "object",
-          "properties": {
-            "type": { "type": "string" },
-            "path": { "type": "string", "format": "uri" }
-          },
-          "required": [ "type" ]
-        }
+        { "required": [ "name" ] },
+        { "required": [ "path" ] },
+        { "required": [ "title" ] }
       ],
       "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself.",
       "examples": [
