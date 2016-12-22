@@ -102,19 +102,6 @@
         }
       }
     },
-    "csvDialect": {
-      "title": "CSV Dialect",
-      "description": "The CSV dialect descriptor.",
-      "type": "object",
-      "properties": {
-        "delimiter": {  "type": "string" },
-        "doublequote": { "type": "boolean" },
-        "lineterminator": {  "type": "string" },
-        "quotechar": { "type": "string" },
-        "skipinitialspace": { "type": "boolean" }
-      },
-      "required": [ "delimiter", "doublequote", "lineterminator", "quotechar", "skipinitialspace" ]
-    },
     "baseDescriptor": {
       "title": "Base Descriptor",
       "description": "A Base Descriptor JSON Schemas",
@@ -233,6 +220,10 @@
               "schema": {
                 "$ref": "#/definitions/tableSchema",
                 "propertyOrder": 40
+              },
+              "dialect": {
+                "$ref": "#/definitions/csvDialect",
+                "propertyOrder": 50
               }
             }
           }

@@ -1,0 +1,12 @@
+A customized {{ page.title }} looks as follows.
+
+```
+{
+  "delimiter": ";",
+  "doubleQuote": false,
+  "lineTerminator": "\n",
+  "quoteChar": "'",
+  "skipInitialSpace": false,
+  "header": false
+}
+```
