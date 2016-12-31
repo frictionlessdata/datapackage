@@ -5,8 +5,8 @@ listed: true
 version: 1.0-pre15
 updated: 17 November 2016
 created: 12 November 2012
-summary: This RFC defines a simple schema for tabular data. The schema is
-  designed to be expressible in JSON.
+summary: A JSON-based format for defining the structure of a table, including field validation rules,
+  primary and foreign keys. It can be used for any tabular data, regardless of format.
 ietf-keywords: true
 ---
 
@@ -47,131 +47,106 @@ ietf-keywords: true
 
 # Concepts
 
-A Table consists of a set of rows. Each row has a set of fields
-(columns). We usually expect that each Row has the same set of fields
-and thus we can talk about *the* fields for the table as a whole.
+A table consists of an ordered set of rows, each containing the same set of fields (also known
+as columns). The fields are usually either defined by an included header row (when the table is 
+in a file-based format such as CSV), or separately (such as for
+an SQL database table).
 
-In cases of tables in spreadsheets or CSV files we often interpret the
-first row as a header row giving the names of the fields. By contrast,
-in other situations, e.g. tables in SQL databases the fields (columns)
-are explicitly designated.
+For instance, a table with two fields ("City_name" and "ID"), and two rows:
 
-To illustrate here's a classic spreadsheet table:
+```
+City_name | ID
+--------------
+Paris     | 1
+Sydney    | 2
+```
 
-    field     field
-      |         |
-      |         |
-      V         V
+A schema following the JSON Table Schema specification ("a Schema") defines the fields 
+for a certain table structure, adding additional metadata such as type formats and 
+descriptions. It can thus serve two purposes:
 
-     A     |    B    |    C    |    D      <--- Row
-     ------------------------------------
-     valA  |   valB  |  valC   |   valD    <--- Row
-     ...
-
-In JSON a table would be:
-
-    [
-      { "A": value, "B": value, ... },
-      { "A": value, "B": value, ... },
-      ...
-    ]
+1. To provide richer descriptions of the contents of a provided data
+   file that is provided in a format that lacks such features (eg CSV).
+2. To define requirements for datasets provided by third parties, which
+   can be automatically enforced.
 
 # Specification
 
-A JSON Table Schema consists of:
+A Schema consists of:
 
 * a required list of _field descriptors_
 * optionally, a _primary key_ description
 * optionally, a _foreign _key_ description
 
-A schema is described using JSON. This might exist as a standalone document
+A Schema is described using JSON. This might exist as a standalone document
 or may be embedded within another JSON structure, e.g. as part of a
-data package description.
+[data package](http://specs.frictionlessdata.io/data-packages/) description.
 
 ## Schema
 
-A schema has the following structure:
+A Schema has the following structure:
 
     {
-      # fields is an ordered list of field descriptors
-      # one for each field (column) in the table
+      // REQUIRED: an array of field descriptor objects, in order from left to right, 
+      // one for each field (column) in the table
       "fields": [
-        # a field-descriptor
         {
-          "name": "name of field (e.g. column name)",
-          "title": "A nicer human readable label or title for the field",
-          "type": "A string specifying the type",
-          "format": "A string specifying a format",
-          "description": "A description for the field"
-          ...
+          // see "Field Descriptors"
         },
-        ... more field descriptors
+        // ... more field descriptors
       ],
-      # (optional) specification of the primary key
-      "primaryKey": ...
-      # (optional) specification of the foreign keys
-      "foreignKeys": ...
+      
+      // OPTIONAL, specification of the primary key, see "Primary Keys"
+      "primaryKey":  [...]
+
+      // OPTIONAL, specification of the foreign keys, see "Foreign Keys"
+      "foreignKeys": [...]
+
+      // OPTIONAL, other properties not defined by this spec may be added anywhere.
 
     }
-
-That is, a JSON Table Schema is:
-
--   a Hash which `MUST` contain a key `fields`
--   `fields` MUST be an array where each entry in the array is a field
-    descriptor. (Structure and usage described below)
--   the Hash `MAY` contain a property `primaryKey` (structure and usage
-    specified below)
--   the Hash `MAY` contain a property `foreignKeys` (structure and usage
-    specified below)
--   the Hash `MAY` contain any number of other properties (not defined in this
-    spec)
 
 ## Field Descriptors
 
-A field descriptor is a simple JSON hash that describes a single field. The
-descriptor provides additional human-readable documentation for a field, as
+Each field descriptor provides additional human-readable documentation for a field, as
 well as additional information that may be used to validate the field or create
 a user interface for data entry.
 
-At a minimum a field descriptor will contain at least a `name` key, but MAY
-have additional keys as described below:
-
     {
-      "name": "name of field (e.g. column name)",
-      "title": "A nicer human readable label or title for the field",
-      "type": "A string specifying the type",
-      "format": "A string specifying a format",
-      "missingValue": "",
-      "description": "A description for the field",
-      "constraints": {
-          # a constraints-descriptor
-      }
+        // REQUIRED, the name of the field. It SHOULD correspond to the name of the field
+        // in the file or database. It SHOULD be unique, and SHOULD be considered case-sensitive.
+        "name": "City_name",
+
+        // OPTIONAL, a human-readable version of the name
+        "title": "City name",
+
+        // OPTIONAL, an explanatory description for the field
+        "description": "The name of the city, in English."
+
+        // OPTIONAL (defaults to "string"), a string ("string", "number" etc) specifying the type.
+        // See "Field Types and Formats".
+        "type": "string",
+
+        // OPTIONAL (defaults to "default"), a string giving more precise information about the `type` ("email", "date" etc)
+        // See "Field Types and Formats"
+        "format": "A string specifying a format",
+
+        // OPTIONAL, a string, or array of strings, of values which should be interpreted as missing data (`null`).
+        // Defaults to "" when `type` is NOT string; no default otherwise.
+        "missingValue": ["-", "Unknown"],
+
+        // OPTIONAL, further rules about the allowed values of the field. 
+        "constraints": {
+            // See "Field Constraints"
+
+        },
+
+        // OPTIONAL, the URI of an instance or subclass of an [RDF Schema Class object][https://www.w3.org/TR/rdf-schema/#ch_class]
+        // This provides a way to indicate the semantic meaning of the field.
+        "rdfType": "http://schema.org/Country",
+
+        // OPTIONAL, other properties not defined by this spec are permitted.
     }
-
--   a field descriptor MUST be a Hash
--   the field descriptor Hash MUST contain a `name` property. This
-    property `SHOULD` correspond to the name of field/column in the
-    data file (if it has a name). As such it `SHOULD` be unique (though
-    it is possible, but very bad practice, for the data file to have
-    multiple columns with the same name). Additionally, `name` `SHOULD`
-    be considered case sensitive. In practice, case sensitivity for names
-    can be limiting in certain scenarios, so consumers `MAY` choose to ignore
-    case sensitivity for `name` values.
--   the field descriptor Hash MAY contain any number of other properties
--   specific properties that MAY be included in the Hash and whose
-    meaning is defined in this spec are:
-
-    -   `title`: A nicer human readable label or title for the field
-    -   `description`: A description for this field e.g. "The recipient of
-        the funds"
-    -   `type`: The type of the field (string, number etc) - see below for
-        more detail. If type is not provided a consumer should assume a type of
-        "string".
-    -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
-        date. See below for more detail.
-    -   `missingValue`: a field value which should be interpreted as missing data (`null`). See below for
-    -   `constraints`: A constraints descriptor that can be used by consumers
-        to validate field values
 
 ### Field Constraints
 
@@ -180,46 +155,49 @@ to validate data against a JSON Table Schema. The constraints might be used by c
 to validate, for example, the contents of a data package, or as a means to validate
 data being collected or updated via a data entry interface.
 
-A constraints descriptor is a JSON hash. It `MAY` contain any of the following
-keys.
+Each constraints descriptor is a JSON object. 
 
-- `required` -- A boolean value which indicates whether a field must have a value
-  in every row of the table. An empty string is considered to be a missing value.
-- `minLength` -- An integer that specifies the minimum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
-- `maxLength` -- An integer that specifies the maximum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
-- `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the
-  data file in which it is found. This defines a unique key for a row although a row could
-  potentially have several such keys.
-- `pattern` -- A regular expression that can be used to test field values. If the regular
-  expression matches then the value is valid. Values will be treated as a string of characters.
-  It is recommended that values of this field conform to the standard
-  [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also
-  [this reference](http://www.regular-expressions.info/xml.html).
-- `minimum` -- specifies a minimum value for a field. This is different to `minLength` which
-  checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.
-- `maximum` -- as above, but specifies a maximum value for a field.
-- `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
-The field value must exactly match a value in the `enum` array.
+```
+{
+    // All fields are OPTIONAL. All constraints MUST be satisfied for a given value to be considered valid.
+
+    // Boolean, whether the field must have a value in every row of the table. Empty strings are not considered values.
+    "required": true,
+
+    // Integer, the minimum length of each value. Applies to types `string`, `array` and `object`.
+    "minLength": 3,
+
+    // Integer, the maximum length of each value. Applies to types `string`, `array` and `object`.
+    "maxLength": 8,
+
+    // Boolean, whether all values for that field MUST be unique within the table.
+    "unique": false,
+
+    // String, regular expression (SHOULD match [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)) 
+    // that each stringified value must match. See also [this reference](http://www.regular-expressions.info/xml.html).
+    "pattern": "^\\d+\\.\\d+$"
+
+    // (Type depends on `type` field) Minimum value allowed (not to be confused with minimum length of each value).
+    // If present, `type` field MUST also be present, and one of `integer`, `number`, `date`, `time` and `datetime`
+    "minimum": 1,
+
+    // Maximum value allowed, as for `minimum`.
+    "maximum": 1000,
+
+    // Array of permitted values for each value. Each MUST comply with the `type` and `format` of the field.
+    "enum": [ "left", "right" ],
+
+    // Other properties may be applicable to the relevant `type` or `format` (eg, `decimalChar`).
+}
+```
 
 The constraints listed above may also define a list of supported field types. Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 
-A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply
-all the constraints when determining if a field value is valid.
-
-A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid
-according to their declared `type` and `constraints`.
+"Missing values" are non-values supported in some table formats (eg NULL in SQL). The `missingValue` field provides
+a way to designate additional values as equivalent to "missing values". Consumer software SHOULD convert these values
+to NULL or appropriate equivalent.
 
 ### Field Types and Formats
-
-A field's `type` property is a string indicating the type of this field.
-
-A field's `format` property is a string, being a keyword indicating a
-format for the field type.
-
-Both `type` and `format` are optional: in a field descriptor, the absence of a
-`type` property indicates that the field is of the type "string", and the
-absence of a `format` property indicates that the field's type `format` is
-"default".
 
 Types are based on the [type set of
 json-schema](http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1)
@@ -227,8 +205,7 @@ with some additions and minor modifications (cf other type lists include
 those in [Elasticsearch
 types](http://www.elasticsearch.org/guide/reference/mapping/)).
 
-The type list with associated formats and other related properties is as
-follows.
+Each type has a number of possible `format` values, defined below.
 
 #### string
 
@@ -236,11 +213,11 @@ The field contains strings, that is, sequences of characters.
 
 `format`:
 
-* **default**: any valid string.
-* **email**: A valid email address.
-* **uri**: A valid URI.
-* **binary**: A base64 encoded string representing binary data.
-* **uuid**: A string that is a uuid.
+* **`default`**: any valid string.
+* **`email`**: A valid email address.
+* **`uri`**: A valid URI.
+* **`binary`**: A base64 encoded string representing binary data.
+* **`uuid`**: A string that is a uuid.
 
 #### number
 
@@ -248,98 +225,91 @@ The field contains numbers of any kind including decimals.
 
 The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a
 non-empty finite-length sequence of decimal digits separated by a period as a
-decimal indicator. An optional leading sign is allowed. If the sign is omitted,
-"+" is assumed. Leading and trailing zeroes are optional. If the fractional
-part is zero, the period and following zero(es) can be omitted. For example:
-'-1.23', '12678967.543233', '+100000.00', '210'. 
+decimal indicator. An optional leading sign is allowed. Leading and trailing zeroes are optional. 
+If the fractional part is zero, the period and following zero(es) can be omitted. 
 
-The following special string values are permitted (case need not be respected):
+A number MAY also have (in order):
 
-* NaN: not a number
-* INF: positive infinity
-* -INF: negative infinity
-
-A number MAY also have a trailing:
-
-* exponent: this MUST consist of an E followed by an optional + or - sign
-  followed by one or more decimal digits (0-9)
-* percentage: the percentage sign: "%. In conversion percentages should be
+* a trailing exponent: `E` followed by an optional `+` or `-` sign
+  followed by one or more decimal digits (`0`-`9`).
+* a trailing percentage sign: `%`. In conversion percentages should be
   divided by 100.
 
-If both exponent and percentages are present the percentage MUST follow the
-exponent e.g. '53E10%' (equals 5.3).
+For example: 
+'-1.23', '12678967.543233', '+100000.00', '210', '53E1%' (equivalent to 530% or 5.3)
 
-This lexical formatting may be modified using these additional properties:
+The following special case-insensitive string values are permitted:
 
-* **decimalChar**: A string whose value is used to represent a decimal point
-  within the number. The default value is ".".
-* **groupChar**: A string whose value is used to group digits within the
-  number. The default value is null. A common value is "," e.g. "100,000".
-* **currency**: A number that may include additional currency symbols.
+* `"NaN"`: not a number
+* `"INF"`: positive infinity
+* `"-INF"`: negative infinity
 
-`format`: no options (other than the default).
+
+This lexical formatting MAY be modified using these additional properties:
+
+* **`decimalChar`**: String (defaults to ".") that represents a decimal point within the number.
+* **`groupChar`**: String (defaults to "") used to group digits within the
+  number. A common value is "," e.g. "100,000".
+* **`currency`**: A number that may include additional currency symbols.
+
+`format`: no options.
 
 [xsd-decimal]: https://www.w3.org/TR/xmlschema-2/#decimal
 
 #### integer
 
-The field contains integers - that is whole numbers.
+The field contains integers: whole numbers with no decimals.
 
-Integer values are indicated in the standard way for any valid integer.
-
-`format`: no options (other than the default).
+`format`: no options.
 
 #### boolean
 
 The field contains boolean (true/false) data.
 
-Boolean values can be indicated with the following strings (case-insensitive
-so, for example, "Y" and "y" are both acceptable):
+Boolean values can be indicated with the following case-insensitive strings:
 
-* **true**: 'yes', 'y', 'true', 't', '1'
-* **false**: 'no', 'n', 'false', 'f', '0'
+* **true**: `yes`, `y`, `true`, `t`, `1`
+* **false**: `no`, `n`, `false`, `f`, `0`
 
-`format`: no options (other than the default).
+`format`: no options.
 
 #### object
 
 The field contains data which is valid JSON.
 
-`format`: no options (other than the default).
+`format`: no options.
 
 #### array
 
 The field contains data that is a valid JSON format arrays.
 
-`format`: no options (other than the default).
+`format`: no options.
 
 #### date
 
-**datetime**; **date**; **time**
+The field contains temporal values such as dates, times and date-times.
 
-Tthe field contains temporal values such as dates, times and date-times.
+`format`:
 
-`format`: (`datetime`, `date` and `time` share the these same options)
-
-* **default**: An ISO8601 format string.
-  * date: This MUST be in ISO8601 format YYYY-MM-DD
-  * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
-  * time: a time without a date
-* **any**: Any parsable representation of the type. The implementing
+* **`default`**: Each value must be an ISO8601 format string.
+* **`date`**: A string of the format `YYYY-MM-DD`
+* **`datetime`**: A string in ISO 8601, UTC format: `YYYY-MM-DDThh:mm:ssZ`
+* **`time`**: A time without a date: `hh:mm:ss`
+* **`any`**: Any parsable representation of the type. The implementing
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
-* **{PATTERN}**: date/time values in this field can be parsed according to
-  `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C
-  strptime][strptime]. (That is, values in the this field should be parseable
-  by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y`
+* **{PATTERN}**: Any format other than the above is interpreted as a pattern that can be
+  parsed by [standard Python / C strptime][strptime]. Example: `%d %b %y`
   would correspond to dates like: `30 Nov 14`
 
 #### gyear
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
-Usual lexical reprentation is `YYYY`. There are no format options.
+Usual lexical reprentation is `YYYY`. 
+
+`format`: no options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
@@ -348,7 +318,9 @@ Usual lexical reprentation is `YYYY`. There are no format options.
 A specific month in a specific year as per [XMLSchema
 `gYearMonth`][xsd-gyearmonth].
 
-Usual lexical representation is: `YYYY-MM`. There are no format options.
+Usual lexical representation is: `YYYY-MM`. 
+
+`format`: no options.
 
 [xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
 
@@ -366,20 +338,20 @@ and lower order elements may also be omitted for reduced precision. Here we
 follow the definition of [XML Schema duration datatype][xsd-duration] directly
 and that definition is implicitly inlined here.
 
-`format`: no options (other than the default).
+`format`: no options.
 
 #### geopoint
 
-The field contains data describing a geographic point.
+The field contains data describing a geographic point, given by a longitude and a latitude,
+each expressed in decimal degrees.
 
 `format`:
 
-* **default**: A string of the pattern "lon, lat", where `lon` is the longitude
-  and `lat` is the latitude.
-* **array**: An array of exactly two items, where each item is either a number,
-  or a string parsable as a number, and the first item is `lon` and the second
-  item is `lat`.
-* **object**: A JSON object with exactly two keys, `lat` and `lon`
+For the locatino with longitude 144.97, latitude -37.81:
+
+* **`default`**: A string like `"144.97,-37.81"`
+* **`array`**: An array like [144.97, -37.81] or `["144.97", "-37.81"]`
+* **`object`**: A JSON object, `{ "lon": 144.97, "lat": -37.81 }`
 
 #### geojson
 
@@ -387,8 +359,8 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
 `format`:
 
-* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
-* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+* **`default`**: A GeoJSON object as per the [GeoJSON spec](http://geojson.org/).
+* **`topojson`**: A TopoJSON object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
 #### any
 
@@ -398,122 +370,43 @@ Any `type` or `format` is accepted.
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
 [xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
 
-### Missing Values
-
-By "missing" we simply mean null or "not present for whatever reason". Many
-datasets arrive with missing data values, either because a value was not
-collected or it never existed.
-
-Missing values may be indicated simply by the value being empty in other cases
-a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
-
-The `missingValue` property provides a way to indicate that these values should
-be interpreted as equivalent to null.
-
-Strings that indicate missing (null) data values for a field `MAY` be provided
-for a field using the the `missingValue` property.
-
-If present, the `missingValue` MUST be a single string or an array of strings,
-for example:
-
-    "missingValue": ""
-    "missingValue": "-"
-    "missingValue": ["Nan", "-"]
-
-**Note**: `missingValue` are strings rather than being the data type of
-the particular field. This allows for comparison prior to casting and for
-fields to have missing value which are not of their type, for example a
-`number` field to have missing values indicated by `-`.
-
-The default value of `missingValue` for a non-string type field is the empty
-string `""`. For string type fields there is no default for `missingValue` (for
-string fields the empty string `""` is a valid value and need not indicate
-null).
-
-**Processing**: if a missing value is encountered it SHOULD be converted into
-the NULL or equivalent value.
-
-
-### Rich Field Types
-
-A richer, "semantic", description of the "type" of data in a given column MAY
-be provided using a `rdfType` property on a field descriptor.
-
-The value of of the `rdfType` property MUST be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
-
-Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
-
-| Country | Year Date | Value |
-| ------- | --------- | ----- |
-| US      | 2010      | ...   |
-
-
-    # JSON Table Schema
-    {
-      fields: [
-        {
-          "name": "Country",
-          "type": "string",
-          "rdfType": "http://schema.org/Country"
-        }
-        ... 
-      }
-    }
-
-[rdfs-class]: https://www.w3.org/TR/rdf-schema/#ch_class
-
 
 ## Primary Key
 
-A primary key is a field or set of fields that uniquely identifies each row in
-the table.
+The optional `primaryKey` property specifies a field or set of fields that uniquely 
+identifies each row in the table.
 
-The `primaryKey` entry in the schema Hash is optional. If present it specifies
-the primary key for this table.
+If present it MUST be:
 
-The `primaryKey`, if present, MUST be:
+* Either: A single string corresponding to one of the field `name` values in
+  the `fields` array.
 
-* Either: an array of strings with each string corresponding to one of the
-  field `name` values in the `fields` array (denoting that the primary key is
-  made up of those fields). It is acceptable to have an array with a single
-  value (indicating just one field in the primary key). Strictly, order of
-  values in the array does not matter. However, it is RECOMMENDED that one
-  follow the order the fields in the `fields` has as client applications may
-  utitlize the order of the primary key list (e.g. in concatenating values
+```
+  "fields": [
+    { "name": "Country" },
+    ...
+  ],
+  "primaryKey": "Country"
+```
+
+
+* Or: an array of one or more strings which each correspond to one of the
+  field `name` values in the `fields` array. Fields in the key SHOULD 
+  follow the order the fields in the `fields` property as client applications may
+  utilize the order of the primary key list (e.g. in concatenating values
   together).
-* Or: a single string corresponding to one of the field `name` values in
-  the `fields` array (indicating that this field is the primary key). Note that
-  this version corresponds to the array form with a single value (and can be
-  seen as simply a more convenient way of specifying a single field primary
-  key).
 
-Here's an example:
-
-      "fields": [
-        {
-          "name": "a"
-        },
-        ...
-      ],
-      "primaryKey": "a"
-
-Here's an example with an array primary key:
-
+```
     "schema": {
       "fields": [
-        {
-          "name": "a"
-        },
-        {
-          "name": "b"
-        },
-        {
-          "name": "c"
-        },
+        { "name": "Country" },
+        { "name": "Population" },
+        { "name": "City" },
         ...
       ],
-      "primaryKey": ["a", "c"]
+      "primaryKey": ["Country", "City"]
      }
+```
 
 ## Foreign Keys
 
@@ -533,62 +426,54 @@ pointing out to a (Tabular) Data Package stored elsewhere e.g. online.</li>
 </div>
 
 A foreign key is a reference where entries in a given field (or fields) on this
-table ('resource' in data package terminology) is a reference to an entry in a
+table ('resource' in Data Package terminology) is a reference to an entry in a
 field (or fields) on a separate resource.
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
-array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
+array must be a `foreignKey`. A `foreignKey` `MUST` be an Object as follows:
 
-* `MUST` have a property `fields`. `fields` is a string or array specifying the
-  field or fields on this resource that form the source part of the foreign
-  key. The structure of the string or array is as per `primaryKey` above.
-* `MUST` have a property `reference` which MUST be a Hash. The Hash
-  * `MAY` have a property `datapackage`. This property is a string being a url
-    pointing to a Data Package or is the name of a datapackage. If absent the
-    implication is that this is a reference to a resource within the current
-    data package or this is self-referencing foreign key.
-  * `MUST` have a property `resource` which is the name of the resource within
-    the referenced data package. For self-referencing foreign keys, the value
-    of `resource` `MUST` be `self`.
-  * `MUST` have a property `fields` which is a string if the outer `fields` is a
-    string, else an array of the same length as the outer `fields`, describing the
-    field (or fields) references on the destination resource. The structure of
-    the string or array is as per `primaryKey` above.
-
-Here's an example:
-
-
-      "fields": [
+```
+{
+    ...
+    "foreignKeys":
+    [
         {
-          "name": "state"
-        }
-      ],
-      "foreignKeys": [
-        {
-          "fields": "state"
-          "reference": {
-            "datapackage": "http://data.okfn.org/data/mydatapackage/",
-            "resource": "the-resource",
-            "fields": "state_id"
-          }
-        }
-      ]
+            // REQUIRED, string or array of strings corresponding to the names of fields in
+            // this table that form the source part of the foreign key.
+            "fields": ["state", "country"]
+
+            // REQUIRED, object 
+            "reference": {
+                // OPTIONAL string, URL or name of Data Package where the target field is found.
+                // If absent, the reference is resolved within the current data package (if any)
+                // or the current table.
+                "datapackage": "http://example.com/my-datapackage",
+
+                // REQUIRED string, EITHER: name of the resource within the referenced data package.
+                // OR: "self", indicating the field is found within this resource/table.
+                "resource": "states",
+
+                // REQUIRED string or array (MUST be of same type as outer `fields` property, and if array, same length)
+                // Each item in the array is the name of the target field corresponding, in order, to the source field.
+                "fields": ["state_name", "country"]
+            }
+        },
+        // ...other foreign keys
+    ]
+}
+```
+
 
 An example of a self-referencing foreign key:
 
       "fields": [
-        {
-          "name": "parent"
-        },
-        {
-          "name": "id"
-        }
+        { "name": "parent" },
+        { "name": "id" }
       ],
       "foreignKeys": [
         {
           "fields": "parent"
           "reference": {
-            "datapackage": "",
             "resource": "self",
             "fields": "id"
           }
