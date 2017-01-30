@@ -1,0 +1,76 @@
+A complex {{ page.title }} using many features of the specification looks as follows.
+
+```
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "constraints": {
+        "required": true,
+        "minLength": 4,
+        "maxLength": 4
+      }
+    },
+    {
+      "name": "parent",
+      "type": "string",
+      "constraints": {
+        "required": true,
+        "minLength": 4,
+        "maxLength": 4
+      }
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "contact",
+      "type": "string",
+      "format": "email",
+      "constraints": {
+        "unique": true
+      }
+    },
+    {
+      "name": "employees",
+      "type": "integer",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "rating",
+      "type": "number"
+    },
+  ],
+  "primaryKey": [
+    "code",
+    "parent"
+  ],
+  "foreignKeys": {
+    "fields": [
+      "parent"
+    ],
+    "reference": {
+      "resource": "",
+      "fields": [
+        "code"
+      ]
+    }
+  },
+  "missingValues": [
+    "", "-", "None"
+  ]
+}
+```
+
+
