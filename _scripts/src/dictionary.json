@@ -348,29 +348,45 @@
     },
     "tableSchema": {
       "title": "Table Schema",
-      "description": "A Table Schema for this resource.",
-      "oneOf": [
-        { "type": "string", "format": "uri" },
-        {
-          "type": "object",
-          "required": [ "fields" ],
-          "properties": {
-            "fields": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "$ref": "#/definitions/tableSchemaField" }
-            },
-            "primaryKey": {
-              "oneOf": [ { "type": "string" }, { "type": "array" } ]
-            },
-            "foreignKeys": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "$ref": "#/definitions/tableSchemaForeignKey" }
-            }
-          }
+      "description": "A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.",
+      "type": "object",
+      "required": [ "fields" ],
+      "properties": {
+        "fields": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/tableSchemaField" } },
+        "primaryKey": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "A primary key is an array of field names, whose values `MUST` that uniquely identifies each row in the table.",
+          "context": "Each string in the `primaryKey` array `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.",
+          "examples": [
+            "\"primaryKey\": [ \"name\" ]",
+            "\"primaryKey\": [ \"first\", \"last_name\" ]"
+          ]
+        },
+        "foreignKeys": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/tableSchemaForeignKey" },
+          "examples": [
+            "\"foreignKeys\": [ { \"fields\": \"state\", \"reference\": { \"resource\": \"the-resource\", \"fields\": \"state_id\" } } ]",
+            "\"foreignKeys\": [ { \"fields\": \"state\", \"reference\": { \"resource\": \"__self__\", \"fields\": \"id\" } } ]"
+          ]
+        },
+        "missingValues": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "default": [ "" ],
+          "description": "Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.",
+          "context": "Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).",
+          "examples": [
+            "",
+            "",
+            ""
+          ]
         }
-      ]
+      }
     },
     "tableSchemaField": {
       "title": "Table Schema Field",
@@ -378,48 +394,123 @@
       "type": "object",
       "required": [ "name" ],
       "properties": {
-        "name": { "type": "string" },
-        "title": { "type": "string" },
-        "description": { "type": "string" },
+        "name": { "$ref": "#/definitions/name"  },
+        "title": { "$ref": "#/definitions/title" },
+        "description": { "$ref": "#/definitions/description" },
         "type": {
-          "enum": [
-            "string",
-            "number",
-            "integer",
-            "date",
-            "time",
-            "datetime",
-            "boolean",
-            "object",
-            "geopoint",
-            "geojson",
-            "array",
-            "duration",
-            "any"
+          "description": "The primitive type for this field.",
+          "oneOf": [
+            { "$ref": "#/definitions/tableSchemaFieldString" },
+            { "$ref": "#/definitions/tableSchemaFieldNumber" },
+            { "$ref": "#/definitions/tableSchemaFieldInteger" },
+            { "$ref": "#/definitions/tableSchemaFieldDate" },
+            { "$ref": "#/definitions/tableSchemaFieldTime" },
+            { "$ref": "#/definitions/tableSchemaFieldDateTime" },
+            { "$ref": "#/definitions/tableSchemaFieldBoolean" },
+            { "$ref": "#/definitions/tableSchemaFieldObject" },
+            { "$ref": "#/definitions/tableSchemaFieldGeoPoint" },
+            { "$ref": "#/definitions/tableSchemaFieldGeoJSON" },
+            { "$ref": "#/definitions/tableSchemaFieldArray" },
+            { "$ref": "#/definitions/tableSchemaFieldDuration" },
+            { "$ref": "#/definitions/tableSchemaFieldAny" }
           ]
         },
-        "format": { "type": "string" },
-        "rdfType": {"type": "string" },
+        "format": {
+          "enum": [ "" ],
+          "description": "The Table Schema format for this type."
+        },
+        "rdfType": {"type": "string", "description": "The RDF Type for this field." },
         "constraints": { "$ref": "#/definitions/tableSchemaFieldConstraints" }
       }
     },
+    "tableSchemaFieldString": {
+      "title": "string",
+      "enum": [ "string" ],
+      "format": { "enum": [ "default", "email", "uri", "binary", "uuid" ], "default": "default" },
+      "description": "The field contains strings, that is, sequences of characters.",
+      "context": "The following `format` options are supported:\n* **default**: any valid string.\n* **email**: A valid email address.\n* **uri**: A valid URI.\n* **binary**: A base64 encoded string representing binary data.\n* **uuid**: A string that is a uuid."
+    },
+    "tableSchemaFieldNumber": {
+      "title": "number",
+      "enum": [ "number" ],
+      "description": "The field contains numbers of any kind including decimals.",
+      "context": "The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case need not be respected):\n* NaN: not a number\n* INF: positive infinity\n* -INF: negative infinity\n\nA number MAY also have a trailing:\n* exponent: this MUST consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n* percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage MUST follow the exponent e.g. '53E10%' (equals 5.3).\n\nThis lexical formatting may be modified using these additional properties:\n\n* **decimalChar**: A string whose value is used to represent a decimal point within the number. The default value is '.'.\n* **groupChar**: A string whose value is used to group digits within the number. The default value is null. A common value is ',' e.g. '100,000'.\n* **currency**: A number that may include additional currency symbols."
+    },
+    "tableSchemaFieldInteger": {
+      "enum": [ "integer" ],
+      "description": "The field contains integers - that is whole numbers.",
+      "context": "Integer values are indicated in the standard way for any valid integer."
+    },
+    "tableSchemaFieldDate": {
+      "enum": [ "date" ],
+      "description": "The field contains temporal date values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of YYYY-MM-DD.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`"
+    },
+    "tableSchemaFieldTime": {
+      "enum": [ "time" ],
+      "description": "The field contains temporal time values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of the format YYYY-MM-DDThh:mm:ssZ in UTC time.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`"
+    },
+    "tableSchemaFieldDateTime": {
+      "enum": [ "datetime" ],
+      "description": "The field contains temporal datetime values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string as time without a date.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`"
+    },
+    "tableSchemaFieldBoolean": {
+      "enum": [ "boolean" ],
+      "description": "The field contains boolean (true/false) data.",
+      "context": "Boolean values can be indicated with the following strings (case-insensitive, so, for example, 'Y' and 'y' are both acceptable):\n* **true**: 'yes', 'y', 'true', 't', '1'\n* **false**: 'no', 'n', 'false', 'f', '0'"
+    },
+    "tableSchemaFieldObject": {
+      "enum": [ "object" ],
+      "description": "The field contains data which is valid JSON format objects.",
+      "context": ""
+    },
+    "tableSchemaFieldGeoPoint": {
+      "enum": [ "geopoint" ],
+      "description": "The field contains data describing a geographic point.",
+      "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`"
+    },
+    "tableSchemaFieldGeoJSON": {
+      "enum": [ "geojson" ],
+      "description": "The field contains a JSON object according to GeoJSON or TopoJSON spec.",
+      "context": "The following `format` options are supported:\n* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)"
+    },
+    "tableSchemaFieldArray": {
+      "enum": [ "array" ],
+      "description": "The field contains data that is a valid JSON format arrays.",
+      "context": ""
+    },
+    "tableSchemaFieldDuration": {
+      "enum": [ "duration" ],
+      "description": "The field contains a duration of time.",
+      "context": "The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the number of months, nD the number of days, 'T' is the date/time separator, nH the number of hours, nM the number of minutes and nS the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here."
+    },
+    "tableSchemaFieldAny": {
+      "enum": [ "any" ],
+      "description": "Any `type` or `format` is accepted.",
+      "context": ""
+    },
+
     "tableSchemaFieldConstraints": {
       "title": "Table Schema Field Constraints",
       "description": "Table Schema Field Constraints",
       "type": "object",
       "properties": {
-        "required": { "type": "boolean" },
-        "minLength": { "type": "integer" },
-        "maxLength": { "type": "integer" },
-        "unique": { "type": "boolean" },
-        "pattern": { "type": "string" },
+        "required": { "type": "boolean", "description": "A boolean value which indicates whether a field must have a value in every row of the table. An empty string is considered to be a missing value." },
+        "minLength": { "type": "integer", "description": "An integer that specifies the minimum length of a value. Supported field types are sequences, such as `string`, `array`, and `object` types." },
+        "maxLength": { "type": "integer", "description": "An integer that specifies the maximum length of a value. Supported field types are sequences, such as `string`, `array`, and `object` types." },
+        "unique": { "type": "boolean", "description": "A boolean where, if true, then all values for that field `MUST` be unique within the data file in which it is found. This defines a unique key for a row although a row could potentially have several such keys." },
+        "pattern": { "type": "string", "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)." },
         "minimum": {
+          "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
           "oneOf": [ { "type": "string" }, { "type": "number" } ]
         },
         "maximum": {
-          "oneOf": [ {"type": "string"}, {"type": "number"} ]
+          "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+          "oneOf": [ { "type": "string" }, { "type": "number" } ]
         },
-        "enum": { "type": "array", "minItems": 1, "uniqueItems": true }
+        "enum": { "type": "array", "minItems": 1, "uniqueItems": true, "description": "An array of values, where each value `MUST` comply with the type and format of the field. The field value must exactly match a value in the enum array." }
       }
     },
     "tableSchemaForeignKey": {
@@ -428,13 +519,13 @@
       "type": "object",
       "required": [ "fields", "reference" ],
       "properties": {
-        "fields": { "oneOf": [ { "type": "string" }, { "type": "array" } ] },
+        "fields": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true, "description": "Fields that make up the primary key." },
         "reference": {
           "type": "object",
           "required": [ "resource", "fields" ],
           "properties": {
-            "resource": { "type": "string" },
-            "fields": { "oneOf": [ { "type": "string" }, { "type": "array" } ] }
+            "resource": { "type": "string", "format": "uri" },
+            "fields": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
           }
         }
       }
