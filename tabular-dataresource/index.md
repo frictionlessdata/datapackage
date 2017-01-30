@@ -4,8 +4,8 @@ title: Tabular Data Resource
 slug: tabular-dataresource
 mediatype: application/vnd.dataresource+json
 subtitle: A simple format to describe tabular data with a schema and metadata.
-version: 1.0-alpha-1
-updated: 18 December 2017
+version: 1.0-rc.1
+updated: 30 January 2017
 created: 15 December 2017
 authors:
   -
@@ -16,26 +16,6 @@ authors:
     organisation: Open Knowledge International
 descriptor:
   file: dataresource.json
-properties:
-  required:
-    - name
-    - path
-    - data
-    - schema
-    - profile
-  recommended:
-  optional:
-    - title
-    - description
-    - format
-    - mediatype
-    - encoding
-    - bytes
-    - hash
-    - sources
-    - licenses
-    - homepage
-    - created
 examples:
   - examples/tabular-dataresource_1.md
   - examples/tabular-dataresource_2.md

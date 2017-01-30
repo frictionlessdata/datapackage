@@ -5,7 +5,7 @@ subtitle: A simple format to describe a CSV file's dialect.
 slug: csvdialect
 version: 1.2
 created: 20 February 2013
-updated: 22 December 2016
+updated: 30 January 2017
 mediatype: application/vnd.csvdialect+json
 authors:
   -
@@ -13,19 +13,6 @@ authors:
     organisation: Open Knowledge International
 descriptor:
   file: csvdialect.json
-properties:
-  required:
-    - delimiter
-    - doubleQuote
-  recommended:
-    - lineTerminator
-    - nullSequence
-    - quoteChar
-    - escapeChar
-    - skipInitialSpace
-    - header
-    - caseSensitiveHeader
-  optional:
 examples:
   - examples/csvdialect_1.md
   - examples/csvdialect_2.md

@@ -4,8 +4,8 @@ title: Data Resource
 slug: dataresource
 mediatype: application/vnd.dataresource+json
 subtitle: A simple format to describe data and its metadata.
-version: 1.0-alpha-1
-updated: 18 December 2017
+version: 1.0-rc.1
+updated: 30 January 2017
 created: 11 December 2017
 authors:
   -
@@ -16,26 +16,6 @@ authors:
     organisation: Open Knowledge International
 descriptor:
   file: dataresource.json
-properties:
-  required:
-    - name
-    - path
-    - data
-  recommended:
-    - profile
-  optional:
-    - title
-    - description
-    - format
-    - mediatype
-    - encoding
-    - bytes
-    - hash
-    - schema
-    - sources
-    - licenses
-    - homepage
-    - created
 examples:
   - examples/dataresource_1.md
   - examples/dataresource_2.md
@@ -54,13 +34,3 @@ At a minimum, a {{ page.title }} requires a `name` property, and one of the `pat
 A range of other properties can be declared to provide a richer set of metadata.
 
 Full information on **required**, **recommended**, and **optional** properties for a {{ page.title }} descriptor is provided in the [**Properties**](#properties) section below.
-
-As part of the Frictionless Data project, we publish a number of {{ page.title }} profiles. See the following links for more information.
-
-{% for spec in site.specifications %}
-{% for page in page.profiles %}
-{% if spec.slug == page %}
-<li><a href="/{{ spec.slug }}/">{{ spec.name }}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}

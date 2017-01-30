@@ -4,8 +4,8 @@ title: Data Package
 slug: datapackage
 mediatype: application/vnd.datapackage+json
 subtitle: A simple format to describe data and its metadata.
-version: 1.0.0-beta.18
-updated: 18 December 2017
+version: 1.0.0-rc.1
+updated: 30 January 2017
 created: 12 November 2007
 authors:
   -
@@ -19,24 +19,6 @@ authors:
     organisation: Open Knowledge International
 descriptor:
   file: dataresource.json
-properties:
-  required:
-    - name
-    - resources
-  recommended:
-    - profile
-    - title
-    - description
-    - homepage
-    - version
-    - sources
-    - licenses
-    - author
-    - contributors
-  optional:
-    - image
-    - schemas
-    - created
 examples:
   - examples/datapackage_1.md
   - examples/datapackage_2.md
