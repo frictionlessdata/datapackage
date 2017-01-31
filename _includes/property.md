@@ -1,25 +1,28 @@
-### `{{ property }}`
+{{ pdepth }} `{{ pkey }}`
 
-{{ definitions[property].description }}
+{{ pvalue.description }}
 
-{% if  definitions[property].context %}
-{{ definitions[property].context }}
+{% if pvalue.context %}
+{{ pvalue.context }}
 {% endif %}
 
-{% if definitions[property].examples %}
+{% if pvalue.examples %}
 #### Examples
-{% for example in definitions[property].examples %}
+{% for example in pvalue.examples %}
 ```
 {{ example }}
 ```
 {% endfor %}
 {% endif %}
 
-{% if  definitions[property].notes %}
+{% if pvalue.notes %}
 #### Implementation notes
 <ul>
-  {% for note in definitions[property].notes %}
+  {% for note in pvalue.notes %}
   <li>{{ note }}</li>
   {% endfor %}
 </ul>
 {% endif %}
+
+
+

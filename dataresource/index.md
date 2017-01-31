@@ -24,7 +24,7 @@ profiles:
   - tabular-dataresource
 changelog:
 abstract: >
-  Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of recommended and optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
+  Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
 ---
 
 A **{{ page.title }}** is a simple container format that describes and packages a data source with additional information about that source.

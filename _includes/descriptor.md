@@ -1,18 +1,26 @@
 ## Descriptor
 
-A valid {{ page.title }} descriptor is an `object` adhering to the specifications of this document.
+A valid {{ page.title }} descriptor is an `object` adhering to the specifications described in this document, with the formal reference being [the properties section](/#properties) which enumerates the specifications for each property of the descriptor.
 
-The descriptor `SHOULD` be in one of the following forms:
+Adherence to the specification **does not** imply that additional, non-specified property cannot be used: a descriptor `MAY` include any number of properties in additional to those described as *recommended* and *optional* fields.
+
+### Form
+
+The descriptor `MUST` be valid JSON, as described in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt), and `SHOULD` be in one of the following forms:
 
 1. A file named `{{ page.descriptor.file }}`.
 2. An `object`, either on its own or nested in another data structure.
 
-Where a {{ page.title }} descriptor is a file with references to additional co-located resources on a file system, the `{{ page.descriptor.file }}` descriptor `MUST` be at the top-level directory, with those resources in a relative location to the descriptor file.
-
-All Frictionless Data descriptors `MUST` be valid JSON (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
-
-The JSON Pointer specification as described in [RFC 6901](https://tools.ietf.org/html/rfc6901) is fully supported for all Frictionless Data descriptors. This means that any property that can be a URI can be a JSON Pointer to a specific property in the same descriptor, or any other JSON object that can be referenced.
+### Media type
 
 The media type for {{ page.title }} descriptors as `MUST` be `{{ page.mediatype }}`.
 
-All Frictionless Data descriptors `MAY` include any number of properties in addition to those defined as *required*, *recommended*, and *optional* fields.
+### References via URIs
+
+Properties that have a value that is a URI can be any of:
+
+1. A [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator).
+2. A [POSIX path](https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition) without a resource definition.
+3. A [JSON Pointer](https://tools.ietf.org/html/rfc6901).
+
+**For security**, all POSIX paths `MUST` be relative siblings or children of the descriptor. Absolute paths (`/`) and relative parent paths (`../`) `MUST NOT` be used, and implementations `SHOULD NOT` support these path types.

@@ -758,19 +758,23 @@
     },
     "dataResources": {
       "title": "Data Resources",
-      "description": "A list of Data Resources.",
-      "context": "See the [Data Resource](/dataresource/) for full details on the requirements for each data resource object.",
+      "description": "An `array` of [Data Resource](/dataresource/) objects.",
       "type": "array",
-      "minItems": 0,
-      "items": { "$ref": "#/definitions/dataResource" }
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/dataResource" },
+      "examples": [
+        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"mediatype\": \"text/csv\" } ]"
+      ]
     },
     "tabularDataResources": {
       "title": "Tabular Data Resources",
-      "description": "A list of Tabular Data Resources.",
-      "context": "See the [Tabular Data Resource](/tabular-dataresource/) for full details on the requirements for each data resource object.",
+      "description": "An `array` of [Tabular Data Resource](/tabular-dataresource/) objects.",
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/definitions/tabularDataResource" }
+      "items": { "$ref": "#/definitions/tabularDataResource" },
+      "examples": [
+        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+      ]
     },
     "dataPackage": {
       "title": "Data Package",

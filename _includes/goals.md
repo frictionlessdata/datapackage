@@ -1,6 +1,6 @@
 # Goals
 
-All {{ site.name }} specifications share the following goals:
+{{ page.title }} shares the design philosophy of all {{ site.name }} specifications, being:
 
 - Requirements that are driven by simplicity
 - Extensibility and customisation by design

@@ -18,7 +18,7 @@ authors:
     name: Paul Walsh
     organisation: Open Knowledge International
 descriptor:
-  file: dataresource.json
+  file: datapackage.json
 examples:
   - examples/tabular-datapackage_1.md
   - examples/tabular-datapackage_2.md
@@ -28,12 +28,12 @@ changelog:
   - "`1.0-beta-3`: no substantive changes but clarify where we differ from CSV RFC ([#204](https://github.com/dataprotocols/dataprotocols/issues/204))"
   - "`1.0-beta-2`: renamed from Simple Data Format to Tabular Data Package"
 abstract: >
-  Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of recommended and optional properties, the format enables a simple contract for data interoperability (delivery, installation, management) that is governed by minimalism.
+  Tabular Data Package is a simple container format used to describe and package a collection of data sources with additional metadata about those data sources. By providing a minimum set of required properties and a range of optional properties, the format enables a simple contract for data interoperability (delivery, installation, management) that is governed by minimalism.
 ---
 
 {{ page.title }} is a [Data Package profile](/datapackage/#profile) for publishing and sharing tabular data. {{ page.title }} has a focus on ease of use over the web, and on simplifying the production and consumption of tabular data to/from spreadsheets and data storage backends such as SQL databases.
 
-{{ page.title }} builds directly on the [Data Package](/datapackage/) specification, anf therefore a valid {{ page.title }} `MUST` be a valid Data Package.
+{{ page.title }} builds directly on the [Data Package](/datapackage/) specification, and therefore a valid {{ page.title }} `MUST` be a valid Data Package.
 
 {{ page.title }} has the following requirements over and above those imposed by [Data Package](/datapackage):
 
