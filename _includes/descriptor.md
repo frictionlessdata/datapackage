@@ -1,8 +1,8 @@
 ## Descriptor
 
-A valid {{ page.title }} descriptor is an `object` adhering to the specifications described in this document, with the formal reference being [the properties section](/#properties) which enumerates the specifications for each property of the descriptor.
+A valid {{ page.title }} descriptor is an `object` adhering to the specifications described in this document, with the formal reference being [the properties section](#properties) which enumerates the specifications for each property of the descriptor.
 
-Adherence to the specification **does not** imply that additional, non-specified property cannot be used: a descriptor `MAY` include any number of properties in additional to those described as *recommended* and *optional* fields.
+Adherence to the specification **does not** imply that additional, non-specified properties cannot be used: a descriptor `MAY` include any number of properties in additional to those described as *required* and *optional* fields.
 
 ### Form
 
@@ -13,7 +13,7 @@ The descriptor `MUST` be valid JSON, as described in [RFC 4627](http://www.ietf.
 
 ### Media type
 
-The media type for {{ page.title }} descriptors as `MUST` be `{{ page.mediatype }}`.
+The media type for {{ page.title }} descriptors as `MUST` be `{{ page.mediatype }}`. This media type is [registered with IANA](https://www.iana.org/assignments/media-types/{{ page.mediatype }}).
 
 ### References via URIs
 
