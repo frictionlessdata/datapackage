@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'partials/meta.html' %}
+{% include 'partials/abstract.html' %}
+{% include 'partials/goals.html' %}
+{% include 'partials/changelog.html' %}
+{% include 'partials/language.html' %}
+<h2>Specification</h2>
+{% include 'partials/descriptor.html' %}
+<h3>Contents</h3>
+{{ this.body }}
+{% include 'partials/profiles.html' %}
+{% include 'partials/examples.html' %}
+{% include 'partials/properties.html' %}
+{% endblock body %}

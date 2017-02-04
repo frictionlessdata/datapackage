@@ -1,0 +1,31 @@
+<h3>Descriptor</h3>
+<p>
+  A valid {{ this.title }} descriptor is an <code>object</code> adhering to the specifications described in this document, with the formal reference being <a href="#properties">the properties section</a> which enumerates the specifications for each property of the descriptor.
+</p>
+<p>
+  Adherence to the specification <strong>does not</strong> imply that additional, non-specified properties cannot be used: a descriptor <code>MAY</code> include any number of properties in additional to those described as *required* and <em>optional</em> fields.
+</p>
+<h4>Form</h4>
+<p>
+  The descriptor <code>MUST</code> be valid JSON, as described in <a href="http://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>, and <code>SHOULD</code> be in one of the following forms:
+</p>
+<ol>
+  <li>A file named <code>{{ this.descriptor }}</code>.</li>
+  <li>An <code>object</code>, either on its own or nested in another data structure.</li>
+</ol>
+<h4>Media type</h4>
+<p>
+  The media type for {{ this.title }} descriptors as <code>MUST</code> be <code>{{ this.mediatype }}</code>. This media type is <a href="https://www.iana.org/assignments/media-types/{{ this.mediatype }}">registered with IANA</a>).
+</p>
+<h4>References via URIs</h4>
+<p>
+Properties that have a value that is a URI can be any of:
+</p>
+<ol>
+  <li>A <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator">URL</a>.</li>
+  <li>A <a href="https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition">POSIX path</a> without a resource definition.</li>
+  <li>A <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a>.</li>
+</ol>
+<p>
+  <strong>For security</strong>, all POSIX paths <code>MUST</code> be relative siblings or children of the descriptor. Absolute paths (<code>/</code>) and relative parent paths (<code>../</code>) <code>MUST NOT</code> be used, and implementations <code>SHOULD NOT</code> support these path types.
+</p>

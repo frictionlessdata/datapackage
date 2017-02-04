@@ -1,0 +1,34 @@
+<table class="table table-striped meta">
+  <tr>
+    <td>Authors</td>
+    <td>
+      {% for handle, name in bag('curators', this.slug).iteritems() %}
+      {{ name }}<br />
+      {% endfor %}
+    </td>
+  </tr>
+  {% if this.version %}
+  <tr>
+    <td>Version</td>
+    <td>
+      {{ this.version }}
+    </td>
+  </tr>
+  {% endif %}
+  {% if this.updated %}
+  <tr>
+    <td>Last Updated</td>
+    <td>
+      {{ this.updated }}
+    </td>
+  </tr>
+  {% endif %}
+  {% if this.created %}
+  <tr>
+    <td>Created</td>
+    <td>
+      {{ this.created }}
+    </td>
+  </tr>
+  {% endif %}
+</table>

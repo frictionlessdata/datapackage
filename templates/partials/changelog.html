@@ -1,0 +1,5 @@
+<ul>
+  {% for item in bag('changelog', 'datapackage') %}
+  <li>{{ item|markdown }}</li>
+  {% endfor %}
+</ul>

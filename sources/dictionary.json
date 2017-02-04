@@ -1,0 +1,985 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "profile": {
+      "title": "Profile",
+      "description": "The profile of this descriptor.",
+      "context": "Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `default`. The namespace for the profile is the type of descriptor, so, `default` for a Package descriptor is not the same as `default` for a Resource descriptor.",
+      "type": "string",
+      "default": "default",
+      "examples": [
+        "\"profile\": \"tabular\"",
+        "\"profile\": \"fiscal\"",
+        "\"profile\": \"http://example.com/my-profiles-json-schema.json\""
+      ]
+    },
+    "name": {
+      "title": "Name",
+      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+      "type": "string",
+      "pattern": "^([a-z0-9._-])+$",
+      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+      "examples": [
+        "\"name\": \"my-nice-name\""
+      ]
+    },
+    "title": {
+      "title": "Title",
+      "description": "A human-readable title.",
+      "type": "string",
+      "examples": [
+        "\"title\": \"My Package Title\""
+      ]
+    },
+    "description": {
+      "title": "Description",
+      "description": "A text description. Markdown is encouraged.",
+      "type": "string",
+      "examples": [
+        "# My Package description\nAll about my package."
+      ]
+    },
+    "homepage": {
+      "title": "Home Page",
+      "description": "The home on the web that is related to this data package.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "examples": [
+        "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+      ]
+    },
+    "version": {
+      "title": "Version",
+      "description": "A unique version number for this descriptor.",
+      "type": "string",
+      "examples": [
+        "\"version\": \"0.0.1\"",
+        "\"version\": \"1.0.1-beta\""
+      ]
+    },
+    "path": {
+      "title": "Path",
+      "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "minItems": 1, "type": "string", "format": "uri" } }
+      ],
+      "examples": [
+        "\"path\": \"file.csv\"",
+        "\"path\": \"http://example.com/file.csv\"",
+        "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
+        "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+      ],
+      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+      "notes": [
+        "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
+        "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
+        "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+      ]
+    },
+    "data": {
+      "title": "Data",
+      "description": "The inline data for this resource.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "array" },
+        { "type": "object" }
+      ],
+      "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
+      "examples": [
+        "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
+        "\"data\": { \"a\": 1, \"b\": 2 }",
+        "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+      ]
+    },
+    "format": {
+      "title": "Format",
+      "description": "The file format of this resource.",
+      "context": "`csv`, `xls`, `json` are examples of common formats.",
+      "type": "string",
+      "examples": [
+        "\"format\": \"xls\""
+      ]
+    },
+    "mediatype": {
+      "title": "Media Type",
+      "description": "The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).",
+      "type": "string",
+      "pattern": "^(.+)/(.+)$",
+      "examples": [
+        "\"mediatype\": \"text/csv\""
+      ]
+    },
+    "encoding": {
+      "title": "Encoding",
+      "description": "The file encoding of this resource.",
+      "type": "string",
+      "default": "utf-8",
+      "examples": [
+        "\"encoding\": \"utf-8\""
+      ]
+    },
+    "bytes": {
+      "title": "Bytes",
+      "description": "The size of this resource in bytes.",
+      "type": "integer",
+      "examples": [
+        "\"bytes\": 2082"
+      ]
+    },
+    "hash": {
+      "title": "Hash",
+      "type": "string",
+      "description": "The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.",
+      "pattern": "^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$",
+      "examples": [
+        "\"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"",
+        "\"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\""
+      ]
+    },
+    "created": {
+      "title": "Created",
+      "description": "The datetime on which this descriptor was created.",
+      "context": "The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)",
+      "type": "string",
+      "format": "date-time"
+    },
+    "contributor": {
+      "title": "Contributor",
+      "description": "A contributor to this descriptor.",
+      "properties": {
+        "name": { "type": "string" },
+        "path": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": [ "author", "maintainer" ] }
+      },
+      "required": [ "name" ],
+      "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself.",
+      "examples": [
+        "\"contributor\": { \"name\": \"Joe Bloggs\", \"email\": \"joe@bloggs.com\", \"path\": \"http://www.bloggs.com\" }"
+      ]
+    },
+    "contributors": {
+      "title": "Contributors",
+      "description": "The contributors to this descriptor.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/contributor" },
+      "examples": [
+        "\"contributors\": [{\"name\": \"Joe Bloggs\"}]",
+        "\"contributors\": [{\"name\": \"Joe Bloggs\", \"email\": \"joe@example.com\", \"role\": \"author\"}]"
+      ]
+    },
+    "license": {
+      "title": "License",
+      "description": "A license for this descriptor.",
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/definitions/name" },
+        "path": { "$ref": "#/definitions/path" },
+        "title": { "$ref": "#/definitions/title" }
+      },
+      "oneOf": [
+        { "required": [ "name" ] },
+        { "required": [ "path" ] },
+        { "required": [ "title" ] }
+      ],
+      "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
+    },
+    "licenses": {
+      "title": "Licenses",
+      "description": "The license under which this package is published.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/license" },
+      "context": "This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.",
+      "examples": [
+        "\"licenses\": [ { \"name\": \"ODC-PDDL-1.0\", \"path\": \"http://opendatacommons.org/licenses/pddl/\" } ]"
+      ]
+    },
+    "source": {
+      "title": "Source",
+      "description": "A source file.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "path": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" }
+      },
+      "anyOf": [
+        { "title": "name required", "required": [ "name" ] },
+        { "title": "path required", "required": [ "path" ] },
+        { "title": "email required", "required": [ "email" ] }
+      ]
+    },
+    "sources": {
+      "title": "Sources",
+      "description": "The raw sources for this resource.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/source" },
+      "examples": [
+        "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+      ]
+    },
+    "keywords": {
+      "title": "Keywords",
+      "description": "A list of keywords that describe this package.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "examples": [
+        "\"keywords\": [ \"data\", \"fiscal\", \"transparency\" ]"
+      ]
+    },
+    "image": {
+      "title": "Image",
+      "description": "A image to represent this package.",
+      "type": "string",
+      "format": "uri",
+      "examples": [
+        "\"image\": \"http://example.com/image.jpg\"",
+        "\"image\": \"relative/path/to/image.jpg\""
+      ]
+    },
+    "delimiter": {
+      "title": "Delimiter",
+      "description": "A character sequence to use as the field separator.",
+      "type": "string",
+      "default": ",",
+      "examples": [
+        "\"delimiter\": \",\"",
+        "\"delimiter\": \";\""
+      ]
+    },
+    "doubleQuote": {
+      "title": "Double Quote",
+      "description": "Specifies the handling of quotes inside fields.",
+      "context": "If Double Quote is set to true, two consecutive quotes must be interpreted as one.",
+      "type": "boolean",
+      "default": true,
+      "examples": [
+        "\"doubleQuote\": true"
+      ]
+    },
+    "lineTerminator": {
+      "title": "Line Terminator",
+      "description": "Specifies the character sequence that must be used to terminate rows.",
+      "type": "string",
+      "default": "\r\n",
+      "examples": [
+        "\"lineTerminator\": \"\\r\\n\"",
+        "\"lineTerminator\": \"\\n\""
+      ]
+    },
+    "nullSequence": {
+      "title": "Null Sequence",
+      "description": "Specifies the null sequence, for example, `\\N`.",
+      "type": "string",
+      "examples": [
+        "\"nullSequence\": \"\\N\""
+      ]
+    },
+    "quoteChar": {
+      "title": "Quote Character",
+      "description": "Specifies a one-character string to use as the quoting character.",
+      "type": "string",
+      "default": "\"",
+      "examples": [
+        "\"quoteChar\": \"\"\"",
+        "\"quoteChar\": \"'\""
+      ]
+    },
+    "escapeChar": {
+      "title": "Escape Character",
+      "description": "Specifies a one-character string to use as the escape character.",
+      "type": "string",
+      "default": "\\",
+      "examples": [
+        "\"escapeChar\": \"\\\""
+      ]
+    },
+    "skipInitialSpace": {
+      "title": "Skip Initial Space",
+      "description": "Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.",
+      "type": "boolean",
+      "default": true,
+      "examples": [
+        "\"skipInitialSpace\": true"
+      ]
+    },
+    "header": {
+      "title": "Header",
+      "description": "Specifies if the file includes a header row, always as the first row in the file.",
+      "type": "boolean",
+      "default": true,
+      "examples": [
+        "\"header\": true"
+      ]
+    },
+    "caseSensitiveHeader": {
+      "title": "Case Sensitive Header",
+      "description": "Specifies if the case of headers is meaningful.",
+      "context": "Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.",
+      "type": "boolean",
+      "default": false,
+      "examples": [
+        "\"caseSensitiveHeader\": true"
+      ]
+    },
+    "csvDialect": {
+      "title": "CSV Dialect",
+      "description": "The CSV dialect descriptor.",
+      "type": "object",
+      "required": [ "delimiter", "doubleQuote" ],
+      "properties": {
+        "delimiter": { "$ref": "#/definitions/delimiter" },
+        "doubleQuote": { "$ref": "#/definitions/doubleQuote" },
+        "lineTerminator": {  "$ref": "#/definitions/lineTerminator" },
+        "nullSequence": { "$ref": "#/definitions/nullSequence" },
+        "quoteChar": { "$ref": "#/definitions/quoteChar" },
+        "escapeChar": { "$ref": "#/definitions/escapeChar" },
+        "skipInitialSpace": { "$ref": "#/definitions/skipInitialSpace" },
+        "header": { "$ref": "#/definitions/header" },
+        "caseSensitiveHeader": { "$ref": "#/definitions/caseSensitiveHeader" }
+      },
+      "examples": [
+        "\"dialect\": { \"delimiter\": \";\" }",
+        "\"dialect\": { \"delimiter\": \"\\t\", \"quoteChar\": \"'\" }"
+      ]
+    },
+    "countryCode": {
+      "title": "ISO 3166-1 Alpha-2 Country code",
+      "description": "A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.",
+      "oneOf": [
+        { "type": "string", "pattern": "^[A-Z]{2}$" },
+        { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[A-Z]{2}$" } }
+      ]
+    },
+    "anySchema": {
+      "title": "Schema",
+      "description": "A schema for this resource.",
+      "type": "object"
+    },
+    "tableSchema": {
+      "title": "Table Schema",
+      "description": "A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.",
+      "type": "object",
+      "required": [ "fields" ],
+      "properties": {
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/tableSchemaField" },
+          "description": "An `array` of Table Schema Field objects.",
+          "examples": [
+            "\"fields\": [ { \"name\": \"my-field-name\" } ]",
+            "\"fields\": [ { \"name\": \"my-field-name\", \"type\": \"number\" }, { \"name\": \"my-field-name-2\", \"type\": \"string\", \"format\": \"email\" } ]"
+          ]
+        },
+        "primaryKey": { "$ref": "#/definitions/tableSchemaPrimaryKey" },
+        "foreignKeys": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/tableSchemaForeignKey" },
+          "examples": [
+            "\"foreignKeys\": [ { \"fields\": \"state\", \"reference\": { \"resource\": \"the-resource\", \"fields\": \"state_id\" } } ]",
+            "\"foreignKeys\": [ { \"fields\": \"state\", \"reference\": { \"resource\": \"__self__\", \"fields\": \"id\" } } ]"
+          ]
+        },
+        "missingValues": { "$ref": "#/definitions/tableSchemaMissingValues" }
+      }
+    },
+    "tableSchemaField": {
+      "title": "Table Schema Field",
+      "description": "Table Schema Field",
+      "type": "object",
+      "required": [ "name" ],
+      "properties": {
+        "name": { "$ref": "#/definitions/name"  },
+        "title": { "$ref": "#/definitions/title" },
+        "description": { "$ref": "#/definitions/description" },
+        "type": {
+          "description": "The primitive type for this field.",
+          "oneOf": [
+            { "$ref": "#/definitions/tableSchemaFieldString" },
+            { "$ref": "#/definitions/tableSchemaFieldNumber" },
+            { "$ref": "#/definitions/tableSchemaFieldInteger" },
+            { "$ref": "#/definitions/tableSchemaFieldDate" },
+            { "$ref": "#/definitions/tableSchemaFieldTime" },
+            { "$ref": "#/definitions/tableSchemaFieldDateTime" },
+            { "$ref": "#/definitions/tableSchemaFieldBoolean" },
+            { "$ref": "#/definitions/tableSchemaFieldObject" },
+            { "$ref": "#/definitions/tableSchemaFieldGeoPoint" },
+            { "$ref": "#/definitions/tableSchemaFieldGeoJSON" },
+            { "$ref": "#/definitions/tableSchemaFieldArray" },
+            { "$ref": "#/definitions/tableSchemaFieldDuration" },
+            { "$ref": "#/definitions/tableSchemaFieldAny" }
+          ]
+        },
+        "format": {
+          "enum": [ "" ],
+          "description": "The Table Schema format for this type."
+        },
+        "rdfType": {"type": "string", "description": "The RDF Type for this field." },
+        "constraints": { "$ref": "#/definitions/tableSchemaFieldConstraints" },
+        "examples": [
+          "{ \"name\": \"my-field-name\" }",
+          "{ \"name\": \"my-field-name\", \"type\": \"number\" }"
+        ]
+      },
+      "examples": [
+        "{ \"name\": \"my-name\", \"type\": \"string\" }"
+      ]
+    },
+    "tableSchemaFieldString": {
+      "title": "string",
+      "enum": [ "string" ],
+      "format": { "enum": [ "default", "email", "uri", "binary", "uuid" ], "default": "default" },
+      "description": "The field contains strings, that is, sequences of characters.",
+      "context": "The following `format` options are supported:\n* **default**: any valid string.\n* **email**: A valid email address.\n* **uri**: A valid URI.\n* **binary**: A base64 encoded string representing binary data.\n* **uuid**: A string that is a uuid.",
+      "examples": [
+        "\"type\": \"string\"",
+        "\"type\": \"string\", \"format\": \"default\"",
+        "\"type\": \"string\", \"format\": \"email\""
+      ]
+    },
+    "tableSchemaFieldNumber": {
+      "title": "number",
+      "enum": [ "number" ],
+      "description": "The field contains numbers of any kind including decimals.",
+      "context": "The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case need not be respected):\n* NaN: not a number\n* INF: positive infinity\n* -INF: negative infinity\n\nA number MAY also have a trailing:\n* exponent: this MUST consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n* percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage MUST follow the exponent e.g. '53E10%' (equals 5.3).\n\nThis lexical formatting may be modified using these additional properties:\n\n* **decimalChar**: A string whose value is used to represent a decimal point within the number. The default value is '.'.\n* **groupChar**: A string whose value is used to group digits within the number. The default value is null. A common value is ',' e.g. '100,000'.\n* **currency**: A number that may include additional currency symbols.",
+      "examples": [
+        "\"type\": \"number\""
+      ]
+    },
+    "tableSchemaFieldInteger": {
+      "enum": [ "integer" ],
+      "description": "The field contains integers - that is whole numbers.",
+      "context": "Integer values are indicated in the standard way for any valid integer.",
+      "examples": [
+        "\"type\": \"integer\""
+      ]
+    },
+    "tableSchemaFieldDate": {
+      "enum": [ "date" ],
+      "description": "The field contains temporal date values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of YYYY-MM-DD.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
+      "examples": [
+        "\"type\": \"date\"",
+        "\"type\": \"date\", \"format\": \"default\"",
+        "\"type\": \"date\", \"format\": \"MM-DD-YYYY\""
+      ]
+    },
+    "tableSchemaFieldTime": {
+      "enum": [ "time" ],
+      "description": "The field contains temporal time values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of the format YYYY-MM-DDThh:mm:ssZ in UTC time.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
+      "examples": [
+        "\"type\": \"time\"",
+        "\"type\": \"time\", \"format\": \"default\""
+      ]
+    },
+    "tableSchemaFieldDateTime": {
+      "enum": [ "datetime" ],
+      "description": "The field contains temporal datetime values.",
+      "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string as time without a date.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
+      "examples": [
+        "\"type\": \"datetime\"",
+        "\"type\": \"datetime\", \"format\": \"default\""
+      ]
+
+    },
+    "tableSchemaFieldBoolean": {
+      "enum": [ "boolean" ],
+      "description": "The field contains boolean (true/false) data.",
+      "context": "Boolean values can be indicated with the following strings (case-insensitive, so, for example, 'Y' and 'y' are both acceptable):\n* **true**: 'yes', 'y', 'true', 't', '1'\n* **false**: 'no', 'n', 'false', 'f', '0'",
+      "examples": [
+        "\"type\": \"boolean\""
+      ]
+
+    },
+    "tableSchemaFieldObject": {
+      "enum": [ "object" ],
+      "description": "The field contains data which is valid JSON format objects.",
+      "context": "",
+      "examples": [
+        "\"type\": \"object\""
+      ]
+    },
+    "tableSchemaFieldGeoPoint": {
+      "enum": [ "geopoint" ],
+      "description": "The field contains data describing a geographic point.",
+      "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
+      "examples": [
+        "\"type\": \"geopoint\""
+      ]
+    },
+    "tableSchemaFieldGeoJSON": {
+      "enum": [ "geojson" ],
+      "description": "The field contains a JSON object according to GeoJSON or TopoJSON spec.",
+      "context": "The following `format` options are supported:\n* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)",
+      "examples": [
+        "\"type\": \"geojson\"",
+        "\"type\": \"geojson\", \"format\": \"topojson\""
+      ]
+    },
+    "tableSchemaFieldArray": {
+      "enum": [ "array" ],
+      "description": "The field contains data that is a valid JSON format arrays.",
+      "context": "",
+      "examples": [
+        "\"type\": \"array\""
+      ]
+    },
+    "tableSchemaFieldDuration": {
+      "enum": [ "duration" ],
+      "description": "The field contains a duration of time.",
+      "context": "The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the number of months, nD the number of days, 'T' is the date/time separator, nH the number of hours, nM the number of minutes and nS the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.",
+      "examples": [
+        "\"type\": \"duration\""
+      ]
+    },
+    "tableSchemaFieldAny": {
+      "enum": [ "any" ],
+      "description": "Any `type` or `format` is accepted.",
+      "context": "",
+      "examples": [
+        "\"type\": \"any\""
+      ]
+    },
+    "tableSchemaFieldConstraints": {
+      "title": "Table Schema Field Constraints",
+      "description": "Table Schema Field Constraints",
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean", "description": "A boolean value which indicates whether a field must have a value in every row of the table. An empty string is considered to be a missing value." },
+        "minLength": { "type": "integer", "description": "An integer that specifies the minimum length of a value. Supported field types are sequences, such as `string`, `array`, and `object` types." },
+        "maxLength": { "type": "integer", "description": "An integer that specifies the maximum length of a value. Supported field types are sequences, such as `string`, `array`, and `object` types." },
+        "unique": { "type": "boolean", "description": "A boolean where, if true, then all values for that field `MUST` be unique within the data file in which it is found. This defines a unique key for a row although a row could potentially have several such keys." },
+        "pattern": { "type": "string", "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)." },
+        "minimum": {
+          "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+          "oneOf": [ { "type": "string" }, { "type": "number" } ]
+        },
+        "maximum": {
+          "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+          "oneOf": [ { "type": "string" }, { "type": "number" } ]
+        },
+        "enum": { "type": "array", "minItems": 1, "uniqueItems": true, "description": "An array of values, where each value `MUST` comply with the type and format of the field. The field value must exactly match a value in the enum array." }
+      }
+    },
+    "tableSchemaPrimaryKey": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "A primary key is an array of field names, whose values `MUST` that uniquely identifies each row in the table.",
+      "context": "Each string in the `primaryKey` array `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.",
+      "examples": [
+        "\"primaryKey\": [ \"name\" ]",
+        "\"primaryKey\": [ \"first\", \"last_name\" ]"
+      ]
+    },
+    "tableSchemaForeignKey": {
+      "title": "Table Schema Foreign Key",
+      "description": "Table Schema Foreign Key",
+      "type": "object",
+      "required": [ "fields", "reference" ],
+      "properties": {
+        "fields": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true, "description": "Fields that make up the primary key." },
+        "reference": {
+          "type": "object",
+          "required": [ "resource", "fields" ],
+          "properties": {
+            "resource": { "type": "string", "format": "uri" },
+            "fields": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
+          }
+        }
+      }
+    },
+    "tableSchemaMissingValues": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "default": [ "" ],
+      "description": "Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.",
+      "context": "Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).",
+      "examples": [
+        "\"missingValues\": [ \"-\", \"NaN\", \"\" ]"
+      ]
+    },
+    "dataResource": {
+      "title": "Data Resource",
+      "description": "Data Resource.",
+      "type": "object",
+      "required": [ "name", "path" ],
+      "properties": {
+        "profile": {
+          "$ref": "dictionary.json#/definitions/profile",
+          "propertyOrder": 10
+        },
+        "name": {
+          "$ref": "dictionary.json#/definitions/name",
+          "propertyOrder": 10
+        },
+        "title": {
+          "$ref": "dictionary.json#/definitions/title",
+          "propertyOrder": 20
+        },
+        "description": {
+          "$ref": "dictionary.json#/definitions/description",
+          "propertyOrder": 30,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "dictionary.json#/definitions/homepage",
+          "propertyOrder": 40
+        },
+        "sources": {
+          "$ref": "dictionary.json#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "dictionary.json#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
+        },
+        "path": {
+          "$ref": "dictionary.json#/definitions/path",
+          "propertyOrder": 60
+        },
+        "data": {
+          "$ref": "dictionary.json#/definitions/data",
+          "propertyOrder": 70
+        },
+        "schema": {
+          "$ref": "#/definitions/anySchema",
+          "propertyOrder": 40
+        },
+        "format": {
+          "$ref": "dictionary.json#/definitions/format",
+          "propertyOrder": 80
+        },
+        "mediatype": {
+          "$ref": "dictionary.json#/definitions/mediatype",
+          "propertyOrder": 90
+        },
+        "encoding": {
+          "$ref": "dictionary.json#/definitions/encoding",
+          "propertyOrder": 100
+        },
+        "bytes": {
+          "$ref": "dictionary.json#/definitions/bytes",
+          "propertyOrder": 110,
+          "options": { "hidden": true }
+        },
+        "hash": {
+          "$ref": "dictionary.json#/definitions/hash",
+          "propertyOrder": 120,
+          "options": { "hidden": true }
+        }
+      }
+    },
+    "tabularDataResource": {
+      "title": "Tabular Data Resource",
+      "description": "A Tabular Data Resource.",
+      "type": "object",
+      "required": [ "name", "path", "schema", "profile" ],
+      "properties": {
+        "profile": {
+          "$ref": "dictionary.json#/definitions/profile",
+          "propertyOrder": 10
+        },
+        "name": {
+          "$ref": "dictionary.json#/definitions/name",
+          "propertyOrder": 10
+        },
+        "title": {
+          "$ref": "dictionary.json#/definitions/title",
+          "propertyOrder": 20
+        },
+        "description": {
+          "$ref": "dictionary.json#/definitions/description",
+          "propertyOrder": 30,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "dictionary.json#/definitions/homepage",
+          "propertyOrder": 40
+        },
+        "sources": {
+          "$ref": "dictionary.json#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "dictionary.json#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
+        },
+        "path": {
+          "$ref": "dictionary.json#/definitions/path",
+          "propertyOrder": 60
+        },
+        "data": {
+          "$ref": "dictionary.json#/definitions/data",
+          "propertyOrder": 70
+        },
+        "schema": {
+          "$ref": "#/definitions/tableSchema",
+          "propertyOrder": 40
+        },
+        "dialect": {
+          "$ref": "#/definitions/csvDialect",
+          "propertyOrder": 50
+        },
+        "format": {
+          "$ref": "dictionary.json#/definitions/format",
+          "propertyOrder": 80
+        },
+        "mediatype": {
+          "$ref": "dictionary.json#/definitions/mediatype",
+          "propertyOrder": 90
+        },
+        "encoding": {
+          "$ref": "dictionary.json#/definitions/encoding",
+          "propertyOrder": 100
+        },
+        "bytes": {
+          "$ref": "dictionary.json#/definitions/bytes",
+          "propertyOrder": 110,
+          "options": { "hidden": true }
+        },
+        "hash": {
+          "$ref": "dictionary.json#/definitions/hash",
+          "propertyOrder": 120,
+          "options": { "hidden": true }
+        }
+      }
+    },
+    "dataResources": {
+      "title": "Data Resources",
+      "description": "An `array` of [Data Resource](/dataresource/) objects.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/dataResource" },
+      "examples": [
+        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"mediatype\": \"text/csv\" } ]"
+      ]
+    },
+    "tabularDataResources": {
+      "title": "Tabular Data Resources",
+      "description": "An `array` of [Tabular Data Resource](/tabular-dataresource/) objects.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/tabularDataResource" },
+      "examples": [
+        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+      ]
+    },
+    "dataPackage": {
+      "title": "Data Package",
+      "description": "Data Package",
+      "type": "object",
+      "required": [ "name", "resources" ],
+      "properties": {
+        "profile": {
+          "$ref": "dictionary.json#/definitions/profile",
+          "propertyOrder": 10
+        },
+        "name": {
+          "$ref": "dictionary.json#/definitions/name",
+          "propertyOrder": 10
+        },
+        "title": {
+          "$ref": "dictionary.json#/definitions/title",
+          "propertyOrder": 20
+        },
+        "description": {
+          "$ref": "dictionary.json#/definitions/description",
+          "propertyOrder": 30,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "dictionary.json#/definitions/homepage",
+          "propertyOrder": 40
+        },
+        "resources": {
+          "$ref": "dictionary.json#/definitions/dataResources",
+          "propertyOrder": 50,
+          "options": { "hidden": true }
+        },
+        "sources": {
+          "$ref": "dictionary.json#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "dictionary.json#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
+        }
+      }
+    },
+    "tabularDataPackage": {
+      "title": "Tabular Data Package",
+      "description": "Tabular Data Package",
+      "type": "object",
+      "required": [ "name", "resources", "profile" ],
+      "properties": {
+        "profile": {
+          "$ref": "dictionary.json#/definitions/profile",
+          "propertyOrder": 10
+        },
+        "name": {
+          "$ref": "dictionary.json#/definitions/name",
+          "propertyOrder": 10
+        },
+        "title": {
+          "$ref": "dictionary.json#/definitions/title",
+          "propertyOrder": 20
+        },
+        "description": {
+          "$ref": "dictionary.json#/definitions/description",
+          "propertyOrder": 30,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "dictionary.json#/definitions/homepage",
+          "propertyOrder": 40
+        },
+        "resources": {
+          "$ref": "dictionary.json#/definitions/tabularDataResources",
+          "propertyOrder": 50,
+          "options": { "hidden": true }
+        },
+        "sources": {
+          "$ref": "dictionary.json#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "dictionary.json#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
+        }
+      }
+    },
+    "fiscalMeasure": {
+      "title": "Measure",
+      "description": "Measure.",
+      "type": "object",
+      "required": [ "source", "currency" ],
+      "properties": {
+        "source": { "type": "string" },
+        "resource": { "type": "string" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "factor": { "type": "number" },
+        "direction": {
+          "title": "Direction of the spending",
+          "description": "A keyword that represents the direction of the spend, either expenditure or revenue.",
+          "type": "string",
+          "enum": [ "expenditure", "revenue" ]
+        },
+        "phase": {
+          "title": "Budget phase",
+          "description": "A keyword that represents the phase of the data, can be proposed for a budget proposal, approved for an approved budget, adjusted for modified budget or executed for the enacted budget",
+          "type": "string",
+          "enum": ["proposed", "approved", "adjusted", "executed"]
+        }
+      }
+    },
+    "fiscalDimension": {
+      "title": "Dimension",
+      "description": "Dimension.",
+      "type": "object",
+      "required": [ "attributes", "primaryKey" ],
+      "properties": {
+        "attributes": {
+          "title": "Attributes",
+          "description": "Attribute objects that make up the dimension",
+          "type": "object",
+          "minItems": 1,
+          "patternProperties": {
+            "^\\w+": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string" },
+                "resource": { "type": "string" },
+                "constant": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "number" }
+                  ]
+                },
+                "parent": { "type": "string" },
+                "labelfor": { "type": "string" }
+              },
+              "required": [ "source" ]
+            }
+          }
+        },
+        "primaryKey": {
+          "title": "Primary Key",
+          "description": "Either an array of strings corresponding to the name attributes in a set of field objects in the fields array or a single string corresponding to one of these names. The value of primaryKey indicates the primary key or primary keys for the dimension.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "minItems": 1, "items": { "type": "string" } }
+          ]
+        },
+        "dimensionType": {
+          "title": "Dimension Type",
+          "description": "Describes what kind of a dimension it is.",
+          "type": "string",
+          "enum": [
+            "datetime",
+            "entity",
+            "classification",
+            "activity",
+            "fact",
+            "location",
+            "other"
+          ]
+        },
+        "classificationType": {
+          "title": "Classification Type",
+          "description": "The type of the classification.",
+          "enum": [ "functional", "administrative", "economic" ]
+        }
+      }
+    },
+    "fiscalModel": {
+      "title": "",
+      "description": "",
+      "type": "object",
+      "required": [ "measures", "dimensions" ],
+      "properties": {
+        "measures": {
+          "title": "Measures",
+          "description": "Measures are numerical and correspond to financial amounts in the source data.",
+          "type": "object",
+          "patternProperties": { "^\\w+": { "$ref": "#/definitions/fiscalMeasure" } }
+        },
+        "dimensions": {
+          "title": "Dimensions",
+          "description": "Dimensions are groups of related fields. Dimensions cover all items other than the measure.",
+          "type": "object",
+          "patternProperties": { "^\\w+": { "$ref": "#/definitions/fiscalDimension" } }
+        }
+      }
+    }
+  }
+}

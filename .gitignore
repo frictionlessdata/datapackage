@@ -1,6 +1,5 @@
 build/*
 .*.swp
-_site/*
 TAGS
 .DS_Store
-_scripts/node_modules/*
+node_modules/*

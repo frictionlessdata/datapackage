@@ -1,0 +1,6 @@
+<h3>Examples</h3>
+
+{% for k, v in bag('examples', this.slug).iteritems() %}
+<h4>Example {{ loop.index }}</h4>
+{% include 'examples/%s'|format(v) %}
+{% endfor %}

@@ -1,0 +1,30 @@
+{% import 'macros.html' as macros %}
+{% set spec = bag('schemas', this.slug) %}
+
+<h3>Properties</h3>
+<p>
+  This section presents a complete description of <em>required</em> and <em>optional</em> properties for a {{ this.title }} descriptor.
+</p>
+<h4>Required properties</h4>
+<p>
+  <strong>A {{ this.title }} descriptor <code>MUST</code> include the following properties.</strong>
+</p>
+<div id="properties-required">
+{% for slug, data in spec.properties.iteritems() %}
+  {% if slug in spec.required %}
+    {{ macros.property(slug, data) }}
+  {% endif %}
+{% endfor %}
+</div>
+
+<h4>Optional properties</h4>
+<p>
+  <strong>A {{ this.title }} descriptor <code>SHOULD</code> include the following properties.</strong>
+</p>
+<div id="properties-optional">
+{% for slug, data in spec.properties.iteritems() %}
+  {% if slug not in spec.required %}
+    {{ macros.property(slug, data) }}
+  {% endif %}
+{% endfor %}
+</div>

@@ -1,0 +1,18 @@
+sudo: false
+language: python
+python:
+- '2.7'
+node_js:
+- '6'
+install:
+- pip install lektor
+- npm install
+- npm run compile
+- lektor plugins add lektor-s3
+script:
+- lektor deploy s3
+env:
+  global:
+  - secure: REFJWopLHL9hZ9pKqkjJorAkHy/ex047aYg/RrfOvPj1qx+ZuiYBjEP01wLN3L4KqW9E3aHvg0fq2fTutau7uDKSgyNuXqA/kQET1LYk9Bi2j9e2a2NKzClwbBTlAKh6n8eEDJ9xh0DJayOIH3PXzZZxQsbRCXpQMNd0zzDnyQ0=
+  - secure: hvlme+MU9ayvaHGQ7qs0g/DI5FIOmoRP2fXEcuW9hl+pwKKMIOZPeqENT4IwYCPr9/sa+wNU7ADSFGtW+0318Au83qp7GLVLmKzyB6sZp9LuiCC9BRUtoH2fxHaf0oSzEwwxUzv5TgvybLNiBNGYsJs53B3btKlZq6jX5QPuKGQ=
+  - secure: b+s7nz89+iUktwQUn3EwSIbsbSNwu2BS8BmB1qT0Q0gYf9wl830fxw36Rapi1De8/HikwjhzSbo99rBsgmh07y/2pck4CXd17PYQeesTdcyTTD8S9WcYf2nxu+bfZRAewImRkdjoGwXIJoPVeal7DnimqM1ZZZNomaxIgl1lMuQ=
