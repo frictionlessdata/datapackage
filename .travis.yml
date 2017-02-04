@@ -1,11 +1,13 @@
 sudo: false
-language: python
+language: node_js
 python:
 - '2.7'
 node_js:
-- '6'
+- '6.1'
 install:
+- pip install --upgrade pip
 - pip install lektor
+- pip install boto3
 - npm install
 - npm run compile
 - lektor plugins add lektor-s3
