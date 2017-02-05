@@ -125,12 +125,23 @@
       "name": {
         "propertyOrder": 10,
         "title": "Name",
-        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
         "type": "string",
-        "pattern": "^([a-z0-9._-])+$",
+        "pattern": "^([a-z0-9._-/])+$",
         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
         "examples": [
           "\"name\": \"my-nice-name\""
+        ]
+      },
+      "id": {
+        "propertyOrder": 20,
+        "title": "ID",
+        "description": "A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.",
+        "context": "A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.",
+        "type": "string",
+        "examples": [
+          "\"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"",
+          "\"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\""
         ]
       },
       "title": {
@@ -160,9 +171,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -230,9 +241,9 @@
             "name": {
               "propertyOrder": 20,
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -299,9 +310,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -351,9 +362,9 @@
                 "properties": {
                   "name": {
                     "title": "Name",
-                    "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                    "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                     "type": "string",
-                    "pattern": "^([a-z0-9._-])+$",
+                    "pattern": "^([a-z0-9._-/])+$",
                     "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                     "examples": [
                       "\"name\": \"my-nice-name\""
@@ -417,9 +428,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -546,9 +557,9 @@
           "properties": {
             "name": {
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -612,9 +623,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -691,9 +702,9 @@
       "name": {
         "propertyOrder": 20,
         "title": "Name",
-        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
         "type": "string",
-        "pattern": "^([a-z0-9._-])+$",
+        "pattern": "^([a-z0-9._-/])+$",
         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
         "examples": [
           "\"name\": \"my-nice-name\""
@@ -760,9 +771,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -812,9 +823,9 @@
           "properties": {
             "name": {
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -878,9 +889,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -1016,14 +1027,14 @@
             ]
           },
           "name": {
-            "propertyOrder": 10,
-            "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "propertyOrder": 20,
+            "title": "ID",
+            "description": "A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.",
+            "context": "A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
-            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
-              "\"name\": \"my-nice-name\""
+              "\"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"",
+              "\"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\""
             ]
           },
           "title": {
@@ -1053,9 +1064,9 @@
             "properties": {
               "name": {
                 "title": "Name",
-                "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                 "type": "string",
-                "pattern": "^([a-z0-9._-])+$",
+                "pattern": "^([a-z0-9._-/])+$",
                 "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                 "examples": [
                   "\"name\": \"my-nice-name\""
@@ -1125,9 +1136,9 @@
                 "name": {
                   "propertyOrder": 20,
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -1183,9 +1194,9 @@
                         "properties": {
                           "name": {
                             "title": "Name",
-                            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                             "type": "string",
-                            "pattern": "^([a-z0-9._-])+$",
+                            "pattern": "^([a-z0-9._-/])+$",
                             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                             "examples": [
                               "\"name\": \"my-nice-name\""
@@ -1544,9 +1555,9 @@
                   "properties": {
                     "name": {
                       "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                       "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
+                      "pattern": "^([a-z0-9._-/])+$",
                       "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                       "examples": [
                         "\"name\": \"my-nice-name\""
@@ -1596,9 +1607,9 @@
                     "properties": {
                       "name": {
                         "title": "Name",
-                        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                         "type": "string",
-                        "pattern": "^([a-z0-9._-])+$",
+                        "pattern": "^([a-z0-9._-/])+$",
                         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                         "examples": [
                           "\"name\": \"my-nice-name\""
@@ -1662,9 +1673,9 @@
                   "properties": {
                     "name": {
                       "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                       "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
+                      "pattern": "^([a-z0-9._-/])+$",
                       "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                       "examples": [
                         "\"name\": \"my-nice-name\""
@@ -1892,9 +1903,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -1958,9 +1969,9 @@
             "properties": {
               "name": {
                 "title": "Name",
-                "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                 "type": "string",
-                "pattern": "^([a-z0-9._-])+$",
+                "pattern": "^([a-z0-9._-/])+$",
                 "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                 "examples": [
                   "\"name\": \"my-nice-name\""
@@ -2050,9 +2061,9 @@
                 "name": {
                   "propertyOrder": 20,
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -2108,9 +2119,9 @@
                         "properties": {
                           "name": {
                             "title": "Name",
-                            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                             "type": "string",
-                            "pattern": "^([a-z0-9._-])+$",
+                            "pattern": "^([a-z0-9._-/])+$",
                             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                             "examples": [
                               "\"name\": \"my-nice-name\""
@@ -2469,9 +2480,9 @@
                   "properties": {
                     "name": {
                       "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                       "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
+                      "pattern": "^([a-z0-9._-/])+$",
                       "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                       "examples": [
                         "\"name\": \"my-nice-name\""
@@ -2521,9 +2532,9 @@
                     "properties": {
                       "name": {
                         "title": "Name",
-                        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                         "type": "string",
-                        "pattern": "^([a-z0-9._-])+$",
+                        "pattern": "^([a-z0-9._-/])+$",
                         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                         "examples": [
                           "\"name\": \"my-nice-name\""
@@ -2587,9 +2598,9 @@
                   "properties": {
                     "name": {
                       "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                       "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
+                      "pattern": "^([a-z0-9._-/])+$",
                       "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                       "examples": [
                         "\"name\": \"my-nice-name\""
@@ -3029,9 +3040,9 @@
           "properties": {
             "name": {
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -3387,14 +3398,14 @@
         ]
       },
       "name": {
-        "propertyOrder": 10,
-        "title": "Name",
-        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+        "propertyOrder": 20,
+        "title": "ID",
+        "description": "A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.",
+        "context": "A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.",
         "type": "string",
-        "pattern": "^([a-z0-9._-])+$",
-        "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
         "examples": [
-          "\"name\": \"my-nice-name\""
+          "\"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"",
+          "\"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\""
         ]
       },
       "title": {
@@ -3424,9 +3435,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -3496,9 +3507,9 @@
             "name": {
               "propertyOrder": 20,
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -3554,9 +3565,9 @@
                     "properties": {
                       "name": {
                         "title": "Name",
-                        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                         "type": "string",
-                        "pattern": "^([a-z0-9._-])+$",
+                        "pattern": "^([a-z0-9._-/])+$",
                         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                         "examples": [
                           "\"name\": \"my-nice-name\""
@@ -3915,9 +3926,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -3967,9 +3978,9 @@
                 "properties": {
                   "name": {
                     "title": "Name",
-                    "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                    "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                     "type": "string",
-                    "pattern": "^([a-z0-9._-])+$",
+                    "pattern": "^([a-z0-9._-/])+$",
                     "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                     "examples": [
                       "\"name\": \"my-nice-name\""
@@ -4033,9 +4044,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -4263,9 +4274,9 @@
           "properties": {
             "name": {
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -4329,9 +4340,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -4410,9 +4421,9 @@
       "name": {
         "propertyOrder": 20,
         "title": "Name",
-        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+        "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
         "type": "string",
-        "pattern": "^([a-z0-9._-])+$",
+        "pattern": "^([a-z0-9._-/])+$",
         "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
         "examples": [
           "\"name\": \"my-nice-name\""
@@ -4468,9 +4479,9 @@
               "properties": {
                 "name": {
                   "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
                   "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
+                  "pattern": "^([a-z0-9._-/])+$",
                   "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
                   "examples": [
                     "\"name\": \"my-nice-name\""
@@ -4829,9 +4840,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
@@ -4881,9 +4892,9 @@
           "properties": {
             "name": {
               "title": "Name",
-              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
               "type": "string",
-              "pattern": "^([a-z0-9._-])+$",
+              "pattern": "^([a-z0-9._-/])+$",
               "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
               "examples": [
                 "\"name\": \"my-nice-name\""
@@ -4947,9 +4958,9 @@
         "properties": {
           "name": {
             "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "description": "An identifier string. Lower case characters with '.', '_', '-' and '/' are allowed.",
             "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
+            "pattern": "^([a-z0-9._-/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
             "examples": [
               "\"name\": \"my-nice-name\""
