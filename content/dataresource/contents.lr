@@ -6,6 +6,8 @@ slug: dataresource
 ---
 mediatype: application/vnd.dataresource+json
 ---
+descriptor: dataresource.json
+---
 subtitle: A simple format to describe data and its metadata.
 ---
 version: 1.0-rc.1

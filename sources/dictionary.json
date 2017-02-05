@@ -31,6 +31,12 @@
         "\"title\": \"My Package Title\""
       ]
     },
+    "email": {
+      "title": "Email",
+      "description": "An email address.",
+      "type": "string",
+      "format": "email"
+    },
     "description": {
       "title": "Description",
       "description": "A text description. Markdown is encouraged.",
@@ -44,16 +50,12 @@
       "description": "The home on the web that is related to this data package.",
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string",
-          "format": "uri"
-        }
+        "name": { "$ref": "#/definitions/name" },
+        "uri": { "$ref": "#/definitions/uri" },
+        "title": { "$ref": "#/definitions/title" }
       },
       "examples": [
-        "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+        "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
       ]
     },
     "version": {
@@ -65,39 +67,32 @@
         "\"version\": \"1.0.1-beta\""
       ]
     },
-    "path": {
-      "title": "Path",
-      "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-      "oneOf": [
-        { "type": "string", "format": "uri" },
-        { "type": "array", "items": { "minItems": 1, "type": "string", "format": "uri" } }
-      ],
+    "uri": {
+      "title": "URI",
+      "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+      "type": "string",
+      "format": "uri",
       "examples": [
-        "\"path\": \"file.csv\"",
-        "\"path\": \"http://example.com/file.csv\"",
-        "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-        "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+        "\"uri\": \"file.csv\"",
+        "\"uri\": \"#/data/my-data\"",
+        "\"uri\": \"http://example.com/file.csv\""
       ],
-      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
       "notes": [
-        "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-        "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-        "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+        "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
       ]
     },
     "data": {
       "title": "Data",
-      "description": "The inline data for this resource.",
-      "anyOf": [
-        { "type": "string" },
-        { "type": "array" },
-        { "type": "object" }
-      ],
-      "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
+      "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/uri" },
+      "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
       "examples": [
-        "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-        "\"data\": { \"a\": 1, \"b\": 2 }",
-        "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+        "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+        "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+        "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
       ]
     },
     "format": {
@@ -156,15 +151,15 @@
       "title": "Contributor",
       "description": "A contributor to this descriptor.",
       "properties": {
-        "name": { "type": "string" },
-        "path": { "type": "string", "format": "uri" },
-        "email": { "type": "string", "format": "email" },
+        "name": { "$ref": "#/definitions/name" },
+        "uri": { "$ref": "#/definitions/uri" },
+        "email": { "$ref": "#/definitions/email" },
         "role": { "type": "string", "enum": [ "author", "maintainer" ] }
       },
       "required": [ "name" ],
       "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself.",
       "examples": [
-        "\"contributor\": { \"name\": \"Joe Bloggs\", \"email\": \"joe@bloggs.com\", \"path\": \"http://www.bloggs.com\" }"
+        "\"contributor\": { \"name\": \"Joe Bloggs\", \"email\": \"joe@bloggs.com\", \"uri\": \"http://www.bloggs.com\" }"
       ]
     },
     "contributors": {
@@ -184,12 +179,12 @@
       "type": "object",
       "properties": {
         "name": { "$ref": "#/definitions/name" },
-        "path": { "$ref": "#/definitions/path" },
+        "uri": { "$ref": "#/definitions/uri" },
         "title": { "$ref": "#/definitions/title" }
       },
       "oneOf": [
         { "required": [ "name" ] },
-        { "required": [ "path" ] },
+        { "required": [ "uri" ] },
         { "required": [ "title" ] }
       ],
       "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
@@ -202,7 +197,7 @@
       "items": { "$ref": "#/definitions/license" },
       "context": "This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.",
       "examples": [
-        "\"licenses\": [ { \"name\": \"ODC-PDDL-1.0\", \"path\": \"http://opendatacommons.org/licenses/pddl/\" } ]"
+        "\"licenses\": [ { \"name\": \"ODC-PDDL-1.0\", \"uri\": \"http://opendatacommons.org/licenses/pddl/\" } ]"
       ]
     },
     "source": {
@@ -210,13 +205,13 @@
       "description": "A source file.",
       "type": "object",
       "properties": {
-        "name": { "type": "string" },
-        "path": { "type": "string", "format": "uri" },
-        "email": { "type": "string", "format": "email" }
+        "name": { "$ref": "#/definitions/name" },
+        "uri": { "$ref": "#/definitions/uri" },
+        "email": { "$ref": "#/definitions/email" }
       },
       "anyOf": [
         { "title": "name required", "required": [ "name" ] },
-        { "title": "path required", "required": [ "path" ] },
+        { "title": "uri required", "required": [ "uri" ] },
         { "title": "email required", "required": [ "email" ] }
       ]
     },
@@ -227,7 +222,7 @@
       "minItems": 1,
       "items": { "$ref": "#/definitions/source" },
       "examples": [
-        "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+        "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
       ]
     },
     "keywords": {
@@ -247,7 +242,7 @@
       "format": "uri",
       "examples": [
         "\"image\": \"http://example.com/image.jpg\"",
-        "\"image\": \"relative/path/to/image.jpg\""
+        "\"image\": \"relative/to/image.jpg\""
       ]
     },
     "delimiter": {
@@ -424,10 +419,6 @@
             { "$ref": "#/definitions/tableSchemaFieldDuration" },
             { "$ref": "#/definitions/tableSchemaFieldAny" }
           ]
-        },
-        "format": {
-          "enum": [ "" ],
-          "description": "The Table Schema format for this type."
         },
         "rdfType": {"type": "string", "description": "The RDF Type for this field." },
         "constraints": { "$ref": "#/definitions/tableSchemaFieldConstraints" },
@@ -623,71 +614,67 @@
       "title": "Data Resource",
       "description": "Data Resource.",
       "type": "object",
-      "required": [ "name", "path" ],
+      "required": [ "name", "data" ],
       "properties": {
         "profile": {
-          "$ref": "dictionary.json#/definitions/profile",
+          "$ref": "#/definitions/profile",
           "propertyOrder": 10
         },
         "name": {
-          "$ref": "dictionary.json#/definitions/name",
-          "propertyOrder": 10
-        },
-        "title": {
-          "$ref": "dictionary.json#/definitions/title",
+          "$ref": "#/definitions/name",
           "propertyOrder": 20
         },
-        "description": {
-          "$ref": "dictionary.json#/definitions/description",
-          "propertyOrder": 30,
-          "format": "textarea"
-        },
-        "homepage": {
-          "$ref": "dictionary.json#/definitions/homepage",
-          "propertyOrder": 40
-        },
-        "sources": {
-          "$ref": "dictionary.json#/definitions/sources",
-          "propertyOrder": 140,
-          "options": { "hidden": true }
-        },
-        "licenses": {
-          "$ref": "dictionary.json#/definitions/license",
-          "description": "The license under which the resource is published.",
-          "propertyOrder": 150,
-          "options": { "hidden": true }
-        },
-        "path": {
-          "$ref": "dictionary.json#/definitions/path",
-          "propertyOrder": 60
-        },
         "data": {
-          "$ref": "dictionary.json#/definitions/data",
-          "propertyOrder": 70
+          "$ref": "#/definitions/data",
+          "propertyOrder": 30
         },
         "schema": {
           "$ref": "#/definitions/anySchema",
           "propertyOrder": 40
         },
+        "title": {
+          "$ref": "#/definitions/title",
+          "propertyOrder": 50
+        },
+        "description": {
+          "$ref": "#/definitions/description",
+          "propertyOrder": 60,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "#/definitions/homepage",
+          "propertyOrder": 70
+        },
+        "sources": {
+          "$ref": "#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
+        },
         "format": {
-          "$ref": "dictionary.json#/definitions/format",
+          "$ref": "#/definitions/format",
           "propertyOrder": 80
         },
         "mediatype": {
-          "$ref": "dictionary.json#/definitions/mediatype",
+          "$ref": "#/definitions/mediatype",
           "propertyOrder": 90
         },
         "encoding": {
-          "$ref": "dictionary.json#/definitions/encoding",
+          "$ref": "#/definitions/encoding",
           "propertyOrder": 100
         },
         "bytes": {
-          "$ref": "dictionary.json#/definitions/bytes",
+          "$ref": "#/definitions/bytes",
           "propertyOrder": 110,
           "options": { "hidden": true }
         },
         "hash": {
-          "$ref": "dictionary.json#/definitions/hash",
+          "$ref": "#/definitions/hash",
           "propertyOrder": 120,
           "options": { "hidden": true }
         }
@@ -697,75 +684,71 @@
       "title": "Tabular Data Resource",
       "description": "A Tabular Data Resource.",
       "type": "object",
-      "required": [ "name", "path", "schema", "profile" ],
+      "required": [ "name", "data", "schema", "profile" ],
       "properties": {
         "profile": {
-          "$ref": "dictionary.json#/definitions/profile",
+          "$ref": "#/definitions/profile",
           "propertyOrder": 10
         },
         "name": {
-          "$ref": "dictionary.json#/definitions/name",
-          "propertyOrder": 10
-        },
-        "title": {
-          "$ref": "dictionary.json#/definitions/title",
+          "$ref": "#/definitions/name",
           "propertyOrder": 20
         },
-        "description": {
-          "$ref": "dictionary.json#/definitions/description",
-          "propertyOrder": 30,
-          "format": "textarea"
-        },
-        "homepage": {
-          "$ref": "dictionary.json#/definitions/homepage",
-          "propertyOrder": 40
-        },
-        "sources": {
-          "$ref": "dictionary.json#/definitions/sources",
-          "propertyOrder": 140,
-          "options": { "hidden": true }
-        },
-        "licenses": {
-          "$ref": "dictionary.json#/definitions/license",
-          "description": "The license under which the resource is published.",
-          "propertyOrder": 150,
-          "options": { "hidden": true }
-        },
-        "path": {
-          "$ref": "dictionary.json#/definitions/path",
-          "propertyOrder": 60
-        },
         "data": {
-          "$ref": "dictionary.json#/definitions/data",
-          "propertyOrder": 70
+          "$ref": "#/definitions/data",
+          "propertyOrder": 30
         },
         "schema": {
           "$ref": "#/definitions/tableSchema",
           "propertyOrder": 40
+        },
+        "title": {
+          "$ref": "#/definitions/title",
+          "propertyOrder": 50
+        },
+        "description": {
+          "$ref": "#/definitions/description",
+          "propertyOrder": 60,
+          "format": "textarea"
+        },
+        "homepage": {
+          "$ref": "#/definitions/homepage",
+          "propertyOrder": 70
+        },
+        "sources": {
+          "$ref": "#/definitions/sources",
+          "propertyOrder": 140,
+          "options": { "hidden": true }
+        },
+        "licenses": {
+          "$ref": "#/definitions/license",
+          "description": "The license under which the resource is published.",
+          "propertyOrder": 150,
+          "options": { "hidden": true }
         },
         "dialect": {
           "$ref": "#/definitions/csvDialect",
           "propertyOrder": 50
         },
         "format": {
-          "$ref": "dictionary.json#/definitions/format",
+          "$ref": "#/definitions/format",
           "propertyOrder": 80
         },
         "mediatype": {
-          "$ref": "dictionary.json#/definitions/mediatype",
+          "$ref": "#/definitions/mediatype",
           "propertyOrder": 90
         },
         "encoding": {
-          "$ref": "dictionary.json#/definitions/encoding",
+          "$ref": "#/definitions/encoding",
           "propertyOrder": 100
         },
         "bytes": {
-          "$ref": "dictionary.json#/definitions/bytes",
+          "$ref": "#/definitions/bytes",
           "propertyOrder": 110,
           "options": { "hidden": true }
         },
         "hash": {
-          "$ref": "dictionary.json#/definitions/hash",
+          "$ref": "#/definitions/hash",
           "propertyOrder": 120,
           "options": { "hidden": true }
         }
@@ -778,7 +761,7 @@
       "minItems": 1,
       "items": { "$ref": "#/definitions/dataResource" },
       "examples": [
-        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"mediatype\": \"text/csv\" } ]"
+        "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"mediatype\": \"text/csv\" } ]"
       ]
     },
     "tabularDataResources": {
@@ -788,48 +771,48 @@
       "minItems": 1,
       "items": { "$ref": "#/definitions/tabularDataResource" },
       "examples": [
-        "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+        "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
       ]
     },
     "dataPackage": {
       "title": "Data Package",
       "description": "Data Package",
       "type": "object",
-      "required": [ "name", "resources" ],
+      "required": [ "resources" ],
       "properties": {
         "profile": {
-          "$ref": "dictionary.json#/definitions/profile",
+          "$ref": "#/definitions/profile",
           "propertyOrder": 10
         },
         "name": {
-          "$ref": "dictionary.json#/definitions/name",
+          "$ref": "#/definitions/name",
           "propertyOrder": 10
         },
         "title": {
-          "$ref": "dictionary.json#/definitions/title",
+          "$ref": "#/definitions/title",
           "propertyOrder": 20
         },
         "description": {
-          "$ref": "dictionary.json#/definitions/description",
+          "$ref": "#/definitions/description",
           "propertyOrder": 30,
           "format": "textarea"
         },
         "homepage": {
-          "$ref": "dictionary.json#/definitions/homepage",
+          "$ref": "#/definitions/homepage",
           "propertyOrder": 40
         },
         "resources": {
-          "$ref": "dictionary.json#/definitions/dataResources",
+          "$ref": "#/definitions/dataResources",
           "propertyOrder": 50,
           "options": { "hidden": true }
         },
         "sources": {
-          "$ref": "dictionary.json#/definitions/sources",
+          "$ref": "#/definitions/sources",
           "propertyOrder": 140,
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "dictionary.json#/definitions/license",
+          "$ref": "#/definitions/license",
           "description": "The license under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
@@ -840,41 +823,41 @@
       "title": "Tabular Data Package",
       "description": "Tabular Data Package",
       "type": "object",
-      "required": [ "name", "resources", "profile" ],
+      "required": [ "resources", "profile" ],
       "properties": {
         "profile": {
-          "$ref": "dictionary.json#/definitions/profile",
+          "$ref": "#/definitions/profile",
           "propertyOrder": 10
         },
         "name": {
-          "$ref": "dictionary.json#/definitions/name",
+          "$ref": "#/definitions/name",
           "propertyOrder": 10
         },
         "title": {
-          "$ref": "dictionary.json#/definitions/title",
+          "$ref": "#/definitions/title",
           "propertyOrder": 20
         },
         "description": {
-          "$ref": "dictionary.json#/definitions/description",
+          "$ref": "#/definitions/description",
           "propertyOrder": 30,
           "format": "textarea"
         },
         "homepage": {
-          "$ref": "dictionary.json#/definitions/homepage",
+          "$ref": "#/definitions/homepage",
           "propertyOrder": 40
         },
         "resources": {
-          "$ref": "dictionary.json#/definitions/tabularDataResources",
+          "$ref": "#/definitions/tabularDataResources",
           "propertyOrder": 50,
           "options": { "hidden": true }
         },
         "sources": {
-          "$ref": "dictionary.json#/definitions/sources",
+          "$ref": "#/definitions/sources",
           "propertyOrder": 140,
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "dictionary.json#/definitions/license",
+          "$ref": "#/definitions/license",
           "description": "The license under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }

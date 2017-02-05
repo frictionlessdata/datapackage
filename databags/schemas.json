@@ -106,7 +106,6 @@
     "description": "Data Package is a simple specification for data access and delivery.",
     "type": "object",
     "required": [
-      "name",
       "resources"
     ],
     "properties": {
@@ -160,15 +159,41 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
-          },
-          "path": {
+            "title": "Name",
+            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
             "type": "string",
-            "format": "uri"
+            "pattern": "^([a-z0-9._-])+$",
+            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+            "examples": [
+              "\"name\": \"my-nice-name\""
+            ]
+          },
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
+            ],
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+            "notes": [
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "description": "A human-readable title.",
+            "type": "string",
+            "examples": [
+              "\"title\": \"My Package Title\""
+            ]
           }
         },
         "examples": [
-          "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+          "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
         ]
       },
       "resources": {
@@ -186,7 +211,7 @@
           "type": "object",
           "required": [
             "name",
-            "path"
+            "data"
           ],
           "properties": {
             "profile": {
@@ -203,7 +228,7 @@
               ]
             },
             "name": {
-              "propertyOrder": 10,
+              "propertyOrder": 20,
               "title": "Name",
               "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
               "type": "string",
@@ -213,8 +238,42 @@
                 "\"name\": \"my-nice-name\""
               ]
             },
+            "data": {
+              "propertyOrder": 30,
+              "title": "Data",
+              "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "title": "URI",
+                "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                "type": "string",
+                "format": "uri",
+                "examples": [
+                  "\"uri\": \"file.csv\"",
+                  "\"uri\": \"#/data/my-data\"",
+                  "\"uri\": \"http://example.com/file.csv\""
+                ],
+                "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                "notes": [
+                  "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                ]
+              },
+              "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
+              "examples": [
+                "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+                "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+                "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
+              ]
+            },
+            "schema": {
+              "propertyOrder": 40,
+              "title": "Schema",
+              "description": "A schema for this resource.",
+              "type": "object"
+            },
             "title": {
-              "propertyOrder": 20,
+              "propertyOrder": 50,
               "title": "Title",
               "description": "A human-readable title.",
               "type": "string",
@@ -223,7 +282,7 @@
               ]
             },
             "description": {
-              "propertyOrder": 30,
+              "propertyOrder": 60,
               "format": "textarea",
               "title": "Description",
               "description": "A text description. Markdown is encouraged.",
@@ -233,21 +292,47 @@
               ]
             },
             "homepage": {
-              "propertyOrder": 40,
+              "propertyOrder": 70,
               "title": "Home Page",
               "description": "The home on the web that is related to this data package.",
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string"
-                },
-                "path": {
+                  "title": "Name",
+                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                   "type": "string",
-                  "format": "uri"
+                  "pattern": "^([a-z0-9._-])+$",
+                  "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                  "examples": [
+                    "\"name\": \"my-nice-name\""
+                  ]
+                },
+                "uri": {
+                  "title": "URI",
+                  "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "\"uri\": \"file.csv\"",
+                    "\"uri\": \"#/data/my-data\"",
+                    "\"uri\": \"http://example.com/file.csv\""
+                  ],
+                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                  "notes": [
+                    "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                  ]
+                },
+                "title": {
+                  "title": "Title",
+                  "description": "A human-readable title.",
+                  "type": "string",
+                  "examples": [
+                    "\"title\": \"My Package Title\""
+                  ]
                 }
               },
               "examples": [
-                "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+                "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
               ]
             },
             "sources": {
@@ -265,13 +350,33 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
-                  },
-                  "path": {
+                    "title": "Name",
+                    "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                     "type": "string",
-                    "format": "uri"
+                    "pattern": "^([a-z0-9._-])+$",
+                    "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                    "examples": [
+                      "\"name\": \"my-nice-name\""
+                    ]
+                  },
+                  "uri": {
+                    "title": "URI",
+                    "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                    "type": "string",
+                    "format": "uri",
+                    "examples": [
+                      "\"uri\": \"file.csv\"",
+                      "\"uri\": \"#/data/my-data\"",
+                      "\"uri\": \"http://example.com/file.csv\""
+                    ],
+                    "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                    "notes": [
+                      "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                    ]
                   },
                   "email": {
+                    "title": "Email",
+                    "description": "An email address.",
                     "type": "string",
                     "format": "email"
                   }
@@ -284,9 +389,9 @@
                     ]
                   },
                   {
-                    "title": "path required",
+                    "title": "uri required",
                     "required": [
-                      "path"
+                      "uri"
                     ]
                   },
                   {
@@ -298,7 +403,7 @@
                 ]
               },
               "examples": [
-                "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+                "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
               ]
             },
             "licenses": {
@@ -320,34 +425,19 @@
                     "\"name\": \"my-nice-name\""
                   ]
                 },
-                "path": {
-                  "title": "Path",
-                  "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "uri"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "minItems": 1,
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  ],
+                "uri": {
+                  "title": "URI",
+                  "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                  "type": "string",
+                  "format": "uri",
                   "examples": [
-                    "\"path\": \"file.csv\"",
-                    "\"path\": \"http://example.com/file.csv\"",
-                    "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                    "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+                    "\"uri\": \"file.csv\"",
+                    "\"uri\": \"#/data/my-data\"",
+                    "\"uri\": \"http://example.com/file.csv\""
                   ],
-                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
                   "notes": [
-                    "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                    "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                    "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+                    "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
                   ]
                 },
                 "title": {
@@ -367,7 +457,7 @@
                 },
                 {
                   "required": [
-                    "path"
+                    "uri"
                   ]
                 },
                 {
@@ -377,65 +467,6 @@
                 }
               ],
               "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-            },
-            "path": {
-              "propertyOrder": 60,
-              "title": "Path",
-              "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "uri"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "minItems": 1,
-                    "type": "string",
-                    "format": "uri"
-                  }
-                }
-              ],
-              "examples": [
-                "\"path\": \"file.csv\"",
-                "\"path\": \"http://example.com/file.csv\"",
-                "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-              ],
-              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-              "notes": [
-                "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-              ]
-            },
-            "data": {
-              "propertyOrder": 70,
-              "title": "Data",
-              "description": "The inline data for this resource.",
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "array"
-                },
-                {
-                  "type": "object"
-                }
-              ],
-              "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-              "examples": [
-                "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-                "\"data\": { \"a\": 1, \"b\": 2 }",
-                "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
-              ]
-            },
-            "schema": {
-              "propertyOrder": 40,
-              "title": "Schema",
-              "description": "A schema for this resource.",
-              "type": "object"
             },
             "format": {
               "propertyOrder": 80,
@@ -496,7 +527,7 @@
           }
         },
         "examples": [
-          "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"mediatype\": \"text/csv\" } ]"
+          "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"mediatype\": \"text/csv\" } ]"
         ]
       },
       "sources": {
@@ -514,13 +545,33 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
-            },
-            "path": {
+              "title": "Name",
+              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
               "type": "string",
-              "format": "uri"
+              "pattern": "^([a-z0-9._-])+$",
+              "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+              "examples": [
+                "\"name\": \"my-nice-name\""
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+              "type": "string",
+              "format": "uri",
+              "examples": [
+                "\"uri\": \"file.csv\"",
+                "\"uri\": \"#/data/my-data\"",
+                "\"uri\": \"http://example.com/file.csv\""
+              ],
+              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+              "notes": [
+                "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+              ]
             },
             "email": {
+              "title": "Email",
+              "description": "An email address.",
               "type": "string",
               "format": "email"
             }
@@ -533,9 +584,9 @@
               ]
             },
             {
-              "title": "path required",
+              "title": "uri required",
               "required": [
-                "path"
+                "uri"
               ]
             },
             {
@@ -547,7 +598,7 @@
           ]
         },
         "examples": [
-          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
         ]
       },
       "licenses": {
@@ -569,34 +620,19 @@
               "\"name\": \"my-nice-name\""
             ]
           },
-          "path": {
-            "title": "Path",
-            "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "minItems": 1,
-                  "type": "string",
-                  "format": "uri"
-                }
-              }
-            ],
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
             "examples": [
-              "\"path\": \"file.csv\"",
-              "\"path\": \"http://example.com/file.csv\"",
-              "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-              "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
             ],
-            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
             "notes": [
-              "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-              "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-              "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
             ]
           },
           "title": {
@@ -616,7 +652,7 @@
           },
           {
             "required": [
-              "path"
+              "uri"
             ]
           },
           {
@@ -636,7 +672,7 @@
     "type": "object",
     "required": [
       "name",
-      "path"
+      "data"
     ],
     "properties": {
       "profile": {
@@ -653,7 +689,7 @@
         ]
       },
       "name": {
-        "propertyOrder": 10,
+        "propertyOrder": 20,
         "title": "Name",
         "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
         "type": "string",
@@ -663,8 +699,42 @@
           "\"name\": \"my-nice-name\""
         ]
       },
+      "data": {
+        "propertyOrder": 30,
+        "title": "Data",
+        "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "title": "URI",
+          "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "\"uri\": \"file.csv\"",
+            "\"uri\": \"#/data/my-data\"",
+            "\"uri\": \"http://example.com/file.csv\""
+          ],
+          "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+          "notes": [
+            "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+          ]
+        },
+        "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
+        "examples": [
+          "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+          "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+          "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
+        ]
+      },
+      "schema": {
+        "propertyOrder": 40,
+        "title": "Schema",
+        "description": "A schema for this resource.",
+        "type": "object"
+      },
       "title": {
-        "propertyOrder": 20,
+        "propertyOrder": 50,
         "title": "Title",
         "description": "A human-readable title.",
         "type": "string",
@@ -673,7 +743,7 @@
         ]
       },
       "description": {
-        "propertyOrder": 30,
+        "propertyOrder": 60,
         "format": "textarea",
         "title": "Description",
         "description": "A text description. Markdown is encouraged.",
@@ -683,21 +753,47 @@
         ]
       },
       "homepage": {
-        "propertyOrder": 40,
+        "propertyOrder": 70,
         "title": "Home Page",
         "description": "The home on the web that is related to this data package.",
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
-          },
-          "path": {
+            "title": "Name",
+            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
             "type": "string",
-            "format": "uri"
+            "pattern": "^([a-z0-9._-])+$",
+            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+            "examples": [
+              "\"name\": \"my-nice-name\""
+            ]
+          },
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
+            ],
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+            "notes": [
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "description": "A human-readable title.",
+            "type": "string",
+            "examples": [
+              "\"title\": \"My Package Title\""
+            ]
           }
         },
         "examples": [
-          "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+          "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
         ]
       },
       "sources": {
@@ -715,13 +811,33 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
-            },
-            "path": {
+              "title": "Name",
+              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
               "type": "string",
-              "format": "uri"
+              "pattern": "^([a-z0-9._-])+$",
+              "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+              "examples": [
+                "\"name\": \"my-nice-name\""
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+              "type": "string",
+              "format": "uri",
+              "examples": [
+                "\"uri\": \"file.csv\"",
+                "\"uri\": \"#/data/my-data\"",
+                "\"uri\": \"http://example.com/file.csv\""
+              ],
+              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+              "notes": [
+                "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+              ]
             },
             "email": {
+              "title": "Email",
+              "description": "An email address.",
               "type": "string",
               "format": "email"
             }
@@ -734,9 +850,9 @@
               ]
             },
             {
-              "title": "path required",
+              "title": "uri required",
               "required": [
-                "path"
+                "uri"
               ]
             },
             {
@@ -748,7 +864,7 @@
           ]
         },
         "examples": [
-          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
         ]
       },
       "licenses": {
@@ -770,34 +886,19 @@
               "\"name\": \"my-nice-name\""
             ]
           },
-          "path": {
-            "title": "Path",
-            "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "minItems": 1,
-                  "type": "string",
-                  "format": "uri"
-                }
-              }
-            ],
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
             "examples": [
-              "\"path\": \"file.csv\"",
-              "\"path\": \"http://example.com/file.csv\"",
-              "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-              "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
             ],
-            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
             "notes": [
-              "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-              "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-              "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
             ]
           },
           "title": {
@@ -817,7 +918,7 @@
           },
           {
             "required": [
-              "path"
+              "uri"
             ]
           },
           {
@@ -827,65 +928,6 @@
           }
         ],
         "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-      },
-      "path": {
-        "propertyOrder": 60,
-        "title": "Path",
-        "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-        "oneOf": [
-          {
-            "type": "string",
-            "format": "uri"
-          },
-          {
-            "type": "array",
-            "items": {
-              "minItems": 1,
-              "type": "string",
-              "format": "uri"
-            }
-          }
-        ],
-        "examples": [
-          "\"path\": \"file.csv\"",
-          "\"path\": \"http://example.com/file.csv\"",
-          "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-          "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-        ],
-        "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-        "notes": [
-          "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-          "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-          "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-        ]
-      },
-      "data": {
-        "propertyOrder": 70,
-        "title": "Data",
-        "description": "The inline data for this resource.",
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-        "examples": [
-          "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-          "\"data\": { \"a\": 1, \"b\": 2 }",
-          "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
-        ]
-      },
-      "schema": {
-        "propertyOrder": 40,
-        "title": "Schema",
-        "description": "A schema for this resource.",
-        "type": "object"
       },
       "format": {
         "propertyOrder": 80,
@@ -956,7 +998,6 @@
         "description": "Tabular Data Package",
         "type": "object",
         "required": [
-          "name",
           "resources",
           "profile"
         ],
@@ -1011,15 +1052,41 @@
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
-              },
-              "path": {
+                "title": "Name",
+                "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                 "type": "string",
-                "format": "uri"
+                "pattern": "^([a-z0-9._-])+$",
+                "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                "examples": [
+                  "\"name\": \"my-nice-name\""
+                ]
+              },
+              "uri": {
+                "title": "URI",
+                "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                "type": "string",
+                "format": "uri",
+                "examples": [
+                  "\"uri\": \"file.csv\"",
+                  "\"uri\": \"#/data/my-data\"",
+                  "\"uri\": \"http://example.com/file.csv\""
+                ],
+                "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                "notes": [
+                  "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                ]
+              },
+              "title": {
+                "title": "Title",
+                "description": "A human-readable title.",
+                "type": "string",
+                "examples": [
+                  "\"title\": \"My Package Title\""
+                ]
               }
             },
             "examples": [
-              "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+              "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
             ]
           },
           "resources": {
@@ -1037,7 +1104,7 @@
               "type": "object",
               "required": [
                 "name",
-                "path",
+                "data",
                 "schema",
                 "profile"
               ],
@@ -1056,7 +1123,7 @@
                   ]
                 },
                 "name": {
-                  "propertyOrder": 10,
+                  "propertyOrder": 20,
                   "title": "Name",
                   "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                   "type": "string",
@@ -1066,222 +1133,32 @@
                     "\"name\": \"my-nice-name\""
                   ]
                 },
-                "title": {
-                  "propertyOrder": 20,
-                  "title": "Title",
-                  "description": "A human-readable title.",
-                  "type": "string",
-                  "examples": [
-                    "\"title\": \"My Package Title\""
-                  ]
-                },
-                "description": {
+                "data": {
                   "propertyOrder": 30,
-                  "format": "textarea",
-                  "title": "Description",
-                  "description": "A text description. Markdown is encouraged.",
-                  "type": "string",
-                  "examples": [
-                    "# My Package description\nAll about my package."
-                  ]
-                },
-                "homepage": {
-                  "propertyOrder": 40,
-                  "title": "Home Page",
-                  "description": "The home on the web that is related to this data package.",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "path": {
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "examples": [
-                    "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
-                  ]
-                },
-                "sources": {
-                  "propertyOrder": 140,
-                  "options": {
-                    "hidden": true
-                  },
-                  "title": "Sources",
-                  "description": "The raw sources for this resource.",
+                  "title": "Data",
+                  "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
                   "type": "array",
                   "minItems": 1,
                   "items": {
-                    "title": "Source",
-                    "description": "A source file.",
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "path": {
-                        "type": "string",
-                        "format": "uri"
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "anyOf": [
-                      {
-                        "title": "name required",
-                        "required": [
-                          "name"
-                        ]
-                      },
-                      {
-                        "title": "path required",
-                        "required": [
-                          "path"
-                        ]
-                      },
-                      {
-                        "title": "email required",
-                        "required": [
-                          "email"
-                        ]
-                      }
+                    "title": "URI",
+                    "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                    "type": "string",
+                    "format": "uri",
+                    "examples": [
+                      "\"uri\": \"file.csv\"",
+                      "\"uri\": \"#/data/my-data\"",
+                      "\"uri\": \"http://example.com/file.csv\""
+                    ],
+                    "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                    "notes": [
+                      "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
                     ]
                   },
+                  "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
                   "examples": [
-                    "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
-                  ]
-                },
-                "licenses": {
-                  "description": "The license under which the resource is published.",
-                  "propertyOrder": 150,
-                  "options": {
-                    "hidden": true
-                  },
-                  "title": "License",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
-                      "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
-                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
-                      "examples": [
-                        "\"name\": \"my-nice-name\""
-                      ]
-                    },
-                    "path": {
-                      "title": "Path",
-                      "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                      "oneOf": [
-                        {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        {
-                          "type": "array",
-                          "items": {
-                            "minItems": 1,
-                            "type": "string",
-                            "format": "uri"
-                          }
-                        }
-                      ],
-                      "examples": [
-                        "\"path\": \"file.csv\"",
-                        "\"path\": \"http://example.com/file.csv\"",
-                        "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                        "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-                      ],
-                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-                      "notes": [
-                        "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                        "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                        "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-                      ]
-                    },
-                    "title": {
-                      "title": "Title",
-                      "description": "A human-readable title.",
-                      "type": "string",
-                      "examples": [
-                        "\"title\": \"My Package Title\""
-                      ]
-                    }
-                  },
-                  "oneOf": [
-                    {
-                      "required": [
-                        "name"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "path"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "title"
-                      ]
-                    }
-                  ],
-                  "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-                },
-                "path": {
-                  "propertyOrder": 60,
-                  "title": "Path",
-                  "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "uri"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "minItems": 1,
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  ],
-                  "examples": [
-                    "\"path\": \"file.csv\"",
-                    "\"path\": \"http://example.com/file.csv\"",
-                    "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                    "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-                  ],
-                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-                  "notes": [
-                    "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                    "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                    "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-                  ]
-                },
-                "data": {
-                  "propertyOrder": 70,
-                  "title": "Data",
-                  "description": "The inline data for this resource.",
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "array"
-                    },
-                    {
-                      "type": "object"
-                    }
-                  ],
-                  "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-                  "examples": [
-                    "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-                    "\"data\": { \"a\": 1, \"b\": 2 }",
-                    "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+                    "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+                    "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+                    "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
                   ]
                 },
                 "schema": {
@@ -1425,7 +1302,7 @@
                                 "enum": [
                                   "object"
                                 ],
-                                "description": "The field contains data which is valid JSON format objects.",
+                                "description": "The field contains data which can be parsed as a valid JSON object.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"object\""
@@ -1439,6 +1316,9 @@
                                 "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
                                 "examples": [
                                   "\"type\": \"geopoint\""
+                                ],
+                                "notes": [
+                                  "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
                                 ]
                               },
                               {
@@ -1456,7 +1336,7 @@
                                 "enum": [
                                   "array"
                                 ],
-                                "description": "The field contains data that is a valid JSON format arrays.",
+                                "description": "The field contains data that can be parsed as a JSON array.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"array\""
@@ -1476,19 +1356,13 @@
                                 "enum": [
                                   "any"
                                 ],
-                                "description": "Any `type` or `format` is accepted.",
+                                "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"any\""
                                 ]
                               }
                             ]
-                          },
-                          "format": {
-                            "enum": [
-                              ""
-                            ],
-                            "description": "The Table Schema format for this type."
                           },
                           "rdfType": {
                             "type": "string",
@@ -1520,7 +1394,7 @@
                                 "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)."
                               },
                               "minimum": {
-                                "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                                "description": "Specifies a minimum value for a field, and `MUST` conform to the type and format of the field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                                 "oneOf": [
                                   {
                                     "type": "string"
@@ -1531,7 +1405,7 @@
                                 ]
                               },
                               "maximum": {
-                                "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                                "description": "Specifies a maximum value for a field, and `MUST` conform to the type and format of the field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                                 "oneOf": [
                                   {
                                     "type": "string"
@@ -1642,6 +1516,202 @@
                       ]
                     }
                   }
+                },
+                "title": {
+                  "propertyOrder": 50,
+                  "title": "Title",
+                  "description": "A human-readable title.",
+                  "type": "string",
+                  "examples": [
+                    "\"title\": \"My Package Title\""
+                  ]
+                },
+                "description": {
+                  "propertyOrder": 60,
+                  "format": "textarea",
+                  "title": "Description",
+                  "description": "A text description. Markdown is encouraged.",
+                  "type": "string",
+                  "examples": [
+                    "# My Package description\nAll about my package."
+                  ]
+                },
+                "homepage": {
+                  "propertyOrder": 70,
+                  "title": "Home Page",
+                  "description": "The home on the web that is related to this data package.",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "type": "string",
+                      "pattern": "^([a-z0-9._-])+$",
+                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                      "examples": [
+                        "\"name\": \"my-nice-name\""
+                      ]
+                    },
+                    "uri": {
+                      "title": "URI",
+                      "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "\"uri\": \"file.csv\"",
+                        "\"uri\": \"#/data/my-data\"",
+                        "\"uri\": \"http://example.com/file.csv\""
+                      ],
+                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                      "notes": [
+                        "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                      ]
+                    },
+                    "title": {
+                      "title": "Title",
+                      "description": "A human-readable title.",
+                      "type": "string",
+                      "examples": [
+                        "\"title\": \"My Package Title\""
+                      ]
+                    }
+                  },
+                  "examples": [
+                    "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
+                  ]
+                },
+                "sources": {
+                  "propertyOrder": 140,
+                  "options": {
+                    "hidden": true
+                  },
+                  "title": "Sources",
+                  "description": "The raw sources for this resource.",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "title": "Source",
+                    "description": "A source file.",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Name",
+                        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                        "type": "string",
+                        "pattern": "^([a-z0-9._-])+$",
+                        "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                        "examples": [
+                          "\"name\": \"my-nice-name\""
+                        ]
+                      },
+                      "uri": {
+                        "title": "URI",
+                        "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                        "type": "string",
+                        "format": "uri",
+                        "examples": [
+                          "\"uri\": \"file.csv\"",
+                          "\"uri\": \"#/data/my-data\"",
+                          "\"uri\": \"http://example.com/file.csv\""
+                        ],
+                        "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                        "notes": [
+                          "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                        ]
+                      },
+                      "email": {
+                        "title": "Email",
+                        "description": "An email address.",
+                        "type": "string",
+                        "format": "email"
+                      }
+                    },
+                    "anyOf": [
+                      {
+                        "title": "name required",
+                        "required": [
+                          "name"
+                        ]
+                      },
+                      {
+                        "title": "uri required",
+                        "required": [
+                          "uri"
+                        ]
+                      },
+                      {
+                        "title": "email required",
+                        "required": [
+                          "email"
+                        ]
+                      }
+                    ]
+                  },
+                  "examples": [
+                    "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+                  ]
+                },
+                "licenses": {
+                  "description": "The license under which the resource is published.",
+                  "propertyOrder": 150,
+                  "options": {
+                    "hidden": true
+                  },
+                  "title": "License",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "type": "string",
+                      "pattern": "^([a-z0-9._-])+$",
+                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                      "examples": [
+                        "\"name\": \"my-nice-name\""
+                      ]
+                    },
+                    "uri": {
+                      "title": "URI",
+                      "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "\"uri\": \"file.csv\"",
+                        "\"uri\": \"#/data/my-data\"",
+                        "\"uri\": \"http://example.com/file.csv\""
+                      ],
+                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                      "notes": [
+                        "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                      ]
+                    },
+                    "title": {
+                      "title": "Title",
+                      "description": "A human-readable title.",
+                      "type": "string",
+                      "examples": [
+                        "\"title\": \"My Package Title\""
+                      ]
+                    }
+                  },
+                  "oneOf": [
+                    {
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "uri"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "title"
+                      ]
+                    }
+                  ],
+                  "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
                 },
                 "dialect": {
                   "propertyOrder": 50,
@@ -1803,7 +1873,7 @@
               }
             },
             "examples": [
-              "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+              "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
             ]
           },
           "sources": {
@@ -1821,13 +1891,33 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string"
-                },
-                "path": {
+                  "title": "Name",
+                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                   "type": "string",
-                  "format": "uri"
+                  "pattern": "^([a-z0-9._-])+$",
+                  "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                  "examples": [
+                    "\"name\": \"my-nice-name\""
+                  ]
+                },
+                "uri": {
+                  "title": "URI",
+                  "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "\"uri\": \"file.csv\"",
+                    "\"uri\": \"#/data/my-data\"",
+                    "\"uri\": \"http://example.com/file.csv\""
+                  ],
+                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                  "notes": [
+                    "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                  ]
                 },
                 "email": {
+                  "title": "Email",
+                  "description": "An email address.",
                   "type": "string",
                   "format": "email"
                 }
@@ -1840,9 +1930,9 @@
                   ]
                 },
                 {
-                  "title": "path required",
+                  "title": "uri required",
                   "required": [
-                    "path"
+                    "uri"
                   ]
                 },
                 {
@@ -1854,7 +1944,7 @@
               ]
             },
             "examples": [
-              "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+              "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
             ]
           },
           "licenses": {
@@ -1876,34 +1966,19 @@
                   "\"name\": \"my-nice-name\""
                 ]
               },
-              "path": {
-                "title": "Path",
-                "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "uri"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "minItems": 1,
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  }
-                ],
+              "uri": {
+                "title": "URI",
+                "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                "type": "string",
+                "format": "uri",
                 "examples": [
-                  "\"path\": \"file.csv\"",
-                  "\"path\": \"http://example.com/file.csv\"",
-                  "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                  "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+                  "\"uri\": \"file.csv\"",
+                  "\"uri\": \"#/data/my-data\"",
+                  "\"uri\": \"http://example.com/file.csv\""
                 ],
-                "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+                "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
                 "notes": [
-                  "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                  "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                  "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+                  "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
                 ]
               },
               "title": {
@@ -1923,7 +1998,7 @@
               },
               {
                 "required": [
-                  "path"
+                  "uri"
                 ]
               },
               {
@@ -1954,7 +2029,7 @@
               "type": "object",
               "required": [
                 "name",
-                "path",
+                "data",
                 "schema",
                 "profile"
               ],
@@ -1973,7 +2048,7 @@
                   ]
                 },
                 "name": {
-                  "propertyOrder": 10,
+                  "propertyOrder": 20,
                   "title": "Name",
                   "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
                   "type": "string",
@@ -1983,222 +2058,32 @@
                     "\"name\": \"my-nice-name\""
                   ]
                 },
-                "title": {
-                  "propertyOrder": 20,
-                  "title": "Title",
-                  "description": "A human-readable title.",
-                  "type": "string",
-                  "examples": [
-                    "\"title\": \"My Package Title\""
-                  ]
-                },
-                "description": {
+                "data": {
                   "propertyOrder": 30,
-                  "format": "textarea",
-                  "title": "Description",
-                  "description": "A text description. Markdown is encouraged.",
-                  "type": "string",
-                  "examples": [
-                    "# My Package description\nAll about my package."
-                  ]
-                },
-                "homepage": {
-                  "propertyOrder": 40,
-                  "title": "Home Page",
-                  "description": "The home on the web that is related to this data package.",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "path": {
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "examples": [
-                    "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
-                  ]
-                },
-                "sources": {
-                  "propertyOrder": 140,
-                  "options": {
-                    "hidden": true
-                  },
-                  "title": "Sources",
-                  "description": "The raw sources for this resource.",
+                  "title": "Data",
+                  "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
                   "type": "array",
                   "minItems": 1,
                   "items": {
-                    "title": "Source",
-                    "description": "A source file.",
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "path": {
-                        "type": "string",
-                        "format": "uri"
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "anyOf": [
-                      {
-                        "title": "name required",
-                        "required": [
-                          "name"
-                        ]
-                      },
-                      {
-                        "title": "path required",
-                        "required": [
-                          "path"
-                        ]
-                      },
-                      {
-                        "title": "email required",
-                        "required": [
-                          "email"
-                        ]
-                      }
+                    "title": "URI",
+                    "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                    "type": "string",
+                    "format": "uri",
+                    "examples": [
+                      "\"uri\": \"file.csv\"",
+                      "\"uri\": \"#/data/my-data\"",
+                      "\"uri\": \"http://example.com/file.csv\""
+                    ],
+                    "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                    "notes": [
+                      "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
                     ]
                   },
+                  "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
                   "examples": [
-                    "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
-                  ]
-                },
-                "licenses": {
-                  "description": "The license under which the resource is published.",
-                  "propertyOrder": 150,
-                  "options": {
-                    "hidden": true
-                  },
-                  "title": "License",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "title": "Name",
-                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
-                      "type": "string",
-                      "pattern": "^([a-z0-9._-])+$",
-                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
-                      "examples": [
-                        "\"name\": \"my-nice-name\""
-                      ]
-                    },
-                    "path": {
-                      "title": "Path",
-                      "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                      "oneOf": [
-                        {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        {
-                          "type": "array",
-                          "items": {
-                            "minItems": 1,
-                            "type": "string",
-                            "format": "uri"
-                          }
-                        }
-                      ],
-                      "examples": [
-                        "\"path\": \"file.csv\"",
-                        "\"path\": \"http://example.com/file.csv\"",
-                        "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                        "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-                      ],
-                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-                      "notes": [
-                        "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                        "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                        "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-                      ]
-                    },
-                    "title": {
-                      "title": "Title",
-                      "description": "A human-readable title.",
-                      "type": "string",
-                      "examples": [
-                        "\"title\": \"My Package Title\""
-                      ]
-                    }
-                  },
-                  "oneOf": [
-                    {
-                      "required": [
-                        "name"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "path"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "title"
-                      ]
-                    }
-                  ],
-                  "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-                },
-                "path": {
-                  "propertyOrder": 60,
-                  "title": "Path",
-                  "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "uri"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "minItems": 1,
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  ],
-                  "examples": [
-                    "\"path\": \"file.csv\"",
-                    "\"path\": \"http://example.com/file.csv\"",
-                    "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                    "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-                  ],
-                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-                  "notes": [
-                    "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                    "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                    "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-                  ]
-                },
-                "data": {
-                  "propertyOrder": 70,
-                  "title": "Data",
-                  "description": "The inline data for this resource.",
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "array"
-                    },
-                    {
-                      "type": "object"
-                    }
-                  ],
-                  "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-                  "examples": [
-                    "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-                    "\"data\": { \"a\": 1, \"b\": 2 }",
-                    "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+                    "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+                    "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+                    "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
                   ]
                 },
                 "schema": {
@@ -2342,7 +2227,7 @@
                                 "enum": [
                                   "object"
                                 ],
-                                "description": "The field contains data which is valid JSON format objects.",
+                                "description": "The field contains data which can be parsed as a valid JSON object.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"object\""
@@ -2356,6 +2241,9 @@
                                 "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
                                 "examples": [
                                   "\"type\": \"geopoint\""
+                                ],
+                                "notes": [
+                                  "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
                                 ]
                               },
                               {
@@ -2373,7 +2261,7 @@
                                 "enum": [
                                   "array"
                                 ],
-                                "description": "The field contains data that is a valid JSON format arrays.",
+                                "description": "The field contains data that can be parsed as a JSON array.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"array\""
@@ -2393,19 +2281,13 @@
                                 "enum": [
                                   "any"
                                 ],
-                                "description": "Any `type` or `format` is accepted.",
+                                "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
                                 "context": "",
                                 "examples": [
                                   "\"type\": \"any\""
                                 ]
                               }
                             ]
-                          },
-                          "format": {
-                            "enum": [
-                              ""
-                            ],
-                            "description": "The Table Schema format for this type."
                           },
                           "rdfType": {
                             "type": "string",
@@ -2437,7 +2319,7 @@
                                 "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)."
                               },
                               "minimum": {
-                                "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                                "description": "Specifies a minimum value for a field, and `MUST` conform to the type and format of the field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                                 "oneOf": [
                                   {
                                     "type": "string"
@@ -2448,7 +2330,7 @@
                                 ]
                               },
                               "maximum": {
-                                "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                                "description": "Specifies a maximum value for a field, and `MUST` conform to the type and format of the field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                                 "oneOf": [
                                   {
                                     "type": "string"
@@ -2559,6 +2441,202 @@
                       ]
                     }
                   }
+                },
+                "title": {
+                  "propertyOrder": 50,
+                  "title": "Title",
+                  "description": "A human-readable title.",
+                  "type": "string",
+                  "examples": [
+                    "\"title\": \"My Package Title\""
+                  ]
+                },
+                "description": {
+                  "propertyOrder": 60,
+                  "format": "textarea",
+                  "title": "Description",
+                  "description": "A text description. Markdown is encouraged.",
+                  "type": "string",
+                  "examples": [
+                    "# My Package description\nAll about my package."
+                  ]
+                },
+                "homepage": {
+                  "propertyOrder": 70,
+                  "title": "Home Page",
+                  "description": "The home on the web that is related to this data package.",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "type": "string",
+                      "pattern": "^([a-z0-9._-])+$",
+                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                      "examples": [
+                        "\"name\": \"my-nice-name\""
+                      ]
+                    },
+                    "uri": {
+                      "title": "URI",
+                      "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "\"uri\": \"file.csv\"",
+                        "\"uri\": \"#/data/my-data\"",
+                        "\"uri\": \"http://example.com/file.csv\""
+                      ],
+                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                      "notes": [
+                        "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                      ]
+                    },
+                    "title": {
+                      "title": "Title",
+                      "description": "A human-readable title.",
+                      "type": "string",
+                      "examples": [
+                        "\"title\": \"My Package Title\""
+                      ]
+                    }
+                  },
+                  "examples": [
+                    "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
+                  ]
+                },
+                "sources": {
+                  "propertyOrder": 140,
+                  "options": {
+                    "hidden": true
+                  },
+                  "title": "Sources",
+                  "description": "The raw sources for this resource.",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "title": "Source",
+                    "description": "A source file.",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "title": "Name",
+                        "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                        "type": "string",
+                        "pattern": "^([a-z0-9._-])+$",
+                        "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                        "examples": [
+                          "\"name\": \"my-nice-name\""
+                        ]
+                      },
+                      "uri": {
+                        "title": "URI",
+                        "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                        "type": "string",
+                        "format": "uri",
+                        "examples": [
+                          "\"uri\": \"file.csv\"",
+                          "\"uri\": \"#/data/my-data\"",
+                          "\"uri\": \"http://example.com/file.csv\""
+                        ],
+                        "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                        "notes": [
+                          "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                        ]
+                      },
+                      "email": {
+                        "title": "Email",
+                        "description": "An email address.",
+                        "type": "string",
+                        "format": "email"
+                      }
+                    },
+                    "anyOf": [
+                      {
+                        "title": "name required",
+                        "required": [
+                          "name"
+                        ]
+                      },
+                      {
+                        "title": "uri required",
+                        "required": [
+                          "uri"
+                        ]
+                      },
+                      {
+                        "title": "email required",
+                        "required": [
+                          "email"
+                        ]
+                      }
+                    ]
+                  },
+                  "examples": [
+                    "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+                  ]
+                },
+                "licenses": {
+                  "description": "The license under which the resource is published.",
+                  "propertyOrder": 150,
+                  "options": {
+                    "hidden": true
+                  },
+                  "title": "License",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                      "type": "string",
+                      "pattern": "^([a-z0-9._-])+$",
+                      "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                      "examples": [
+                        "\"name\": \"my-nice-name\""
+                      ]
+                    },
+                    "uri": {
+                      "title": "URI",
+                      "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "\"uri\": \"file.csv\"",
+                        "\"uri\": \"#/data/my-data\"",
+                        "\"uri\": \"http://example.com/file.csv\""
+                      ],
+                      "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                      "notes": [
+                        "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                      ]
+                    },
+                    "title": {
+                      "title": "Title",
+                      "description": "A human-readable title.",
+                      "type": "string",
+                      "examples": [
+                        "\"title\": \"My Package Title\""
+                      ]
+                    }
+                  },
+                  "oneOf": [
+                    {
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "uri"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "title"
+                      ]
+                    }
+                  ],
+                  "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
                 },
                 "dialect": {
                   "propertyOrder": 50,
@@ -2720,7 +2798,7 @@
               }
             },
             "examples": [
-              "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+              "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
             ]
           },
           "model": {
@@ -3070,7 +3148,7 @@
                   "enum": [
                     "object"
                   ],
-                  "description": "The field contains data which is valid JSON format objects.",
+                  "description": "The field contains data which can be parsed as a valid JSON object.",
                   "context": "",
                   "examples": [
                     "\"type\": \"object\""
@@ -3084,6 +3162,9 @@
                   "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
                   "examples": [
                     "\"type\": \"geopoint\""
+                  ],
+                  "notes": [
+                    "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
                   ]
                 },
                 {
@@ -3101,7 +3182,7 @@
                   "enum": [
                     "array"
                   ],
-                  "description": "The field contains data that is a valid JSON format arrays.",
+                  "description": "The field contains data that can be parsed as a JSON array.",
                   "context": "",
                   "examples": [
                     "\"type\": \"array\""
@@ -3121,19 +3202,13 @@
                   "enum": [
                     "any"
                   ],
-                  "description": "Any `type` or `format` is accepted.",
+                  "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
                   "context": "",
                   "examples": [
                     "\"type\": \"any\""
                   ]
                 }
               ]
-            },
-            "format": {
-              "enum": [
-                ""
-              ],
-              "description": "The Table Schema format for this type."
             },
             "rdfType": {
               "type": "string",
@@ -3165,7 +3240,7 @@
                   "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)."
                 },
                 "minimum": {
-                  "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                  "description": "Specifies a minimum value for a field, and `MUST` conform to the type and format of the field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -3176,7 +3251,7 @@
                   ]
                 },
                 "maximum": {
-                  "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                  "description": "Specifies a maximum value for a field, and `MUST` conform to the type and format of the field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -3294,7 +3369,6 @@
     "description": "Tabular Data Package is a simple specification for data access and delivery of tabular data.",
     "type": "object",
     "required": [
-      "name",
       "resources",
       "profile"
     ],
@@ -3349,15 +3423,41 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
-          },
-          "path": {
+            "title": "Name",
+            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
             "type": "string",
-            "format": "uri"
+            "pattern": "^([a-z0-9._-])+$",
+            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+            "examples": [
+              "\"name\": \"my-nice-name\""
+            ]
+          },
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
+            ],
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+            "notes": [
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "description": "A human-readable title.",
+            "type": "string",
+            "examples": [
+              "\"title\": \"My Package Title\""
+            ]
           }
         },
         "examples": [
-          "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
+          "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
         ]
       },
       "resources": {
@@ -3375,7 +3475,7 @@
           "type": "object",
           "required": [
             "name",
-            "path",
+            "data",
             "schema",
             "profile"
           ],
@@ -3394,7 +3494,7 @@
               ]
             },
             "name": {
-              "propertyOrder": 10,
+              "propertyOrder": 20,
               "title": "Name",
               "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
               "type": "string",
@@ -3404,222 +3504,32 @@
                 "\"name\": \"my-nice-name\""
               ]
             },
-            "title": {
-              "propertyOrder": 20,
-              "title": "Title",
-              "description": "A human-readable title.",
-              "type": "string",
-              "examples": [
-                "\"title\": \"My Package Title\""
-              ]
-            },
-            "description": {
+            "data": {
               "propertyOrder": 30,
-              "format": "textarea",
-              "title": "Description",
-              "description": "A text description. Markdown is encouraged.",
-              "type": "string",
-              "examples": [
-                "# My Package description\nAll about my package."
-              ]
-            },
-            "homepage": {
-              "propertyOrder": 40,
-              "title": "Home Page",
-              "description": "The home on the web that is related to this data package.",
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "path": {
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "examples": [
-                "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
-              ]
-            },
-            "sources": {
-              "propertyOrder": 140,
-              "options": {
-                "hidden": true
-              },
-              "title": "Sources",
-              "description": "The raw sources for this resource.",
+              "title": "Data",
+              "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
               "type": "array",
               "minItems": 1,
               "items": {
-                "title": "Source",
-                "description": "A source file.",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "path": {
-                    "type": "string",
-                    "format": "uri"
-                  },
-                  "email": {
-                    "type": "string",
-                    "format": "email"
-                  }
-                },
-                "anyOf": [
-                  {
-                    "title": "name required",
-                    "required": [
-                      "name"
-                    ]
-                  },
-                  {
-                    "title": "path required",
-                    "required": [
-                      "path"
-                    ]
-                  },
-                  {
-                    "title": "email required",
-                    "required": [
-                      "email"
-                    ]
-                  }
+                "title": "URI",
+                "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                "type": "string",
+                "format": "uri",
+                "examples": [
+                  "\"uri\": \"file.csv\"",
+                  "\"uri\": \"#/data/my-data\"",
+                  "\"uri\": \"http://example.com/file.csv\""
+                ],
+                "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                "notes": [
+                  "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
                 ]
               },
+              "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
               "examples": [
-                "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
-              ]
-            },
-            "licenses": {
-              "description": "The license under which the resource is published.",
-              "propertyOrder": 150,
-              "options": {
-                "hidden": true
-              },
-              "title": "License",
-              "type": "object",
-              "properties": {
-                "name": {
-                  "title": "Name",
-                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
-                  "type": "string",
-                  "pattern": "^([a-z0-9._-])+$",
-                  "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
-                  "examples": [
-                    "\"name\": \"my-nice-name\""
-                  ]
-                },
-                "path": {
-                  "title": "Path",
-                  "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-                  "oneOf": [
-                    {
-                      "type": "string",
-                      "format": "uri"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "minItems": 1,
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    }
-                  ],
-                  "examples": [
-                    "\"path\": \"file.csv\"",
-                    "\"path\": \"http://example.com/file.csv\"",
-                    "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                    "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-                  ],
-                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-                  "notes": [
-                    "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                    "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                    "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-                  ]
-                },
-                "title": {
-                  "title": "Title",
-                  "description": "A human-readable title.",
-                  "type": "string",
-                  "examples": [
-                    "\"title\": \"My Package Title\""
-                  ]
-                }
-              },
-              "oneOf": [
-                {
-                  "required": [
-                    "name"
-                  ]
-                },
-                {
-                  "required": [
-                    "path"
-                  ]
-                },
-                {
-                  "required": [
-                    "title"
-                  ]
-                }
-              ],
-              "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-            },
-            "path": {
-              "propertyOrder": 60,
-              "title": "Path",
-              "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "uri"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "minItems": 1,
-                    "type": "string",
-                    "format": "uri"
-                  }
-                }
-              ],
-              "examples": [
-                "\"path\": \"file.csv\"",
-                "\"path\": \"http://example.com/file.csv\"",
-                "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-                "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-              ],
-              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-              "notes": [
-                "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-                "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-                "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-              ]
-            },
-            "data": {
-              "propertyOrder": 70,
-              "title": "Data",
-              "description": "The inline data for this resource.",
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "array"
-                },
-                {
-                  "type": "object"
-                }
-              ],
-              "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-              "examples": [
-                "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-                "\"data\": { \"a\": 1, \"b\": 2 }",
-                "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+                "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+                "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+                "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
               ]
             },
             "schema": {
@@ -3763,7 +3673,7 @@
                             "enum": [
                               "object"
                             ],
-                            "description": "The field contains data which is valid JSON format objects.",
+                            "description": "The field contains data which can be parsed as a valid JSON object.",
                             "context": "",
                             "examples": [
                               "\"type\": \"object\""
@@ -3777,6 +3687,9 @@
                             "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
                             "examples": [
                               "\"type\": \"geopoint\""
+                            ],
+                            "notes": [
+                              "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
                             ]
                           },
                           {
@@ -3794,7 +3707,7 @@
                             "enum": [
                               "array"
                             ],
-                            "description": "The field contains data that is a valid JSON format arrays.",
+                            "description": "The field contains data that can be parsed as a JSON array.",
                             "context": "",
                             "examples": [
                               "\"type\": \"array\""
@@ -3814,19 +3727,13 @@
                             "enum": [
                               "any"
                             ],
-                            "description": "Any `type` or `format` is accepted.",
+                            "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
                             "context": "",
                             "examples": [
                               "\"type\": \"any\""
                             ]
                           }
                         ]
-                      },
-                      "format": {
-                        "enum": [
-                          ""
-                        ],
-                        "description": "The Table Schema format for this type."
                       },
                       "rdfType": {
                         "type": "string",
@@ -3858,7 +3765,7 @@
                             "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)."
                           },
                           "minimum": {
-                            "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                            "description": "Specifies a minimum value for a field, and `MUST` conform to the type and format of the field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                             "oneOf": [
                               {
                                 "type": "string"
@@ -3869,7 +3776,7 @@
                             ]
                           },
                           "maximum": {
-                            "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                            "description": "Specifies a maximum value for a field, and `MUST` conform to the type and format of the field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                             "oneOf": [
                               {
                                 "type": "string"
@@ -3980,6 +3887,202 @@
                   ]
                 }
               }
+            },
+            "title": {
+              "propertyOrder": 50,
+              "title": "Title",
+              "description": "A human-readable title.",
+              "type": "string",
+              "examples": [
+                "\"title\": \"My Package Title\""
+              ]
+            },
+            "description": {
+              "propertyOrder": 60,
+              "format": "textarea",
+              "title": "Description",
+              "description": "A text description. Markdown is encouraged.",
+              "type": "string",
+              "examples": [
+                "# My Package description\nAll about my package."
+              ]
+            },
+            "homepage": {
+              "propertyOrder": 70,
+              "title": "Home Page",
+              "description": "The home on the web that is related to this data package.",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "type": "string",
+                  "pattern": "^([a-z0-9._-])+$",
+                  "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                  "examples": [
+                    "\"name\": \"my-nice-name\""
+                  ]
+                },
+                "uri": {
+                  "title": "URI",
+                  "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "\"uri\": \"file.csv\"",
+                    "\"uri\": \"#/data/my-data\"",
+                    "\"uri\": \"http://example.com/file.csv\""
+                  ],
+                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                  "notes": [
+                    "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                  ]
+                },
+                "title": {
+                  "title": "Title",
+                  "description": "A human-readable title.",
+                  "type": "string",
+                  "examples": [
+                    "\"title\": \"My Package Title\""
+                  ]
+                }
+              },
+              "examples": [
+                "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
+              ]
+            },
+            "sources": {
+              "propertyOrder": 140,
+              "options": {
+                "hidden": true
+              },
+              "title": "Sources",
+              "description": "The raw sources for this resource.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "title": "Source",
+                "description": "A source file.",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                    "type": "string",
+                    "pattern": "^([a-z0-9._-])+$",
+                    "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                    "examples": [
+                      "\"name\": \"my-nice-name\""
+                    ]
+                  },
+                  "uri": {
+                    "title": "URI",
+                    "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                    "type": "string",
+                    "format": "uri",
+                    "examples": [
+                      "\"uri\": \"file.csv\"",
+                      "\"uri\": \"#/data/my-data\"",
+                      "\"uri\": \"http://example.com/file.csv\""
+                    ],
+                    "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                    "notes": [
+                      "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                    ]
+                  },
+                  "email": {
+                    "title": "Email",
+                    "description": "An email address.",
+                    "type": "string",
+                    "format": "email"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "title": "name required",
+                    "required": [
+                      "name"
+                    ]
+                  },
+                  {
+                    "title": "uri required",
+                    "required": [
+                      "uri"
+                    ]
+                  },
+                  {
+                    "title": "email required",
+                    "required": [
+                      "email"
+                    ]
+                  }
+                ]
+              },
+              "examples": [
+                "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+              ]
+            },
+            "licenses": {
+              "description": "The license under which the resource is published.",
+              "propertyOrder": 150,
+              "options": {
+                "hidden": true
+              },
+              "title": "License",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+                  "type": "string",
+                  "pattern": "^([a-z0-9._-])+$",
+                  "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+                  "examples": [
+                    "\"name\": \"my-nice-name\""
+                  ]
+                },
+                "uri": {
+                  "title": "URI",
+                  "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "\"uri\": \"file.csv\"",
+                    "\"uri\": \"#/data/my-data\"",
+                    "\"uri\": \"http://example.com/file.csv\""
+                  ],
+                  "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+                  "notes": [
+                    "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+                  ]
+                },
+                "title": {
+                  "title": "Title",
+                  "description": "A human-readable title.",
+                  "type": "string",
+                  "examples": [
+                    "\"title\": \"My Package Title\""
+                  ]
+                }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "name"
+                  ]
+                },
+                {
+                  "required": [
+                    "uri"
+                  ]
+                },
+                {
+                  "required": [
+                    "title"
+                  ]
+                }
+              ],
+              "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
             },
             "dialect": {
               "propertyOrder": 50,
@@ -4141,7 +4244,7 @@
           }
         },
         "examples": [
-          "\"resources\": [ { \"name\": \"my-data\", \"path\": \"data.csv\", \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
+          "\"resources\": [ { \"name\": \"my-data\", \"data\": [ \"data.csv\" ], \"schema\": \"tableschema.json\" \"mediatype\": \"text/csv\" } ]"
         ]
       },
       "sources": {
@@ -4159,13 +4262,33 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
-            },
-            "path": {
+              "title": "Name",
+              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
               "type": "string",
-              "format": "uri"
+              "pattern": "^([a-z0-9._-])+$",
+              "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+              "examples": [
+                "\"name\": \"my-nice-name\""
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+              "type": "string",
+              "format": "uri",
+              "examples": [
+                "\"uri\": \"file.csv\"",
+                "\"uri\": \"#/data/my-data\"",
+                "\"uri\": \"http://example.com/file.csv\""
+              ],
+              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+              "notes": [
+                "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+              ]
             },
             "email": {
+              "title": "Email",
+              "description": "An email address.",
               "type": "string",
               "format": "email"
             }
@@ -4178,9 +4301,9 @@
               ]
             },
             {
-              "title": "path required",
+              "title": "uri required",
               "required": [
-                "path"
+                "uri"
               ]
             },
             {
@@ -4192,7 +4315,7 @@
           ]
         },
         "examples": [
-          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
         ]
       },
       "licenses": {
@@ -4214,34 +4337,19 @@
               "\"name\": \"my-nice-name\""
             ]
           },
-          "path": {
-            "title": "Path",
-            "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "minItems": 1,
-                  "type": "string",
-                  "format": "uri"
-                }
-              }
-            ],
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
             "examples": [
-              "\"path\": \"file.csv\"",
-              "\"path\": \"http://example.com/file.csv\"",
-              "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-              "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
             ],
-            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
             "notes": [
-              "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-              "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-              "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
             ]
           },
           "title": {
@@ -4261,7 +4369,7 @@
           },
           {
             "required": [
-              "path"
+              "uri"
             ]
           },
           {
@@ -4281,7 +4389,7 @@
     "type": "object",
     "required": [
       "name",
-      "path",
+      "data",
       "schema",
       "profile"
     ],
@@ -4300,7 +4408,7 @@
         ]
       },
       "name": {
-        "propertyOrder": 10,
+        "propertyOrder": 20,
         "title": "Name",
         "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
         "type": "string",
@@ -4310,222 +4418,32 @@
           "\"name\": \"my-nice-name\""
         ]
       },
-      "title": {
-        "propertyOrder": 20,
-        "title": "Title",
-        "description": "A human-readable title.",
-        "type": "string",
-        "examples": [
-          "\"title\": \"My Package Title\""
-        ]
-      },
-      "description": {
+      "data": {
         "propertyOrder": 30,
-        "format": "textarea",
-        "title": "Description",
-        "description": "A text description. Markdown is encouraged.",
-        "type": "string",
-        "examples": [
-          "# My Package description\nAll about my package."
-        ]
-      },
-      "homepage": {
-        "propertyOrder": 40,
-        "title": "Home Page",
-        "description": "The home on the web that is related to this data package.",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string",
-            "format": "uri"
-          }
-        },
-        "examples": [
-          "\"homepage\": { \"name\": \"My Web Page\", \"path\": \"http://example.com/\" }"
-        ]
-      },
-      "sources": {
-        "propertyOrder": 140,
-        "options": {
-          "hidden": true
-        },
-        "title": "Sources",
-        "description": "The raw sources for this resource.",
+        "title": "Data",
+        "description": "A reference to the data for this resource. `data` `MUST` be an array of valid URIs.",
         "type": "array",
         "minItems": 1,
         "items": {
-          "title": "Source",
-          "description": "A source file.",
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "path": {
-              "type": "string",
-              "format": "uri"
-            },
-            "email": {
-              "type": "string",
-              "format": "email"
-            }
-          },
-          "anyOf": [
-            {
-              "title": "name required",
-              "required": [
-                "name"
-              ]
-            },
-            {
-              "title": "path required",
-              "required": [
-                "path"
-              ]
-            },
-            {
-              "title": "email required",
-              "required": [
-                "email"
-              ]
-            }
+          "title": "URI",
+          "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "\"uri\": \"file.csv\"",
+            "\"uri\": \"#/data/my-data\"",
+            "\"uri\": \"http://example.com/file.csv\""
+          ],
+          "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+          "notes": [
+            "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
           ]
         },
+        "context": "The dereferenced value of each referenced data source in the `data` `array` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `data` `MUST` be an array.",
         "examples": [
-          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
-        ]
-      },
-      "licenses": {
-        "description": "The license under which the resource is published.",
-        "propertyOrder": 150,
-        "options": {
-          "hidden": true
-        },
-        "title": "License",
-        "type": "object",
-        "properties": {
-          "name": {
-            "title": "Name",
-            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
-            "type": "string",
-            "pattern": "^([a-z0-9._-])+$",
-            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
-            "examples": [
-              "\"name\": \"my-nice-name\""
-            ]
-          },
-          "path": {
-            "title": "Path",
-            "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "minItems": 1,
-                  "type": "string",
-                  "format": "uri"
-                }
-              }
-            ],
-            "examples": [
-              "\"path\": \"file.csv\"",
-              "\"path\": \"http://example.com/file.csv\"",
-              "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-              "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-            ],
-            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-            "notes": [
-              "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-              "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-              "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-            ]
-          },
-          "title": {
-            "title": "Title",
-            "description": "A human-readable title.",
-            "type": "string",
-            "examples": [
-              "\"title\": \"My Package Title\""
-            ]
-          }
-        },
-        "oneOf": [
-          {
-            "required": [
-              "name"
-            ]
-          },
-          {
-            "required": [
-              "path"
-            ]
-          },
-          {
-            "required": [
-              "title"
-            ]
-          }
-        ],
-        "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
-      },
-      "path": {
-        "propertyOrder": 60,
-        "title": "Path",
-        "description": "A URI to this data source, being either an HTTP address or a file path. The value may also be an array of such URIs.",
-        "oneOf": [
-          {
-            "type": "string",
-            "format": "uri"
-          },
-          {
-            "type": "array",
-            "items": {
-              "minItems": 1,
-              "type": "string",
-              "format": "uri"
-            }
-          }
-        ],
-        "examples": [
-          "\"path\": \"file.csv\"",
-          "\"path\": \"http://example.com/file.csv\"",
-          "\"path\": [ \"file1.csv\", \"file2.csv\" ]",
-          "\"path\": [ \"http://example.com/file1.csv\", \"http://example.com/file2.csv\" ]"
-        ],
-        "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. When `path` is a local file path, it `MUST` be a sub-path relative to the location of the descriptor.",
-        "notes": [
-          "Prior to the v1 specifications, there was a `url` property distinct from `path`. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.",
-          "When `path` is an array, all data sources in the array `MUST` be of the same type (i.e.: all http URLs, or all file paths).",
-          "When `path` is an all data sources in the array `MUST` be similar in terms of structure and format. Implementations `SHOULD` be able to simply concatenate the files together and treat the result as one large file."
-        ]
-      },
-      "data": {
-        "propertyOrder": 70,
-        "title": "Data",
-        "description": "The inline data for this resource.",
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "context": "The value of the data attribute `MUST` be commensurate with a native, dereferenced representation of the data the resource describes, as if it was the parsed and loaded form of a data source described in `path`. For example, in a *Tabular* Data Resource, this means that the value of `data` `MUST` be an array.",
-        "examples": [
-          "\"data\": \"iVBORw0KGgoAAAANSUhEUgAAB4AAAARgCAMAAAA/0LvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ{...}\"",
-          "\"data\": { \"a\": 1, \"b\": 2 }",
-          "\"data\": {\"fields\": {\"title\": \"My Post\", \"content\": \"My post content.\", \"type\": \"post\"}"
+          "\"data\": [ \"file.csv\", \"file2.csv\" ]",
+          "\"data\": [ \"http://example.com/file.csv\", \"http://example.com/file2.csv\" ]",
+          "\"data\": [ \"#/data/my-data\", \"#/data/my-data2\" ]"
         ]
       },
       "schema": {
@@ -4669,7 +4587,7 @@
                       "enum": [
                         "object"
                       ],
-                      "description": "The field contains data which is valid JSON format objects.",
+                      "description": "The field contains data which can be parsed as a valid JSON object.",
                       "context": "",
                       "examples": [
                         "\"type\": \"object\""
@@ -4683,6 +4601,9 @@
                       "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
                       "examples": [
                         "\"type\": \"geopoint\""
+                      ],
+                      "notes": [
+                        "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
                       ]
                     },
                     {
@@ -4700,7 +4621,7 @@
                       "enum": [
                         "array"
                       ],
-                      "description": "The field contains data that is a valid JSON format arrays.",
+                      "description": "The field contains data that can be parsed as a JSON array.",
                       "context": "",
                       "examples": [
                         "\"type\": \"array\""
@@ -4720,19 +4641,13 @@
                       "enum": [
                         "any"
                       ],
-                      "description": "Any `type` or `format` is accepted.",
+                      "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
                       "context": "",
                       "examples": [
                         "\"type\": \"any\""
                       ]
                     }
                   ]
-                },
-                "format": {
-                  "enum": [
-                    ""
-                  ],
-                  "description": "The Table Schema format for this type."
                 },
                 "rdfType": {
                   "type": "string",
@@ -4764,7 +4679,7 @@
                       "description": "A regular expression that can be used to test values for fieldss of type `string`. If the regular expression matches then the value is valid. Values will be treated as a string of characters. It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also [this reference](http://www.regular-expressions.info/xml.html)."
                     },
                     "minimum": {
-                      "description": "Specifies a minimum value for a field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                      "description": "Specifies a minimum value for a field, and `MUST` conform to the type and format of the field. This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a minimum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                       "oneOf": [
                         {
                           "type": "string"
@@ -4775,7 +4690,7 @@
                       ]
                     },
                     "maximum": {
-                      "description": "Specifies a maximum value for a field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
+                      "description": "Specifies a maximum value for a field, and `MUST` conform to the type and format of the field. This is different to maxLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the type of the field. E.g. an integer field may have a maximum value of 100; a date field might have a maximum date. If a maximum value constraint is specified then the field descriptor `MUST` contain a type key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.",
                       "oneOf": [
                         {
                           "type": "string"
@@ -4886,6 +4801,202 @@
             ]
           }
         }
+      },
+      "title": {
+        "propertyOrder": 50,
+        "title": "Title",
+        "description": "A human-readable title.",
+        "type": "string",
+        "examples": [
+          "\"title\": \"My Package Title\""
+        ]
+      },
+      "description": {
+        "propertyOrder": 60,
+        "format": "textarea",
+        "title": "Description",
+        "description": "A text description. Markdown is encouraged.",
+        "type": "string",
+        "examples": [
+          "# My Package description\nAll about my package."
+        ]
+      },
+      "homepage": {
+        "propertyOrder": 70,
+        "title": "Home Page",
+        "description": "The home on the web that is related to this data package.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "type": "string",
+            "pattern": "^([a-z0-9._-])+$",
+            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+            "examples": [
+              "\"name\": \"my-nice-name\""
+            ]
+          },
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
+            ],
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+            "notes": [
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "description": "A human-readable title.",
+            "type": "string",
+            "examples": [
+              "\"title\": \"My Package Title\""
+            ]
+          }
+        },
+        "examples": [
+          "\"homepage\": { \"name\": \"My Web Page\", \"uri\": \"http://example.com/\" }"
+        ]
+      },
+      "sources": {
+        "propertyOrder": 140,
+        "options": {
+          "hidden": true
+        },
+        "title": "Sources",
+        "description": "The raw sources for this resource.",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "title": "Source",
+          "description": "A source file.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+              "type": "string",
+              "pattern": "^([a-z0-9._-])+$",
+              "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+              "examples": [
+                "\"name\": \"my-nice-name\""
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+              "type": "string",
+              "format": "uri",
+              "examples": [
+                "\"uri\": \"file.csv\"",
+                "\"uri\": \"#/data/my-data\"",
+                "\"uri\": \"http://example.com/file.csv\""
+              ],
+              "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+              "notes": [
+                "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+              ]
+            },
+            "email": {
+              "title": "Email",
+              "description": "An email address.",
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "anyOf": [
+            {
+              "title": "name required",
+              "required": [
+                "name"
+              ]
+            },
+            {
+              "title": "uri required",
+              "required": [
+                "uri"
+              ]
+            },
+            {
+              "title": "email required",
+              "required": [
+                "email"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          "\"sources\": [ { \"name\": \"World Bank and OECD\", \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\" } ]"
+        ]
+      },
+      "licenses": {
+        "description": "The license under which the resource is published.",
+        "propertyOrder": 150,
+        "options": {
+          "hidden": true
+        },
+        "title": "License",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "An identifier string. Lower case characters with '.', '_' and '-' are allowed.",
+            "type": "string",
+            "pattern": "^([a-z0-9._-])+$",
+            "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent diescriptor is updated.",
+            "examples": [
+              "\"name\": \"my-nice-name\""
+            ]
+          },
+          "uri": {
+            "title": "URI",
+            "description": "A URI (with some restrictions), being a fully qualified HTTP address, a relative POSIX path, or a JSON Pointer.",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "\"uri\": \"file.csv\"",
+              "\"uri\": \"#/data/my-data\"",
+              "\"uri\": \"http://example.com/file.csv\""
+            ],
+            "context": "Implementations need to negotiate the type of URI provided, and dereference the data accordingly. There are restrictions imposed on URIs that are POSIX paths: see [the notes on descriptors](#descriptor) for more information.",
+            "notes": [
+              "Prior to the v1 specifications, there were `url`  and `path` properties, which are here merged. In order to support backwards compatability, implementors `MAY` want to automatically convert a `url` or `path` property to a `uri` property and issue a warning."
+            ]
+          },
+          "title": {
+            "title": "Title",
+            "description": "A human-readable title.",
+            "type": "string",
+            "examples": [
+              "\"title\": \"My Package Title\""
+            ]
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "name"
+            ]
+          },
+          {
+            "required": [
+              "uri"
+            ]
+          },
+          {
+            "required": [
+              "title"
+            ]
+          }
+        ],
+        "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
       },
       "dialect": {
         "propertyOrder": 50,
