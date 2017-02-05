@@ -509,7 +509,7 @@
     },
     "tableSchemaFieldObject": {
       "enum": [ "object" ],
-      "description": "The field contains data which is valid JSON format objects.",
+      "description": "The field contains data which can be parsed as a valid JSON object.",
       "context": "",
       "examples": [
         "\"type\": \"object\""
@@ -521,6 +521,9 @@
       "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
       "examples": [
         "\"type\": \"geopoint\""
+      ],
+      "notes": [
+        "Implementations `MUST` strip all white space in the default format of 'lon, lat'."
       ]
     },
     "tableSchemaFieldGeoJSON": {
@@ -534,7 +537,7 @@
     },
     "tableSchemaFieldArray": {
       "enum": [ "array" ],
-      "description": "The field contains data that is a valid JSON format arrays.",
+      "description": "The field contains data that can be parsed as a JSON array.",
       "context": "",
       "examples": [
         "\"type\": \"array\""
@@ -550,7 +553,7 @@
     },
     "tableSchemaFieldAny": {
       "enum": [ "any" ],
-      "description": "Any `type` or `format` is accepted.",
+      "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
       "context": "",
       "examples": [
         "\"type\": \"any\""
