@@ -1,4 +1,7 @@
 {
+  "consolidated": [
+    "1.0.0-rc1: Massive refactoring for v1."
+  ],
   "tableschema": [
     "1.0.0-pre15: add calendar units `gyear` and `gyearmonth` ([#105](https://github.com/dataprotocols/dataprotocols/issues/105)), tweak pattern support for date/time types [#260](https://github.com/frictionlessdata/specs/issues/260)",
     "1.0.0-pre14: add support for `missingValue` ([#97](https://github.com/dataprotocols/dataprotocols/issues/97))",

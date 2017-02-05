@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% for k, v in bag('changelog').iteritems() %}
+{% if k != 'consolidated' %}
+<h2><a href="/{{ k }}/">{{ k }}</a></h2>
+{% endif %}
+<ul>
+  {% for item in v %}
+  <li>{{ item|markdown }}</li>
+  {% endfor %}
+</ul>
+{% endfor %}
+{% if k == 'consolidated' %}
+<p>
+  Prior to v1, the changelog for each specification was distinct. See below.
+</p>
+{% endif %}
+{% endblock body %}
