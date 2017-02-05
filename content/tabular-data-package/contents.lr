@@ -2,7 +2,7 @@ _model: specification
 ---
 title: Tabular Data Package
 ---
-slug: tabular-datapackage
+slug: tabular-data-package
 ---
 mediatype: application/vnd.datapackage+json
 ---
@@ -52,5 +52,3 @@ Lindenberg)]
 > CSV is the ultimate simple, standard data format - streamable,
 text-based, no need for proprietary tools etc [@rufuspollock (Rufus
 Pollock)]
-
-

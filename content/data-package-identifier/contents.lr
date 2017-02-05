@@ -1,6 +1,8 @@
 _model: page
 ---
-title: Data Package Identifiers
+title: Data Package Identifier
+---
+slug: data-package-identifier
 ---
 version: 1.0-alpha
 ---
@@ -44,9 +46,9 @@ The object structure looks like:
   name: ...
   // version of the Data Package
   version: ...
-  // if parsed from a Identifier String this is the original 
+  // if parsed from a Identifier String this is the original
   // specString
-  original: 
+  original:
 }
 {% endhighlight %}
 
@@ -61,28 +63,27 @@ An Identifier String is a single string (rather than JSON object) that points to
 * A URL that points directly to the `datapackage.json` (no resolution needed):
 
       http://mywebsite.com/mydatapackage/datapackage.json
-  
+
 * A URL that points directly to the Data Package (that is, the directory containing the `datapackage.json`):
 
       http://mywebsite.com/mydatapackage/
-  
-  resolves to: 
-  
+
+  resolves to:
+
       http://mywebsite.com/mydatapackage/datapackage.json
-       
+
 * A GitHub URL:
 
       http://github.com/datasets/gold-prices
 
-  resolves to: 
-  
+  resolves to:
+
       https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
 
 * The `name` of a dataset in the [Core Datasets registry](http://data.okfn.org/data):
 
       gold-prices
-  
-  resolves to: 
-  
-      http://data.okfn.org/data/core/gold-prices/datapackage.json
 
+  resolves to:
+
+      http://data.okfn.org/data/core/gold-prices/datapackage.json

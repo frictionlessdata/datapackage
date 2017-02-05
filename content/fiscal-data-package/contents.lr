@@ -2,7 +2,7 @@ _model: page
 ---
 title: Fiscal Data Package
 ---
-slug: fiscal-datapackage
+slug: fiscal-data-package
 ---
 version: 0.3.0
 ---
@@ -76,7 +76,7 @@ A Fiscal Data Package contains revenue and/or expenditure data for one or more e
 
 The data files and descriptor are generally bundled together. For example:
 
-File  | Comment 
+File  | Comment
 ------|-------
 `datapackage.json`            | Descriptor file
 `README.md`                   | Optional, extra files are ignored.
@@ -119,32 +119,32 @@ The `datapackage.json` describes:
 This follows [Data Package][dp] (DP). In particular, the following properties `MUST` be on the top-level descriptor:
 
 ```javascript
-{ 
+{
 
-  // REQUIRED (DataPackage): a url-compatible short name ("slug") 
+  // REQUIRED (DataPackage): a url-compatible short name ("slug")
   // for the package
   "name": "Australia2014",
 
   // REQUIRED (DataPackage): a human readable title for the package
   "title": "Australian annual budget 2013-14",
 
-  // RECOMMENDED (DataPackage): the license for the data in this 
+  // RECOMMENDED (DataPackage): the license for the data in this
   // package.
   "license": "cc-by 3.0",
 
-  // RECOMMENDED: other properties such as description, homepage, 
-  // version, sources, author, contributors, keywords, as specified 
+  // RECOMMENDED: other properties such as description, homepage,
+  // version, sources, author, contributors, keywords, as specified
   // in dataprotocols.org/data-packages/
 
-  // RECOMMENDED: a valid 2-digit ISO country code (ISO 3166-1 
+  // RECOMMENDED: a valid 2-digit ISO country code (ISO 3166-1
   // alpha-2), or, an array of valid ISO codes (if this relates to
-  // multiple countries). This field is for listing the country of 
-  // countries associated to this data.  For example, if this the 
+  // multiple countries). This field is for listing the country of
+  // countries associated to this data.  For example, if this the
   // budget for country then you would put that country's ISO code.
   "countryCode": "au", // or [ "au", "nz" ]
 
-  // RECOMMENDED: the "profile set" for this package. If the 
-  // `profiles` key is present, it MUST be set to the following 
+  // RECOMMENDED: the "profile set" for this package. If the
+  // `profiles` key is present, it MUST be set to the following
   // hash:
   "profiles": {
     "fiscal": "*",
@@ -152,12 +152,12 @@ This follows [Data Package][dp] (DP). In particular, the following properties `M
   },
 
   // OPTIONAL: a keyword that represents the type of spend data:
-  //   * "transaction": rows have dates and correspond to 
+  //   * "transaction": rows have dates and correspond to
   //     individual transactions
-  //   * "aggregated": rows are summaries of expenditure across a 
+  //   * "aggregated": rows are summaries of expenditure across a
   //     fiscal period
-  "granularity": "aggregated", 
-  
+  "granularity": "aggregated",
+
   // OPTIONAL: the fiscal period of the dataset
   "fiscalPeriod": {
     "start": "1982-04-22",
@@ -167,12 +167,12 @@ This follows [Data Package][dp] (DP). In particular, the following properties `M
   // OPTIONAL: ...other properties...
 
   // REQUIRED: array of CSV files contained in the package. Defined
-  // in http://dataprotocols.org/data-packages/ and 
-  // http://dataprotocols.org/tabular-data-package/ . Note: 
-  //   * Each data file `MUST` have an entry in the `resources` 
+  // in http://dataprotocols.org/data-packages/ and
+  // http://dataprotocols.org/tabular-data-package/ . Note:
+  //   * Each data file `MUST` have an entry in the `resources`
   //     array
-  //   * That entry in the `resources` array `MUST` have a JSON 
-  //     table schema describing the data file. 
+  //   * That entry in the `resources` array `MUST` have a JSON
+  //     table schema describing the data file.
   //     (see http://dataprotocols.org/json-table-schema/)
   //    * Each entry must have a `name` attribute in order to be referenced
   //      in the `model` section.
@@ -203,7 +203,7 @@ All the requirements of [Tabular Data Package][tdp] apply.
 
 ## Model
 
-The `model` hash is central to Fiscal Data Package and serves two purposes. It defines a "logical model" for the data and it maps columns in the CSV files ("physical model") to columns in the "logical model". 
+The `model` hash is central to Fiscal Data Package and serves two purposes. It defines a "logical model" for the data and it maps columns in the CSV files ("physical model") to columns in the "logical model".
 
 <img src="https://docs.google.com/drawings/d/1krRsqOdV_r9VEjzDSliLgmTGcbLhnvd6IH-YDE8BEAY/pub?w=710&h=357" alt="" />
 
@@ -212,7 +212,7 @@ The `model` hash is central to Fiscal Data Package and serves two purposes. It d
 
 A logical model is a description of the underlying structure and concepts in the data. Concepts like dates, amounts, classifications, administrative hierarchies and geographic locations. Our approach to describing the logical model is based heavily on the terminology and approach of [OLAP (Online Analytical Processing)][olap].[^why-olap] In particular, we heavily use the OLAP concepts of:
 
-* Measures: these will be the monetary amounts in the fiscal data   
+* Measures: these will be the monetary amounts in the fiscal data
 * Dimensions: dimensions cover all items other than the measure and contain all the descriptive information such as dates, locations, entities receiving and spending money etc etc.
 
 As we will see, `measures` and `dimensions` are the two main properties of the `model` hash.
@@ -228,28 +228,28 @@ Measures are numerical and define the columns in the source data which contain f
   "measure-name": {
     // REQUIRED: Name of source field
     "source": "amount",
-    
+
     // REQUIRED: Any valid ISO 4217 currency code.
     "currency": "USD",
-    
-    // OPTIONAL: A factor by which to multiple the raw monetary 
-    // values to get the real monetary amount, eg `1000`. Defaults 
+
+    // OPTIONAL: A factor by which to multiple the raw monetary
+    // values to get the real monetary amount, eg `1000`. Defaults
     // to `1`.
     "factor": 1,
-    
-    // OPTIONAL: Resource (referenced by `name` attribute) containing the source field. Defaults to 
+
+    // OPTIONAL: Resource (referenced by `name` attribute) containing the source field. Defaults to
     // the first resource in the `resources` array.
     "resource": "budget-2014-au",
-    
-    // OPTIONAL: A keyword that represents the *direction* of the 
+
+    // OPTIONAL: A keyword that represents the *direction* of the
     // spend, being one of "expenditure" or "revenue".
     "direction": "expenditure",
-    
-    // OPTIONAL: The phase of the budget that the values in this 
+
+    // OPTIONAL: The phase of the budget that the values in this
     // measure relate to. It `MUST` be one of the following strings:
     // proposed, approved, adjusted, executed.
     "phase": "proposed",
-    
+
     // OPTIONAL: Other properties allowed.
   }
   //...
@@ -264,27 +264,27 @@ Each dimension is represented by a key in the `dimensions` object. The object ha
 "dimensions": {
   "project-class": {
     // REQUIRED: An attributes object listing the one or more columns that make up
-    // the dimension. Each attribute MUST have `source` information - 
-    // i.e. where the data comes from for that property 
+    // the dimension. Each attribute MUST have `source` information -
+    // i.e. where the data comes from for that property
     "attributes": {
       "project": {
         // REQUIRED:
-        // EITHER: the field name where the value comes from for 
+        // EITHER: the field name where the value comes from for
         // this property (see "Describing Sources" above);
         "source": "proj",
-        // OR: a single value that applies for all rows of the 
+        // OR: a single value that applies for all rows of the
         // dataset.
         "constant": "Some Project",
 
-        // OPTIONAL: the resource (referenced by `name` attribute) in which the field is located. 
+        // OPTIONAL: the resource (referenced by `name` attribute) in which the field is located.
         // Defaults to the first resource in the `resources` array.
         "resource": "budget-2014-au"
-        
-        // OPTIONAL: the key referencing an attribute within this 
-        // dimension (if it exists) for which this attribute 
-        // provides a label.  For instance, given two dimension 
-        // attributes named "project_code" and "project_label", 
-        // the attribute "project_label" will provide a "labelfor" 
+
+        // OPTIONAL: the key referencing an attribute within this
+        // dimension (if it exists) for which this attribute
+        // provides a label.  For instance, given two dimension
+        // attributes named "project_code" and "project_label",
+        // the attribute "project_label" will provide a "labelfor"
         // pointing to "project_code"
         "labelfor": "..."
       },
@@ -294,28 +294,28 @@ Each dimension is represented by a key in the `dimensions` object. The object ha
         "source": "class_code"
       }
     },
-    
-    // REQUIRED: Either an array of strings corresponding to the 
-    // attribute keys in the `attributes` object or a single string 
-    // corresponding to one of these. The value of `primaryKey` 
+
+    // REQUIRED: Either an array of strings corresponding to the
+    // attribute keys in the `attributes` object or a single string
+    // corresponding to one of these. The value of `primaryKey`
     // indicates the primary key or primary keys for the dimension.
-    
+
     "primaryKey": ["project", "code"],
 
-    // OPTIONAL: Describes what kind of a dimension it is. 
-    // `dimensionType` is a string that `MUST` be one of the 
+    // OPTIONAL: Describes what kind of a dimension it is.
+    // `dimensionType` is a string that `MUST` be one of the
     // following:
     //
-    // * "datetime": the date of a transaction 
-    // * "entity": names the organisation doing the spending or 
+    // * "datetime": the date of a transaction
+    // * "entity": names the organisation doing the spending or
     //   receiving
-    // * "classification": one or more fields that create a 
-    //   categorical hierarchy of the type of spending (eg: 
-    //   Health > Hospital services > Nursing). Combine with 
+    // * "classification": one or more fields that create a
+    //   categorical hierarchy of the type of spending (eg:
+    //   Health > Hospital services > Nursing). Combine with
     //   `classificationType` for greater expressiveness.
-    // * "activity": names a specific programme or project under 
+    // * "activity": names a specific programme or project under
     //   which the money is spent
-    // * "fact": an attribute such as an ID or reference number 
+    // * "fact": an attribute such as an ID or reference number
     //   attached to a transaction
     // * "location": the geographical location where money is spent
     // * "other": not one of the above
@@ -341,11 +341,11 @@ This section provides guidance, and certain requirements, on the naming of dimen
 
   // RECOMMENDED: The basis on which transactions are being classified, one of these values:
   //
-  // * "administrative": an organisational structure, such as 
+  // * "administrative": an organisational structure, such as
   //   Portfolio > Department > Branch
-  // * "functional": the purpose of the spending, such as 
+  // * "functional": the purpose of the spending, such as
   //   Health > Hospital services > Nursing
-  // * "economic": focused on the nature of the accounting, such 
+  // * "economic": focused on the nature of the accounting, such
   //   as Compensation > Wages and salaries > Wages and salaries in cash
   "classificationType": "administrative",
 
@@ -356,7 +356,7 @@ This section provides guidance, and certain requirements, on the naming of dimen
       // To define a hierarchical classification, the "parent" attribute refers to the attribute "above" it in the hierarchy.
       // Set it on the `code` field, not a title field. See the ["Labels and Hierarchies" example][/examples/labels-and-hierarchies/].
       "parent": "PROGRAMME_NAME"
-      // Optional: If classifications are subject to change, a `version` attribute `SHOULD` be used. 
+      // Optional: If classifications are subject to change, a `version` attribute `SHOULD` be used.
       // "version": "1.3"
     },
     "program": {
@@ -394,7 +394,7 @@ A `dimensionType` of `activity` defines the program or project associated with e
 "program-or-project-name": {
   "dimensionType": "activity",
   "attributes": {
-    // Attributes SHOULD be named as follows, if available:    
+    // Attributes SHOULD be named as follows, if available:
     "id": { ... },    // The internal code identifier for the government program or project
     "title": { ... } // Name of the government program or project underwriting the budget item.
   }
@@ -449,7 +449,7 @@ A `dimensionType` of `location` defines the geographic region associated with an
 {% assign sorted_pages = site.pages | sort:"order" %}
 {% for page in sorted_pages %}
   {% if page.category == 'example' %}
-  * [{{ page.title }}]({{ page.url | remove: 'index.html' }}) 
+  * [{{ page.title }}]({{ page.url | remove: 'index.html' }})
   {% endif %}
 {% endfor %}
 
@@ -458,7 +458,7 @@ A `dimensionType` of `location` defines the geographic region associated with an
 
 ## Which dimension type?
 
-This section lists the suggested sets of dimensions that can usefully describe different types of spending data.  
+This section lists the suggested sets of dimensions that can usefully describe different types of spending data.
 
 ### Aggregated expenditure data
 
@@ -492,7 +492,7 @@ Aggregated data is in many cases the proposed, approved or adjusted budget (but 
 
 ### Transactional expenditure data
 
-Transactional expenditure data (direction `expenditure`, granularity `transactional`) describes government expenditures at the level of individual transactions, exchanges of funds taking place at a specific time between two entities. 
+Transactional expenditure data (direction `expenditure`, granularity `transactional`) describes government expenditures at the level of individual transactions, exchanges of funds taking place at a specific time between two entities.
 
 | Dimension | Type |  Description|
 | --------- | ---- |  ---------- |

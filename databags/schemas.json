@@ -1,5 +1,5 @@
 {
-  "csvdialect": {
+  "csv-dialect": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "CSV Dialect",
     "description": "The CSV dialect descriptor.",
@@ -100,7 +100,7 @@
       "\"dialect\": { \"delimiter\": \"\\t\", \"quoteChar\": \"'\" }"
     ]
   },
-  "datapackage": {
+  "data-package": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Data Package",
     "description": "Data Package is a simple specification for data access and delivery.",
@@ -665,7 +665,7 @@
       }
     }
   },
-  "dataresource": {
+  "data-resource": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Data Resource",
     "description": "Data Resource.",
@@ -987,7 +987,7 @@
       }
     }
   },
-  "fiscal-datapackage": {
+  "fiscal-data-package": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Fiscal Data Package",
     "description": "Fiscal Data Package is a simple specification for data access and delivery of fiscal data.",
@@ -3007,7 +3007,7 @@
       }
     ]
   },
-  "tableschema": {
+  "table-schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Table Schema",
     "description": "A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.",
@@ -3363,7 +3363,7 @@
       }
     }
   },
-  "tabular-datapackage": {
+  "tabular-data-package": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Tabular Data Package",
     "description": "Tabular Data Package is a simple specification for data access and delivery of tabular data.",
@@ -4382,7 +4382,7 @@
       }
     }
   },
-  "tabular-dataresource": {
+  "tabular-data-resource": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Tabular Data Resource",
     "description": "A Tabular Data Resource.",

@@ -2,7 +2,7 @@ _model: specification
 ---
 title: Data Resource
 ---
-slug: dataresource
+slug: data-resource
 ---
 mediatype: application/vnd.dataresource+json
 ---

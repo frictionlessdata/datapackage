@@ -2,7 +2,7 @@ _model: specification
 ---
 title: Table Schema
 ---
-slug: tableschema
+slug: table-schema
 ---
 mediatype: application/vnd.tableschema+json
 ---

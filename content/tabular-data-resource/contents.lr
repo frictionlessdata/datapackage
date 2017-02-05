@@ -2,7 +2,7 @@ _model: specification
 ---
 title: Tabular Data Resource
 ---
-slug: tabular-dataresource
+slug: tabular-data-resource
 ---
 mediatype: application/vnd.dataresource+json
 ---
