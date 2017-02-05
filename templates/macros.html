@@ -35,7 +35,7 @@
 {% macro property_items(title, type, items) %}
 <div class="property-items">
   <p>
-    Each item in the {{ title }} {{ type }} is a **{{ items.title }}**, which is an {{ items.type }} with the following *required* properties:
+    Each item in the {{ title }} {{ type }} is a **{{ items.title }}** {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} **required**.
   </p>
   <ul>
     {% for required in items.required %}

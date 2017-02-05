@@ -11,8 +11,8 @@
 <p>
 As part of the {{ bag('site', 'name') }} project, we publish a number of {{ this.title }} profiles. See those profiles below.
 </p>
-{% for k, v in bag('specifications').iteritems() %}
-{% if k in this.profiles %}
-<li><a href="/{{ k }}/">{{ v }}</a></li>
-{% endif %}
-{% endfor %}
+<ul>
+  {% for k, v in bag('profiles', this.slug).iteritems() %}
+  <li><a href="/{{ k }}/">{{ v }}</a></li>
+  {% endfor %}
+</ul>
