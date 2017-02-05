@@ -11,7 +11,10 @@ install:
 - npm run compile
 - lektor plugins add lektor-s3
 script:
-- lektor deploy s3
+- lektor build
+deploy:
+  provider: script
+  script: lektor deploy s3
 env:
   global:
   - secure: BB/ShK7ED3rGYJRDmCGT3wUdUqXnFabEn7XMgrL7lciEZZclBs9FQ55ReCr+kIK/JAm7ymu6gBkzmDbphI1pEphpF0n+RuNP1UZsJoKePKay+6TiHet2kKFIX9Fxx9YL02Co1WHxLF6jSpQuBowq7ngF4BtCttClBU1nSwAeAdI=
