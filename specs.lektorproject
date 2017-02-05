@@ -7,4 +7,4 @@ lektor-s3 = 0.4.0
 [servers.s3]
 name = S3
 enabled = yes
-target = s3://specs-v1.frictionlessdata.io
+target = s3://specs.frictionlessdata.io
