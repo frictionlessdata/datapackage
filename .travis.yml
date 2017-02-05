@@ -1,9 +1,9 @@
-language: node_js
+language: python
 python:
 - '2.7'
-node_js:
-- '6.1'
 install:
+- nvm install 6.1
+- nvm use 6.1
 - pip install --upgrade pip
 - pip install lektor
 - pip install boto3
