@@ -1,0 +1,4 @@
+id,title,schema,schema_path,specification
+base,Data Package,https://specs.frictionlessdata.io/schemas/datapackage.json,datapackage.json,https://specs.frictionlessdata.io/datapackage/
+tabular,Tabular Data Package,https://specs.frictionlessdata.io/schemas/tabular-datapackage.json,tabular-datapackage.json,http://specs.frictionlessdata.io/tabular-datapackage/
+fiscal,Fiscal Data Package,https://specs.frictionlessdata.io/fiscal-datapackage.json,fiscal-datapackage.json,https://specs.frictionlessdata.io/fiscal-datapackage/

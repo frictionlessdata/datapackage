@@ -1,0 +1,26 @@
+<h3>Descriptor</h3>
+<p>
+  A valid {{ this.title }} descriptor is an <code>object</code> conforming with the formal reference outlined in <a href="#properties">Properties</a>, <em>and</em>, and the following more general requirements.
+</p>
+<h4>Form</h4>
+<p>
+  The descriptor <code>MUST</code> be valid JSON, as described in <a href="http://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>, and <code>SHOULD</code> be in one of the following forms:
+</p>
+<ol>
+  <li>A file named <code>{{ this.descriptor }}</code>.</li>
+  <li>An <code>object</code>, either on its own or nested in another data structure.</li>
+</ol>
+<h4>Media type</h4>
+<p>
+  The media type for {{ this.title }} descriptors as <code>MUST</code> be <code>{{ this.mediatype }}</code>. This media type is <a href="https://www.iana.org/assignments/media-types/{{ this.mediatype }}">registered with IANA</a>).
+</p>
+<h4>URIs</h4>
+<p>
+  Several properties are defined as URI-formatted strings, which are to be considered as a subset of the formal URI specification described in <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>. The additional constraints imposed are as follows:
+</p>
+<ol>
+  <li>The only supported schemes are <code>http</code> and <code>https</code>. Absence of a scheme indicates either a POSIX path or a JSON Pointer (see below).</li>
+  <li><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator">URLs</a>, indicated by <code>http</code> or <code>https</code>, <code>MUST</code> be fully qualified.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition">POSIX paths</a>, are supported for referencing local files, with the security restraint that they <code>MUST</code> be relative siblings or children of the descriptor. Absolute paths (<code>/</code>) and relative parent paths (<code>../</code>) <code>MUST NOT</code> be used, and implementations <code>SHOULD NOT</code> support these path types.</li>
+  <li><a href="https://tools.ietf.org/html/rfc6901">JSON Pointers</a> are supported as a general referencing mechanism to other properties in the <em>same descriptor</em>, and therefore <code>MUST</code> start with the pound symbol (<code>#</code>).</li>
+</ol>

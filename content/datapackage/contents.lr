@@ -1,0 +1,56 @@
+_model: specification
+---
+slug: datapackage
+---
+title: Data Package
+---
+subtitle: A simple format to describe data and its metadata.
+---
+mediatype: application/vnd.datapackage+json
+---
+descriptor: datapackage.json
+---
+created: 12 November 2007
+---
+updated: 30 January 2017
+---
+version: 1.0.0-rc.1
+---
+abstract:
+
+Data Package is a simple container format used to describe and package a collection of data sources with additional metadata about those data sources. By providing a minimum set of required properties and a range of optional properties, the format enables a simple contract for data interoperability (delivery, installation, management) that is governed by minimalism.
+---
+body:
+
+A Data Package consists of:
+
+* Metadata that describes the structure and contents of the package
+* Resources such as data files that form the contents of the package
+
+Resources in a Data Package are declared on the `resources` property, which is an `array` of [Data Resource](/dataresource/) objects.
+
+The Data Package specification does `NOT` impose any requirements on the form or structure of data described by a Data Resource. Therefore, Data Package can be used for packaging **any kind of data**.
+
+The data included in the package may be provided as:
+
+* Files bundled locally with the package descriptor
+* Remote resources, referenced by URL
+* "Inline" data (see below) which is included directly in the descriptor
+
+A valid descriptor MUST contain both a `name` property and a `resources` property. The definition of these properties is described below.
+
+## Customisation
+
+A Data Package, like any Frictionless Data descriptor, `MAY` add any number of additional properties beyond those listed in its specification.
+
+For example, suppose you were storing time series data and want to list the temporal coverage of the data in the Data Package you could add a property `temporal` (cf. [Dublin Core](http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal)):
+
+```
+"temporal": {
+  "name": "19th Century",
+  "start": "1800-01-01",
+  "end": "1899-12-31"
+}
+```
+
+This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage.

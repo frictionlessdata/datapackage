@@ -1,0 +1,26 @@
+{
+  "name": "specs",
+  "version": "1.0.0",
+  "description": "This site is the home for *specifications* related to **Frictionless Data.**",
+  "main": "index.js",
+  "scripts": {
+    "compile": "cd sources && node compile.js && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frictionlessdata/specs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frictionlessdata/specs/issues"
+  },
+  "homepage": "https://github.com/frictionlessdata/specs#readme",
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "csv-parse": "^1.2.0",
+    "glob": "^7.1.1",
+    "js-yaml": "^3.7.0",
+    "json-schema-ref-parser": "^3.1.2"
+  }
+}

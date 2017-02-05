@@ -1,0 +1,18 @@
+<h3>Profiles</h3>
+<p>
+  An extension of {{ this.title }} may be formalised as <strong>profile</strong>. A profile is a {{ this.title }} which extends the default specification towards more specific needs.
+</p>
+<p>
+  A profile is declared on the <code>profile</code> property. For the default {{ this.title }} descriptor, this <code>SHOULD</code> be present with a value of <code>default</code>, but if not, the absence of a <code>profile</code> is equivalent to setting <code>"profile": "default"</code>.
+</p>
+<p>
+  Custom profiles <code>MUST</code> have a <code>profile</code> property, where the value is a unique identifier for that profile. This unique identifier can be in one of two forms. It can be an <code>id</code> from the official <a href="http://schemas.frictionlessdata.io/registry.json">Data Package Schema Registry</a>, or, a URI that points directly to a JSON Schema that can be used to validate the profile.
+</p>
+<p>
+As part of the {{ bag('site', 'name') }} project, we publish a number of {{ this.title }} profiles. See those profiles below.
+</p>
+<ul>
+  {% for k, v in bag('profiles', this.slug).iteritems() %}
+  <li><a href="/{{ k }}/">{{ v }}</a></li>
+  {% endfor %}
+</ul>

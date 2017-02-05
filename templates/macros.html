@@ -1,0 +1,72 @@
+{% macro property(slug, data) %}
+<div class="property">
+  <h4><code>{{ slug }}</code></h4>
+  <p>
+    {{ data.description }}
+  </p>
+  {% if data.context %}
+  {{ data.context }}
+  {% endif %}
+
+  {% if data.examples %}
+  <h5>Examples</h5>
+  {% for example in data.examples %}
+  <pre><code>{{ example }}</code></pre>
+  {% endfor %}
+  {% endif %}
+
+  {% if data.notes %}
+  <h5>Implementation notes</h5>
+  <ul>
+    {% for note in data.notes %}
+    <li>{{ note }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if data['items'] is mapping %}
+    {{ property_items(data.title, data.type, data['items']) }}
+  {% elif data.oneOf %}
+    {{ property_oneof(data.oneOf) }}
+  {% endif %}
+  </div>
+{% endmacro %}
+
+
+{% macro property_items(title, type, items) %}
+<div class="property-items">
+  <p>
+    Each item in the {{ title }} {{ type }} is a **{{ items.title }}** {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} **required**.
+  </p>
+  <ul>
+    {% for required in items.required %}
+    <li><code>{{ required }}</code></li>
+    {% endfor %}
+  </ul>
+  {% if items.examples %}
+  <p>
+    A minimal example of {{ items.title }} looks like:
+    <pre><code>{{ items.examples[0] }}</code></pre>
+  </p>
+  {% endif %}
+  {% if items.properties %}
+  <p>
+    All specified {{ items.title }} properties are as follows:
+  </p>
+  {% for k, v in items.properties.iteritems() %}
+    {{ property(k, v) }}
+    {% if k.oneOf %}
+      {{ property_oneof(k.oneOf) }}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+</div>
+{% endmacro %}
+
+
+{% macro property_oneof(oneof) %}
+<div class="property-oneof">
+{% for i in oneOf %}
+  {{ property(i.enum[0], i) }}
+{% endfor %}
+</div>
+{% endmacro %}
