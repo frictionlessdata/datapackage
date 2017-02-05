@@ -6,7 +6,7 @@
 <h2><a href="/{{ k }}/">{{ k }}</a></h2>
 {% endif %}
 <ul>
-  {% for item in v %}
+  {% for k, item in v.iteritems() %}
   <li>{{ item|markdown }}</li>
   {% endfor %}
 </ul>
