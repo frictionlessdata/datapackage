@@ -1290,6 +1290,24 @@
                               },
                               {
                                 "enum": [
+                                  "year"
+                                ],
+                                "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+                                "examples": [
+                                  "\"type\": \"year\""
+                                ]
+                              },
+                              {
+                                "enum": [
+                                  "yearmonth"
+                                ],
+                                "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+                                "examples": [
+                                  "\"type\": \"month\""
+                                ]
+                              },
+                              {
+                                "enum": [
                                   "boolean"
                                 ],
                                 "description": "The field contains boolean (true/false) data.",
@@ -2215,6 +2233,24 @@
                               },
                               {
                                 "enum": [
+                                  "year"
+                                ],
+                                "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+                                "examples": [
+                                  "\"type\": \"year\""
+                                ]
+                              },
+                              {
+                                "enum": [
+                                  "yearmonth"
+                                ],
+                                "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+                                "examples": [
+                                  "\"type\": \"month\""
+                                ]
+                              },
+                              {
+                                "enum": [
                                   "boolean"
                                 ],
                                 "description": "The field contains boolean (true/false) data.",
@@ -3136,6 +3172,24 @@
                 },
                 {
                   "enum": [
+                    "year"
+                  ],
+                  "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+                  "examples": [
+                    "\"type\": \"year\""
+                  ]
+                },
+                {
+                  "enum": [
+                    "yearmonth"
+                  ],
+                  "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+                  "examples": [
+                    "\"type\": \"month\""
+                  ]
+                },
+                {
+                  "enum": [
                     "boolean"
                   ],
                   "description": "The field contains boolean (true/false) data.",
@@ -3657,6 +3711,24 @@
                             "examples": [
                               "\"type\": \"datetime\"",
                               "\"type\": \"datetime\", \"format\": \"default\""
+                            ]
+                          },
+                          {
+                            "enum": [
+                              "year"
+                            ],
+                            "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+                            "examples": [
+                              "\"type\": \"year\""
+                            ]
+                          },
+                          {
+                            "enum": [
+                              "yearmonth"
+                            ],
+                            "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+                            "examples": [
+                              "\"type\": \"month\""
                             ]
                           },
                           {
@@ -4571,6 +4643,24 @@
                       "examples": [
                         "\"type\": \"datetime\"",
                         "\"type\": \"datetime\", \"format\": \"default\""
+                      ]
+                    },
+                    {
+                      "enum": [
+                        "year"
+                      ],
+                      "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+                      "examples": [
+                        "\"type\": \"year\""
+                      ]
+                    },
+                    {
+                      "enum": [
+                        "yearmonth"
+                      ],
+                      "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+                      "examples": [
+                        "\"type\": \"month\""
                       ]
                     },
                     {
