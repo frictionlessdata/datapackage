@@ -411,6 +411,8 @@
             { "$ref": "#/definitions/tableSchemaFieldDate" },
             { "$ref": "#/definitions/tableSchemaFieldTime" },
             { "$ref": "#/definitions/tableSchemaFieldDateTime" },
+            { "$ref": "#/definitions/tableSchemaFieldYear" },
+            { "$ref": "#/definitions/tableSchemaFieldYearMonth" },
             { "$ref": "#/definitions/tableSchemaFieldBoolean" },
             { "$ref": "#/definitions/tableSchemaFieldObject" },
             { "$ref": "#/definitions/tableSchemaFieldGeoPoint" },
@@ -487,7 +489,20 @@
         "\"type\": \"datetime\"",
         "\"type\": \"datetime\", \"format\": \"default\""
       ]
-
+    },
+    "tableSchemaFieldYear": {
+      "enum": [ "year" ],
+      "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
+      "examples": [
+        "\"type\": \"year\""
+      ]
+    },
+    "tableSchemaFieldYearMonth": {
+      "enum": [ "yearmonth" ],
+      "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
+      "examples": [
+        "\"type\": \"month\""
+      ]
     },
     "tableSchemaFieldBoolean": {
       "enum": [ "boolean" ],
@@ -496,7 +511,6 @@
       "examples": [
         "\"type\": \"boolean\""
       ]
-
     },
     "tableSchemaFieldObject": {
       "enum": [ "object" ],
