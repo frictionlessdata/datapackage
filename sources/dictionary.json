@@ -651,7 +651,7 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
+          "$ref": "#/definitions/licenses",
           "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
@@ -721,7 +721,7 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
+          "$ref": "#/definitions/licenses",
           "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
@@ -812,7 +812,7 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
+          "$ref": "#/definitions/licenses",
           "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
@@ -857,7 +857,7 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
+          "$ref": "#/definitions/licenses",
           "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
