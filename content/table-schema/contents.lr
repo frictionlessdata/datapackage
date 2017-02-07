@@ -22,7 +22,7 @@ Table Schema is a simple, language and implementation agnostic, way to declare a
 ---
 body:
 
-Table Schema is a simple, language and implementation agnostic, way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of application a where data benefits from a portable schema format.
+Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of application a where data benefits from a portable schema format.
 
 In its simplest form, Table Schema is an `object` with a `fields` property as an array, and each item in the array is a **field descriptor**, with information on the expected **type** for data in each field. In this basis, Table Schema also supports declaring more complex shapes for data via `format` and `constraints` options per field, as well as more advanced data structures with handling of `primaryKey` and `foreignKeys` constructs.
 

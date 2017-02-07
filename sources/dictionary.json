@@ -201,7 +201,7 @@
     },
     "licenses": {
       "title": "Licenses",
-      "description": "The license under which this package is published.",
+      "description": "The license(s) under which this package is published.",
       "type": "array",
       "minItems": 1,
       "items": { "$ref": "#/definitions/license" },
@@ -599,7 +599,7 @@
       "type": "array",
       "minItems": 1,
       "items": { "type": "string" },
-      "description": "A primary key is an array of field names, whose values `MUST` that uniquely identifies each row in the table.",
+      "description": "A primary key is an array of field names, whose values `MUST` uniquely identify each row in the table.",
       "context": "Each string in the `primaryKey` array `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.",
       "examples": [
         "\"primaryKey\": [ \"name\" ]",
@@ -675,8 +675,8 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
-          "description": "The license under which the resource is published.",
+          "$ref": "#/definitions/licenses",
+          "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
         },
@@ -745,8 +745,8 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
-          "description": "The license under which the resource is published.",
+          "$ref": "#/definitions/licenses",
+          "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
         },
@@ -840,8 +840,8 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
-          "description": "The license under which the resource is published.",
+          "$ref": "#/definitions/licenses",
+          "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
         }
@@ -889,8 +889,8 @@
           "options": { "hidden": true }
         },
         "licenses": {
-          "$ref": "#/definitions/license",
-          "description": "The license under which the resource is published.",
+          "$ref": "#/definitions/licenses",
+          "description": "The license(s) under which the resource is published.",
           "propertyOrder": 150,
           "options": { "hidden": true }
         }
