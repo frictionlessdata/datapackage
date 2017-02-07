@@ -465,6 +465,7 @@
       ]
     },
     "tableSchemaFieldInteger": {
+      "title": "integer",
       "enum": [ "integer" ],
       "description": "The field contains integers - that is whole numbers.",
       "context": "Integer values are indicated in the standard way for any valid integer.",
@@ -473,6 +474,7 @@
       ]
     },
     "tableSchemaFieldDate": {
+      "title": "date",
       "enum": [ "date" ],
       "description": "The field contains temporal date values.",
       "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of YYYY-MM-DD.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
@@ -483,6 +485,7 @@
       ]
     },
     "tableSchemaFieldTime": {
+      "title": "time",
       "enum": [ "time" ],
       "description": "The field contains temporal time values.",
       "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string of the format YYYY-MM-DDThh:mm:ssZ in UTC time.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
@@ -492,6 +495,7 @@
       ]
     },
     "tableSchemaFieldDateTime": {
+      "title": "datetime",
       "enum": [ "datetime" ],
       "description": "The field contains temporal datetime values.",
       "context": "The following `format` options are supported:\n* **default**: An ISO8601 format string as time without a date.\n* **any**: Any parsable representation of the type. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library.\n* **{PATTERN}**: date/time values in this field can be parsed according to `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C strptime][strptime]. (That is, values in the this field should be parseable by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y` would correspond to dates like: `30 Nov 14`",
@@ -501,6 +505,7 @@
       ]
     },
     "tableSchemaFieldYear": {
+      "title": "year",
       "enum": [ "year" ],
       "description": "A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)",
       "examples": [
@@ -508,6 +513,7 @@
       ]
     },
     "tableSchemaFieldYearMonth": {
+      "title": "yearmonth",
       "enum": [ "yearmonth" ],
       "description": "A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)",
       "examples": [
@@ -515,6 +521,7 @@
       ]
     },
     "tableSchemaFieldBoolean": {
+      "title": "boolean",
       "enum": [ "boolean" ],
       "description": "The field contains boolean (true/false) data.",
       "context": "Boolean values can be indicated with the following strings (case-insensitive, so, for example, 'Y' and 'y' are both acceptable):\n* **true**: 'yes', 'y', 'true', 't', '1'\n* **false**: 'no', 'n', 'false', 'f', '0'",
@@ -523,6 +530,7 @@
       ]
     },
     "tableSchemaFieldObject": {
+      "title": "object",
       "enum": [ "object" ],
       "description": "The field contains data which can be parsed as a valid JSON object.",
       "context": "",
@@ -531,6 +539,7 @@
       ]
     },
     "tableSchemaFieldGeoPoint": {
+      "title": "geopoint",
       "enum": [ "geopoint" ],
       "description": "The field contains data describing a geographic point.",
       "context": "The following `format` options are supported:\n* **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n* **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n* **object**: A JSON object with exactly two keys, `lat` and `lon`",
@@ -542,6 +551,7 @@
       ]
     },
     "tableSchemaFieldGeoJSON": {
+      "title": "geojson",
       "enum": [ "geojson" ],
       "description": "The field contains a JSON object according to GeoJSON or TopoJSON spec.",
       "context": "The following `format` options are supported:\n* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)",
@@ -551,6 +561,7 @@
       ]
     },
     "tableSchemaFieldArray": {
+      "title": "array",
       "enum": [ "array" ],
       "description": "The field contains data that can be parsed as a JSON array.",
       "context": "",
@@ -559,6 +570,7 @@
       ]
     },
     "tableSchemaFieldDuration": {
+      "title": "duration",
       "enum": [ "duration" ],
       "description": "The field contains a duration of time.",
       "context": "The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the number of months, nD the number of days, 'T' is the date/time separator, nH the number of hours, nM the number of minutes and nS the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.",
@@ -567,6 +579,7 @@
       ]
     },
     "tableSchemaFieldAny": {
+      "title": "any",
       "enum": [ "any" ],
       "description": "Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.",
       "context": "",
