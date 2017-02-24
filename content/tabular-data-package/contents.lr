@@ -22,16 +22,16 @@ Tabular Data Package is a simple container format used to describe and package a
 ---
 body:
 
-Tabular Data Package is a [Data Package profile](/datapackage/#profile) for publishing and sharing tabular data. Table Schema has a focus on ease of use over the web, and on simplifying the production and consumption of tabular data to/from spreadsheets and data storage backends such as SQL databases.
+Tabular Data Package is a [Data Package profile](/data-package/#profile) for publishing and sharing tabular data. Table Schema has a focus on ease of use over the web, and on simplifying the production and consumption of tabular data to/from spreadsheets and data storage backends such as SQL databases.
 
-Tabular Data Package builds directly on the [Data Package](/datapackage/) specification, and therefore a valid Tabular Data Package `MUST` be a valid Data Package.
+Tabular Data Package builds directly on the [Data Package](/data-package/) specification, and therefore a valid Tabular Data Package `MUST` be a valid Data Package.
 
-Tabular Data Package has the following requirements over and above those imposed by [Data Package](/datapackage):
+Tabular Data Package has the following requirements over and above those imposed by [Data Package](/data-package):
 
 - There `MUST` be at least one `resource` in the `resources` `array`
-- Each `resource` `MUST` be a valid [Tabular Data Resource](/tabular-dataresource/)
-- Each `resource.path` `MUST` point to a file in CSV format. The CSV file `MUST` conform to the constraints described in the [CSV dialect](/csvdialect/) specification
-- Each `resource` `MUST` have a `schema` property whose value `MUST` be a valid [Table Schema](/tableschema/) (either inlined, or as a URI to a file)
+- Each `resource` `MUST` be a valid [Tabular Data Resource](/tabular-data-resource/)
+- Each `resource.path` `MUST` point to a file in CSV format. The CSV file `MUST` conform to the constraints described in the [CSV dialect](/csv-dialect/) specification
+- Each `resource` `MUST` have a `schema` property whose value `MUST` be a valid [Table Schema](/table-schema/) (either inlined, or as a URI to a file)
 
 ### Why is CSV the preferred data serialisation format?
 
