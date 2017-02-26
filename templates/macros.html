@@ -1,9 +1,11 @@
 {% macro property(slug, data, minimal=False) %}
 <div class="property">
   <h4><code>{{ slug }}</code></h4>
+  {% if data.description %}
   <p>
     {{ data.description|markdown }}
   </p>
+  {% endif %}
   {% if not minimal and data.context %}
   {{ data.context|markdown }}
   {% endif %}
