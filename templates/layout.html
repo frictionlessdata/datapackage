@@ -75,7 +75,16 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+            <nav id="toc" data-spy="affix" data-toggle="toc">
+              {% if this._path == site.root.path %}
+              <ul class="nav">
+                {% for slug, name in bag('specifications').iteritems() %}
+                <li><a href="/{{ slug }}/">{{ name }}</a></li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              {% endif %}
+            </nav>          
         </div>
         <div class="col-md-6">
           <h1 id="main-heading">
