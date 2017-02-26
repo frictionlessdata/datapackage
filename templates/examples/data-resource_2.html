@@ -1,10 +1,13 @@
-A minimal {{ this.title }} example using the `data` property to inline data looks as follows.
+A minimal {{ this.title }} pointing to some inline data looks as follows.
 
 ```
 {
+  "db": {
+    "resource-name-data": [
+      {"a": 1, "b": 2}
+    ]
+  },
   "name": "resource-name",
-  "data": [
-    {"a": 1, "b": 2}
-  ]
+  "data": [ "#/db/resource-name-data" ] 
 }
 ```

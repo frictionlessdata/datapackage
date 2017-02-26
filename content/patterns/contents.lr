@@ -50,7 +50,7 @@ A user might upload a `datapackage.json` as follows:
   "resources": [
     {
       "name": "my-resource",
-      "path": "my-resource.csv"
+      "data": [ "my-resource.csv" ]
     }
   ]
 }
@@ -65,7 +65,7 @@ The registry itself may have a platform-specific version system, and increment v
   "resources": [
     {
       "name": "my-resource",
-      "path": "my-resource.csv"
+      "data": [ "my-resource.csv" ]
     }
   ]
 }
@@ -81,7 +81,7 @@ All Frictionless Data specifications allow for referencing resources via http or
 
 In the case of remote resources via http, there is always the possibility that the remote server will be unavailable, or, that the resource itself will be temporarily or permanently removed.
 
-Applications that are concerned with the persistent storage of data described in Frictionless Data specifications can use a `_cache` property that mirrors the functionality and usage of the `path` property, and refers to a sotrage location for the data that the application can fall back to if the canonical resource is unavailable.
+Applications that are concerned with the persistent storage of data described in Frictionless Data specifications can use a `_cache` property that mirrors the functionality and usage of the `data` property, and refers to a sotrage location for the data that the application can fall back to if the canonical resource is unavailable.
 
 ## Implementations
 
@@ -89,7 +89,7 @@ There are no known implementations of this pattern at present.
 
 ## Specification
 
-Implementations `MAY` handle a `_cache` property on any descriptor that supports a `path` property. In the case that the data referenced in `path` is unavailable, `_cache` should be used as a fallback to access the data. The handling of the data stored at `_cache` is beyond the scope of the specification. Implementations might store a copy of the resources in `path` at ingestion time, update at regular intervals, or any other method to keep an up-to-date, persistent copy.
+Implementations `MAY` handle a `_cache` property on any descriptor that supports a `data` property. In the case that the data referenced in `data` is unavailable, `_cache` should be used as a fallback to access the data. The handling of the data stored at `_cache` is beyond the scope of the specification. Implementations might store a copy of the resources in `data` at ingestion time, update at regular intervals, or any other method to keep an up-to-date, persistent copy.
 
 Some examples of the `_cache` property.
 
@@ -99,17 +99,17 @@ Some examples of the `_cache` property.
   "resources": [
     {
       "name": "my-resource",
-      "path": "http://example.com/data/csv/my-resource.csv",
+      "data": [ "http://example.com/data/csv/my-resource.csv" ],
       "_cache": "my-resource.csv"
     },
     {
       "name": "my-resource",
-      "path": "http://example.com/data/csv/my-resource.csv",
+      "data": [ "http://example.com/data/csv/my-resource.csv" ],
       "_cache": "http://data.registry.com/user/files/my-resource.csv"
     },
     {
       "name": "my-resource",
-      "path": [
+      "data": [
         "http://example.com/data/csv/my-resource.csv",
         "http://somewhere-else.com/data/csv/resource2.csv"
       ]
@@ -120,7 +120,7 @@ Some examples of the `_cache` property.
     },
     {
       "name": "my-resource",
-      "path": "http://example.com/data/csv/my-resource.csv",
+      "data": [ "http://example.com/data/csv/my-resource.csv" ],
       "_cache": "my-resource.csv"
     }
   ]
@@ -183,7 +183,7 @@ Example usage of `languages` implemented in the data described by a resource:
 # resource descriptor
 {
   "name": "solar-system",
-  "path": "solar-system.csv"
+  "data": [ "solar-system.csv" ]
   "fields": [
     ...
   ],
@@ -208,7 +208,7 @@ We currently have two patterns for this in discussion. Both patterns arise from 
 
 One pattern suggests inline translations with the source data, reserving the `@` symbol in the naming of fields to denote translations.
 
-The other describes a pattern for storing additional translation sources, co-located with the "source" file described in a descriptor `path`.
+The other describes a pattern for storing additional translation sources, co-located with the "source" file described in a descriptor `data`.
 
 ## Implementations
 

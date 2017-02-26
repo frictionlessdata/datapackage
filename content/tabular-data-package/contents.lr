@@ -30,7 +30,7 @@ Tabular Data Package has the following requirements over and above those imposed
 
 - There `MUST` be at least one `resource` in the `resources` `array`
 - Each `resource` `MUST` be a valid [Tabular Data Resource](/tabular-data-resource/)
-- Each `resource.path` `MUST` point to a file in CSV format. The CSV file `MUST` conform to the constraints described in the [CSV dialect](/csv-dialect/) specification
+- Each URI in the `resource.data` array `MUST` point to a file in CSV format. The CSV file `MUST` conform to the constraints described in the [CSV dialect](/csv-dialect/) specification
 - Each `resource` `MUST` have a `schema` property whose value `MUST` be a valid [Table Schema](/table-schema/) (either inlined, or as a URI to a file)
 
 ### Why is CSV the preferred data serialisation format?
