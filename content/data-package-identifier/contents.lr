@@ -25,17 +25,19 @@ want to take a Data Package Identifier as an argument.
 
 For example, consider the `dpm` (the Data Package Manager) has commands like:
 
-    # gdp is a Data Package identifier
-    dpm info gdp
+```
+# gdp is a Data Package identifier
+dpm info gdp
 
-    # https://github.com/datasets/gold-prices is a Data Package identifier
-    dpm install https://github.com/datasets/gold-prices
+# https://github.com/datasets/gold-prices is a Data Package identifier
+dpm install https://github.com/datasets/gold-prices
+```
 
 ## Identifier Object Structure
 
 The object structure looks like:
 
-{% highlight javascript %}
+```
 {
   // URL to base of the Data Package
   // This URL should *always* have a trailing slash ('/')
@@ -50,7 +52,7 @@ The object structure looks like:
   // specString
   original:
 }
-{% endhighlight %}
+```
 
 It can be parsed (and less importantly) serialized to a simple string. Spec
 strings will be frequently used on e.g. the command line to identify a data
