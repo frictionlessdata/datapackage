@@ -3,3 +3,5 @@ build/*
 TAGS
 .DS_Store
 node_modules/*
+databags/schemas.json
+sources/dictionary.json
