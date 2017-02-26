@@ -19,11 +19,18 @@
      .property-oneof { font-size: 0.825em; padding: 0 1.5em; }
      .property-oneof h4 { font-size: 1.25em; }
      .property-oneof h5 { font-size: 1.125em; }
-     nav[data-toggle='toc'] { margin-top: 30px; }
+     nav[data-toggle='toc'] { margin-top: 40px; }
      @media (max-width: 768px) {
        nav.affix[data-toggle='toc'] { position: static; }
        nav[data-toggle='toc'] .nav .active .nav { display: none; }
      }
+     nav.navbar-default { background-color: #ff6c00; color: #f5f5f5; }
+     .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a { color: #f5f5f5; }
+
+     nav[data-toggle=toc] .nav>.active:hover>a, nav[data-toggle=toc] .nav>.active>a {
+       color: #2196f3;
+       border-left: 2px solid #2196f3
+     }     
     </style>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -33,7 +40,7 @@
     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
   </head>
   <body data-spy="scroll" data-target="#toc">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-static-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
