@@ -87,6 +87,19 @@ The Table Schema library can load and validate any Table Schema `descriptor`, al
 - [validate](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/validate.py)
 - [infer](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/infer.py)
 
+### On URI dereferencing and validation
+
+Some properties in the Frictionless Data specifications allow a URI that resolves to an object. This does not refer to the `uri` property itself, but rather other properties where a URI may be allowed to reference the actual value of the property.
+
+The most prominent example of this is the `schema` property on Tabular Data Resource descriptors.
+
+While allowing for such references has pratical use for publishers - for example, allowing schema reuse - it does introduce difficulties in the validation of such properties. Validating a URI "as is", in such cases, does little to guarantee the integrity of the value that is referenced, and so the JSON Schemas used for descriptor validation expect, and validate for, the resolved value, not the reference (the URI).
+
+Implementors `MUST` dereference such properties before attempting to validator a descriptor. At present, this this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
+
+- `schema`
+- `dialect`
+
 ### Other libraries
 
 Data Package and Table Schema implement the core Frictionless Data specifications. The JavaScript implementations maintained by Open Knowledge International essentially follow the above requirements as is. However, our Python toolchain has some additional libraries - `goodtables` and `tabulator` - which are an important part of the Frictionless Data stack, and we would be delighted to see them implemented in other languages either as standalone libraries, or, as part of a wider effort in implementing Data Package and Table Schema.
