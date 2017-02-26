@@ -11,8 +11,8 @@ definitions:
     type: string
     default: default
     examples:
-    - '"profile": "tabular"'
-    - '"profile": "fiscal"'
+    - '"profile": "tabular-data-package"'
+    - '"profile": "fiscal-data-package"'
     - '"profile": "http://example.com/my-profiles-json-schema.json"'
   name:
     title: Name
