@@ -52,9 +52,9 @@ The Data Package library can load and validate any `descriptor` for a **Data Pac
 
 #### Examples
 
-- [Registry](https://github.com/frictionlessdata/datapackage-py/blob/master/datapackage/registry.py)
-- [Resource](https://github.com/frictionlessdata/datapackage-py/blob/master/datapackage/resource.py)
-- [Data Package](https://github.com/frictionlessdata/datapackage-py/blob/master/datapackage/datapackage.py)
+- [Datapackage](https://github.com/frictionlessdata/datapackage-js/blob/master/src/datapackage.js)
+- [Resource](https://github.com/frictionlessdata/datapackage-js/blob/master/src/resource.js)
+- [validate](https://github.com/frictionlessdata/datapackage-js/blob/master/src/validate.js)
 
 ### Table Schema library
 
@@ -81,11 +81,11 @@ The Table Schema library can load and validate any Table Schema `descriptor`, al
 
 #### Examples
 
-- [Model](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/model.py)
-- [Types](https://github.com/frictionlessdata/jsontableschema-py/tree/master/jsontableschema/types)
-- [Constraints](https://github.com/frictionlessdata/jsontableschema-py/tree/master/jsontableschema/constraints)
-- [Validate](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/validate.py)
-- [Resource](https://github.com/frictionlessdata/jsontableschema-js/blob/feature/resource/src/resource.js)
+- [Table](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/table.py)
+- [Schema](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/schema.py)
+- [Field](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/field.py)
+- [validate](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/validate.py)
+- [infer](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/infer.py)
 
 ### Other libraries
 
