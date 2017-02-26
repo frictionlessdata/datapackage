@@ -16,8 +16,7 @@ definitions:
     - '"profile": "http://example.com/my-profiles-json-schema.json"'
   name:
     title: Name
-    description: An identifier string. Lower case characters with '.', '_', '-' and
-      '/' are allowed.
+    description: An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.
     type: string
     pattern: "^([a-z0-9._-/])+$"
     context: This is ideally a url-usable and human-readable name. Name `SHOULD` be

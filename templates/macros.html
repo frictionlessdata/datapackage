@@ -2,10 +2,10 @@
 <div class="property">
   <h4><code>{{ slug }}</code></h4>
   <p>
-    {{ data.description }}
+    {{ data.description|markdown }}
   </p>
   {% if not minimal and data.context %}
-  {{ data.context }}
+  {{ data.context|markdown }}
   {% endif %}
 
   {% if not minimal and data.examples %}
@@ -19,7 +19,7 @@
   <h5>Implementation notes</h5>
   <ul>
     {% for note in data.notes %}
-    <li>{{ note }}</li>
+    <li>{{ note|markdown }}</li>
     {% endfor %}
   </ul>
   {% endif %}
@@ -36,7 +36,7 @@
 <div class="property-items">
   <h5>Items</h5>
   <p>
-    Each item in the {{ title }} {{ type }} is a **{{ items.title }}** {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} **required**.
+    Each item in the {{ title }} {{ type }} is a <strong>{{ items.title }}</strong> {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} <strong>required</strong>.
   </p>
   {% if items.examples %}
   <p>
