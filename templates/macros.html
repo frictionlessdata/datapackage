@@ -43,7 +43,7 @@
   {% if items.examples %}
   <p>
     A minimal example of {{ items.title }} looks like:
-    <pre><code>{{ items.examples[0] }}</code></pre>
+    <pre><code>{{ items.examples[0]|pygmentize('json') }}</code></pre>
   </p>
   {% endif %}
   {% if items.properties %}
