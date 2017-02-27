@@ -1242,7 +1242,7 @@ definitions:
           hidden: true
   dataResources:
     title: Data Resources
-    description: An `array` of [Data Resource](/dataresource/) objects.
+    description: An `array` of Data Resource objects, each compliant with the [Data Resource](/data-resource/) specification.
     type: array
     minItems: 1
     items:
@@ -1262,7 +1262,7 @@ definitions:
         }
   tabularDataResources:
     title: Tabular Data Resources
-    description: An `array` of [Tabular Data Resource](/tabular-dataresource/) objects.
+    description: An `array` of Tabular Data Resource objects, each compliant with the [Tabular Data Resource](/tabular-data-resource/) specification.
     type: array
     minItems: 1
     items:

@@ -39,7 +39,7 @@ The data included in the package may be provided as:
 
 A valid descriptor MUST contain both a `name` property and a `resources` property. The definition of these properties is described below.
 
-## Customisation
+### Customisation
 
 A Data Package, like any Frictionless Data descriptor, `MAY` add any number of additional properties beyond those listed in its specification.
 
