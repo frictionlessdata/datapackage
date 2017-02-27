@@ -159,15 +159,19 @@ definitions:
           ]
         }
     - |
-        "data": [
-          "http://example.com/file.csv",
-          "http://example.com/file2.csv"
-        ]
+        {
+          "data": [
+            "http://example.com/file.csv",
+            "http://example.com/file2.csv"
+          ]
+        }
     - |
-        "data": [
-          "#/data/my-data",
-          "#/data/my-data2"
-        ]
+        {
+          "data": [
+            "#/data/my-data",
+            "#/data/my-data2"
+          ]
+        }
   format:
     title: Format
     description: The file format of this resource.
