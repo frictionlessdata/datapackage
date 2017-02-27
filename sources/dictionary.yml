@@ -629,7 +629,7 @@ definitions:
                 {
                   "fields": "state",
                   "reference": {
-                    "resource": "__self__",
+                    "resource": "",
                     "fields": "id"
                   }
                 }
