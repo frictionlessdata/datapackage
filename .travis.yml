@@ -10,6 +10,7 @@ install:
 - npm install
 - npm run compile
 - lektor plugins add lektor-s3
+- lektor plugins add markdown-highlighter
 script:
 - lektor build
 deploy:

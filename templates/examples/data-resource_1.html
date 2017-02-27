@@ -1,16 +1,19 @@
-A minimal {{ this.title }} looks as follows.
+A minimal {{ this.title }} looks as follows:
 
-```
-# with data accessible via the local filesystem
+With data accessible via the local filesystem.
+
+```json
 {
   "name": "resource-name",
   "data": [ "resource-path.csv" ]
 }
+```
 
-# with data accessible via http
+With data accessible via http.
+
+```json
 {
   "name": "resource-name",
   "data": [ "http://example.com/resource-path.csv" ]
 }
 ```
-
