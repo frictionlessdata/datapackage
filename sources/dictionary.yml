@@ -138,6 +138,15 @@ definitions:
       are here merged. In order to support backwards compatability, implementors `MAY`
       want to automatically convert a `url` or `path` property to a `uri` property
       and issue a warning.
+  dataUri:
+    $ref: "#/definitions/uri"
+    examples:
+    - |
+        [ "file.csv" ]
+    - |
+        [ "#/data/my-data" ]
+    - |
+        [ "http://example.com/file.csv" ]
   data:
     title: Data
     description: A reference to the data for this resource. `data` `MUST` be an array
@@ -145,7 +154,7 @@ definitions:
     type: array
     minItems: 1
     items:
-      "$ref": "#/definitions/uri"
+      "$ref": "#/definitions/dataUri"
     context: The dereferenced value of each referenced data source in the `data` `array`
       `MUST` be commensurate with a native, dereferenced representation of the data
       the resource describes. For example, in a *Tabular* Data Resource, this means
@@ -628,6 +637,28 @@ definitions:
             }
       missingValues:
         "$ref": "#/definitions/tableSchemaMissingValues"
+    examples:
+    - |
+        {
+          "schema": {
+            "fields": [
+              {
+                "name": "first_name",
+                "type": "string"
+                "constraints": {
+                  "required": true
+                }
+              },
+              {
+                "name": "age",
+                "type": "integer"
+              },
+            ],
+            "primaryKey": [
+              "name"
+            ]
+          }
+        }
   tableSchemaField:
     title: Table Schema Field
     description: Table Schema Field

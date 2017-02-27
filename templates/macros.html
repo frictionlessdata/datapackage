@@ -41,10 +41,10 @@
     Each item in the {{ title }} {{ type }} is a <strong>{{ items.title }}</strong> {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} <strong>required</strong>.
   </p>
   {% if items.examples %}
-  <p>
-    A minimal example of {{ items.title }} looks like:
-    <pre><code>{{ items.examples[0]|pygmentize('json') }}</code></pre>
-  </p>
+  <h5>{{ items.title }} examples</h5>
+  {% for example in items.examples %}
+  {{ example|pygmentize('json') }}
+  {% endfor %}
   {% endif %}
   {% if items.properties %}
   <p>
