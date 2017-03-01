@@ -22,7 +22,7 @@ At present, we consider the libraries maintained by Open Knowledge International
 
 Here we will describe the minimal requirements for implementing Frictionless Data specifications in a given programming language. Based on the Python and JavaScript implementations, the implementations are split across two packages: `Data Package` and `Table Schema`.
 
-Also, see the [stack reference](https://github.com/frictionlessdata/stack/README.md) section below for some naming conventions we use, and that ideally should be followed in new implementations.
+Also, see the [stack reference](https://github.com/frictionlessdata/stack/blob/master/README.md) section below for some naming conventions we use, and that ideally should be followed in new implementations.
 
 ### Data Package library
 
