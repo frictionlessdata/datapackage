@@ -1,0 +1,122 @@
+---
+fiscalMeasure:
+  title: Measure
+  description: Measure.
+  type: object
+  required:
+  - source
+  - currency
+  properties:
+    source:
+      type: string
+    resource:
+      type: string
+    currency:
+      type: string
+      pattern: "^[A-Z]{3}$"
+    factor:
+      type: number
+    direction:
+      title: Direction of the spending
+      description: A keyword that represents the direction of the spend, either
+        expenditure or revenue.
+      type: string
+      enum:
+      - expenditure
+      - revenue
+    phase:
+      title: Budget phase
+      description: A keyword that represents the phase of the data, can be proposed
+        for a budget proposal, approved for an approved budget, adjusted for modified
+        budget or executed for the enacted budget
+      type: string
+      enum:
+      - proposed
+      - approved
+      - adjusted
+      - executed
+fiscalDimension:
+  title: Dimension
+  description: Dimension.
+  type: object
+  required:
+  - attributes
+  - primaryKey
+  properties:
+    attributes:
+      title: Attributes
+      description: Attribute objects that make up the dimension
+      type: object
+      minItems: 1
+      patternProperties:
+        "^\\w+":
+          type: object
+          properties:
+            source:
+              type: string
+            resource:
+              type: string
+            constant:
+              oneOf:
+              - type: string
+              - type: number
+            parent:
+              type: string
+            labelfor:
+              type: string
+          required:
+          - source
+    primaryKey:
+      title: Primary Key
+      description: Either an array of strings corresponding to the name attributes
+        in a set of field objects in the fields array or a single string corresponding
+        to one of these names. The value of primaryKey indicates the primary key
+        or primary keys for the dimension.
+      oneOf:
+      - type: string
+      - type: array
+        minItems: 1
+        items:
+          type: string
+    dimensionType:
+      title: Dimension Type
+      description: Describes what kind of a dimension it is.
+      type: string
+      enum:
+      - datetime
+      - entity
+      - classification
+      - activity
+      - fact
+      - location
+      - other
+    classificationType:
+      title: Classification Type
+      description: The type of the classification.
+      enum:
+      - functional
+      - administrative
+      - economic
+fiscalModel:
+  title: ''
+  description: ''
+  type: object
+  required:
+  - measures
+  - dimensions
+  properties:
+    measures:
+      title: Measures
+      description: Measures are numerical and correspond to financial amounts in
+        the source data.
+      type: object
+      patternProperties:
+        "^\\w+":
+          "$ref": "#/definitions/fiscalMeasure"
+    dimensions:
+      title: Dimensions
+      description: Dimensions are groups of related fields. Dimensions cover all items other than the measure.
+      type: object
+      patternProperties:
+        "^\\w+":
+          "$ref": "#/definitions/fiscalDimension"

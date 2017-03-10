@@ -1,0 +1,224 @@
+---
+dataResource:
+  title: Data Resource
+  description: Data Resource.
+  type: object
+  required:
+  - name
+  - data
+  properties:
+    profile:
+      "$ref": "#/definitions/profile"
+      propertyOrder: 10
+    name:
+      "$ref": "#/definitions/name"
+      propertyOrder: 20
+    data:
+      "$ref": "#/definitions/data"
+      propertyOrder: 30
+    schema:
+      "$ref": "#/definitions/anySchema"
+      propertyOrder: 40
+    title:
+      "$ref": "#/definitions/title"
+      propertyOrder: 50
+    description:
+      "$ref": "#/definitions/description"
+      propertyOrder: 60
+      format: textarea
+    homepage:
+      "$ref": "#/definitions/homepage"
+      propertyOrder: 70
+    sources:
+      "$ref": "#/definitions/sources"
+      propertyOrder: 140
+      options:
+        hidden: true
+    licenses:
+      "$ref": "#/definitions/licenses"
+      description: The license(s) under which the resource is published.
+      propertyOrder: 150
+      options:
+        hidden: true
+    format:
+      "$ref": "#/definitions/format"
+      propertyOrder: 80
+    mediatype:
+      "$ref": "#/definitions/mediatype"
+      propertyOrder: 90
+    encoding:
+      "$ref": "#/definitions/encoding"
+      propertyOrder: 100
+    bytes:
+      "$ref": "#/definitions/bytes"
+      propertyOrder: 110
+      options:
+        hidden: true
+    hash:
+      "$ref": "#/definitions/hash"
+      propertyOrder: 120
+      options:
+        hidden: true
+tabularDataResource:
+  title: Tabular Data Resource
+  description: A Tabular Data Resource.
+  type: object
+  required:
+  - name
+  - data
+  - schema
+  - profile
+  properties:
+    profile:
+      "$ref": "#/definitions/profile"
+      propertyOrder: 10
+    name:
+      "$ref": "#/definitions/name"
+      propertyOrder: 20
+    data:
+      "$ref": "#/definitions/data"
+      propertyOrder: 30
+    schema:
+      "$ref": "#/definitions/tableSchema"
+      propertyOrder: 40
+    title:
+      "$ref": "#/definitions/title"
+      propertyOrder: 50
+    description:
+      "$ref": "#/definitions/description"
+      propertyOrder: 60
+      format: textarea
+    homepage:
+      "$ref": "#/definitions/homepage"
+      propertyOrder: 70
+    sources:
+      "$ref": "#/definitions/sources"
+      propertyOrder: 140
+      options:
+        hidden: true
+    licenses:
+      "$ref": "#/definitions/licenses"
+      description: The license(s) under which the resource is published.
+      propertyOrder: 150
+      options:
+        hidden: true
+    dialect:
+      "$ref": "#/definitions/csvDialect"
+      propertyOrder: 50
+    format:
+      "$ref": "#/definitions/format"
+      propertyOrder: 80
+    mediatype:
+      "$ref": "#/definitions/mediatype"
+      propertyOrder: 90
+    encoding:
+      "$ref": "#/definitions/encoding"
+      propertyOrder: 100
+    bytes:
+      "$ref": "#/definitions/bytes"
+      propertyOrder: 110
+      options:
+        hidden: true
+    hash:
+      "$ref": "#/definitions/hash"
+      propertyOrder: 120
+      options:
+        hidden: true
+dataUri:
+  $ref: "#/definitions/uri"
+  examples:
+  - |
+      [ "file.csv" ]
+  - |
+      [ "#/data/my-data" ]
+  - |
+      [ "http://example.com/file.csv" ]
+data:
+  title: Data
+  description: A reference to the data for this resource. `data` `MUST` be an array
+    of valid URIs.
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/dataUri"
+  context: The dereferenced value of each referenced data source in the `data` `array`
+    `MUST` be commensurate with a native, dereferenced representation of the data
+    the resource describes. For example, in a *Tabular* Data Resource, this means
+    that the dereferenced value of `data` `MUST` be an array.
+  examples:
+  - |
+      {
+        "data": [
+          "file.csv",
+          "file2.csv"
+        ]
+      }
+  - |
+      {
+        "data": [
+          "http://example.com/file.csv",
+          "http://example.com/file2.csv"
+        ]
+      }
+  - |
+      {
+        "data": [
+          "#/data/my-data",
+          "#/data/my-data2"
+        ]
+      }
+format:
+  title: Format
+  description: The file format of this resource.
+  context: "`csv`, `xls`, `json` are examples of common formats."
+  type: string
+  examples:
+  - |
+      {
+        "format": "xls"
+      }
+mediatype:
+  title: Media Type
+  description: The media type of this resource. Can be any valid media type listed
+    with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).
+  type: string
+  pattern: "^(.+)/(.+)$"
+  examples:
+  - |
+      {
+        "mediatype": "text/csv"
+      }
+encoding:
+  title: Encoding
+  description: The file encoding of this resource.
+  type: string
+  default: utf-8
+  examples:
+  - |
+      {
+        "encoding": "utf-8"
+      }
+bytes:
+  title: Bytes
+  description: The size of this resource in bytes.
+  type: integer
+  examples:
+  - |
+      {
+        "bytes": 2082
+      }
+hash:
+  title: Hash
+  type: string
+  description: The MD5 hash of this resource. Indicate other hashing algorithms
+    with the {algorithm}:{hash} format.
+  pattern: "^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$"
+  examples:
+  - |
+      {
+        "hash": "d25c9c77f588f5dc32059d2da1136c02"
+      }
+  - |
+      {
+        "hash": "SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0"
+      }

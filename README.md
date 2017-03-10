@@ -28,13 +28,13 @@ This repository is the canonical repository for the core Frictionless Data speci
 
 ### Contribute to the specifications
 
-All the source data for the specifications is in the `/sources` directory. n there, you will find a `.json` file for each specification, a `dictionary.yml` file, and a `compile.js` file.
+All the source data for the specifications is in the `/sources` directory. In there, you will find a `.json` file for each specification, a set of YAML files under `dictionary/*`, and a `compile.js` file.
 
 - `.json` files are JSON Schemas for each spec, normalised using the `$ref` feature of JSON Schema. This normalisation ensures consistency in the way the specifications are written and validated, but is only used directly by the `compile.js` script, which generated denormalised versions.
 - `compile.js` creates denormalised versions of each specification be dereferencing each `$ref` in the source schemas, and then saves these denormalised versions to two places:
   - `databags/schemas.json` as a single file for use in the static site.
   - `assets/schemas/*` as a file for each specification for use by the *schema registry*.
-- `dictionary.yml` has all the property definitions for each specification. This is the place to add new properties or property collections, to edit contextual information and descriptive examples, and so on. See how this information is rendered in the [macros template](https://github.com/frictionlessdata/specs/blob/master/templates/macros.html).
+- `dictionary/*` has all the property definitions for each specification. This is the place to add new properties or property collections, to edit contextual information and descriptive examples, and so on. See how this information is rendered in the [macros template](https://github.com/frictionlessdata/specs/blob/master/templates/macros.html).
 
 ### Contribute to the site in general
 
