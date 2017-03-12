@@ -1,70 +1,76 @@
-{% macro property(slug, data, minimal=False) %}
+{% macro property(slug, obj, minimal=False, unpack=False, examples=True) %}
 <div class="property">
+
   <h4><code>{{ slug }}</code></h4>
-  {% if data.description %}
-  <p>
-    {{ data.description|markdown }}
-  </p>
-  {% endif %}
-  {% if not minimal and data.context %}
-  {{ data.context|markdown }}
+
+  {% if obj.description %}
+  <div>
+    <p>{{ obj.description|markdown }}</p>
+  </div>
   {% endif %}
 
-  {% if not minimal and data.examples %}
+  {% if not minimal and obj.context %}
+  <div>
+    {{ obj.context|markdown }}
+  </div>
+  {% endif %}
+
+  {% if not minimal and examples and obj.examples %}
   <h5>Examples</h5>
-  {% for example in data.examples %}
-  {{ example|pygmentize('json') }}
+  {% for example in obj.examples %}
+  <div>
+    {{ example|pygmentize('json') }}
+  </div>
   {% endfor %}
   {% endif %}
 
-  {% if not minimal and data.notes %}
-  <h5>Implementation notes</h5>
+  {% if unpack and obj.properties %}
+  <h5>Properties</h5>
+  {% for k, v in obj.properties.iteritems() %}
+  {{ property(k, v, unpack=unpack, minimal=minimal, examples=False) }}
+  {% endfor %}
+  {% endif %}
+
+  {% if not minimal and obj.notes %}
+  <h5>Notes</h5>
   <ul>
-    {% for note in data.notes %}
+    {% for note in obj.notes %}
     <li>{{ note|markdown }}</li>
     {% endfor %}
   </ul>
   {% endif %}
-  {% if data['items'] is mapping %}
-    {{ property_items(data.title, data.type, data['items']) }}
-  {% elif data.oneOf %}
-    {{ property_oneof(data.oneOf) }}
-  {% endif %}
+
+  {% if obj['items'] is mapping %}
+
+  {% if obj['items'].anyOf %}
+
+  <div class="property-items">
+    <h5>Options</h5>
+    <p>There are several options for {{ obj['items'].title }} {{ obj['items'].type }}s.</p>
+    {% for option in obj['items'].anyOf %}
+    {{ property(option.title, option, unpack=True) }}
+    {% endfor %}
   </div>
-{% endmacro %}
 
+  {% elif not minimal %}
 
-{% macro property_items(title, type, items) %}
-<div class="property-items">
-  <h5>Items</h5>
-  <p>
-    Each item in the {{ title }} {{ type }} is a <strong>{{ items.title }}</strong> {{ items.type }}. The {% for required in items.required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if items.required|length > 1 %}properties are{% else %}property is{% endif %} <strong>required</strong>.
-  </p>
-  {% if items.examples %}
-  <h5>{{ items.title }} examples</h5>
-  {% for example in items.examples %}
-  {{ example|pygmentize('json') }}
-  {% endfor %}
-  {% endif %}
-  {% if items.properties %}
-  <p>
-    All specified {{ items.title }} properties are as follows:
-  </p>
-  {% for k, v in items.properties.iteritems() %}
-    {{ property(k, v, minimal=True) }}
-    {% if v.oneOf %}
-      {{ property_oneof(v.oneOf) }}
+  <div class="property-items">
+    <h5>Items</h5>
+    <p>
+      Each item in the {{ obj.title }} {{ obj.type }} is a <strong>{{ obj['items'].title }}</strong> {{ obj['items'].type }}. The {% for required in obj['items'].required %}<code>{{ required }}</code>{% if not loop.last %}, {% endif %}{% endfor %} {% if obj['items'].required|length > 1 %}properties are{% else %}property is{% endif %} <strong>required</strong>, and other defined properties are optional.
+    </p>
+    {% if obj['items'].properties %}
+    {% for k, v in obj['items'].properties.iteritems() %}
+    {#{% if k in obj['items'].required %}#}
+    {{ property(k, v, minimal=False, examples=False) }}
+    {#{% endif %}#}
+    {% endfor %}
     {% endif %}
-  {% endfor %}
+  </div>
+
   {% endif %}
-</div>
-{% endmacro %}
 
+  {% endif %}
 
-{% macro property_oneof(oneof) %}
-<div class="property-oneof">
-{% for i in oneof %}
-  {{ property(i.title, i, minimal=True) }}
-{% endfor %}
 </div>
 {% endmacro %}

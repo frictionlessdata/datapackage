@@ -130,7 +130,7 @@ tableSchemaPrimaryKey:
   - |
       {
         "primaryKey": [
-          "first",
+          "first_name",
           "last_name"
         ]
       }
@@ -192,7 +192,7 @@ tableSchemaMissingValues:
       }
 tableSchemaFieldString:
   type: object
-  title: String
+  title: String Field
   description: The field contains strings, that is, sequences of characters.
   required:
   - name
@@ -252,17 +252,21 @@ tableSchemaFieldString:
       {
         "name": "name",
         "type": "string",
-        "format": "default"
+        "format": "email"
       }
   - |
       {
         "name": "name",
         "type": "string",
-        "format": "email"
+        "constraints": {
+          "minLength": 3,
+          "maxLength": 35
+        }
       }
+
 tableSchemaFieldBoolean:
   type: object
-  title: Boolean
+  title: Boolean Field
   description: The field contains boolean (true/false) data.
   context: |-
     Boolean values can be indicated with the following strings (case-insensitive, so, for example, 'Y' and 'y' are both acceptable):
@@ -301,7 +305,7 @@ tableSchemaFieldBoolean:
       }
 tableSchemaFieldInteger:
   type: object
-  title: Integer
+  title: Integer Field
   description: The field contains integers - that is whole numbers.
   context: Integer values are indicated in the standard way for any valid integer.
   required:
@@ -345,12 +349,17 @@ tableSchemaFieldInteger:
   examples:
   - |
       {
-        "name": "age"
-        "type": "integer"
+        "name": "age",
+        "type": "integer",
+        "constraints": {
+          "unique": true,
+          "minimum": 100,
+          "maximum": 9999
+        }
       }
 tableSchemaFieldNumber:
   type: object
-  title: Number
+  title: Number Field
   description: The field contains numbers of any kind including decimals.
   context: |-
     The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.
@@ -405,10 +414,6 @@ tableSchemaFieldNumber:
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           "$ref": "#/definitions/tableSchemaConstraintEnum"
-        minLength:
-          "$ref": "#/definitions/tableSchemaConstraintMinLength"
-        maxLength:
-          "$ref": "#/definitions/tableSchemaConstraintMaxLength"
         minimum:
           "$ref": "#/definitions/tableSchemaConstraintMinimum"
         maximum:
@@ -420,10 +425,18 @@ tableSchemaFieldNumber:
       {
         "name": "field-name",
         "type": "number"
-#       }
+      }
+  - |
+      {
+        "name": "field-name",
+        "type": "number",
+        "constraints": {
+          "enum": [ "1.00", "1.50", "2.00" ]
+        }
+      }
 tableSchemaFieldDate:
   type: object
-  title: Date
+  title: Date Field
   description: The field contains temporal date values.
   required:
     - name
@@ -477,7 +490,9 @@ tableSchemaFieldDate:
       {
         "name": "date_of_birth",
         "type": "date",
-        "format": "default"
+        "constraints": {
+          "minimum": "01-01-1900"
+        }
       }
   - |
       {
@@ -487,7 +502,7 @@ tableSchemaFieldDate:
       }
 tableSchemaFieldTime:
   type: object
-  title: Time
+  title: Time Field
   description: The field contains temporal time values.
   required:
     - name
@@ -545,7 +560,7 @@ tableSchemaFieldTime:
       }
 tableSchemaFieldDateTime:
   type: object
-  title: Date Time
+  title: Date Time Field
   description: The field contains temporal datetime values.
   required:
     - name
@@ -603,7 +618,7 @@ tableSchemaFieldDateTime:
       }
 tableSchemaFieldYear:
   type: object
-  title: Year
+  title: Year Field
   description: A calendar year, being an integer with 4 digits. Equivalent to [gYear
     in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)
   required:
@@ -659,7 +674,7 @@ tableSchemaFieldYear:
       }
 tableSchemaFieldYearMonth:
   type: object
-  title: Year Month
+  title: Year Month Field
   description: A calendar year month, being an integer with 1 or 2 digits. Equivalent
     to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)
   required:
@@ -717,7 +732,7 @@ tableSchemaFieldYearMonth:
       }
 tableSchemaFieldDuration:
   type: object
-  title: Duration
+  title: Duration Field
   description: The field contains a duration of time.
   context: |-
     The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.
@@ -765,7 +780,7 @@ tableSchemaFieldDuration:
       }
 tableSchemaFieldObject:
   type: object
-  title: Object
+  title: Object Field
   description: The field contains data which can be parsed as a valid JSON object.
   required:
     - name
@@ -811,7 +826,7 @@ tableSchemaFieldObject:
       }
 tableSchemaFieldArray:
   type: object
-  title: Array
+  title: Array Field
   description: The field contains data which can be parsed as a valid JSON array.
   required:
     - name
@@ -857,7 +872,7 @@ tableSchemaFieldArray:
       }
 tableSchemaFieldGeoJSON:
   type: object
-  title: GeoJSON
+  title: GeoJSON Field
   description: The field contains a JSON object according to GeoJSON or TopoJSON
   required:
     - name
@@ -914,7 +929,7 @@ tableSchemaFieldGeoJSON:
       }
 tableSchemaFieldGeoPoint:
   type: object
-  title: GeoPoint
+  title: GeoPoint Field
   description: The field contains data describing a geographic point.
   required:
     - name
@@ -971,7 +986,7 @@ tableSchemaFieldGeoPoint:
       }
 tableSchemaFieldAny:
   type: object
-  title: Any
+  title: Any Field
   description: Any value is accepted, including values that are not captured by
     the type/format/constraint requirements of the specification.
   required:

@@ -131,11 +131,6 @@ uri:
   context: 'Implementations need to negotiate the type of URI provided, and dereference
     the data accordingly. There are restrictions imposed on URIs that are POSIX
     paths: see [the notes on descriptors](#descriptor) for more information.'
-  notes:
-  - Prior to the v1 specifications, there were `url`  and `path` properties, which
-    are here merged. In order to support backwards compatability, implementors `MAY`
-    want to automatically convert a `url` or `path` property to a `uri` property
-    and issue a warning.
 created:
   title: Created
   description: The datetime on which this descriptor was created.
@@ -243,6 +238,8 @@ license:
   title: License
   description: A license for this descriptor.
   type: object
+  required:
+  - uri
   properties:
     name:
       "$ref": "#/definitions/name"
@@ -250,13 +247,6 @@ license:
       "$ref": "#/definitions/uri"
     title:
       "$ref": "#/definitions/title"
-  oneOf:
-  - required:
-    - name
-  - required:
-    - uri
-  - required:
-    - title
   context: Use of this property does not imply that the person was the original
     creator of, or a contributor to, the data in the descriptor, but refers to the
     composition of the descriptor itself.
@@ -283,6 +273,8 @@ source:
   title: Source
   description: A source file.
   type: object
+  required:
+  - uri
   properties:
     name:
       "$ref": "#/definitions/name"
@@ -290,16 +282,6 @@ source:
       "$ref": "#/definitions/uri"
     email:
       "$ref": "#/definitions/email"
-  anyOf:
-  - title: name required
-    required:
-    - name
-  - title: uri required
-    required:
-    - uri
-  - title: email required
-    required:
-    - email
 sources:
   title: Sources
   description: The raw sources for this resource.

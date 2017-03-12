@@ -11,34 +11,38 @@ dataPackage:
       propertyOrder: 10
     name:
       "$ref": "#/definitions/name"
-      propertyOrder: 10
+      propertyOrder: 20
     id:
       "$ref": "#/definitions/id"
-      propertyOrder: 20
+      propertyOrder: 30
     title:
       "$ref": "#/definitions/title"
-      propertyOrder: 20
+      propertyOrder: 40
     description:
       "$ref": "#/definitions/description"
-      propertyOrder: 30
+      propertyOrder: 50
       format: textarea
     homepage:
       "$ref": "#/definitions/homepage"
-      propertyOrder: 40
-    resources:
-      "$ref": "#/definitions/dataResources"
-      propertyOrder: 50
-      options:
-        hidden: true
-    sources:
-      "$ref": "#/definitions/sources"
-      propertyOrder: 140
-      options:
-        hidden: true
+      propertyOrder: 60
+    created:
+      "$ref": "#/definitions/created"
+      propertyOrder: 70
+    contributors:
+      "$ref": "#/definitions/contributors"
+      propertyOrder: 80
+    keywords:
+      "$ref": "#/definitions/keywords"
+      propertyOrder: 90
     licenses:
       "$ref": "#/definitions/licenses"
-      description: The license(s) under which the resource is published.
-      propertyOrder: 150
+      propertyOrder: 100
+    resources:
+      "$ref": "#/definitions/dataResources"
+      propertyOrder: 110
+    sources:
+      "$ref": "#/definitions/sources"
+      propertyOrder: 200
       options:
         hidden: true
 tabularDataPackage:
@@ -53,32 +57,39 @@ tabularDataPackage:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
     name:
-      "$ref": "#/definitions/id"
+      "$ref": "#/definitions/name"
       propertyOrder: 20
+    id:
+      "$ref": "#/definitions/id"
+      propertyOrder: 30
     title:
       "$ref": "#/definitions/title"
-      propertyOrder: 20
+      propertyOrder: 40
     description:
       "$ref": "#/definitions/description"
-      propertyOrder: 30
+      propertyOrder: 50
       format: textarea
     homepage:
       "$ref": "#/definitions/homepage"
-      propertyOrder: 40
-    resources:
-      "$ref": "#/definitions/tabularDataResources"
-      propertyOrder: 50
-      options:
-        hidden: true
-    sources:
-      "$ref": "#/definitions/sources"
-      propertyOrder: 140
-      options:
-        hidden: true
+      propertyOrder: 60
+    created:
+      "$ref": "#/definitions/created"
+      propertyOrder: 70
+    contributors:
+      "$ref": "#/definitions/contributors"
+      propertyOrder: 80
+    keywords:
+      "$ref": "#/definitions/keywords"
+      propertyOrder: 90
     licenses:
       "$ref": "#/definitions/licenses"
-      description: The license(s) under which the resource is published.
-      propertyOrder: 150
+      propertyOrder: 100
+    resources:
+      "$ref": "#/definitions/tabularDataResources"
+      propertyOrder: 110
+    sources:
+      "$ref": "#/definitions/sources"
+      propertyOrder: 200
       options:
         hidden: true
 dataResources:
