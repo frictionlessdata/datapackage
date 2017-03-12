@@ -95,7 +95,7 @@ The most prominent example of this is the `schema` property on Tabular Data Reso
 
 While allowing for such references has pratical use for publishers - for example, allowing schema reuse - it does introduce difficulties in the validation of such properties. Validating a URI "as is", in such cases, does little to guarantee the integrity of the value that is referenced, and so the JSON Schemas used for descriptor validation expect, and validate for, the resolved value, not the reference (the URI).
 
-Implementors `MUST` dereference such properties before attempting to validator a descriptor. At present, this this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
+Implementors `MUST` dereference such properties before attempting to validator a descriptor. At present, this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
 
 - `schema`
 - `dialect`
