@@ -5,8 +5,7 @@ install:
 - nvm install 6.1
 - nvm use 6.1
 - pip install --upgrade pip
-- pip install lektor
-- pip install boto3
+- pip install --upgrade -r requirements.txt
 - npm install
 - npm run compile
 - lektor plugins add lektor-s3
