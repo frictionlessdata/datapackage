@@ -23,7 +23,7 @@ This repository is the canonical repository for the core Frictionless Data speci
 - Clone the repository
 - `pip install lektor` # install the static site generator
 - `npm install` # install the dependencies to build the specifications
-- `npm compile` # compile the specifications
+- `npm run compile` # compile the specifications
 - `lektor server` # serve the site on 127.0.0.1:5000
 
 ### Contribute to the specifications
