@@ -1,6 +1,6 @@
 {% if bag('implementations', this.slug) %}
 <h3>Implementations</h3>
-<p>This following implementations are available for {{ this.slug }}.</p>
+<p>The following implementations are available for {{ this.slug }}:</p>
 <ul>
   {% for k, v in bag('implementations', this.slug).iteritems() %}
   <li><a href="{{ v }}">{{ k }}</a></li>
