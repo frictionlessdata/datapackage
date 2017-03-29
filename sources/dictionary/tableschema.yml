@@ -232,7 +232,8 @@ tableSchemaFieldString:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
+        
+        :
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           "$ref": "#/definitions/tableSchemaConstraintEnum"
@@ -336,8 +337,6 @@ tableSchemaFieldInteger:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
-          "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           "$ref": "#/definitions/tableSchemaConstraintEnum"
         minimum:
@@ -410,8 +409,6 @@ tableSchemaFieldNumber:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
-          "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           "$ref": "#/definitions/tableSchemaConstraintEnum"
         minimum:
@@ -577,12 +574,12 @@ tableSchemaFieldDateTime:
       enum:
       - datetime
     format:
-      description: The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.
+      description: The format keyword options for `datetime` are `default`, `any`, and `<PATTERN>`.
       context: |-
         The following `format` options are supported:
           * **default**: An ISO8601 format string for datetime.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
-          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strptime]().
+          * **<PATTERN>**: The value can be parsed according to `<PATTERN>`, which `MUST` follow the date formatting syntax of C / Python [strptime]().
       enum:
       - default
       - any
