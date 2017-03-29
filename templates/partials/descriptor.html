@@ -1,6 +1,6 @@
 <h3>Descriptor</h3>
 <p>
-  A valid {{ this.title }} descriptor is an <code>object</code> conforming with the formal reference outlined in <a href="#properties">Properties</a>, <em>and</em>, and the following more general requirements.
+  A valid {{ this.title }} descriptor is an <code>object</code> conforming with the formal reference outlined in <a href="#properties">Properties</a>, <em>and</em> the following more general requirements.
 </p>
 <h4>Form</h4>
 <p>
@@ -13,7 +13,7 @@
 <p><strong>A <a href="http://json-schema.org">JSON Schema</a> to validate {{ this.title }} descriptors is <a href="/schemas/{{ this.slug }}.json">available here</a></strong>.</p>
 <h4>Media type</h4>
 <p>
-  The media type for {{ this.title }} descriptors as <code>MUST</code> be <code>{{ this.mediatype }}</code>. This media type is <a href="https://www.iana.org/assignments/media-types/{{ this.mediatype }}">registered with IANA</a>).
+  The media type for {{ this.title }} descriptors <code>MUST</code> be <code>{{ this.mediatype }}</code>. This media type is <a href="https://www.iana.org/assignments/media-types/{{ this.mediatype }}">registered with IANA</a>).
 </p>
 <h4>URIs</h4>
 <p>
@@ -22,6 +22,6 @@
 <ol>
   <li>The only supported schemes are <code>http</code> and <code>https</code>. Absence of a scheme indicates either a POSIX path or a JSON Pointer (see below).</li>
   <li><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator">URLs</a>, indicated by <code>http</code> or <code>https</code>, <code>MUST</code> be fully qualified.</li>
-  <li><a href="https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition">POSIX paths</a>, are supported for referencing local files, with the security restraint that they <code>MUST</code> be relative siblings or children of the descriptor. Absolute paths (<code>/</code>) and relative parent paths (<code>../</code>) <code>MUST NOT</code> be used, and implementations <code>SHOULD NOT</code> support these path types.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition">POSIX paths</a> are supported for referencing local files, with the security restraint that they <code>MUST</code> be relative siblings or children of the descriptor. Absolute paths (<code>/</code>) and relative parent paths (<code>../</code>) <code>MUST NOT</code> be used, and implementations <code>SHOULD NOT</code> support these path types.</li>
   <li><a href="https://tools.ietf.org/html/rfc6901">JSON Pointers</a> are supported as a general referencing mechanism to other properties in the <em>same descriptor</em>, and therefore <code>MUST</code> start with the pound symbol (<code>#</code>).</li>
 </ol>

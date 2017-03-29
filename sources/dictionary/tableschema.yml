@@ -362,18 +362,18 @@ tableSchemaFieldNumber:
   title: Number Field
   description: The field contains numbers of any kind including decimals.
   context: |-
-    The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.
+    The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.
     
-    The following special string values are permitted (case need not be respected):
+    The following special string values are permitted (case does not need to be respected):
       - NaN: not a number
       - INF: positive infinity
       - -INF: negative infinity
 
-    A number MAY also have a trailing:
-      - exponent: this MUST consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)
+    A number `MAY` also have a trailing:
+      - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)
       - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.
 
-    If both exponent and percentages are present the percentage MUST follow the exponent e.g. '53E10%' (equals 5.3).
+    If both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).
   required:
   - name
   properties:
@@ -394,10 +394,10 @@ tableSchemaFieldNumber:
       default: default
     decimalChar:
       type: string
-      description: A string whose value is used to represent a decimal point within the number. The default value is '.'.
+      description: A string whose value is used to represent a decimal point within the number. The default value is `.`.
     groupChar:
       type: string
-      description: A string whose value is used to group digits within the number. The default value is null. A common value is ',' e.g. '100,000'.
+      description: A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'.
     currency:
       type: string
       description: A number that may include additional currency symbols.
@@ -976,12 +976,12 @@ tableSchemaFieldGeoPoint:
   - |
       {
         "name": "post_office",
-        "type": "geojson"
+        "type": "geopoint"
       }
   - |
       {
         "name": "post_office",
-        "type": "geojson",
+        "type": "geopoint",
         "format": "array"
       }
 tableSchemaFieldAny:
@@ -1027,7 +1027,7 @@ tableSchemaConstraintRequired:
   context: An empty string is considered to be a missing value.
 tableSchemaConstraintUnique:
   type: boolean
-  description: When true, each value for the property `MUST` be unique.
+  description: When `true`, each value for the property `MUST` be unique.
 tableSchemaConstraintPattern:
   type: string
   description: A regular expression pattern to test each value of the property against, where a truthy response indicates validity.
@@ -1046,11 +1046,11 @@ tableSchemaConstraintMaxLength:
 tableSchemaConstraintMinimum:
   type: string
   description: A minimum value for the property, context specific for the property type, and conforming with the format for the property.
-  context: This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value.
+  context: This is different to `minLength`, which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value.
 tableSchemaConstraintMaximum:
   type: string
-  description: A minimum value for the property, context specific for the property type, and conforming with the format for the property.
-  context: This is different to minLength which checks the number of items in the value. A minimum value constraint checks whether a field value is greater than or equal to the specified value.
+  description: A maximum value for the property, context specific for the property type, and conforming with the format for the property.
+  context: This is different to `maxLength`, which checks the number of items in the value. A `maximum` value constraint checks whether a field value is smaller than or equal to the specified value.
 tableSchemaRdfType:
   type: string
   description: The RDF type for this field.
