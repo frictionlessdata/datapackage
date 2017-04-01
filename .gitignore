@@ -5,3 +5,4 @@ TAGS
 node_modules/*
 databags/schemas.json
 sources/dictionary.json
+.idea
