@@ -8,17 +8,17 @@ This site is the home for *specifications* related to **Frictionless Data.**
 
 For more info about the project as a whole, please visit [frictionlessdata.io][site].
 
-## Design Principles
+## Design Philosophy
 
-The specifications here are based on the following key principles:
+Our specifications follow our design philosophy:
 
 * **Simplicity**: seek zen-like simplicity in which there is nothing to add and nothing to take away.
-* **Extensibility**: design in support for extensibility and customisation from the start. This makes hard things possible and allows for future evolution -- nothing we build will be perfect.
+* **Extensibility**: design for extensibility and customisation. This makes hard things possible and allows for future evolution -- nothing we build will be perfect.
 * **Human-editable and machine-usable**: specs should preserve human readability and editability whilst making machine-use easy.
-* **Reuse**: reuse and build on existing standards and formats wherever possible
-* **Cross technology**: support a broad range of languages, technologies and infrastructures -- avoid being tied any one specific system.
+* **Reuse**: reuse and build on existing standards and formats wherever possible.
+* **Cross technology**: support a broad range of languages, technologies and infrastructures -- avoid being tied to any one specific system.
 
-These principles follow from the [overall principles of the Frictionless Data project][principles]:
+This philosophy is itself based on the [overall design principles of the Frictionless Data project][principles]:
 
 1. **Focused**: We have a sharp focus on one part of the data chain, one specific feature – packaging – and a few specific types of data (e.g. tabular).
 2. **Web Oriented**: We build for the web using formats that are web "native" such as JSON, work naturally with HTTP such as plain text CSVs (which stream).
