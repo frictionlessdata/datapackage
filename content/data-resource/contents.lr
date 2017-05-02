@@ -8,18 +8,17 @@ mediatype: application/vnd.dataresource+json
 ---
 descriptor: dataresource.json
 ---
-subtitle: A simple format to describe data and its metadata.
+version: 1.0-rc.2
 ---
-version: 1.0-rc.1
+updated: 2 May 2017
 ---
-updated: 30 January 2017
+created: 11 December 2016
 ---
-created: 11 December 2017
 descriptor: dataresource.json
 ---
 abstract:
 
-Data Resource is a simple container format used to describe and package a data source with additional metadata about that data source. By providing a minimum set of required properties and a range of optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
+A simple format to describe and package a single data resource such as a individual table or file.
 ---
 body:
 

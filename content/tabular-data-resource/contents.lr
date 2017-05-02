@@ -6,11 +6,9 @@ slug: tabular-data-resource
 ---
 mediatype: application/vnd.dataresource+json
 ---
-subtitle: A simple format to describe tabular data with a schema and metadata.
+version: 1.0-rc.2
 ---
-version: 1.0-rc.1
----
-updated: 30 January 2017
+updated: 2 May 2017
 ---
 created: 15 December 2017
 ---
@@ -18,7 +16,7 @@ descriptor: dataresource.json
 ---
 abstract:
 
-Tabular Data Resource is a simple container format used to describe and package a tabular data source with a schema that describes it, and additional metadata about that data source. By providing a minimum set of required properties and a range of optional properties, the format enables a simple contract for data interoperability that is governed by minimalism.
+A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
 ---
 body:
 

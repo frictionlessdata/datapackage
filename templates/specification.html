@@ -5,8 +5,8 @@
 {% set spec = bag('schemas', this.slug) %}
 {% set has_profiles = bag('profiles', this.slug) %}
 
-{% include 'partials/meta.html' %}
 {% include 'partials/abstract.html' %}
+{% include 'partials/meta.html' %}
 {% include 'partials/language.html' %}
 <h2>Specification</h2>
 {{ this.body }}
