@@ -458,7 +458,7 @@ tableSchemaFieldDate:
         The following `format` options are supported:
           * **default**: An ISO8601 format string of YYYY-MM-DD.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
-          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strptime]().
+          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
       enum:
       - default
       - any
@@ -524,7 +524,7 @@ tableSchemaFieldTime:
         The following `format` options are supported:
           * **default**: An ISO8601 format string for time.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
-          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strptime]().
+          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
       enum:
       - default
       - any
@@ -582,7 +582,7 @@ tableSchemaFieldDateTime:
         The following `format` options are supported:
           * **default**: An ISO8601 format string for datetime.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
-          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strptime]().
+          * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
       enum:
       - default
       - any
