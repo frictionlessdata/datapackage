@@ -8,14 +8,7 @@
 {% include 'partials/abstract.html' %}
 {% include 'partials/meta.html' %}
 {% include 'partials/language.html' %}
-<h2>Specification</h2>
 {{ this.body }}
-{% if has_profiles %}
-{% include 'partials/profiles.html' with context %}
-{% endif %}
-{% include 'partials/examples.html' %}
-{% include 'partials/descriptor.html' %}
-{% include 'partials/properties.html' %}
 {% include 'partials/changelog.html' %}
 {% include 'partials/implementations.html' %}
 {% endblock body %}
