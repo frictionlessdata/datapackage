@@ -1,4 +1,4 @@
-_model: specification-rfc
+_model: specification
 ---
 slug: data-package
 ---
@@ -20,14 +20,16 @@ A simple container format for describing a coherent collection of data in a sing
 ---
 body:
 
+# Introduction
+
 A Data Package consists of:
 
 * Metadata that describes the structure and contents of the package
 * Resources such as data files that form the contents of the package
 
-Resources in a Data Package are declared on the `resources` property, which is an `array` of [Data Resource](/dataresource/) objects.
+The Data Package metadata is stored in a "descriptor". This descriptor is what makes a collection of data a Data Package. The structure of this descriptor is the main content of the specification below.
 
-The Data Package specification does `NOT` impose any requirements on the form or structure of data described by a Data Resource. Therefore, Data Package can be used for packaging **any kind of data**.
+In addition to this descriptor a data package will include other resources such as data files. The Data Package specification does NOT impose any requirements on their form or structure and can therefore be used for packaging **any kind of data**.
 
 The data included in the package may be provided as:
 
@@ -35,20 +37,188 @@ The data included in the package may be provided as:
 * Remote resources, referenced by URL
 * "Inline" data (see below) which is included directly in the descriptor
 
-A valid descriptor `MUST` contain both a `name` property and a `resources` property. The definition of these properties is described below.
 
-### Customisation
+## Illustrative Structure
 
-A Data Package, like any Frictionless Data descriptor, `MAY` add any number of additional properties beyond those listed in its specification.
+A minimal data package on disk would be a directory containing a single file:
 
-For example, if you were storing time series data and wanted to list the temporal coverage of the data in the Data Package you could add a property `temporal` (cf. [Dublin Core](http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal)):
+    datapackage.json  # (required) metadata and schemas for this data package
 
-```
-"temporal": {
-  "name": "19th Century",
-  "start": "1800-01-01",
-  "end": "1899-12-31"
-}
-```
+Obviously lacking a single piece of actual data would make this of doubtful
+use. A slightly less minimal version would be:
 
-This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage.
+    datapackage.json
+    # a data file (CSV in this case)
+    data.csv
+
+Additional files such as a README, scripts (for processing or analyzing the
+data) and other material may be provided. By convention scripts go in a scripts
+directory and thus, a more elaborate data package could look like this:
+
+    datapackage.json  # (required) metadata and schemas for this data package
+    README.md         # (optional) README in markdown format
+
+    # data files may go either in data subdirectory or in main directory
+    mydata.csv
+    data/otherdata.csv         
+
+    # the directory for code scripts - again these can go in the base directory
+    scripts/my-preparation-script.py
+
+Several exemplar data packages can be found in the [datasets organization on github][datasets], including:
+
+* [World GDP][gdp]
+* [ISO 3166-2 country codes][3166] 
+
+[datasets]: https://github.com/datasets
+[gdp]: https://github.com/datasets/gdp 
+[3166]: https://github.com/datasets/country-codes
+
+## Descriptor
+
+The descriptor is the central file in a Data Package. It provides:
+
+* General metadata such as the package's title, license, publisher etc
+* A list of the data "resources" that make up the package including their
+  location on disk or online and other relevant information (including,
+  possibly, schema information about these data resources in a structured form)
+
+A Data Package descriptor MUST a valid JSON `object`. (JSON is defined in [RFC 4627][]). When available as a file it MUST be named `datapackage.json` and it MUST be placed in the top-level directory (relative to any other resources provided as part of the data package). 
+
+[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
+
+The descriptor MUST contain a `resources` property describing the data resources.
+
+All other properties are considered `metadata` properties. The descriptor MAY contain any number of other `metadata` properties. The following section provides a complete description of required and optional metadata properties for a Data Package descriptor.
+
+Adherence to the specification does not imply that additional, non-specified properties cannot be used: a descriptor MAY include any number of properties in additional to those described as required and optional properties.
+
+Here is an illustrative example of a datapackage JSON file:
+
+    {
+      # general "metadata" like title, sources etc
+      "name" : "a-unique-human-readable-and-url-usable-identifier",
+      "title" : "A nice title",
+      "licenses" : [ ... ],
+      "sources" : [...],
+      # list of the data resources in this data package
+      "resources": [
+        {
+          ... resource info described below ...
+        }
+      ],
+      # optional
+      ... additional information ...
+    }
+
+# Resource Information
+
+Packaged data resources are described in the `resources` property of the package descriptor. This property MUST be an array of `objects`. Each object MUST follow the [Data Resource specification][dr]. That specification is included by reference here.
+
+[dr]: /data-resource/
+
+# Metadata
+
+## Required Properties
+
+There are no required properties.
+
+## Recommended Properties
+
+In addition to the required properties, the following properties SHOULD be included in
+every package descriptor:
+
+* `name` - short url-usable (and preferably human-readable) name of
+  the package. This MUST be lower-case and contain only alphanumeric characters
+  along with ".", "_" or "-" characters. It will function as a unique
+  identifier and therefore SHOULD be unique in relation to any registry in
+  which this package will be deposited (and preferably globally unique).
+
+  The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
+  package is updated, unless the new package version should be considered a
+  distinct package, e.g. due to significant changes in structure or
+  interpretation. Version distinction SHOULD be left to the version property. As
+  a corollary, the name also SHOULD NOT include an indication of time range
+  covered.
+
+* `licenses` - the license(s) under which the package is provided.
+  
+  **This property is not legally binding and does not guarantee the package is
+  licensed under the terms defined in this property.**
+  
+  `licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `type` property and/or a `url` property. It MAY contain a `title` property.
+  
+  Here is an example:
+
+        "license": {
+          "type": "ODC-PDDL-1.0",
+          "web": "http://opendatacommons.org/licenses/pddl/",
+          "title": Open Data Commons Public Domain Dedication and License v1.0"
+        }
+
+  * `type`: The `type` MUST be an [Open Definition license ID][od-licenses
+  * `web`: A URL to the text of the license online.
+  * `title`: A human-readable title.
+
+[od-licenses]: http://licenses.opendefinition.org/
+[od-approved]: http://opendefinition.org/licenses/
+[semver]: http://semver.org
+
+## Optional Properties
+
+The following are commonly used properties that the package descriptor MAY contain:
+
+* `title` - a title or one sentence description for this package
+* `description` - a description of the package. The description MUST be
+  [markdown][] formatted -- this also allows for simple plain text as plain
+  text is itself valid markdown. The first paragraph (up to the first double
+  line break) should be usable as summary information for the package.
+* `homepage` - A URL for the home on the web that is related to this data package.
+* `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
+* `sources` - the raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `web` and `email` properties. Example:
+
+      "sources": [{
+        "title": "World Bank and OECD",
+        "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+      }]
+* `contributors` - this is a property for describing people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `web`, `email` and `role` properties. An example of the object structure
+  is as follows:
+
+      {
+        "title": "Joe Bloggs",
+        "email": "joe@bloggs.com",
+        "web": "http://www.bloggs.com",
+        "role": "author"
+      }
+
+  * `title`: name/title of the contributor (name for person, name/title of organization)
+  * `web`: a fully qualified URL
+  * `email`: An email address
+  * `role`: a string describing the role of the contributor. It MAY take any value. Standard values are: `author`, `publisher`, `maintainer`.
+    * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
+* `keywords` - an Array of string keywords to assist users searching for the
+  package in catalogs.
+* `image` - a link to an image to use for this data package
+
+<div class="alert" markdown="block">
+NOTE: A Data Package MAY include any number of additional properties beyond those
+listed in the specification here. For example, if you were storing
+time series data and wanted to list the temporal coverage of the data in the
+Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
+
+    "temporal": {
+      "name": "19th Century",
+      "start": "1800-01-01",
+      "end": "1899-12-31"
+    }
+
+This flexibility enables specific communities to extend Data Packages as
+appropriate for the data they manage. As an example, the [Tabular Data
+Package][tdp] specification extends Data Package to the case
+where all the data is tabular and stored in CSV.
+</div>
+
+[tdp]: /tabular-data-package/
+[dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
+[markdown]: http://commonmark.org/
+
