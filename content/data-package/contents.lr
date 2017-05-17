@@ -74,6 +74,8 @@ Several exemplar data packages can be found in the [datasets organization on git
 [gdp]: https://github.com/datasets/gdp 
 [3166]: https://github.com/datasets/country-codes
 
+# Specification
+
 ## Descriptor
 
 The descriptor is the central file in a Data Package. It provides:
@@ -111,19 +113,19 @@ Here is an illustrative example of a datapackage JSON file:
       ... additional information ...
     }
 
-# Resource Information
+## Resource Information
 
-Packaged data resources are described in the `resources` property of the package descriptor. This property MUST be an array of `objects`. Each object MUST follow the [Data Resource specification][dr]. That specification is included by reference here.
+Packaged data resources are described in the `resources` property of the package descriptor. This property MUST be an array of `objects`. Each object MUST follow the [Data Resource specification][dr].
 
 [dr]: /data-resource/
 
-# Metadata
+## Metadata
 
-## Required Properties
+### Required Properties
 
 There are no required properties.
 
-## Recommended Properties
+### Recommended Properties
 
 In addition to the required properties, the following properties SHOULD be included in
 every package descriptor:
@@ -150,11 +152,11 @@ every package descriptor:
   
   Here is an example:
 
-        "license": {
+        "licenses": [{
           "type": "ODC-PDDL-1.0",
           "web": "http://opendatacommons.org/licenses/pddl/",
-          "title": Open Data Commons Public Domain Dedication and License v1.0"
-        }
+          "title": "Open Data Commons Public Domain Dedication and License v1.0"
+        }]
 
   * `type`: The `type` MUST be an [Open Definition license ID][od-licenses
   * `web`: A URL to the text of the license online.
@@ -164,7 +166,7 @@ every package descriptor:
 [od-approved]: http://opendefinition.org/licenses/
 [semver]: http://semver.org
 
-## Optional Properties
+### Optional Properties
 
 The following are commonly used properties that the package descriptor MAY contain:
 
@@ -184,12 +186,12 @@ The following are commonly used properties that the package descriptor MAY conta
 * `contributors` - this is a property for describing people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `web`, `email` and `role` properties. An example of the object structure
   is as follows:
 
-      {
+      contributors: [{
         "title": "Joe Bloggs",
         "email": "joe@bloggs.com",
         "web": "http://www.bloggs.com",
         "role": "author"
-      }
+      }]
 
   * `title`: name/title of the contributor (name for person, name/title of organization)
   * `web`: a fully qualified URL
