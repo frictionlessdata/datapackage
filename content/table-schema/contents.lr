@@ -35,7 +35,7 @@ To illustrate here's a classic spreadsheet table:
       |         |
       V         V
 
-     A     |    B    |    C    |    D      <--- Row
+     A     |    B    |    C    |    D      <--- Row (Header)
      ------------------------------------
      valA  |   valB  |  valC   |   valD    <--- Row
      ...
@@ -88,21 +88,22 @@ A schema has the following structure:
 }
 ```
 
-That is, a Table Schema is:
+That is, a Table Schema MUST be a JSON `object` (JSON is defined in [RFC 4627][]). The `object` MUST have the following structure:
 
--   a Hash which `MUST` contain a key `fields`
--   `fields` MUST be an array where each entry in the array is a field
+[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
+
+-   It MUST contain a property `fields`. `fields` MUST be an array where each entry in the array is a field
     descriptor. (Structure and usage described below)
--   the Hash `MAY` contain a property `primaryKey` (structure and usage
+-   It `MAY` contain a property `primaryKey` (structure and usage
     specified below)
--   the Hash `MAY` contain a property `foreignKeys` (structure and usage
+-   It `MAY` contain a property `foreignKeys` (structure and usage
     specified below)
--   the Hash `MAY` contain any number of other properties (not defined in this
+-   It `MAY` contain any number of other properties (not defined in this
     spec)
 
 ## Field Descriptors
 
-A field descriptor is a simple JSON hash that describes a single field. The
+A field descriptor is a simple JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
 well as additional information that may be used to validate the field or create
 a user interface for data entry.
@@ -122,8 +123,8 @@ have additional keys as described below:
       }
     }
 
--   a field descriptor MUST be a Hash
--   the field descriptor Hash MUST contain a `name` property. This
+-   a field descriptor MUST be a `object`
+-   the field descriptor `object` MUST contain a `name` property. This
     property `SHOULD` correspond to the name of field/column in the
     data file (if it has a name). As such it `SHOULD` be unique (though
     it is possible, but very bad practice, for the data file to have
@@ -131,8 +132,8 @@ have additional keys as described below:
     be considered case sensitive. In practice, case sensitivity for names
     can be limiting in certain scenarios, so consumers `MAY` choose to ignore
     case sensitivity for `name` values.
--   the field descriptor Hash MAY contain any number of other properties
--   specific properties that MAY be included in the Hash and whose
+-   the field descriptor `object` MAY contain any number of other properties
+-   specific properties that MAY be included in the `object` and whose
     meaning is defined in this spec are:
 
     -   `title`: A nicer human readable label or title for the field
@@ -154,7 +155,7 @@ to validate data against a Table Schema. The constraints might be used by consum
 to validate, for example, the contents of a data package, or as a means to validate
 data being collected or updated via a data entry interface.
 
-A constraints descriptor is a JSON hash. It `MAY` contain any of the following
+A constraints descriptor is a JSON `object`. It `MAY` contain any of the following
 keys.
 
 - `required` -- A boolean value which indicates whether a field must have a value
@@ -442,7 +443,7 @@ Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
 A primary key is a field or set of fields that uniquely identifies each row in
 the table.
 
-The `primaryKey` entry in the schema Hash is optional. If present it specifies
+The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
 
 The `primaryKey`, if present, MUST be:
@@ -511,12 +512,12 @@ table ('resource' in data package terminology) is a reference to an entry in a
 field (or fields) on a separate resource.
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
-array must be a `foreignKey`. A `foreignKey` `MUST` be a Hash and:
+array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and:
 
 * `MUST` have a property `fields`. `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
-* `MUST` have a property `reference` which MUST be a Hash. The Hash
+* `MUST` have a property `reference` which MUST be a `object`. The `object`
   * `MAY` have a property `datapackage`. This property is a string being a url
     pointing to a Data Package or is the name of a datapackage. If absent the
     implication is that this is a reference to a resource within the current
