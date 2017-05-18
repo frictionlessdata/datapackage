@@ -100,7 +100,7 @@ specified by the presence of one (and only one) of these two properties:
 * `path`: for data in files located online or locally on disk.
 * `data`: for data inline in the `datapackage.json` descriptor itself.
 
-## `path`: Data in Files
+## `path` Data in Files
 
 `path` MUST be a string -- or an array of strings (see "Data in Multiple
 Files"). Strings MUST be one of:
@@ -110,8 +110,8 @@ Files"). Strings MUST be one of:
 
 A relative path MUST be interpreted relative to the directory or URL in which
 the descriptor `datapackage.json` listing this resource resides. A relative
-`path` MUST NOT start with `/` or `.` (which eliminates relative parent paths
-such as `../`).
+`path` MUST NOT start with `/` or `.` and MUST NOT contain `../` (these restrictions(
+eliminate relative parent paths such as `../`).
 
 Examples:
 
@@ -165,12 +165,13 @@ array: strings MUST either all be relative paths or all URLs.
 
 <div class="alert implementor" markdown="block">
 NOTE: all files in the array MUST be similar in terms of structure, format etc.
-Implementors SHOULD be able simply concatenate the files together and treat the
-result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
+Implementors MUST be able to concatenate together the files in the simplest way
+and treat the result as one large file. For tabular data there is the issue of
+header rows. See the [Tabular Data Package spec][tdp] for more on this.
 </div>
 
 
-## Inline Data `data`
+## `data` Inline Data
 
 Resource data rather than being stored in external files can be shipped
 'inline' on a Resource using the `data` attribute.
@@ -265,7 +266,7 @@ The value for the `schema` property on a `resource` MUST be an `object` represen
 The restrictions on a `string` value are the same as those [defined above for the `path` data locator strings](#path-data-in-files) -- that is a fully qualified URL or a relative unix-style path.
 
 <div class="alert" markdown="block">
-NOTE: the Data Package specification places no restrictions on the form of this
+NOTE: the Data Package specification places no restrictions on the form of the schema
 Object. This flexibility enables specific communities to define schemas
 appropriate for the data they manage. As an example, the [Tabular Data
 Package][tdp] specification requires the schema value to conform to [Table
