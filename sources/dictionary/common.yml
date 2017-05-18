@@ -264,7 +264,7 @@ licenses:
       {
         "licenses": [
           {
-            "name": "ODC-PDDL-1.0",
+            "name": "odc-pddl-1.0",
             "uri": "http://opendatacommons.org/licenses/pddl/"
           }
         ]
