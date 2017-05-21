@@ -173,21 +173,21 @@ header rows. See the [Tabular Data Package spec][tdp] for more on this.
 ## `data` Inline Data
 
 Resource data rather than being stored in external files can be shipped
-'inline' on a Resource using the `data` attribute.
+'inline' on a Resource using the `data` property.
 
-The value of the data attribute  can be any type of data. However, restrictions
+The value of the data property  can be any type of data. However, restrictions
 of JSON require that the value be a string so for binary data you will need to
 encode (e.g. to Base64). Information on the type and encoding of the value of
-the data attribute SHOULD be provided by the format (or mediatype) attribute
-and the encoding attribute.
+the data property SHOULD be provided by the format (or mediatype) property
+and the encoding property.
 
-Specifically: the value of the data attribute MUST be:
+Specifically: the value of the data property MUST be:
 
 * EITHER: a JSON array or object - the data is then assumed to be JSON data and SHOULD be processed as such
-* OR: a JSON string - in this case the format or mediatype attributes MUST be provided.
+* OR: a JSON string - in this case the format or mediatype properties MUST be provided.
 
 Thus, a consumer of resource object MAY assume if no format or mediatype
-attribute is provided that the data is JSON and attempt to process it as such.
+property is provided that the data is JSON and attempt to process it as such.
 
 Examples 1 - inline JSON:
 
