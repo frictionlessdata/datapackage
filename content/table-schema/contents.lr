@@ -48,21 +48,15 @@ In JSON a table would be:
       ...
     ]
 
-# Specification
+# Descriptor
 
-A Table Schema consists of:
+A Table Schema consists of a descriptor. The descriptor MUST be a JSON `object` (JSON is defined in [RFC 4627][]).
 
-* a required list of **field descriptors**
-* optionally, a **primary key** description
-* optionally, a **foreign key** description
+It MUST contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties (not defined in this spec).
 
-A schema is described using JSON. This might exist as a standalone document
-or may be embedded within another JSON structure, e.g. as part of a
-data package description.
+[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
-## Schema
-
-A schema has the following structure:
+The following is an illustration of this structure:
 
 ```javascript
 {
@@ -80,43 +74,30 @@ A schema has the following structure:
     },
     ... more field descriptors
   ],
+  // (optional) specification of missing values
+  "missingValues": [ ... ],
   // (optional) specification of the primary key
   "primaryKey": ...
   // (optional) specification of the foreign keys
   "foreignKeys": ...
-
 }
 ```
 
-That is, a Table Schema MUST be a JSON `object` (JSON is defined in [RFC 4627][]). The `object` MUST have the following structure:
+# Field Descriptors
 
-[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
-
--   It MUST contain a property `fields`. `fields` MUST be an array where each entry in the array is a field
-    descriptor. (Structure and usage described below)
--   It `MAY` contain a property `primaryKey` (structure and usage
-    specified below)
--   It `MAY` contain a property `foreignKeys` (structure and usage
-    specified below)
--   It `MAY` contain any number of other properties (not defined in this
-    spec)
-
-## Field Descriptors
-
-A field descriptor is a simple JSON `object` that describes a single field. The
+A field descriptor is a JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
 well as additional information that may be used to validate the field or create
 a user interface for data entry.
 
-At a minimum a field descriptor will contain at least a `name` key, but MAY
-have additional keys as described below:
+At a minimum a field descriptor will contain at least a `name` property, but MAY
+have additional properties as described below:
 
     {
       "name": "name of field (e.g. column name)",
       "title": "A nicer human readable label or title for the field",
       "type": "A string specifying the type",
       "format": "A string specifying a format",
-      "missingValue": "",
       "description": "A description for the field",
       "constraints": {
           # a constraints-descriptor
@@ -148,7 +129,7 @@ have additional keys as described below:
     -   `constraints`: A constraints descriptor that can be used by consumers
         to validate field values
 
-### Field Constraints
+## Constraints
 
 A set of constraints can be associated with a field. These constraints can be used
 to validate data against a Table Schema. The constraints might be used by consumers
@@ -184,7 +165,7 @@ all the constraints when determining if a field value is valid.
 A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid
 according to their declared `type` and `constraints`.
 
-### Field Types and Formats
+## Types and Formats
 
 A field's `type` property is a string indicating the type of this field.
 
@@ -205,7 +186,7 @@ types](http://www.elasticsearch.org/guide/reference/mapping/)).
 The type list with associated formats and other related properties is as
 follows.
 
-#### string
+### string
 
 The field contains strings, that is, sequences of characters.
 
@@ -217,7 +198,7 @@ The field contains strings, that is, sequences of characters.
 * **binary**: A base64 encoded string representing binary data.
 * **uuid**: A string that is a uuid.
 
-#### number
+### number
 
 The field contains numbers of any kind including decimals.
 
@@ -256,7 +237,7 @@ This lexical formatting may be modified using these additional properties:
 
 [xsd-decimal]: https://www.w3.org/TR/xmlschema-2/#decimal
 
-#### integer
+### integer
 
 The field contains integers - that is whole numbers.
 
@@ -264,7 +245,7 @@ Integer values are indicated in the standard way for any valid integer.
 
 `format`: no options (other than the default).
 
-#### boolean
+### boolean
 
 The field contains boolean (true/false) data.
 
@@ -276,19 +257,19 @@ so, for example, "Y" and "y" are both acceptable):
 
 `format`: no options (other than the default).
 
-#### object
+### object
 
 The field contains data which is valid JSON.
 
 `format`: no options (other than the default).
 
-#### array
+### array
 
 The field contains data that is a valid JSON format arrays.
 
 `format`: no options (other than the default).
 
-#### date
+### date
 
 **datetime**; **date**; **time**
 
@@ -310,7 +291,7 @@ Tthe field contains temporal values such as dates, times and date-times.
   by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y`
   would correspond to dates like: `30 Nov 14`
 
-#### gyear
+### gyear
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
@@ -318,7 +299,7 @@ Usual lexical reprentation is `YYYY`. There are no format options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
-#### gyearmonth
+### gyearmonth
 
 A specific month in a specific year as per [XMLSchema
 `gYearMonth`][xsd-gyearmonth].
@@ -327,7 +308,7 @@ Usual lexical representation is: `YYYY-MM`. There are no format options.
 
 [xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
 
-#### duration
+### duration
 
 A duration of time.
 
@@ -343,7 +324,7 @@ and that definition is implicitly inlined here.
 
 `format`: no options (other than the default).
 
-#### geopoint
+### geopoint
 
 The field contains data describing a geographic point.
 
@@ -356,7 +337,7 @@ The field contains data describing a geographic point.
   item is `lat`.
 * **object**: A JSON object with exactly two keys, `lat` and `lon`
 
-#### geojson
+### geojson
 
 The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
@@ -365,7 +346,7 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
 * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
-#### any
+### any
 
 Any `type` or `format` is accepted.
 
@@ -373,43 +354,7 @@ Any `type` or `format` is accepted.
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
 [xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
 
-### Missing Values
-
-By "missing" we simply mean null or "not present for whatever reason". Many
-datasets arrive with missing data values, either because a value was not
-collected or it never existed.
-
-Missing values may be indicated simply by the value being empty in other cases
-a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
-
-The `missingValue` property provides a way to indicate that these values should
-be interpreted as equivalent to null.
-
-Strings that indicate missing (null) data values for a field `MAY` be provided
-for a field using the the `missingValue` property.
-
-If present, the `missingValue` MUST be a single string or an array of strings,
-for example:
-
-    "missingValue": ""
-    "missingValue": "-"
-    "missingValue": ["Nan", "-"]
-
-**Note**: `missingValue` are strings rather than being the data type of
-the particular field. This allows for comparison prior to casting and for
-fields to have missing value which are not of their type, for example a
-`number` field to have missing values indicated by `-`.
-
-The default value of `missingValue` for a non-string type field is the empty
-string `""`. For string type fields there is no default for `missingValue` (for
-string fields the empty string `""` is a valid value and need not indicate
-null).
-
-**Processing**: if a missing value is encountered it SHOULD be converted into
-the NULL or equivalent value.
-
-
-### Rich Field Types
+## Rich Types
 
 A richer, "semantic", description of the "type" of data in a given column MAY
 be provided using a `rdfType` property on a field descriptor.
@@ -418,12 +363,15 @@ The value of of the `rdfType` property MUST be the URI of a RDF Class, that is a
 
 Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
 
+```
 | Country | Year Date | Value |
 | ------- | --------- | ----- |
 | US      | 2010      | ...   |
+```
 
+The corresponding Table Schema is:
 
-    # Table Schema
+```javascript
     {
       fields: [
         {
@@ -434,9 +382,35 @@ Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
         ... 
       }
     }
+```
 
 [rdfs-class]: https://www.w3.org/TR/rdf-schema/#ch_class
 
+
+# Other Properties
+
+## Missing Values
+
+Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
+
+The `missingValues` property is optional. It `MAY` be provided and when it exists it indicates Values that when encountered in the data, should be considered as `null`, 'not present', or 'blank' values.
+
+`missingValues` MUST be an `array` where each entry is a `string`.
+
+**Why strings**: `missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.
+
+**Defaults:** The default value of `missingValue` for a non-string type field is the empty string `""`. For string type fields there is no default for `missingValue` (for string fields the empty string `""` is a valid value and need not indicate null).
+
+Examples:
+
+```javascript
+"missingValues": [""]
+"missingValues": ["-"]
+"missingValue": ["Nan", "-"]
+```
+
+**Processing**: if a missing value is encountered it SHOULD be converted into
+the NULL or equivalent value.
 
 ## Primary Key
 
