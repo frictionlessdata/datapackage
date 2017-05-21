@@ -492,10 +492,14 @@ Here's an example with an array primary key:
 
 ## Foreign Keys
 
+A foreign key is a reference where entries in a given field (or fields) on this
+table ('resource' in data package terminology) connect to an entry in a
+field (or fields) on a separate resource.
+
 <div class="alert alert-success">
 Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes one of two assumptions:
 <ul>
-<li>Your Foreign Key points to another field/fields within the current JSON
+<li>Your Foreign Key points to another field/fields within the current 
 Table Schema. In this case you use a special <code>self</code> keyword is
 employed.</li>
 <li>Your Foreign Key points to a field/fields in a Table Schema
@@ -507,23 +511,15 @@ pointing out to a (Tabular) Data Package stored elsewhere e.g. online.</li>
 </ul>
 </div>
 
-A foreign key is a reference where entries in a given field (or fields) on this
-table ('resource' in data package terminology) is a reference to an entry in a
-field (or fields) on a separate resource.
-
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
-array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and:
+array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have the following properties:
 
-* `MUST` have a property `fields`. `fields` is a string or array specifying the
+* `fields` - `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
-* `MUST` have a property `reference` which MUST be a `object`. The `object`
-  * `MAY` have a property `datapackage`. This property is a string being a url
-    pointing to a Data Package or is the name of a datapackage. If absent the
-    implication is that this is a reference to a resource within the current
-    data package or this is self-referencing foreign key.
+* `reference` - `reference` MUST be a `object`. The `object`
   * `MUST` have a property `resource` which is the name of the resource within
-    the referenced data package. For self-referencing foreign keys, the value
+    the the current data package. For self-referencing foreign keys, the value
     of `resource` `MUST` be `self`.
   * `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
@@ -533,42 +529,67 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and:
 Here's an example:
 
 
-      "fields": [
-        {
-          "name": "state"
-        }
-      ],
-      "foreignKeys": [
-        {
-          "fields": "state"
-          "reference": {
-            "datapackage": "http://data.okfn.org/data/mydatapackage/",
-            "resource": "the-resource",
-            "fields": "state_id"
+```javascript
+  "resources": [
+    {
+      "name": "state-codes",
+      "schema": {
+        "fields": [
+          {
+            "name": "code"
           }
-        }
-      ]
+        ]
+      }
+    },
+    {
+      "name": "population-by-state"
+      "schema": {
+        "fields": [
+          {
+            "name": "state-code"
+          }
+          ...
+        ],
+        "foreignKeys": [
+          {
+            "fields": "state-code"
+            "reference": {
+              "resource": "state-codes",
+              "fields": "code"
+            }
+          }
+        ]
+    ...
+```
 
 An example of a self-referencing foreign key:
 
-      "fields": [
-        {
-          "name": "parent"
-        },
-        {
-          "name": "id"
-        }
-      ],
-      "foreignKeys": [
-        {
-          "fields": "parent"
-          "reference": {
-            "datapackage": "",
-            "resource": "self",
-            "fields": "id"
+```javascript
+  "resources": [
+    {
+      "name": "xxx",
+      "schema": {
+        "fields": [
+          {
+            "name": "parent"
+          },
+          {
+            "name": "id"
           }
-        }
-      ]
+        ],
+        "foreignKeys": [
+          {
+            "fields": "parent"
+            "reference": {
+              "resource": "self",
+              "fields": "id"
+            }
+          }
+        ]
+      }
+    }
+  ]
+```
 
 # Appendix: Related Work
 

@@ -7,6 +7,7 @@ updated: 11 December 2017
 created: 11 December 2017
 ---
 author:
+ - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
 ---
 summary: A collection of patterns for frictionless handling of data.
@@ -251,4 +252,11 @@ http://example/com/data/lang/file2-en.csv
 http://example/com/data/lang/file2-es.csv
 ```
 
-?
+## Table Schema: Foreign Keys to Data Packages
+
+Purpose: allow users to link from the column of a Tabular Data Resource in one Data Package to a Tabular Data Resource in another Data Package.
+
+To support this:
+
+The `foreignKey` MAY have a property `datapackage`. This property is a string being a url pointing to a Data Package or is the name of a datapackage.
+
