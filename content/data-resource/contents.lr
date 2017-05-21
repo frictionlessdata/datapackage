@@ -220,19 +220,20 @@ Example 2 - inline CSV:
 
 # Metadata Properties
 
-## Recommended Properties
+## Required Properties
 
-A descriptor SHOULD contain the following properties:
+A descriptor MUST contain the following properties:
 
-* `name`: a resource SHOULD contain an `name` attribute. The name is a simple name or
+### `name`
+
+A resource MUST contain a `name` property. The name is a simple name or
   identifier to be used for this resource.
 
-  * If present, the name MUST be unique amongst all resources in this data
-    package.
-  * The name SHOULD be usable in a url path and SHOULD therefore consist only
-    of alphanumeric characters plus ".", "-" and "_".
-  * It would be usual for the name to correspond to the file name (minus the
-    extension) of the data file the resource describes.
+* If present, the name MUST be unique amongst all resources in this data
+  package.
+* It MUST consist only of lowercase alphanumeric characters plus ".", "-" and "_".
+* It would be usual for the name to correspond to the file name (minus the
+  extension) of the data file the resource describes.
 
 ## Optional Properties
 
