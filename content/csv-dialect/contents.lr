@@ -43,7 +43,7 @@ format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Py
 
 A CSV Dialect descriptor `MUST` be a JSON `object` with the following properties:
 
-* `delimiter` - specifies a one-character string to use as the field separator. Default = `,`
+* `delimiter` - specifies the character sequence which should separate fields (aka columns). Default = `,`. Example `\t`.
 * `lineTerminator` - specifies the character sequence which should terminate rows. Default = `\r\n`
 * `quoteChar` - specifies a one-character string to use as the quoting character. Default = `"`
 * `doubleQuote` - controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = `true`
