@@ -184,6 +184,26 @@ Here is an example:
 [semver]: http://semver.org
 [url-or-path]: /data-resource/#url-or-path
 
+#### `profile`
+
+A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
+
+[profile]: /profiles/
+
+Examples:
+
+```javascript
+{
+  "profile": "tabular-data-package"
+}
+```
+
+```
+{
+  "profile": "http://example.com/my-profiles-json-schema.json"
+}
+```
+
 ### Optional Properties
 
 The following are commonly used properties that the package descriptor MAY contain:

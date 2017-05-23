@@ -238,6 +238,28 @@ A resource MUST contain a `name` property. The name is a simple name or
 * It would be usual for the name to correspond to the file name (minus the
   extension) of the data file the resource describes.
 
+## Recommended Properties
+
+### `profile`
+
+A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
+
+[profile]: /profiles/
+
+Examples:
+
+```javascript
+{
+  "profile": "tabular-data-resource"
+}
+```
+
+```
+{
+  "profile": "http://example.com/my-profiles-json-schema.json"
+}
+```
+
 ## Optional Properties
 
 A descriptor MAY contain any number of additional properties. Common properties include:

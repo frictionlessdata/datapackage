@@ -1,0 +1,39 @@
+_model: page
+---
+title: Profiles
+---
+updated: 24 May 2017
+---
+created: 11 December 2017
+---
+author:
+ - Rufus Pollock (Open Knowledge International)
+ - Paul Walsh (Open Knowledge International)
+---
+summary: Data Package and Data Resource Profiles
+---
+body:
+
+Different kinds of data need different data and metadata formats. To support these different data and metadata formats we need to extend and specialise the generic Data Package. These specialized types of Data Package (or Data Resource) are termed **profiles**. For example, there is a [Tabular Data Package][tdp] profile that specializes Data Packages specifically for tabular data.
+
+Thus, every Package and Resource descriptor has a profile. The default profile, if none is declared, is `default`. The namespace for the profile is the type of descriptor, so, default for a Package descriptor is not the same as default for a Resource descriptor.
+
+In summmary, an extension of Data Package may be formalised as a profile. A profile is a Data Package which extends the default specification towards more specific needs.
+
+## `profile` Property
+
+In addition to the concept, we need an explict way for publishers to state the profile they are using and consumers to discover this.
+
+Thus, we have a `profile` property that declares the profile for the descriptor for this Package or Resource. For the default Data Package and Data Resource descriptor, this SHOULD be present with a value of default, but if not, the absence of a profile is equivalent to setting "profile": "default".
+
+Custom profiles MUST have a profile property, where the value is a unique identifier for that profile. This unique identifier `MUST` be a string and can be in one of two forms. It can be an id from the official [Data Package Schema Registry][registry], or, a fully-qualified URL that points directly to a JSON Schema that can be used to validate the profile.
+
+As part of the Frictionless Data Specifications project, we publish a number of Data Package profiles such as:
+
+* [Tabular Data Package][tdp]
+* [Fiscal Data Package][fdp]
+
+[registry]: http://schemas.frictionlessdata.io/registry.json
+[tdp]: /tabular-data-package/
+[fdp]: /fiscal-data-package/
+
