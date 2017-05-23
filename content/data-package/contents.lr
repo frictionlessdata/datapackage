@@ -91,9 +91,22 @@ A Data Package descriptor MUST a valid JSON `object`. (JSON is defined in [RFC 4
 
 The descriptor MUST contain a `resources` property describing the data resources.
 
-All other properties are considered `metadata` properties. The descriptor MAY contain any number of other `metadata` properties. The following section provides a complete description of required and optional metadata properties for a Data Package descriptor.
+All other properties are considered `metadata` properties. The descriptor MAY contain any number of other `metadata` properties. The following sections provides a description of required and optional metadata properties for a Data Package descriptor.
 
-Adherence to the specification does not imply that additional, non-specified properties cannot be used: a descriptor MAY include any number of properties in additional to those described as required and optional properties.
+Adherence to the specification does not imply that additional, non-specified properties cannot be used: a descriptor MAY include any number of properties in additional to those described as required and optional properties. For example, if you were storing
+time series data and wanted to list the temporal coverage of the data in the
+Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
+
+    "temporal": {
+      "name": "19th Century",
+      "start": "1800-01-01",
+      "end": "1899-12-31"
+    }
+
+This flexibility enables specific communities to extend Data Packages as
+appropriate for the data they manage. As an example, the [Tabular Data
+Package][tdp] specification extends Data Package to the case
+where all the data is tabular and stored in CSV.
 
 Here is an illustrative example of a datapackage JSON file:
 
@@ -130,37 +143,41 @@ There are no required properties.
 In addition to the required properties, the following properties SHOULD be included in
 every package descriptor:
 
-* `name` - short url-usable (and preferably human-readable) name of
-  the package. This MUST be lower-case and contain only alphanumeric characters
-  along with ".", "_" or "-" characters. It will function as a unique
-  identifier and therefore SHOULD be unique in relation to any registry in
-  which this package will be deposited (and preferably globally unique).
+#### `name`
 
-  The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
-  package is updated, unless the new package version should be considered a
-  distinct package, e.g. due to significant changes in structure or
-  interpretation. Version distinction SHOULD be left to the version property. As
-  a corollary, the name also SHOULD NOT include an indication of time range
-  covered.
+A short url-usable (and preferably human-readable) name of
+the package. This MUST be lower-case and contain only alphanumeric characters
+along with ".", "_" or "-" characters. It will function as a unique
+identifier and therefore SHOULD be unique in relation to any registry in
+which this package will be deposited (and preferably globally unique).
 
-* `licenses` - the license(s) under which the package is provided.
+The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
+package is updated, unless the new package version should be considered a
+distinct package, e.g. due to significant changes in structure or
+interpretation. Version distinction SHOULD be left to the version property. As
+a corollary, the name also SHOULD NOT include an indication of time range
+covered.
+
+#### `licenses`
+
+The license(s) under which the package is provided.
   
-  **This property is not legally binding and does not guarantee the package is
-  licensed under the terms defined in this property.**
+**This property is not legally binding and does not guarantee the package is
+licensed under the terms defined in this property.**
   
-  `licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `type` property and/or a `url` property. It MAY contain a `title` property.
-  
-  Here is an example:
+`licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `type` property and/or a `url` property. It MAY contain a `title` property.
 
-        "licenses": [{
-          "name": "ODC-PDDL-1.0",
-          "path": "http://opendatacommons.org/licenses/pddl/",
-          "title": "Open Data Commons Public Domain Dedication and License v1.0"
-        }]
+Here is an example:
 
-  * `name`: The `type` MUST be an [Open Definition license ID][od-licenses
-  * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
-  * `title`: A human-readable title.
+      "licenses": [{
+        "name": "ODC-PDDL-1.0",
+        "path": "http://opendatacommons.org/licenses/pddl/",
+        "title": "Open Data Commons Public Domain Dedication and License v1.0"
+      }]
+
+* `name`: The `type` MUST be an [Open Definition license ID][od-licenses
+* `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
+* `title`: A human-readable title.
 
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
@@ -171,24 +188,41 @@ every package descriptor:
 
 The following are commonly used properties that the package descriptor MAY contain:
 
-* `title` - a title or one sentence description for this package
-* `description` - a description of the package. The description MUST be
+#### `title`
+
+A `string` providing a title or one sentence description for this package
+
+#### `description`
+
+a description of the package. The description MUST be
   [markdown][] formatted -- this also allows for simple plain text as plain
   text is itself valid markdown. The first paragraph (up to the first double
   line break) should be usable as summary information for the package.
-* `homepage` - A URL for the home on the web that is related to this data package.
-* `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
-* `sources` - the raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `path` and `email` properties. Example:
 
-      "sources": [{
-        "title": "World Bank and OECD",
-        "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
-      }]
+#### `homepage`
 
-  * `title`: title of the source (e.g. document or organization name)
-  * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
-  * `email`: An email address
-* `contributors` - this is a property for describing people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `url`, `email` and `role` properties. An example of the object structure
+A URL for the home on the web that is related to this data package.
+
+#### `version`
+
+a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
+
+#### `sources`
+
+The raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `path` and `email` properties. Example:
+
+    "sources": [{
+      "title": "World Bank and OECD",
+      "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+    }]
+
+* `title`: title of the source (e.g. document or organization name)
+* `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
+* `email`: An email address
+
+#### `contributors`
+
+The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `url`, `email` and `role` properties. An example of the object structure
   is as follows:
 
       contributors: [{
@@ -198,32 +232,20 @@ The following are commonly used properties that the package descriptor MAY conta
         "role": "author"
       }]
 
-  * `title`: name/title of the contributor (name for person, name/title of organization)
-  * `url`: a fully qualified http URL pointing to a relevant location online for the contributor
-  * `email`: An email address
-  * `role`: a string describing the role of the contributor. It MAY take any value. Standard values are: `author`, `publisher`, `maintainer`.
-    * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
-* `keywords` - an Array of string keywords to assist users searching for the
+* `title`: name/title of the contributor (name for person, name/title of organization)
+* `url`: a fully qualified http URL pointing to a relevant location online for the contributor
+* `email`: An email address
+* `role`: a string describing the role of the contributor. It MAY take any value. Standard values are: `author`, `publisher`, `maintainer`.
+  * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
+
+#### `keywords`
+
+An Array of string keywords to assist users searching for the
   package in catalogs.
-* `image` - a link to an image to use for this data package
 
-<div class="alert" markdown="block">
-NOTE: A Data Package MAY include any number of additional properties beyond those
-listed in the specification here. For example, if you were storing
-time series data and wanted to list the temporal coverage of the data in the
-Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
+#### `image`
 
-    "temporal": {
-      "name": "19th Century",
-      "start": "1800-01-01",
-      "end": "1899-12-31"
-    }
-
-This flexibility enables specific communities to extend Data Packages as
-appropriate for the data they manage. As an example, the [Tabular Data
-Package][tdp] specification extends Data Package to the case
-where all the data is tabular and stored in CSV.
-</div>
+A link to an image to use for this data package
 
 [tdp]: /tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
