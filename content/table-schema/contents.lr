@@ -356,39 +356,149 @@ The corresponding Table Schema is:
 
 ## Constraints
 
-A set of constraints can be associated with a field. These constraints can be used
-to validate data against a Table Schema. The constraints might be used by consumers
-to validate, for example, the contents of a data package, or as a means to validate
-data being collected or updated via a data entry interface.
+A set of constraints can be associated with a field. These constraints can be used to validate data. For example, validating the data in a [Tabular Data Resource's][tbr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
-A constraints descriptor is a JSON `object`. It `MAY` contain any of the following
-keys.
+[tdr]: /tabular-data-resource/
 
-- `required` -- A boolean value which indicates whether a field must have a value
-  in every row of the table. An empty string is considered to be a missing value.
-- `minLength` -- An integer that specifies the minimum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
-- `maxLength` -- An integer that specifies the maximum length of a value. Supported field types are sequences, such as `string` and `array`, and collections containing items, such as `object`.
-- `unique` -- A boolean. If `true`, then all values for that field MUST be unique within the
-  data file in which it is found. This defines a unique key for a row although a row could
-  potentially have several such keys.
-- `pattern` -- A regular expression that can be used to test field values. If the regular
-  expression matches then the value is valid. Values will be treated as a string of characters.
-  It is recommended that values of this field conform to the standard
-  [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs). See also
-  [this reference](http://www.regular-expressions.info/xml.html).
-- `minimum` -- specifies a minimum value for a field. This is different to `minLength` which
-  checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key. Supported field types are `integer`, `number`, `date`, `time` and `datetime`.
-- `maximum` -- as above, but specifies a maximum value for a field.
-- `enum` -- An array of values, where each value `MUST` comply with the type and format of the field.
-The field value must exactly match a value in the `enum` array.
+A constraints descriptor `MUST` be a JSON `object` and `MAY` contain one or more of the following
+properties.
 
-The constraints listed above may also define a list of supported field types. Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
+<table>
+  <tr>
+    <th>
+      Property
+    </th>
+    <th>
+      Type
+    </th>
+    <th>
+      Applies to
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>required</code>
+    </td>
+    <td>
+      boolean 
+    </td>
+    <td>
+      All
+    </td>
+    <td>
+      A value which indicates whether a field must have a value in every row of the table. An empty string is considered to be a missing value.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>unique</code>
+    </td>
+    <td>
+      boolean 
+    </td>
+    <td>
+      All
+    </td>
+    <td>
+      If `true`, then all values for that field MUST be unique within the data file in which it is found.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>minLength</code>
+    </td>
+    <td>
+      integer
+    </td>
+    <td>
+      collections (string, array, object)
+    </td>
+    <td>
+      An integer that specifies the minimum length of a value.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>maxLength</code>
+    </td>
+    <td>
+      integer
+    </td>
+    <td>
+      collections (string, array, object)
+    </td>
+    <td>
+      An integer that specifies the maximum length of a value.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>minimum</code>
+    </td>
+    <td>
+      integer
+    </td>
+    <td>
+      <code>integer, number, date, time and datetime</code>
+    </td>
+    <td>
+      Specifies a minimum value for a field. This is different to `minLength` which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>maximum</code>
+    </td>
+    <td>
+      integer
+    </td>
+    <td>
+      <code>integer, number, date, time and datetime</code>
+    </td>
+    <td>
+      As for <code>minimum</code>, but specifies a maximum value for a field.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>pattern</code>
+    </td>
+    <td>
+      string
+    </td>
+    <td>
+      All
+    </td>
+    <td>
+      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. Values will be treated as a string of characters.  It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>enum</code>
+    </td>
+    <td>
+      array
+    </td>
+    <td>
+      All
+    </td>
+    <td>
+      An array of values, where each value `MUST` comply with the type and format of the field. The field value must exactly match a value in the `enum` array.
+    </td>
+  </tr>
+</table>
 
-A constraints descriptor may contain multiple constraints, in which case a consumer `MUST` apply
-all the constraints when determining if a field value is valid.
 
-A data file, e.g. an entry in a data package, is considered to be valid if all of its fields are valid
-according to their declared `type` and `constraints`.
+**Implementors**:
+
+* Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
+* A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
+* When testing constraints that test field values (e.g. `minimum`, `maximum`) the test should be applied after casting the field values based on their type.
+* The `pattern` constraint should be applied to field values **before** casting (with the implicit assumption that before raw (pre-casting) field values are strings as in e.g. CSV).
 
 
 # Other Properties
