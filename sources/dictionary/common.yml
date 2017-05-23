@@ -294,7 +294,7 @@ sources:
       {
         "sources": [
           {
-            "name": "World Bank and OECD",
+            "name": "world-bank-and-oecd-gdp",
             "uri": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
           }
         ]
