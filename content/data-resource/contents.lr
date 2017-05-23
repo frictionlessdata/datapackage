@@ -102,15 +102,18 @@ specified by the presence of one (and only one) of these two properties:
 ## `path` Data in Files
 
 `path` MUST be a string -- or an array of strings (see "Data in Multiple
-Files"). Strings MUST be one of:
+Files"). Each string MUST be a "url-or-path" as defined in the next section.
 
-- A fully qualified url
-- A relative unix-style path ('/' as separator)
+### URL or Path
 
-A relative path MUST be interpreted relative to the directory or URL in which
-the descriptor listing this resource resides. A relative
-`path` MUST NOT start with `/` or `.` and MUST NOT contain `../` (these restrictions(
-eliminate relative parent paths such as `../`).
+A "url-or-path" is a `string` with the following additional constraints:
+
+- `MUST` either be a URL or a POSIX path
+- [URLs][url] MUST be fully qualified. MUST be using either http or https scheme. (Absence of a scheme indicates `MUST` be a POSIX path)
+- [POSIX paths][posix] (unix-style with `/` as separator) are supported for referencing local files, with the security restraint that they `MUST` be relative siblings or children of the descriptor. Absolute paths (/) and relative parent paths (../) MUST NOT be used, and implementations SHOULD NOT support these path types.
+
+[url]: https://en.wikipedia.org/wiki/Uniform_Resource_Locator
+[posix]: https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition
 
 Examples:
 
@@ -119,11 +122,11 @@ Examples:
 "path": "http://ex.datapackages.org/big-csv/my-big.csv"
 
 # relative path
-# note: this will work both a relative path on disk and online
+# note: this will work both as a relative path on disk and on online
 "path": "my-data-directory/my-csv.csv"
 ```
 
-<div class="alert security" markdown="block">
+<div class="alert alert-warning security" markdown="block">
 SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to
 avoid security vulnerabilities when implementing data package tools. These
 limitations on resource `path` ensure that resource paths only point to files
@@ -138,7 +141,7 @@ resource and the server naively opens `/etc/passwd` and returns that data to
 the caller.
 </div>
 
-<div class="alert implementor" markdown="block">
+<div class="alert alert-info implementor" markdown="block">
 IMPLEMENTOR: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url`
 property distinct from `path`. In order to support backwards compatability,
 implementors MAY want to automatically convert a `url` property to a `path`
@@ -261,16 +264,14 @@ A descriptor MAY contain any number of additional properties. Common properties 
 
 A Data Resource MAY have a `schema` property to describe the schema of the resource data.
 
-The value for the `schema` property on a `resource` MUST be an `object` representing the schema OR a `string` that identifies the location of the schema (i.e. the location specified MUST be a JSON document which is the schema).
+The value for the `schema` property on a `resource` MUST be an `object` representing the schema OR a `string` that identifies the location of the schema.
 
-The restrictions on a `string` value are the same as those [defined above for the `path` data locator strings](#path-data-in-files) -- that is a fully qualified URL or a relative unix-style path.
+If a `string` it must be a [url-or-path as defined above][#url-or-path], that is a fully qualified http URL or a relative POSIX path. The file at the the location specified by this url-or-path string `MUST` be a JSON document containing the schema.
 
-<div class="alert" markdown="block">
+<div class="alert alert-info" markdown="block">
 NOTE: the Data Package specification places no restrictions on the form of the schema
 Object. This flexibility enables specific communities to define schemas
-appropriate for the data they manage. As an example, the [Tabular Data
-Package][tdp] specification requires the schema value to conform to [Table
-Schema][jts].
+appropriate for the data they manage. As an example, the <a href="/tabular-data-package/">Tabular Data Package</a> specification requires the schema to conform to <a href="/table-schema/">Table Schema</a>.
 </div>
 
 [tdp]: /tabular-data-package/

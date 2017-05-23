@@ -153,18 +153,19 @@ every package descriptor:
   Here is an example:
 
         "licenses": [{
-          "type": "ODC-PDDL-1.0",
-          "web": "http://opendatacommons.org/licenses/pddl/",
+          "name": "ODC-PDDL-1.0",
+          "path": "http://opendatacommons.org/licenses/pddl/",
           "title": "Open Data Commons Public Domain Dedication and License v1.0"
         }]
 
-  * `type`: The `type` MUST be an [Open Definition license ID][od-licenses
-  * `web`: A URL to the text of the license online.
+  * `name`: The `type` MUST be an [Open Definition license ID][od-licenses
+  * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
   * `title`: A human-readable title.
 
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
 [semver]: http://semver.org
+[url-or-path]: /data-resource/#url-or-path
 
 ### Optional Properties
 
@@ -177,24 +178,28 @@ The following are commonly used properties that the package descriptor MAY conta
   line break) should be usable as summary information for the package.
 * `homepage` - A URL for the home on the web that is related to this data package.
 * `version` - a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
-* `sources` - the raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `web` and `email` properties. Example:
+* `sources` - the raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `path` and `email` properties. Example:
 
       "sources": [{
         "title": "World Bank and OECD",
-        "web": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+        "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
       }]
-* `contributors` - this is a property for describing people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `web`, `email` and `role` properties. An example of the object structure
+
+  * `title`: title of the source (e.g. document or organization name)
+  * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
+  * `email`: An email address
+* `contributors` - this is a property for describing people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `url`, `email` and `role` properties. An example of the object structure
   is as follows:
 
       contributors: [{
         "title": "Joe Bloggs",
         "email": "joe@bloggs.com",
-        "web": "http://www.bloggs.com",
+        "url": "http://www.bloggs.com",
         "role": "author"
       }]
 
   * `title`: name/title of the contributor (name for person, name/title of organization)
-  * `web`: a fully qualified URL
+  * `url`: a fully qualified http URL pointing to a relevant location online for the contributor
   * `email`: An email address
   * `role`: a string describing the role of the contributor. It MAY take any value. Standard values are: `author`, `publisher`, `maintainer`.
     * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
