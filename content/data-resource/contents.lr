@@ -97,7 +97,7 @@ data associated to the resource. The location of resource data MUST be
 specified by the presence of one (and only one) of these two properties:
 
 * `path`: for data in files located online or locally on disk.
-* `data`: for data inline in the `datapackage.json` descriptor itself.
+* `data`: for data inline in the descriptor itself.
 
 ## `path` Data in Files
 
@@ -108,7 +108,7 @@ Files"). Strings MUST be one of:
 - A relative unix-style path ('/' as separator)
 
 A relative path MUST be interpreted relative to the directory or URL in which
-the descriptor `datapackage.json` listing this resource resides. A relative
+the descriptor listing this resource resides. A relative
 `path` MUST NOT start with `/` or `.` and MUST NOT contain `../` (these restrictions(
 eliminate relative parent paths such as `../`).
 
