@@ -85,7 +85,7 @@ The following is an illustration of this structure:
 
 # Field Descriptors
 
-A field descriptor is a JSON `object` that describes a single field. The
+A field descriptor `MUST` be a JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
 well as additional information that may be used to validate the field or create
 a user interface for data entry.
@@ -105,39 +105,29 @@ Here is an illustration:
 }
 ```
 
-Specifically:
+The field descriptor `object` `MAY` contain any number of other properties. Some specific properties are defined below. Of these, only the `name` property is `REQUIRED`.
 
--   a field descriptor MUST be a `object`
--   the field descriptor `object` MUST contain a `name` property. This
-    property `SHOULD` correspond to the name of field/column in the
-    data file (if it has a name). As such it `SHOULD` be unique (though
-    it is possible, but very bad practice, for the data file to have
-    multiple columns with the same name). Additionally, `name` `SHOULD`
-    be considered case sensitive. In practice, case sensitivity for names
-    can be limiting in certain scenarios, so consumers `MAY` choose to ignore
-    case sensitivity for `name` values.
--   the field descriptor `object` MAY contain any number of other properties
--   specific properties that MAY be included in the `object` and whose
-    meaning is defined in this spec are:
+## `name`
 
-    -   `title`: A nicer human readable label or title for the field
-    -   `description`: A description for this field e.g. "The recipient of
-        the funds"
-    -   `type`: The type of the field (string, number etc) - see below for
-        more detail. If type is not provided a consumer should assume a type of
-        "string".
-    -   `format`: A description of the format e.g. "DD.MM.YYYY" for a
-        date. See below for more detail.
-    -   `missingValue`: a field value which should be interpreted as missing data (`null`). See below for
-    -   `constraints`: A constraints descriptor that can be used by consumers
-        to validate field values
+The field descriptor MUST contain a `name` property. This property `SHOULD` correspond to the name of field/column in the data file (if it has a name). As such it `SHOULD` be unique (though it is possible, but very bad practice, for the data file to have multiple columns with the same name). `name` `SHOULD NOT` be considered case sensitive in determining uniqueness. However, since it should correspond to the name of the field in the data file it may be important to preserve case.
+
+## `title`
+
+A human readable label or title for the field
+
+## `description`
+
+A description for this field e.g. "The recipient of the funds"
 
 ## Types and Formats
 
+`type` and `format` properties are used to give The type of the field (string, number etc) - see below for
+    more detail. If type is not provided a consumer should assume a type of
+    "string".
+
 A field's `type` property is a string indicating the type of this field.
 
-A field's `format` property is a string, being a keyword indicating a
-format for the field type.
+A field's `format` property is a string, indicating a format for the field type.
 
 Both `type` and `format` are optional: in a field descriptor, the absence of a
 `type` property indicates that the field is of the type "string", and the
@@ -356,6 +346,9 @@ The corresponding Table Schema is:
 
 ## Constraints
 
+The `constraints` property that can be used by consumers to list constraints for validating validate field values
+
+
 A set of constraints can be associated with a field. These constraints can be used to validate data. For example, validating the data in a [Tabular Data Resource's][tbr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
 [tdr]: /tabular-data-resource/
@@ -500,8 +493,9 @@ properties.
 * When testing constraints that test field values (e.g. `minimum`, `maximum`) the test should be applied after casting the field values based on their type.
 * The `pattern` constraint should be applied to field values **before** casting (with the implicit assumption that before raw (pre-casting) field values are strings as in e.g. CSV).
 
-
 # Other Properties
+
+In additional to field descriptors, there are the following "table level" properties.
 
 ## Missing Values
 
