@@ -258,7 +258,7 @@ Tthe field contains temporal values such as dates, times and date-times.
   by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y`
   would correspond to dates like: `30 Nov 14`
 
-### gyear
+### year
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
@@ -266,7 +266,7 @@ Usual lexical reprentation is `YYYY`. There are no format options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
-### gyearmonth
+### yearmonth
 
 A specific month in a specific year as per [XMLSchema
 `gYearMonth`][xsd-gyearmonth].
