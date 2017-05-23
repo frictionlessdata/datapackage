@@ -228,11 +228,9 @@ The field contains data that is a valid JSON format arrays.
 
 ### date
 
-**datetime**; **date**; **time**
+A date without a time.
 
-Tthe field contains temporal values such as dates, times and date-times.
-
-`format`: (`datetime`, `date` and `time` share the these same options)
+`format`:
 
 * **default**: An ISO8601 format string.
   * date: This MUST be in ISO8601 format YYYY-MM-DD
@@ -247,6 +245,26 @@ Tthe field contains temporal values such as dates, times and date-times.
   strptime][strptime]. (That is, values in the this field should be parseable
   by Python / C standard `strptime` using `PATTERN`).  Example: `%d %b %y`
   would correspond to dates like: `30 Nov 14`
+
+### time
+
+A time without a date.
+
+`format`:
+
+* **default**: An ISO8601 time string e.g. `hh:mm:ss`
+* **any**: as for `date`
+* **{PATTERN}**: as for `date`
+
+### datetime
+
+A date with a time.
+
+`format`:
+
+* **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
+* **any**: as for `date`
+* **{PATTERN}**: as for `date`
 
 ### year
 
@@ -269,15 +287,16 @@ Usual lexical representation is: `YYYY-MM`. There are no format options.
 
 A duration of time.
 
-The lexical representation for duration is the [ISO 8601][iso8601-duration]
+We follow the definition of [XML Schema duration datatype][xsd-duration] directly
+and that definition is implicitly inlined here.
+
+To summarize: the lexical representation for duration is the [ISO 8601][iso8601-duration]
 extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the
 number of months, nD the number of days, 'T' is the date/time separator, nH the
 number of hours, nM the number of minutes and nS the number of seconds. The
 number of seconds can include decimal digits to arbitrary precision. Date and
 time elements including their designator may be omitted if their value is zero,
-and lower order elements may also be omitted for reduced precision. Here we
-follow the definition of [XML Schema duration datatype][xsd-duration] directly
-and that definition is implicitly inlined here.
+and lower order elements may also be omitted for reduced precision.
 
 `format`: no options (other than the default).
 
