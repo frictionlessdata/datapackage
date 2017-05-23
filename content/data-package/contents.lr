@@ -245,7 +245,9 @@ An Array of string keywords to assist users searching for the
 
 #### `image`
 
-A link to an image to use for this data package
+An image to use for this data package. For example, when showing the package in a listing.
+
+The value of the image property `MUST` be a string pointing to the location of the image. The string must be a [url-or-path][], that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 
 [tdp]: /tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
