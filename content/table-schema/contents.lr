@@ -270,7 +270,7 @@ A date with a time.
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
-Usual lexical reprentation is `YYYY`. There are no format options.
+Usual lexical representation is `YYYY`. There are no format options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
