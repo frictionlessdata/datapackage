@@ -289,6 +289,21 @@ An image to use for this data package. For example, when showing the package in 
 
 The value of the image property `MUST` be a string pointing to the location of the image. The string must be a [url-or-path][], that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 
+#### `created`
+
+The datetime on which this was created.
+
+Note: semantics may vary between publishers -- for some this is the datetime the data was created, for others the datetime the package was created.
+
+The datetime must conform to the string formats for datetime as described in [RFC3339][]. Example:
+
+```javascript
+{
+  "created": "1985-04-12T23:20:50.52Z"
+}
+```
+
+[RFC3339]: https://tools.ietf.org/html/rfc3339#section-5.6
 [tdp]: /tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
 [markdown]: http://commonmark.org/
