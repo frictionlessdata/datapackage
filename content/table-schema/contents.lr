@@ -481,7 +481,7 @@ properties.
       string
     </td>
     <td>
-      All
+      <code>string</code>
     </td>
     <td>
       A regular expression that can be used to test field values. If the regular expression matches then the value is valid. Values will be treated as a string of characters.  It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
@@ -508,8 +508,7 @@ properties.
 
 * Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 * A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
-* When testing constraints that test field values (e.g. `minimum`, `maximum`) the test should be applied after casting the field values based on their type.
-* The `pattern` constraint should be applied to field values **before** casting (with the implicit assumption that before raw (pre-casting) field values are strings as in e.g. CSV).
+* For all constraints that check field values such as `minimum`, `maximum`, `pattern`, the check `SHOULD` be applied after casting the field values based on their type.
 
 # Other Properties
 
