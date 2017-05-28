@@ -591,24 +591,10 @@ Here's an example with an array primary key:
 
 ## Foreign Keys
 
-A foreign key is a reference where entries in a given field (or fields) on this
-table ('resource' in data package terminology) connect to an entry in a
-field (or fields) on a separate resource.
-
-<div class="alert alert-success">
-Foreign Keys by necessity must be able to reference other data objects. These data objects require a specific structure for the spec to work. Therefore, this spec makes one of two assumptions:
-<ul>
-<li>Your Foreign Key points to another field/fields within the current 
-Table Schema. In this case you use a special <code>self</code> keyword is
-employed.</li>
-<li>Your Foreign Key points to a field/fields in a Table Schema
-"elsewhere". In this case, the Table Schema must be inside of a resource
-on <a href="/data-packages/">Data Package</a>. There are two situations here:
-EITHER this Table Schema is already situated within a (Tabular) Data
-Package and the reference is to a resource within this Data Package; OR we are
-pointing out to a (Tabular) Data Package stored elsewhere e.g. online.</li>
-</ul>
-</div>
+A foreign key is a reference where values in a field (or fields) on the
+table ('resource' in data package terminology) described by this Table Schema
+connect to values a field (or fields) on this or a separate table (resource).
+They are directly modelled on the concept of foreign keys in SQL.
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
 array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have the following properties:
@@ -618,8 +604,11 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have 
   key. The structure of the string or array is as per `primaryKey` above.
 * `reference` - `reference` MUST be a `object`. The `object`
   * `MUST` have a property `resource` which is the name of the resource within
-    the the current data package. For self-referencing foreign keys, the value
-    of `resource` `MUST` be `self`.
+    the current data package (i.e. the data package within which this Table
+    Schema is located). For self-referencing foreign keys, i.e. references
+    between fields in this Table Schema, the value of `resource` `MUST` be `""`
+    (i.e. the empty string). As such the `resource` property `MUST` be a
+    lower-case string using only alphanumeric characters and ".", "-", and "_".
   * `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
@@ -627,8 +616,8 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have 
 
 Here's an example:
 
-
 ```javascript
+  // these are resources inside a Data Package
   "resources": [
     {
       "name": "state-codes",
@@ -680,7 +669,7 @@ An example of a self-referencing foreign key:
           {
             "fields": "parent"
             "reference": {
-              "resource": "self",
+              "resource": "",
               "fields": "id"
             }
           }
@@ -689,6 +678,10 @@ An example of a self-referencing foreign key:
     }
   ]
 ```
+
+**Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
+
+[dp]: /data-package/
 
 # Appendix: Related Work
 
