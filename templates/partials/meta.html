@@ -13,6 +13,12 @@
       {{ this.mediatype}}
     </td>
   </tr>
+  {% if this.jsonschema %}
+  <tr>
+    <td>JSON Schema<br />(for spec)</td>
+    <td><a href="{{this.jsonschema}}">{{ this.jsonschema }}</a></td>
+  </tr>
+  {% endif %}
   {% if this.version %}
   <tr>
     <td>Version</td>
