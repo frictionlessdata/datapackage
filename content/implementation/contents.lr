@@ -81,11 +81,11 @@ The Table Schema library can load and validate any Table Schema `descriptor`, al
 
 #### Examples
 
-- [Table](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/table.py)
-- [Schema](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/schema.py)
-- [Field](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/field.py)
-- [validate](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/validate.py)
-- [infer](https://github.com/frictionlessdata/jsontableschema-py/blob/master/jsontableschema/infer.py)
+- [Table](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/table.py)
+- [Schema](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/schema.py)
+- [Field](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/field.py)
+- [validate](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/validate.py)
+- [infer](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/infer.py)
 
 ### On URI dereferencing and validation
 
