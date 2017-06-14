@@ -526,18 +526,17 @@ The `missingValues` property is optional. It `MAY` be provided and when it exist
 
 **Why strings**: `missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.
 
-**Defaults:** The default value of `missingValue` for a non-string type field is the empty string `""`. For string type fields there is no default for `missingValue` (for string fields the empty string `""` is a valid value and need not indicate null).
+**Defaults:** The default value of `missingValues` for a non-string type field is the empty string `[""]`. For string type fields there is no default for `missingValues` (for string fields the empty string `""` is a valid value and need not indicate null).
 
 Examples:
 
 ```javascript
 "missingValues": [""]
 "missingValues": ["-"]
-"missingValue": ["Nan", "-"]
+"missingValues": ["Nan", "-"]
 ```
 
-**Processing**: if a missing value is encountered it SHOULD be converted into
-the NULL or equivalent value.
+**Processing**: if a missing value is encountered it SHOULD be converted into the NULL or equivalent value. Missing value strings SHOULD be considered case sensitive so to match both `NaN` and `nan` both must be specified.
 
 ## Primary Key
 
