@@ -87,7 +87,7 @@ The descriptor is the central file in a Data Package. It provides:
   location on disk or online and other relevant information (including,
   possibly, schema information about these data resources in a structured form)
 
-A Data Package descriptor MUST a valid JSON `object`. (JSON is defined in [RFC 4627][]). When available as a file it MUST be named `datapackage.json` and it MUST be placed in the top-level directory (relative to any other resources provided as part of the data package). 
+A Data Package descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627][]). When available as a file it MUST be named `datapackage.json` and it MUST be placed in the top-level directory (relative to any other resources provided as part of the data package).
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
