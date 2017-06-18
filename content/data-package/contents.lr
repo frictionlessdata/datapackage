@@ -187,7 +187,7 @@ The license(s) under which the package is provided.
 **This property is not legally binding and does not guarantee the package is
 licensed under the terms defined in this property.**
   
-`licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `type` property and/or a `url` property. It MAY contain a `title` property.
+`licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `name` property and/or a `path` property. It MAY contain a `title` property.
 
 Here is an example:
 
@@ -197,7 +197,7 @@ Here is an example:
         "title": "Open Data Commons Public Domain Dedication and License v1.0"
       }]
 
-* `name`: The `type` MUST be an [Open Definition license ID][od-licenses
+* `name`: The `name` MUST be an [Open Definition license ID][od-licenses]
 * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 * `title`: A human-readable title.
 
