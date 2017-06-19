@@ -46,7 +46,7 @@ A minimal data package on disk would be a directory containing a single file:
 
     datapackage.json  # (required) metadata and schemas for this data package
 
-Obviously lacking a single piece of actual data would make this of doubtful
+Lacking a single external source of data would make this of limited
 use. A slightly less minimal version would be:
 
     datapackage.json
