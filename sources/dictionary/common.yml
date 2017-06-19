@@ -192,11 +192,18 @@ contributor:
       "$ref": "#/definitions/path"
     email:
       "$ref": "#/definitions/email"
+    organisation:
+      title: Organisation
+      description: An organizational affiliation for this contributor.
+      type: string
     role:
       type: string
       enum:
+      - publisher
       - author
       - maintainer
+      - wrangler
+      - contributor
   required:
   - name
   context: Use of this property does not imply that the person was the original
