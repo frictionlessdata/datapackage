@@ -13,8 +13,8 @@ dataResource:
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
-    data:
-      "$ref": "#/definitions/data"
+    path:
+      "$ref": "#/definitions/resourcePath"
       propertyOrder: 30
     schema:
       "$ref": "#/definitions/anySchema"
@@ -75,8 +75,8 @@ tabularDataResource:
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
-    data:
-      "$ref": "#/definitions/data"
+    path:
+      "$ref": "#/definitions/resourcePath"
       propertyOrder: 30
     schema:
       "$ref": "#/definitions/tableSchema"
@@ -124,48 +124,46 @@ tabularDataResource:
       propertyOrder: 120
       options:
         hidden: true
-dataUri:
-  $ref: "#/definitions/uri"
+pathArray:
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/path"
   examples:
   - |
       [ "file.csv" ]
   - |
-      [ "#/data/my-data" ]
-  - |
       [ "http://example.com/file.csv" ]
-data:
-  title: Data
-  description: A reference to the data for this resource. `data` `MUST` be an array
+resourcePath:
+  title: Path
+  description: A reference to the data for this resource, as either a path as a string, or an array of paths as strings.
     of valid URIs.
-  type: array
-  minItems: 1
-  items:
-    "$ref": "#/definitions/dataUri"
-  context: The dereferenced value of each referenced data source in the `data` `array`
+  oneOf: [
+    { "$ref": "#/definitions/path" },
+    { "$ref": "#/definitions/pathArray" }
+  ],
+  context: The dereferenced value of each referenced data source in `path`
     `MUST` be commensurate with a native, dereferenced representation of the data
     the resource describes. For example, in a *Tabular* Data Resource, this means
-    that the dereferenced value of `data` `MUST` be an array.
+    that the dereferenced value of `path` `MUST` be an array.
   examples:
   - |
       {
-        "data": [
+        "path": [
           "file.csv",
           "file2.csv"
         ]
       }
   - |
       {
-        "data": [
+        "path": [
           "http://example.com/file.csv",
           "http://example.com/file2.csv"
         ]
       }
   - |
       {
-        "data": [
-          "#/data/my-data",
-          "#/data/my-data2"
-        ]
+        "path": "http://example.com/file.csv"
       }
 format:
   title: Format
