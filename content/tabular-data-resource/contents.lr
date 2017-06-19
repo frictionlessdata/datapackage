@@ -114,6 +114,10 @@ A comprehensive Tabular Data Resource example with all required, recommended and
     ],
     "primaryKey": "id"
   },
+  "dialect": {
+    "delimiter": ",",
+    "doubleQuote": true
+  },
   "sources": "",
   "licenses": ""
 }
