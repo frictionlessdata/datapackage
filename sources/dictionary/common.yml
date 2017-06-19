@@ -84,8 +84,8 @@ homepage:
   properties:
     name:
       "$ref": "#/definitions/name"
-    uri:
-      "$ref": "#/definitions/uri"
+    path:
+      "$ref": "#/definitions/path"
     title:
       "$ref": "#/definitions/title"
   examples:
@@ -109,28 +109,22 @@ version:
       {
         "version": "1.0.1-beta"
       }
-uri:
-  title: URI
-  description: A URI (with some restrictions), being a fully qualified HTTP address,
-    a relative POSIX path, or a JSON Pointer.
+path:
+  title: Path
+  description: A fully qualified URL, or a POSIX file path..
   type: string
   format: uri
   examples:
   - |
       {
-        "uri": "file.csv"
+        "path": "file.csv"
       }
   - |
       {
-        "uri": "#/data/my-data"
+        "path": "http://example.com/file.csv"
       }
-  - |
-      {
-        "uri": "http://example.com/file.csv"
-      }
-  context: 'Implementations need to negotiate the type of URI provided, and dereference
-    the data accordingly. There are restrictions imposed on URIs that are POSIX
-    paths: see [the notes on descriptors](#descriptor) for more information.'
+  context: 'Implementations need to negotiate the type of path provided, and dereference
+    the data accordingly.'
 created:
   title: Created
   description: The datetime on which this descriptor was created.
@@ -194,8 +188,8 @@ contributor:
   properties:
     name:
       "$ref": "#/definitions/name"
-    uri:
-      "$ref": "#/definitions/uri"
+    path:
+      "$ref": "#/definitions/path"
     email:
       "$ref": "#/definitions/email"
     role:
@@ -243,8 +237,8 @@ license:
   properties:
     name:
       "$ref": "#/definitions/name"
-    uri:
-      "$ref": "#/definitions/uri"
+    path:
+      "$ref": "#/definitions/path"
     title:
       "$ref": "#/definitions/title"
   context: Use of this property does not imply that the person was the original
@@ -278,8 +272,8 @@ source:
   properties:
     name:
       "$ref": "#/definitions/name"
-    uri:
-      "$ref": "#/definitions/uri"
+    path:
+      "$ref": "#/definitions/path"
     email:
       "$ref": "#/definitions/email"
 sources:
