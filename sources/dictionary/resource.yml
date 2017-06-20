@@ -141,7 +141,7 @@ resourcePath:
   oneOf: [
     { "$ref": "#/definitions/path" },
     { "$ref": "#/definitions/pathArray" }
-  ],
+  ]
   context: The dereferenced value of each referenced data source in `path`
     `MUST` be commensurate with a native, dereferenced representation of the data
     the resource describes. For example, in a *Tabular* Data Resource, this means
