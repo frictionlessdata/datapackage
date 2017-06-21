@@ -363,7 +363,7 @@ tableSchemaFieldNumber:
   description: The field contains numbers of any kind including decimals.
   context: |-
     The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.
-    
+
     The following special string values are permitted (case does not need to be respected):
       - NaN: not a number
       - INF: positive infinity
@@ -459,9 +459,6 @@ tableSchemaFieldDate:
           * **default**: An ISO8601 format string of YYYY-MM-DD.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
           * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
-      enum:
-      - default
-      - any
       default: default
     constraints:
       title: Constraints
@@ -525,9 +522,6 @@ tableSchemaFieldTime:
           * **default**: An ISO8601 format string for time.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
           * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
-      enum:
-      - default
-      - any
       default: default
     constraints:
       title: Constraints
@@ -583,9 +577,6 @@ tableSchemaFieldDateTime:
           * **default**: An ISO8601 format string for datetime.
           * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.
           * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).
-      enum:
-      - default
-      - any
       default: default
     constraints:
       title: Constraints
