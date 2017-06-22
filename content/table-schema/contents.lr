@@ -242,11 +242,11 @@ A date without a time.
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
-* **{PATTERN}**: date/time values in this field can be parsed according to
-  `{PATTERN}`. `{PATTERN}` MUST follow the syntax of [standard Python / C
+* **<PATTERN>**: date/time values in this field can be parsed according to
+  `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
   strptime][strptime]. (That is, values in the this field should be parseable
-  by Python / C standard `strptime` using `{PATTERN}`).  Example for
-  `{PATTERN}` is `%d %b %y` which would correspond to dates like: `30 Nov 14`
+  by Python / C standard `strptime` using `<PATTERN>`).  Example for
+  `<PATTERN>` is `%d/%m/%y` which would correspond to dates like: `30/11/14`
 
 ### time
 
@@ -256,7 +256,7 @@ A time without a date.
 
 * **default**: An ISO8601 time string e.g. `hh:mm:ss`
 * **any**: as for `date`
-* **{PATTERN}**: as for `date`
+* **<PATTERN>**: as for `date`
 
 ### datetime
 
@@ -266,7 +266,7 @@ A date with a time.
 
 * **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
 * **any**: as for `date`
-* **{PATTERN}**: as for `date`
+* **<PATTERN>**: as for `date`
 
 ### year
 
@@ -284,6 +284,11 @@ A specific month in a specific year as per [XMLSchema
 Usual lexical representation is: `YYYY-MM`. There are no format options.
 
 [xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
+
+`format`:
+
+* **default**: According to `gYearMonth` from XML Schema
+* **<PATTERN>**: as for `date`
 
 ### duration
 
@@ -310,7 +315,7 @@ The field contains data describing a geographic point.
 
 * **default**: A string of the pattern "lon, lat", where `lon` is the longitude
   and `lat` is the latitude (note the space is optional after the `,`). E.g. `"90, 45"`.
-* **array**: An array of exactly two items, where each item is a number, and the first item is `lon` and the second
+* **array**: A JSON array, or a string parsable as a JSON array, of exactly two items, where each item is a number, and the first item is `lon` and the second
   item is `lat` e.g. `[90, 45]`
 * **object**: A JSON object with exactly two keys, `lat` and `lon` and each value is a number e.g. `{"lon": 90, "lat": 45}`
 
@@ -325,7 +330,7 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
 ### any
 
-Any `type` or `format` is accepted.
+Any `type` or `format` is accepted. When converting from physical to logical representation, the behaviour should be similar to String field type.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -452,10 +457,10 @@ properties.
       <code>minimum</code>
     </td>
     <td>
-      integer
+      integer, number, date, time and datetime, year, yearmonth
     </td>
     <td>
-      <code>integer, number, date, time and datetime</code>
+      <code>integer, number, date, time, datetime, year, yearmonth</code>
     </td>
     <td>
       Specifies a minimum value for a field. This is different to `minLength` which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
@@ -466,10 +471,10 @@ properties.
       <code>maximum</code>
     </td>
     <td>
-      integer
+      integer, number, date, time and datetime, year, yearmonth
     </td>
     <td>
-      <code>integer, number, date, time and datetime</code>
+      <code>integer, number, date, time and datetime, year, yearmonth</code>
     </td>
     <td>
       As for <code>minimum</code>, but specifies a maximum value for a field.
@@ -486,7 +491,7 @@ properties.
       <code>string</code>
     </td>
     <td>
-      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. Values will be treated as a string of characters.  It is recommended that values of this field conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
+      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field `MUST` conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
     </td>
   </tr>
   <tr>
@@ -500,7 +505,7 @@ properties.
       All
     </td>
     <td>
-      An array of values, where each value `MUST` comply with the type and format of the field. The field value must exactly match a value in the `enum` array.
+      The value of the field must exactly match a value in the `enum` array.
     </td>
   </tr>
 </table>
@@ -510,7 +515,7 @@ properties.
 
 * Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 * A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
-* For all constraints that check field values such as `minimum`, `maximum`, `pattern`, the check `SHOULD` be applied after casting the field values based on their type.
+* Constraints `MUST` be applied on the logical representation of field values and constraint values.
 
 # Other Properties
 
