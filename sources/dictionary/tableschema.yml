@@ -111,13 +111,17 @@ tableSchemaField:
   - "$ref": "#/definitions/tableSchemaFieldDuration"
   - "$ref": "#/definitions/tableSchemaFieldAny"
 tableSchemaPrimaryKey:
-  type: array
-  minItems: 1
-  items:
-    type: string
-  description: A primary key is an array of field names, whose values `MUST` uniquely
-    identify each row in the table.
-  context: Each string in the `primaryKey` array `MUST` be unique, and `MUST` match
+  oneOf:
+    -
+      type: array
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: string
+    -
+      type: string
+  description: A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.
+  context: Field name in the `primaryKey` `MUST` be unique, and `MUST` match
     a field name in the associated table. It is acceptable to have an array with
     a single value, indicating that the value of a single field is the primary key.
   examples:
@@ -143,11 +147,15 @@ tableSchemaForeignKey:
   - reference
   properties:
     fields:
-      type: array
-      items:
-        type: string
-      minItems: 1
-      uniqueItems: true
+      oneOf:
+        -
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: string
+        -
+          type: string
       description: Fields that make up the primary key.
     reference:
       type: object
