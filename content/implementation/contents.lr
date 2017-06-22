@@ -87,15 +87,15 @@ The Table Schema library can load and validate any Table Schema `descriptor`, al
 - [validate](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/validate.py)
 - [infer](https://github.com/frictionlessdata/tableschema-py/blob/master/tableschema/infer.py)
 
-### On URI dereferencing and validation
+### On dereferencing and descriptor validation
 
-Some properties in the Frictionless Data specifications allow a URI that resolves to an object. This does not refer to the `uri` property itself, but rather other properties where a URI may be allowed to reference the actual value of the property.
+Some properties in the Frictionless Data specifications allow a path (a URL or a POSIX path) that resolves to an object.
 
 The most prominent example of this is the `schema` property on Tabular Data Resource descriptors.
 
-While allowing for such references has pratical use for publishers - for example, allowing schema reuse - it does introduce difficulties in the validation of such properties. Validating a URI "as is", in such cases, does little to guarantee the integrity of the value that is referenced, and so the JSON Schemas used for descriptor validation expect, and validate for, the resolved value, not the reference (the URI).
+While allowing for such references has pratical use for publishers - for example, allowing schema reuse - it does introduce difficulties in the validation of such properties. Validating a path "as is", in such cases, does little to guarantee the integrity of the value that is referenced, and so the JSON Schemas used for descriptor validation expect, and validate for, the resolved value.
 
-Implementors `MUST` dereference such properties before attempting to validator a descriptor. At present, this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
+Implementors `MUST` dereference such properties before attempting to validate a descriptor. At present, this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
 
 - `schema`
 - `dialect`
