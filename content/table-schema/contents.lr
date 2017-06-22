@@ -366,12 +366,11 @@ The corresponding Table Schema is:
 
 ## Constraints
 
-The `constraints` property that can be used by consumers to list constraints for validating validate field values
-
-
-A set of constraints can be associated with a field. These constraints can be used to validate data. For example, validating the data in a [Tabular Data Resource's][tbr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
+The `constraints` property on Table Schema Fields can be used by consumers to list constraints for validating field values. For example, validating the data in a [Tabular Data Resource][tbr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
 [tdr]: /tabular-data-resource/
+
+All constraints `MUST` be tested against the logical representation of data, and the physical representation of contraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
 A constraints descriptor `MUST` be a JSON `object` and `MAY` contain one or more of the following
 properties.
