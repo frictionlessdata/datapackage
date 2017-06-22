@@ -370,7 +370,7 @@ The `constraints` property on Table Schema Fields can be used by consumers to li
 
 [tdr]: /tabular-data-resource/
 
-All constraints `MUST` be tested against the logical representation of data, and the physical representation of contraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
+All constraints `MUST` be tested against the logical representation of data, and the physical representation of constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
 A constraints descriptor `MUST` be a JSON `object` and `MAY` contain one or more of the following
 properties.
