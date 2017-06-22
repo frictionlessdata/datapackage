@@ -10,7 +10,7 @@ version: 1.0.0-rc.2
 ---
 jsonschema: https://github.com/frictionlessdata/specs/blob/master/sources/table-schema.json
 ---
-updated: 2 May 2017
+updated: 22 June 2017
 ---
 created: 12 November 2012
 ---
@@ -22,15 +22,17 @@ body:
 
 # Introduction
 
-Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of application a where data benefits from a portable schema format.
+Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of applications where data benefits from a portable schema format.
 
 ## Concepts
 
-Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each Row has the same set of fields and thus we can talk about *the* fields for the table as a whole.
+### Tabular data
 
-In cases of tables in spreadsheets or CSV files we often interpret the first row as a header row giving the names of the fields. By contrast, in other situations, e.g. tables in SQL databases the fields (columns) are explicitly designated.
+Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each row has the same set of fields and thus we can talk about *the* fields for the table as a whole.
 
-To illustrate here's a classic spreadsheet table:
+In case of tables in spreadsheets or CSV files we often interpret the first row as a header row, giving the names of the fields. By contrast, in other situations, e.g. tables in SQL databases, the field names are explicitly designated.
+
+To illustrate, here's a classic spreadsheet table:
 
     field     field
       |         |
@@ -42,7 +44,7 @@ To illustrate here's a classic spreadsheet table:
      valA  |   valB  |  valC   |   valD    <--- Row
      ...
 
-In JSON a table would be:
+In JSON, a table would be:
 
     [
       { "A": value, "B": value, ... },
@@ -50,13 +52,23 @@ In JSON a table would be:
       ...
     ]
 
+### Physical and logical representation
+
+In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the *physical* and the *logical* representation of data.
+
+The *physical representation* of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation may have some *type* information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
+
+The *logical representation* of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle to conversion of a physical representation to a logical one.
+
+In this document, we'll explicitly refer to either the *physical* or *logical* representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
+
+For example, `constraints` should be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
+
 # Descriptor
 
-A Table Schema consists of a descriptor. The descriptor MUST be a JSON `object` (JSON is defined in [RFC 4627][]).
+A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
 
-It MUST contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties (not defined in this spec).
-
-[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
+It `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties (not defined in this spec).
 
 The following is an illustration of this structure:
 
