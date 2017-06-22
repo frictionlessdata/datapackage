@@ -624,8 +624,7 @@ array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have 
     the current data package (i.e. the data package within which this Table
     Schema is located). For self-referencing foreign keys, i.e. references
     between fields in this Table Schema, the value of `resource` `MUST` be `""`
-    (i.e. the empty string). As such the `resource` property `MUST` be a
-    lower-case string using only alphanumeric characters and ".", "-", and "_".
+    (i.e. the empty string).
   * `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
