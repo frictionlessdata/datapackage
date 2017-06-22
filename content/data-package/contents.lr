@@ -138,7 +138,7 @@ Packaged data resources are described in the `resources` property of the package
 
 ### Required Properties
 
-There are no required properties.
+The `resources` property is required, with at least one resource.
 
 ### Recommended Properties
 
