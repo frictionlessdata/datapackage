@@ -65,6 +65,7 @@ Tabular Data Package builds directly on the [Data Package][dp] specification. Th
 Tabular Data Package has the following requirements over and above those imposed by [Data Package][dp]:
 
 - There `MUST` be at least one `resource` in the `resources` `array`
+- There `MUST` be a `profile` property with the value `tabular-data-package`
 - Each `resource` `MUST` be a [Tabular Data Resource][tdr]
 
 [tdr]: /tabular-data-resource/
@@ -92,6 +93,7 @@ B,3,4.5
 
 ```javascript
 {
+  "profile": "tabular-data-package",
   "name": "my-dataset",
   // here we list the data files in this dataset
   "resources": [

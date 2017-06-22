@@ -40,6 +40,7 @@ A minimal Tabular Data Resource looks as follows.
 ```javascript
 // with data and a schema accessible via the local filesystem
 {
+  "profile": "tabular-data-resource",
   "name": "resource-name",
   "path": [ "resource-path.csv" ],
   "schema": "tableschema.json"
@@ -47,6 +48,7 @@ A minimal Tabular Data Resource looks as follows.
 
 // with data accessible via http
 {
+  "profile": "tabular-data-resource",
   "name": "resource-name",
   "path": [ "http://example.com/resource-path.csv" ],
   "schema": "http://example.com/tableschema.json"
@@ -57,6 +59,7 @@ A minimal Tabular Data Resource example using the data property to inline data l
 
 ```javascript
 {
+  "profile": "tabular-data-resource",
   "name": "resource-name",
   "data": [
     {
@@ -88,6 +91,7 @@ A comprehensive Tabular Data Resource example with all required, recommended and
 
 ```javascript
 {
+  "profile": "tabular-data-resource",
   "name": "solar-system",
   "path": "http://example.com/solar-system.csv",
   "title": "The Solar System",
@@ -131,6 +135,7 @@ A Tabular Data Resource MUST be a [Data Resource][dr], that is it MUST conform t
 In addition:
 
 * The Data Resource `schema` property MUST follow the [Table Schema][ts] specification
+- There `MUST` be a `profile` property with the value `tabular-data-resource` 
 * The data the Data Resource describes MUST:
   * If non-inline: Be a CSV file
   * If inline data: be "JSON tabular data" that is array of data rows where each row is an `array` or `object` (see below)
