@@ -164,6 +164,18 @@ tableSchemaForeignKey:
             type: string
           minItems: 1
           uniqueItems: true
+tableSchemaTrueValues:
+  type: array
+  minItems: 1
+  items:
+    type: string
+  default: [ "true", "True", "TRUE", "1" ]
+tableSchemaFalseValues:
+  type: array
+  minItems: 1
+  items:
+    type: string
+  default: [ "false", "False", "FALSE", "0" ]
 tableSchemaMissingValues:
   type: array
   minItems: 1
@@ -268,10 +280,6 @@ tableSchemaFieldBoolean:
   type: object
   title: Boolean Field
   description: The field contains boolean (true/false) data.
-  context: |-
-    Boolean values can be indicated with the following strings (case-insensitive, so, for example, 'Y' and 'y' are both acceptable):
-    * **true**: 'yes', 'y', 'true', 't', '1'
-    * **false**: 'no', 'n', 'false', 'f', '0'
   required:
     - name
     - type
@@ -286,6 +294,10 @@ tableSchemaFieldBoolean:
       description: The type keyword, which `MUST` be a value of `boolean`.
       enum:
       - boolean
+    trueValues:
+      "$ref": "#/definitions/tableSchemaTrueValues"
+    falseValues:
+      "$ref": "#/definitions/tableSchemaFalseValues"
     constraints:
       title: Constraints
       description: The following constraints are supported for `boolean` fields.
