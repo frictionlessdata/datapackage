@@ -93,9 +93,7 @@ Some properties in the Frictionless Data specifications allow a path (a URL or a
 
 The most prominent example of this is the `schema` property on Tabular Data Resource descriptors.
 
-While allowing for such references has pratical use for publishers - for example, allowing schema reuse - it does introduce difficulties in the validation of such properties. Validating a path "as is", in such cases, does little to guarantee the integrity of the value that is referenced, and so the JSON Schemas used for descriptor validation expect, and validate for, the resolved value.
-
-Implementors `MUST` dereference such properties before attempting to validate a descriptor. At present, this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
+Allowing such references has practical use for publishers, for example in allowing schema reuse. However, it does introduce difficulties in the validation of such properties. For example, validating a path pointing to a schema rather than the schema object itself will do little to guarantee the integrity of the schema definition. Therefore implementors `MUST` dereference such "referential" property values before attempting to validate a descriptor. At present, this requirement applies to the following properties in Tabular Data Package and Tabular Data Resource:
 
 - `schema`
 - `dialect`
