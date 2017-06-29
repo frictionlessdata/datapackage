@@ -165,7 +165,6 @@ tableSchemaForeignKey:
       properties:
         resource:
           type: string
-          format: uri
         fields:
           type: array
           items:
