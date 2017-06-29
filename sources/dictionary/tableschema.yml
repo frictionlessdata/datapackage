@@ -146,31 +146,45 @@ tableSchemaForeignKey:
   - fields
   - reference
   properties:
-    fields:
-      oneOf:
-        -
-          type: array
-          minItems: 1
-          uniqueItems: true
-          items:
-            type: string
-        -
-          type: string
-      description: Fields that make up the primary key.
-    reference:
-      type: object
-      required:
-      - resource
-      - fields
-      properties:
-        resource:
-          type: string
+    oneOf:
+      -
         fields:
           type: array
           items:
             type: string
-          minItems: 1
-          uniqueItems: true
+            minItems: 1
+            uniqueItems: true
+            description: Fields that make up the primary key.
+        reference:
+          type: object
+          required:
+          - resource
+          - fields
+          properties:
+            resource:
+              type: string
+              default: ""
+            fields:
+              type: array
+              items:
+                type: string
+              minItems: 1
+              uniqueItems: true
+      -
+        fields:
+          type: string
+          description: Fields that make up the primary key.
+        reference:
+          type: object
+          required:
+          - resource
+          - fields
+          properties:
+            resource:
+              type: string
+              default: ""
+            fields:
+              type: string
 tableSchemaTrueValues:
   type: array
   minItems: 1
