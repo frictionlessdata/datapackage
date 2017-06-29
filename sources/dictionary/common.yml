@@ -113,7 +113,6 @@ path:
   title: Path
   description: A fully qualified URL, or a POSIX file path..
   type: string
-  format: uri
   examples:
   - |
       {
