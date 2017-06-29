@@ -5,7 +5,7 @@ dataResource:
   type: object
   required:
   - name
-  - data
+  - path
   properties:
     profile:
       "$ref": "#/definitions/profile"
@@ -65,7 +65,7 @@ tabularDataResource:
   type: object
   required:
   - name
-  - data
+  - path
   - schema
   - profile
   properties:
