@@ -268,7 +268,7 @@ tableSchemaFieldString:
         pattern:
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minLength:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
@@ -372,11 +372,17 @@ tableSchemaFieldInteger:
         pattern:
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumInteger"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumInteger"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -446,11 +452,17 @@ tableSchemaFieldNumber:
         pattern:
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumNumber"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumNumber"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumNumber"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -503,11 +515,11 @@ tableSchemaFieldDate:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -566,11 +578,11 @@ tableSchemaFieldTime:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -621,11 +633,11 @@ tableSchemaFieldDateTime:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -674,11 +686,17 @@ tableSchemaFieldYear:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumInteger"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumInteger"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -732,11 +750,11 @@ tableSchemaFieldYearMonth:
         pattern:
           "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -789,11 +807,11 @@ tableSchemaFieldDuration:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:
-          "$ref": "#/definitions/tableSchemaConstraintMinimum"
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
-          "$ref": "#/definitions/tableSchemaConstraintMaximum"
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -835,7 +853,9 @@ tableSchemaFieldObject:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumObject"
         minLength:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
@@ -881,7 +901,9 @@ tableSchemaFieldArray:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumArray"
         minLength:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
@@ -932,7 +954,9 @@ tableSchemaFieldGeoJSON:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumObject"
         minLength:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
@@ -993,7 +1017,10 @@ tableSchemaFieldGeoPoint:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintEnumString"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumArray"
+            - "$ref": "#/definitions/tableSchemaConstraintEnumObject"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -1037,7 +1064,7 @@ tableSchemaFieldAny:
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumAny"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -1056,25 +1083,66 @@ tableSchemaConstraintPattern:
   type: string
   description: A regular expression pattern to test each value of the property against, where a truthy response indicates validity.
   context: "Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."
-tableSchemaConstraintEnum:
+tableSchemaConstraintEnumString:
   type: array
   minItems: 1
   uniqueItems: true
-  description: An array of values, where the property value `MUST` match any. Each enum item `MUST` comply with the type and format of the property.
+  items:
+    type: string
+tableSchemaConstraintEnumInteger:
+  type: array
+  minItems: 1
+  uniqueItems: true
+  items:
+    type: integer
+tableSchemaConstraintEnumNumber:
+  type: array
+  minItems: 1
+  uniqueItems: true
+  items:
+    type: number
+tableSchemaConstraintEnumArray:
+  type: array
+  minItems: 1
+  uniqueItems: true
+  items:
+    type: array
+tableSchemaConstraintEnumObject:
+  type: array
+  minItems: 1
+  uniqueItems: true
+  items:
+    type: object
+tableSchemaConstraintEnumAny:
+  type: array
+  minItems: 1
+  uniqueItems: true
 tableSchemaConstraintMinLength:
   type: integer
   description: An integer that specifies the minimum length of a value.
 tableSchemaConstraintMaxLength:
   type: integer
   description: An integer that specifies the maximum length of a value.
-tableSchemaConstraintMinimum:
+tableSchemaConstraintMinimumString:
   type: string
-  description: A minimum value for the property, context specific for the property type, and conforming with the format for the property.
-  context: This is different to `minLength`, which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value.
-tableSchemaConstraintMaximum:
+tableSchemaConstraintMinimumInteger:
+  type: integer
+tableSchemaConstraintMinimumNumber:
+  type: number
+tableSchemaConstraintMinimumArray:
+  type: array
+tableSchemaConstraintMinimumObject:
+  type: object
+tableSchemaConstraintMaximumString:
   type: string
-  description: A maximum value for the property, context specific for the property type, and conforming with the format for the property.
-  context: This is different to `maxLength`, which checks the number of items in the value. A `maximum` value constraint checks whether a field value is smaller than or equal to the specified value.
+tableSchemaConstraintMaximumInteger:
+  type: integer
+tableSchemaConstraintMaximumNumber:
+  type: number
+tableSchemaConstraintMaximumArray:
+  type: array
+tableSchemaConstraintMaximumObject:
+  type: object
 tableSchemaRdfType:
   type: string
   description: The RDF type for this field.
