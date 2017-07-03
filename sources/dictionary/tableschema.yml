@@ -1,4 +1,8 @@
 ---
+tableSchemaFieldName:
+  title: Name
+  description: A name for this field.
+  type: string
 tableSchema:
   title: Table Schema
   description: A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.
@@ -231,7 +235,7 @@ tableSchemaFieldString:
   - name
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -306,7 +310,7 @@ tableSchemaFieldBoolean:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -346,7 +350,7 @@ tableSchemaFieldInteger:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -417,7 +421,7 @@ tableSchemaFieldNumber:
   - name
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -488,7 +492,7 @@ tableSchemaFieldDate:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -551,7 +555,7 @@ tableSchemaFieldTime:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -606,7 +610,7 @@ tableSchemaFieldDateTime:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -662,7 +666,7 @@ tableSchemaFieldYear:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -724,7 +728,7 @@ tableSchemaFieldYearMonth:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -783,7 +787,7 @@ tableSchemaFieldDuration:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -829,7 +833,7 @@ tableSchemaFieldObject:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -877,7 +881,7 @@ tableSchemaFieldArray:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -925,7 +929,7 @@ tableSchemaFieldGeoJSON:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -984,7 +988,7 @@ tableSchemaFieldGeoPoint:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
@@ -1045,7 +1049,7 @@ tableSchemaFieldAny:
     - type
   properties:
     name:
-      "$ref": "#/definitions/name"
+      "$ref": "#/definitions/tableSchemaFieldName"
     title:
       "$ref": "#/definitions/title"
     description:
