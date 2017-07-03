@@ -300,11 +300,3 @@ appropriate for the data they manage. As an example, the <a href="/tabular-data-
 [jts]: /table-schema/
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 [dp]: /data-package/
-
-## Data Resource Profiles
-
-A profile is a Data Resource which extends the default specification towards more specific needs. The Tabular Data Package is an example of a Data Resource Profile.
-
-A profile is identified with the `profile` property. For the default Data Resource descriptor, this `MAY` be present, with a value of `default`.
-
-Custom profiles, such as Tabular Data Resource, `MUST` have a profile property, where the value is a unique identifier for that profile. This unique identifier can be in one of two forms. It can be a profile identifier from the official Frictionless Data Schema Registry, or, a path (URL or POSIX path) that points directly to a JSON Schema that can be used to validate the profile.

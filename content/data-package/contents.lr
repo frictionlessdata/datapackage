@@ -309,11 +309,3 @@ The datetime must conform to the string formats for datetime as described in [RF
 [tdp]: /tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
 [markdown]: http://commonmark.org/
-
-## Data Package Profiles
-
-A profile is a Data Package which extends the default specification towards more specific needs. The Tabular Data Package is an example of a Data Package Profile.
-
-A profile is identified with the `profile` property. For the default Data Package descriptor, this `MAY` be present, with a value of `default`.
-
-Custom profiles, such as Tabular Data Package, `MUST` have a profile property, where the value is a unique identifier for that profile. This unique identifier can be in one of two forms. It can be a profile identifier from the official Frictionless Data Schema Registry, or, a path (URL or POSIX path) that points directly to a JSON Schema that can be used to validate the profile.
