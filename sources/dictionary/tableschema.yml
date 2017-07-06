@@ -327,7 +327,7 @@ tableSchemaFieldBoolean:
         required:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         enum:
-          "$ref": "#/definitions/tableSchemaConstraintEnum"
+          "$ref": "#/definitions/tableSchemaConstraintEnumBoolean"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -1089,6 +1089,12 @@ tableSchemaConstraintEnumString:
   uniqueItems: true
   items:
     type: string
+tableSchemaConstraintEnumBoolean:
+  type: array
+  minItems: 1
+  uniqueItems: true
+  items:
+    type: boolean
 tableSchemaConstraintEnumInteger:
   type: array
   minItems: 1
