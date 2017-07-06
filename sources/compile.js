@@ -39,16 +39,16 @@ function compileSchemas() {
                 dataBag[name] = schema
                 return writeFile(`../assets/schemas/${file}`, JSON.stringify(schema, null, 2))
                   .then(result => { console.log(`${file} written`) })
-                  .catch(error => { console.error(error) })
+                  .catch(error => { console.log(error); process.exit(1) })
               })
-              .catch(error => { console.error(error) });
+              .catch(error => { console.log(error); process.exit(1) });
           })
       }
     }).
       then(() => {
         return writeFile(dataBagLocation, JSON.stringify(dataBag, null, 2))
           .then(result => { console.log('dataBag written') })
-          .catch(error => { console.error(error) })
+          .catch(error => { console.log(error); process.exit(1) })
       })
   })
 }
