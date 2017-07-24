@@ -238,8 +238,6 @@ license:
   title: License
   description: A license for this descriptor.
   type: object
-  required:
-  - uri
   properties:
     name:
       "$ref": "#/definitions/name"
