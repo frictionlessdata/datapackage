@@ -124,6 +124,9 @@ path:
       }
   context: 'Implementations need to negotiate the type of path provided, and dereference
     the data accordingly.'
+data:
+  title: Data
+  description: Inline data for this resource.
 created:
   title: Created
   description: The datetime on which this descriptor was created.
