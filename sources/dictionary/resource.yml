@@ -16,6 +16,9 @@ dataResource:
     path:
       "$ref": "#/definitions/resourcePath"
       propertyOrder: 30
+    data:
+      "$ref": "#/definitions/data"
+      propertyOrder: 230
     schema:
       "$ref": "#/definitions/anySchema"
       propertyOrder: 40
@@ -78,6 +81,9 @@ tabularDataResource:
     path:
       "$ref": "#/definitions/resourcePath"
       propertyOrder: 30
+    data:
+      "$ref": "#/definitions/data"
+      propertyOrder: 230
     schema:
       "$ref": "#/definitions/tableSchema"
       propertyOrder: 40
