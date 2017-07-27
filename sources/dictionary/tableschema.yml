@@ -149,9 +149,9 @@ tableSchemaForeignKey:
   required:
   - fields
   - reference
-  properties:
-    oneOf:
-      -
+  oneOf:
+    -
+      properties:
         fields:
           type: array
           items:
@@ -174,7 +174,8 @@ tableSchemaForeignKey:
                 type: string
               minItems: 1
               uniqueItems: true
-      -
+    -
+      properties:
         fields:
           type: string
           description: Fields that make up the primary key.
