@@ -296,11 +296,6 @@ Usual lexical representation is: `YYYY-MM`. There are no format options.
 
 [xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
 
-`format`:
-
-* **default**: According to `gYearMonth` from XML Schema
-* **<PATTERN>**: as for `date`
-
 ### duration
 
 A duration of time.
