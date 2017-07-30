@@ -200,7 +200,7 @@ This lexical formatting may be modified using these additional properties:
   within the number. The default value is ".".
 * **groupChar**: A string whose value is used to group digits within the
   number. The default value is null. A common value is "," e.g. "100,000".
-* **currency**: A number that may include additional currency symbols.
+* **stripNonNumeric**: a boolean field with a default of `false`. When stripNonNumeric is `true`, the value of the field `MUST` have all leading and trailing non-numeric characters stripped from the string before casting.
 
 `format`: no options (other than the default).
 
@@ -213,6 +213,10 @@ The field contains integers - that is whole numbers.
 Integer values are indicated in the standard way for any valid integer.
 
 `format`: no options (other than the default).
+
+Additional properties:
+
+* **stripNonNumeric**: a boolean field with a default of `false`. When stripNonNumeric is `true`, the value of the field `MUST` have all leading and trailing non-numeric characters stripped from the string before casting.
 
 ### boolean
 
