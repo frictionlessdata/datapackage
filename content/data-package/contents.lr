@@ -6,8 +6,6 @@ title: Data Package
 ---
 mediatype: application/vnd.datapackage+json
 ---
-jsonschema: https://schemas.frictionlessdata.io/data-package.json
----
 descriptor: datapackage.json
 ---
 created: 12 November 2007

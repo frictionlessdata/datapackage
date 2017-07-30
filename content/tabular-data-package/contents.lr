@@ -6,8 +6,6 @@ slug: tabular-data-package
 ---
 mediatype: application/vnd.datapackage+json
 ---
-jsonschema: https://schemas.frictionlessdata.io/tabular-data-package.json
----
 version: 1.0.0-rc.2
 ---
 updated: 2 May 2017

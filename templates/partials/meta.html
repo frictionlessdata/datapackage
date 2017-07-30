@@ -13,12 +13,10 @@
       {{ this.mediatype}}
     </td>
   </tr>
-  {% if this.jsonschema %}
   <tr>
     <td>JSON Schema<br />(for spec)</td>
-    <td><a href="{{this.jsonschema}}">{{ this.jsonschema }}</a></td>
+    <td><a href="https://specs.frictionlessdata.io/schemas/{{this.slug}}.json">specs.frictionlessdata.io/schemas/{{this.slug}}.json</a></td>
   </tr>
-  {% endif %}
   {% if this.version %}
   <tr>
     <td>Version</td>

@@ -6,8 +6,6 @@ slug: fiscal-data-package
 ---
 version: 0.3.0
 ---
-jsonschema: https://schemas.frictionlessdata.io/fiscal-data-package.json
----
 updated: 28 January 2016
 ---
 created: 14 March 2014

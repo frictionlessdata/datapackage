@@ -8,8 +8,6 @@ mediatype: application/vnd.tableschema+json
 ---
 version: 1.0.0-rc.2
 ---
-jsonschema: https://github.com/frictionlessdata/specs/blob/master/sources/table-schema.json
----
 updated: 22 June 2017
 ---
 created: 12 November 2012
