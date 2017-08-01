@@ -275,10 +275,10 @@ source:
   description: A source file.
   type: object
   required:
-  - uri
+  - title
   properties:
-    name:
-      "$ref": "#/definitions/name"
+    title:
+      "$ref": "#/definitions/title"
     path:
       "$ref": "#/definitions/path"
     email:

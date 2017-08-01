@@ -249,7 +249,7 @@ a version string identifying the version of the package. It should conform to th
 
 #### `sources`
 
-The raw sources for this data package. It MUST be an array of Source objects. Each Source object MAY have `title`, `path` and `email` properties. Example:
+The raw sources for this data package. It MUST be an array of Source objects. Each Source object MUST have a `title` and MAY have `path` and/or `email` properties. Example:
 
     "sources": [{
       "title": "World Bank and OECD",
