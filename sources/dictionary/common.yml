@@ -80,22 +80,13 @@ description:
 homepage:
   title: Home Page
   description: The home on the web that is related to this data package.
-  type: object
-  properties:
-    name:
-      "$ref": "#/definitions/name"
-    path:
-      "$ref": "#/definitions/path"
-    title:
-      "$ref": "#/definitions/title"
+  type: string
+  format: uri
   examples:
   - |
-      {
-        "homepage": {
-          "name": "My Web Page",
-          "uri": "http://example.com/"
-        }
-      }
+    {
+      "homepage": "http://example.com/"
+    }
 version:
   title: Version
   description: A unique version number for this descriptor.
