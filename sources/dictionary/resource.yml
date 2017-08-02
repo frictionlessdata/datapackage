@@ -5,8 +5,8 @@ dataResource:
   type: object
   oneOf:
     - required:
-        - name
-        - data
+      - name
+      - data
     - required:
       - name
       - path
@@ -72,10 +72,10 @@ tabularDataResource:
   type: object
   oneOf:
     - required:
-        - name
-        - data
-        - schema
-        - profile
+      - name
+      - data
+      - schema
+      - profile
     - required:
       - name
       - path
