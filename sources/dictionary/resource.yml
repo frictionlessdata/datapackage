@@ -3,9 +3,13 @@ dataResource:
   title: Data Resource
   description: Data Resource.
   type: object
-  required:
-  - name
-  - path
+  oneOf:
+    - required:
+        - name
+        - data
+    - required:
+      - name
+      - path
   properties:
     profile:
       "$ref": "#/definitions/profile"
@@ -66,11 +70,17 @@ tabularDataResource:
   title: Tabular Data Resource
   description: A Tabular Data Resource.
   type: object
-  required:
-  - name
-  - path
-  - schema
-  - profile
+  oneOf:
+    - required:
+        - name
+        - data
+        - schema
+        - profile
+    - required:
+      - name
+      - path
+      - schema
+      - profile
   properties:
     profile:
       "$ref": "#/definitions/profile"
