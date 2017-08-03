@@ -179,8 +179,8 @@ contributor:
   title: Contributor
   description: A contributor to this descriptor.
   properties:
-    name:
-      "$ref": "#/definitions/name"
+    title:
+      "$ref": "#/definitions/title"
     path:
       "$ref": "#/definitions/path"
     email:
@@ -198,7 +198,7 @@ contributor:
       - wrangler
       - contributor
   required:
-  - name
+  - title
   context: Use of this property does not imply that the person was the original
     creator of, or a contributor to, the data in the descriptor, but refers to the
     composition of the descriptor itself.
@@ -214,7 +214,7 @@ contributors:
       {
         "contributors": [
           {
-            "name": "Joe Bloggs"
+            "title": "Joe Bloggs"
           }
         ]
       }
@@ -222,7 +222,7 @@ contributors:
       {
         "contributors": [
           {
-            "name": "Joe Bloggs",
+            "title": "Joe Bloggs",
             "email": "joe@example.com",
             "role": "author"
           }
