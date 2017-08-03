@@ -234,7 +234,10 @@ license:
   type: object
   properties:
     name:
-      "$ref": "#/definitions/name"
+      title: Open Definition license identifier
+      description: MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/
+      type: string
+      pattern: "^([-a-zA-Z0-9._])+$"
     path:
       "$ref": "#/definitions/path"
     title:
