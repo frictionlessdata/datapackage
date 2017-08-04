@@ -9,6 +9,7 @@ dataPackage:
     profile:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
+      default: data-package
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
@@ -56,6 +57,7 @@ tabularDataPackage:
     profile:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
+      default: tabular-data-package
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
