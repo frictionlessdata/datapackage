@@ -33,6 +33,11 @@ As part of the Frictionless Data Specifications project, we publish a number of 
 * [Tabular Data Package][tdp]
 * [Fiscal Data Package][fdp]
 
+We also publish the following Data Resource profiles:
+
+* [Tabular Data Resource][tdr]
+
 [registry]: https://specs.frictionlessdata.io/schemas/registry.json
 [tdp]: /tabular-data-package/
 [fdp]: /fiscal-data-package/
+[tdr]: /tabular-data-resource/
