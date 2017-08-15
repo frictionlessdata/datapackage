@@ -57,7 +57,6 @@ tabularDataPackage:
     profile:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
-      default: tabular-data-package
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
