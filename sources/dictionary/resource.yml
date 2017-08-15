@@ -86,7 +86,6 @@ tabularDataResource:
     profile:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
-      default: tabular-data-resource
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
