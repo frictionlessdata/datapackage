@@ -176,7 +176,7 @@ non-empty finite-length sequence of decimal digits separated by a period as a
 decimal indicator. An optional leading sign is allowed. If the sign is omitted,
 "+" is assumed. Leading and trailing zeroes are optional. If the fractional
 part is zero, the period and following zero(es) can be omitted. For example:
-'-1.23', '12678967.543233', '+100000.00', '210'. 
+'-1.23', '12678967.543233', '+100000.00', '210'.
 
 The following special string values are permitted (case need not be respected):
 
@@ -207,11 +207,11 @@ The field contains integers - that is whole numbers.
 
 Integer values are indicated in the standard way for any valid integer.
 
-`format`: no options (other than the default).
-
 Additional properties:
 
-* **stripNonNumeric**: a boolean field with a default of `false`. When stripNonNumeric is `true`, the value of the field `MUST` have all leading and trailing non-numeric characters stripped from the string before casting.
+* **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+
+`format`: no options (other than the default).
 
 ### boolean
 
@@ -366,7 +366,7 @@ The corresponding Table Schema is:
           "type": "string",
           "rdfType": "http://schema.org/Country"
         }
-        ... 
+        ...
       }
     }
 ```
@@ -405,7 +405,7 @@ properties.
       <code>required</code>
     </td>
     <td>
-      boolean 
+      boolean
     </td>
     <td>
       All
@@ -419,7 +419,7 @@ properties.
       <code>unique</code>
     </td>
     <td>
-      boolean 
+      boolean
     </td>
     <td>
       All
