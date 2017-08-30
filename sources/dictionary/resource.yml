@@ -14,7 +14,7 @@ dataResource:
     profile:
       "$ref": "#/definitions/profile"
       propertyOrder: 10
-      default: data-resource
+      default: "data-resource"
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
@@ -85,6 +85,7 @@ tabularDataResource:
   properties:
     profile:
       "$ref": "#/definitions/profile"
+            enum: ["tabular-data-resource"]
       propertyOrder: 10
     name:
       "$ref": "#/definitions/name"

@@ -147,7 +147,6 @@ image:
   title: Image
   description: A image to represent this package.
   type: string
-  format: uri
   examples:
   - |
       {
@@ -183,7 +182,7 @@ contributor:
     email:
       "$ref": "#/definitions/email"
     organisation:
-      title: Organisation
+      title: Organization
       description: An organizational affiliation for this contributor.
       type: string
     role:
@@ -194,6 +193,7 @@ contributor:
       - maintainer
       - wrangler
       - contributor
+      default: contributor
   required:
   - title
   context: Use of this property does not imply that the person was the original
