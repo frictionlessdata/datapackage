@@ -85,7 +85,7 @@ tabularDataResource:
   properties:
     profile:
       "$ref": "#/definitions/profile"
-            enum: ["tabular-data-resource"]
+      enum: ["tabular-data-resource"]
       propertyOrder: 10
     name:
       "$ref": "#/definitions/name"
