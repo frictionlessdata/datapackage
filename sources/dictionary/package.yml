@@ -8,8 +8,8 @@ dataPackage:
   properties:
     profile:
       "$ref": "#/definitions/profile"
+      default: "data-package"
       propertyOrder: 10
-      default: data-package
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
@@ -35,12 +35,15 @@ dataPackage:
     keywords:
       "$ref": "#/definitions/keywords"
       propertyOrder: 90
+    image:
+      "$ref": "#/definitions/image"
+      propertyOrder: 100
     licenses:
       "$ref": "#/definitions/licenses"
-      propertyOrder: 100
+      propertyOrder: 110
     resources:
       "$ref": "#/definitions/dataResources"
-      propertyOrder: 110
+      propertyOrder: 120
     sources:
       "$ref": "#/definitions/sources"
       propertyOrder: 200
@@ -56,6 +59,7 @@ tabularDataPackage:
   properties:
     profile:
       "$ref": "#/definitions/profile"
+      enum: ["tabular-data-package"]
       propertyOrder: 10
     name:
       "$ref": "#/definitions/name"
@@ -82,12 +86,15 @@ tabularDataPackage:
     keywords:
       "$ref": "#/definitions/keywords"
       propertyOrder: 90
+    image:
+      "$ref": "#/definitions/image"
+      propertyOrder: 100
     licenses:
       "$ref": "#/definitions/licenses"
-      propertyOrder: 100
+      propertyOrder: 110
     resources:
       "$ref": "#/definitions/tabularDataResources"
-      propertyOrder: 110
+      propertyOrder: 120
     sources:
       "$ref": "#/definitions/sources"
       propertyOrder: 200
