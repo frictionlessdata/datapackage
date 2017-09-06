@@ -56,7 +56,7 @@ In order to talk about the representation and processing of tabular data from te
 
 The *physical representation* of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation may have some *type* information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
 
-The *logical representation* of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle to conversion of a physical representation to a logical one.
+The *logical representation* of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
 
 In this document, we'll explicitly refer to either the *physical* or *logical* representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
 
