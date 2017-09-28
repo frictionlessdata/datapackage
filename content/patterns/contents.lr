@@ -80,7 +80,7 @@ All Frictionless Data specifications allow for referencing resources via http or
 
 In the case of remote resources via http, there is always the possibility that the remote server will be unavailable, or, that the resource itself will be temporarily or permanently removed.
 
-Applications that are concerned with the persistent storage of data described in Frictionless Data specifications can use a `_cache` property that mirrors the functionality and usage of the `data` property, and refers to a sotrage location for the data that the application can fall back to if the canonical resource is unavailable.
+Applications that are concerned with the persistent storage of data described in Frictionless Data specifications can use a `_cache` property that mirrors the functionality and usage of the `data` property, and refers to a storage location for the data that the application can fall back to if the canonical resource is unavailable.
 
 ### Implementations
 
@@ -111,7 +111,7 @@ Some examples of the `_cache` property.
       "data": [
         "http://example.com/data/csv/my-resource.csv",
         "http://somewhere-else.com/data/csv/resource2.csv"
-      ]
+      ],
       "_cache": [
         "my-resource.csv",
         "resource2.csv"
@@ -162,7 +162,6 @@ Example usage of `languages`, implemented in the metadata of a descriptor:
   "name": "sun-package",
   "languages": ["es", "en"],
   "title": "Sol"
-  }
 }
 
 # which is equivalent to
