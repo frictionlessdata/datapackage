@@ -232,7 +232,7 @@ Measures are numerical and define the columns in the source data which contain f
     // REQUIRED: Any valid ISO 4217 currency code.
     "currency": "USD",
 
-    // OPTIONAL: A factor by which to multiple the raw monetary
+    // OPTIONAL: A factor by which to multiply the raw monetary
     // values to get the real monetary amount, eg `1000`. Defaults
     // to `1`.
     "factor": 1,
@@ -388,7 +388,7 @@ To describe an "economic" classification for an item using the publisher's chart
 
 ## Activity
 
-A `dimensionType` of `activity` defines the program or project associated with expenditure or revenue. When these terms are not used interchangably, the distinction is generally that "programs" (a sets of goal-oriented activities) contain "projects" (specific sets of tasks with a defined budget and schedule).
+A `dimensionType` of `activity` defines the program or project associated with expenditure or revenue. When these terms are not used interchangeably, the distinction is generally that "programs" (a sets of goal-oriented activities) contain "projects" (specific sets of tasks with a defined budget and schedule).
 
 ```javascript
 "program-or-project-name": {
@@ -403,7 +403,7 @@ A `dimensionType` of `activity` defines the program or project associated with e
 
 ## Entity
 
-A `dimensionType` of `entity` is describes a distinct organization, government department, or individual that is spending or receiving a given amount.
+A `dimensionType` of `entity` describes a distinct organization, government department, or individual that is spending or receiving a given amount.
 
 ```javascript
 "program-or-project-name": {
