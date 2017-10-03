@@ -2,7 +2,7 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 11 December 2017
+updated: 28 September 2017
 ---
 created: 11 December 2017
 ---
@@ -27,7 +27,7 @@ This document describes various patterns for solving common problems, in ways th
 
 Some software that implements the Frictionless Data specifications may need to store additional information on the various Frictionless Data descriptors.
 
-For example, a data registry that provides metatdata via `datapackage.json` may wish to set an internal version or identifier that is system-specific, and should not be considered as part of the user-generated metadata.
+For example, a data registry that provides metadata via `datapackage.json` may wish to set an internal version or identifier that is system-specific, and should not be considered as part of the user-generated metadata.
 
 Properties to store such information should be considered "private", and by convention, the names should be prefixed by an underscore `_`.
 
@@ -259,3 +259,36 @@ To support this:
 
 The `foreignKey` MAY have a property `datapackage`. This property is a string being a url pointing to a Data Package or is the name of a datapackage.
 
+## Data Package Version
+
+The Data Package version format follows the [Semantic Versioning](http://semver.org) specification format: MAJOR.MINOR.PATCH
+
+The version numbers, and the way they change, convey meaning how the data package has been modified from one version to the next.
+
+Given a Data Package version number MAJOR.MINOR.PATCH, increment the:
+
+MAJOR version when you make incompatible changes, e.g.
+
+- Change the table schema
+- Change field or data package names or data package identifiers
+- Add, remove or re-order fields
+
+MINOR version when you add data in a backwards-compatible manner, e.g.
+
+- Add new data to an existing data resource
+- Add a new data resource
+
+PATCH version when you make backwards-compatible fixes, e.g.
+
+- Corrections to existing data
+- Changes to metadata
+
+### Scenarios
+
+- You are developing your data though public consultation. Start your initial data release at 0.1.0
+- You release your data for the first time. Use version 1.0.0
+- You append last months data to an existing release. Increment the MINOR version number
+- You append a column to the data. Increment the MAJOR version number
+- You relocate the data to a new `URL` or `path`. No change in the version number
+- You change a `title`, `description`, or other descriptive metadata. Increment the PATCH version
+- You fix a data entry error by modifying a value. Increment the PATCH version
