@@ -1,20 +1,16 @@
+const util = require('util')
 const fs = require('fs-extra')
-const nodePath = require('path')
-const Promise = require('bluebird')
-const readFile = Promise.promisify(require('fs').readFile)
-const writeFile = Promise.promisify(require('fs').writeFile)
-const readDir = Promise.promisify(require('fs').readdir)
-const glob = Promise.promisify(require('glob'))
-const $RefParser = require('json-schema-ref-parser')
-const csvParser = Promise.promisify(require('csv-parse'))
-const csvParseSync = require('csv-parse/lib/sync');
 const yaml = require('js-yaml')
+const nodePath = require('path')
+const glob = util.promisify(require('glob'))
+const $RefParser = require('json-schema-ref-parser')
+const csvParseSync = require('csv-parse/lib/sync');
 const excludeOnOutput = ['dictionary.json']
 
 
 // Helpers
 
-function ensureDirectories() {
+function prepareDirectories() {
   const dirs = [
     'build/schemas',
     'build/specs',
@@ -22,7 +18,7 @@ function ensureDirectories() {
 
   // Ensure directories
   for (const dir of dirs) {
-    fs.ensureDirSync(dir)
+    fs.emptyDirSync(dir)
   }
 
 }
@@ -58,7 +54,7 @@ async function buildSchemas() {
     const rawSchema = JSON.parse(fs.readFileSync(file))
     const schema = await $RefParser.dereference(rawSchema)
     const contents = JSON.stringify(schema, null, 2)
-    writeFile(`build/schemas/${basename}`, contents)
+    fs.writeFileSync(`build/schemas/${basename}`, contents)
     console.log(`[+] build/schemas/${basename}.json`)
   }
 
@@ -74,7 +70,7 @@ function buildRegistry() {
   // Convert csv registy to json
   const registry = csvParseSync(fs.readFileSync('schemas/registry.csv'), {columns: true})
   const contents = JSON.stringify(registry, null, 2)
-  writeFile(`build/schemas/registry.json`, contents)
+  fs.writeFileSync(`build/schemas/registry.json`, contents)
   console.log(`[+] build/schemas/registry.json`)
 
 }
@@ -96,7 +92,7 @@ function buildSpecs() {
 // Main script
 
 async function main() {
-  ensureDirectories()
+  prepareDirectories()
   compileDictionary()
   await buildSchemas()
   buildRegistry()
