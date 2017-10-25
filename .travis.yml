@@ -1,23 +1,14 @@
-language: python
-python:
-- '2.7'
-install:
-- nvm install 6.1
-- nvm use 6.1
-- pip install --upgrade pip
-- pip install lektor
-- pip install boto3
-- npm install
+sudo:
+  false
+
+language:
+  node_js
+
+node_js:
+  - 8
+
+before_script:
 - npm run compile
-- lektor plugins add lektor-s3
-- lektor plugins add markdown-highlighter
+
 script:
-- lektor build
-deploy:
-  provider: script
-  script: lektor deploy s3
-env:
-  global:
-  - secure: BB/ShK7ED3rGYJRDmCGT3wUdUqXnFabEn7XMgrL7lciEZZclBs9FQ55ReCr+kIK/JAm7ymu6gBkzmDbphI1pEphpF0n+RuNP1UZsJoKePKay+6TiHet2kKFIX9Fxx9YL02Co1WHxLF6jSpQuBowq7ngF4BtCttClBU1nSwAeAdI=
-  - secure: SmYU5AcEXBmEUZvn2Ek3m4WDncdp8O4D/PI1Wo0s6P9RgeMIf6hqikwbcYh2fzbUVkDjO/ynffU4Rxm6YGKVnlqOgAMFr2Y/Ps8fMtT23SoNzk+sruMJEA0LAgOyC3FZuh2jGe6iPaesLag8J2ba9fkjfUWxOtfeVq9IXl+V9fU=
-  - secure: VuRR2ThtrC/wnHoNfn8/ItAGw4sElVa1A4XS68v0XalCzqEAeqI9RZ5n1JQyBuawEIlGvlTcTiW7G6uDHUJA0ukjUedsVJjdhMfnS1mSXZo9hSm6hmLaA7/gOXysy1uABikAcQ7J1lPExIr/TQb0x/pQXCPPIFlwihNK3DroW74=
+- npm run test

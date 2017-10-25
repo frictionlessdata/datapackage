@@ -4,7 +4,8 @@
   "description": "This site is the home for *specifications* related to **Frictionless Data.**",
   "main": "index.js",
   "scripts": {
-    "compile": "cd sources && node compile.js && cd .."
+    "compile": "cd sources && node compile.js && cd ..",
+    "test": "echo '<implement>'"
   },
   "repository": {
     "type": "git",
