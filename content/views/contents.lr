@@ -1,5 +1,3 @@
-_model: specification
----
 slug: views
 ---
 title: Data Package Views
@@ -83,10 +81,10 @@ A View MUST have the following form:
   "name": "..."   // unique identifier for view within list of views. (should we call it id ?)
   "title": "My view" // title for this graph
   ...
-  
+
   // data sources for this spec
-  "resources": [ resource1, resource2 ]  
-  
+  "resources": [ resource1, resource2 ]
+
   "specType": "" // one of simple | plotly | vega
   // graph spec
   "spec":
@@ -152,9 +150,9 @@ This example is just copied from http://vega.github.io/vega-editor/?mode=vega&sp
   "width": 400,
   "height": 200,
   "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
-  
+
   // NOTE: data property is MISSING here!
-  
+
   "scales": [
     {
       "name": "x",

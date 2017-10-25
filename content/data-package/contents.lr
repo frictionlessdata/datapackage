@@ -1,5 +1,3 @@
-_model: specification
----
 slug: data-package
 ---
 title: Data Package
@@ -60,7 +58,7 @@ directory and thus, a more elaborate data package could look like this:
 
     # data files may go either in data subdirectory or in main directory
     mydata.csv
-    data/otherdata.csv         
+    data/otherdata.csv
 
     # the directory for code scripts - again these can go in the base directory
     scripts/my-preparation-script.py
@@ -68,10 +66,10 @@ directory and thus, a more elaborate data package could look like this:
 Several exemplar data packages can be found in the [datasets organization on github][datasets], including:
 
 * [World GDP][gdp]
-* [ISO 3166-2 country codes][3166] 
+* [ISO 3166-2 country codes][3166]
 
 [datasets]: https://github.com/datasets
-[gdp]: https://github.com/datasets/gdp 
+[gdp]: https://github.com/datasets/gdp
 [3166]: https://github.com/datasets/country-codes
 
 # Specification
@@ -181,10 +179,10 @@ Examples:
 #### `licenses`
 
 The license(s) under which the package is provided.
-  
+
 **This property is not legally binding and does not guarantee the package is
 licensed under the terms defined in this property.**
-  
+
 `licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `name` property and/or a `path` property. It MAY contain a `title` property.
 
 Here is an example:

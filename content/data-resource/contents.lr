@@ -1,5 +1,3 @@
-_model: specification
----
 title: Data Resource
 ---
 slug: data-resource
@@ -197,7 +195,7 @@ Examples 1 - inline JSON:
        "resources": [
          {
             "format": "json",
-            # some json data e.g. 
+            # some json data e.g.
             "data": [
                { "a": 1, "b": 2 },
                { .... }
@@ -267,8 +265,8 @@ A descriptor MAY contain any number of additional properties. Common properties 
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
-* `encoding`: specify the character encoding of the resource's data file. The values should be one of 
- the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
+* `encoding`: specify the character encoding of the resource's data file. The values should be one of
+ the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no
  value for this key is specified then the default is UTF-8.
 * `bytes`: size of the file in bytes
 * `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
