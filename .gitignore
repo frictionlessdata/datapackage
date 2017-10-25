@@ -5,4 +5,5 @@ TAGS
 node_modules/*
 databags/schemas.json
 sources/dictionary.json
+package-lock.json
 .idea
