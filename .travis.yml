@@ -8,7 +8,7 @@ node_js:
   - 8
 
 before_script:
-- npm run compile
+- npm run build
 
 script:
 - npm run test

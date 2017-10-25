@@ -1,4 +1,4 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "$ref": "dictionary.json#/definitions/dataResource"
+  "$ref": "schemas/dictionary.json#/definitions/dataResource"
 }

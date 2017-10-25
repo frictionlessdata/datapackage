@@ -3,5 +3,5 @@
   "title": "Data Package",
   "description": "Data Package is a simple specification for data access and delivery.",
   "type": "object",
-  "$ref": "dictionary.json#/definitions/dataPackage"
+  "$ref": "schemas/dictionary.json#/definitions/dataPackage"
 }
