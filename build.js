@@ -80,7 +80,8 @@ function buildSpecs() {
 
   // Convert specs files for `lektor`
   for (const file of glob.sync('specs/*.md')) {
-    const name = nodePath.parse(file).name
+    let name = nodePath.parse(file).name
+    if (name === 'index') name = ''
     fs.ensureDirSync(`build/specs/${name}`)
     fs.copyFileSync(file, `build/specs/${name}/contents.lr`)
     console.log(`[+] build/schemas/specs/${name}/contents.lr`)
