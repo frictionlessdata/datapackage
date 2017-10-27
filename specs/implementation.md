@@ -1,3 +1,5 @@
+_model: page
+---
 title: Implementation
 ---
 body:

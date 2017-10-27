@@ -1,3 +1,5 @@
+_model: page
+---
 title: Patterns
 ---
 updated: 28 September 2017
