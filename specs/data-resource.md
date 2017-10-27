@@ -124,10 +124,10 @@ Examples:
 
 <div class="alert alert-warning security" markdown="block">
 SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to
-avoid security vulnerabilities when implementing data package tools. These
+avoid security vulnerabilities when implementing data package software. These
 limitations on resource `path` ensure that resource paths only point to files
 within the data package directory and its subdirectories. This prevents
-data package tools being exploited by a malicious user to gain unintended
+data package software being exploited by a malicious user to gain unintended
 access to sensitive information.
 
 For example, suppose a data package hosting service stores packages on disk and
