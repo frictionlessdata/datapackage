@@ -10,7 +10,7 @@ Our specifications follow our design philosophy:
 * **Reuse**: reuse and build on existing standards and formats wherever possible.
 * **Cross technology**: support a broad range of languages, technologies and infrastructures -- avoid being tied to any one specific system.
 
-This philosophy is itself based on the [overall design principles of the Frictionless Data project][principles]:
+This philosophy is itself based on the overall design principles of the Frictionless Data project:
 
 1. **Focused**: We have a sharp focus on one part of the data chain, one specific feature – packaging – and a few specific types of data (e.g. tabular).
 2. **Web Oriented**: We build for the web using formats that are web "native" such as JSON, work naturally with HTTP such as plain text CSVs (which stream).
