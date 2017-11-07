@@ -293,6 +293,6 @@ appropriate for the data they manage. As an example, the <a href="/tabular-data-
 </div>
 
 [tdp]: /specs/tabular-data-package/
-[jts]: /specs//table-schema/
+[jts]: /specs/table-schema/
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 [dp]: /specs/data-package/
