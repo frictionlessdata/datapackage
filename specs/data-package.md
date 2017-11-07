@@ -303,6 +303,6 @@ The datetime must conform to the string formats for datetime as described in [RF
 ```
 
 [RFC3339]: https://tools.ietf.org/html/rfc3339#section-5.6
-[tdp]: /tabular-data-package/
+[tdp]: /specs/tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
 [markdown]: http://commonmark.org/
