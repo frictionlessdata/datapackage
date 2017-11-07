@@ -165,13 +165,13 @@ This follows [Data Package][dp] (DP). In particular, the following properties `M
   // OPTIONAL: ...other properties...
 
   // REQUIRED: array of CSV files contained in the package. Defined
-  // in http://dataprotocols.org/data-packages/ and
-  // http://dataprotocols.org/tabular-data-package/ . Note:
+  // in http://frictionlessdata.io/specs/data-package/ and
+  // http://frictionlessdata.io/specs/tabular-data-package/ . Note:
   //   * Each data file `MUST` have an entry in the `resources`
   //     array
   //   * That entry in the `resources` array `MUST` have a JSON
   //     table schema describing the data file.
-  //     (see http://dataprotocols.org/json-table-schema/)
+  //     (see http://frictionlessdata.io/specs/table-schema/)
   //    * Each entry must have a `name` attribute in order to be referenced
   //      in the `model` section.
 
@@ -544,16 +544,16 @@ Categorizing and organizing the data is more about describing it from the bigger
 
 
 
-[dp]: http://dataprotocols.org/data-packages/
-[tdp]: http://dataprotocols.org/tabular-data-package/
+[dp]: http://frictionlessdata.io/specs/data-package/
+[tdp]: http://frictionlessdata.io/specs/tabular-data-package/
 [bdp]: https://github.com/openspending/budget-data-package
 [bdp-resources]: https://github.com/openspending/budget-data-package/blob/master/specification.md#budget-specific-metadata
 [dp-profiles]: https://github.com/dataprotocols/dataprotocols/issues/87
-[dp-resources]: http://dataprotocols.org/data-packages/#resource-information
-[fd]: http://data.okfn.org
+[dp-resources]: http://frictionlessdata.io/specs/data-package#resource-information
+[fd]: http://frictionlessdata.io/
 [mapping]: http://docs.openspending.org/en/latest/model/design.html#views-and-pre-defined-visualizations
 [views]: http://docs.openspending.org/en/latest/model/design.html#views-and-pre-defined-visualizations
-[jts]: http://dataprotocols.org/json-table-schema/
+[ts]: http://frictionlessdata.io/specs/table-schema/
 [current-model]: http://docs.openspending.org/en/latest/model/design.html
 [cofog]: http://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=4
 [imf-budget]: http://www.imf.org/external/pubs/ft/tnm/2009/tnm0906.pdf
