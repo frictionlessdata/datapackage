@@ -14,7 +14,7 @@ We prefer to focus on **actions** rather than features, feature sets, user stori
 
 ## Context
 
-While OKI and various other 3rd parties have been using the [Data Package family of specifications](http://specs.frictionlessdata.io) with great success for several years, it has mostly been over the last 12 months that we are starting to see more mature libraries to implement the specifications at a "low level" for ease of reuse.
+While OKI and various other 3rd parties have been using the [Data Package family of specifications](http://frictionlessdata.io/specs/) with great success for several years, it has mostly been over the last 12 months that we are starting to see more mature libraries to implement the specifications at a "low level" for ease of reuse.
 
 At present, we consider the libraries maintained by Open Knowledge International in both Python and JavaScript to be reference implementations that serve as a guide for how to approach the specifications in code, and the type of actions that are enabled for users of the libraries. Further, we make extensive use of [JSON Schema](http://json-schema.org) to validate `descriptors` that are passed to these libraries. This enables significant reuse across implementations for descriptor validation logic.
 
@@ -30,10 +30,10 @@ The Data Package library can load and validate any `descriptor` for a **Data Pac
 
 #### References
 
-- [Data Package specification](http://specs.frictionlessdata.io/data-package/)
-- [Data Package Profiles](http://specs.frictionlessdata.io/data-package/#profiles)
-- [Tabular Data Package specification (the most commonly used and useful Profile)](http://specs.frictionlessdata.io/tabular-data-package/)
-- [JSON Schema Registry](http://specs.frictionlessdata.io/schemas/registry.json)
+- [Data Package specification](http://frictionlessdata.io/specs/data-package/)
+- [Data Package Profiles](http://frictionlessdata.io/specs/data-package/#profiles)
+- [Tabular Data Package specification (the most commonly used and useful Profile)](http://frictionlessdata.io/specs/tabular-data-package/)
+- [JSON Schema Registry](http://frictionlessdata.io/schemas/registry.json)
 - [JavaScript implementation](https://github.com/frictionlessdata/datapackage-js)
 - [Python implementation](https://github.com/frictionlessdata/datapackage-py)
 
@@ -62,9 +62,9 @@ The Table Schema library can load and validate any Table Schema `descriptor`, al
 
 #### References
 
-- [Table Schema specification](http://specs.frictionlessdata.io/table-schema/)
-- [Tabular Data Resource specification](http://specs.frictionlessdata.io/tabular-data-resource/)
-- [JSON Schema Registry](http://specs.frictionlessdata.io/schemas/registry.json)
+- [Table Schema specification](http://frictionlessdata.io/specs/table-schema/)
+- [Tabular Data Resource specification](http://frictionlessdata.io/specs/tabular-data-resource/)
+- [JSON Schema Registry](http://frictionlessdata.io/schemas/registry.json)
 - [JavaScript implementation](https://github.com/frictionlessdata/tableschema-js)
 - [Python implementation](https://github.com/frictionlessdata/tableschema-py)
 
