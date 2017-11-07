@@ -63,7 +63,7 @@ directory and thus, a more elaborate data package could look like this:
     # the directory for code scripts - again these can go in the base directory
     scripts/my-preparation-script.py
 
-Several exemplar data packages can be found in the [datasets organization on github][datasets], including:
+Several example data packages can be found in the [datasets organization on github][datasets], including:
 
 * [World GDP][gdp]
 * [ISO 3166-2 country codes][3166]
