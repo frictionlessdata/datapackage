@@ -240,7 +240,7 @@ A resource MUST contain a `name` property. The name is a simple name or
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
-[profile]: /profiles/
+[profile]: /specs/profiles/
 
 Examples:
 
@@ -292,7 +292,7 @@ Object. This flexibility enables specific communities to define schemas
 appropriate for the data they manage. As an example, the <a href="/tabular-data-package/">Tabular Data Package</a> specification requires the schema to conform to <a href="/table-schema/">Table Schema</a>.
 </div>
 
-[tdp]: /tabular-data-package/
-[jts]: /table-schema/
+[tdp]: /specs/tabular-data-package/
+[jts]: /specs//table-schema/
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
-[dp]: /data-package/
+[dp]: /specs/data-package/
