@@ -27,9 +27,9 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
 * The `schema` property MUST follow the [Table Schema][ts] specification
 * A new `dialect` property to describe the CSV dialect. This property follows the [CSV Dialect][cd] specification.
 
-[dr]: /data-resource/
-[ts]: /table-schema/
-[cd]: /csv-dialect/
+[dr]: /specs/data-resource/
+[ts]: /specs/table-schema/
+[cd]: /specs/csv-dialect/
 
 ## Examples
 
