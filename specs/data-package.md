@@ -208,7 +208,7 @@ Here is an example:
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
-[profile]: /profiles/
+[profile]: /specs/profiles/
 
 Examples:
 
