@@ -18,7 +18,7 @@ A simple format for describing tabular-style data for publishing and sharing.
 ---
 body:
 
-# Introduction
+## Introduction
 
 Tabular Data Package is a simple container format used for publishing and sharing tabular-style data. The format's focus is on simplicity and ease of use, especially online. In addition, the format is focused on data that can be presented in a tabular structure and in making it easy to produce (and consume) tabular data packages from spreadsheets and relational databases.
 
@@ -30,9 +30,9 @@ The key features of this format are the following:
 
 As suggested by the name, Tabular Data Package extends and specializes the [Data Package][dp] spec for the specific case where the data is tabular.
 
-[dp]: /specs/data-package/
+[dp]: http://frictionlessdata.io/specs/data-package/
 
-## Why CSV
+### Why CSV
 
 We chose CSV as the data format for the Tabular Data Package specification because:
 
@@ -54,7 +54,7 @@ Lindenberg)]
 text-based, no need for proprietary tools etc [@rufuspollock (Rufus
 Pollock)]
 
-# Specification
+## Specification
 
 Tabular Data Package builds directly on the [Data Package][dp] specification. Thus a Tabular Data Package `MUST` be a Data Package and conform to the [Data Package specification][dp].
 
@@ -64,9 +64,9 @@ Tabular Data Package has the following requirements over and above those imposed
 - There `MUST` be a `profile` property with the value `tabular-data-package`
 - Each `resource` `MUST` be a [Tabular Data Resource][tdr]
 
-[tdr]: /specs/tabular-data-resource/
+[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
 
-## Example
+### Example
 
 Here's an example of a minimal tabular data package:
 
