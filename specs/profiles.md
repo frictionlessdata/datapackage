@@ -36,6 +36,6 @@ We also publish the following Data Resource profiles:
 * [Tabular Data Resource][tdr]
 
 [registry]: http://frictionlessdata.io/schemas/registry.json
-[tdp]: /specs/tabular-data-package/
-[fdp]: /specs/fiscal-data-package/
-[tdr]: /specs/tabular-data-resource/
+[tdp]: http://frictionlessdata.io/specs/tabular-data-package/
+[fdp]: http://frictionlessdata.io/specs/fiscal-data-package/
+[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
