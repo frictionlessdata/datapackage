@@ -16,13 +16,13 @@ abstract: A simple format to declare a schema for tabular data. The schema is de
 ---
 body:
 
-# Introduction
+## Introduction
 
 Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of applications where data benefits from a portable schema format.
 
-## Concepts
+### Concepts
 
-### Tabular data
+#### Tabular data
 
 Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each row has the same set of fields and thus we can talk about *the* fields for the table as a whole.
 
@@ -48,7 +48,7 @@ In JSON, a table would be:
       ...
     ]
 
-### Physical and logical representation
+#### Physical and logical representation
 
 In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the *physical* and the *logical* representation of data.
 
@@ -60,7 +60,7 @@ In this document, we'll explicitly refer to either the *physical* or *logical* r
 
 For example, `constraints` should be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
 
-# Descriptor
+## Descriptor
 
 A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
 
@@ -93,7 +93,7 @@ The following is an illustration of this structure:
 }
 ```
 
-# Field Descriptors
+## Field Descriptors
 
 A field descriptor `MUST` be a JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
@@ -117,19 +117,19 @@ Here is an illustration:
 
 The field descriptor `object` `MAY` contain any number of other properties. Some specific properties are defined below. Of these, only the `name` property is `REQUIRED`.
 
-## `name`
+### `name`
 
 The field descriptor MUST contain a `name` property. This property `SHOULD` correspond to the name of field/column in the data file (if it has a name). As such it `SHOULD` be unique (though it is possible, but very bad practice, for the data file to have multiple columns with the same name). `name` `SHOULD NOT` be considered case sensitive in determining uniqueness. However, since it should correspond to the name of the field in the data file it may be important to preserve case.
 
-## `title`
+### `title`
 
 A human readable label or title for the field
 
-## `description`
+### `description`
 
 A description for this field e.g. "The recipient of the funds"
 
-## Types and Formats
+### Types and Formats
 
 `type` and `format` properties are used to give The type of the field (string, number etc) - see below for
     more detail. If type is not provided a consumer should assume a type of
@@ -153,7 +153,7 @@ types](http://www.elasticsearch.org/guide/reference/mapping/)).
 The type list with associated formats and other related properties is as
 follows.
 
-### string
+#### string
 
 The field contains strings, that is, sequences of characters.
 
@@ -165,7 +165,7 @@ The field contains strings, that is, sequences of characters.
 * **binary**: A base64 encoded string representing binary data.
 * **uuid**: A string that is a uuid.
 
-### number
+#### number
 
 The field contains numbers of any kind including decimals.
 
@@ -199,7 +199,7 @@ This lexical formatting may be modified using these additional properties:
 
 [xsd-decimal]: https://www.w3.org/TR/xmlschema-2/#decimal
 
-### integer
+#### integer
 
 The field contains integers - that is whole numbers.
 
@@ -211,7 +211,7 @@ Additional properties:
 
 `format`: no options (other than the default).
 
-### boolean
+#### boolean
 
 The field contains boolean (true/false) data.
 
@@ -224,19 +224,19 @@ The boolean field can be customised with these additional properties:
 
 `format`: no options (other than the default).
 
-### object
+#### object
 
 The field contains data which is valid JSON.
 
 `format`: no options (other than the default).
 
-### array
+#### array
 
 The field contains data that is a valid JSON format arrays.
 
 `format`: no options (other than the default).
 
-### date
+#### date
 
 A date without a time.
 
@@ -256,7 +256,7 @@ A date without a time.
   by Python / C standard `strptime` using `<PATTERN>`).  Example for
   `<PATTERN>` is `%d/%m/%y` which would correspond to dates like: `30/11/14`
 
-### time
+#### time
 
 A time without a date.
 
@@ -266,7 +266,7 @@ A time without a date.
 * **any**: as for `date`
 * **<PATTERN>**: as for `date`
 
-### datetime
+#### datetime
 
 A date with a time.
 
@@ -276,7 +276,7 @@ A date with a time.
 * **any**: as for `date`
 * **<PATTERN>**: as for `date`
 
-### year
+#### year
 
 A calendar year as per [XMLSchema `gYear`][xsd-gyear].
 
@@ -284,7 +284,7 @@ Usual lexical representation is `YYYY`. There are no format options.
 
 [xsd-gyear]: https://www.w3.org/TR/xmlschema-2/#gYear
 
-### yearmonth
+#### yearmonth
 
 A specific month in a specific year as per [XMLSchema
 `gYearMonth`][xsd-gyearmonth].
@@ -293,7 +293,7 @@ Usual lexical representation is: `YYYY-MM`. There are no format options.
 
 [xsd-gyearmonth]: https://www.w3.org/TR/xmlschema-2/#gYearMonth
 
-### duration
+#### duration
 
 A duration of time.
 
@@ -310,7 +310,7 @@ and lower order elements may also be omitted for reduced precision.
 
 `format`: no options (other than the default).
 
-### geopoint
+#### geopoint
 
 The field contains data describing a geographic point.
 
@@ -322,7 +322,7 @@ The field contains data describing a geographic point.
   item is `lat` e.g. `[90, 45]`
 * **object**: A JSON object with exactly two keys, `lat` and `lon` and each value is a number e.g. `{"lon": 90, "lat": 45}`
 
-### geojson
+#### geojson
 
 The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
@@ -331,7 +331,7 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
 * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
-### any
+#### any
 
 Any `type` or `format` is accepted. When converting from physical to logical representation, the behaviour should be similar to String field type.
 
@@ -339,7 +339,7 @@ Any `type` or `format` is accepted. When converting from physical to logical rep
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
 [xsd-duration]: http://www.w3.org/TR/xmlschema-2/#duration
 
-## Rich Types
+### Rich Types
 
 A richer, "semantic", description of the "type" of data in a given column MAY
 be provided using a `rdfType` property on a field descriptor.
@@ -372,11 +372,11 @@ The corresponding Table Schema is:
 [rdfs-class]: https://www.w3.org/TR/rdf-schema/#ch_class
 
 
-## Constraints
+### Constraints
 
-The `constraints` property on Table Schema Fields can be used by consumers to list constraints for validating field values. For example, validating the data in a [Tabular Data Resource][tbr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
+The `constraints` property on Table Schema Fields can be used by consumers to list constraints for validating field values. For example, validating the data in a [Tabular Data Resource][tdr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
-[tdr]: /tabular-data-resource/
+[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
 
 All constraints `MUST` be tested against the logical representation of data, and the physical representation of constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
@@ -519,11 +519,11 @@ properties.
 * A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
 * Constraints `MUST` be applied on the logical representation of field values and constraint values.
 
-# Other Properties
+## Other Properties
 
 In additional to field descriptors, there are the following "table level" properties.
 
-## Missing Values
+### Missing Values
 
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
@@ -542,7 +542,7 @@ Examples:
 "missingValues": ["NaN", "-"]
 ```
 
-## Primary Key
+### Primary Key
 
 A primary key is a field or set of fields that uniquely identifies each row in
 the table.
@@ -594,7 +594,7 @@ Here's an example with an array primary key:
       "primaryKey": ["a", "c"]
      }
 
-## Foreign Keys
+### Foreign Keys
 
 A foreign key is a reference where values in a field (or fields) on the
 table ('resource' in data package terminology) described by this Table Schema
@@ -685,9 +685,9 @@ An example of a self-referencing foreign key:
 
 **Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
 
-[dp]: /specs/data-package/
+[dp]: http://frictionlessdata.io/specs/data-package/
 
-# Appendix: Related Work
+## Appendix: Related Work
 
 Table Schema draws content and/or inspiration from, among others, the following specifications and implementations:
 
