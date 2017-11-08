@@ -14,7 +14,7 @@ A simple format for describing a views on data that leverages existing specifica
 ---
 body:
 
-# Introduction
+## Introduction
 
 Producers and consumers of data want to have data presented in tables and graphs -- "views" on the data. They want this for a range of reasons, from simple eyeballing to drawing out key insights,
 
@@ -22,7 +22,7 @@ This specification sets out a way to describe views for data packages using a si
 
 We focus on doing the minimum to connect data package data with existing graph and table specification systems like Vega.
 
-## Desired Features
+### Desired Features
 
 * Specify views such as graphs and tables as part of a data package
   * => views should be describable in a specification serializable as JSON
@@ -33,7 +33,7 @@ We focus on doing the minimum to connect data package data with existing graph a
 
 [Vega]: http://vega.github.io/
 
-## Concepts and Background
+### Concepts and Background
 
 To generate visualizations you need three kinds of information:
 
@@ -65,7 +65,7 @@ However, in many visualization tools -- including specs like Vega -- these items
 
 In summary, a smaller pieces, loosely joined makes it easier to adapt and evolve the specs and the associated tooling.
 
-# Specification
+## Specification
 
 Data Package Views ("Views") define data views such as graphs or tables based on the data in a Data Package.
 
@@ -91,7 +91,7 @@ A View MUST have the following form:
 }
 ```
 
-## Data Source Spec
+### Data Source Spec
 
 The data source spec is as follows:
 
@@ -105,13 +105,13 @@ That is: an array where each entry is either:
 * A string - indicating the name of the resource in the resource array of the parent Data Package
 * An Object: being a full Data Resource object
 
-### "Compiled" Resources
+#### "Compiled" Resources
 
 The resources is termed "compiled" if all resources are objects and all data on those resources has been inlined onto an attribute named `_values`. At this point, the view is entirely self-contained -- all resources and their associated data is "inside" the view object and no external data loading is required.
 
-## Graph Spec
+### Graph Spec
 
-### Simple Graph Spec
+#### Simple Graph Spec
 
 The simple graph spec provides a very simple graph descriptor setup that aims for an 80/20 result. It supports only the following graph types:
 
@@ -137,7 +137,7 @@ Spec:
 }
 ```
 
-### Vega Spec
+#### Vega Spec
 
 *We are using vega as an input: raw vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
 
@@ -265,15 +265,15 @@ To understand how this fits together with the overall spec here's the full view 
 }
 ```
 
-### Vega-lite spec
+#### Vega-lite spec
 
 Identical to Vega approach
 
-### Plotly spec
+#### Plotly spec
 
 Identical to vega approach
 
-## Table Spec
+### Table Spec
 
 ```
 {
@@ -283,6 +283,6 @@ Identical to vega approach
 }
 ```
 
-## Data Transforms
+### Data Transforms
 
 *In progess.*
