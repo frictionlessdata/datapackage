@@ -18,7 +18,7 @@ A simple format to describe a single tabular data resource such as a CSV file. I
 ---
 body:
 
-# Introduction
+## Introduction
 
 A **Tabular Data Resource** is a type of [Data Resource][dr] specialized for describing tabular data like CSV files or spreadsheets.
 
@@ -27,11 +27,11 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
 * The `schema` property MUST follow the [Table Schema][ts] specification
 * A new `dialect` property to describe the CSV dialect. This property follows the [CSV Dialect][cd] specification.
 
-[dr]: /specs/data-resource/
-[ts]: /specs/table-schema/
-[cd]: /specs/csv-dialect/
+[dr]: http://frictionlessdata.io/specs/data-resource/
+[ts]: http://frictionlessdata.io/specs/table-schema/
+[cd]: http://frictionlessdata.io/specs/csv-dialect/
 
-## Examples
+### Examples
 
 A minimal Tabular Data Resource looks as follows.
 
@@ -126,7 +126,7 @@ A comprehensive Tabular Data Resource example with all required, recommended and
 ```
 
 
-# Specification
+## Specification
 
 A Tabular Data Resource MUST be a [Data Resource][dr], that is it MUST conform to the [Data Resource specification][dr].
 
@@ -139,11 +139,11 @@ In addition:
   * If inline data: be "JSON tabular data" that is array of data rows where each row is an `array` or `object` (see below)
 
 
-## CSV file requirements
+### CSV file requirements
 
 CSV files in the wild come in a bewildering array of formats. There is a standard for CSV files described in [RFC 4180](https://tools.ietf.org/html/rfc4180), but unfortunately this standard does not reflect reality. In Tabular Data Resource, CSV files `MUST` follow RFC 4180 with the following important exceptions allowed:
 
-### File encoding
+#### File encoding
 
 Files MUST:
 
@@ -152,20 +152,20 @@ Files MUST:
 
 NB: the RFC requires 7-bit ASCII encoding.
 
-### CSV Dialect
+#### CSV Dialect
 
 The line terminator character `MUST` be LF or CRLF (the RFC allows CRLF only).
 
 If the CSV differs from this or the RFC in any other way regarding dialect (e.g. line terminators, quote charactors, field delimiters), the Tabular Data Resource MUST contain a `dialect` property describing its dialect. The `dialect` property MUST follow the [CSV Dialect][cd] specification.
 
-## JSON Tabular Data
+### JSON Tabular Data
 
 JSON Tabular Data MUST be an `array` where each item in the array MUST be:
 
 * EITHER: an array where each entry in the array is the value for that cell in the table
 * OR: an object where each key corresponds to the header for that row and the value corresponds to the cell value for that row for that header
 
-### Row Arrays
+#### Row Arrays
 
 ```javascript
 [
@@ -175,7 +175,7 @@ JSON Tabular Data MUST be an `array` where each item in the array MUST be:
 ]
 ```
 
-### Row Objects
+#### Row Objects
 
 ```javascript
 [
