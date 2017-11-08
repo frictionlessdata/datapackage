@@ -18,7 +18,7 @@ A simple format to describe and package a single data resource such as a individ
 ---
 body:
 
-# Introduction
+## Introduction
 
 The **Data Resource** format describes a data resource such as an individual file or table.
 
@@ -26,7 +26,7 @@ The essence of a Data Resource is a locator for the data it describes.
 
 A range of other properties can be declared to provide a richer set of metadata.
 
-## Examples
+### Examples
 
 A minimal Data Resource looks as follows:
 
@@ -78,7 +78,7 @@ A comprehensive Data Resource example with all required, recommended and optiona
 ```
 
 
-# Descriptor
+## Descriptor
 
 A Data Resource descriptor MUST be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
 
@@ -86,7 +86,7 @@ Key properties of the descriptor are described below. A descriptor MAY include a
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
-# Data Location
+## Data Location
 
 A resource MUST contain a property describing the location of the
 data associated to the resource. The location of resource data MUST be
@@ -95,12 +95,12 @@ specified by the presence of one (and only one) of these two properties:
 * `path`: for data in files located online or locally on disk.
 * `data`: for data inline in the descriptor itself.
 
-## `path` Data in Files
+### `path` Data in Files
 
 `path` MUST be a string -- or an array of strings (see "Data in Multiple
 Files"). Each string MUST be a "url-or-path" as defined in the next section.
 
-### URL or Path
+#### URL or Path
 
 A "url-or-path" is a `string` with the following additional constraints:
 
@@ -122,29 +122,14 @@ Examples:
 "path": "my-data-directory/my-csv.csv"
 ```
 
-<div class="alert alert-warning security" markdown="block">
-SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to
-avoid security vulnerabilities when implementing data package software. These
-limitations on resource `path` ensure that resource paths only point to files
-within the data package directory and its subdirectories. This prevents
-data package software being exploited by a malicious user to gain unintended
-access to sensitive information.
 
-For example, suppose a data package hosting service stores packages on disk and
-allows access via an API. A malicious user uploads a data package with a
-resource path like `/etc/passwd`.  The user then requests the data for that
-resource and the server naively opens `/etc/passwd` and returns that data to
-the caller.
-</div>
+!!!! SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to avoid security vulnerabilities when implementing data package software. These limitations on resource `path` ensure that resource paths only point to files within the data package directory and its subdirectories. This prevents data package software being exploited by a malicious user to gain unintended access to sensitive information.
 
-<div class="alert alert-info implementor" markdown="block">
-IMPLEMENTOR: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url`
-property distinct from `path`. In order to support backwards compatability,
-implementors MAY want to automatically convert a `url` property to a `path`
-property and issue a warning.
-</div>
+!!!! For example, suppose a data package hosting service stores packages on disk and allows access via an API. A malicious user uploads a data package with a resource path like `/etc/passwd`.  The user then requests the data for that resource and the server naively opens `/etc/passwd` and returns that data to the caller.
 
-### Data in Multiple Files
+!! IMPLEMENTOR: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors MAY want to automatically convert a `url` property to a `path` property and issue a warning.
+
+#### Data in Multiple Files
 
 Usually, a resource will have only a single file associated to it. However,
 sometimes it may be convenient to have a single resource whose data is split
@@ -161,15 +146,9 @@ than a single string:
 It is NOT permitted to mix fully qualified URLs and relative paths in a `path`
 array: strings MUST either all be relative paths or all URLs.
 
-<div class="alert implementor" markdown="block">
-NOTE: all files in the array MUST be similar in terms of structure, format etc.
-Implementors MUST be able to concatenate together the files in the simplest way
-and treat the result as one large file. For tabular data there is the issue of
-header rows. See the [Tabular Data Package spec][tdp] for more on this.
-</div>
+!! NOTE: all files in the array MUST be similar in terms of structure, format etc. Implementors MUST be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
 
-
-## `data` Inline Data
+### `data` Inline Data
 
 Resource data rather than being stored in external files can be shipped
 'inline' on a Resource using the `data` property.
@@ -217,13 +196,13 @@ Example 2 - inline CSV:
     }
 
 
-# Metadata Properties
+## Metadata Properties
 
-## Required Properties
+### Required Properties
 
 A descriptor MUST contain the following properties:
 
-### `name`
+#### `name`
 
 A resource MUST contain a `name` property. The name is a simple name or
   identifier to be used for this resource.
@@ -234,9 +213,9 @@ A resource MUST contain a `name` property. The name is a simple name or
 * It would be usual for the name to correspond to the file name (minus the
   extension) of the data file the resource describes.
 
-## Recommended Properties
+### Recommended Properties
 
-### `profile`
+#### `profile`
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
@@ -256,7 +235,7 @@ Examples:
 }
 ```
 
-## Optional Properties
+### Optional Properties
 
 A descriptor MAY contain any number of additional properties. Common properties include:
 
@@ -278,7 +257,7 @@ A descriptor MAY contain any number of additional properties. Common properties 
 * `licenses`: as for [Data Package metadata][dp]. If not specified the resource
   inherits from the data package.
 
-# Resource Schemas
+## Resource Schemas
 
 A Data Resource MAY have a `schema` property to describe the schema of the resource data.
 
@@ -286,13 +265,10 @@ The value for the `schema` property on a `resource` MUST be an `object` represen
 
 If a `string` it must be a [url-or-path as defined above](#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the the location specified by this url-or-path string `MUST` be a JSON document containing the schema.
 
-<div class="alert alert-info" markdown="block">
-NOTE: the Data Package specification places no restrictions on the form of the schema
-Object. This flexibility enables specific communities to define schemas
-appropriate for the data they manage. As an example, the <a href="/tabular-data-package/">Tabular Data Package</a> specification requires the schema to conform to <a href="/table-schema/">Table Schema</a>.
-</div>
+!! NOTE: the Data Package specification places no restrictions on the form of the schema Object. This flexibility enables specific communities to define schemas appropriate for the data they manage. As an example, the [Tabular Data Package][tdp] specification requires the schema to conform to [Table Schema][ts].
+
 
 [tdp]: /specs/tabular-data-package/
-[jts]: /specs/table-schema/
+[ts]: /specs/table-schema/
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 [dp]: /specs/data-package/

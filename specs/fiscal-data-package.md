@@ -14,22 +14,14 @@ Fiscal Data Package is a lightweight and user-oriented format for publishing and
 ---
 body:
 
-<div class="alert alert-info" markdown="block">
-NOTE: This is a draft specification and still under development. If you have comments
-or suggestions please file them in the [issue tracker][issues]. If you have
-explicit changes please fork the [git repo][repo] and submit a pull request.
-</div>
+
+!! NOTE: This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
+
 
 [issues]: https://github.com/openspending/budget-data-package/issues
 [repo]: https://github.com/openspending/budget-data-package/issues
 
-# Table of Contents
-{:.no_toc}
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
-# Changelog
+## Changelog
 
 - `0.3.0`: incorporates all changes up to `0.3.0-alpha9`
 - `0.3.0-alpha9`: (!) rename mapping to model. Remove 'ocdid' as recommended attribute for location dimension.
@@ -44,7 +36,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 - [`0.2.0`](./0.2/): large numbers of changes and clarifications for particular fields but no substantive change to the overall spec
 - [`0.1.0`](./0.1/): first complete version of the specification
 
-# Overview
+## Overview
 
 Data on government budgets and spending is becoming available in unprecedented quantities. The practice of publishing budget information as machine-readable and openly licensed data is spreading rapidly and will become increasingly standard.
 
@@ -65,7 +57,7 @@ Fiscal Data Package specifies the *form* for fiscal data and offers a standardiz
 
 Fiscal Data Package builds on the [Data Packages specifications][dp]. It defines a "profile" that adds some additional constraints.  It also extends the [Tabular Data Package][tdp] profile (`tabular`) which itself extends the `base` Data Package format.  Thus, any Fiscal Data Package is also a [Tabular Data Package][tdp], and is also a [Data Package][dp].
 
-# Form and Structure
+## Form and Structure
 
 A Fiscal Data Package contains revenue and/or expenditure data for one or more entities, over one or more financial periods. It has a simple structure:
 
@@ -104,7 +96,7 @@ Each row of each file describes some kind of movement of money, and may contain 
 
 *Note: you can store other files in your data package - for example, you may want to archive the original xls or data files you used. However, we do not consider these data for the purposes of this specification.*
 
-## Descriptor – `datapackage.json`
+### Descriptor – `datapackage.json`
 
 The `datapackage.json` describes:
 
@@ -112,7 +104,7 @@ The `datapackage.json` describes:
 * Resources - the name and type of each column of each data file
 * Model - links each column to semantic meanings defined within the Fiscal Data Package logical data model
 
-## Package Metadata
+### Package Metadata
 
 This follows [Data Package][dp] (DP). In particular, the following properties `MUST` be on the top-level descriptor:
 
@@ -195,11 +187,11 @@ This follows [Data Package][dp] (DP). In particular, the following properties `M
 ```
 
 
-## Resources
+### Resources
 
 All the requirements of [Tabular Data Package][tdp] apply.
 
-## Model
+### Model
 
 The `model` hash is central to Fiscal Data Package and serves two purposes. It defines a "logical model" for the data and it maps columns in the CSV files ("physical model") to columns in the "logical model".
 
@@ -215,9 +207,9 @@ A logical model is a description of the underlying structure and concepts in the
 
 As we will see, `measures` and `dimensions` are the two main properties of the `model` hash.
 
-[^why-olap]: We have chosen OLAP because OLAP is specfically designed for situations where there is one (or more) central numerical values and then various classifications of that data. Fiscal data has at its heart a single numeric concept: money. Hence the fit with OLAP.
+[^why-olap]: We have chosen OLAP because OLAP is specifically designed for situations where there is one (or more) central numerical values and then various classifications of that data. Fiscal data has at its heart a single numeric concept: money. Hence the fit with OLAP.
 
-### Measures
+#### Measures
 
 Measures are numerical and define the columns in the source data which contain financial amounts. Each measure is represented by a key in the `measures` object. The object has the following structure:
 
@@ -254,7 +246,7 @@ Measures are numerical and define the columns in the source data which contain f
 }
 ```
 
-### Dimensions
+#### Dimensions
 
 Each dimension is represented by a key in the `dimensions` object. The object has the following structure:
 
@@ -327,11 +319,11 @@ Each dimension is represented by a key in the `dimensions` object. The object ha
 ```
 
 
-# Dimension types
+## Dimension types
 
-This section provides guidance, and certain requirements, on the naming of dimension attributes. For example, if you have a column representing the name of an organisation, it should be modelled as a `title` attribute on an dimension with `dimensionType` of `entity`.
+This section provides guidance, and certain requirements, on the naming of dimension attributes. For example, if you have a column representing the name of an organisation, it should be modeled as a `title` attribute on an dimension with `dimensionType` of `entity`.
 
-## Classification
+### Classification
 
 ```javascript
 "spending-classification": {
@@ -368,7 +360,7 @@ This section provides guidance, and certain requirements, on the naming of dimen
 }
 ```
 
-### Known classification schemes
+#### Known classification schemes
 
 Dimensions of type `classification` with these names are significant:
 
@@ -377,14 +369,14 @@ Dimensions of type `classification` with these names are significant:
 
 [gfsm2014]: http://www.imf.org/external/np/sta/gfsm/
 
-### Chart of Accounts
+#### Chart of Accounts
 
 To describe an "economic" classification for an item using the publisher's chart of accounts, use these attributes:
 
 * `code`:  The internal code identifier for the economic classification.
 * `title`:  Human-readable name of the economic classification of the budget item (i.e. the type of expenditure, e.g. purchases of goods, personnel expenses, etc.), drawn from the publisher's chart of accounts.
 
-## Activity
+### Activity
 
 A `dimensionType` of `activity` defines the program or project associated with expenditure or revenue. When these terms are not used interchangeably, the distinction is generally that "programs" (a sets of goal-oriented activities) contain "projects" (specific sets of tasks with a defined budget and schedule).
 
@@ -399,7 +391,7 @@ A `dimensionType` of `activity` defines the program or project associated with e
 }
 ```
 
-## Entity
+### Entity
 
 A `dimensionType` of `entity` describes a distinct organization, government department, or individual that is spending or receiving a given amount.
 
@@ -416,14 +408,14 @@ A `dimensionType` of `entity` describes a distinct organization, government depa
 }
 ```
 
-### Accounts as entities
+#### Accounts as entities
 
 Although an "account" through which money is spent or received is not strictly an "entity", it can be treated as one for analysis as follows:
 
 * `title`: The fund into which the revenue item will be deposited. (This refers to a named revenue stream.)
 * `id`: The internal code identifier for the fund.
 
-## Location
+### Location
 
 A `dimensionType` of `location` defines the geographic region associated with an item of expenditure or revenue, enabling spatial analysis.
 
@@ -442,7 +434,7 @@ A `dimensionType` of `location` defines the geographic region associated with an
 (An alternative option is to add `geoCode`, `geoTitle` and/or `geoCodeList` attributes directly to another dimension.)
 
 ----
-# Examples
+## Examples
 
 {% assign sorted_pages = site.pages | sort:"order" %}
 {% for page in sorted_pages %}
@@ -454,11 +446,11 @@ A `dimensionType` of `location` defines the geographic region associated with an
 
 ----
 
-## Which dimension type?
+### Which dimension type?
 
 This section lists the suggested sets of dimensions that can usefully describe different types of spending data.
 
-### Aggregated expenditure data
+#### Aggregated expenditure data
 
 Aggregated expenditure data (direction `expenditure`, granularity `aggregated`) describes planned or executed government expenditures. These planned expenditures are disaggregated to at least the *functional category* level, and they can optionally be disaggregated up to the level of individual projects.
 
@@ -474,7 +466,7 @@ Aggregated data is in many cases the proposed, approved or adjusted budget (but 
 | program | `activity` |   Name of the government program underwriting the budget item. |
 | procurer | `entity` |  The government entity acting as the procurer for the transaction, if different from the institution controlling the project. |
 
-### Aggregated revenue data
+#### Aggregated revenue data
 
 Aggregated revenue data (direction `revenue`, granularity `aggregated`) describes projected or actual government revenues, disaggregated to the *economic category* level.
 
@@ -485,10 +477,10 @@ Aggregated data is in many cases the proposed, approved or adjusted budget (but 
 | chart-of-accounts | `classification` |  Name of the economic classification of the revenue item, drawn from the publisher's chart of account. |
 | gfsm | `classification` |  The GFSM 2014 economic classification for the revenue item. |
 | account | `entity` |  The fund into which the revenue item will be deposited. (This refers to a named revenue stream.) |
-| recipient | `entity` |  The recipient (if any) targetted by the revenue item. |
+| recipient | `entity` |  The recipient (if any) targeted by the revenue item. |
 | source | `location` |  Geographical region from which the revenue item originates. |
 
-### Transactional expenditure data
+#### Transactional expenditure data
 
 Transactional expenditure data (direction `expenditure`, granularity `transactional`) describes government expenditures at the level of individual transactions, exchanges of funds taking place at a specific time between two entities.
 
@@ -502,7 +494,7 @@ Transactional expenditure data (direction `expenditure`, granularity `transactio
 | invoiceID | `other` |  The invoice number given by the vendor or supplier. |
 | procurer | `entity` |  The government entity acting as procurer for the transaction, if different from the institution controlling the project. |
 
-# Acknowledgements
+## Acknowledgements
 
 Thanks to the following people for being involved in discussion around the specification, or piloting with the specification:
 
@@ -520,9 +512,9 @@ Thanks to the following people for being involved in discussion around the speci
 
 ----
 
-# Appendix
+## Appendix
 
-## Budget Data
+### Budget Data
 
 A budget is over a year-long process of planning, execution, and oversight of a government's expenditures and revenues. At multiple stages in the process, *quantitative data* is generated, data which specifies the sums of money spent or collected by the government. This data can represent either plans/projections or actual transactions.
 
@@ -534,7 +526,7 @@ By recognizing the following distinctions between data types, Fiscal Data Packag
 * Data can be either *aggregated* or *transactional*. An item of aggregated data represents a whole category of spending (e.g. spending on primary education). An item of transactional data represents a single transaction at some specific point in time.
 * Data can come from any phase in the budget cycle (proposal, approval, adjustment, execution). This includes three different types of planned / projected budget items (proposal, approval, adjustment) and one representing actual completed transactions (execution).
 
-### Budget Hierarchy and Categorizations
+#### Budget Hierarchy and Categorizations
 
 Budget data has various degrees of hierarchy, depending on the perspective. From a functional perspective it can use a functional classification. The functional classification can be set up as a few levels (a hierarchy). An economical classification is not compatible with the functional hierarchy and has a different hierarchy. Another possible hierarchy would be a program/project hierarchy where many projects are a part of a program.
 

@@ -19,8 +19,6 @@ This philosophy is itself based on the overall design principles of the Friction
 5. **Existing Software**: Integrate as easily as possible with existing software both by building integrations and designing for direct use – for example we like CSV because everyone has a tool that can access CSV.
 6. **Simple, Lightweight**: Add the minimum, do the least required, keep it simple. For example, use the most basic formats, require only the most essential metadata, data should have nothing extraneous.
 
-[principles]: http://frictionlessdata.io/about/#principles
-
 
 ## Participate and Contribute
 

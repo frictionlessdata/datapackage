@@ -16,11 +16,11 @@ Different kinds of data need different data and metadata formats. To support the
 
 Thus, every Package and Resource descriptor has a profile. The namespace for the profile is the type of descriptor, so the default profile, if none is declared, is `data-package` for a Package descriptor and `data-resource` for a Resource descriptor.
 
-In summmary, an extension of Data Package may be formalised as a profile. A profile is a Data Package which extends the default specification towards more specific needs.
+In summary, an extension of Data Package may be formalised as a profile. A profile is a Data Package which extends the default specification towards more specific needs.
 
 ## `profile` Property
 
-In addition to the concept, we need an explict way for publishers to state the profile they are using and consumers to discover this.
+In addition to the concept, we need an explicit way for publishers to state the profile they are using and consumers to discover this.
 
 Thus, we have a `profile` property that declares the profile for the descriptor for this Package or Resource. For the default Data Package and Data Resource descriptor, this SHOULD be present with a value of `data-package`/`data-resource`, but if not, the absence of a profile is equivalent to setting `"profile": "data-package"`/ `"profile": "data-resource"`.
 

@@ -106,6 +106,8 @@ appropriate for the data they manage. As an example, the [Tabular Data
 Package][tdp] specification extends Data Package to the case
 where all the data is tabular and stored in CSV.
 
+[tdp]: /specs/tabular-data-package/
+
 Here is an illustrative example of a datapackage JSON file:
 
     {
@@ -128,7 +130,7 @@ Here is an illustrative example of a datapackage JSON file:
 
 Packaged data resources are described in the `resources` property of the package descriptor. This property MUST be an array of `objects`. Each object MUST follow the [Data Resource specification][dr].
 
-[dr]: /data-resource/
+[dr]: /specs/data-resource/
 
 ## Metadata
 
@@ -303,6 +305,5 @@ The datetime must conform to the string formats for datetime as described in [RF
 ```
 
 [RFC3339]: https://tools.ietf.org/html/rfc3339#section-5.6
-[tdp]: /specs/tabular-data-package/
 [dc-temporal]: http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal
 [markdown]: http://commonmark.org/
