@@ -1,8 +1,0 @@
-<h3>Examples</h3>
-
-{% for k, v in bag('examples', this.slug).iteritems() %}
-{% macro example() %}
-{% include 'examples/%s'|format(v) %}
-{% endmacro %}
-{{ example()|markdown }}
-{% endfor %}

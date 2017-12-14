@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Fiscal Data Package",
+  "description": "Fiscal Data Package is a simple specification for data access and delivery of fiscal data.",
+  "type": "object",
+  "allOf": [
+    { "$ref": "schemas/dictionary.json#/definitions/tabularDataPackage" },
+    {
+      "required": [ "resources", "model", "profile" ],
+      "properties": {
+        "resources": { "$ref": "schemas/dictionary.json#/definitions/tabularDataResources" },
+        "model": { "$ref": "schemas/dictionary.json#/definitions/fiscalModel" },
+        "countryCode": { "$ref": "schemas/dictionary.json#/definitions/countryCode" },
+        "granularity": {
+          "title": "Granularity of resources",
+          "description": "A keyword that represents the type of spend data, eiter aggregated or transactional",
+          "type": "string",
+          "enum": [ "aggregated", "transactional" ]
+        },
+        "fiscalPeriod": {
+          "title": "Fiscal period for the budget",
+          "description": "The fiscal period of the dataset",
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "pattern": "^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\\d|3[01])"
+            },
+            "end": {
+              "type": "string",
+              "pattern": "^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\\d|3[01])"
+            }
+          },
+          "required": [ "start" ]
+        }
+      }
+    }
+  ]
+}

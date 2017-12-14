@@ -15,30 +15,21 @@ For more info about the project as a whole, please visit [frictionlessdata.io](h
 This repository is the canonical repository for the core Frictionless Data specifications. The repository features:
 
 - [JSON Schema](http://json-schema.org) representations of all specifications. These are used both in the site itself, to generate the specification pages, and likewise in the *schema registry* that is used by a range of libraries that implement the specifications.
-- A static site that builds out content for the specifications, from the above mentioned JSON Schemas, other sets of meta data, and narrative texts. 
-- The site is built using [Lektor](https://www.getlektor.com), and is deployed to and served from an S3 bucket.
 
 ### Quick start
 
 - Clone the repository
-- `pip install lektor` # install the static site generator
 - `npm install` # install the dependencies to build the specifications
-- `npm run compile` # compile the specifications
-- `lektor server` # serve the site on 127.0.0.1:5000
+- `npm run build` # build the specifications
+- `npm run test` # test the specifications
 
 ### Contribute to the specifications
 
-All the source data for the specifications is in the `/sources` directory. In there, you will find a `.json` file for each specification, a set of YAML files under `dictionary/*`, and a `compile.js` file.
+All the source data for the specifications is in the `/schemas` directory. In there, you will find a `.json` file for each specification and a set of YAML files under `/schemas/dictionary/*`. There is a `build.js` script to build the specifications.
 
 - `.json` files are JSON Schemas for each spec, normalised using the `$ref` feature of JSON Schema. This normalisation ensures consistency in the way the specifications are written and validated, but is only used directly by the `compile.js` script, which generated denormalised versions.
-- `compile.js` creates denormalised versions of each specification be dereferencing each `$ref` in the source schemas, and then saves these denormalised versions to two places:
-  - `databags/schemas.json` as a single file for use in the static site.
-  - `assets/schemas/*` as a file for each specification for use by the *schema registry*.
-- `dictionary/*` has all the property definitions for each specification. This is the place to add new properties or property collections, to edit contextual information and descriptive examples, and so on. See how this information is rendered in the [macros template](https://github.com/frictionlessdata/specs/blob/master/templates/macros.html).
-
-### Contribute to the site in general
-
-Just follow the quickstart, and then work with the jinja templates.
+- `/build.js` creates denormalised versions of each specification be dereferencing each `$ref` in the source schemas, and then saves these denormalised versions to `/build/schemas` directory.
+- `/schemas/dictionary/*` has all the property definitions for each specification. This is the place to add new properties or property collections, to edit contextual information and descriptive examples, and so on. See how this information is rendered in the [macros template](https://github.com/frictionlessdata/specs/blob/master/templates/macros.html).
 
 ### Adding a new specification
 

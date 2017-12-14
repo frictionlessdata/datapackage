@@ -4,7 +4,8 @@
   "description": "This site is the home for *specifications* related to **Frictionless Data.**",
   "main": "index.js",
   "scripts": {
-    "compile": "cd sources && node compile.js && cd .."
+    "build": "node build.js",
+    "test": "NODE_ENV=testing mocha"
   },
   "repository": {
     "type": "git",
@@ -16,11 +17,13 @@
     "url": "https://github.com/frictionlessdata/specs/issues"
   },
   "homepage": "https://github.com/frictionlessdata/specs#readme",
-  "dependencies": {
-    "bluebird": "^3.4.7",
+  "devDependencies": {
+    "chai": "^4.1.2",
     "csv-parse": "^1.2.0",
+    "fs-extra": "^4.0.2",
     "glob": "^7.1.1",
     "js-yaml": "^3.7.0",
-    "json-schema-ref-parser": "^3.1.2"
+    "json-schema-ref-parser": "^3.1.2",
+    "mocha": "^4.0.1"
   }
 }
