@@ -202,7 +202,7 @@ Here is an example:
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
 [semver]: http://semver.org
-[url-or-path]: /data-resource/#url-or-path
+[url-or-path]: /specs/data-resource/#url-or-path
 
 #### `profile`
 
