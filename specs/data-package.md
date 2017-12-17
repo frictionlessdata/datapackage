@@ -174,7 +174,7 @@ Examples:
 
 ```
 {
-  "id": "http://dx.doi.org/10.1594/PANGAEA.726855"
+  "id": "https://doi.org/10.1594/PANGAEA.726855"
 }
 ```
 
