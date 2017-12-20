@@ -122,7 +122,14 @@
     "anySchema": {
       "title": "Schema",
       "description": "A schema for this resource.",
-      "type": "object"
+      "oneOf": [
+        {
+          "$ref": "#/definitions/path"
+        },
+        {
+          "type": "object"
+        }
+      ]
     },
     "countryCode": {
       "title": "ISO 3166-1 Alpha-2 Country code",
