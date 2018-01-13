@@ -245,7 +245,7 @@ A URL for the home on the web that is related to this data package.
 
 #### `version`
 
-a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements.
+a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements and follow the [Data Package Version](https://frictionlessdata.io/specs/patterns/#data-package-version) pattern.
 
 #### `sources`
 
