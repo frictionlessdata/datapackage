@@ -265,7 +265,7 @@ The raw sources for this data package. It MUST be an array of Source objects. Ea
 The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure
   is as follows:
 
-      contributors: [{
+      "contributors": [{
         "title": "Joe Bloggs",
         "email": "joe@bloggs.com",
         "path": "http://www.bloggs.com",
