@@ -169,7 +169,7 @@ If the CSV differs from this or the RFC in any other way regarding dialect (e.g.
 
 The value for the `dialect` property on a `resource` MUST be an `object` representing the dialect OR a `string` that identifies the location of the dialect.
 
-If a `string` it must be a [url-or-path](https://frictionlessdata.io/specs/data-resource/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the the location specified by this url-or-path string `MUST` be a JSON document containing the dialect.
+If a `string` it must be a [url-or-path](https://frictionlessdata.io/specs/data-resource/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the location specified by this url-or-path string `MUST` be a JSON document containing the dialect.
 
 ### JSON Tabular Data
 
