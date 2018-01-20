@@ -49,7 +49,8 @@ A minimal Tabular Data Resource looks as follows.
   "profile": "tabular-data-resource",
   "name": "resource-name",
   "path": [ "http://example.com/resource-path.csv" ],
-  "schema": "http://example.com/tableschema.json"
+  "schema": "http://example.com/tableschema.json",
+  "dialect": "http://example.com/csvdialect.json"
 }
 ```
 
@@ -117,11 +118,19 @@ A comprehensive Tabular Data Resource example with all required, recommended and
     "primaryKey": "id"
   },
   "dialect": {
-    "delimiter": ",",
+    "delimiter": ";",
     "doubleQuote": true
   },
-  "sources": "",
-  "licenses": ""
+  "sources": [{
+    "title": "The Solar System - 2001",
+    "path": "http://example.com/solar-system-2001.json",
+    "email": ""
+  }],
+  "licenses": [{
+    "name": "CC-BY-4.0",
+    "title": "Creative Commons Attribution 4.0",
+    "path": "https://creativecommons.org/licenses/by/4.0/"
+  }]
 }
 ```
 
@@ -156,7 +165,11 @@ NB: the RFC requires 7-bit ASCII encoding.
 
 The line terminator character `MUST` be LF or CRLF (the RFC allows CRLF only).
 
-If the CSV differs from this or the RFC in any other way regarding dialect (e.g. line terminators, quote charactors, field delimiters), the Tabular Data Resource MUST contain a `dialect` property describing its dialect. The `dialect` property MUST follow the [CSV Dialect][cd] specification.
+If the CSV differs from this or the RFC in any other way regarding dialect (e.g. line terminators, quote characters, field delimiters), the Tabular Data Resource MUST contain a `dialect` property describing its dialect. The `dialect` property MUST follow the [CSV Dialect][cd] specification.
+
+The value for the `dialect` property on a `resource` MUST be an `object` representing the dialect OR a `string` that identifies the location of the dialect.
+
+If a `string` it must be a [url-or-path](https://frictionlessdata.io/specs/data-resource/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the location specified by this url-or-path string `MUST` be a JSON document containing the dialect.
 
 ### JSON Tabular Data
 
@@ -183,4 +196,3 @@ JSON Tabular Data MUST be an `array` where each item in the array MUST be:
   { "A": 4, "B": 5, "C": 6 }
 ]
 ```
-
