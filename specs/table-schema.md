@@ -250,11 +250,10 @@ A date without a time.
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
-* **<PATTERN>**: date/time values in this field can be parsed according to
+* **\<PATTERN\>**: date/time values in this field can be parsed according to
   `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
   strptime][strptime]. (That is, values in the this field should be parseable
-  by Python / C standard `strptime` using `<PATTERN>`).  Example for
-  `<PATTERN>` is `%d/%m/%y` which would correspond to dates like: `30/11/14`
+  by Python / C standard `strptime` using `<PATTERN>`).  Example for `"pattern": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
 
@@ -264,7 +263,7 @@ A time without a date.
 
 * **default**: An ISO8601 time string e.g. `hh:mm:ss`
 * **any**: as for `date`
-* **<PATTERN>**: as for `date`
+* **\<PATTERN\>**: as for `date`
 
 #### datetime
 
@@ -274,7 +273,7 @@ A date with a time.
 
 * **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
 * **any**: as for `date`
-* **<PATTERN>**: as for `date`
+* **\<PATTERN\>**: as for `date`
 
 #### year
 
@@ -705,4 +704,3 @@ Table Schema draws content and/or inspiration from, among others, the following 
 [DSPL]: https://developers.google.com/public-data/docs/schema/dspl18
 [HTML5 Forms]: http://www.whatwg.org/specs/web-apps/current-work/#attr-input-typ
 [Elasticsearch]: http://www.elasticsearch.org/guide/reference/mapping/
-
