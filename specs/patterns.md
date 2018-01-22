@@ -265,6 +265,8 @@ The Data Package version format follows the [Semantic Versioning](http://semver.
 
 The version numbers, and the way they change, convey meaning how the data package has been modified from one version to the next.
 
+### Specification
+
 Given a Data Package version number MAJOR.MINOR.PATCH, increment the:
 
 MAJOR version when you make incompatible changes, e.g.
@@ -317,4 +319,3 @@ In this case you want to specify that A depends on B and C -- and that "installi
 ### Implementations
 
 None known.
-
