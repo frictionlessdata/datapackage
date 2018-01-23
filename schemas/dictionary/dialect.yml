@@ -36,7 +36,7 @@ csvDialect:
       {
         "dialect": {
           "delimiter": "\t",
-          "quoteChar": "''"
+          "quoteChar": "'"
         }
       }
 delimiter:
@@ -96,11 +96,7 @@ quoteChar:
   examples:
   - |
       {
-        "quoteChar": ""
-      }
-  - |
-      {
-        "quoteChar": "''"
+        "quoteChar": "'"
       }
 escapeChar:
   title: Escape Character

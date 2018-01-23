@@ -456,7 +456,7 @@
       },
       "examples": [
         "{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n",
-        "{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"''\"\n  }\n}\n"
+        "{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"'\"\n  }\n}\n"
       ]
     },
     "delimiter": {
@@ -503,8 +503,7 @@
       "type": "string",
       "default": "\"",
       "examples": [
-        "{\n  \"quoteChar\": \"\"\n}\n",
-        "{\n  \"quoteChar\": \"''\"\n}\n"
+        "{\n  \"quoteChar\": \"'\"\n}\n"
       ]
     },
     "escapeChar": {
