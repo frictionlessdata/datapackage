@@ -95,6 +95,7 @@ B,3,4.5
   "resources": [
     {
       "path": "data.csv",
+      "profile": "tabular-data-resource",
       "schema": {
         "fields": [
           {
@@ -116,4 +117,3 @@ B,3,4.5
 }
 
 ```
-
