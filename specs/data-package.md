@@ -95,11 +95,13 @@ Adherence to the specification does not imply that additional, non-specified pro
 time series data and wanted to list the temporal coverage of the data in the
 Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
 
-    "temporal": {
-      "name": "19th Century",
-      "start": "1800-01-01",
-      "end": "1899-12-31"
-    }
+```javascript
+"temporal": {
+  "name": "19th Century",
+  "start": "1800-01-01",
+  "end": "1899-12-31"
+}
+```    
 
 This flexibility enables specific communities to extend Data Packages as
 appropriate for the data they manage. As an example, the [Tabular Data
@@ -110,21 +112,23 @@ where all the data is tabular and stored in CSV.
 
 Here is an illustrative example of a datapackage JSON file:
 
+```javascript
+{
+  # general "metadata" like title, sources etc
+  "name" : "a-unique-human-readable-and-url-usable-identifier",
+  "title" : "A nice title",
+  "licenses" : [ ... ],
+  "sources" : [...],
+  # list of the data resources in this data package
+  "resources": [
     {
-      # general "metadata" like title, sources etc
-      "name" : "a-unique-human-readable-and-url-usable-identifier",
-      "title" : "A nice title",
-      "licenses" : [ ... ],
-      "sources" : [...],
-      # list of the data resources in this data package
-      "resources": [
-        {
-          ... resource info described below ...
-        }
-      ],
-      # optional
-      ... additional information ...
+      ... resource info described below ...
     }
+  ],
+  # optional
+  ... additional information ...
+}
+```    
 
 ## Resource Information
 
@@ -166,13 +170,13 @@ A common usage pattern for Data Packages is as a packaging format within the bou
 
 Examples:
 
-```
+```javascript
 {
   "id": "b03ec84-77fd-4270-813b-0c698943f7ce"
 }
 ```
 
-```
+```javascript
 {
   "id": "https://doi.org/10.1594/PANGAEA.726855"
 }
@@ -189,11 +193,13 @@ licensed under the terms defined in this property.**
 
 Here is an example:
 
-      "licenses": [{
-        "name": "ODC-PDDL-1.0",
-        "path": "http://opendatacommons.org/licenses/pddl/",
-        "title": "Open Data Commons Public Domain Dedication and License v1.0"
-      }]
+```javascript
+"licenses": [{
+  "name": "ODC-PDDL-1.0",
+  "path": "http://opendatacommons.org/licenses/pddl/",
+  "title": "Open Data Commons Public Domain Dedication and License v1.0"
+}]
+```      
 
 * `name`: The `name` MUST be an [Open Definition license ID][od-licenses]
 * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
@@ -218,7 +224,7 @@ Examples:
 }
 ```
 
-```
+```javascript
 {
   "profile": "http://example.com/my-profiles-json-schema.json"
 }
@@ -251,10 +257,12 @@ a version string identifying the version of the package. It should conform to th
 
 The raw sources for this data package. It MUST be an array of Source objects. Each Source object MUST have a `title` and MAY have `path` and/or `email` properties. Example:
 
-    "sources": [{
-      "title": "World Bank and OECD",
-      "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
-    }]
+```javascript
+"sources": [{
+  "title": "World Bank and OECD",
+  "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+}]
+```    
 
 * `title`: title of the source (e.g. document or organization name)
 * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
@@ -265,12 +273,14 @@ The raw sources for this data package. It MUST be an array of Source objects. Ea
 The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure
   is as follows:
 
-      contributors: [{
-        "title": "Joe Bloggs",
-        "email": "joe@bloggs.com",
-        "path": "http://www.bloggs.com",
-        "role": "author"
-      }]
+```javascript
+"contributors": [{
+  "title": "Joe Bloggs",
+  "email": "joe@bloggs.com",
+  "path": "http://www.bloggs.com",
+  "role": "author"
+}]
+```      
 
 * `title`: name/title of the contributor (name for person, name/title of organization)
 * `path`: a fully qualified http URL pointing to a relevant location online for the contributor
