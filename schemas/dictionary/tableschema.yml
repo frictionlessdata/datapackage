@@ -204,7 +204,6 @@ tableSchemaFalseValues:
   default: [ "false", "False", "FALSE", "0" ]
 tableSchemaMissingValues:
   type: array
-  minItems: 1
   items:
     type: string
   default:
