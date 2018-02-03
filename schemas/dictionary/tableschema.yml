@@ -227,6 +227,10 @@ tableSchemaMissingValues:
           ""
         ]
       }
+  - |
+      {
+        "missingValues": []
+      }
 tableSchemaFieldString:
   type: object
   title: String Field
