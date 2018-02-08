@@ -527,7 +527,9 @@ In additional to field descriptors, there are the following "table level" proper
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
 `missingValues` dictates which string values should be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion.
-The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place.
+The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. 
+Providing the empty list `[]` means that no conversion to null will be done, on any value. 
+
 
 `missingValues` MUST be an `array` where each entry is a `string`.
 
