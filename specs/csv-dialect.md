@@ -39,7 +39,7 @@ format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Py
 
 # Specification
 
-A CSV Dialect descriptor `MUST` be a JSON `object` with the following properties:
+A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the following properties:
 
 * `delimiter` - specifies the character sequence which should separate fields (aka columns). Default = `,`. Example `\t`.
 * `lineTerminator` - specifies the character sequence which should terminate rows. Default = `\r\n`
@@ -57,14 +57,13 @@ A CSV Dialect descriptor `MUST` be a JSON `object` with the following properties
 Here's an example:
 
 ```javascript
-{
+"dialect": {
   "csvddfVersion": 1.0,
-  "delimiter": ",",
+  "delimiter": ";",
   "doubleQuote": true,
   "lineTerminator": "\r\n",
   "quoteChar": "\"",
   "skipInitialSpace": true,
   "header": true
-}
+  }
 ```
-
