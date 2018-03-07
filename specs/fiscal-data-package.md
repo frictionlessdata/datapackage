@@ -151,6 +151,7 @@ As with any tabular data, a physical representation of data also includes select
 Let's imagine we asked Lorraine and George to email us their weekly family budget. Although working on the same data set, each took a very different approach as to how to represent the data in an actual data file.
 
 George, which is an accountant, sent us an CSV file named `week_of_1_7_oct.csv`. The CSV file contained these cells:
+
 | Who?     | What for? | How?            | Plan | Actual |
 |----------|----------|------------------|--------|----|
 | George   | Food     | Credit Card      | $100   | $107.60 |
