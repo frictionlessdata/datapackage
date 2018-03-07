@@ -38,8 +38,16 @@ describe('schemas', () => {
   })
 
   it('data-resource path property', async () => {
+
+    // Valid paths
     const schema = require('../build/schemas/data-resource.json')
-    const invalidPaths = ['../dest', './dest', '/dest', '~/dest']
+    const invalidPaths = [
+      '../dest',
+      './dest',
+      '/dest',
+      '~/dest',
+      'dest/../../bad',
+    ]
     let validation
     invalidPaths.forEach(path => {
       validation = tv4.validateMultiple(
@@ -52,12 +60,21 @@ describe('schemas', () => {
         'String does not match pattern: ^[^./~]'
       )
     })
-    // Now let's test with valid path:
-    validation = tv4.validateMultiple(
-      {name: 'test', path: 'dest'},
-      schema
-    )
-    assert.isTrue(validation.valid)
+
+    // Invalid paths
+    const validPaths = [
+      'dest/some/file',
+      'dest/.some/file',
+      'dest',
+    ]
+    validPaths.forEach(path => {
+      validation = tv4.validateMultiple(
+        {name: 'test', path},
+        schema
+      )
+      assert.isTrue(validation.valid)
+    })
+
   })
 
   it('fiscal-data-package', async () => {
