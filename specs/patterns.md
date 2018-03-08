@@ -2,7 +2,7 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 28 September 2017
+updated: 27 February 2018
 ---
 created: 11 December 2017
 ---
@@ -263,25 +263,30 @@ The `foreignKey` MAY have a property `datapackage`. This property is a string be
 
 The Data Package version format follows the [Semantic Versioning](http://semver.org) specification format: MAJOR.MINOR.PATCH
 
-The version numbers, and the way they change, convey meaning how the data package has been modified from one version to the next.
+The version numbers, and the way they change, convey meaning about how the data package has been modified from one version to the next.
 
 Given a Data Package version number MAJOR.MINOR.PATCH, increment the:
 
 MAJOR version when you make incompatible changes, e.g.
 
-- Change the table schema
-- Change field or data package names or data package identifiers
+- Change the data package, resource or field `name` or  `identifier`
 - Add, remove or re-order fields
+- Change a field `type` or `format`
+- Change a field `constraint` to be more restrictive
+- Combine, split, delete or change the meaning of data that is referenced by another data resource
 
-MINOR version when you add data in a backwards-compatible manner, e.g.
+MINOR version when you add data or change metadata in a backwards-compatible manner, e.g.
 
+- Add a new data resource to a data package
 - Add new data to an existing data resource
-- Add a new data resource
+- Change a field `constraint` to be less restrictive
+- Update a reference to another data resource
+- Change data to reflect changes in referenced data
 
 PATCH version when you make backwards-compatible fixes, e.g.
 
-- Corrections to existing data
-- Changes to metadata
+- Correct errors in existing data
+- Change descriptive metadata properties
 
 ### Scenarios
 
@@ -292,6 +297,8 @@ PATCH version when you make backwards-compatible fixes, e.g.
 - You relocate the data to a new `URL` or `path`. No change in the version number
 - You change a `title`, `description`, or other descriptive metadata. Increment the PATCH version
 - You fix a data entry error by modifying a value. Increment the PATCH version
+- You split a row of data in a foreign key reference table. Increment the MAJOR version number
+- You update the data and schema to refer to a new version of a foreign key reference table. Increment the MINOR version number
 
 ## Data Dependencies
 
@@ -317,4 +324,3 @@ In this case you want to specify that A depends on B and C -- and that "installi
 ### Implementations
 
 None known.
-
