@@ -2,6 +2,7 @@ const util = require('util')
 const {assert} = require('chai')
 const glob = util.promisify(require('glob'))
 const readFile = util.promisify(require('fs').readFile)
+const tv4 = require('tv4')
 
 
 // Tests
@@ -34,6 +35,46 @@ describe('schemas', () => {
   it('data-resource', async () => {
     const schema = require('../build/schemas/data-resource.json')
     assert.deepEqual(schema.title, 'Data Resource')
+  })
+
+  it('data-resource path property', async () => {
+
+    // Valid paths
+    const schema = require('../build/schemas/data-resource.json')
+    const invalidPaths = [
+      '../dest',
+      './dest',
+      '/dest',
+      '~/dest',
+      'dest/../../bad',
+    ]
+    let validation
+    invalidPaths.forEach(path => {
+      validation = tv4.validateMultiple(
+        {name: 'test', path},
+        schema
+      )
+      assert.isFalse(validation.valid)
+      assert.strictEqual(
+        validation.errors[0].subErrors[0].message,
+        'String does not match pattern: ^(?=^[^./~])(^((?!\\.{2}).)*$).*$'
+      )
+    })
+
+    // Invalid paths
+    const validPaths = [
+      'dest/some/file',
+      'dest/.some/file',
+      'dest',
+    ]
+    validPaths.forEach(path => {
+      validation = tv4.validateMultiple(
+        {name: 'test', path},
+        schema
+      )
+      assert.isTrue(validation.valid)
+    })
+
   })
 
   it('fiscal-data-package', async () => {
