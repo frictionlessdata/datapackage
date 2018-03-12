@@ -57,7 +57,7 @@ describe('schemas', () => {
       assert.isFalse(validation.valid)
       assert.strictEqual(
         validation.errors[0].subErrors[0].message,
-        'String does not match pattern: ^[^./~]'
+        'String does not match pattern: ^(?=^[^./~])(^((?!\\.{2}).)*$).*$'
       )
     })
 
