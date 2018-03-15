@@ -2,7 +2,7 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 27 February 2018
+updated: 15 March 2018
 ---
 created: 11 December 2017
 ---
@@ -253,13 +253,32 @@ http://example/com/data/lang/file2-es.csv
 
 ## Table Schema: Foreign Keys to Data Packages
 
-Purpose: allow users to link from the column of a Tabular Data Resource in one Data Package to a Tabular Data Resource in another Data Package.
+### Overview
 
-To support this:
+A foreign key is a reference where values in a field (or fields) in a Tabular Data Resource link to values in a field (or fields) in a Tabular Data Resource in the same Tabular Data Package.
 
-The `foreignKey` MAY have a property `datapackage`. This property is a string being a url pointing to a Data Package or is the name of a datapackage.
+This pattern allows users to link values in a field (or fields) in a Tabular Data Resource to values in a field (or fields) in a Tabular Data Resource in a different Tabular Data Package.
+
+### Specification
+
+The `foreignKeys` array MAY have a property `datapackage`. This property is a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file.
+
+For example:
+
+```
+"foreignKeys": [{
+    "fields": ["code"],
+    "reference": {
+      "datapackage": "https://raw.githubusercontent.com/frictionlessdata/example-data-packages/master/donation-codes/datapackage.json",
+      "resource": "donation-codes",
+      "fields": ["donation code"]
+    }
+  }],
+```
 
 ## Data Package Version
+
+### Specification
 
 The Data Package version format follows the [Semantic Versioning](http://semver.org) specification format: MAJOR.MINOR.PATCH
 
