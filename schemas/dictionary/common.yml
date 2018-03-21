@@ -279,7 +279,7 @@ sources:
   title: Sources
   description: The raw sources for this resource.
   type: array
-  minItems: 1
+  minItems: 0
   items:
     "$ref": "#/definitions/source"
   examples:
@@ -287,8 +287,8 @@ sources:
       {
         "sources": [
           {
-            "name": "World Bank and OECD",
-            "uri": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+            "title": "World Bank and OECD",
+            "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
           }
         ]
       }
