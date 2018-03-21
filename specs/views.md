@@ -85,7 +85,7 @@ A View MUST have the following form:
   // data sources for this spec
   "resources": [ resource1, resource2 ]
 
-  "specType": "" // one of simple | plotly | vega
+  "specType": "" // one of simple | plotly | vega | vega-lite
   // graph spec
   "spec":
 }
@@ -139,7 +139,7 @@ Spec:
 
 #### Vega Spec
 
-*We are using vega as an input: raw vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
+*We are using Vega as an input: raw Vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
 
 This is straight-up Vega. The only modification that we leave out data references (where we need to know a table name we can rely on the names in the resources array).
 
@@ -265,13 +265,13 @@ To understand how this fits together with the overall spec here's the full view 
 }
 ```
 
-#### Vega-lite spec
+#### Vega-Lite spec
 
 Identical to Vega approach
 
 #### Plotly spec
 
-Identical to vega approach
+Identical to Vega approach
 
 ### Table Spec
 
