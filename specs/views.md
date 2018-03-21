@@ -141,17 +141,17 @@ Spec:
 
 *We are using Vega as an input: raw Vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
 
-This is straight-up Vega. The only modification that we leave out data references (where we need to know a table name we can rely on the names in the resources array).
+This is straight-up [Vega](https://vega.github.io/vega). The only modification that we leave out the actual data and instead only declare the existence of the datasets. The names of the datasets are the same as the names in the resources array.
 
-This example is just copied from http://vega.github.io/vega-editor/?mode=vega&spec=bar
+This example is just copied from http://vega.github.io/vega-editor/?mode=vega&spec=bar with only the name of the datasets declared (here `table)`. The data can then be dynamically provided when the visualization is instantiated.
 
-```javascript
+```json
 {
   "width": 400,
   "height": 200,
   "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
 
-  // NOTE: data property is MISSING here!
+  "data": {"name": "table"},
 
   "scales": [
     {
@@ -197,9 +197,9 @@ This example is just copied from http://vega.github.io/vega-editor/?mode=vega&sp
 
 To understand how this fits together with the overall spec here's the full view -- note how the data and graph spec are separated:
 
-```javascript
+```json
 {
-  "title": "My amazing bar chart"
+  "title": "My amazing bar chart",
   "resources": [
     {
       "name": "table",
@@ -222,6 +222,7 @@ To understand how this fits together with the overall spec here's the full view 
     "width": 400,
     "height": 200,
     "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
+    "data": {"name": "table"},
     "scales": [
       {
         "name": "x",
@@ -267,11 +268,43 @@ To understand how this fits together with the overall spec here's the full view 
 
 #### Vega-Lite spec
 
-Identical to Vega approach
+The approach for [Vega-Lite](https://vega.github.io/vega-lite) is similar to the approach for Vega. Instead of specifying the data in the Vega-Lite spec itself, only use [named datasets](https://vega.github.io/vega-lite/docs/data.html#named).
+
+```json
+{
+  "title": "My amazing bar chart",
+  "resources": [
+    {
+      "name": "table",
+      "data": [
+        {"x": 1,  "y": 28}, {"x": 2,  "y": 55},
+        {"x": 3,  "y": 43}, {"x": 4,  "y": 91},
+        {"x": 5,  "y": 81}, {"x": 6,  "y": 53},
+        {"x": 7,  "y": 19}, {"x": 8,  "y": 87},
+        {"x": 9,  "y": 52}, {"x": 10, "y": 48},
+        {"x": 11, "y": 24}, {"x": 12, "y": 49},
+        {"x": 13, "y": 87}, {"x": 14, "y": 66},
+        {"x": 15, "y": 17}, {"x": 16, "y": 27},
+        {"x": 17, "y": 68}, {"x": 18, "y": 16},
+        {"x": 19, "y": 49}, {"x": 20, "y": 15}
+      ]
+    }
+  ],
+  "specType": "vega-lite",
+  "spec": {
+    "data": {"name": "table"},
+    "mark": "bar",
+    "encoding": {
+      "x": {"field": "a", "type": "ordinal"},
+      "y": {"field": "b", "type": "quantitative"}
+    }
+  }
+}
+```
 
 #### Plotly spec
 
-Identical to Vega approach
+Identical to Vega approach but without any data specified in the visualization specification. 
 
 ### Table Spec
 
