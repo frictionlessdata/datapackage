@@ -258,7 +258,8 @@ licenses:
         "licenses": [
           {
             "name": "odc-pddl-1.0",
-            "uri": "http://opendatacommons.org/licenses/pddl/"
+            "path": "http://opendatacommons.org/licenses/pddl/",
+            "title": "Open Data Commons Public Domain Dedication and License v1.0"
           }
         ]
       }
