@@ -139,7 +139,7 @@ Spec:
 
 #### Vega Spec
 
-*We are using vega as an input: raw vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
+*We are using Vega as an input: raw Vega plus a few tweaks to support data input out of line from their spec (e.g. resources)*
 
 This is straight-up Vega. The only modification that we leave out data references (where we need to know a table name we can rely on the names in the resources array).
 
