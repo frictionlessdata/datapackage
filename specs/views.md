@@ -85,7 +85,7 @@ A View MUST have the following form:
   // data sources for this spec
   "resources": [ resource1, resource2 ]
 
-  "specType": "" // one of simple | plotly | vega
+  "specType": "" // one of simple | plotly | vega | vega-lite
   // graph spec
   "spec":
 }
@@ -265,13 +265,13 @@ To understand how this fits together with the overall spec here's the full view 
 }
 ```
 
-#### Vega-lite spec
+#### Vega-Lite spec
 
 Identical to Vega approach
 
 #### Plotly spec
 
-Identical to vega approach
+Identical to Vega approach
 
 ### Table Spec
 
