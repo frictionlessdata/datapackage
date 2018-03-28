@@ -7,6 +7,8 @@ csvDialect:
   - delimiter
   - doubleQuote
   properties:
+    csvddfVersion:
+      "$ref": "#/definitions/csvddfVersion"
     delimiter:
       "$ref": "#/definitions/delimiter"
     doubleQuote:
@@ -39,6 +41,17 @@ csvDialect:
           "quoteChar": "'"
         }
       }
+csvddfVersion:
+  title: CSV Dialect schema version
+  description: A number to indicate the schema version of CSV Dialect. Version 1.0 was
+    named CSV Dialect Description Format and used different field names.
+  type: number
+  default: 1.2
+  examples::
+  - |
+      {
+        "csvddfVersion": "1.2"
+      }  
 delimiter:
   title: Delimiter
   description: A character sequence to use as the field separator.
