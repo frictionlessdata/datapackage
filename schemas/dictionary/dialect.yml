@@ -4,29 +4,33 @@ csvDialect:
   description: The CSV dialect descriptor.
   type: object
   required:
-  - delimiter
-  - doubleQuote
+  - description
   properties:
-    csvddfVersion:
-      "$ref": "#/definitions/csvddfVersion"
-    delimiter:
-      "$ref": "#/definitions/delimiter"
-    doubleQuote:
-      "$ref": "#/definitions/doubleQuote"
-    lineTerminator:
-      "$ref": "#/definitions/lineTerminator"
-    nullSequence:
-      "$ref": "#/definitions/nullSequence"
-    quoteChar:
-      "$ref": "#/definitions/quoteChar"
-    escapeChar:
-      "$ref": "#/definitions/escapeChar"
-    skipInitialSpace:
-      "$ref": "#/definitions/skipInitialSpace"
-    header:
-      "$ref": "#/definitions/header"
-    caseSensitiveHeader:
-      "$ref": "#/definitions/caseSensitiveHeader"
+    description:
+      required:
+        - delimiter
+        - doubleQuote
+      properties:
+        csvddfVersion:
+          "$ref": "#/definitions/csvddfVersion"
+        delimiter:
+          "$ref": "#/definitions/delimiter"
+        doubleQuote:
+          "$ref": "#/definitions/doubleQuote"
+        lineTerminator:
+          "$ref": "#/definitions/lineTerminator"
+        nullSequence:
+          "$ref": "#/definitions/nullSequence"
+        quoteChar:
+          "$ref": "#/definitions/quoteChar"
+        escapeChar:
+          "$ref": "#/definitions/escapeChar"
+        skipInitialSpace:
+          "$ref": "#/definitions/skipInitialSpace"
+        header:
+          "$ref": "#/definitions/header"
+        caseSensitiveHeader:
+          "$ref": "#/definitions/caseSensitiveHeader"
   examples:
   - |
       {
