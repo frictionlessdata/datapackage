@@ -253,6 +253,9 @@ http://example/com/data/lang/file2-es.csv
 
 ## Table Schema: Foreign Keys to Data Packages
 
+
+## Table Schema: Foreign Keys to Data Packages
+
 ### Overview
 
 A foreign key is a reference where values in a field (or fields) in a Tabular Data Resource link to values in a field (or fields) in a Tabular Data Resource in the same Tabular Data Package.
@@ -261,7 +264,11 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 ### Specification
 
-The `foreignKeys` array MAY have a property `datapackage`. This property is a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file.
+The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `datapackage`. This property MUST be, either:
+- a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
+- a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry 
+
+If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `datapackage` value.
 
 For example:
 
@@ -273,7 +280,7 @@ For example:
       "resource": "donation-codes",
       "fields": ["donation code"]
     }
-  }],
+  }]
 ```
 
 ## Data Package Version
