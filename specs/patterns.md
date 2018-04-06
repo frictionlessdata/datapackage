@@ -253,9 +253,6 @@ http://example/com/data/lang/file2-es.csv
 
 ## Table Schema: Foreign Keys to Data Packages
 
-
-## Table Schema: Foreign Keys to Data Packages
-
 ### Overview
 
 A foreign key is a reference where values in a field (or fields) in a Tabular Data Resource link to values in a field (or fields) in a Tabular Data Resource in the same Tabular Data Package.
