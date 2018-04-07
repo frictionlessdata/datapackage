@@ -567,7 +567,7 @@ grad           | grad                                  | grad        | plane ang
 rev            | revolution                            | rev         | plane angle                   |
 sphere         | sphere                                | sphere      | solid angle                   |
 
-[Source data](https://github.com/frictionlessdata/example-data-packages/tree/master/units-and-prefixes)
+[download data](https://github.com/frictionlessdata/example-data-packages/tree/master/units-and-prefixes)
 
 #### Unit prefixes
 
@@ -594,7 +594,7 @@ a   | atto  | a      | 1.0e-18
 z   | zepto | z      | 1.0e-21
 y   | yocto | y      | 1.0e-24
 
-[Source data](https://github.com/frictionlessdata/example-data-packages/tree/master/units-and-prefixes)
+[download data](https://github.com/frictionlessdata/example-data-packages/tree/master/units-and-prefixes)
 
 #### Compound units
 
