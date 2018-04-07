@@ -408,500 +408,60 @@ In this case you want to specify that A depends on B and C -- and that "installi
 None known.
 
 
-## Table Schema: metadata properties
+## Missing values per field
 
 ### Overview
 
- Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual informations (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.
+Characters representing missing values in a table can be defined for all fields in a [Tabular Data Resource](http://frictionlessdata.io/specs/tabular-data-resource/) using the [`missingValues`](http://frictionlessdata.io/specs/table-schema/#missing-values) property in a Table Schema. Values that match the `missingValues` are treated as `null`.
 
-Currently it is possible to add custom properties to a Table Schema, but the lack of consensus about those properties restricts common tooling and wider adoption.
+The Missing values per field pattern allows different missing values to be specified for each field in a Table Schema. If not specified, each field inherits from values assigned to `missingValues` at the Tabular Data Resource level.
 
-### Use cases
+For example, this data...
 
-- Documentation: generating Markdown documentation from the schema itself is a useful use case, and contextual information (description, version, authors...) needs to be retrieved.
-- Cataloging: open data standardisation can be increased by improving Table Schemas shareability, for example by searching and categorising them (by keywords, countries, full-text...) in catalogs.
-- Machine readibility: tools like Goodtables could use catalogs to access Table Schemas in order to help users validate tabular files against existing schemas. Metadata would be needed for tools to find and read those schemas.
+item | description | price
+---- | ----------- | -----
+1    | Apple       | 0.99
+tba  | Banana      | -1
+3    | n/a         | 1.20
 
-### Specification
-
-This pattern introduces the following properties to the Table Schema spec (using [the Frictionless Data core dictionary](https://github.com/frictionlessdata/specs/blob/master/schemas/dictionary/common.yml) as much as possible):
-
-- `name`: An identifier string for this schema.
-- `title`: A human-readable title for this schema.
-- `description`: A text description for this schema.
-- `keywords`: The keyword(s) that describe this schema.
-_Tags are useful to categorise and catalog schemas._
-- `countryCode`: The ISO 3166-1 alpha-2 code for the country where this schema is primarily used.
-_Since open data schemas are very country-specific, it's useful to have this information in a structured way._
-- `homepage`: The home on the web that is related to this schema.
-- `path`: A fully qualified URL for this schema.
-_The direct path to the schema itself can be useful to help acessing it (i.e. machine readibility)._
-- `image`: An image to represent this schema.
-_An optional illustration can be useful for example in catalogs to differenciate schemas in a list._
-- `licenses`: The license(s) under which this schema is published.
-- `resources`: Example tabular data resource(s) validated or invalidated against this schema.
-_Oftentimes, schemas are shared with example resources to illustrate them, with valid or even invalid files (e.g. with constraint errors)._
-- `sources`: The source(s) used to created this schema.
-_In some cases, schemas are created after a legal text or some draft specification in a human-readable document. In those cases, it's useful to share them with the schema._
-- `created`: The datetime on which this schema was created.
-- `lastModified`: The datetime on which this schema was last modified.
-- `version`: A unique version number for this schema.
-- `contributors`: The contributors to this schema.
-
-### Example schema
-
-```
-{
-  "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
-  "name": "irve",
-  "title": "Infrastructures de recharge de véhicules électriques",
-  "description": "Spécification du fichier d'échange relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",
-  "keywords": [
-      "electric vehicle",
-      "ev",
-      "charging station",
-      "mobility"
-  ],
-  "countryCode": "FR",
-  "homepage": "https://github.com/etalab/schema-irve",
-  "path": "https://github.com/etalab/schema-irve/raw/v1.0.1/schema.json",
-  "image": "https://github.com/etalab/schema-irve/raw/v1.0.1/irve.png",
-  "licenses": [
-    {
-      "title": "Creative Commons Zero v1.0 Universal",
-      "name": "CC0-1.0",
-      "path": "https://creativecommons.org/publicdomain/zero/1.0/"  
-    }
-  ],
-  "resources": [
-    {
-      "title": "Valid resource",
-      "name": "exemple-valide",
-      "path": "https://github.com/etalab/schema-irve/raw/v1.0.1/exemple-valide.csv"
-    },
-    {
-      "title": "Invalid resource",
-      "name": "exemple-invalide",
-      "path": "https://github.com/etalab/schema-irve/raw/v1.0.1/exemple-invalide.csv"      
-    }    
-  ],
-  "sources": [
-    {
-      "title": "Arrêté du 12 janvier 2017 relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",      
-      "path": "https://www.legifrance.gouv.fr/eli/arrete/2017/1/12/ECFI1634257A/jo/texte"
-    }
-  ],
-  "created": "2018-06-29",
-  "lastModified": "2019-05-06",
-  "version": "1.0.1",  
-  "contributors": [
-    {
-      "title": "John Smith",
-      "email": "john.smith@etalab.gouv.fr",
-      "organisation": "Etalab",
-      "role": "author"
-    },
-    {
-      "title": "Jane Doe",
-      "email": "jane.doe@aol.com",
-      "organisation": "Civil Society Organization X",
-      "role": "contributor"
-    }
-  ],
-  "fields": [ ]
-}
-```
-
-### Implementations
-
-The following links are actual examples already using this pattern, but not 100 % aligned with our proposal. The point is to make the Table Schema users converge towards a common pattern, before considering changing the spec.
-
-- @OpenDataFrance has initiated the creation of [Table Schemas](http://git.opendatafrance.net/scdl/) to standardise common French open data datasets. [Their Markdown documentation](http://scdl.opendatafrance.net/) is generated automatically from the schemas ([using some scripts](https://git.opendatafrance.net/validata/validata-doc-generator/)), including contextual information.
-- A tool called [Validata](https://go.validata.fr/) was developed, based on Goodtables, to help French open data producers follow the schemas. It uses metadata from the schemas to present them.
-- @Etalab has launched [schema.data.gouv.fr](http://schema.data.gouv.fr/), an official open data schema catalog, which is specific to France. [It needs additional metadata in the schemas to validate them](https://schema.data.gouv.fr/documentation/validation-schemas#validations-sp%C3%A9cifiques-au-format-table-schema).
-- [Example Table Schema](https://github.com/etalab/schema-irve/blob/master/schema.json) from @Etalab using metadata properties.
-
-
-## JSON Data Resources
-
-### Overview
-
-A simple format to describe a single structured JSON data resource. It includes support both for metadata such as author and title and a [schema](https://json-schema.org/) to describe the data.
-
-### Introduction
-
-A **JSON Data Resource** is a type of [Data Resource][dr] specialized for describing structured JSON data.
-
-JSON Data Resource extends [Data Resource][dr] in following key ways:
-
-* The `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
-  either as a JSON object directly under the property, or a string referencing another
-  JSON document containing the JSON Schema
-
-### Examples
-
-A minimal JSON Data Resource, referencing external JSON documents, looks as follows.
+...using this Table Schema...
 
 ```javascript
-// with data and a schema accessible via the local filesystem
-{
-  "profile": "json-data-resource",
-  "name": "resource-name",
-  "path": [ "resource-path.json" ],
-  "schema": "jsonschema.json"
-}
-
-// with data accessible via http
-{
-  "profile": "json-data-resource",
-  "name": "resource-name",
-  "path": [ "http://example.com/resource-path.json" ],
-  "schema": "http://example.com/jsonschema.json"
-}
-```
-
-A minimal JSON Data Resource example using the data property to inline data looks as follows.
-
-```javascript
-{
-  "profile": "json-data-resource",
-  "name": "resource-name",
-  "data": {
-    "id": 1,
-    "first_name": "Louise"
-  },
-  "schema": {
-    "type": "object",
-    "required": [
-      "id"
-    ],
-    "properties": {
-      "id": {
-        "type": "integer"
-      },
-      "first_name": {
-        "type": "string"
-      }
-    }
-  }
-}
-```
-
-A comprehensive JSON Data Resource example with all required, recommended and optional properties looks as follows.
-
-```javascript
-{
-  "profile": "json-data-resource",
-  "name": "solar-system",
-  "path": "http://example.com/solar-system.json",
-  "title": "The Solar System",
-  "description": "My favourite data about the solar system.",
-  "format": "json",
-  "mediatype": "application/json",
-  "encoding": "utf-8",
-  "bytes": 1,
-  "hash": "",
-  "schema": {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "required": [
-      "id"
-    ],
-    "properties": {
-      "id": {
-        "type": "integer"
-      },
-      "name": {
-        "type": "string"
-      }
-      "description": {
-        "type": "string"
-      }
-    }
-  },
-  "sources": [{
-    "title": "The Solar System - 2001",
-    "path": "http://example.com/solar-system-2001.json",
-    "email": ""
-  }],
-  "licenses": [{
-    "name": "CC-BY-4.0",
-    "title": "Creative Commons Attribution 4.0",
-    "path": "https://creativecommons.org/licenses/by/4.0/"
-  }]
-}
-```
-
-
-### Specification
-
-A JSON Data Resource MUST be a [Data Resource][dr], that is it MUST conform to the [Data Resource specification][dr].
-
-In addition:
-
-* The Data Resource `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
-  either as a JSON object directly under the property, or a string referencing another
-  JSON document containing the JSON Schema
-- There `MUST` be a `profile` property with the value `json-data-resource`
-* The data the Data Resource describes MUST, if non-inline, be a JSON file
-
-
-### JSON file requirements
-
-When `"format": "json"`, files must strictly follow the [JSON specification](https://www.json.org/). Some implementations `MAY` support `"format": "jsonc"`, allowing for non-standard single line and block comments (`//` and `/* */` respectively).
-
-### Implementations
-
-None known.
-
-
-## Describing Data Package Catalogs using the Data Package Format
-
-### Overview
-
-There are scenarios where one needs to describe a collection of data packages, such as when building an online registry, or when building a pipeline that ingests multiple datasets.
-
-In these scenarios, the collection can be described using a "Catalog", where each dataset is represented as a single resource which has:
-
-```json
-{
-    "profile": "data-package",
-    "format": "json"
-}
-```
-
-### Specification
-
-The Data Package Catalog builds directly on the Data Package specification. Thus a Data Package Catalog `MUST` be a Data Package and conform to the [Data Package specification][dp].
-
-The Data Package Catalog has the following requirements over and above those imposed by Data Package:
-* There `MUST` be a `profile` property with the value `data-package-catalog`, or a `profile` that extends it
-* Each resource `MUST` also be a Data Package
-
-#### Examples
-
-A generic package catalog:
-
-```json
-{
-  "profile": "data-package-catalog",
-  "name": "climate-change-packages",
-  "resources": [
-    {
-      "profile": "json-data-package",
-      "format": "json",
-      "name": "beacon-network-description",
-      "path": "https://http://beacon.berkeley.edu/hypothetical_deployment_description.json"
-    },
-    {
-      "profile": "tabular-data-package",
-      "format": "json",
-      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
-    },
-    {
-      "profile": "tabular-data-package",
-      "name": "co2-fossil-global",
-      "format": "json",
-      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
-    }
-  ]
-}
-```
-
-A minimal tabular data catalog:
-
-```json
-{
-  "profile": "tabular-data-package-catalog",
-  "name": "datahub-climate-change-packages",
-  "resources": [
-    {
-      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
-    },
-    {
-      "name": "co2-fossil-global",
-      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
-    }
-  ]
-}
-```
-
-Data packages can also be declared inline in the data catalog:
-
-```json
-{
-  "profile": "tabular-data-package-catalog",
-  "name": "my-data-catalog",
-  "resources": [
-    {
-      "profile": "tabular-data-package",
-      "name": "my-dataset",
-      // here we list the data files in this dataset
-      "resources": [
-        {
-          "profile": "tabular-data-resource",
-          "name": "resource-name",
-          "data": [
-            {
-              "id": 1,
-              "first_name": "Louise"
-            },
-            {
-              "id": 2,
-              "first_name": "Julia"
-            }
-          ],
-          "schema": {
-            "fields": [
-              {
-                "name": "id",
-                "type": "integer"
-              },
-              {
-                "name": "first_name",
-                "type": "string"
-              }
-            ],
-            "primaryKey": "id"
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-[dr]: http://frictionlessdata.io/specs/data-resource/
-[dp]: https://frictionlessdata.io/specs/data-package/
-
-### Implementations
-
-None known.
-
-## Table Schema: Unique constraints
-
-### Overview
-
-A `primaryKey` uniquely identifies each row in a table. Per SQL standards, it
-cannot contain `null` values. This pattern implements the SQL UNIQUE constraint
-by introducing a `uniqueKeys` array, defining one or more row uniqueness
-constraints which do support `null` values. An additional `uniqueNulls` property
-controls how `null` values are to be treated in unique constraints.
-
-### Specification
-
-#### `uniqueKeys` (add)
-
-The `uniqueKeys` property, if present, `MUST` be an array. Each entry
-(`uniqueKey`) in the array `MUST` be a string or array (structured as per
-`primaryKey`) specifying the resource field or fields required to be unique for
-each row in the table.
-
-#### `uniqueNulls` (add)
-
-The `uniqueNulls` property is a boolean that dictates how `null` values should
-be treated by all unique constraints set on a resource.
-
-- If `true` (the default), `null` values are treated as unique (per most SQL
-  databases). By this definition, `1, null, null` is UNIQUE.
-- If `false`, `null` values are treated like any other value (per Microsoft SQL
-  Server, Python pandas, R data.frame, Google Sheets). By this definition, `1,
-  null, null` is NOT UNIQUE.
-
-#### `foreignKeys` (edit)
-
-Per SQL standards, `null` values are permitted in both the local and reference
-keys of a foreign key. However, reference keys `MUST` be unique and are
-therefore equivalent to a `uniqueKey` set on the reference resource (the meaning
-of which is determined by the reference `uniqueNulls`).
-
-Furthermore, per SQL standards, the local key `MAY` contain keys with field
-values not present in the reference key if and only if at least one of the
-fields is locally `null`. For example, `(1, null)` is permitted locally even if
-the reference is `[(2, 1), (3, 1)]`. This behavior is the same regardless of the
-value of `uniqueNulls`.
-
-### Examples
-
-#### `null` in unique constraints
-
-| a | b | c | d |
-|---|---|---|---|
-| 1 | 1 | 1 | 1 |
-| 2 | 2 | `null` | 2 |
-| 3 | 2 | `null` | `null` |
-
-The above table meets the following primary key and two unique key constraints:
-
-```json
-{
-  "primaryKey": ["a"],
-  "uniqueKeys": [
-    ["b", "c"],
-    ["c", "d"]
-  ],
-  "uniqueNulls": true
-}
-```
-
-The primary key `(a)` only contains unique, non-`null` values. In contrast, the
-unique keys can contain `null` values. Although unique key `(b, c)` contains two
-identical keys `(2, null)`, this is permitted because `uniqueNulls: true`
-specifies that `null` values are unique. This behavior is consistent with the
-UNIQUE constraint of PostgreSQL and most other SQL implementations, as
-illustrated by this
-[dbfiddle](https://dbfiddle.uk/?rdbms=postgres_11&fiddle=34cab8ba7d74b488d215a96f7e83c096).
-The same keys would be considered duplicates if `uniqueNulls: false`, consistent
-with the UNIQUE constraint of Microsoft SQL Server, as illustrated by this
-[dbfiddle](https://dbfiddle.uk/?rdbms=sqlserver_2019l&fiddle=34cab8ba7d74b488d215a96f7e83c096).
-
-#### Setting unique constraints
-
-For a given resource, unique constraints can be set for one field using a
-field's `unique` constraint, for one or multiple fields using a `uniqueKey`, and
-for one or multiple fields using a `foreignKey` referencing the resource. Each
-of the following examples set a unique constraint on field `a`:
-
-**Field `constraints`**
-
-```json
-{
+"schema":{
   "fields": [
     {
-      "name": "a",
-      "constraints": {
-        "unique": true
-      }
-    }
-  ]
-}
-```
-
-**`uniqueKeys`**
-
-```json
-{
-  "uniqueKeys": [
-    "a"
-  ]
-}
-```
-
-**`foreignKeys`**
-
-```json
-{
-  "foreignKeys": [
+      "name": "item",
+      "title": "An inventory item number",
+      "type": "integer"
+    },
     {
-      "fields": "a",
-      "reference": {
-        "resource": "",
-        "fields": "a"
-      }
+      "name": "description",
+      "title": "item description",
+      "type": "string",
+      "missingValues": [ "n/a"]
+    },
+    {
+      "name": "price",
+      "title": "cost price",
+      "type": "number",
+      "missingValues": [ "-1"]
     }
-  ]
+  ],
+  "missingValues": [ "tba", "" ]
 }
 ```
+
+...would be interpreted as...
+
+item   | description | price
+------ | ----------- | ------
+1      | Apple       | 0.99
+`null` | Banana      | `null`
+3      | `null`      | 1.20
+
+### Specification
+
+A field MAY have a `missingValues` property that MUST be an `array` where each entry is a `string`. If not specified, each field inherits from the values assigned to [`missingValues`](http://frictionlessdata.io/specs/table-schema/#missing-values) at the Tabular Data Resource level.
 
 ### Implementations
 
