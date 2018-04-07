@@ -326,7 +326,7 @@ None known.
 
 This pattern provides a way to describe units associated with numeric quantities in a [Table Schema](http://frictionlessdata.io/specs/table-schema). It provides:
 
-- an [inventory of standard units](#standard-units) with unique identifiers (e.g. `m` for metre or `h` for hour)
+- an [inventory of standard units](#standard-units) with unique identifiers (e.g. `m` for metre, or `h` for hour)
 - a set of [unit prefixes](#unit-prefixes) to apply a scale factor to a standard unit (e.g. `k` for kilo, a scale factor of 1000)
 - a [syntax for describing compound units](#compound-units) - a unit comprised of more than one standard units (e.g. `km/h` for kilometres per hour)
 
@@ -373,7 +373,7 @@ unit            | description
 
 ### Specification
 
-A numberic field MAY contain a `unit` property. The value of the property:
+A numeric field MAY contain a `unit` property. The value of the property:
 
 - MUST be `string` that is the unique identifier of one or more [standard units](#standard-units)
 - MAY be prefixed with a [unit prefix](#unit-prefix)
