@@ -334,18 +334,18 @@ This pattern provides a way to describe units associated with numeric quantities
 
 unit            | description
 --------------- | -------------------------------------------------------------------
-"m"             | metre
-"kW h           | kilowatt hour
-"kg m^2 s^-2"   | implied joule
-"kg m^2/s^2"    | implied joule (alternative denominator delimiter)
-"J"             | joule
-"btu_39f/lb"    | British thermal units per pound
-"btu_39f lb^-1" | British thermal units per pound (alternative denominator delimiter)
-"t km"          | metric tonne kilometre
-"ton_uk km"     | imperial ton kilometre
-"ton_us km"     | imperial ton kilometre
-"deg_c/h"       | degrees celsius per hour
-"deg_c h^-1"    | degrees celsius per hour (alternative denominator delimiter)
+`m`             | metre
+`kW h`          | kilowatt hour
+`kg m^2 s^-2`   | implied joule
+`kg m^2/s^2`    | implied joule (alternative denominator delimiter)
+`J`             | joule
+`btu_39f/lb`    | British thermal units per pound
+`btu_39f lb^-1` | British thermal units per pound (alternative denominator delimiter)
+`t km`          | metric tonne kilometre
+`ton_uk km`     | imperial ton kilometre
+`ton_us km`     | imperial ton kilometre
+`deg_c/h`       | degrees celsius per hour
+`deg_c h^-1`    | degrees celsius per hour (alternative denominator delimiter)
 
 #### Example Table Schema
 
