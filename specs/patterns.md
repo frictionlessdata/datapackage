@@ -602,40 +602,40 @@ Compound units represent the result of combining units via multiplication, divis
 
 - Unit multiplication is indicated using a single character of white-space, e.g.
 
-  ```
-  "kW h"             #=> a kilowatt hour
+  ```javascript
+  "unit": "kW h"             #=> a kilowatt hour
   ```
 
 - Unit powers are indicated using the caret character followed by a positive or negative integer with no white-space, e.g.
 
-  ```
-  "m^2"              #=> a square metre
+  ```javascript
+  "unit": "m^2"              #=> a square metre
 
-  "m^3"              #=> a cubic metre
+  "unit": "m^3"              #=> a cubic metre
 
-  "s^-1"             #=> frequency per second
+  "unit": "s^-1"             #=> frequency per second
   ```
 
 - Unit division i.e. denominator units, can be specified in two ways:
 
   - using a forward-slash character to delimit all numerator units from denominator units, e.g.
 
-    ```
-    "m/s"              #=> metres per second
+    ```javascript
+    "unit": "m/s"              #=> metres per second
 
-    "kg m^2/s^2"       #=> joule
+    "unit": "kg m^2/s^2"       #=> joule
 
-    "kg/t km"          #=> kilograms per tonne kilometre
+    "unit": "kg/t km"          #=> kilograms per tonne kilometre
     ```
 
   - using a negative power on individual units, e.g.
 
-    ```
-    "m s^-1"           #=> metres per second
+    ```javascript
+    "unit": "m s^-1"           #=> metres per second
 
-    "kg m^2 s^-2"      #=> joule
+    "unit": "kg m^2 s^-2"      #=> joule
 
-    "kg t^-1 km^-1"    #=> kilograms per tonne kilometre
+    "unit": "kg t^-1 km^-1"    #=> kilograms per tonne kilometre
     ```
 
 - Base units within compound units can be ordered in any way. The only constraint on unit ordering is where a single "/" is used to delimit numerator from denominator. In this case, all denominator units must follow the delimiter and all numerator units must precede it, although the order of units within the numerator and denominators is arbitrary.
