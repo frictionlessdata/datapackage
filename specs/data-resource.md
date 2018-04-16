@@ -8,7 +8,7 @@ descriptor: dataresource.json
 ---
 created: 11 December 2016
 ---
-updated: 2 May 2017
+updated: 17 April 2018
 ---
 version: 1.0-rc.2
 ---
@@ -244,10 +244,11 @@ A descriptor MAY contain any number of additional properties. Common properties 
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
+* `mediatype`: the mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
 * `encoding`: specify the character encoding of the resource's data file. The values should be one of
  the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no
  value for this key is specified then the default is UTF-8.
-* `bytes`: size of the file in bytes
+* `bytes`: size of the file in bytes.
 * `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
   the hash's value with the algorithm name in lower-case. For example:
 
