@@ -265,7 +265,7 @@ The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
 - a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry 
 
-If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `datapackage` value.
+If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
 For example:
 
