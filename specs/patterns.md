@@ -303,7 +303,7 @@ In this case you want to specify that A depends on B and C -- and that "installi
 
 ### Specification
 
-`dataDependencies` is an object. It follows same format as CommonJS Packages spec v1.1\. Each dependency defines the lowest compatible MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with which the package has been tested and is assured to work. The version may be a simple version string (see the version property for acceptable forms), or it may be an object group of dependencies which define a set of options, any one of which satisfies the dependency. The ordering of the group is significant and earlier entries have higher priority. Example:
+`dataDependencies` is an object. It follows same format as CommonJS Packages spec v1.1. Each dependency defines the lowest compatible MAJOR[.MINOR[.PATCH]] dependency versions (only one per MAJOR version) with which the package has been tested and is assured to work. The version may be a simple version string (see the version property for acceptable forms), or it may be an object group of dependencies which define a set of options, any one of which satisfies the dependency. The ordering of the group is significant and earlier entries have higher priority. Example:
 
 ```javascript
 "dataDependencies": {
