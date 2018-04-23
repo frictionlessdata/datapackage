@@ -1,0 +1,214 @@
+[
+  {
+    "name": "administrator:generic:id",
+    "dataType": "string", 
+    "unique": true
+  }, 
+  {
+    "name": "administrator:generic:name",
+    "dataType": "string",
+    "labelOf": "administrator:generic:id"
+  }, 
+  {
+    "name": "geo-source:address:country:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "geo-source:address:country:label",
+    "dataType": "string",
+    "labelOf": "geo-source:address:country:code"
+  },
+  {
+    "name": "geo-source:address:region:code",
+    "dataType": "string",
+    "prior": "geo-source:address:country:code",
+    "unique": true
+  },
+  {
+    "name": "geo-source:address:region:label",
+    "dataType": "string",
+    "labelOf": "geo-source:address:region:code"
+  },
+  {
+    "name": "geo-source:address:county:code",
+    "dataType": "string",
+    "prior": "geo-source:address:region:code",
+    "unique": true
+  },
+  {
+    "name": "geo-source:address:county:label",
+    "dataType": "string",
+    "labelOf": "geo-source:address:county:code"
+  },
+  {
+    "name": "geo-source:address:city:code",
+    "dataType": "string",
+    "prior": "geo-source:address:county:code",
+    "unique": true
+  },
+  {
+    "name": "geo-source:address:city:label",
+    "dataType": "string",
+    "labelOf": "geo-source:address:city:code"
+  },
+  {
+    "name": "geo-source:address:zip:code",
+    "dataType": "string",
+    "prior": "geo-source:address:city:code",
+    "unique": true
+  },
+  {
+    "name": "geo-source:address:street-address:description",
+    "dataType": "string"
+  },
+  {
+    "name": "transaction-id:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:purchase-order",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:invoice-id",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:tender-id",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:tender-kind",
+    "dataType": "string"
+  },
+  {
+    "name": "transaction-id:contract-id",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:budget-code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:court-order",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "transaction-id:transaction-kind",
+    "dataType": "string"
+  },
+  {
+    "name": "procurer:generic:id",
+    "dataType": "string", 
+    "unique": true
+  }, 
+  {
+    "name": "procurer:generic:name",
+    "dataType": "string",
+    "labelOf": "procurer:generic:id"
+  },
+  {
+    "name": "procurer:bank:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "procurer:bank:account",
+    "dataType": "string"
+  },
+  {
+    "name": "procurer:bank:branch:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "procurer:bank:branch:name",
+    "dataType": "string",
+    "labelOf": "procurer:bank:branch:code"
+  },
+  {
+    "name": "recipient:generic:id",
+    "dataType": "string", 
+    "unique": true
+  },
+  {
+    "name": "recipient:generic:name",
+    "dataType": "string",
+    "labelOf": "recipient:generic:id"
+  },
+  {
+    "name": "recipient:generic:url",
+    "dataType": "string"
+  },
+  {
+    "name": "recipient:generic:legal-entity:code",
+    "dataType": "string",
+    "prior": "recipient:generic:id",
+    "unique": true
+  },
+  {
+    "name": "recipient:generic:legal-entity:label",
+    "dataType": "string",
+    "labelOf": "recipient:generic:legal-entity:code"
+  },
+  {
+    "name": "recipient:generic:legal-entity:point-of-contact:description",
+    "dataType": "string"
+  },
+  {
+    "name": "recipient:generic:legal-entity:receiving-project:code",
+    "dataType": "string",
+    "prior": "recipient:generic:legal-entity:code",
+    "unique": true
+  },
+  {
+    "name": "recipient:generic:legal-entity:receiving-project:label",
+    "dataType": "string",
+    "labelOf": "recipient:generic:legal-entity:receiving-project:code"
+  },
+  {
+    "name": "recipient:generic:legal-entity:receiving-project:status",
+    "dataType": "string"
+  },
+  {
+    "name": "recipient:generic:legal-entity:receiving-project:description",
+    "dataType": "string"
+  },
+  {
+    "name": "recipient:bank:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "recipient:bank:account",
+    "dataType": "string"
+  },
+  {
+    "name": "recipient:bank:branch:code",
+    "dataType": "string",
+    "unique": true
+  },
+  {
+    "name": "recipient:bank:branch:name",
+    "dataType": "string",
+    "labelOf": "recipient:bank:branch:name"
+  },
+  {
+    "name": "supplier:generic:id",
+    "dataType": "string", 
+    "unique": true
+  }, 
+  {
+    "name": "supplier:generic:name",
+    "dataType": "string",
+    "labelOf": "supplier:generic:id"
+  }
+]
