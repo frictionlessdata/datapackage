@@ -2,9 +2,9 @@ title: Fiscal Data Package
 ---
 slug: fiscal-data-package
 ---
-version: 0.1.0rc
+version: 1.0rc1
 ---
-updated: 30 January 2017
+updated: 22 April 2018
 ---
 created: 14 March 2014
 ---
@@ -23,7 +23,8 @@ body:
 
 ## Changelog
 
-- `1.0.0RC`: A complete rewrite of the spec
+- `1.0.0rc1`: Updated distinction between spec and standard
+- `1.0.0rc`: A complete rewrite of the spec
 - `0.3.0`: incorporates all changes up to `0.3.0-alpha9`
 - `0.3.0-alpha9`: (!) rename mapping to model. Remove 'ocdid' as recommended attribute for location dimension.
 - `0.3.0-alpha8`: remove transaction identifier
@@ -41,13 +42,56 @@ body:
 
 ## Introduction
 
-This document is a work-in-progress towards Fiscal Data Package v1.
+This document contains the "Fiscal Data Package" specification - a lightweight and user-oriented format for publishing and consuming fiscal data.
 
-For more general notes and thoughts that lead into this document, [see here](https://hackmd.io/MYNgrCBGIBwGYFoCGcAsSGtWAjAgnGAAx5EBMAJmegOxjZEDMQA=?both).
+The motivation behind the fiscal data package was to create a specification which is _open by nature_ - based on other open standards, supported by open tools and software, modular, extensible and promoted transparently by a large community.
 
-For the public issues tracking work towards FDP v1, [see here](https://github.com/frictionlessdata/specs/labels/Fiscal%20Data%20Package).
+It is designed to be lightweight and simple to use - providing a small but flexible set of features, based on real-world requirements and not theoretical ones. All the while, the built-in extensibility allows this spec to adapt to  many different use cases and domains. It is also possible to gradually use more and more part of this specification - thus making it easier to implement this spec with existing data while slowly improving the data quality.
 
- ### What is Fiscal Data?
+A main concern of this specification is the ability to work with data _as it is currently exists_, without forcing publishers to modify the contents or structure of their current data files in order to "adapt" them to the specification.
+
+It concernes with how fiscal data should be packaged and providing means for publishers to best convey the meaning of the data - so it can be optimally used by consumers. This specification also provides details regarding file-formats, data-types, meta-data and structuring the data in files. 
+
+On the othen hand, this specification is, _by design_, non-opinionated about which data _should_ be published by publishers - which data-sets, which fields and and the internal processes these reflect.
+
+Along side this specification are two fiscal taxonomies which serve as standards for publishing _budget_ files and _spending_ files. These can be found here:
+- [The Budget Fiscal Data Package Standard](./fiscal-data-package--budgets.md)
+- [The Spending Fiscal Data Package Standard](./fiscal-data-package--spending.md)
+
+### Lessons learned from v0.3 of this spec
+
+Via a wide range of technical implementation, partner piloting, and fiscal data projects with other civic tech and data journalist partners, we've learned a lot about what works in Fiscal Data package v0.3, and what does not. We want to take these learnings and make a more robust and future proof v1.0 of the specification.
+
+#### Modelling
+
+Version 0.3 of the spec contained an elaborate system for modellling of the fiscal data. In practice, this system turned out to be too complicated for normal users and error prone (as inconsistent modelling could be created). 
+
+To add to that, modelling was not versatile enough to account for the very different source files existing with real users, nor was it expressive enough to convey the specific semantics required by these users. 
+
+A few examples of this strictness includes:
+- The predefined set of classifications for dimensions. This hard-coded list did not capture the richness of fiscal data ‘in the wild’, as it contained too few and too broad options.
+- Measure columns were assumed to be of a specific currency, disregarding datasets in which the currency is provided in a separate column (or non monetary measures).
+- Measure columns were assumed to be of a specific budgeting phase (out of 4 options) and of a single direction (income/expenditure), ignoring data sets which have different phases, or that the phase or direction are provided in a separate column - or data sets which are not related to budgets altogether...
+
+#### File structure
+
+While machines will always prefer to read data files in their denormalised (or unpivoted) form - as it's the most verbose and straightforward one - publishers will often choose a more compact, pivoted form. Other publishers would take out from the file some of the data, and append it as a separate code list file.
+
+Version 0.3 of the spec assumed data files would only be provided in a very specific pivoted form - which might apply to some cases, but practically failed on many other pivoting variations that were encountered. 
+
+### What's different?
+
+In a nutshell, the notable changes from v0.3 to v1 are as follows:
+
+- Consistent usage of "fiscal concepts" to model fiscal data (i.e. _ColumnTypes_), instead of the mix of metadata properties, measures and dimensions in v0.3 (all concepts are either a measure or a dimension)
+- The representation of concepts on data resources, instead of on a distinct `model` property
+- Improve implementation and semantics around direction and phase
+- Have explicit recommendations on the desirable concepts for given types of fiscal data (budget, spend, etc.)
+- Update to be based on Tabular Data Package v1
+
+## Terminology
+
+### What is Fiscal Data?
 
 In the context of this specification, we will define a fiscal dataset, at its core, to be one providing information on a series of fiscal transactions.
 
@@ -223,7 +267,7 @@ ___How is Lorraine's method different from Georges'?___
 1. We can see that Lorraine's method has far less data duplication - all field values are mapped to unique identifiers and the full names are detailed in separate, smaller tables.
 2. Another observation is that there is only one single amount column. The distinction between the two amount columns (_Planned_ and _Actual_) was transformed into a new _Phase_ column.
 3. Unlike George's file, Lorraine has all the required information as part of the data - specifically, the time period has its own column and is not only mentioned in the name of the sheet
-4. Finally, Lorraine chose a more standard way of presenting the date - using the ISO standard YYYY-MM-DD format.
+4. Finally, Lorraine chose a more common way of presenting the date - using the ISO standard YYYY-MM-DD format.
 
 ### What is the Fiscal Data Package?
 
@@ -606,7 +650,7 @@ In other cases, the budget figures for the current, next and after next years wi
 
 In fact, we might even encounter data-set where both phase and year columns were reduced in the same way.
 
-This practice is very common as a simple form of normalization being done on a published dataset. However, some data is lost along the way - in our examples, we've lost the 'Budget Phase' column in the former, and 'Fiscal Year' column in the latter.
+This practice is very common as a simple form of normalisation being done on a published dataset. However, some data is lost along the way - in our examples, we've lost the 'Budget Phase' column in the former, and 'Fiscal Year' column in the latter.
 
 We want to describe this process to allow data consumers to potentially undo it - and to the least resurrect the data that was lost in the process.
 
@@ -866,7 +910,7 @@ If such an existing type is not found, then the _ColumnType_ is still valid - ex
 In many cases there might be a need to explicitly define one or more types. 
 It might be because we're missing a specific type (which has some specific properties or a relationships to another existing type). It might also be because we want to provide a full taxonomy, better fitting the specific domain which our dataset belongs to.
 
-In these cases, we would attach to the FDP descriptor a "_ColumnType_ definition package". This package contains definitions for any _ColumnType_ that is required to model the data.
+In these cases, we would attach to the fiscal data package descriptor a "_ColumnType_ definition package". This package contains definitions for any _ColumnType_ that is required to model the data.
 
 The format of the _ColumnType_ definition package is quite simple - a JSON array, containing _ColumnType_ definitions as its items, for example:
 ```yaml
@@ -883,9 +927,9 @@ The format of the _ColumnType_ definition package is quite simple - a JSON array
 ]
 ```
 
-When attached to the FDP spec, it can be either attached inline, or as a URL, pointing to a JSON file containing the package.
+When attached to the fiscal data package descriptor, it can be either attached inline, or as a URL, pointing to a JSON file containing the package.
 
-The top-level `columnTypes` property of the FDP descriptor holds one or more _ColumnType_ definitions or definition packages. It is an array of items, which are interpreted like so:
+The top-level `columnTypes` property of the fiscal data package descriptor holds one or more _ColumnType_ definitions or definition packages. It is an array of items, which are interpreted like so:
 - If the array item is an object, it is interpreted as a single _ColumnType_ definition.
 - If the array item is an array, it is interpreted as a _ColumnType_ definition package.
 - If the array item is a string, it is interpreted as a URL for a _ColumnType_ definition package.
@@ -903,9 +947,10 @@ So far it's quite straightforward (we omit the resources section for brevity).
 Now we define the _ColumnTypes_ that are being used in this specification.
 ```yaml
   "columnTypes": [
-    "https://frictionlessdata.io/taxonomies/fiscal/latest/columnTypes.json",
+    "https://frictionlessdata.io/taxonomies/fiscal/budgets.json",
 ```
-We start by specifying that we'll be using the basic package of fiscal _ColumnTypes_, provided with the FDP spec.
+We start by specifying that we'll be using the budget taxonomy _ColumnTypes_, as described [here](./fiscal-data-package--budgets.md).
+
 This is also the default value for this property (in case its omitted in the spec).
 
 We continue by including another taxonomy, from the made-up car makers association (which we saw above). This taxonomy is also added as URL, pointing to version 1.3 of that taxonomy.
