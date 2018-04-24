@@ -50,11 +50,11 @@ It is designed to be lightweight and simple to use - providing a small but flexi
 
 A main concern of this specification is the ability to work with data _as it is currently exists_, without forcing publishers to modify the contents or structure of their current data files in order to "adapt" them to the specification.
 
-It concernes with how fiscal data should be packaged and providing means for publishers to best convey the meaning of the data - so it can be optimally used by consumers. This specification also provides details regarding file-formats, data-types, meta-data and structuring the data in files. 
+It concerns with how fiscal data should be packaged and providing means for publishers to best convey the meaning of the data - so it can be optimally used by consumers. This specification also provides details regarding file-formats, data-types, meta-data and structuring the data in files. 
 
-On the othen hand, this specification is, _by design_, non-opinionated about which data _should_ be published by publishers - which data-sets, which fields and and the internal processes these reflect.
+On the other hand, this specification is, _by design_, non-opinionated about which data _should_ be published by publishers - which data-sets, which fields and and the internal processes these reflect.
 
-Along side this specification are two fiscal taxonomies which serve as standards for publishing _budget_ files and _spending_ files. These can be found here:
+Alongside this specification are two fiscal taxonomies which serve as standards for publishing _budget_ files and _spending_ files. These can be found here:
 - [The Budget Fiscal Data Package Standard](./fiscal-data-package--budgets.md)
 - [The Spending Fiscal Data Package Standard](./fiscal-data-package--spending.md)
 
@@ -64,7 +64,7 @@ Via a wide range of technical implementation, partner piloting, and fiscal data 
 
 #### Modelling
 
-Version 0.3 of the spec contained an elaborate system for modellling of the fiscal data. In practice, this system turned out to be too complicated for normal users and error prone (as inconsistent modelling could be created). 
+Version 0.3 of the spec contained an elaborate system for modelling of the fiscal data. In practice, this system turned out to be too complicated for normal users and error prone (as inconsistent modelling could be created). 
 
 To add to that, modelling was not versatile enough to account for the very different source files existing with real users, nor was it expressive enough to convey the specific semantics required by these users. 
 
@@ -102,7 +102,7 @@ Each of these transactions consists of the following concepts:
 - A single *amount* of money (or equivalent) that was transferred in the transaction
 - Other properties describing the transaction
 
-These concepts must appear in all fiscal data - there is no transaction without knowing who gave how much money, to whom and when. However, in some cases, the transactions are aggregated - either because the exact recipient is not known yet (which is usually the case when planning a budget) or because it's preferrable to present data aggregated over a period of time (usually a single fiscal year). 
+These concepts must appear in all fiscal data - there is no transaction without knowing who gave how much money, to whom and when. However, in some cases, the transactions are aggregated - either because the exact recipient is not known yet (which is usually the case when planning a budget) or because it's preferable to present data aggregated over a period of time (usually a single fiscal year). 
 
 In aggregated data sets, you would find only a subset of these concepts. For example, a planned budget file would aggregate transactions over a period of a fiscal year, indicating the source of the transaction and its amount but without specifying the exact recipients (which are still unknown at the time of planning).
 
@@ -139,7 +139,7 @@ In this example we can see most of the concepts we'd often see in budget files:
 - _Payment Method_ is the _Economic Classification_
 - and the _Amount_ is, naturally, the budgeted amount.
 
-This above data table is an example of an _aggregated data set_. We don't see individual purchases, but rather a plan of the purchases over the week, summed accoring to purpose, buyer and purchase method.
+This above data table is an example of an _aggregated data set_. We don't see individual purchases, but rather a plan of the purchases over the week, summed according to purpose, buyer and purchase method.
 
 When the week ended, the family gathered once again and reviewed the actual spending that took place during that week:
 
@@ -281,7 +281,7 @@ We'll go over the concepts of the Fiscal Data Package via a few examples.
 
 First, we shall model George's file from the previous section. 
 
-The Fiscal Data Package is an extention of a Tabular Data Package, so our output should be a valid `datapackage.json` file - the data package descriptor:
+The Fiscal Data Package is an extension of a Tabular Data Package, so our output should be a valid `datapackage.json` file - the data package descriptor:
 
 ```yaml=
 {
@@ -838,7 +838,7 @@ Composite _ColumnTypes_ might also have an inherent order - for example, a multi
 
 As an example, consider the non-specific administrative classification _ColumnType_, `administrative-classification:generic`. In most cases, this classification is multi-leveled, e.g. the first level might indicate a ministry, the second a department in that ministry and so on.
 
-Therefore, columns describing the first level of that classification should be mapped to _ColumnTypes_ inherting from `administrative-classification:generic:level1`. The column containing the code of the ministry (in our example) would be mapped to `administrative-classification:generic:level1:code`, while the name of the ministry would be mapped to `administrative-classification:generic:level1:label`.
+Therefore, columns describing the first level of that classification should be mapped to _ColumnTypes_ inheriting from `administrative-classification:generic:level1`. The column containing the code of the ministry (in our example) would be mapped to `administrative-classification:generic:level1:code`, while the name of the ministry would be mapped to `administrative-classification:generic:level1:label`.
 
 Same goes for the department code and name columns, which would be mapped to the `administrative-classification:generic:level2:code` and `administrative-classification:generic:level2:label` _ColumnTypes_ respectively.
 
