@@ -4,27 +4,33 @@ csvDialect:
   description: The CSV dialect descriptor.
   type: object
   required:
-  - delimiter
-  - doubleQuote
+  - description
   properties:
-    delimiter:
-      "$ref": "#/definitions/delimiter"
-    doubleQuote:
-      "$ref": "#/definitions/doubleQuote"
-    lineTerminator:
-      "$ref": "#/definitions/lineTerminator"
-    nullSequence:
-      "$ref": "#/definitions/nullSequence"
-    quoteChar:
-      "$ref": "#/definitions/quoteChar"
-    escapeChar:
-      "$ref": "#/definitions/escapeChar"
-    skipInitialSpace:
-      "$ref": "#/definitions/skipInitialSpace"
-    header:
-      "$ref": "#/definitions/header"
-    caseSensitiveHeader:
-      "$ref": "#/definitions/caseSensitiveHeader"
+    description:
+      required:
+        - delimiter
+        - doubleQuote
+      properties:
+        csvddfVersion:
+          "$ref": "#/definitions/csvddfVersion"
+        delimiter:
+          "$ref": "#/definitions/delimiter"
+        doubleQuote:
+          "$ref": "#/definitions/doubleQuote"
+        lineTerminator:
+          "$ref": "#/definitions/lineTerminator"
+        nullSequence:
+          "$ref": "#/definitions/nullSequence"
+        quoteChar:
+          "$ref": "#/definitions/quoteChar"
+        escapeChar:
+          "$ref": "#/definitions/escapeChar"
+        skipInitialSpace:
+          "$ref": "#/definitions/skipInitialSpace"
+        header:
+          "$ref": "#/definitions/header"
+        caseSensitiveHeader:
+          "$ref": "#/definitions/caseSensitiveHeader"
   examples:
   - |
       {
@@ -39,6 +45,17 @@ csvDialect:
           "quoteChar": "'"
         }
       }
+csvddfVersion:
+  title: CSV Dialect schema version
+  description: A number to indicate the schema version of CSV Dialect. Version 1.0 was
+    named CSV Dialect Description Format and used different field names.
+  type: number
+  default: 1.2
+  examples::
+  - |
+      {
+        "csvddfVersion": "1.2"
+      }  
 delimiter:
   title: Delimiter
   description: A character sequence to use as the field separator.
