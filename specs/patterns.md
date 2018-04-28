@@ -2,7 +2,7 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 15 March 2018
+updated: 18 April 2018
 ---
 created: 11 December 2017
 ---
@@ -261,11 +261,11 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 ### Specification
 
-The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `datapackage`. This property MUST be, either:
+The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
 - a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry 
 
-If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `datapackage` value.
+If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
 For example:
 
@@ -273,7 +273,7 @@ For example:
 "foreignKeys": [{
     "fields": ["code"],
     "reference": {
-      "datapackage": "https://raw.githubusercontent.com/frictionlessdata/example-data-packages/master/donation-codes/datapackage.json",
+      "package": "https://raw.githubusercontent.com/frictionlessdata/example-data-packages/master/donation-codes/datapackage.json",
       "resource": "donation-codes",
       "fields": ["donation code"]
     }
