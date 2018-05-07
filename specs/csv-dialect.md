@@ -50,20 +50,22 @@ A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the followin
 * `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `true`
 * `header` - indicates whether the file includes a header row. If `true` the first row in the file is a header row, not data. Default = `true`
 * `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
-* `csvddfVersion` - a number, in n.n format, e.g., `1.0`. If not present, consumers should assume latest schema version.
+* `csvddfVersion` - a number, in n.n format, e.g., `1.2`. If not present, consumers should assume latest schema version.
 
 ## Example
 
 Here's an example:
 
-```javascript
-"dialect": {
-  "csvddfVersion": 1.0,
-  "delimiter": ";",
-  "doubleQuote": true,
-  "lineTerminator": "\r\n",
-  "quoteChar": "\"",
-  "skipInitialSpace": true,
-  "header": true
+```json
+{
+  "dialect": {
+    "csvddfVersion": 1.2,
+    "delimiter": ";",
+    "doubleQuote": true,
+    "lineTerminator": "\r\n",
+    "quoteChar": "\"",
+    "skipInitialSpace": true,
+    "header": true
   }
+}
 ```
