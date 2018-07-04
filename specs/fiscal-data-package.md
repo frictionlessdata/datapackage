@@ -283,13 +283,13 @@ First, we shall model George's file from the previous section.
 
 The Fiscal Data Package is an extension of a Tabular Data Package, so our output should be a valid `datapackage.json` file - the data package descriptor:
 
-```yaml=
+```yaml
 {
   "name": "smith-budget-by-george",
   "title": "Smith Family Budget (George's version)",
 ```
 We start by providing a little metadata for the entire dataset...
-```yaml=+
+```yaml
   "resources": [
     {
       "name": "budget",
@@ -297,7 +297,7 @@ We start by providing a little metadata for the entire dataset...
 ```
 And then some metadata on the resource itself.
 Now we describe the different columns in the file:
-```yaml=+
+```yaml
       "schema": {
         "fields": [
           {
@@ -309,7 +309,7 @@ Now we describe the different columns in the file:
 The first column is the "Who?" column - the administrative classification in our example dataset. We state that the column is of a _string_ type and we provide a proper _ColumnType_ to state that this is an _Administrative Classification Code_ (more on ColumnTypes later on).
 
 We now continue to model the rest of the fields:
-```yaml=+
+```yaml
           {
             "name": "What for?",
             "type": "string",
@@ -324,7 +324,7 @@ We now continue to model the rest of the fields:
 
 Finally we want to handle the amounts - also known as 'measures': 'Plan' and 'Actual'. How do we represent correctly the difference between the two?
 
-```yaml=+
+```yaml
           {
             "name": "Plan",
             "type": "number",
@@ -359,7 +359,7 @@ So that we're left with just one "measure" and an extra "phase" column.
 
 The `normalize` attribute does exactly that - and it works together with the `extraField` property which declares all the columns which are not part of the physical source file:
 
-```yaml=+
+```yaml
         "extraFields": [
           {
             "name": "Amount",
@@ -371,7 +371,7 @@ The `normalize` attribute does exactly that - and it works together with the `ex
 The first extra field is the normalisation target.
 Both amounts (from 'Plan' and 'Actual') will be placed here. Notice we gave this column the `value` ColumnType, denoting it as a value (or a _"Measure"_). 
 
-```yaml=+
+```yaml
           {
             "name": "Phase",
             "type": "string",
@@ -384,7 +384,7 @@ When denormalising, these two extra fields should replace the existing 'Plan' an
 
 Finally, we want to move the "fiscal period" from the filename to a proper column in the data itself. We do that by declaring a "constant" field. While we're at it we also add a proper currency column - just in case the Smith's decide one day to open an offshore bank account.
 
-```yaml=+
+```yaml
           {
             "name": "Week Start",
             "type": "date",
@@ -411,7 +411,7 @@ Let's model Lorraine's file now.
 
 We'll start with the same metadata:
 
-```yaml=
+```yaml
 {
   "name": "smith-budget-by-lorraine",
   "title": "Smith Family Budget (Lorraine's version)",
@@ -419,7 +419,7 @@ We'll start with the same metadata:
 
 And then we start describing the different resources - in Lorraine's case, we've got 5 of them.
 The first one is the "buyer" table:
-```yaml=+
+```yaml
   "resources": [
     {
       "name": "buyer",
@@ -442,7 +442,7 @@ The first one is the "buyer" table:
 This resource is pretty simple - we have only two columns, one of which is an identifier and the other is the actual buyer - which we mapped to a proper fiscal concept (_Administrative Classification_).
 
 Let's map a few more resources - these are pretty much the same:
-```yaml=+
+```yaml
     {
       "name": "purpose",
       "path": "Purpose.csv",
@@ -497,7 +497,7 @@ Let's map a few more resources - these are pretty much the same:
 ```
 Finally we tie all of these resources together into the main table (also known as the "facts table" - the "fact" in our case being a single transaction or budget item):
 
-```yaml=+
+```yaml
     {
       "name": "budget",
       "path": "Budget.csv",
@@ -539,7 +539,7 @@ Finally we tie all of these resources together into the main table (also known a
         ],
 ```
 Now, let's use the magic of [foreign keys](http://frictionlessdata.io/specs/table-schema/#foreign-keys) to connect the main table to all the secondary tables:
-```yaml=+
+```yaml
         "foreignKeys": [
           {
             "fields": "BuyerID",
@@ -574,7 +574,7 @@ Now, let's use the magic of [foreign keys](http://frictionlessdata.io/specs/tabl
 
 Finally, all is left is to add the currency column (as in George's file) and to wrap up.
 
-```yaml=+
+```yaml
         "extraFields": [
           {
             "name": "Currency",
