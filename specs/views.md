@@ -143,7 +143,7 @@ Spec:
 
 This is straight-up [Vega](https://vega.github.io/vega). The only modification that we leave out the actual data and instead only declare the existence of the datasets. The names of the datasets are the same as the names in the resources array.
 
-This example is just copied from http://vega.github.io/vega-editor/?mode=vega&spec=bar with only the name of the datasets declared (here `table)`. The data can then be dynamically provided when the visualization is instantiated.
+This example is just copied from https://vega.github.io/editor/#/examples/vega/bar-chart with only the name of the datasets declared (here `table)`. The data can then be dynamically provided when the visualization is instantiated.
 
 ```json
 {
