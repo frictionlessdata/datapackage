@@ -21,7 +21,7 @@ It exists because of the consistent need across applications to identify a Data
 Package. For example, in command line tools or libraries one will frequently
 want to take a Data Package Identifier as an argument.
 
-For example,[DataHub](http://datahub.io)'s `data-cli` tool has commands like:
+For example, [DataHub](http://datahub.io)'s `data-cli` tool has commands like:
 
 ```
 # gdp is a Data Package identifier
