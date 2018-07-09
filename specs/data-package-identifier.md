@@ -80,10 +80,10 @@ An Identifier String is a single string (rather than JSON object) that points to
 
       https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
 
-* The `name` of a dataset in the [Core Datasets registry](http://data.okfn.org/data):
+* The `name` of a dataset in the [Core Datasets registry](https://datahub.io/core):
 
       gold-prices
 
   resolves to:
 
-      http://data.okfn.org/data/core/gold-prices/datapackage.json
+      https://datahub.io/core/gold-prices/datapackage.json
