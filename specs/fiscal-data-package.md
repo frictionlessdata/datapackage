@@ -55,8 +55,8 @@ It concerns with how fiscal data should be packaged and providing means for publ
 On the other hand, this specification is, _by design_, non-opinionated about which data _should_ be published by publishers - which data-sets, which fields and and the internal processes these reflect.
 
 Alongside this specification are two fiscal taxonomies which serve as standards for publishing _budget_ files and _spending_ files. These can be found here:
-- [The Budget Fiscal Data Package Standard](./fiscal-data-package--budgets.md)
-- [The Spending Fiscal Data Package Standard](./fiscal-data-package--spending.md)
+- [The Budget Fiscal Data Package Standard](/specs/fiscal-data-package--budgets/)
+- [The Spending Fiscal Data Package Standard](/specs/fiscal-data-package--spending/)
 
 ### Lessons learned from v0.3 of this spec
 
