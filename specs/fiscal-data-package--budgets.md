@@ -44,7 +44,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
 
 
 ## References
-- [The Fiscal Data Package Spc](./fiscal-data-package.md)
+- [The Fiscal Data Package Spec](/specs/fiscal-data-package/)
 
 ## Location 
 
