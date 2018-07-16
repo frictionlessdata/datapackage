@@ -52,7 +52,7 @@ The Data Package library can load and validate any `descriptor` for a **Data Pac
 
 #### Examples
 
-- [Datapackage](https://github.com/frictionlessdata/datapackage-js/blob/master/src/datapackage.js)
+- [Datapackage](https://github.com/frictionlessdata/datapackage-js/blob/master/src/package.js)
 - [Resource](https://github.com/frictionlessdata/datapackage-js/blob/master/src/resource.js)
 - [validate](https://github.com/frictionlessdata/datapackage-js/blob/master/src/validate.js)
 
