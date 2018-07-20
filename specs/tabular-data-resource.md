@@ -24,7 +24,9 @@ A **Tabular Data Resource** is a type of [Data Resource][dr] specialized for des
 
 Tabular Data Resource extends [Data Resource][dr] in following key ways:
 
-* The `schema` property MUST follow the [Table Schema][ts] specification
+* The `schema` property MUST follow the [Table Schema][ts] specification,
+  either as a JSON object directly under the property, or a string referencing another
+  JSON document containing the Table Schema
 * A new `dialect` property to describe the CSV dialect. This property follows the [CSV Dialect][cd] specification.
 
 [dr]: http://frictionlessdata.io/specs/data-resource/
@@ -33,7 +35,7 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
 
 ### Examples
 
-A minimal Tabular Data Resource looks as follows.
+A minimal Tabular Data Resource, referencing external JSON documents, looks as follows.
 
 ```javascript
 // with data and a schema accessible via the local filesystem
@@ -141,7 +143,9 @@ A Tabular Data Resource MUST be a [Data Resource][dr], that is it MUST conform t
 
 In addition:
 
-* The Data Resource `schema` property MUST follow the [Table Schema][ts] specification
+* The Data Resource `schema` property MUST follow the [Table Schema][ts] specification,
+  either as a JSON object directly under the property, or a string referencing another
+  JSON document containing the Table Schema
 - There `MUST` be a `profile` property with the value `tabular-data-resource`
 * The data the Data Resource describes MUST:
   * If non-inline: Be a CSV file
