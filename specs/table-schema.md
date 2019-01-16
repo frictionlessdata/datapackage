@@ -255,7 +255,7 @@ A date without a time.
 * **\<PATTERN\>**: date/time values in this field can be parsed according to
   `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
   strptime][strptime]. (That is, values in the this field should be parseable
-  by Python / C standard `strptime` using `<PATTERN>`).  Example for `"pattern": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
+  by Python / C standard `strptime` using `<PATTERN>`).  Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
 
