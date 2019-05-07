@@ -73,6 +73,33 @@ tableSchema:
           }
     missingValues:
       "$ref": "#/definitions/tableSchemaMissingValues"
+    name:
+      "$ref": "#/definitions/name"
+    id:
+      "$ref": "#/definitions/id"
+    title:
+      "$ref": "#/definitions/title"
+    description:
+      "$ref": "#/definitions/description"
+      format: textarea
+    homepage:
+      "$ref": "#/definitions/homepage"
+    created:
+      "$ref": "#/definitions/created"
+    contributors:
+      "$ref": "#/definitions/contributors"
+    keywords:
+      "$ref": "#/definitions/keywords"
+    image:
+      "$ref": "#/definitions/image"
+    licenses:
+      "$ref": "#/definitions/licenses"
+    resources:
+      "$ref": "#/definitions/dataResources"
+    sources:
+      "$ref": "#/definitions/sources"
+      options:
+        hidden: true
   examples:
   - |
       {
