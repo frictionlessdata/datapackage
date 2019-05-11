@@ -25,6 +25,8 @@ csvDialect:
       "$ref": "#/definitions/skipInitialSpace"
     header:
       "$ref": "#/definitions/header"
+    commentChar:
+      "$ref": "#/definitions/commentChar"
     caseSensitiveHeader:
       "$ref": "#/definitions/caseSensitiveHeader"
   examples:
@@ -38,7 +40,8 @@ csvDialect:
       {
         "dialect": {
           "delimiter": "\t",
-          "quoteChar": "'"
+          "quoteChar": "'",
+          "commentChar": "#"
         }
       }
 csvddfVersion:
@@ -51,7 +54,7 @@ csvddfVersion:
   - |
       {
         "csvddfVersion": "1.2"
-      }  
+      }
 delimiter:
   title: Delimiter
   description: A character sequence to use as the field separator.
@@ -142,6 +145,15 @@ header:
   - |
       {
         "header": true
+      }
+commentChar:
+  title: Comment Character
+  description: Specifies a character sequence causing the rest of the line after it to be ignored.
+  type: string
+  examples:
+  - |
+      {
+        "commentChar": "#"
       }
 caseSensitiveHeader:
   title: Case Sensitive Header
