@@ -2,13 +2,14 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 18 April 2018
+updated: 16 May 2019
 ---
 created: 11 December 2017
 ---
 author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
+ - Michael Amadi (Nimble Learn)
 ---
 summary: A collection of patterns for frictionless handling of data.
 ---
@@ -125,6 +126,61 @@ Some examples of the `_cache` property.
   ]
 }
 ```
+
+## Compression of resources
+
+### Overview
+
+It can be argued that applying compression to data resources can make data package publishing more cost-effective and sustainable. Publishing compressed data resources give Data Package publishers the benefit of reduced bandwidth costs and their consumers the benefit of shorter download times.
+
+### Implementations
+
+
+* [tabulator-py (Gzip and Zip support)](https://github.com/frictionlessdata/tabulator-py)
+
+* [datapackage-connector (Gzip support)](https://github.com/nimblelearn/datapackage-connector)
+
+* [datapackage-m (Gzip support)](https://github.com/nimblelearn/datapackage-m)
+
+### Specification
+
+All compressed files `MUS`T have a file extension that allows the compression property to be correctly inferred as a supported compression type (e.g. data.csv.`gz` or data.csv.`zip`) OR the `compression` property `MUST` be used to specify the compression.
+
+Supported compression types:
+
+* gz
+* zip
+
+Example of a compressed resource with implied compression
+
+````
+{
+  "name": "data-resource-compression-example",
+  "path": "http://example.com/large-data-file.csv.gz",
+  "title": "Large Data File",
+  "description": "This large data file benefits from compression.",
+  "format": "csv",
+  "mediatype": "text/csv",
+  "encoding": "utf-8",
+  "bytes": 1073741824
+}
+````
+
+Example of a compressed resource with the `compression` property
+
+````
+{
+  "name": "data-resource-compression-example",
+  "path": "http://example.com/large-data-file.csv.gz",
+  "title": "Large Data File",
+  "description": "This large data file benefits from compression.",
+  "format": "csv",
+  "compression" : "gz",
+  "mediatype": "text/csv",
+  "encoding": "utf-8",
+  "bytes": 1073741824
+}
+````
 
 ## Language support
 
