@@ -144,7 +144,7 @@ It can be argued that applying compression to data resources can make data packa
 
 ### Specification
 
-All compressed files `MUS`T have a file extension that allows the compression property to be correctly inferred as a supported compression type (e.g. data.csv.`gz` or data.csv.`zip`) OR the `compression` property `MUST` be used to specify the compression.
+All compressed resources `MUST` have a `path` that allows the `compression` property to be inferred. If the compression can't be inferred from the `path` property (e.g. a custom file extension is used) then the `compression` property `MUST` be used to specify the compression.
 
 Supported compression types:
 
