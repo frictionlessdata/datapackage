@@ -131,7 +131,7 @@ Some examples of the `_cache` property.
 
 ### Overview
 
-It can be argued that applying compression to data resources can make data package publishing more cost-effective and sustainable. Publishing compressed data resources give Data Package publishers the benefit of reduced bandwidth costs and their consumers the benefit of shorter download times.
+It can be argued that applying compression to data resources can make data package publishing more cost-effective and sustainable. Publishing compressed data resources gives Data Package publishers the benefit of reduced bandwidth costs and their consumers the benefit of shorter download times.
 
 ### Implementations
 
