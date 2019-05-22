@@ -2,7 +2,7 @@ _model: page
 ---
 title: Patterns
 ---
-updated: 16 May 2019
+updated: 22 May 2019
 ---
 created: 11 December 2017
 ---
@@ -10,6 +10,7 @@ author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
  - Michael Amadi (Nimble Learn)
+ - Christophe Benz (Jailbreak)
 ---
 summary: A collection of patterns for frictionless handling of data.
 ---
@@ -319,7 +320,7 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
-- a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry 
+- a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry
 
 If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
@@ -403,3 +404,43 @@ In this case you want to specify that A depends on B and C -- and that "installi
 ### Implementations
 
 None known.
+
+## Table Schema: metadata properties
+
+### Overview
+
+Adding metadata to describe schemas in a structured way would improve their understanding.
+
+Table Schemas need their own metadata in order to be shared and interpreted as standalone, without relying on any Data Package metadata.
+
+Potential use cases could be:
+- generate schemas documentation
+- schema cataloguing
+
+Currently it is possible to add custom properties to a Table Schema, but the lack of consensus about those properties restricts tooling and wider adoption.
+
+### Specification
+
+This pattern proposes to introduce the following properties to the Table Schema spec:
+
+- name
+- id
+- title
+- description
+- homepage
+- created
+- contributors
+- keywords
+- image
+- licenses
+- resources
+- sources
+
+All those new properties are already specified (cf [common.yml](https://github.com/frictionlessdata/specs/blob/master/schemas/dictionary/common.yml)) and used by other Frictionless Data specs (e.g. Data Package).
+
+### Implementations
+
+The following links are actual use cases, not necessarily aligned with this pattern.
+
+- Schema from @Etalab using metadata properties: https://github.com/etalab/schema-irve/blob/master/schema.json
+- Example documentation generated from the schema: https://scdl.opendatafrance.net/docs/schemas/scdl-irve.html
