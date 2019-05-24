@@ -428,19 +428,19 @@ This pattern introduces the following properties to the Table Schema spec (using
 - `title`: A human-readable title for this schema.
 - `description`: A text description for this schema.
 - `keywords`: The keyword(s) that describe this schema.
-> Tags are useful to categorise and catalog schemas.
+_Tags are useful to categorise and catalog schemas._
 - `countryCode`: The ISO 3166-1 alpha-2 code for the country where this schema is primarily used.
-> Since open data schemas are very country-specific, it's useful to have this information in a structure way.
+_Since open data schemas are very country-specific, it's useful to have this information in a structured way._
 - `homepage`: The home on the web that is related to this schema.
 - `path`: A fully qualified URL for this schema.
-> The direct path to the schema itself can be useful to help acessing it (i.e. machine readibility).
+_The direct path to the schema itself can be useful to help acessing it (i.e. machine readibility)._
 - `image`: An image to represent this schema.
-> An optional illustration can be useful for example in catalogs to differenciate schemas in a list.
+_An optional illustration can be useful for example in catalogs to differenciate schemas in a list._
 - `licenses`: The license(s) under which this schema is published.
 - `resources`: Example tabular data resource(s) validated or invalidated against this schema.
-> Oftentimes, schemas are shared with example resources to illustrate them, with valid or even invalid files (e.g. with constraint errors).
+_Oftentimes, schemas are shared with example resources to illustrate them, with valid or even invalid files (e.g. with constraint errors)._
 - `sources`: The source(s) used to created this schema.
-> In some cases, schemas are created after a legal text or some draft specification in a human-readable document. In those cases, it's useful to share them with the schema.
+_In some cases, schemas are created after a legal text or some draft specification in a human-readable document. In those cases, it's useful to share them with the schema._
 - `created`: The datetime on which this schema was created.
 - `lastModified`: The datetime on which this schema was last modified.
 - `version`: A unique version number for this schema.
