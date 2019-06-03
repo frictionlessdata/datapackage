@@ -512,7 +512,7 @@ _In some cases, schemas are created after a legal text or some draft specificati
 
 ### Implementations
 
-The following links are actual examples already using this pattern, but not 100 % aligned with our proposal. The point is to make the Table Schema users converge towards a common pattern, before considering changing spec.
+The following links are actual examples already using this pattern, but not 100 % aligned with our proposal. The point is to make the Table Schema users converge towards a common pattern, before considering changing the spec.
 
 - @OpenDataFrance has initiated the creation of [Table Schemas](http://git.opendatafrance.net/scdl/) to standardise common French open data datasets. [Their Markdown documentation](http://scdl.opendatafrance.net/) is generated automatically from the schemas ([using some scripts](https://git.opendatafrance.net/validata/validata-doc-generator/)), including contextual information.
 - A tool called [Validata](https://go.validata.fr/) was developed, based on Goodtables, to help French open data producers follow the schemas. It uses metadata from the schemas to present them.
