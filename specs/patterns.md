@@ -542,9 +542,58 @@ None known.
 
 A [data resource][dr] where the `profile` is the same as that of a [data package][dp] or [identifier][dpi].
 
-This could be used as part of a "Data Package Catalog", probably specified as a `profile` like
-`data-package-catalog`,`tabular-data-package-catalog`, or `document-data-package-catalog` for restricting the resources to data packages.
+### Data Package Catalog
+Data Package Resources allow for Data Package Catalogs, specified as a `profile` such as `data-package-catalog` for restricting the resources to data packages, or `tabular-data-package-catalog` for restricting the resources to tabular data packages.
+
+#### Examples
+A generic package catalog:
+```json5
+{
+  "profile": "data-package-catalog",
+  "name": "climate-change-packages",
+  "resources": [
+    {
+      // this would probably actually be a custom profile,
+      // like "aq-deployment-data-package"
+      "profile": "json-data-package",
+      "name": "beacon-network-description",
+      "path": "https://http://beacon.berkeley.edu/hypothetical_deployment_description.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "name": "co2-fossil-global",
+      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
+    }
+  ]
+}
+```
+
+A tabular data catalog:
+```json5
+{
+  "profile": "tabular-data-package-catalog",
+  "name": "datahub-climate-change-packages",
+  "resources": [
+    {
+      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
+    },
+    {
+      "name": "co2-fossil-global",
+      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
+    }
+  ]
+}
+```
 
 [dr]: http://frictionlessdata.io/specs/data-resource/
 [dp]: https://frictionlessdata.io/specs/data-package/
 [dpi]: https://frictionlessdata.io/specs/data-package-identifier/
+
+### Implementations
+
+None known.
+
