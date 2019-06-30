@@ -529,9 +529,9 @@ A simple format to describe a single structured document data resource such as a
 
 ### Introduction
 
-A **Document Data Resource** is a type of [Data Resource][dr] specialized for describing structured documents data like JSON documents.
+A **JSON Data Resource** is a type of [Data Resource][dr] specialized for describing structured JSON data.
 
-Document Data Resource extends [Data Resource][dr] in following key ways:
+JSON Data Resource extends [Data Resource][dr] in following key ways:
 
 * The `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
   either as a JSON object directly under the property, or a string referencing another
@@ -539,12 +539,12 @@ Document Data Resource extends [Data Resource][dr] in following key ways:
 
 ### Examples
 
-A minimal Document Data Resource, referencing external JSON documents, looks as follows.
+A minimal JSON Data Resource, referencing external JSON documents, looks as follows.
 
 ```javascript
 // with data and a schema accessible via the local filesystem
 {
-  "profile": "document-data-resource",
+  "profile": "json-data-resource",
   "name": "resource-name",
   "path": [ "resource-path.json" ],
   "schema": "jsonschema.json"
@@ -552,18 +552,18 @@ A minimal Document Data Resource, referencing external JSON documents, looks as 
 
 // with data accessible via http
 {
-  "profile": "document-data-resource",
+  "profile": "json-data-resource",
   "name": "resource-name",
   "path": [ "http://example.com/resource-path.json" ],
   "schema": "http://example.com/jsonschema.json"
 }
 ```
 
-A minimal Document Data Resource example using the data property to inline data looks as follows.
+A minimal JSON Data Resource example using the data property to inline data looks as follows.
 
 ```javascript
 {
-  "profile": "document-data-resource",
+  "profile": "json-data-resource",
   "name": "resource-name",
   "data": {
     "id": 1,
@@ -590,7 +590,7 @@ A comprehensive JSON Data Resource example with all required, recommended and op
 
 ```javascript
 {
-  "profile": "document-data-resource",
+  "profile": "json-data-resource",
   "name": "solar-system",
   "path": "http://example.com/solar-system.json",
   "title": "The Solar System",
@@ -634,14 +634,14 @@ A comprehensive JSON Data Resource example with all required, recommended and op
 
 ### Specification
 
-A Document Data Resource MUST be a [Data Resource][dr], that is it MUST conform to the [Data Resource specification][dr].
+A JSON Data Resource MUST be a [Data Resource][dr], that is it MUST conform to the [Data Resource specification][dr].
 
 In addition:
 
 * The Data Resource `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
   either as a JSON object directly under the property, or a string referencing another
   JSON document containing the JSON Schema
-- There `MUST` be a `profile` property with the value `document-data-resource`
+- There `MUST` be a `profile` property with the value `json-data-resource`
 * The data the Data Resource describes MUST, if non-inline, be a JSON file
 
 
