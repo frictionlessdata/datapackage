@@ -669,7 +669,7 @@ In these scenarios, the collection can be described using a "Catalog", where eac
 ```
 
 ### Specification
-Data Package Catalog builds directly on the Data Package specification. Thus a Data Package Catalog `MUST` be a Data Package and conform to the [Data Package specification][dp].
+The Data Package Catalog builds directly on the Data Package specification. Thus a Data Package Catalog `MUST` be a Data Package and conform to the [Data Package specification][dp].
 
 The Data Package Catalog has the following requirements over and above those imposed by Data Package:
 * There `MUST` be a `profile` property with the value `data-package-catalog`, or a `profile` that extends it
