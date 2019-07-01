@@ -658,11 +658,22 @@ None known.
 
 ### Overview
 
-In scenarios where one is dealing with a collection of data packages, such as when building an online registry, a data package catalog can be used.
+There are scenarios where one needs to describe a collection of data packages, such as when building an online registry, or when building a pipeline that ingests multiple datasets.
 
-A data package catalog is a data package where all the resources are [data packages][dp].
-It is specified by a `profile` property with the value `data-package-catalog`, or a `profile` that extends it, 
-such as a `tabular-data-package-catalog` for restricting the resources to tabular data packages.
+In these scenarios, the collection can be described using a "Catalog", where each dataset is represented as a single resource which has:
+```json
+{
+    "profile": "data-package",
+    "format": "json"
+}
+```
+
+### Specification
+Data Package Catalog builds directly on the Data Package specification. Thus a Data Package Catalog `MUST` be a Data Package and conform to the [Data Package specification][dp].
+
+The Data Package Catalog has the following requirements over and above those imposed by Data Package:
+* There `MUST` be a `profile` property with the value `data-package-catalog`, or a `profile` that extends it
+* Each resource `MUST` also be a Data Package
 
 #### Examples
 A generic package catalog:
@@ -672,26 +683,27 @@ A generic package catalog:
   "name": "climate-change-packages",
   "resources": [
     {
-      // this would probably actually be a custom profile,
-      // like "aq-deployment-data-package"
       "profile": "json-data-package",
+      "format": "json",
       "name": "beacon-network-description",
       "path": "https://http://beacon.berkeley.edu/hypothetical_deployment_description.json"
     },
     {
       "profile": "tabular-data-package",
+      "format": "json",
       "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
     },
     {
       "profile": "tabular-data-package",
       "name": "co2-fossil-global",
+      "format": "json",
       "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
     }
   ]
 }
 ```
 
-A tabular data catalog:
+A minimal tabular data catalog:
 ```json5
 {
   "profile": "tabular-data-package-catalog",
