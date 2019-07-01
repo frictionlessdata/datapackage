@@ -654,12 +654,15 @@ When `"format": "json"`, files must strictly follow the [JSON specification](htt
 None known.
 
 
-## Data Package Resources
+## Describing Data Package Catalogs using the Data Package Format
 
-A [data resource][dr] where the `profile` is the same as that of a [data package][dp] or [identifier][dpi].
+### Overview
 
-### Data Package Catalog
-Data Package Resources allow for Data Package Catalogs, specified as a `profile` such as `data-package-catalog` for restricting the resources to data packages, or `tabular-data-package-catalog` for restricting the resources to tabular data packages.
+In scenarios where one is dealing with a collection of data packages, such as when building an online registry, a data package catalog can be used.
+
+A data package catalog is a data package where all the resources are [data packages][dp].
+It is specified by a `profile` property with the value `data-package-catalog`, or a `profile` that extends it, 
+such as a `tabular-data-package-catalog` for restricting the resources to tabular data packages.
 
 #### Examples
 A generic package catalog:
@@ -707,7 +710,6 @@ A tabular data catalog:
 
 [dr]: http://frictionlessdata.io/specs/data-resource/
 [dp]: https://frictionlessdata.io/specs/data-package/
-[dpi]: https://frictionlessdata.io/specs/data-package-identifier/
 
 ### Implementations
 
