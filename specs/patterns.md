@@ -406,6 +406,7 @@ In this case you want to specify that A depends on B and C -- and that "installi
 
 None known.
 
+
 ## Table Schema: metadata properties
 
 ### Overview
@@ -518,3 +519,260 @@ The following links are actual examples already using this pattern, but not 100 
 - A tool called [Validata](https://go.validata.fr/) was developed, based on Goodtables, to help French open data producers follow the schemas. It uses metadata from the schemas to present them.
 - @Etalab has launched [schema.data.gouv.fr](http://schema.data.gouv.fr/), an official open data schema catalog, which is specific to France. [It needs additional metadata in the schemas to validate them](https://schema.data.gouv.fr/documentation/validation-schemas#validations-sp%C3%A9cifiques-au-format-table-schema).
 - [Example Table Schema](https://github.com/etalab/schema-irve/blob/master/schema.json) from @Etalab using metadata properties.
+
+
+## Document Data Resources
+
+### Overview
+
+A simple format to describe a single structured document data resource such as a JSON document. It includes support both for metadata such as author and title and a [schema](https://json-schema.org/) to describe the data.
+
+### Introduction
+
+A **JSON Data Resource** is a type of [Data Resource][dr] specialized for describing structured JSON data.
+
+JSON Data Resource extends [Data Resource][dr] in following key ways:
+
+* The `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
+  either as a JSON object directly under the property, or a string referencing another
+  JSON document containing the JSON Schema
+
+### Examples
+
+A minimal JSON Data Resource, referencing external JSON documents, looks as follows.
+
+```javascript
+// with data and a schema accessible via the local filesystem
+{
+  "profile": "json-data-resource",
+  "name": "resource-name",
+  "path": [ "resource-path.json" ],
+  "schema": "jsonschema.json"
+}
+
+// with data accessible via http
+{
+  "profile": "json-data-resource",
+  "name": "resource-name",
+  "path": [ "http://example.com/resource-path.json" ],
+  "schema": "http://example.com/jsonschema.json"
+}
+```
+
+A minimal JSON Data Resource example using the data property to inline data looks as follows.
+
+```javascript
+{
+  "profile": "json-data-resource",
+  "name": "resource-name",
+  "data": {
+    "id": 1,
+    "first_name": "Louise"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "id"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "first_name": {
+        "type": "string"
+      }
+    }
+  }
+}
+```
+
+A comprehensive JSON Data Resource example with all required, recommended and optional properties looks as follows.
+
+```javascript
+{
+  "profile": "json-data-resource",
+  "name": "solar-system",
+  "path": "http://example.com/solar-system.json",
+  "title": "The Solar System",
+  "description": "My favourite data about the solar system.",
+  "format": "json",
+  "mediatype": "application/json",
+  "encoding": "utf-8",
+  "bytes": 1,
+  "hash": "",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+      "id"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      }
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  "sources": [{
+    "title": "The Solar System - 2001",
+    "path": "http://example.com/solar-system-2001.json",
+    "email": ""
+  }],
+  "licenses": [{
+    "name": "CC-BY-4.0",
+    "title": "Creative Commons Attribution 4.0",
+    "path": "https://creativecommons.org/licenses/by/4.0/"
+  }]
+}
+```
+
+
+### Specification
+
+A JSON Data Resource MUST be a [Data Resource][dr], that is it MUST conform to the [Data Resource specification][dr].
+
+In addition:
+
+* The Data Resource `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
+  either as a JSON object directly under the property, or a string referencing another
+  JSON document containing the JSON Schema
+- There `MUST` be a `profile` property with the value `json-data-resource`
+* The data the Data Resource describes MUST, if non-inline, be a JSON file
+
+
+### JSON file requirements
+
+When `"format": "json"`, files must strictly follow the [JSON specification](https://www.json.org/). Some implementations `MAY` support `"format": "jsonc"`, allowing for non-standard single line and block comments (`//` and `/* */` respectively).
+
+### Implementations
+
+None known.
+
+
+## Describing Data Package Catalogs using the Data Package Format
+
+### Overview
+
+There are scenarios where one needs to describe a collection of data packages, such as when building an online registry, or when building a pipeline that ingests multiple datasets.
+
+In these scenarios, the collection can be described using a "Catalog", where each dataset is represented as a single resource which has:
+
+```json
+{
+    "profile": "data-package",
+    "format": "json"
+}
+```
+
+### Specification
+
+The Data Package Catalog builds directly on the Data Package specification. Thus a Data Package Catalog `MUST` be a Data Package and conform to the [Data Package specification][dp].
+
+The Data Package Catalog has the following requirements over and above those imposed by Data Package:
+* There `MUST` be a `profile` property with the value `data-package-catalog`, or a `profile` that extends it
+* Each resource `MUST` also be a Data Package
+
+#### Examples
+
+A generic package catalog:
+
+```json5
+{
+  "profile": "data-package-catalog",
+  "name": "climate-change-packages",
+  "resources": [
+    {
+      "profile": "json-data-package",
+      "format": "json",
+      "name": "beacon-network-description",
+      "path": "https://http://beacon.berkeley.edu/hypothetical_deployment_description.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "format": "json",
+      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "name": "co2-fossil-global",
+      "format": "json",
+      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
+    }
+  ]
+}
+```
+
+A minimal tabular data catalog:
+
+```json5
+{
+  "profile": "tabular-data-package-catalog",
+  "name": "datahub-climate-change-packages",
+  "resources": [
+    {
+      "path": "https://pkgstore.datahub.io/core/co2-ppm/10/datapackage.json"
+    },
+    {
+      "name": "co2-fossil-global",
+      "path": "https://pkgstore.datahub.io/core/co2-fossil-global/11/datapackage.json"
+    }
+  ]
+}
+```
+
+Data packages can also be declared inline in the data catalog:
+
+```json5
+{
+  "profile": "tabular-data-package-catalog",
+  "name": "my-data-catalog",
+  "resources": [
+    {
+      "profile": "tabular-data-package",
+      "name": "my-dataset",
+      // here we list the data files in this dataset
+      "resources": [
+        {
+          "profile": "tabular-data-resource",
+          "name": "resource-name",
+          "data": [
+            {
+              "id": 1,
+              "first_name": "Louise"
+            },
+            {
+              "id": 2,
+              "first_name": "Julia"
+            }
+          ],
+          "schema": {
+            "fields": [
+              {
+                "name": "id",
+                "type": "integer"
+              },
+              {
+                "name": "first_name",
+                "type": "string"
+              }
+            ],
+            "primaryKey": "id"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+[dr]: http://frictionlessdata.io/specs/data-resource/
+[dp]: https://frictionlessdata.io/specs/data-package/
+
+### Implementations
+
+None known.
