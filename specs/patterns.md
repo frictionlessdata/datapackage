@@ -12,6 +12,7 @@ author:
  - Michael Amadi (Nimble Learn)
  - Christophe Benz (Jailbreak)
  - Johan Richer (Jailbreak)
+ - Michael Rosenthal
 ---
 summary: A collection of patterns for frictionless handling of data.
 ---
