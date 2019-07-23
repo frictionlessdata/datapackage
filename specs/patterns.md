@@ -682,7 +682,7 @@ The Data Package Catalog has the following requirements over and above those imp
 
 A generic package catalog:
 
-```json5
+```json
 {
   "profile": "data-package-catalog",
   "name": "climate-change-packages",
@@ -710,7 +710,7 @@ A generic package catalog:
 
 A minimal tabular data catalog:
 
-```json5
+```json
 {
   "profile": "tabular-data-package-catalog",
   "name": "datahub-climate-change-packages",
@@ -728,7 +728,7 @@ A minimal tabular data catalog:
 
 Data packages can also be declared inline in the data catalog:
 
-```json5
+```json
 {
   "profile": "tabular-data-package-catalog",
   "name": "my-data-catalog",
