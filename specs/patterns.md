@@ -522,11 +522,11 @@ The following links are actual examples already using this pattern, but not 100 
 - [Example Table Schema](https://github.com/etalab/schema-irve/blob/master/schema.json) from @Etalab using metadata properties.
 
 
-## Document Data Resources
+## JSON Data Resources
 
 ### Overview
 
-A simple format to describe a single structured document data resource such as a JSON document. It includes support both for metadata such as author and title and a [schema](https://json-schema.org/) to describe the data.
+A simple format to describe a single structured JSON data resource. It includes support both for metadata such as author and title and a [schema](https://json-schema.org/) to describe the data.
 
 ### Introduction
 
