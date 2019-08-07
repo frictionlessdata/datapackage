@@ -36,6 +36,7 @@ The Data Package library can load and validate any `descriptor` for a **Data Pac
 - [JSON Schema Registry](http://frictionlessdata.io/schemas/registry.json)
 - [JavaScript implementation](https://github.com/frictionlessdata/datapackage-js)
 - [Python implementation](https://github.com/frictionlessdata/datapackage-py)
+- [R implementation](https://github.com/christophergandrud/dpmr)
 
 #### Actions
 
