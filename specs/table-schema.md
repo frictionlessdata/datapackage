@@ -410,7 +410,7 @@ properties.
       All
     </td>
     <td>
-      Indicates whether this field cannot be `null`. If required is `false` (the default), then `null` is allowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values. Fields listed as [primary keys](#primary-keys) are required by default unless required is explicitly set to `false`.
+      Indicates whether this field cannot be `null`. If required is `false` (the default), then `null` is allowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values. Fields listed as [primary keys](#primary-key) are required by default unless required is explicitly set to `false`.
     </td>
   </tr>
   <tr>
@@ -549,7 +549,7 @@ Examples:
 
 A primary key is a field or set of fields that uniquely identifies each row in
 the table. Such fields cannot be `null` unless explicitly permitted by adding
-`required: false` to their [`constraints` property](#constraints).
+`required: false` to their [`constraints`](#constraints).
 
 The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
