@@ -548,7 +548,9 @@ Examples:
 ### Primary Key
 
 A primary key is a field or set of fields that uniquely identifies each row in
-the table.
+the table. Per SQL standards, the fields cannot be `null`, so their use in the
+primary key is equivalent to adding `required: true` to their
+[`constraints`](#constraints).
 
 The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
