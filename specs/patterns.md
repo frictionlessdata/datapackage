@@ -777,3 +777,64 @@ Data packages can also be declared inline in the data catalog:
 ### Implementations
 
 None known.
+
+## Table Schema: Unique constraint
+
+### Overview
+
+A `primaryKey` uniquely identifies each row in a table. Per SQL standards, it
+cannot contain `null` values. This pattern implements the SQL UNIQUE constraint
+by introducing a `uniqueKeys` array, defining one or more row uniqueness
+constraints which do support `null` values.
+
+### Specification
+
+The `uniqueKeys` property, if present, `MUST` be an array. Each entry in the
+array must be a `uniqueKey`. A `uniqueKey` `MUST` be an object and `MUST` have
+the following properties:
+
+- `fields` – A string or array (structured as per `primaryKey`) specifying the
+  resource field or fields required to be unique for each row in the table.
+- `nullUnique` – A boolean that dictates whether `null` are considered unique
+  (if `true`) or like any other value (if `false`).
+
+#### Examples
+
+| a | b | c | d |
+|---|---|---|---|
+| 1 | 1 | 1 | 1 |
+| 2 | 2 | `null` | 2 |
+| 3 | 2 | `null` | `null` |
+
+The above table meets the following primary key and two unique key constraints:
+
+```json
+{
+  "primaryKey": ["a"],
+  "uniqueKeys": [
+    {
+      "fields": ["b", "c"],
+      "nullUnique": true
+    },
+    {
+      "fields": ["c", "d"],
+      "nullUnique": false
+    }
+  ]
+}
+```
+
+The primary key `(a)` only contains unique, non-`null` values. In contrast, the
+unique keys can contain `null` values. Although unique key `(b, c)` contains two
+identical keys `(2, null)`, this is permitted because `nullUnique: true`
+specifies that `null` values are unique. This behavior is consistent with the
+UNIQUE constraint of PostgreSQL and most other SQL implementations, as
+illustrated by this
+[dbfiddle](https://dbfiddle.uk/?rdbms=postgres_11&fiddle=34cab8ba7d74b488d215a96f7e83c096).
+The same keys would be considered duplicates if `nullUnique: false`, consistent
+with the UNIQUE constraint of Microsoft SQL Server, as illustrated by this
+[dbfiddle](https://dbfiddle.uk/?rdbms=sqlserver_2019l&fiddle=34cab8ba7d74b488d215a96f7e83c096).
+
+### Implementations
+
+None known.

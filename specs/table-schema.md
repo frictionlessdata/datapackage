@@ -6,7 +6,7 @@ mediatype: application/vnd.tableschema+json
 ---
 version: 1.0.0-rc.2
 ---
-updated: 24 March 2018
+updated: 4 October 2019
 ---
 created: 12 November 2012
 ---
@@ -410,7 +410,7 @@ properties.
       All
     </td>
     <td>
-      Indicates whether this field is allowed to be `null`. If required is `true`, then `null` is disallowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values.
+      Indicates whether this field cannot be `null`. If required is `false` (the default), then `null` is allowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values.
     </td>
   </tr>
   <tr>
@@ -529,8 +529,8 @@ In additional to field descriptors, there are the following "table level" proper
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
 `missingValues` dictates which string values should be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion.
-The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. 
-Providing the empty list `[]` means that no conversion to null will be done, on any value. 
+The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place.
+Providing the empty list `[]` means that no conversion to null will be done, on any value.
 
 
 `missingValues` MUST be an `array` where each entry is a `string`.
@@ -548,7 +548,9 @@ Examples:
 ### Primary Key
 
 A primary key is a field or set of fields that uniquely identifies each row in
-the table.
+the table. Per SQL standards, the fields cannot be `null`, so their use in the
+primary key is equivalent to adding `required: true` to their
+[`constraints`](#constraints).
 
 The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
