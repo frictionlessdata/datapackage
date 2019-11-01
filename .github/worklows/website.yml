@@ -1,0 +1,23 @@
+name: website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit to the website repository
+        env:
+          GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.WEBSITE_DEPLOY_KEY }}"
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'github.actions@users.noreply.github.com'
+          git clone git@github.com:frictionlessdata/website && cd website
+          echo "${{ github.SHA }}" > specs.txt
+          git add . && git commit -am "Updated specs.txt"
+          git push
