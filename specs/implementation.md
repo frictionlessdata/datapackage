@@ -115,7 +115,7 @@ tabulator provides a consistent interface for streaming reading and writing of t
 
 goodtables validates tabular data, checking for structural and schematic errors, and producing reports that can be used to iterate on data file sources as part of common data publication work flows. goodtables uses `tabulator`, `tableschema`, and `datapackage` internally, as well as implementing `data-quality-spec`.
 
-It may be of general interest that `goodtables` is also avaiable as a service - [`goodtables.io`](https://goodtables.io) - providing continuous data validation in the style of CI solutions for code.
+It may be of general interest that `goodtables` is also available as a service - [`goodtables.io`](https://goodtables.io) - providing continuous data validation in the style of CI solutions for code.
 
 ##### References
 
