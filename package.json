@@ -19,7 +19,7 @@
   "homepage": "https://github.com/frictionlessdata/specs#readme",
   "devDependencies": {
     "chai": "^4.1.2",
-    "csv-parse": "^1.2.0",
+    "csv-parse": "^4.6.5",
     "fs-extra": "^4.0.2",
     "glob": "^7.1.1",
     "js-yaml": "^3.7.0",
