@@ -133,7 +133,8 @@ Spec:
 {
   "type": "line",
   "group": "x",
-  "series": [ "y", "z" ]
+  "series": [ "y", "z" ],
+  "colorway": ['#0a0a0a', '#ff8a0e']
 }
 ```
 
