@@ -160,13 +160,7 @@ image:
 anySchema:
   title: Schema
   description: A schema for this resource.
-  oneOf: 
-  - type: object
-    title: Schema as JSON
-    description: A schema encoded as a JSON object
-  - type: string
-    title: Schema path
-    description: A fully qualified URL, or a POSIX file path.
+  type: object
 countryCode:
   title: ISO 3166-1 Alpha-2 Country code
   description: A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.
