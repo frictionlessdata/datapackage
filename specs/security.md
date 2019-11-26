@@ -116,7 +116,8 @@ Two kinds of Resource pointers can never be guaranteed to be totally safe:
 Unix-like systems). In your implementation, you SHOULD either raise an error if an absolute local path is encountered
 or relativize it to the Descriptor path.
 - URLs. As described in [issue #650](https://github.com/frictionlessdata/specs/issues/650), URLs crafted by the author 
-of a Data Package can be used in a "keyhole" attack to probe your user's network layout.
+of a Data Package can be used in a "keyhole" attack to probe your user's network layout. It is up to the library creator
+ to create means that allow their users to mitigate this attack. 
 
 As URLs are part of the DNA of Data Packages, it is not advisable to disallow their use completely. However, you should 
 allow for a security setting that stops your implementation from loading URL-based Resources. This could be done
@@ -126,3 +127,15 @@ disallow absolute file paths and URL-based Resource pointers
 you decide to use such a scheme, you SHOULD provide default implementations for a filter disallowing URL-based
 Resource and an insecure filter that allows loading of all Resources.
 
+### Security Filters
+If disallowing all URL-based Resources is too heavy-handed and allowing all is too insecure, finer-grained filters
+should be implemented. Those finer security filters can be implemented as either blacklist or whitelist filters. 
+Blacklist filters in principle allow all URLs and restrict some, whereas whitelist filters deny all as a default 
+and have a limited list of allowed URLs. 
+
+Blacklist filters in their most basic implementation would have to disallow all non-routed IP-addresses like the 
+192.168.x.x range or the 10.100.x.x range. This would blunt mapping attacks against the internal network of your users
+but needs to be well thought out as even one omission could endanger network security
+
+Whitelist filters are much more secure as they allow the loading of Resources from a named list of domains only, but 
+might be too restrictive for some uses.
