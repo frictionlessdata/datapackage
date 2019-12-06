@@ -314,7 +314,7 @@ http://example/com/data/lang/file2-es.csv
 
 ### Overview
 
-A foreign key is a reference where values in a field (or fields) in a Tabular Data Resource link to values in a field (or fields) in a Tabular Data Resource in the same Tabular Data Package.
+A foreign key is a reference where values in a field (or fields) in a Tabular Data Resource link to values in a field (or fields) in a Tabular Data Resource in the same or in another Tabular Data Package.
 
 This pattern allows users to link values in a field (or fields) in a Tabular Data Resource to values in a field (or fields) in a Tabular Data Resource in a different Tabular Data Package.
 
