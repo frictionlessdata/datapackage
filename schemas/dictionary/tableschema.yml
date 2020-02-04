@@ -379,8 +379,6 @@ tableSchemaFieldInteger:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
-          "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           oneOf:
             - "$ref": "#/definitions/tableSchemaConstraintEnumString"
@@ -458,8 +456,6 @@ tableSchemaFieldNumber:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
-          "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           oneOf:
             - "$ref": "#/definitions/tableSchemaConstraintEnumString"
@@ -756,8 +752,6 @@ tableSchemaFieldYearMonth:
           "$ref": "#/definitions/tableSchemaConstraintRequired"
         unique:
           "$ref": "#/definitions/tableSchemaConstraintUnique"
-        pattern:
-          "$ref": "#/definitions/tableSchemaConstraintPattern"
         enum:
           "$ref": "#/definitions/tableSchemaConstraintEnumString"
         minimum:

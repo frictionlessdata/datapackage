@@ -454,13 +454,16 @@
         "header": {
           "$ref": "#/definitions/header"
         },
+        "commentChar": {
+          "$ref": "#/definitions/commentChar"
+        },
         "caseSensitiveHeader": {
           "$ref": "#/definitions/caseSensitiveHeader"
         }
       },
       "examples": [
         "{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n",
-        "{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"'\"\n  }\n}\n"
+        "{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"'\",\n    \"commentChar\": \"#\"\n  }\n}\n"
       ]
     },
     "csvddfVersion": {
@@ -469,7 +472,7 @@
       "type": "number",
       "default": 1.2,
       "examples:": [
-        "{\n  \"csvddfVersion\": \"1.2\"\n}  \n"
+        "{\n  \"csvddfVersion\": \"1.2\"\n}\n"
       ]
     },
     "delimiter": {
@@ -543,6 +546,14 @@
       "default": true,
       "examples": [
         "{\n  \"header\": true\n}\n"
+      ]
+    },
+    "commentChar": {
+      "title": "Comment Character",
+      "description": "Specifies a character sequence causing the rest of the line after it to be ignored.",
+      "type": "string",
+      "examples": [
+        "{\n  \"commentChar\": \"#\"\n}\n"
       ]
     },
     "caseSensitiveHeader": {
@@ -1388,9 +1399,6 @@
             "unique": {
               "$ref": "#/definitions/tableSchemaConstraintUnique"
             },
-            "pattern": {
-              "$ref": "#/definitions/tableSchemaConstraintPattern"
-            },
             "enum": {
               "oneOf": [
                 {
@@ -1483,9 +1491,6 @@
             },
             "unique": {
               "$ref": "#/definitions/tableSchemaConstraintUnique"
-            },
-            "pattern": {
-              "$ref": "#/definitions/tableSchemaConstraintPattern"
             },
             "enum": {
               "oneOf": [
@@ -1833,9 +1838,6 @@
             },
             "unique": {
               "$ref": "#/definitions/tableSchemaConstraintUnique"
-            },
-            "pattern": {
-              "$ref": "#/definitions/tableSchemaConstraintPattern"
             },
             "enum": {
               "$ref": "#/definitions/tableSchemaConstraintEnumString"
