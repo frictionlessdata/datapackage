@@ -1,22 +1,13 @@
+---
 title: CSV Dialect
----
 slug: csv-dialect
----
 version: 1.2
----
 created: 20 February 2013
----
 updated: 30 January 2017
----
 mediatype: application/vnd.csvdialect+json
----
 descriptor: csvdialect.json
+abstract: CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on.
 ---
-abstract:
-
-CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on.
----
-body:
 
 # Introduction
 
@@ -71,3 +62,4 @@ Here's an example:
   }
 }
 ```
+
