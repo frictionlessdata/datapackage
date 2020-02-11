@@ -1,24 +1,15 @@
+---
 title: Tabular Data Resource
----
 slug: tabular-data-resource
----
-mediatype: application/vnd.dataresource+json
----
 version: 1.0-rc.2
----
-updated: 2 May 2017
----
 created: 15 December 2017
----
+updated: 2 May 2017
+mediatype: application/vnd.dataresource+json
 descriptor: dataresource.json
+abstract: A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
 ---
-abstract:
 
-A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
----
-body:
-
-## Introduction
+# Introduction
 
 A **Tabular Data Resource** is a type of [Data Resource][dr] specialized for describing tabular data like CSV files or spreadsheets.
 
@@ -33,7 +24,7 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
 [ts]: http://frictionlessdata.io/specs/table-schema/
 [cd]: http://frictionlessdata.io/specs/csv-dialect/
 
-### Examples
+## Examples
 
 A minimal Tabular Data Resource, referencing external JSON documents, looks as follows.
 

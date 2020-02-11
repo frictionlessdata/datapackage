@@ -1,11 +1,9 @@
-_model: page
 ---
 title: Patterns
----
-updated: 22 May 2019
----
+slug: patterns
 created: 11 December 2017
----
+updated: 22 May 2019
+_model: page
 author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
@@ -13,10 +11,8 @@ author:
  - Christophe Benz (Jailbreak)
  - Johan Richer (Jailbreak)
  - Michael Rosenthal
+abstract: A collection of patterns for frictionless handling of data.
 ---
-summary: A collection of patterns for frictionless handling of data.
----
-body:
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs

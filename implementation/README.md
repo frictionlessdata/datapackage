@@ -1,10 +1,9 @@
-_model: page
 ---
 title: Implementation
+_model: page
 ---
-body:
 
-## Overview
+# Overview
 
 This document is meant to serve as an introduction and an entry point into writing a library that implements a Frictionless Data specification. The focus is on two libraries in particular - Data Package and Table Schema - as implementing these libraries essentially implements the whole family of specifications.
 

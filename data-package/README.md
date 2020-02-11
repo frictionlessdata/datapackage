@@ -1,22 +1,13 @@
-slug: data-package
 ---
 title: Data Package
----
-mediatype: application/vnd.datapackage+json
----
-descriptor: datapackage.json
----
-created: 12 November 2007
----
-updated: 2 May 2017
----
+slug: data-package
 version: 1.0.0-rc.2
+created: 12 November 2007
+updated: 2 May 2017
+mediatype: application/vnd.datapackage+json
+descriptor: datapackage.json
+abstract: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
 ---
-abstract:
-
-A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
----
-body:
 
 # Introduction
 
@@ -40,28 +31,34 @@ The data included in the package may be provided as:
 
 A minimal data package on disk would be a directory containing a single file:
 
-    datapackage.json  # (required) metadata and schemas for this data package
+```
+datapackage.json  # (required) metadata and schemas for this data package
+```
 
 Lacking a single external source of data would make this of limited
 use. A slightly less minimal version would be:
 
-    datapackage.json
-    # a data file (CSV in this case)
-    data.csv
+```
+datapackage.json
+# a data file (CSV in this case)
+data.csv
+```
 
 Additional files such as a README, scripts (for processing or analyzing the
 data) and other material may be provided. By convention scripts go in a scripts
 directory and thus, a more elaborate data package could look like this:
 
-    datapackage.json  # (required) metadata and schemas for this data package
-    README.md         # (optional) README in markdown format
+```
+datapackage.json  # (required) metadata and schemas for this data package
+README.md         # (optional) README in markdown format
 
-    # data files may go either in data subdirectory or in main directory
-    mydata.csv
-    data/otherdata.csv
+# data files may go either in data subdirectory or in main directory
+mydata.csv
+data/otherdata.csv
 
-    # the directory for code scripts - again these can go in the base directory
-    scripts/my-preparation-script.py
+# the directory for code scripts - again these can go in the base directory
+scripts/my-preparation-script.py
+```
 
 Several example data packages can be found in the [datasets organization on github][datasets], including:
 
