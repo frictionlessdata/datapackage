@@ -1,24 +1,15 @@
+---
 title: Data Resource
----
 slug: data-resource
----
-mediatype: application/vnd.dataresource+json
----
-descriptor: dataresource.json
----
-created: 11 December 2016
----
-updated: 17 April 2018
----
 version: 1.0-rc.2
+created: 11 December 2016
+updated: 17 April 2018
+mediatype: application/vnd.dataresource+json
+descriptor: dataresource.json
+abstract: A simple format to describe and package a single data resource such as a individual table or file.
 ---
-abstract:
 
-A simple format to describe and package a single data resource such as a individual table or file.
----
-body:
-
-## Introduction
+# Introduction
 
 The **Data Resource** format describes a data resource such as an individual file or table.
 
@@ -26,7 +17,7 @@ The essence of a Data Resource is a locator for the data it describes.
 
 A range of other properties can be declared to provide a richer set of metadata.
 
-### Examples
+## Examples
 
 A minimal Data Resource looks as follows:
 
@@ -77,7 +68,6 @@ A comprehensive Data Resource example with all required, recommended and optiona
 }
 ```
 
-
 ## Descriptor
 
 A Data Resource descriptor MUST be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
@@ -122,12 +112,15 @@ Examples:
 "path": "my-data-directory/my-csv.csv"
 ```
 
+:::warning  
+`/` (absolute path) and `../` (relative parent path) are forbidden to avoid security vulnerabilities when implementing data package software. These limitations on resource `path` ensure that resource paths only point to files within the data package directory and its subdirectories. This prevents data package software being exploited by a malicious user to gain unintended access to sensitive information.
+:::
 
-!!!! SECURITY:  `/` (absolute path) and `../` (relative parent path) are forbidden to avoid security vulnerabilities when implementing data package software. These limitations on resource `path` ensure that resource paths only point to files within the data package directory and its subdirectories. This prevents data package software being exploited by a malicious user to gain unintended access to sensitive information.
+:::warning For example, suppose a data package hosting service stores packages on disk and allows access via an API. A malicious user uploads a data package with a resource path like `/etc/passwd`.  The user then requests the data for that resource and the server naively opens `/etc/passwd` and returns that data to the caller.
+:::
 
-!!!! For example, suppose a data package hosting service stores packages on disk and allows access via an API. A malicious user uploads a data package with a resource path like `/etc/passwd`.  The user then requests the data for that resource and the server naively opens `/etc/passwd` and returns that data to the caller.
-
-!! IMPLEMENTOR: prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors MAY want to automatically convert a `url` property to a `path` property and issue a warning.
+:::notice prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors MAY want to automatically convert a `url` property to a `path` property and issue a warning.
+:::
 
 #### Data in Multiple Files
 

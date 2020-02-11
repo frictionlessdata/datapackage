@@ -1,24 +1,15 @@
+---
 title: Tabular Data Package
----
 slug: tabular-data-package
----
-mediatype: application/vnd.datapackage+json
----
 version: 1.0.0-rc.2
----
-updated: 2 May 2017
----
 created: 7 May 2012
----
+updated: 2 May 2017
+mediatype: application/vnd.datapackage+json
 descriptor: datapackage.json
+abstract: A simple format for describing tabular-style data for publishing and sharing.
 ---
-abstract:
 
-A simple format for describing tabular-style data for publishing and sharing.
----
-body:
-
-## Introduction
+# Introduction
 
 Tabular Data Package is a simple container format used for publishing and sharing tabular-style data. The format's focus is on simplicity and ease of use, especially online. In addition, the format is focused on data that can be presented in a tabular structure and in making it easy to produce (and consume) tabular data packages from spreadsheets and relational databases.
 
@@ -32,7 +23,7 @@ As suggested by the name, Tabular Data Package extends and specializes the [Data
 
 [dp]: http://frictionlessdata.io/specs/data-package/
 
-### Why CSV
+## Why CSV
 
 We chose CSV as the data format for the Tabular Data Package specification because:
 

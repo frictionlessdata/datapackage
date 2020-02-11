@@ -1,22 +1,14 @@
+---
 title: Fiscal Data Package - Budget Standard Taxonomy
----
 slug: fiscal-data-package--budgets
----
 version: 1.0rc1
----
-updated: 22 April 2018
----
 created: 14 March 2014
+updated: 22 April 2018
+abstract: The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
 ---
-abstract:
 
-The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
----
-body:
-
-
-!! NOTE: This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
-
+:::warning This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
+:::
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs/issues

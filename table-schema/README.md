@@ -1,20 +1,13 @@
+---
 title: Table Schema
----
 slug: table-schema
----
-mediatype: application/vnd.tableschema+json
----
 version: 1.0.0-rc.2
----
-updated: 4 October 2019
----
 created: 12 November 2012
----
+updated: 4 October 2019
+mediatype: application/vnd.tableschema+json
 descriptor: tableschema.json
----
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
 ---
-body:
 
 ## Introduction
 
