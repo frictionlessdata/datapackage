@@ -8,7 +8,7 @@ abstract: Data Package Identifiers are small JSON-oriented structure or strings 
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 Data Package Identifiers are a simple way to identify a Data Package (and its
 location) using a string or small JSON object.

@@ -8,7 +8,7 @@ abstract: A simple format for describing a views on data that leverages existing
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 Producers and consumers of data want to have data presented in tables and graphs -- "views" on the data. They want this for a range of reasons, from simple eyeballing to drawing out key insights,
 
