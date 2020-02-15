@@ -10,7 +10,7 @@ abstract: CSV Dialect defines a simple format to describe the various dialects o
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on. The specification has been modeled around the union of the csv  modules in Python and Ruby, and the bulk load capabilities of MySQL and PostgresQL.
 

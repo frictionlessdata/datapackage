@@ -3,8 +3,7 @@ title: Security
 slug: security
 created: 17. November 2019
 updated: 18. November 2019
-author:
- - Johannes Jander
+author: Johannes Jander
 abstract: Security considerations around Data Packages and Data Resources
 layout: specs
 ---

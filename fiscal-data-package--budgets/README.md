@@ -8,7 +8,8 @@ abstract: The Budget Taxonomy is a set of ClumnTypes to be used in the context o
 layout: specs
 ---
 
-:::warning This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
+:::warning 
+This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
 :::
 
 [issues]: https://github.com/frictionlessdata/specs/issues

@@ -10,7 +10,7 @@ abstract: A simple format to describe a single tabular data resource such as a C
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 A **Tabular Data Resource** is a type of [Data Resource][dr] specialized for describing tabular data like CSV files or spreadsheets.
 

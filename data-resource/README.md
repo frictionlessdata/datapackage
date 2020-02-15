@@ -10,12 +10,10 @@ abstract: A simple format to describe and package a single data resource such as
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 The **Data Resource** format describes a data resource such as an individual file or table.
-
-The essence of a Data Resource is a locator for the data it describes.
-
+The essence of a Data Resource is a locator for the data it describes. 
 A range of other properties can be declared to provide a richer set of metadata.
 
 ## Examples

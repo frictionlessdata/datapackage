@@ -10,7 +10,7 @@ abstract: A simple container format for describing a coherent collection of data
 layout: specs
 ---
 
-# Introduction
+## Introduction
 
 A Data Package consists of:
 
