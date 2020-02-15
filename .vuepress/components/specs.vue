@@ -19,8 +19,6 @@
       :items="sidebarItems"
       @toggle-sidebar="toggleSidebar"
     >
-   
-    <h2> {{ $page.frontmatter.title }} </h2>
 
       <slot
         name="sidebar-top"
@@ -32,6 +30,35 @@
       />
     </Sidebar>
 
+    <h1> {{ $page.frontmatter.title }} </h1>
+
+    <table class="frm-table">
+      <tbody>
+         <tr>
+          <th> Author </th>
+          <td> {{ $page.frontmatter.author }} </td>
+        </tr>
+        <tr>
+        <tr>
+          <th> Created </th>
+          <td> {{ $page.frontmatter.created }} </td>
+        </tr>
+        <tr>
+        <tr>
+          <th> Updated </th>
+          <td> {{ $page.frontmatter.updated }} </td>
+        </tr>
+        <tr>
+          <th> JSON Schema </th>
+          <td> {{ $page.frontmatter.descriptor }} </td>
+        </tr>
+        <tr>
+          <th> Version </th>
+          <td> {{ $page.frontmatter.version }} </td>
+        </tr>
+      </tbody>
+    </table>
+      
     <Content />
 
   </div>
@@ -175,5 +202,10 @@ export default {
     margin: 50px 0
   h2
     margin: 60px 0 50px
+
+.frm-table, .frm-table td
+  margin 0
+  width 100%
+
 
 </style>
