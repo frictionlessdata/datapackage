@@ -5,6 +5,7 @@ version: 1.0.0-alpha
 created: 2012
 updated: 2 May 2017
 abstract: A simple format for describing a views on data that leverages existing specifications like Vega and connects them with data provided in data packages or data resources.
+layout: specs
 ---
 
 # Introduction

@@ -7,6 +7,7 @@ updated: 17 April 2018
 mediatype: application/vnd.dataresource+json
 descriptor: dataresource.json
 abstract: A simple format to describe and package a single data resource such as a individual table or file.
+layout: specs
 ---
 
 # Introduction
