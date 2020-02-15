@@ -7,6 +7,7 @@ updated: 2 May 2017
 mediatype: application/vnd.datapackage+json
 descriptor: datapackage.json
 abstract: A simple format for describing tabular-style data for publishing and sharing.
+layout: specs
 ---
 
 # Introduction

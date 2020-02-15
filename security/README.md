@@ -6,6 +6,7 @@ updated: 18. November 2019
 author:
  - Johannes Jander
 abstract: Security considerations around Data Packages and Data Resources
+layout: specs
 ---
 
 ## Library users

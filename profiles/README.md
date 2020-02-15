@@ -7,6 +7,7 @@ author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
 abstract: Data Package and Data Resource Profiles
+layout: specs
 ---
 
 # Introduction

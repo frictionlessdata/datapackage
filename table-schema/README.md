@@ -7,6 +7,7 @@ updated: 4 October 2019
 mediatype: application/vnd.tableschema+json
 descriptor: tableschema.json
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
+layout: specs
 ---
 
 ## Introduction
