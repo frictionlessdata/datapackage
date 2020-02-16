@@ -22,13 +22,11 @@ function compileDictionary() {
     '$schema': 'http://json-schema.org/draft-04/schema#',
     definitions: {}
   }
-
   // Fill dictionary
   for (const file of glob.sync('schemas/dictionary/*.yml')) {
     const contents = fs.readFileSync(file)
     Object.assign(dictionary.definitions, yaml.safeLoad(contents))
   }
-
   // Save dictionary
   const contents = JSON.stringify(dictionary, null, 2)
   fs.writeFileSync('schemas/dictionary.json', contents)
@@ -45,6 +43,7 @@ async function buildSchemas() {
     const contents = JSON.stringify(schema, null, 2)
     fs.writeFileSync(`${BUILD_DIR}/${basename}`, contents)
   }
+  console.log('Built Schemas')
 }
 
 
@@ -55,6 +54,7 @@ function buildRegistry() {
   const registry = csvParseSync(fs.readFileSync('schemas/registry.csv'), {columns: true})
   const contents = JSON.stringify(registry, null, 2)
   fs.writeFileSync(`${BUILD_DIR}/registry.json`, contents)
+  console.log('Built registry')
 }
 
 
