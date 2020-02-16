@@ -7,7 +7,6 @@ updated: 2 May 2017
 mediatype: application/vnd.datapackage+json
 descriptor: datapackage.json
 abstract: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
-layout: specs
 ---
 
 ## Introduction

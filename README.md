@@ -1,8 +1,6 @@
 # Frictionless Data Specifications
 
-[![Build Status](http://travis-ci.org/frictionlessdata/specs.svg?branch=master)](http://travis-ci.org/frictionlessdata/specs)
-
-This site is the home for *specifications* related to **Frictionless Data.**
+This site is the home for *specifications* related to **[Frictionless Data][site].**
 
 **Frictionless Data** is about removing the friction in working with data through the development of a set of tools, specifications, and best practices for publishing data. The heart of Frictionless Data is *Data Package*, a containerization format for any kind of data based on existing practices for publishing open-source software.
 
