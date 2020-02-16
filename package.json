@@ -4,11 +4,10 @@
   "description": "This site is the home for *specifications* related to **Frictionless Data.**",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js",
+    "build": "npx vuepress build",
+    "buildschemas": "node build.js",
     "test": "NODE_ENV=testing mocha",
-    "start": "yarn start:docs",
-    "start:docs": "npx vuepress dev",
-    "build:docs": "npx vuepress build"
+    "start": "npx vuepress dev"
   },
   "repository": {
     "type": "git",
