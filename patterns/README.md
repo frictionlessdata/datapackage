@@ -3,7 +3,6 @@ title: Patterns
 slug: patterns
 created: 11 December 2017
 updated: 22 May 2019
-_model: page
 author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
@@ -316,11 +315,11 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 ### Specification
 
-The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
+The [`foreignKeys`](/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
-- a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry
+- a data package [`name`](/data-package/#name) that can be resolved by a canonical data package registry
 
-If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
+If the referenced data package has an [`id`](/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
 For example:
 
@@ -767,8 +766,8 @@ Data packages can also be declared inline in the data catalog:
 }
 ```
 
-[dr]: http://frictionlessdata.io/specs/data-resource/
-[dp]: https://frictionlessdata.io/specs/data-package/
+[dr]: /data-resource/
+[dp]: /data-package/
 
 ### Implementations
 
