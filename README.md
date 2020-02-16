@@ -27,9 +27,19 @@ This philosophy is itself based on the overall design principles of the Friction
 * **Existing Tooling:** Integrate as easily as possible with existing tools both by building integrations and designing for direct use – for example we like CSV because everyone has a tool that can access CSV.
 * **Simple, Lightweight:** Add the minimum, do the least required, keep it simple. For example, use the most basic formats, require only the most essential metadata, data should have nothing extraneous.
 
-## How to contribute
+## Participate and Contribute
 
-### Overview
+This effort is community-run and contributions, comments and corrections are warmly welcomed. Most work proceeds in an RFC-style manner with discussion on the [forum][forum] and the [chat][chat].
+
+Material is kept in a [git repo on GitHub][repo] - fork and submit a pull request to add material. There is also an [issue tracker][issues] which can be used for specific issues or suggestions.
+
+[forum]: https://discuss.okfn.org/c/frictionless-data
+[repo]: https://github.com/frictionlessdata/specs
+[issues]: https://github.com/frictionlessdata/specs/issues
+[chat]: https://gitter.im/frictionlessdata/chat
+[site]: http://frictionlessdata.io
+
+## For Editors
 
 This repository is the canonical repository for the core Frictionless Data specifications. The repository features:
 
@@ -63,3 +73,4 @@ See the existing entries in the registry, and then take the following steps to a
 1. Make a new pull request called `registry/{NAME_OF_SPECIFICATION}`
 2. The pull request features a JSON Schema file for the new specification, and adds the spec to `registry.csv`
 3. Write a brief description of the spec as part of the pull request.
+
