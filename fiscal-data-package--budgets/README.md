@@ -5,7 +5,6 @@ version: 1.0rc1
 created: 14 March 2014
 updated: 22 April 2018
 abstract: The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
-layout: specs
 ---
 
 :::warning 
@@ -15,7 +14,17 @@ This is a draft specification and still under development. If you have comments 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs/issues
 
-## Changelog
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Changelog
 
 - `1.0.0rc1`: Initial text
 

@@ -2,13 +2,23 @@
 title: Data Package Identifier
 slug: data-package-identifier
 version: 1.0-alpha
+author: Rufus Pollock
 created: 17 August 2014
 updated: 02 November 2014
 abstract: Data Package Identifiers are small JSON-oriented structure or strings which identify a Data Package (and, usually, its location).
-layout: specs
 ---
 
-## Introduction
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Introduction
 
 Data Package Identifiers are a simple way to identify a Data Package (and its
 location) using a string or small JSON object.
