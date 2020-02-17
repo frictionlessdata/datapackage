@@ -32,6 +32,6 @@ jobs:
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        ACCESS_TOKEN: ${{ secrets.WEBSITE.DEPLOY:KEY }}
+        ACCESS_TOKEN: ${{ secrets.WEBSITE_DEPLOY_KEY }}
         BRANCH: gh-pages
         FOLDER: .vuepress/dist 
