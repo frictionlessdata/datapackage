@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    logo: "/logo-dot.svg",
     repo: 'https://github.com/frictionlessdata/specs',
     editLinks: true,
     sidebar: 'auto',
