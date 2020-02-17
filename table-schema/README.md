@@ -7,10 +7,19 @@ updated: 4 October 2019
 mediatype: application/vnd.tableschema+json
 descriptor: tableschema.json
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
-layout: specs
 ---
 
-## Introduction
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Introduction
 
 Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of applications where data benefits from a portable schema format.
 

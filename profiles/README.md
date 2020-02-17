@@ -5,10 +5,19 @@ created: 11 December 2017
 updated: 24 May 2017
 author: Rufus Pollock (Open Knowledge International), Paul Walsh (Open Knowledge International)
 abstract: Data Package and Data Resource Profiles
-layout: specs
 ---
 
-## Introduction
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Introduction
 
 Different kinds of data need different data and metadata formats. To support these different data and metadata formats we need to extend and specialise the generic Data Package. These specialized types of Data Package (or Data Resource) are termed **profiles**. For example, there is a [Tabular Data Package][tdp] profile that specializes Data Packages specifically for tabular data.
 

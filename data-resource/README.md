@@ -7,10 +7,19 @@ updated: 17 April 2018
 mediatype: application/vnd.dataresource+json
 descriptor: dataresource.json
 abstract: A simple format to describe and package a single data resource such as a individual table or file.
-layout: specs
 ---
 
-## Introduction
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Introduction
 
 The **Data Resource** format describes a data resource such as an individual file or table.
 The essence of a Data Resource is a locator for the data it describes. 
