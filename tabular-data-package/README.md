@@ -30,7 +30,7 @@ The key features of this format are the following:
 
 As suggested by the name, Tabular Data Package extends and specializes the [Data Package][dp] spec for the specific case where the data is tabular.
 
-[dp]: http://frictionlessdata.io/specs/data-package/
+[dp]: /data-package/
 
 ## Why CSV
 
@@ -64,7 +64,7 @@ Tabular Data Package has the following requirements over and above those imposed
 - There `MUST` be a `profile` property with the value `tabular-data-package`
 - Each `resource` `MUST` be a [Tabular Data Resource][tdr]
 
-[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
+[tdr]: /tabular-data-resource/
 
 ### Example
 

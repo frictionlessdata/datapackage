@@ -52,7 +52,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
 
 The canonic location for this taxonomy's _ColumnType_ definition - to be used in fiscal data package descriptors - is
 
-`https://frictionlessdata.io/taxonomies/fiscal/budgets.json`
+`https://specs.frictionlessdata.io/taxonomies/fiscal/budgets.json`
 
 ## The Taxonomy
 
