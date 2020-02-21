@@ -446,7 +446,7 @@ _In some cases, schemas are created after a legal text or some draft specificati
 
 ```
 {
-  "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
+  "$schema": "https://specs.frictionlessdata.io/schemas/table-schema.json",
   "name": "irve",
   "title": "Infrastructures de recharge de véhicules électriques",
   "description": "Spécification du fichier d'échange relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",

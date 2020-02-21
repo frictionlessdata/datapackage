@@ -540,7 +540,7 @@ Finally we tie all of these resources together into the main table (also known a
           },
         ],
 ```
-Now, let's use the magic of [foreign keys](http://frictionlessdata.io/specs/table-schema/#foreign-keys) to connect the main table to all the secondary tables:
+Now, let's use the magic of [foreign keys](/table-schema/#foreign-keys) to connect the main table to all the secondary tables:
 ```yaml
         "foreignKeys": [
           {
@@ -949,7 +949,7 @@ So far it's quite straightforward (we omit the resources section for brevity).
 Now we define the _ColumnTypes_ that are being used in this specification.
 ```yaml
   "columnTypes": [
-    "https://frictionlessdata.io/taxonomies/fiscal/budgets.json",
+    "https://specs.frictionlessdata.io/taxonomies/fiscal/budgets.json",
 ```
 We start by specifying that we'll be using the budget taxonomy _ColumnTypes_, as described [here](./fiscal-data-package--budgets.md).
 

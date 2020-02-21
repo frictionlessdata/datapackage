@@ -379,7 +379,7 @@ The corresponding Table Schema is:
 
 The `constraints` property on Table Schema Fields can be used by consumers to list constraints for validating field values. For example, validating the data in a [Tabular Data Resource][tdr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
-[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
+[tdr]: http://specs.frictionlessdata.io/tabular-data-resource/
 
 All constraints `MUST` be tested against the logical representation of data, and the physical representation of constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
@@ -692,7 +692,7 @@ An example of a self-referencing foreign key:
 
 **Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
 
-[dp]: http://frictionlessdata.io/specs/data-package/
+[dp]: http://specs.frictionlessdata.io/data-package/
 
 ## Appendix: Related Work
 
