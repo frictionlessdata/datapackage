@@ -1,6 +1,5 @@
 ---
 title: Security
-slug: security
 created: 17. November 2019
 updated: 18. November 2019
 author: Johannes Jander

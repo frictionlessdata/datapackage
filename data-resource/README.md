@@ -1,6 +1,5 @@
 ---
 title: Data Resource
-slug: data-resource
 version: 1.0-rc.2
 created: 11 December 2016
 updated: 17 April 2018

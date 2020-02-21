@@ -1,6 +1,5 @@
 ---
 title: Data Package Views
-slug: views
 version: 1.0.0-alpha
 created: 2012
 updated: 2 May 2017

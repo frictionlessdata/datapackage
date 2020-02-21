@@ -1,6 +1,5 @@
 ---
 title: Table Schema
-slug: table-schema
 version: 1.0.0-rc.2
 created: 12 November 2012
 updated: 4 October 2019

@@ -1,6 +1,5 @@
 ---
 title: Fiscal Data Package
-slug: fiscal-data-package
 version: 1.0rc1
 created: 14 March 2014
 updated: 22 April 2018

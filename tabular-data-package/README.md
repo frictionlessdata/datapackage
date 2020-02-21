@@ -1,6 +1,5 @@
 ---
 title: Tabular Data Package
-slug: tabular-data-package
 version: 1.0.0-rc.2
 created: 7 May 2012
 updated: 2 May 2017

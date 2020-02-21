@@ -1,6 +1,5 @@
 ---
 title: CSV Dialect
-slug: csv-dialect
 version: 1.2
 author: Rufus Pollock
 created: 20 February 2013

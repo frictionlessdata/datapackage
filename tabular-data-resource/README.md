@@ -1,6 +1,5 @@
 ---
 title: Tabular Data Resource
-slug: tabular-data-resource
 version: 1.0-rc.2
 created: 15 December 2017
 updated: 2 May 2017

@@ -1,6 +1,5 @@
 ---
 title: Data Package
-slug: data-package
 version: 1.0.0-rc.2
 created: 12 November 2007
 updated: 2 May 2017
