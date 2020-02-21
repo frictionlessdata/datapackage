@@ -38,7 +38,7 @@ module.exports = {
           { text: "Views", link: "/views/" },
         ]
       },
-      { text: 'Changelog', link: '/changelog/' },
+      // { text: 'Changelog', link: '/changelog/' },
       { text: 'Patterns', link: '/patterns/' },
       { text: 'Implementation', link: '/implementation/' }
     ]
