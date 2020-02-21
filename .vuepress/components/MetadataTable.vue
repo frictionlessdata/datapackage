@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <th> JSON Schema </th>
-        <td> {{ $page.frontmatter.descriptor }} </td>
+        <td><a :href= "'/schemas/' + $page.frontmatter.descriptor" >{{ $page.frontmatter.descriptor }} </a> </td>
       </tr>
       <tr>
         <th> Version </th>
