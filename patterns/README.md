@@ -1,6 +1,5 @@
 ---
 title: Patterns
-slug: patterns
 created: 11 December 2017
 updated: 22 May 2019
 author:

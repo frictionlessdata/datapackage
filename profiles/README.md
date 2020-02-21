@@ -1,6 +1,5 @@
 ---
 title: Profiles
-slug: profiles
 created: 11 December 2017
 updated: 24 May 2017
 author: Rufus Pollock (Open Knowledge International), Paul Walsh (Open Knowledge International)

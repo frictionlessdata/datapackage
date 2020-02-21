@@ -1,6 +1,5 @@
 ---
 title: Data Package Identifier
-slug: data-package-identifier
 version: 1.0-alpha
 author: Rufus Pollock
 created: 17 August 2014
