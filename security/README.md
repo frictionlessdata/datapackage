@@ -1,8 +1,9 @@
 ---
 title: Security
-created: 17. November 2019
-updated: 18. November 2019
 author: Johannes Jander
+created: 17 November 2019
+updated: 18 November 2019
+descriptor: security.json 
 abstract: Security considerations around Data Packages and Data Resources
 ---
 

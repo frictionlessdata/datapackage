@@ -1,10 +1,11 @@
 ---
 title: Table Schema
-version: 1.0.0-rc.2
+version: 1.0
+author: Paul Walsh, Rufus Pollock
 created: 12 November 2012
 updated: 4 October 2019
+descriptor: table-schema.json
 mediatype: application/vnd.tableschema+json
-descriptor: tableschema.json
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
 ---
 

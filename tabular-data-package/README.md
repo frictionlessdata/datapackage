@@ -1,10 +1,11 @@
 ---
 title: Tabular Data Package
-version: 1.0.0-rc.2
+version: 1.0
+author: Paul Walsh, Rufus Pollock, Martin Keegan
 created: 7 May 2012
 updated: 2 May 2017
+descriptor: tabular-data-package.json
 mediatype: application/vnd.datapackage+json
-descriptor: datapackage.json
 abstract: A simple format for describing tabular-style data for publishing and sharing.
 ---
 

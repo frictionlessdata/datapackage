@@ -1,8 +1,9 @@
 ---
 title: Profiles
-created: 11 December 2017
+author: Paul Walsh, Rufus Pollock
+created: 11 December 2016
 updated: 24 May 2017
-author: Rufus Pollock (Open Knowledge International), Paul Walsh (Open Knowledge International)
+descriptor: profiles.json
 abstract: Data Package and Data Resource Profiles
 ---
 
