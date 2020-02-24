@@ -8,7 +8,17 @@ descriptor: datapackage.json
 abstract: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
 ---
 
-## Introduction
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+# Introduction
 
 A Data Package consists of:
 
