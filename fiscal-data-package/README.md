@@ -25,7 +25,7 @@ This is a draft specification and still under development. If you have comments 
 
 <Language />
 
-# Changelog
+## Changelog
 
 - `1.0.0rc1`: Updated distinction between spec and standard
 - `1.0.0rc`: A complete rewrite of the spec

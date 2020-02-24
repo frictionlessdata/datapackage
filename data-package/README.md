@@ -19,7 +19,7 @@ abstract: A simple container format for describing a coherent collection of data
 
 <Language />
 
-# Introduction
+## Introduction
 
 A Data Package consists of:
 
@@ -37,7 +37,7 @@ The data included in the package may be provided as:
 * "Inline" data (see below) which is included directly in the descriptor
 
 
-## Illustrative Structure
+### Illustrative Structure
 
 A minimal data package on disk would be a directory containing a single file:
 
@@ -79,9 +79,9 @@ Several example data packages can be found in the [datasets organization on gith
 [gdp]: https://github.com/datasets/gdp
 [3166]: https://github.com/datasets/country-codes
 
-# Specification
+## Specification
 
-## Descriptor
+### Descriptor
 
 The descriptor is the central file in a Data Package. It provides:
 
@@ -137,24 +137,24 @@ Here is an illustrative example of a datapackage JSON file:
 }
 ```    
 
-## Resource Information
+### Resource Information
 
 Packaged data resources are described in the `resources` property of the package descriptor. This property MUST be an array of `objects`. Each object MUST follow the [Data Resource specification][dr].
 
 [dr]: /specs/data-resource/
 
-## Metadata
+### Metadata
 
-### Required Properties
+#### Required Properties
 
 The `resources` property is required, with at least one resource.
 
-### Recommended Properties
+#### Recommended Properties
 
 In addition to the required properties, the following properties SHOULD be included in
 every package descriptor:
 
-#### `name`
+##### `name`
 
 A short url-usable (and preferably human-readable) name of
 the package. This MUST be lower-case and contain only alphanumeric characters
@@ -169,7 +169,7 @@ interpretation. Version distinction SHOULD be left to the version property. As
 a corollary, the name also SHOULD NOT include an indication of time range
 covered.
 
-#### `id`
+##### `id`
 
 A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.
 
@@ -189,7 +189,7 @@ Examples:
 }
 ```
 
-#### `licenses`
+##### `licenses`
 
 The license(s) under which the package is provided.
 
@@ -217,7 +217,7 @@ Here is an example:
 [semver]: http://semver.org
 [url-or-path]: /specs/data-resource/#url-or-path
 
-#### `profile`
+##### `profile`
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
@@ -237,30 +237,30 @@ Examples:
 }
 ```
 
-### Optional Properties
+#### Optional Properties
 
 The following are commonly used properties that the package descriptor MAY contain:
 
-#### `title`
+##### `title`
 
 A `string` providing a title or one sentence description for this package
 
-#### `description`
+##### `description`
 
 a description of the package. The description MUST be
   [markdown][] formatted -- this also allows for simple plain text as plain
   text is itself valid markdown. The first paragraph (up to the first double
   line break) should be usable as summary information for the package.
 
-#### `homepage`
+##### `homepage`
 
 A URL for the home on the web that is related to this data package.
 
-#### `version`
+##### `version`
 
 a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements and should follow the [Data Package Version](/patterns/#data-package-version) pattern.
 
-#### `sources`
+##### `sources`
 
 The raw sources for this data package. It MUST be an array of Source objects. Each Source object MUST have a `title` and MAY have `path` and/or `email` properties. Example:
 
@@ -275,7 +275,7 @@ The raw sources for this data package. It MUST be an array of Source objects. Ea
 * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 * `email`: An email address
 
-#### `contributors`
+##### `contributors`
 
 The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure
   is as follows:
@@ -296,18 +296,18 @@ The people or organizations who contributed to this Data Package. It MUST be an 
   * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
 * `organization`: a string describing the organization this contributor is affiliated to.
 
-#### `keywords`
+##### `keywords`
 
 An Array of string keywords to assist users searching for the
   package in catalogs.
 
-#### `image`
+##### `image`
 
 An image to use for this data package. For example, when showing the package in a listing.
 
 The value of the image property `MUST` be a string pointing to the location of the image. The string must be a [url-or-path][], that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 
-#### `created`
+##### `created`
 
 The datetime on which this was created.
 

@@ -19,7 +19,7 @@ abstract: A simple format for describing tabular-style data for publishing and s
 
 <Language />
 
-# Introduction
+## Introduction
 
 Tabular Data Package is a simple container format used for publishing and sharing tabular-style data. The format's focus is on simplicity and ease of use, especially online. In addition, the format is focused on data that can be presented in a tabular structure and in making it easy to produce (and consume) tabular data packages from spreadsheets and relational databases.
 
@@ -33,7 +33,7 @@ As suggested by the name, Tabular Data Package extends and specializes the [Data
 
 [dp]: /data-package/
 
-## Why CSV
+### Why CSV
 
 We chose CSV as the data format for the Tabular Data Package specification because:
 

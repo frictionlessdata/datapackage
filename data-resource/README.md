@@ -19,13 +19,13 @@ abstract: A simple format to describe and package a single data resource such as
 
 <Language />
 
-# Introduction
+## Introduction
 
 The **Data Resource** format describes a data resource such as an individual file or table.
 The essence of a Data Resource is a locator for the data it describes. 
 A range of other properties can be declared to provide a richer set of metadata.
 
-## Examples
+### Examples
 
 A minimal Data Resource looks as follows:
 
@@ -76,7 +76,7 @@ A comprehensive Data Resource example with all required, recommended and optiona
 }
 ```
 
-## Descriptor
+### Descriptor
 
 A Data Resource descriptor MUST be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
 
@@ -84,7 +84,7 @@ Key properties of the descriptor are described below. A descriptor MAY include a
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
-## Data Location
+### Data Location
 
 A resource MUST contain a property describing the location of the
 data associated to the resource. The location of resource data MUST be
@@ -93,12 +93,12 @@ specified by the presence of one (and only one) of these two properties:
 * `path`: for data in files located online or locally on disk.
 * `data`: for data inline in the descriptor itself.
 
-### `path` Data in Files
+#### `path` Data in Files
 
 `path` MUST be a string -- or an array of strings (see "Data in Multiple
 Files"). Each string MUST be a "url-or-path" as defined in the next section.
 
-#### URL or Path
+##### URL or Path
 
 A "url-or-path" is a `string` with the following additional constraints:
 
@@ -130,7 +130,7 @@ Examples:
 :::notice prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors MAY want to automatically convert a `url` property to a `path` property and issue a warning.
 :::
 
-#### Data in Multiple Files
+##### Data in Multiple Files
 
 Usually, a resource will have only a single file associated to it. However,
 sometimes it may be convenient to have a single resource whose data is split
@@ -149,7 +149,7 @@ array: strings MUST either all be relative paths or all URLs.
 
 !! NOTE: all files in the array MUST be similar in terms of structure, format etc. Implementors MUST be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
 
-### `data` Inline Data
+#### `data` Inline Data
 
 Resource data rather than being stored in external files can be shipped
 'inline' on a Resource using the `data` property.
@@ -197,13 +197,13 @@ Example 2 - inline CSV:
     }
 
 
-## Metadata Properties
+### Metadata Properties
 
-### Required Properties
+#### Required Properties
 
 A descriptor MUST contain the following properties:
 
-#### `name`
+##### `name`
 
 A resource MUST contain a `name` property. The name is a simple name or
   identifier to be used for this resource.
@@ -214,9 +214,9 @@ A resource MUST contain a `name` property. The name is a simple name or
 * It would be usual for the name to correspond to the file name (minus the
   extension) of the data file the resource describes.
 
-### Recommended Properties
+#### Recommended Properties
 
-#### `profile`
+##### `profile`
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
@@ -236,7 +236,7 @@ Examples:
 }
 ```
 
-### Optional Properties
+#### Optional Properties
 
 A descriptor MAY contain any number of additional properties. Common properties include:
 
@@ -259,7 +259,7 @@ A descriptor MAY contain any number of additional properties. Common properties 
 * `licenses`: as for [Data Package metadata][dp]. If not specified the resource
   inherits from the data package.
 
-## Resource Schemas
+### Resource Schemas
 
 A Data Resource MAY have a `schema` property to describe the schema of the resource data.
 

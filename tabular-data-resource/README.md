@@ -19,7 +19,7 @@ abstract: A simple format to describe a single tabular data resource such as a C
 
 <Language />
 
-# Introduction
+## Introduction
 
 A **Tabular Data Resource** is a type of [Data Resource][dr] specialized for describing tabular data like CSV files or spreadsheets.
 
@@ -34,7 +34,7 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
 [ts]: http://specs.frictionlessdata.io/table-schema/
 [cd]: http://specs.frictionlessdata.io/csv-dialect/
 
-## Examples
+### Examples
 
 A minimal Tabular Data Resource, referencing external JSON documents, looks as follows.
 
