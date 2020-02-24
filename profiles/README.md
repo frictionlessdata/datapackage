@@ -17,7 +17,7 @@ abstract: Data Package and Data Resource Profiles
 
 <Language />
 
-# Introduction
+## Introduction
 
 Different kinds of data need different data and metadata formats. To support these different data and metadata formats we need to extend and specialise the generic Data Package. These specialized types of Data Package (or Data Resource) are termed **profiles**. For example, there is a [Tabular Data Package][tdp] profile that specializes Data Packages specifically for tabular data.
 
@@ -25,7 +25,7 @@ Thus, every Package and Resource descriptor has a profile. The namespace for the
 
 In summary, an extension of Data Package may be formalised as a profile. A profile is a Data Package which extends the default specification towards more specific needs.
 
-## `profile` Property
+### `profile` Property
 
 In addition to the concept, we need an explicit way for publishers to state the profile they are using and consumers to discover this.
 

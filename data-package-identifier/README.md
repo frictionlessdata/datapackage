@@ -18,7 +18,7 @@ abstract: Data Package Identifiers are small JSON-oriented structure or strings 
 
 <Language />
 
-# Introduction
+## Introduction
 
 Data Package Identifiers are a simple way to identify a Data Package (and its
 location) using a string or small JSON object.
@@ -37,7 +37,7 @@ data info gdp
 data install https://github.com/datasets/gold-prices
 ```
 
-## Identifier Object Structure
+### Identifier Object Structure
 
 The object structure looks like:
 
@@ -62,7 +62,7 @@ It can be parsed (and less importantly) serialized to a simple string. Spec
 strings will be frequently used on e.g. the command line to identify a data
 package.
 
-## Identifier String
+### Identifier String
 
 An Identifier String is a single string (rather than JSON object) that points to a Data Package.  An Identifier String can be, in decreasing order of explicitness:
 

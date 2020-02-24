@@ -24,11 +24,9 @@ This is a draft specification and still under development. If you have comments 
 
 <Language />
 
-# Changelog
+## Changelog
 
 - `1.0.0rc1`: Initial text
-
-[toc]
 
 ## Introduction
 
@@ -41,7 +39,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
   - Functional: COFOG and Generic
   - Economic: GFSM and Generic
   - Administrative
-  - Activity 
+  - Activity
 - Other Budgeting-related Properties
 - Geo-Related types
 
@@ -49,7 +47,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
 ## References
 - [The Fiscal Data Package Spec](/specs/fiscal-data-package/)
 
-## Location 
+## Location
 
 The canonic location for this taxonomy's _ColumnType_ definition - to be used in fiscal data package descriptors - is
 

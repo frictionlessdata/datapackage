@@ -19,7 +19,7 @@ abstract: A simple format to declare a schema for tabular data. The schema is de
 
 <Language />
 
-# Introduction
+## Introduction
 
 Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of applications where data benefits from a portable schema format.
 

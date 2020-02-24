@@ -18,15 +18,15 @@ abstract: A simple format for describing a views on data that leverages existing
 
 <Language />
 
-# Introduction
+## Introduction
 
 Producers and consumers of data want to have data presented in tables and graphs -- "views" on the data. They want this for a range of reasons, from simple eyeballing to drawing out key insights,
 
-This specification sets out a way to describe views for data packages using a simple delclarative syntax that can be easily serialized in JSON.
+This specification sets out a way to describe views for data packages using a simple declarative syntax that can be easily serialized in JSON.
 
 We focus on doing the minimum to connect data package data with existing graph and table specification systems like Vega.
 
-## Desired Features
+### Desired Features
 
 * Specify views such as graphs and tables as part of a data package
   * => views should be describable in a specification serializable as JSON
@@ -37,7 +37,7 @@ We focus on doing the minimum to connect data package data with existing graph a
 
 [Vega]: http://vega.github.io/
 
-## Concepts and Background
+### Concepts and Background
 
 To generate visualizations you need three kinds of information:
 

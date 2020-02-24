@@ -17,7 +17,7 @@ abstract: Security considerations around Data Packages and Data Resources
 
 <Language />
 
-# Library users
+## Library users
 
 Data packages is a container format that allows the creator to specify payload data (Resources) either as JSON 
 objects/arrays or via pointers. There are two pointer formats:
