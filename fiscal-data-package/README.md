@@ -1,8 +1,10 @@
 ---
 title: Fiscal Data Package
-version: 1.0rc1
+version: 1.0-rc.1
+author: Paul Walsh, Rufus Pollock, Tryggvi Björgvinsson, Steve Bennett, Adam Kariv, Dan Fowler
 created: 14 March 2014
 updated: 22 April 2018
+descriptor: fiscal-data-package.json
 abstract: Fiscal Data Package is a lightweight and user-oriented format for publishing and consuming fiscal data. Fiscal data packages are made of simple and universal components. They can be produced from ordinary spreadsheet software and used in any environment.
 ---
 

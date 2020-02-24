@@ -1,9 +1,10 @@
 ---
 title: Data Package Identifier
-version: 1.0-alpha
+version: 1.0
 author: Rufus Pollock
 created: 17 August 2014
 updated: 02 November 2014
+descriptor: data-package.json
 abstract: Data Package Identifiers are small JSON-oriented structure or strings which identify a Data Package (and, usually, its location).
 ---
 

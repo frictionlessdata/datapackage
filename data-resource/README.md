@@ -1,10 +1,11 @@
 ---
 title: Data Resource
-version: 1.0-rc.2
+version: 1.0
+author: Paul Walsh, Rufus Pollock
 created: 11 December 2016
 updated: 17 April 2018
 mediatype: application/vnd.dataresource+json
-descriptor: dataresource.json
+descriptor: data-resource.json
 abstract: A simple format to describe and package a single data resource such as a individual table or file.
 ---
 
