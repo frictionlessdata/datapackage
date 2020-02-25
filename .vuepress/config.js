@@ -17,7 +17,34 @@ module.exports = {
     logo: "/logo-dot.svg",
     repo: 'https://github.com/frictionlessdata/specs',
     editLinks: true,
-    sidebar: 'auto',
+    sidebar: [ 
+      {
+        title: 'Home',
+        collapsable: false,
+        children: [
+          '/'
+        ]
+
+      },
+      {
+       title: 'Specifications', 
+       collapsable: false,
+       children: [
+        '/csv-dialect/',
+        '/data-package/',
+        '/data-package-identifier/',
+        '/data-resource/',
+        '/fiscal-data-package/',
+        '/fiscal-data-package--budgets/',
+        '/fiscal-data-package--spending/',
+        '/profiles/',
+        '/security/',
+        '/tabular-data-package/',
+        '/tabular-data-resource/',
+        '/views/'
+        ]
+      }
+    ],
     nav: [
       { text: 'Home', link: '/' },
       {
