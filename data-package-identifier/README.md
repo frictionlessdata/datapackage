@@ -6,6 +6,7 @@ created: 17 August 2014
 updated: 02 November 2014
 descriptor: data-package.json
 abstract: Data Package Identifiers are small JSON-oriented structure or strings which identify a Data Package (and, usually, its location).
+sidebar: auto
 ---
 
 # {{ $page.frontmatter.title }}

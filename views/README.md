@@ -6,6 +6,7 @@ created: 2012
 updated: 2 May 2017
 descriptor: views.json
 abstract: A simple format for describing a views on data that leverages existing specifications like Vega and connects them with data provided in data packages or data resources.
+sidebar: auto
 ---
 
 # {{ $page.frontmatter.title }}
