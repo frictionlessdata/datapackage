@@ -5,6 +5,7 @@ created: 11 December 2016
 updated: 24 May 2017
 descriptor: profiles.json
 abstract: Data Package and Data Resource Profiles
+sidebar: auto
 ---
 
 # {{ $page.frontmatter.title }}

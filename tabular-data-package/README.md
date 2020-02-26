@@ -7,6 +7,7 @@ updated: 2 May 2017
 descriptor: tabular-data-package.json
 mediatype: application/vnd.datapackage+json
 abstract: A simple format for describing tabular-style data for publishing and sharing.
+sidebar: auto
 ---
 
 # {{ $page.frontmatter.title }}

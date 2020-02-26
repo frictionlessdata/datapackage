@@ -1,6 +1,7 @@
 ---
 title: Implementation
 _model: page
+sidebar: auto
 ---
 
 # Overview

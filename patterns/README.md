@@ -10,6 +10,7 @@ author:
  - Johan Richer (Jailbreak)
  - Michael Rosenthal
 abstract: A collection of patterns for frictionless handling of data.
+sidebar: auto
 ---
 
 [issues]: https://github.com/frictionlessdata/specs/issues

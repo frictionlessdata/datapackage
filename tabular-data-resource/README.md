@@ -7,6 +7,7 @@ updated: 2 May 2017
 descriptor: tabular-data-package.json
 mediatype: application/vnd.dataresource+json
 abstract: A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
+sidebar: auto
 ---
 
 # {{ $page.frontmatter.title }}
