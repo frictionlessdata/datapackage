@@ -323,4 +323,4 @@ Identical to Vega approach but without any data specified in the visualization s
 
 ### Data Transforms
 
-*In progess.*
+*In progress.*

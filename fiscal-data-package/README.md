@@ -164,14 +164,14 @@ We can see that this data provides detailed information about the individual tra
 - _Where_ would be the _Recipient_ of the transaction, and
 - _Item_ would be the _Purpose_ of the transaction
 
-Combined with the original budget (using the _ID_ columns), we can know _Who_ did each purchase, for what purpose and with wich payment method.
+Combined with the original budget (using the _ID_ columns), we can know _Who_ did each purchase, for what purpose and with which payment method.
 
 We can then aggregate the transactions and get an _Executed Budget_ data set, which contains both the planned and executed figures for each aggregated row:
 
 | Week | ID | Buyer    | Purpose  | Payment Method   | Planned| Executed |
 |------|----|----------|----------|------------------|--------|----|
 | 1-7/Oct   | 1  | George   | Food     | Credit Card      | $100   | $107.60 |
-| 1-7/Oct   | 2  | George   | Books    | Paypal Account   | $15    | $0 | 
+| 1-7/Oct   | 2  | George   | Books    | PayPal Account   | $15    | $0 | 
 | 1-7/Oct   | 3.1| Lorraine | Clothing | Shop Gift Card   | $25    | $25 | 
 | 1-7/Oct   | 3.2| Lorraine | Clothing | Credit Card      | $10    | $3.8 | 
 | 1-7/Oct   | 4  | Lorraine | Fuel     | Credit Card      | $40    | $45 | 
@@ -257,7 +257,7 @@ Lorraine, a Data Scientist, took a different approach. In the email that she sen
 | PaymentMethodID | Payment Method |
 | ------- | ----- | 
 | PM1 | Credit Card | 
-| PM2 | Paypal Account | 
+| PM2 | PayPal Account | 
 | PM3 | Shop Gift Card | 
 | PM4 | Allowance - Cash | 
 
