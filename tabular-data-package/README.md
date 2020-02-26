@@ -38,7 +38,7 @@ As suggested by the name, Tabular Data Package extends and specializes the [Data
 
 We chose CSV as the data format for the Tabular Data Package specification because:
 
-1. CSV is very simple -- it is possibily *the* most simple data format
+1. CSV is very simple -- it is possibly *the* most simple data format
 2. CSV is tabular-oriented. Most data structures are either tabular or can be transformed to a tabular structure by some form of normalization
 3. It is open and the "standard" is well-known
 4. It is widely supported - practically every spreadsheet program, relational database and programming language in existence can handle CSV in some form or other

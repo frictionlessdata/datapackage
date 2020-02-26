@@ -258,7 +258,7 @@ A date without a time.
   library.
 * **\<PATTERN\>**: date/time values in this field can be parsed according to
   `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
-  strptime][strptime]. (That is, values in the this field should be parseable
+  strptime][strptime]. (That is, values in the this field should be parsable
   by Python / C standard `strptime` using `<PATTERN>`).  Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
@@ -567,7 +567,7 @@ The `primaryKey`, if present, MUST be:
   value (indicating just one field in the primary key). Strictly, order of
   values in the array does not matter. However, it is RECOMMENDED that one
   follow the order the fields in the `fields` has as client applications may
-  utitlize the order of the primary key list (e.g. in concatenating values
+  utilize the order of the primary key list (e.g. in concatenating values
   together).
 * Or: a single string corresponding to one of the field `name` values in
   the `fields` array (indicating that this field is the primary key). Note that

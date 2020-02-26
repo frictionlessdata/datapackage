@@ -407,7 +407,7 @@ None known.
 
 ### Overview
 
- Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual informations (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.
+ Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual information (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.
 
 Currently it is possible to add custom properties to a Table Schema, but the lack of consensus about those properties restricts common tooling and wider adoption.
 
@@ -415,7 +415,7 @@ Currently it is possible to add custom properties to a Table Schema, but the lac
 
 - Documentation: generating Markdown documentation from the schema itself is a useful use case, and contextual information (description, version, authors...) needs to be retrieved.
 - Cataloging: open data standardisation can be increased by improving Table Schemas shareability, for example by searching and categorising them (by keywords, countries, full-text...) in catalogs.
-- Machine readibility: tools like Goodtables could use catalogs to access Table Schemas in order to help users validate tabular files against existing schemas. Metadata would be needed for tools to find and read those schemas.
+- Machine readability: tools like Goodtables could use catalogs to access Table Schemas in order to help users validate tabular files against existing schemas. Metadata would be needed for tools to find and read those schemas.
 
 ### Specification
 
@@ -430,9 +430,9 @@ _Tags are useful to categorise and catalog schemas._
 _Since open data schemas are very country-specific, it's useful to have this information in a structured way._
 - `homepage`: The home on the web that is related to this schema.
 - `path`: A fully qualified URL for this schema.
-_The direct path to the schema itself can be useful to help acessing it (i.e. machine readibility)._
+_The direct path to the schema itself can be useful to help accessing it (i.e. machine readability)._
 - `image`: An image to represent this schema.
-_An optional illustration can be useful for example in catalogs to differenciate schemas in a list._
+_An optional illustration can be useful for example in catalogs to differentiate schemas in a list._
 - `licenses`: The license(s) under which this schema is published.
 - `resources`: Example tabular data resource(s) validated or invalidated against this schema.
 _Oftentimes, schemas are shared with example resources to illustrate them, with valid or even invalid files (e.g. with constraint errors)._

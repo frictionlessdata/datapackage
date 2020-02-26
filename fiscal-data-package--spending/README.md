@@ -5,7 +5,7 @@ created: 14 March 2014
 updated: 22 April 2018
 descriptor: fiscal-data-package-spending.json
 under-development: true
-abstract: The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe spending data of organisations (governments or otherwise.)  
+abstract: The Budget Taxonomy is a set of ColumnTypes to be used in the context of a Fiscal Data Package to describe spending data of organisations (governments or otherwise.)  
 sidebar: auto
 ---
 
@@ -32,11 +32,11 @@ This is a draft specification and still under development. If you have comments 
 
 ## Introduction
 
-This document contains a _ColumnType_ taxonomy to be used for publishing spending data files. It should be used in conjuction with the budget taxonomy, as it contains some common _ColumnTypes_ as well.
+This document contains a _ColumnType_ taxonomy to be used for publishing spending data files. It should be used in conjunction with the budget taxonomy, as it contains some common _ColumnTypes_ as well.
 
 The _ColumnTypes_ contained in this taxonomy contain:
 - Transactions Identifiers
-- Details about admimistrators, procurers, suppliers and recipients
+- Details about administrators, procurers, suppliers and recipients
 - Some Geographic related types (esp. for addresses)
 
 ## References

@@ -25,7 +25,7 @@ objects/arrays or via pointers. There are two pointer formats:
 - local file system references. Those follow POSIX naming conventions and have to be relative to the Package Descriptor 
 file ("datapackage.json"). Absolute paths are disallowed as they would open data exfiltration attacks. They would also 
 be rarely useful, considering you typically cannot know the file system layout of the user's computer
-- URLs as pointers to remote Resoures. They are intended to load datasets from sites like statistic's offices as the 
+- URLs as pointers to remote Resources. They are intended to load datasets from sites like statistic's offices as the 
 basis of Data Packages. Only HTTP/HTTPS URLs are allowed, library maintainers have to filter out others like file-URLs
 
 Both formats can open security holes that can be used to attack the user's computer and/or network. It is therefore 
@@ -120,7 +120,7 @@ internet, it NEVER safe to accept Data Packages containing URL-based Resource po
 
 If the Descriptor is not loaded from file or created via a third-party application but by your software, it is 
 generally assumed you know what you do and therefore, loading Resources from URLs or file is considered safe. You 
-still SHOULD NOT use absolute paths as a matter of precaution - and implementating libraries should filter them out.
+still SHOULD NOT use absolute paths as a matter of precaution - and implementing libraries should filter them out.
 
 
 ## Library creators
@@ -137,7 +137,7 @@ As URLs are part of the DNA of Data Packages, it is not advisable to disallow th
 allow for a security setting that stops your implementation from loading URL-based Resources. This could be done
 - via a setting switch (`insecure`/`default`) that allows the user of your library implementation to allow or
 disallow absolute file paths and URL-based Resource pointers
-- via a pluggable security filter that is applied as an incerceptor *before* loading any pointer-based Resources. If
+- via a pluggable security filter that is applied as an interceptor *before* loading any pointer-based Resources. If
 you decide to use such a scheme, you SHOULD provide default implementations for a filter disallowing URL-based
 Resource and an insecure filter that allows loading of all Resources.
 
