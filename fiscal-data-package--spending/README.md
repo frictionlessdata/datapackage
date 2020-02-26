@@ -4,6 +4,7 @@ version: 1.0-rc.1
 created: 14 March 2014
 updated: 22 April 2018
 descriptor: fiscal-data-package-spending.json
+under-development: true
 abstract: The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe spending data of organisations (governments or otherwise.)  
 ---
 
