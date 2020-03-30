@@ -39,6 +39,7 @@ module.exports = {
         '/fiscal-data-package--spending/',
         '/profiles/',
         '/security/',
+        '/table-schema/',
         '/tabular-data-package/',
         '/tabular-data-resource/',
         '/views/'
