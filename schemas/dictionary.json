@@ -421,7 +421,17 @@
     "csvDialect": {
       "title": "CSV Dialect",
       "description": "The CSV dialect descriptor.",
-      "type": "object",
+      "oneOf": [
+        {
+          "title": "Dialect file path",
+          "description": "A fully qualified URL, or a POSIX file path.",
+          "type": "string"
+        },
+        {
+          "title": "Dialect as JSON",
+          "description": "A dialect encoded as a JSON object",
+          "type": "object"
+        }],
       "required": [
         "delimiter",
         "doubleQuote"
