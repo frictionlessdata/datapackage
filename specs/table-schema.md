@@ -410,7 +410,7 @@ properties.
       All
     </td>
     <td>
-      Indicates whether this field cannot be `null`. If required is `false` (the default), then `null` is allowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values.
+      Indicates whether this field cannot be <code>null</code>. If required is <code>false</code> (the default), then <code>null</code> is allowed. See the section on <code>missingValues</code> for how, in the physical representation of the data, strings can represent <code>null</code> values.
     </td>
   </tr>
   <tr>
@@ -424,7 +424,7 @@ properties.
       All
     </td>
     <td>
-      If `true`, then all values for that field MUST be unique within the data file in which it is found.
+      If <code>true</code>, then all values for that field MUST be unique within the data file in which it is found.
     </td>
   </tr>
   <tr>
@@ -466,7 +466,7 @@ properties.
       <code>integer, number, date, time, datetime, year, yearmonth</code>
     </td>
     <td>
-      Specifies a minimum value for a field. This is different to `minLength` which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
+      Specifies a minimum value for a field. This is different to <code>minLength</code> which checks the number of items in the value. A <code>minimum</code> value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the <code>type</code> of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a <code>minimum</code> value constraint is specified then the field descriptor <code>MUST</code> contain a <code>type</code> key.
     </td>
   </tr>
   <tr>
@@ -494,7 +494,7 @@ properties.
       <code>string</code>
     </td>
     <td>
-      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field `MUST` conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
+      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field <code>MUST</code> conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
     </td>
   </tr>
   <tr>
@@ -508,7 +508,7 @@ properties.
       All
     </td>
     <td>
-      The value of the field must exactly match a value in the `enum` array.
+      The value of the field must exactly match a value in the <code>enum</code> array.
     </td>
   </tr>
 </table>
