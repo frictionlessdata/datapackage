@@ -148,7 +148,7 @@ header:
       }
 commentChar:
   title: Comment Character
-  description: Specifies a character sequence causing the rest of the line after it to be ignored.
+  description: Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.
   type: string
   examples:
   - |
