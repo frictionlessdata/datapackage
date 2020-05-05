@@ -2,7 +2,7 @@ name: Continuous Deployment
 on: 
   push:
     branches:
-      - back-to-own-subsite-2020 
+      - master 
   
 jobs:
   integration-tests:
@@ -19,7 +19,7 @@ jobs:
     - name: Run tests
       run: npm run test
   deploy:
-    if: github.ref == 'refs/heads/back-to-own-subsite-2020'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: [integration-tests]
     steps:
