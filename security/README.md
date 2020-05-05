@@ -1,23 +1,31 @@
+---
 title: Security
+author: Johannes Jander
+created: 17 November 2019
+updated: 18 November 2019
+descriptor: security.json 
+abstract: Security considerations around Data Packages and Data Resources
+sidebar: auto
 ---
-updated: 18. November 2019
----
-created: 17. November 2019
----
-author:
- - Johannes Jander
----
-summary: Security considerations around Data Packages and Data Resources
----
-body:
+
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Library users
+
 Data packages is a container format that allows the creator to specify payload data (Resources) either as JSON 
 objects/arrays or via pointers. There are two pointer formats:
 - local file system references. Those follow POSIX naming conventions and have to be relative to the Package Descriptor 
 file ("datapackage.json"). Absolute paths are disallowed as they would open data exfiltration attacks. They would also 
 be rarely useful, considering you typically cannot know the file system layout of the user's computer
-- URLs as pointers to remote Resoures. They are intended to load datasets from sites like statistic's offices as the 
+- URLs as pointers to remote Resources. They are intended to load datasets from sites like statistic's offices as the 
 basis of Data Packages. Only HTTP/HTTPS URLs are allowed, library maintainers have to filter out others like file-URLs
 
 Both formats can open security holes that can be used to attack the user's computer and/or network. It is therefore 
@@ -39,6 +47,7 @@ Resources in the format on the top as:
 ![alt text](security_matrix.png)
 
 ### Descriptor source is a URL
+
 If your descriptor is loaded via URL, and the server to which the URL points is not fully trusted, you 
 SHOULD NOT allow Data Packages with Resource pointers in 
 - URLs. As described in [issue #650](https://github.com/frictionlessdata/specs/issues/650), URLs crafted by the author 
@@ -54,6 +63,7 @@ those CSV files which might overwhelm the user's computer. If an attacker were a
 Data Package, this could exhaust the resources of a hosting service.
 
 ### Descriptor source is a local relative path 
+
 If your descriptor is loaded via a local relative path, and the source of the Data Package is not fully trusted, you 
 SHOULD NOT allow Data Packages with Resource pointers in 
 - URLs. As described in [issue #650](https://github.com/frictionlessdata/specs/issues/650), URLs crafted by the author 
@@ -70,6 +80,7 @@ If Data Package parsing is part of a service offered to computers across subnets
 internet, it NEVER safe to accept Data Packages containing URL-based Resource pointers.
 
 ### Descriptor source is a local relative path 
+
 While it is never safe to accept absolute file paths for Resources, it is perfectly safe to accept them for Descriptor
 files. If your descriptor is loaded via a local absolute path, and the source of the Data Package is not fully 
 trusted, you SHOULD NOT allow Data Packages with Resource pointers in 
@@ -87,6 +98,7 @@ If Data Package parsing is part of a service offered to computers across subnets
 internet, it NEVER safe to accept Data Packages containing URL-based Resource pointers.
 
 ### Descriptor source is a JSON object
+
 If the Descriptor is not loaded from file but created in-memory and the source of the Data Package is not fully 
 trusted, you SHOULD NOT allow Data Packages with Resource pointers in 
 - URLs. As described in [issue #650](https://github.com/frictionlessdata/specs/issues/650), URLs crafted by the author 
@@ -105,12 +117,14 @@ internet, it NEVER safe to accept Data Packages containing URL-based Resource po
 
 
 ### Descriptor source is a self-created JSON object
+
 If the Descriptor is not loaded from file or created via a third-party application but by your software, it is 
 generally assumed you know what you do and therefore, loading Resources from URLs or file is considered safe. You 
-still SHOULD NOT use absolute paths as a matter of precaution - and implementating libraries should filter them out.
+still SHOULD NOT use absolute paths as a matter of precaution - and implementing libraries should filter them out.
 
 
 ## Library creators
+
 Two kinds of Resource pointers can never be guaranteed to be totally safe:
 - Absolute file system references. Absolute paths can be used to exfiltrate system files (eg. /etc/passwd on 
 Unix-like systems). In your implementation, you SHOULD either raise an error if an absolute local path is encountered
@@ -123,11 +137,12 @@ As URLs are part of the DNA of Data Packages, it is not advisable to disallow th
 allow for a security setting that stops your implementation from loading URL-based Resources. This could be done
 - via a setting switch (`insecure`/`default`) that allows the user of your library implementation to allow or
 disallow absolute file paths and URL-based Resource pointers
-- via a pluggable security filter that is applied as an incerceptor *before* loading any pointer-based Resources. If
+- via a pluggable security filter that is applied as an interceptor *before* loading any pointer-based Resources. If
 you decide to use such a scheme, you SHOULD provide default implementations for a filter disallowing URL-based
 Resource and an insecure filter that allows loading of all Resources.
 
 ### Security Filters
+
 If disallowing all URL-based Resources is too heavy-handed and allowing all is too insecure, finer-grained filters
 should be implemented. Those finer security filters can be implemented as either blacklist or whitelist filters. 
 Blacklist filters in principle allow all URLs and restrict some, whereas whitelist filters deny all as a default 

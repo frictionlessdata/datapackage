@@ -1,22 +1,24 @@
+---
 title: Tabular Data Package
----
-slug: tabular-data-package
----
-mediatype: application/vnd.datapackage+json
----
-version: 1.0.0-rc.2
----
-updated: 2 May 2017
----
+version: 1.0
+author: Paul Walsh, Rufus Pollock, Martin Keegan
 created: 7 May 2012
+updated: 2 May 2017
+descriptor: tabular-data-package.json
+mediatype: application/vnd.datapackage+json
+abstract: A simple format for describing tabular-style data for publishing and sharing.
+sidebar: auto
 ---
-descriptor: datapackage.json
----
-abstract:
 
-A simple format for describing tabular-style data for publishing and sharing.
----
-body:
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Introduction
 
@@ -30,13 +32,13 @@ The key features of this format are the following:
 
 As suggested by the name, Tabular Data Package extends and specializes the [Data Package][dp] spec for the specific case where the data is tabular.
 
-[dp]: http://frictionlessdata.io/specs/data-package/
+[dp]: /data-package/
 
 ### Why CSV
 
 We chose CSV as the data format for the Tabular Data Package specification because:
 
-1. CSV is very simple -- it is possibily *the* most simple data format
+1. CSV is very simple -- it is possibly *the* most simple data format
 2. CSV is tabular-oriented. Most data structures are either tabular or can be transformed to a tabular structure by some form of normalization
 3. It is open and the "standard" is well-known
 4. It is widely supported - practically every spreadsheet program, relational database and programming language in existence can handle CSV in some form or other
@@ -64,7 +66,7 @@ Tabular Data Package has the following requirements over and above those imposed
 - There `MUST` be a `profile` property with the value `tabular-data-package`
 - Each `resource` `MUST` be a [Tabular Data Resource][tdr]
 
-[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
+[tdr]: /tabular-data-resource/
 
 ### Example
 

@@ -1,16 +1,24 @@
+---
 title: Profiles
----
+author: Paul Walsh, Rufus Pollock
+created: 11 December 2016
 updated: 24 May 2017
+descriptor: profiles.json
+abstract: Data Package and Data Resource Profiles
+sidebar: auto
 ---
-created: 11 December 2017
----
-author:
- - Rufus Pollock (Open Knowledge International)
- - Paul Walsh (Open Knowledge International)
----
-summary: Data Package and Data Resource Profiles
----
-body:
+
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+## Introduction
 
 Different kinds of data need different data and metadata formats. To support these different data and metadata formats we need to extend and specialise the generic Data Package. These specialized types of Data Package (or Data Resource) are termed **profiles**. For example, there is a [Tabular Data Package][tdp] profile that specializes Data Packages specifically for tabular data.
 
@@ -18,7 +26,7 @@ Thus, every Package and Resource descriptor has a profile. The namespace for the
 
 In summary, an extension of Data Package may be formalised as a profile. A profile is a Data Package which extends the default specification towards more specific needs.
 
-## `profile` Property
+### `profile` Property
 
 In addition to the concept, we need an explicit way for publishers to state the profile they are using and consumers to discover this.
 
@@ -35,7 +43,7 @@ We also publish the following Data Resource profiles:
 
 * [Tabular Data Resource][tdr]
 
-[registry]: http://frictionlessdata.io/schemas/registry.json
-[tdp]: http://frictionlessdata.io/specs/tabular-data-package/
-[fdp]: http://frictionlessdata.io/specs/fiscal-data-package/
-[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
+[registry]: /schemas/registry.json
+[tdp]: /tabular-data-package/
+[fdp]: /fiscal-data-package/
+[tdr]: /tabular-data-resource/

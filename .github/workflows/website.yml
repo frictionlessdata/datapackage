@@ -1,5 +1,9 @@
 name: Continuous Deployment
-on: [push]
+on: 
+  push:
+    branches:
+      - master 
+  
 jobs:
   integration-tests:
     runs-on: ubuntu-latest
@@ -10,12 +14,10 @@ jobs:
       run: npm install
     - name: Build
       run: npm run build
+    - name: Build Schemas
+      run: npm run buildschemas
     - name: Run tests
       run: npm run test
-    - uses: actions/upload-artifact@v1
-      with:
-        name: Videos
-        path: cypress/videos  
   deploy:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -27,9 +29,11 @@ jobs:
       run: npm install
     - name: Build
       run: npm run build
+    - name: Build Schemas
+      run: npm run buildschemas
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.WEBSITE_DEPLOY_KEY }}
         BRANCH: gh-pages
-        FOLDER: site/.vuepress/dist 
+        FOLDER: .vuepress/dist 

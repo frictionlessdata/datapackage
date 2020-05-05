@@ -1,25 +1,31 @@
+---
 title: Fiscal Data Package
----
-slug: fiscal-data-package
----
-version: 1.0rc1
----
-updated: 22 April 2018
----
+version: 1.0-rc.1
+author: Paul Walsh, Rufus Pollock, Tryggvi Björgvinsson, Steve Bennett, Adam Kariv, Dan Fowler
 created: 14 March 2014
+updated: 22 April 2018
+descriptor: fiscal-data-package.json
+under-development: true
+abstract: Fiscal Data Package is a lightweight and user-oriented format for publishing and consuming fiscal data. Fiscal data packages are made of simple and universal components. They can be produced from ordinary spreadsheet software and used in any environment.
+sidebar: auto
 ---
-abstract:
 
-Fiscal Data Package is a lightweight and user-oriented format for publishing and consuming fiscal data. Fiscal data packages are made of simple and universal components. They can be produced from ordinary spreadsheet software and used in any environment.
----
-body:
-
-
-!! NOTE: This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
-
+:::warning 
+This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
+:::
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs/issues
+
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Changelog
 
@@ -158,14 +164,14 @@ We can see that this data provides detailed information about the individual tra
 - _Where_ would be the _Recipient_ of the transaction, and
 - _Item_ would be the _Purpose_ of the transaction
 
-Combined with the original budget (using the _ID_ columns), we can know _Who_ did each purchase, for what purpose and with wich payment method.
+Combined with the original budget (using the _ID_ columns), we can know _Who_ did each purchase, for what purpose and with which payment method.
 
 We can then aggregate the transactions and get an _Executed Budget_ data set, which contains both the planned and executed figures for each aggregated row:
 
 | Week | ID | Buyer    | Purpose  | Payment Method   | Planned| Executed |
 |------|----|----------|----------|------------------|--------|----|
 | 1-7/Oct   | 1  | George   | Food     | Credit Card      | $100   | $107.60 |
-| 1-7/Oct   | 2  | George   | Books    | Paypal Account   | $15    | $0 | 
+| 1-7/Oct   | 2  | George   | Books    | PayPal Account   | $15    | $0 | 
 | 1-7/Oct   | 3.1| Lorraine | Clothing | Shop Gift Card   | $25    | $25 | 
 | 1-7/Oct   | 3.2| Lorraine | Clothing | Credit Card      | $10    | $3.8 | 
 | 1-7/Oct   | 4  | Lorraine | Fuel     | Credit Card      | $40    | $45 | 
@@ -251,7 +257,7 @@ Lorraine, a Data Scientist, took a different approach. In the email that she sen
 | PaymentMethodID | Payment Method |
 | ------- | ----- | 
 | PM1 | Credit Card | 
-| PM2 | Paypal Account | 
+| PM2 | PayPal Account | 
 | PM3 | Shop Gift Card | 
 | PM4 | Allowance - Cash | 
 
@@ -538,7 +544,7 @@ Finally we tie all of these resources together into the main table (also known a
           },
         ],
 ```
-Now, let's use the magic of [foreign keys](http://frictionlessdata.io/specs/table-schema/#foreign-keys) to connect the main table to all the secondary tables:
+Now, let's use the magic of [foreign keys](/table-schema/#foreign-keys) to connect the main table to all the secondary tables:
 ```yaml
         "foreignKeys": [
           {
@@ -947,7 +953,7 @@ So far it's quite straightforward (we omit the resources section for brevity).
 Now we define the _ColumnTypes_ that are being used in this specification.
 ```yaml
   "columnTypes": [
-    "https://frictionlessdata.io/taxonomies/fiscal/budgets.json",
+    "https://specs.frictionlessdata.io/taxonomies/fiscal/budgets.json",
 ```
 We start by specifying that we'll be using the budget taxonomy _ColumnTypes_, as described [here](./fiscal-data-package--budgets.md).
 

@@ -1,20 +1,24 @@
+---
 title: Table Schema
----
-slug: table-schema
----
-mediatype: application/vnd.tableschema+json
----
-version: 1.0.0-rc.2
----
-updated: 4 October 2019
----
+version: 1.0
+author: Paul Walsh, Rufus Pollock
 created: 12 November 2012
----
-descriptor: tableschema.json
----
+updated: 4 October 2019
+descriptor: table-schema.json
+mediatype: application/vnd.tableschema+json
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
+sidebar: auto
 ---
-body:
+
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Introduction
 
@@ -254,7 +258,7 @@ A date without a time.
   library.
 * **\<PATTERN\>**: date/time values in this field can be parsed according to
   `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
-  strptime][strptime]. (That is, values in the this field should be parseable
+  strptime][strptime]. (That is, values in the this field should be parsable
   by Python / C standard `strptime` using `<PATTERN>`).  Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
@@ -377,7 +381,7 @@ The corresponding Table Schema is:
 
 The `constraints` property on Table Schema Fields can be used by consumers to list constraints for validating field values. For example, validating the data in a [Tabular Data Resource][tdr] against its Table Schema; or as a means to validate data being collected or updated via a data entry interface.
 
-[tdr]: http://frictionlessdata.io/specs/tabular-data-resource/
+[tdr]: http://specs.frictionlessdata.io/tabular-data-resource/
 
 All constraints `MUST` be tested against the logical representation of data, and the physical representation of constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
@@ -563,7 +567,7 @@ The `primaryKey`, if present, MUST be:
   value (indicating just one field in the primary key). Strictly, order of
   values in the array does not matter. However, it is RECOMMENDED that one
   follow the order the fields in the `fields` has as client applications may
-  utitlize the order of the primary key list (e.g. in concatenating values
+  utilize the order of the primary key list (e.g. in concatenating values
   together).
 * Or: a single string corresponding to one of the field `name` values in
   the `fields` array (indicating that this field is the primary key). Note that
@@ -690,7 +694,7 @@ An example of a self-referencing foreign key:
 
 **Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
 
-[dp]: http://frictionlessdata.io/specs/data-package/
+[dp]: http://specs.frictionlessdata.io/data-package/
 
 ## Appendix: Related Work
 

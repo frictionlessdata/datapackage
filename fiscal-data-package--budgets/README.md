@@ -1,31 +1,34 @@
+---
 title: Fiscal Data Package - Budget Standard Taxonomy
----
-slug: fiscal-data-package--budgets
----
-version: 1.0rc1
----
-updated: 22 April 2018
----
+version: 1.0-rc.1
 created: 14 March 2014
+updated: 22 April 2018
+descriptor: fiscal-data-package-budgets.json
+under-development: true
+abstract: The Budget Taxonomy is a set of ColumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
+sidebar: auto
 ---
-abstract:
 
-The Budget Taxonomy is a set of ClumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
----
-body:
-
-
-!! NOTE: This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
-
+:::warning 
+This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
+:::
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs/issues
 
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
 ## Changelog
 
 - `1.0.0rc1`: Initial text
-
-[toc]
 
 ## Introduction
 
@@ -38,7 +41,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
   - Functional: COFOG and Generic
   - Economic: GFSM and Generic
   - Administrative
-  - Activity 
+  - Activity
 - Other Budgeting-related Properties
 - Geo-Related types
 
@@ -46,11 +49,11 @@ The _ColumnTypes_ contained in this taxonomy contain:
 ## References
 - [The Fiscal Data Package Spec](/specs/fiscal-data-package/)
 
-## Location 
+## Location
 
 The canonic location for this taxonomy's _ColumnType_ definition - to be used in fiscal data package descriptors - is
 
-`https://frictionlessdata.io/taxonomies/fiscal/budgets.json`
+`https://specs.frictionlessdata.io/taxonomies/fiscal/budgets.json`
 
 ## The Taxonomy
 

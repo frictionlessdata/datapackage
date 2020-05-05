@@ -1,11 +1,7 @@
-_model: page
 ---
 title: Patterns
----
-updated: 22 May 2019
----
 created: 11 December 2017
----
+updated: 22 May 2019
 author:
  - Rufus Pollock (Open Knowledge International)
  - Paul Walsh (Open Knowledge International)
@@ -13,10 +9,9 @@ author:
  - Christophe Benz (Jailbreak)
  - Johan Richer (Jailbreak)
  - Michael Rosenthal
+abstract: A collection of patterns for frictionless handling of data.
+sidebar: auto
 ---
-summary: A collection of patterns for frictionless handling of data.
----
-body:
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs
@@ -320,11 +315,11 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 ### Specification
 
-The [`foreignKeys`](https://frictionlessdata.io/specs/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
+The [`foreignKeys`](/table-schema/#foreign-keys) array MAY have a property `package`. This property MUST be, either:
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
-- a data package [`name`](https://frictionlessdata.io/specs/data-package/#name) that can be resolved by a canonical data package registry
+- a data package [`name`](/data-package/#name) that can be resolved by a canonical data package registry
 
-If the referenced data package has an [`id`](https://frictionlessdata.io/specs/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
+If the referenced data package has an [`id`](/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
 For example:
 
@@ -412,7 +407,7 @@ None known.
 
 ### Overview
 
- Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual informations (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.
+ Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual information (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.
 
 Currently it is possible to add custom properties to a Table Schema, but the lack of consensus about those properties restricts common tooling and wider adoption.
 
@@ -420,7 +415,7 @@ Currently it is possible to add custom properties to a Table Schema, but the lac
 
 - Documentation: generating Markdown documentation from the schema itself is a useful use case, and contextual information (description, version, authors...) needs to be retrieved.
 - Cataloging: open data standardisation can be increased by improving Table Schemas shareability, for example by searching and categorising them (by keywords, countries, full-text...) in catalogs.
-- Machine readibility: tools like Goodtables could use catalogs to access Table Schemas in order to help users validate tabular files against existing schemas. Metadata would be needed for tools to find and read those schemas.
+- Machine readability: tools like Goodtables could use catalogs to access Table Schemas in order to help users validate tabular files against existing schemas. Metadata would be needed for tools to find and read those schemas.
 
 ### Specification
 
@@ -435,9 +430,9 @@ _Tags are useful to categorise and catalog schemas._
 _Since open data schemas are very country-specific, it's useful to have this information in a structured way._
 - `homepage`: The home on the web that is related to this schema.
 - `path`: A fully qualified URL for this schema.
-_The direct path to the schema itself can be useful to help acessing it (i.e. machine readibility)._
+_The direct path to the schema itself can be useful to help accessing it (i.e. machine readability)._
 - `image`: An image to represent this schema.
-_An optional illustration can be useful for example in catalogs to differenciate schemas in a list._
+_An optional illustration can be useful for example in catalogs to differentiate schemas in a list._
 - `licenses`: The license(s) under which this schema is published.
 - `resources`: Example tabular data resource(s) validated or invalidated against this schema.
 _Oftentimes, schemas are shared with example resources to illustrate them, with valid or even invalid files (e.g. with constraint errors)._
@@ -452,7 +447,7 @@ _In some cases, schemas are created after a legal text or some draft specificati
 
 ```
 {
-  "$schema": "https://frictionlessdata.io/schemas/table-schema.json",
+  "$schema": "https://specs.frictionlessdata.io/schemas/table-schema.json",
   "name": "irve",
   "title": "Infrastructures de recharge de véhicules électriques",
   "description": "Spécification du fichier d'échange relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",
@@ -771,8 +766,8 @@ Data packages can also be declared inline in the data catalog:
 }
 ```
 
-[dr]: http://frictionlessdata.io/specs/data-resource/
-[dp]: https://frictionlessdata.io/specs/data-package/
+[dr]: /data-resource/
+[dp]: /data-package/
 
 ### Implementations
 

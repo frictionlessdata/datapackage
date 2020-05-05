@@ -1,4 +1,3 @@
-build/*
 .*.swp
 TAGS
 .DS_Store
@@ -6,3 +5,4 @@ node_modules/*
 schemas/dictionary.json
 package-lock.json
 .idea
+.vuepress/dist/*

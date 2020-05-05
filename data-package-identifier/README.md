@@ -1,18 +1,25 @@
+---
 title: Data Package Identifier
----
-slug: data-package-identifier
----
-version: 1.0-alpha
----
-updated: 02 November 2014
----
+version: 1.0
+author: Rufus Pollock
 created: 17 August 2014
+updated: 02 November 2014
+descriptor: data-package.json
+abstract: Data Package Identifiers are small JSON-oriented structure or strings which identify a Data Package (and, usually, its location).
+sidebar: auto
 ---
-abstract:
 
-Data Package Identifiers are small JSON-oriented structure or strings which identify a Data Package (and, usually, its location).
----
-body:
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+## Introduction
 
 Data Package Identifiers are a simple way to identify a Data Package (and its
 location) using a string or small JSON object.
@@ -31,7 +38,7 @@ data info gdp
 data install https://github.com/datasets/gold-prices
 ```
 
-## Identifier Object Structure
+### Identifier Object Structure
 
 The object structure looks like:
 
@@ -56,34 +63,34 @@ It can be parsed (and less importantly) serialized to a simple string. Spec
 strings will be frequently used on e.g. the command line to identify a data
 package.
 
-## Identifier String
+### Identifier String
 
 An Identifier String is a single string (rather than JSON object) that points to a Data Package.  An Identifier String can be, in decreasing order of explicitness:
 
 * A URL that points directly to the `datapackage.json` (no resolution needed):
 
-      http://mywebsite.com/mydatapackage/datapackage.json
+http://mywebsite.com/mydatapackage/datapackage.json
 
 * A URL that points directly to the Data Package (that is, the directory containing the `datapackage.json`):
 
-      http://mywebsite.com/mydatapackage/
+http://mywebsite.com/mydatapackage/
 
-  resolves to:
+resolves to:
 
-      http://mywebsite.com/mydatapackage/datapackage.json
+http://mywebsite.com/mydatapackage/datapackage.json
 
 * A GitHub URL:
 
-      http://github.com/datasets/gold-prices
+http://github.com/datasets/gold-prices
 
-  resolves to:
+resolves to:
 
-      https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
+https://raw.githubusercontent.com/datasets/gold-prices/master/datapackage.json
 
 * The `name` of a dataset in the [Core Datasets registry](https://datahub.io/core):
 
-      gold-prices
+gold-prices
 
-  resolves to:
+resolves to:
 
-      https://datahub.io/core/gold-prices/datapackage.json
+https://datahub.io/core/gold-prices/datapackage.json

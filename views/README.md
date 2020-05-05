@@ -1,24 +1,29 @@
-slug: views
 ---
 title: Data Package Views
----
+version: 1.0-beta
+author: Rufus Pollock
 created: 2012
----
 updated: 2 May 2017
+descriptor: views.json
+abstract: A simple format for describing a views on data that leverages existing specifications like Vega and connects them with data provided in data packages or data resources.
+sidebar: auto
 ---
-version: 1.0.0-alpha
----
-abstract:
 
-A simple format for describing a views on data that leverages existing specifications like Vega and connects them with data provided in data packages or data resources.
----
-body:
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Introduction
 
 Producers and consumers of data want to have data presented in tables and graphs -- "views" on the data. They want this for a range of reasons, from simple eyeballing to drawing out key insights,
 
-This specification sets out a way to describe views for data packages using a simple delclarative syntax that can be easily serialized in JSON.
+This specification sets out a way to describe views for data packages using a simple declarative syntax that can be easily serialized in JSON.
 
 We focus on doing the minimum to connect data package data with existing graph and table specification systems like Vega.
 
@@ -318,4 +323,4 @@ Identical to Vega approach but without any data specified in the visualization s
 
 ### Data Transforms
 
-*In progess.*
+*In progress.*

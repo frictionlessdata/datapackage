@@ -1,22 +1,24 @@
+---
 title: Tabular Data Resource
----
-slug: tabular-data-resource
----
-mediatype: application/vnd.dataresource+json
----
-version: 1.0-rc.2
----
-updated: 2 May 2017
----
+version: 1.0
+author: Paul Walsh, Rufus Pollock
 created: 15 December 2017
+updated: 2 May 2017
+descriptor: tabular-data-package.json
+mediatype: application/vnd.dataresource+json
+abstract: A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
+sidebar: auto
 ---
-descriptor: dataresource.json
----
-abstract:
 
-A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
----
-body:
+# {{ $page.frontmatter.title }}
+
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
 
 ## Introduction
 
@@ -29,9 +31,9 @@ Tabular Data Resource extends [Data Resource][dr] in following key ways:
   JSON document containing the Table Schema
 * A new `dialect` property to describe the CSV dialect. This property follows the [CSV Dialect][cd] specification.
 
-[dr]: http://frictionlessdata.io/specs/data-resource/
-[ts]: http://frictionlessdata.io/specs/table-schema/
-[cd]: http://frictionlessdata.io/specs/csv-dialect/
+[dr]: http://specs.frictionlessdata.io/data-resource/
+[ts]: http://specs.frictionlessdata.io/table-schema/
+[cd]: http://specs.frictionlessdata.io/csv-dialect/
 
 ### Examples
 
@@ -173,7 +175,7 @@ If the CSV differs from this or the RFC in any other way regarding dialect (e.g.
 
 The value for the `dialect` property on a `resource` MUST be an `object` representing the dialect OR a `string` that identifies the location of the dialect.
 
-If a `string` it must be a [url-or-path](https://frictionlessdata.io/specs/data-resource/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the the location specified by this url-or-path string `MUST` be a JSON document containing the dialect.
+If a `string` it must be a [url-or-path](/data-resource/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the the location specified by this url-or-path string `MUST` be a JSON document containing the dialect.
 
 ### JSON Tabular Data
 

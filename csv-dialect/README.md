@@ -1,34 +1,36 @@
+---
 title: CSV Dialect
----
-slug: csv-dialect
----
 version: 1.2
----
+author: Rufus Pollock
 created: 20 February 2013
----
 updated: 30 January 2017
----
+descriptor: csv-dialect.json
 mediatype: application/vnd.csvdialect+json
+abstract: CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on.
+sidebar: auto
 ---
-descriptor: csvdialect.json
----
-abstract:
 
-CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on.
----
-body:
+# {{ $page.frontmatter.title }}
 
-# Introduction
+{{ $page.frontmatter.abstract }}
+
+<MetadataTable />
+
+## Language
+
+<Language />
+
+## Introduction
 
 CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on. The specification has been modeled around the union of the csv  modules in Python and Ruby, and the bulk load capabilities of MySQL and PostgresQL.
 
-## Excluded
+### Excluded
 
 CSV Dialect has nothing to do with the names, contents or types of the headers or data within the CSV file, only how it is formatted. However, CSV Dialect does allow the presence or absence of a header to be specified, similarly to [RFC4180](http://www.ietf.org/rfc/rfc4180.txt).
 
 CSV Dialect is also orthogonal to the character encoding used in the CSV file. Note that it is possible for files in CSV format to contain data in more than one encoding.
 
-## Usage
+### Usage
 
 CSV Dialect is useful for programmes which might have to deal with multiple dialects of CSV file, but which can rely on being told out-of-band which
 dialect will be used in a given input stream. This reduces the need for heuristic inference of CSV dialects, and simplifies the implementation of CSV readers, which must juggle dialect inference, schema inference, unseekable input streams, character encoding issues, and the lazy reading of very large input streams.
@@ -37,7 +39,7 @@ Some related work can be found in [this comparison of csv dialect
 support](https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing), this [example of similar JSON
 format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
 
-# Specification
+## Specification
 
 A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the following properties:
 
@@ -53,7 +55,7 @@ A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the followin
 * `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
 * `csvddfVersion` - a number, in n.n format, e.g., `1.2`. If not present, consumers should assume latest schema version.
 
-## Example
+### Example
 
 Here's an example:
 
