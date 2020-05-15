@@ -3,7 +3,7 @@ title: Data Package
 version: 1.0 
 author: Paul Walsh, Rufus Pollock
 created: 12 November 2007
-updated: 2 May 2017
+updated: 14 May 2020
 descriptor: data-package.json
 mediatype: application/vnd.datapackage+json
 abstract: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
@@ -46,8 +46,7 @@ A minimal data package on disk would be a directory containing a single file:
 datapackage.json  # (required) metadata and schemas for this data package
 ```
 
-Lacking a single external source of data would make this of limited
-use. A slightly less minimal version would be:
+Lacking a single external source of data would make this of limited use. A slightly less minimal version would be:
 
 ```
 datapackage.json
@@ -55,9 +54,7 @@ datapackage.json
 data.csv
 ```
 
-Additional files such as a README, scripts (for processing or analyzing the
-data) and other material may be provided. By convention scripts go in a scripts
-directory and thus, a more elaborate data package could look like this:
+Additional files such as a README, scripts (for processing or analyzing the data) and other material may be provided. By convention scripts go in a scripts directory and thus, a more elaborate data package could look like this:
 
 ```
 datapackage.json  # (required) metadata and schemas for this data package
@@ -67,8 +64,7 @@ README.md         # (optional) README in markdown format
 mydata.csv
 data/otherdata.csv
 
-# the directory for code scripts - again these can go in the base directory
-scripts/my-preparation-script.py
+# the directory for code scripts - again these can go in the base directory scripts/my-preparation-script.py
 ```
 
 Several example data packages can be found in the [datasets organization on github][datasets], including:
@@ -87,9 +83,7 @@ Several example data packages can be found in the [datasets organization on gith
 The descriptor is the central file in a Data Package. It provides:
 
 * General metadata such as the package's title, license, publisher etc
-* A list of the data "resources" that make up the package including their
-  location on disk or online and other relevant information (including,
-  possibly, schema information about these data resources in a structured form)
+* A list of the data "resources" that make up the package including their location on disk or online and other relevant information (including, possibly, schema information about these data resources in a structured form)
 
 A Data Package descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627][]). When available as a file it MUST be named `datapackage.json` and it MUST be placed in the top-level directory (relative to any other resources provided as part of the data package).
 
@@ -99,9 +93,7 @@ The descriptor MUST contain a `resources` property describing the data resources
 
 All other properties are considered `metadata` properties. The descriptor MAY contain any number of other `metadata` properties. The following sections provides a description of required and optional metadata properties for a Data Package descriptor.
 
-Adherence to the specification does not imply that additional, non-specified properties cannot be used: a descriptor MAY include any number of properties in additional to those described as required and optional properties. For example, if you were storing
-time series data and wanted to list the temporal coverage of the data in the
-Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
+Adherence to the specification does not imply that additional, non-specified properties cannot be used: a descriptor MAY include any number of properties in additional to those described as required and optional properties. For example, if you were storing time series data and wanted to list the temporal coverage of the data in the Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal]):
 
 ```javascript
 "temporal": {
@@ -111,10 +103,7 @@ Data Package you could add a property `temporal` (cf [Dublin Core][dc-temporal])
 }
 ```    
 
-This flexibility enables specific communities to extend Data Packages as
-appropriate for the data they manage. As an example, the [Tabular Data
-Package][tdp] specification extends Data Package to the case
-where all the data is tabular and stored in CSV.
+This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage. As an example, the [Tabular Data Package][tdp] specification extends Data Package to the case where all the data is tabular and stored in CSV.
 
 [tdp]: /specs/tabular-data-package/
 
@@ -152,23 +141,13 @@ The `resources` property is required, with at least one resource.
 
 #### Recommended Properties
 
-In addition to the required properties, the following properties SHOULD be included in
-every package descriptor:
+In addition to the required properties, the following properties SHOULD be included in every package descriptor:
 
 ##### `name`
 
-A short url-usable (and preferably human-readable) name of
-the package. This MUST be lower-case and contain only alphanumeric characters
-along with ".", "_" or "-" characters. It will function as a unique
-identifier and therefore SHOULD be unique in relation to any registry in
-which this package will be deposited (and preferably globally unique).
+A short url-usable (and preferably human-readable) name of the package. This MUST be lower-case and contain only alphanumeric characters along with ".", "_" or "-" characters. It will function as a unique identifier and therefore SHOULD be unique in relation to any registry in which this package will be deposited (and preferably globally unique).
 
-The name SHOULD be invariant, meaning that it SHOULD NOT change when a data
-package is updated, unless the new package version should be considered a
-distinct package, e.g. due to significant changes in structure or
-interpretation. Version distinction SHOULD be left to the version property. As
-a corollary, the name also SHOULD NOT include an indication of time range
-covered.
+The name SHOULD be invariant, meaning that it SHOULD NOT change when a data package is updated, unless the new package version should be considered a distinct package, e.g. due to significant changes in structure or interpretation. Version distinction SHOULD be left to the version property. As a corollary, the name also SHOULD NOT include an indication of time range covered.
 
 ##### `id`
 
@@ -194,8 +173,7 @@ Examples:
 
 The license(s) under which the package is provided.
 
-**This property is not legally binding and does not guarantee the package is
-licensed under the terms defined in this property.**
+**This property is not legally binding and does not guarantee the package is licensed under the terms defined in this property.**
 
 `licenses` MUST be an array. Each item in the array is a License. Each MUST be an `object`. The object MUST contain a `name` property and/or a `path` property. It MAY contain a `title` property.
 
@@ -248,10 +226,7 @@ A `string` providing a title or one sentence description for this package
 
 ##### `description`
 
-a description of the package. The description MUST be
-  [markdown][] formatted -- this also allows for simple plain text as plain
-  text is itself valid markdown. The first paragraph (up to the first double
-  line break) should be usable as summary information for the package.
+A description of the package. The description MUST be [markdown][] formatted -- this also allows for simple plain text as plain text is itself valid markdown. The first paragraph (up to the first double line break) should be usable as summary information for the package.
 
 ##### `homepage`
 
@@ -259,7 +234,7 @@ A URL for the home on the web that is related to this data package.
 
 ##### `version`
 
-a version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements and should follow the [Data Package Version](/patterns/#data-package-version) pattern.
+A version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements and should follow the [Data Package Version](/patterns/#data-package-version) pattern.
 
 ##### `sources`
 
@@ -278,8 +253,7 @@ The raw sources for this data package. It MUST be an array of Source objects. Ea
 
 ##### `contributors`
 
-The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure
-  is as follows:
+The people or organizations who contributed to this Data Package. It MUST be an array. Each entry is a Contributor and MUST be an `object`. A Contributor MUST have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure is as follows:
 
 ```javascript
 "contributors": [{
@@ -299,8 +273,7 @@ The people or organizations who contributed to this Data Package. It MUST be an 
 
 ##### `keywords`
 
-An Array of string keywords to assist users searching for the
-  package in catalogs.
+An Array of string keywords to assist users searching for the package in catalogs.
 
 ##### `image`
 
