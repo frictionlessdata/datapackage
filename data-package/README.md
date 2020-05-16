@@ -3,7 +3,7 @@ title: Data Package
 version: 1.0 
 author: Paul Walsh, Rufus Pollock
 created: 12 November 2007
-updated: 14 May 2020
+updated: 2 May 2017
 descriptor: data-package.json
 mediatype: application/vnd.datapackage+json
 abstract: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
