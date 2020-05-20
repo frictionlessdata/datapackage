@@ -32,12 +32,9 @@ CSV Dialect is also orthogonal to the character encoding used in the CSV file. N
 
 ### Usage
 
-CSV Dialect is useful for programmes which might have to deal with multiple dialects of CSV file, but which can rely on being told out-of-band which
-dialect will be used in a given input stream. This reduces the need for heuristic inference of CSV dialects, and simplifies the implementation of CSV readers, which must juggle dialect inference, schema inference, unseekable input streams, character encoding issues, and the lazy reading of very large input streams.
+CSV Dialect is useful for programmes which might have to deal with multiple dialects of CSV file, but which can rely on being told out-of-band which dialect will be used in a given input stream. This reduces the need for heuristic inference of CSV dialects, and simplifies the implementation of CSV readers, which must juggle dialect inference, schema inference, unseekable input streams, character encoding issues, and the lazy reading of very large input streams.
 
-Some related work can be found in [this comparison of csv dialect
-support](https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing), this [example of similar JSON
-format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
+Some related work can be found in [this comparison of csv dialect support](https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing), this [example of similar JSON format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
 
 ## Specification
 
