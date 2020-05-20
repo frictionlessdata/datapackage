@@ -21,12 +21,9 @@ sidebar: auto
 
 ## Introduction
 
-Data Package Identifiers are a simple way to identify a Data Package (and its
-location) using a string or small JSON object.
+Data Package Identifiers are a simple way to identify a Data Package (and its location) using a string or small JSON object.
 
-It exists because of the consistent need across applications to identify a Data
-Package. For example, in command line tools or libraries one will frequently
-want to take a Data Package Identifier as an argument.
+It exists because of the consistent need across applications to identify a Data Package. For example, in command line tools or libraries one will frequently want to take a Data Package Identifier as an argument.
 
 For example, [DataHub](http://datahub.io)'s `data-cli` tool has commands like:
 
@@ -59,9 +56,7 @@ The object structure looks like:
 }
 ```
 
-It can be parsed (and less importantly) serialized to a simple string. Spec
-strings will be frequently used on e.g. the command line to identify a data
-package.
+It can be parsed (and less importantly) serialized to a simple string. Spec strings will be frequently used on e.g. the command line to identify a data package.
 
 ### Identifier String
 
