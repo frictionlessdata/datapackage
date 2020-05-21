@@ -131,7 +131,7 @@ Here is an illustrative example of a datapackage JSON file:
 
 Packaged data resources are described in the `resources` property of the package descriptor. This property `MUST` be an array of `objects`. Each object `MUST` follow the [Data Resource specification][dr].
 
-[dr]: /specs/data-resource/
+[dr]: /data-resource/
 
 ### Metadata
 
