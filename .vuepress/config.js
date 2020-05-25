@@ -42,7 +42,8 @@ module.exports = {
         '/table-schema/',
         '/tabular-data-package/',
         '/tabular-data-resource/',
-        '/views/'
+        '/tabular-diff/',
+        '/views/',
         ]
       }
     ],
@@ -63,6 +64,7 @@ module.exports = {
           { text: "Table Schema", link: "/table-schema/" },
           { text: "Tabular Data Package", link: "/tabular-data-package/" },
           { text: "Tabular Data Resource", link: "/tabular-data-resource/" },
+          { text: "Tabular Diff Format", link: "/tabular-diff/" },
           { text: "Views", link: "/views/" },
         ]
       },
