@@ -259,7 +259,7 @@ If a `string` it must be a [url-or-path as defined above](#url-or-path), that is
 NOTE: the Data Package specification places no restrictions on the form of the schema Object. This flexibility enables specific communities to define schemas appropriate for the data they manage. As an example, the [Tabular Data Package][tdp] specification requires the schema to conform to [Table Schema][ts].
 
 
-[tdp]: /specs/tabular-data-package/
-[ts]: /specs/table-schema/
+[tdp]: /tabular-data-package/
+[ts]: /table-schema/
 [iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
-[dp]: /specs/data-package/
+[dp]: /data-package/
