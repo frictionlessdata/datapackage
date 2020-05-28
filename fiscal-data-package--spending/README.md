@@ -40,7 +40,7 @@ The _ColumnTypes_ contained in this taxonomy contain:
 - Some Geographic related types (esp. for addresses)
 
 ## References
-- [The Fiscal Data Package Spec](/specs/fiscal-data-package/)
+- [The Fiscal Data Package Spec](/fiscal-data-package/)
 
 ## Location 
 

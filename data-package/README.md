@@ -105,7 +105,7 @@ Adherence to the specification does not imply that additional, non-specified pro
 
 This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage. As an example, the [Tabular Data Package][tdp] specification extends Data Package to the case where all the data is tabular and stored in CSV.
 
-[tdp]: /specs/tabular-data-package/
+[tdp]: /tabular-data-package/
 
 Here is an illustrative example of a datapackage JSON file:
 
@@ -194,13 +194,13 @@ Here is an example:
 [od-licenses]: http://licenses.opendefinition.org/
 [od-approved]: http://opendefinition.org/licenses/
 [semver]: http://semver.org
-[url-or-path]: /specs/data-resource/#url-or-path
+[url-or-path]: /data-resource/#url-or-path
 
 ##### `profile`
 
 A string identifying the [profile][] of this descriptor as per the [profiles][profile] specification.
 
-[profile]: /specs/profiles/
+[profile]: /profiles/
 
 Examples:
 
