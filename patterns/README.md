@@ -133,11 +133,8 @@ It can be argued that applying compression to data resources can make data packa
 
 ### Implementations
 
-
 * [tabulator-py (Gzip and Zip support)](https://github.com/frictionlessdata/tabulator-py)
-
 * [datapackage-connector (Gzip support)](https://github.com/nimblelearn/datapackage-connector)
-
 * [datapackage-m (Gzip support)](https://github.com/nimblelearn/datapackage-m)
 
 ### Specification
@@ -157,8 +154,6 @@ Example of a compressed resource with implied compression:
   "path": "http://example.com/large-data-file.csv.gz",
   "title": "Large Data File",
   "description": "This large data file benefits from compression.",
-  "format": "csv",
-  "mediatype": "text/csv",
   "encoding": "utf-8",
   "bytes": 1073741824
 }
@@ -172,13 +167,13 @@ Example of a compressed resource with the `compression` property:
   "path": "http://example.com/large-data-file.csv.gz",
   "title": "Large Data File",
   "description": "This large data file benefits from compression.",
-  "format": "csv",
-  "compression" : "gz",
-  "mediatype": "text/csv",
-  "encoding": "utf-8",
   "bytes": 1073741824
 }
 ````
+
+:::tip NOTE
+Resource properties e.g. bytes, hash etc apply to the compressed object -- not to the original uncompressed object. 
+:::
 
 ## Language support
 
