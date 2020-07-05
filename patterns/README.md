@@ -896,3 +896,113 @@ of the following examples set a unique constraint on field `a`:
 ### Implementations
 
 None known.
+
+# Files in Zip (or other compressed files)
+## Overview
+Some datasets need to contain a Zip file (or tar, other formats) containing a
+set of files.
+
+This might happen for practical reasons (datasets containing thousands of files)
+or for technical limitations (for example, currently Zenodo doesn't support subdirectories and
+datasets might need subdirectory structures to be useful)
+
+## Implementations
+There are no known implementations at present.
+
+## Specification
+The `resources` in a `data-package` can contain "recursive resources": identifying
+a new resource.
+
+## Example
+```json
+{
+    "profile": "data-package",
+    "resources": [
+        {
+            "path": "https://zenodo.org/record/3247384/files/Sea-Bird_Processed_Data.zip",
+            "format": "zip",
+            "mediatype": "application/zip",
+            "bytes": "294294242424",
+            "hash": "a27063c614c183b502e5c03bd9c8931b",
+            "resources": [
+                {
+                    "path": "file_name.csv",
+                    "format": "csv",
+                    "mediatype": "text/csv",
+                    "bytes": 242421,
+                    "hash": "0300048878bb9b5804a1f62869d296bc",
+                    "profile": "tabular-data-resource",
+                    "schema": "tableschema.json"
+                },
+                {
+                    "path": "file_name2.csv",
+                    "format": "csv",
+                    "mediatype": "text/csv",
+                    "bytes": 2424213,
+                    "hash": "ff9435e0ee350efbe8a4a8779a47caaa",
+                    "profile": "tabular-data-resource",
+                    "schema": "tableschema.json"
+                }
+            ]
+        }
+    ]
+}
+```
+
+## Types of files
+Support of `Zip` and `tar.gz` might be enough: hopefully everything can
+be re-packaged using these formats.
+
+To keep the testing simple it could be possible to limit the level of recursive
+`resources`. For example if the maximum is 3 levels it would mean that a
+.zip file can contain any files including a .zip with the tabular data.
+
+At some point this pattern could be useful to indicate a resource in a type
+of file like .odt/.xlsx: to indicate a sheet in a spreadsheet or a table
+in an HTML file, or a sub-section of JSON. This would need planning for the
+format, mediatype, hash, etc. and it's out of scope of this pattern.
+
+## .tar.gz
+If we want to describe a `.tar.gz` with two files inside one possibility is:
+```json
+{
+	"profile": "data-package",
+	"resources": [{
+		"path": "file.tar.gz",
+		"format": "gz",
+		"mediatype": "application/gz",
+		"bytes": "10000",
+		"hash": "a27063c614c183b502e5c03bd9c8931b",
+		"resources": [{
+			"path": "file.tar",
+			"format": "tar",
+			"mediatype": "application/tar",
+			"bytes": 30000,
+			"hash": "0300048878bb9b5804a1f62869d296bc",
+			"resources": [{
+					"path": "file_name1.csv",
+					"format": "csv",
+					"mediatype": "text/csv",
+					"bytes": 15000,
+					"hash": "ff9435e0ee350efbe8a4a8779a47caaa",
+					"profile": "tabular-data-resource",
+					"schema": "tableschema.json"
+				},
+				{
+					"path": "file_name2.csv",
+					"format": "csv",
+					"mediatype": "text/csv",
+					"bytes": 15000,
+					"hash": "ff9435e0ee350efbe8a4a8779a47caaa",
+					"profile": "tabular-data-resource",
+					"schema": "tableschema.json"
+				}
+			]
+		}]
+	}]
+}
+```
+Using this: the user knows explicitly the hash of the `.tar.gz`,  `.tar` and
+the individual files.
+
+An alternative is to consider the `.tar.gz` as a file compression equivalent to a `.zip`.
