@@ -904,7 +904,7 @@ set of files.
 
 This might happen for practical reasons (datasets containing thousands of files)
 or for technical limitations (for example, currently Zenodo doesn't support subdirectories and
-datasets might need subdirectory structures to be useful)
+datasets might need subdirectory structures to be useful).
 
 ## Implementations
 There are no known implementations at present.
@@ -935,7 +935,7 @@ a new resource.
                     "schema": "tableschema.json"
                 },
                 {
-                    "path": "file_name2.csv",
+                    "path": "directory/file_name2.csv",
                     "format": "csv",
                     "mediatype": "text/csv",
                     "bytes": 2424213,
@@ -957,10 +957,10 @@ To keep the testing simple it could be possible to limit the level of recursive
 `resources`. For example if the maximum is 3 levels it would mean that a
 .zip file can contain any files including a .zip with the tabular data.
 
-At some point this pattern could be useful to indicate a resource in a type
-of file like .odt/.xlsx: to indicate a sheet in a spreadsheet or a table
-in an HTML file, or a sub-section of JSON. This would need planning for the
-format, mediatype, hash, etc. and it's out of scope of this pattern.
+At some point this pattern could be useful to indicate a resource within a file
+like such as to indicate a sheet in a spreadsheet or a table in an HTML file,
+or a sub-section of JSON. This would need planning for the format, mediatype,
+hash, etc. and it's out of scope of this pattern.
 
 ## .tar.gz
 If we want to describe a `.tar.gz` with two files inside one possibility is:
