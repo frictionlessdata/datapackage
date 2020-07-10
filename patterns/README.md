@@ -897,8 +897,10 @@ of the following examples set a unique constraint on field `a`:
 
 None known.
 
-# Files in Zip (or other compressed files)
-## Overview
+## Describing files inside a compressed file such as Zip
+
+### Overview
+
 Some datasets need to contain a Zip file (or tar, other formats) containing a
 set of files.
 
@@ -906,14 +908,17 @@ This might happen for practical reasons (datasets containing thousands of files)
 or for technical limitations (for example, currently Zenodo doesn't support subdirectories and
 datasets might need subdirectory structures to be useful).
 
-## Implementations
+### Implementations
+
 There are no known implementations at present.
 
-## Specification
+### Specification
+
 The `resources` in a `data-package` can contain "recursive resources": identifying
 a new resource.
 
-## Example
+### Example
+
 ```json
 {
   "profile": "data-package",
@@ -952,7 +957,8 @@ a new resource.
 For a `.tar.gz` it would be the same changing the `"format"` and the
 `"mediatype"`.
 
-## Types of files
+### Types of files
+
 Support for `Zip` and `tar.gz` might be enough: hopefully everything can be
 re-packaged using these formats.
 
