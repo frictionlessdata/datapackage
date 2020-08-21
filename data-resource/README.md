@@ -233,7 +233,6 @@ A descriptor MAY contain any number of additional properties. Common properties 
 * `description`: a description of the resource.
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
   extension for this type of resource.
-* `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'
 * `mediatype`: the mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
 * `encoding`: specify the character encoding of the resource's data file. The values should be one of
  the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no
