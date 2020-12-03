@@ -421,17 +421,7 @@
     "csvDialect": {
       "title": "CSV Dialect",
       "description": "The CSV dialect descriptor.",
-      "oneOf": [
-        {
-          "title": "Dialect file path",
-          "description": "A fully qualified URL, or a POSIX file path.",
-          "type": "string"
-        },
-        {
-          "title": "Dialect as JSON",
-          "description": "A dialect encoded as a JSON object",
-          "type": "object"
-        }],
+      "type": "object",
       "required": [
         "delimiter",
         "doubleQuote"
@@ -560,7 +550,7 @@
     },
     "commentChar": {
       "title": "Comment Character",
-      "description": "Specifies a character sequence causing the rest of the line after it to be ignored.",
+      "description": "Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.",
       "type": "string",
       "examples": [
         "{\n  \"commentChar\": \"#\"\n}\n"
@@ -1335,6 +1325,13 @@
           "enum": [
             "boolean"
           ]
+        },
+        "format": {
+          "description": "There are no format keyword options for `boolean`: only `default` is allowed.",
+          "enum": [
+            "default"
+          ],
+          "default": "default"
         },
         "trueValues": {
           "$ref": "#/definitions/tableSchemaTrueValues"
