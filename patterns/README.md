@@ -154,6 +154,8 @@ Example of a compressed resource with implied compression:
   "path": "http://example.com/large-data-file.csv.gz",
   "title": "Large Data File",
   "description": "This large data file benefits from compression.",
+  "format": "csv",
+  "mediatype": "text/csv",
   "encoding": "utf-8",
   "bytes": 1073741824
 }
@@ -167,6 +169,10 @@ Example of a compressed resource with the `compression` property:
   "path": "http://example.com/large-data-file.csv.gz",
   "title": "Large Data File",
   "description": "This large data file benefits from compression.",
+  "format": "csv",
+  "compression" : "gz",
+  "mediatype": "text/csv",
+  "encoding": "utf-8",
   "bytes": 1073741824
 }
 ````
