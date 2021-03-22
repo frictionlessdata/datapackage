@@ -349,7 +349,7 @@ Any `type` or `format` is accepted. When converting from physical to logical rep
 A richer, "semantic", description of the "type" of data in a given column MAY
 be provided using a `rdfType` property on a field descriptor.
 
-The value of of the `rdfType` property MUST be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
+The value of the `rdfType` property MUST be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
 
 Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
 
