@@ -323,6 +323,11 @@ tableSchemaFieldBoolean:
       description: The type keyword, which `MUST` be a value of `boolean`.
       enum:
       - boolean
+    format:
+      description: "There are no format keyword options for `boolean`: only `default` is allowed."
+      enum:
+      - default
+      default: default
     trueValues:
       "$ref": "#/definitions/tableSchemaTrueValues"
     falseValues:

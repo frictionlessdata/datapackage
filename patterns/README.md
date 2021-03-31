@@ -133,11 +133,8 @@ It can be argued that applying compression to data resources can make data packa
 
 ### Implementations
 
-
 * [tabulator-py (Gzip and Zip support)](https://github.com/frictionlessdata/tabulator-py)
-
 * [datapackage-connector (Gzip support)](https://github.com/nimblelearn/datapackage-connector)
-
 * [datapackage-m (Gzip support)](https://github.com/nimblelearn/datapackage-m)
 
 ### Specification
@@ -179,6 +176,10 @@ Example of a compressed resource with the `compression` property:
   "bytes": 1073741824
 }
 ````
+
+:::tip NOTE
+Resource properties e.g. bytes, hash etc apply to the compressed object -- not to the original uncompressed object. 
+:::
 
 ## Language support
 
@@ -897,6 +898,134 @@ of the following examples set a unique constraint on field `a`:
   ]
 }
 ```
+
+### Implementations
+
+None known.
+
+## Describing files inside a compressed file such as Zip
+
+### Overview
+
+Some datasets need to contain a Zip file (or tar, other formats) containing a
+set of files.
+
+This might happen for practical reasons (datasets containing thousands of files)
+or for technical limitations (for example, currently Zenodo doesn't support subdirectories and
+datasets might need subdirectory structures to be useful).
+
+### Implementations
+
+There are no known implementations at present.
+
+### Specification
+
+The `resources` in a `data-package` can contain "recursive resources": identifying
+a new resource.
+
+### Example
+
+```json
+{
+  "profile": "data-package",
+  "resources": [
+    {
+      "path": "https://zenodo.org/record/3247384/files/Sea-Bird_Processed_Data.zip",
+      "format": "zip",
+      "mediatype": "application/zip",
+      "bytes": "294294242424",
+      "hash": "a27063c614c183b502e5c03bd9c8931b",
+      "resources": [
+        {
+          "path": "file_name.csv",
+          "format": "csv",
+          "mediatype": "text/csv",
+          "bytes": 242421,
+          "hash": "0300048878bb9b5804a1f62869d296bc",
+          "profile": "tabular-data-resource",
+          "schema": "tableschema.json"
+        },
+        {
+          "path": "directory/file_name2.csv",
+          "format": "csv",
+          "mediatype": "text/csv",
+          "bytes": 2424213,
+          "hash": "ff9435e0ee350efbe8a4a8779a47caaa",
+          "profile": "tabular-data-resource",
+          "schema": "tableschema.json"
+        }
+      ]
+    }
+  ]
+}
+```
+
+For a `.tar.gz` it would be the same changing the `"format"` and the
+`"mediatype"`.
+
+### Types of files
+
+Support for `Zip` and `tar.gz` might be enough: hopefully everything can be
+re-packaged using these formats.
+
+To keep the implementation and testing testing: only one recursive level is
+possible. A `resource` can list `resources` inside (like in the example). But
+the inner resources cannot contain resources again.
+
+## Missing values per field
+
+### Overview
+
+Characters representing missing values in a table can be defined for all fields in a [Tabular Data Resource](http://frictionlessdata.io/specs/tabular-data-resource/) using the [`missingValues`](http://frictionlessdata.io/specs/table-schema/#missing-values) property in a Table Schema. Values that match the `missingValues` are treated as `null`.
+
+The Missing values per field pattern allows different missing values to be specified for each field in a Table Schema. If not specified, each field inherits from values assigned to `missingValues` at the Tabular Data Resource level.
+
+For example, this data...
+
+item | description | price
+---- | ----------- | -----
+1    | Apple       | 0.99
+tba  | Banana      | -1
+3    | n/a         | 1.20
+
+...using this Table Schema...
+
+```javascript
+"schema":{
+  "fields": [
+    {
+      "name": "item",
+      "title": "An inventory item number",
+      "type": "integer"
+    },
+    {
+      "name": "description",
+      "title": "item description",
+      "type": "string",
+      "missingValues": [ "n/a"]
+    },
+    {
+      "name": "price",
+      "title": "cost price",
+      "type": "number",
+      "missingValues": [ "-1"]
+    }
+  ],
+  "missingValues": [ "tba", "" ]
+}
+```
+
+...would be interpreted as...
+
+item   | description | price
+------ | ----------- | ------
+1      | Apple       | 0.99
+`null` | Banana      | `null`
+3      | `null`      | 1.20
+
+### Specification
+
+A field MAY have a `missingValues` property that MUST be an `array` where each entry is a `string`. If not specified, each field inherits from the values assigned to [`missingValues`](http://frictionlessdata.io/specs/table-schema/#missing-values) at the Tabular Data Resource level.
 
 ### Implementations
 

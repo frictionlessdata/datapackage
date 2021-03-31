@@ -1,6 +1,6 @@
 # Frictionless Specifications
 
-At the core of the [Frictionless data toolkit][site] are a set of patterns for describing data including Data Package (for datasets), Data Resource (for files) and Table Schema (for tables).
+At the core of [Frictionless][site] is a set of patterns for describing data including Data Package (for datasets), Data Resource (for files) and Table Schema (for tables).
 
 **This site houses the formal *specifications* of these patterns.**
 
