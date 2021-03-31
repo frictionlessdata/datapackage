@@ -494,13 +494,13 @@ _In some cases, schemas are created after a legal text or some draft specificati
     {
       "title": "John Smith",
       "email": "john.smith@etalab.gouv.fr",
-      "organisation": "Etalab",
+      "organization": "Etalab",
       "role": "author"
     },
     {
       "title": "Jane Doe",
       "email": "jane.doe@aol.com",
-      "organisation": "Civil Society Organization X",
+      "organization": "Civil Society Organization X",
       "role": "contributor"
     }
   ],
