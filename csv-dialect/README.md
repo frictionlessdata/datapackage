@@ -3,7 +3,7 @@ title: CSV Dialect
 version: 1.2
 author: Rufus Pollock
 created: 20 February 2013
-updated: 30 January 2017
+updated: 05 April 2021
 descriptor: csv-dialect.json
 mediatype: application/vnd.csvdialect+json
 abstract: CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on.
@@ -46,7 +46,7 @@ A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the followin
 * `doubleQuote` - controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = `true`
 * `escapeChar` - specifies a one-character string to use for escaping (for example, `\`), mutually exclusive with `quoteChar`. Not set by default
 * `nullSequence` - specifies the null sequence (for example `\N`). Not set by default
-* `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `true`
+* `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `false`
 * `header` - indicates whether the file includes a header row. If `true` the first row in the file is a header row, not data. Default = `true`
 * `commentChar` - indicates a one-character string to ignore any line whose row begins with this character
 * `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
