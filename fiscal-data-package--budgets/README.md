@@ -5,7 +5,7 @@ created: 14 March 2014
 updated: 22 April 2018
 descriptor: fiscal-data-package-budgets.json
 under-development: true
-abstract: The Budget Taxonomy is a set of ColumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organisations (governments or otherwise.)  
+abstract: The Budget Taxonomy is a set of ColumnTypes to be used in the context of a Fiscal Data Package to describe budget data of organizations (governments or otherwise.)  
 sidebar: auto
 ---
 
@@ -532,4 +532,3 @@ The display name for the Top Level Geographic feature specified in the data
 The display name of the geographic feature
  - *dataType*: string
  - *labelOf*: `geo:target:code`
-
