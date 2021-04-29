@@ -64,7 +64,8 @@ README.md         # (optional) README in markdown format
 mydata.csv
 data/otherdata.csv
 
-# the directory for code scripts - again these can go in the base directory scripts/my-preparation-script.py
+# the directory for code scripts - again these can go in the base directory 
+scripts/my-preparation-script.py
 ```
 
 Several example data packages can be found in the [datasets organization on github][datasets], including:
