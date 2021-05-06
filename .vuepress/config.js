@@ -70,7 +70,8 @@ module.exports = {
       },
       // { text: 'Changelog', link: '/changelog/' },
       { text: 'Patterns', link: '/patterns/' },
-      { text: 'Implementation', link: '/implementation/' }
+      { text: 'Implementation', link: '/implementation/' },
+      { text: "Back to the main site", link: "https://frictionlessdata.io/" },
     ]
   }
 }
