@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body
+  font-family 'Lato', sans-serif
+  max-width: 1920px
+  margin 0 auto
+  color black
+.navbar
+  border-bottom 1px solid #f8f8f8
+  padding-top 3rem
+  color black
+.dropdown-wrapper .dropdown-title
+  pointer-events none
+
+@media (max-width: 720px)
+  .dropdown-wrapper .dropdown-title
+    pointer-events auto
+    outline none
+
+.dropdown-wrapper span {
+  color:black;
+}
+
+.theme-default-content:not(.custom) {
+  max-width: 992px !important;
+}
+
+img.logo {
+  padding-left: 10px;
+}
+
+p > span, h1, h2, h3 {
+  font-weight: 500;
+  color: black;
+}
+
+.custom-block
+  &.tip
+    background-color #f3f5f7
+    /* border-color #ea6d4c */

@@ -1,4 +1,4 @@
-# Frictionless Specifications
+# Frictionless Standards
 
 At the core of [Frictionless][site] is a set of patterns for describing data including Data Package (for datasets), Data Resource (for files) and Table Schema (for tables).
 
@@ -42,7 +42,7 @@ graph TD
   dp[Data Package] --> tdp
   jts[Table Schema] --> tdr
   csvddf[CSV Data Descriptor] -.optional.-> tdr
-  
+
   style tdp fill:#f9f,stroke:#333,stroke-width:4px;
 ```
 
