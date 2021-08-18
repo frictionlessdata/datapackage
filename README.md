@@ -1,6 +1,6 @@
 # Frictionless Standards
 
-At the core of [Frictionless][site] is a set of patterns for describing data including Data Package (for datasets), Data Resource (for files) and Table Schema (for tables).
+At the core of [Frictionless][site] is a set of patterns for describing data including  Table Schema (for tables), Data Resource (for files), and Data Package (for datasets).
 
 **This site houses the formal *specifications* of these patterns.**
 

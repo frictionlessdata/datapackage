@@ -42,17 +42,19 @@ module.exports = {
     navbar_icon3_image: "/img/github-icon.svg",
     navbar_icon3_title: "GitHub",
     nav: [
-      { text: "Home", link: "/" },
+      { text: "Table Schema", link: "/table-schema/" },
       {
-        text: "Specifications",
+        text: "Data Resource",
         items: [
-          { text: "CSV Dialect", link: "/csv-dialect/" },
-          { text: "Data Package", link: "/data-package/" },
-          {
-            text: "Data Package Identifier",
-            link: "/data-package-identifier/",
-          },
           { text: "Data Resource", link: "/data-resource/" },
+          { text: "Tabular Data Resource", link: "/tabular-data-resource/" },
+        ],
+      },
+      {
+        text: "Data Package",
+        items: [
+          { text: "Data Package", link: "/data-package/" },
+          { text: "Tabular Data Package", link: "/tabular-data-package/" },
           { text: "Fiscal Data Package", link: "/fiscal-data-package/" },
           {
             text: "Fiscal Data Package - Budgets",
@@ -62,18 +64,33 @@ module.exports = {
             text: "Fiscal Data Package - Spending",
             link: "/fiscal-data-package--spending/",
           },
-          { text: "Profiles", link: "/profiles/" },
-          { text: "Security", link: "/security/" },
-          { text: "Table Schema", link: "/table-schema/" },
-          { text: "Tabular Data Package", link: "/tabular-data-package/" },
-          { text: "Tabular Data Resource", link: "/tabular-data-resource/" },
+        ],
+      },
+      {
+        text: "Other Specs",
+        items: [
+          {
+            text: "Data Package Identifier",
+            link: "/data-package-identifier/",
+          },
           { text: "Tabular Diff Format", link: "/tabular-diff/" },
+          { text: "CSV Dialect", link: "/csv-dialect/" },
+          { text: "Security", link: "/security/" },
+          { text: "Profiles", link: "/profiles/" },
           { text: "Views", link: "/views/" },
         ],
       },
-      // { text: 'Changelog', link: '/changelog/' },
       { text: "Patterns", link: "/patterns/" },
-      { text: "Implementation", link: "/implementation/" },
+      {
+        text: "Guides",
+        items: [
+          {
+            text: "Data Package",
+            link: "/guides/data-package/",
+          },
+          { text: "Implementation", link: "/guides/implementation/" },
+        ],
+      },
       { text: "Back to the main site", link: "https://frictionlessdata.io/" },
     ],
   },
