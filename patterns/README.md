@@ -16,7 +16,7 @@ sidebar: auto
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs
 
-## Meta
+# Patterns
 
 This document describes various patterns for solving common problems, in ways that are not (yet) specified in any Frictionless Data specification. If we see increased adoption, or wide support, for any pattern, it is a prime candidate for formalising as part of a specification.
 
@@ -178,7 +178,7 @@ Example of a compressed resource with the `compression` property:
 ````
 
 :::tip NOTE
-Resource properties e.g. bytes, hash etc apply to the compressed object -- not to the original uncompressed object. 
+Resource properties e.g. bytes, hash etc apply to the compressed object -- not to the original uncompressed object.
 :::
 
 ## Language support
@@ -466,7 +466,7 @@ _In some cases, schemas are created after a legal text or some draft specificati
     {
       "title": "Creative Commons Zero v1.0 Universal",
       "name": "CC0-1.0",
-      "path": "https://creativecommons.org/publicdomain/zero/1.0/"  
+      "path": "https://creativecommons.org/publicdomain/zero/1.0/"
     }
   ],
   "resources": [
@@ -478,18 +478,18 @@ _In some cases, schemas are created after a legal text or some draft specificati
     {
       "title": "Invalid resource",
       "name": "exemple-invalide",
-      "path": "https://github.com/etalab/schema-irve/raw/v1.0.1/exemple-invalide.csv"      
-    }    
+      "path": "https://github.com/etalab/schema-irve/raw/v1.0.1/exemple-invalide.csv"
+    }
   ],
   "sources": [
     {
-      "title": "Arrêté du 12 janvier 2017 relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",      
+      "title": "Arrêté du 12 janvier 2017 relatif aux données concernant la localisation géographique et les caractéristiques techniques des stations et des points de recharge pour véhicules électriques",
       "path": "https://www.legifrance.gouv.fr/eli/arrete/2017/1/12/ECFI1634257A/jo/texte"
     }
   ],
   "created": "2018-06-29",
   "lastModified": "2019-05-06",
-  "version": "1.0.1",  
+  "version": "1.0.1",
   "contributors": [
     {
       "title": "John Smith",
