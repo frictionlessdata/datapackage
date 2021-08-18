@@ -17,33 +17,7 @@ module.exports = {
     logo: "https://frictionlessdata.io/img/frictionless-color-logo.svg",
     repo: "https://github.com/frictionlessdata/specs",
     editLinks: true,
-    sidebar: [
-      {
-        title: "Home",
-        collapsable: false,
-        children: ["/"],
-      },
-      {
-        title: "Specifications",
-        collapsable: false,
-        children: [
-          "/csv-dialect/",
-          "/data-package/",
-          "/data-package-identifier/",
-          "/data-resource/",
-          "/fiscal-data-package/",
-          "/fiscal-data-package--budgets/",
-          "/fiscal-data-package--spending/",
-          "/profiles/",
-          "/security/",
-          "/table-schema/",
-          "/tabular-data-package/",
-          "/tabular-data-resource/",
-          "/tabular-diff/",
-          "/views/",
-        ],
-      },
-    ],
+    sidebar: "auto",
     nav: [
       { text: "Home", link: "/" },
       {
