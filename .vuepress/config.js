@@ -1,6 +1,17 @@
+const webpack = require("webpack");
+
 module.exports = {
   title: "Frictionless Standards",
   description: "",
+  postcss: {
+    plugins: [
+      require("tailwindcss")("./tailwind.config.js"),
+      require("autoprefixer"),
+    ],
+  },
+  configureWebpack: (config) => {
+    return { plugins: [new webpack.EnvironmentPlugin({ ...process.env })] };
+  },
   markdown: {
     linkify: true,
     typographer: true,
@@ -14,11 +25,22 @@ module.exports = {
     },
   },
   themeConfig: {
-    logo: "https://frictionlessdata.io/img/frictionless-color-logo.svg",
-    repo: "https://github.com/frictionlessdata/specs",
+    logo: "/img/frictionless-color-logo.svg",
+    // repo: "https://github.com/frictionlessdata",
+    // repoLabel: "GitHub",
+    docsRepo: "https://github.com/frictionlessdata/specs",
     lastUpdated: "Last Updated",
     editLinks: true,
     sidebar: "auto",
+    navbar_icon1_link: "https://discordapp.com/invite/Sewv6av",
+    navbar_icon1_image: "/img/discord-icon.svg",
+    navbar_icon1_title: "Discord",
+    navbar_icon2_link: "https://twitter.com/frictionlessd8a",
+    navbar_icon2_image: "/img/twitter-icon.svg",
+    navbar_icon2_title: "Twitter",
+    navbar_icon3_link: "https://github.com/frictionlessdata/specs",
+    navbar_icon3_image: "/img/github-icon.svg",
+    navbar_icon3_title: "GitHub",
     nav: [
       { text: "Home", link: "/" },
       {
