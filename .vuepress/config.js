@@ -77,4 +77,13 @@ module.exports = {
       { text: "Back to the main site", link: "https://frictionlessdata.io/" },
     ],
   },
+  plugins: [
+    // [
+    // "@vuepress/plugin-google-analytics",
+    // {
+    // ga: "UA-33874954-38",
+    // },
+    // ],
+    ["@vuepress/back-to-top"],
+  ],
 };

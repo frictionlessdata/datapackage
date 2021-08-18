@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/frictionlessdata/specs#readme",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-google-analytics": "^1.8.2",
     "chai": "^4.1.2",
     "csv-parse": "^4.6.5",
     "fs-extra": "^4.0.2",
