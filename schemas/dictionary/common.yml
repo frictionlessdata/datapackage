@@ -74,6 +74,15 @@ description:
     {
       "description": "# My Package description\nAll about my package."
     }
+example:
+  title: Example
+  description: An example value for the field.
+  type: string
+  examples:
+  - |
+    {
+      "example": "Put here an example value for your field"
+    }
 homepage:
   title: Home Page
   description: The home on the web that is related to this data package.
@@ -99,7 +108,7 @@ version:
       }
 path:
   title: Path
-  description: A fully qualified URL, or a POSIX file path..
+  description: A fully qualified URL, or a POSIX file path.
   type: string
   pattern: "^(?=^[^.\/~])(^((?!\\.{2}).)*$).*$"
   examples:
