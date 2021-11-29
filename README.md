@@ -93,6 +93,7 @@ This repository is the canonical repository for the core Frictionless Data speci
 - `npm install` # install the dependencies to build the specifications
 - `npm run build` # build the specifications
 - `npm run test` # test the specifications
+- `npm start` # start the local server
 
 ### Contribute to the specifications
 
