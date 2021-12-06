@@ -76,7 +76,7 @@
     },
     "path": {
       "title": "Path",
-      "description": "A fully qualified URL, or a POSIX file path.",
+      "description": "A fully qualified URL, or a POSIX file path..",
       "type": "string",
       "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
       "examples": [
@@ -123,7 +123,10 @@
     "anySchema": {
       "title": "Schema",
       "description": "A schema for this resource.",
-      "type": "object"
+      "type": [
+        "string",
+        "object"
+      ]
     },
     "countryCode": {
       "title": "ISO 3166-1 Alpha-2 Country code",
@@ -421,7 +424,10 @@
     "csvDialect": {
       "title": "CSV Dialect",
       "description": "The CSV dialect descriptor.",
-      "type": "object",
+      "type": [
+        "string",
+        "object"
+      ],
       "required": [
         "delimiter",
         "doubleQuote"
@@ -534,7 +540,7 @@
       "title": "Skip Initial Space",
       "description": "Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "examples": [
         "{\n  \"skipInitialSpace\": true\n}\n"
       ]
@@ -1011,7 +1017,10 @@
     "tableSchema": {
       "title": "Table Schema",
       "description": "A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.",
-      "type": "object",
+      "type": [
+        "string",
+        "object"
+      ],
       "required": [
         "fields"
       ],

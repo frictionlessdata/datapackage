@@ -2,7 +2,9 @@
 csvDialect:
   title: CSV Dialect
   description: The CSV dialect descriptor.
-  type: object
+  type:
+  - string
+  - object
   required:
   - delimiter
   - doubleQuote
