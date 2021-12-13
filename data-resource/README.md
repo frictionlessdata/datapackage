@@ -34,7 +34,7 @@ With data accessible via the local filesystem.
 
 ```javascript
 {
-  "name": "resource-name.csv",
+  "name": "resource-name",
   "path": "resource-path.csv"
 }
 ```
@@ -43,7 +43,7 @@ With data accessible via http.
 
 ```javascript
 {
-  "name": "resource-name.csv",
+  "name": "resource-name",
   "path": "http://example.com/resource-path.csv"
 }
 ```
@@ -52,7 +52,7 @@ A minimal Data Resource pointing to some inline data looks as follows.
 
 ```javascript
 {
-  "name": "resource-name.csv",
+  "name": "resource-name",
   "data": {
     "resource-name-data": [
       {"a": 1, "b": 2}
