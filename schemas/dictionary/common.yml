@@ -247,6 +247,10 @@ license:
       "$ref": "#/definitions/path"
     title:
       "$ref": "#/definitions/title"
+    scope:
+      title: License scope
+      description: Clarification that what element(s) the license applies, especially in the case of multiple licenses.
+      type: string
   context: Use of this property does not imply that the person was the original
     creator of, or a contributor to, the data in the descriptor, but refers to the
     composition of the descriptor itself.
