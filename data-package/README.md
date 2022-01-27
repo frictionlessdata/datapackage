@@ -176,7 +176,7 @@ The license(s) under which the package is provided.
 
 **This property is not legally binding and does not guarantee the package is licensed under the terms defined in this property.**
 
-`licenses` `MUST` be an array. Each item in the array is a License. Each `MUST` be an `object`. The object `MUST` contain a `name` property and/or a `path` property. It `MAY` contain a `title` property.
+`licenses` `MUST` be an array. Each item in the array is a License. Each `MUST` be an `object`. The object `MUST` contain a `name` property and/or a `path` property. It `MAY` contain a `title` and `scope` property.
 
 Here is an example:
 
