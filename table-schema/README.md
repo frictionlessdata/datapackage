@@ -3,7 +3,7 @@ title: Table Schema
 version: 1.0
 author: Paul Walsh, Rufus Pollock
 created: 12 November 2012
-updated: 6 October 2020
+updated: 5 October 2021
 descriptor: table-schema.json
 mediatype: application/vnd.tableschema+json
 abstract: A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.
@@ -85,6 +85,7 @@ The following is an illustration of this structure:
       "title": "A nicer human readable label or title for the field",
       "type": "A string specifying the type",
       "format": "A string specifying a format",
+      "example": "An example value for the field",
       "description": "A description for the field"
       ...
     },
@@ -114,6 +115,7 @@ Here is an illustration:
   "title": "A nicer human readable label or title for the field",
   "type": "A string specifying the type",
   "format": "A string specifying a format",
+  "example": "An example value for the field",
   "description": "A description for the field",
   "constraints": {
       // a constraints-descriptor
@@ -134,6 +136,11 @@ A human readable label or title for the field
 ### `description`
 
 A description for this field e.g. "The recipient of the funds"
+
+### `example`
+
+An example value for the field
+
 
 ### Types and Formats
 

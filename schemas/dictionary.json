@@ -56,6 +56,14 @@
         "{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"
       ]
     },
+    "example": {
+      "title": "Example",
+      "description": "An example value for the field.",
+      "type": "string",
+      "examples": [
+        "{\n  \"example\": \"Put here an example value for your field\"\n}\n"
+      ]
+    },
     "homepage": {
       "title": "Home Page",
       "description": "The home on the web that is related to this data package.",
@@ -1258,6 +1266,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `string`.",
           "enum": [
@@ -1329,6 +1340,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `boolean`.",
           "enum": [
@@ -1387,6 +1401,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `integer`.",
@@ -1472,6 +1489,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `number`.",
@@ -1567,6 +1587,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `date`.",
           "enum": [
@@ -1628,6 +1651,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `time`.",
           "enum": [
@@ -1688,6 +1714,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `datetime`.",
           "enum": [
@@ -1747,6 +1776,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `year`.",
@@ -1831,6 +1863,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `yearmonth`.",
           "enum": [
@@ -1894,6 +1929,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `duration`.",
           "enum": [
@@ -1954,6 +1992,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `object`.",
@@ -2023,6 +2064,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `array`.",
           "enum": [
@@ -2090,6 +2134,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `geojson`.",
@@ -2162,6 +2209,9 @@
         "description": {
           "$ref": "#/definitions/description"
         },
+        "example": {
+          "$ref": "#/definitions/example"
+        },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `geopoint`.",
           "enum": [
@@ -2233,6 +2283,9 @@
         },
         "description": {
           "$ref": "#/definitions/description"
+        },
+        "example": {
+          "$ref": "#/definitions/example"
         },
         "type": {
           "description": "The type keyword, which `MUST` be a value of `any`.",
