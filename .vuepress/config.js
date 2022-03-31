@@ -96,12 +96,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // [
-    // "@vuepress/plugin-google-analytics",
-    // {
-    // ga: "UA-33874954-38",
-    // },
-    // ],
     ["@vuepress/back-to-top"],
+  ],
+  head: [
+    ["script", { src: "https://plausible.io/js/script.js", "data-domain": "specs.frictionlessdata.io"}],
   ],
 };
