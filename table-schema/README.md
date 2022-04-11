@@ -28,7 +28,7 @@ Table Schema is a simple language- and implementation-agnostic way to declare a 
 
 #### Tabular data
 
-Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each row has the same set of fields and thus we can talk about *the* fields for the table as a whole.
+Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each row has the same set of fields and thus we can talk about _the_ fields for the table as a whole.
 
 In case of tables in spreadsheets or CSV files we often interpret the first row as a header row, giving the names of the fields. By contrast, in other situations, e.g. tables in SQL databases, the field names are explicitly designated.
 
@@ -54,13 +54,13 @@ In JSON, a table would be:
 
 #### Physical and logical representation
 
-In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the *physical* and the *logical* representation of data.
+In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the _physical_ and the _logical_ representation of data.
 
-The *physical representation* of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation may have some *type* information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
+The _physical representation_ of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation may have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
 
-The *logical representation* of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
+The _logical representation_ of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
 
-In this document, we'll explicitly refer to either the *physical* or *logical* representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
+In this document, we'll explicitly refer to either the _physical_ or _logical_ representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
 
 For example, `constraints` should be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
 
@@ -141,12 +141,11 @@ A description for this field e.g. "The recipient of the funds"
 
 An example value for the field
 
-
 ### Types and Formats
 
 `type` and `format` properties are used to give The type of the field (string, number etc) - see below for
-    more detail. If type is not provided a consumer should assume a type of
-    "string".
+more detail. If type is not provided a consumer should assume a type of
+"string".
 
 A field's `type` property is a string indicating the type of this field.
 
@@ -161,7 +160,7 @@ Types are based on the [type set of
 json-schema](http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1)
 with some additions and minor modifications (cf other type lists include
 those in [Elasticsearch
-types](http://www.elasticsearch.org/guide/reference/mapping/)).
+types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)).
 
 The type list with associated formats and other related properties is as
 follows.
@@ -172,11 +171,11 @@ The field contains strings, that is, sequences of characters.
 
 `format`:
 
-* **default**: any valid string.
-* **email**: A valid email address.
-* **uri**: A valid URI.
-* **binary**: A base64 encoded string representing binary data.
-* **uuid**: A string that is a uuid.
+- **default**: any valid string.
+- **email**: A valid email address.
+- **uri**: A valid URI.
+- **binary**: A base64 encoded string representing binary data.
+- **uuid**: A string that is a uuid.
 
 #### number
 
@@ -191,22 +190,22 @@ part is zero, the period and following zero(es) can be omitted. For example:
 
 The following special string values are permitted (case need not be respected):
 
-* NaN: not a number
-* INF: positive infinity
-* -INF: negative infinity
+- NaN: not a number
+- INF: positive infinity
+- -INF: negative infinity
 
 A number MAY also have a trailing:
 
-* exponent: this MUST consist of an E followed by an optional + or - sign
+- exponent: this MUST consist of an E followed by an optional + or - sign
   followed by one or more decimal digits (0-9)
 
 This lexical formatting may be modified using these additional properties:
 
-* **decimalChar**: A string whose value is used to represent a decimal point
+- **decimalChar**: A string whose value is used to represent a decimal point
   within the number. The default value is ".".
-* **groupChar**: A string whose value is used to group digits within the
+- **groupChar**: A string whose value is used to group digits within the
   number. The default value is null. A common value is "," e.g. "100,000".
-* **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -220,7 +219,7 @@ Integer values are indicated in the standard way for any valid integer.
 
 Additional properties:
 
-* **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -232,8 +231,8 @@ In the physical representations of data where boolean values are represented wit
 
 The boolean field can be customised with these additional properties:
 
-* **trueValues**: `[ "true", "True", "TRUE", "1" ]`
-* **falseValues**: `[ "false", "False", "FALSE", "0" ]`
+- **trueValues**: `[ "true", "True", "TRUE", "1" ]`
+- **falseValues**: `[ "false", "False", "FALSE", "0" ]`
 
 `format`: no options (other than the default).
 
@@ -255,18 +254,18 @@ A date without a time.
 
 `format`:
 
-* **default**: An ISO8601 format string.
-  * date: This MUST be in ISO8601 format YYYY-MM-DD
-  * datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
-  * time: a time without a date
-* **any**: Any parsable representation of the type. The implementing
+- **default**: An ISO8601 format string.
+  - date: This MUST be in ISO8601 format YYYY-MM-DD
+  - datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
+  - time: a time without a date
+- **any**: Any parsable representation of the type. The implementing
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
-* **\<PATTERN\>**: date/time values in this field can be parsed according to
+- **\<PATTERN\>**: date/time values in this field can be parsed according to
   `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
   strptime][strptime]. (That is, values in the this field should be parsable
-  by Python / C standard `strptime` using `<PATTERN>`).  Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
+  by Python / C standard `strptime` using `<PATTERN>`). Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
 
@@ -274,9 +273,9 @@ A time without a date.
 
 `format`:
 
-* **default**: An ISO8601 time string e.g. `hh:mm:ss`
-* **any**: as for `date`
-* **\<PATTERN\>**: as for `date`
+- **default**: An ISO8601 time string e.g. `hh:mm:ss`
+- **any**: as for `date`
+- **\<PATTERN\>**: as for `date`
 
 #### datetime
 
@@ -284,9 +283,9 @@ A date with a time.
 
 `format`:
 
-* **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
-* **any**: as for `date`
-* **\<PATTERN\>**: as for `date`
+- **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
+- **any**: as for `date`
+- **\<PATTERN\>**: as for `date`
 
 #### year
 
@@ -328,11 +327,11 @@ The field contains data describing a geographic point.
 
 `format`:
 
-* **default**: A string of the pattern "lon, lat", where `lon` is the longitude
+- **default**: A string of the pattern "lon, lat", where `lon` is the longitude
   and `lat` is the latitude (note the space is optional after the `,`). E.g. `"90, 45"`.
-* **array**: A JSON array, or a string parsable as a JSON array, of exactly two items, where each item is a number, and the first item is `lon` and the second
+- **array**: A JSON array, or a string parsable as a JSON array, of exactly two items, where each item is a number, and the first item is `lon` and the second
   item is `lat` e.g. `[90, 45]`
-* **object**: A JSON object with exactly two keys, `lat` and `lon` and each value is a number e.g. `{"lon": 90, "lat": 45}`
+- **object**: A JSON object with exactly two keys, `lat` and `lon` and each value is a number e.g. `{"lon": 90, "lat": 45}`
 
 #### geojson
 
@@ -340,8 +339,8 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
 `format`:
 
-* **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
-* **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
+- **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).
+- **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)
 
 #### any
 
@@ -382,7 +381,6 @@ The corresponding Table Schema is:
 ```
 
 [rdfs-class]: https://www.w3.org/TR/rdf-schema/#ch_class
-
 
 ### Constraints
 
@@ -524,12 +522,11 @@ properties.
   </tr>
 </table>
 
-
 **Implementors**:
 
-* Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
-* A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
-* Constraints `MUST` be applied on the logical representation of field values and constraint values.
+- Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
+- A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
+- Constraints `MUST` be applied on the logical representation of field values and constraint values.
 
 ## Other Properties
 
@@ -542,7 +539,6 @@ Many datasets arrive with missing data values, either because a value was not co
 `missingValues` dictates which string values should be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion.
 The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place.
 Providing the empty list `[]` means that no conversion to null will be done, on any value.
-
 
 `missingValues` MUST be an `array` where each entry is a `string`.
 
@@ -568,7 +564,7 @@ the primary key for this table.
 
 The `primaryKey`, if present, MUST be:
 
-* Either: an array of strings with each string corresponding to one of the
+- Either: an array of strings with each string corresponding to one of the
   field `name` values in the `fields` array (denoting that the primary key is
   made up of those fields). It is acceptable to have an array with a single
   value (indicating just one field in the primary key). Strictly, order of
@@ -576,7 +572,7 @@ The `primaryKey`, if present, MUST be:
   follow the order the fields in the `fields` has as client applications may
   utilize the order of the primary key list (e.g. in concatenating values
   together).
-* Or: a single string corresponding to one of the field `name` values in
+- Or: a single string corresponding to one of the field `name` values in
   the `fields` array (indicating that this field is the primary key). Note that
   this version corresponds to the array form with a single value (and can be
   seen as simply a more convenient way of specifying a single field primary
@@ -620,16 +616,16 @@ They are directly modelled on the concept of foreign keys in SQL.
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
 array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have the following properties:
 
-* `fields` - `fields` is a string or array specifying the
+- `fields` - `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
-* `reference` - `reference` MUST be a `object`. The `object`
-  * `MUST` have a property `resource` which is the name of the resource within
+- `reference` - `reference` MUST be a `object`. The `object`
+  - `MUST` have a property `resource` which is the name of the resource within
     the current data package (i.e. the data package within which this Table
     Schema is located). For self-referencing foreign keys, i.e. references
     between fields in this Table Schema, the value of `resource` `MUST` be `""`
     (i.e. the empty string).
-  * `MUST` have a property `fields` which is a string if the outer `fields` is a
+  - `MUST` have a property `fields` which is a string if the outer `fields` is a
     string, else an array of the same length as the outer `fields`, describing the
     field (or fields) references on the destination resource. The structure of
     the string or array is as per `primaryKey` above.
@@ -707,17 +703,16 @@ An example of a self-referencing foreign key:
 
 Table Schema draws content and/or inspiration from, among others, the following specifications and implementations:
 
-* [XML Schema][]
-* [Google BigQuery][]
-* [JSON Schema][]
-* [DSPL][]
-* [HTML5 Forms][]
-* [Elasticsearch][]
+- [XML Schema][]
+- [Google BigQuery][]
+- [JSON Schema][]
+- [DSPL][]
+- [HTML5 Forms][]
+- [Elasticsearch][]
 
-
-[XML Schema]: http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes
-[Google BigQuery]: https://developers.google.com/bigquery/docs/import#loading_json_files
-[JSON Schema]: http://json-schema.org
-[DSPL]: https://developers.google.com/public-data/docs/schema/dspl18
-[HTML5 Forms]: http://www.whatwg.org/specs/web-apps/current-work/#attr-input-typ
-[Elasticsearch]: http://www.elasticsearch.org/guide/reference/mapping/
+[xml schema]: http://www.w3.org/TR/xmlschema-2/#built-in-primitive-datatypes
+[google bigquery]: https://developers.google.com/bigquery/docs/import#loading_json_files
+[json schema]: http://json-schema.org
+[dspl]: https://developers.google.com/public-data/docs/schema/dspl18
+[html5 forms]: http://www.whatwg.org/specs/web-apps/current-work/#attr-input-typ
+[elasticsearch]: http://www.elasticsearch.org/guide/reference/mapping/
