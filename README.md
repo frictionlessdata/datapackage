@@ -26,11 +26,13 @@ We also broke down the Data Package spec into Data Package itself and Data Resou
 
 **Example: Data Resource spec + Table Schema spec becomes a Tabular Data Resource spec**
 
-```mermaid
-graph TD
 
-  dr[Data Resource] --add table schema--> tdr[Tabular Data Resource]
+``` mermaid
+   graph TD
+   
+   dr[Data Resource] --add table schema--> tdr[Tabular Data Resource]
 ```
+
 
 **Example: How a Tabular Data Package is composed out of other specs**
 
@@ -117,4 +119,4 @@ See the existing entries in the registry, and then take the following steps to a
 2. The pull request features a JSON Schema file for the new specification, and adds the spec to `registry.csv`
 3. Write a brief description of the spec as part of the pull request.
 
-<mermaid />
+<mermaid/>
