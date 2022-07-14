@@ -98,6 +98,7 @@ B,3,4.5
     {
       "path": "data.csv",
       "profile": "tabular-data-resource",
+      "name": "my-data",
       "schema": {
         "fields": [
           {
