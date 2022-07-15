@@ -241,7 +241,7 @@ license:
   title: License
   description: A license for this descriptor.
   type: object
-  oneOf:
+  anyOf:
     - required:
       - name
     - required:
