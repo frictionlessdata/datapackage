@@ -96,8 +96,9 @@ B,3,4.5
   // here we list the data files in this dataset
   "resources": [
     {
-      "path": "data.csv",
       "profile": "tabular-data-resource",
+      "name": "data",
+      "path": "data.csv",
       "schema": {
         "fields": [
           {
