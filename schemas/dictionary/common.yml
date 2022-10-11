@@ -199,12 +199,6 @@ contributor:
       type: string
     role:
       type: string
-      enum:
-      - publisher
-      - author
-      - maintainer
-      - wrangler
-      - contributor
       default: contributor
   required:
   - title
