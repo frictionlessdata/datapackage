@@ -1,6 +1,6 @@
 ---
 title: Data Package
-version: 1.0 
+version: 1.0
 author: Paul Walsh, Rufus Pollock
 created: 12 November 2007
 updated: 2 May 2017
@@ -64,7 +64,7 @@ README.md         # (optional) README in markdown format
 mydata.csv
 data/otherdata.csv
 
-# the directory for code scripts - again these can go in the base directory 
+# the directory for code scripts - again these can go in the base directory
 scripts/my-preparation-script.py
 ```
 
@@ -102,7 +102,7 @@ Adherence to the specification does not imply that additional, non-specified pro
   "start": "1800-01-01",
   "end": "1899-12-31"
 }
-```    
+```
 
 This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage. As an example, the [Tabular Data Package][tdp] specification extends Data Package to the case where all the data is tabular and stored in CSV.
 
@@ -126,7 +126,7 @@ Here is an illustrative example of a datapackage JSON file:
   # optional
   ... additional information ...
 }
-```    
+```
 
 ### Resource Information
 
@@ -186,7 +186,7 @@ Here is an example:
   "path": "http://opendatacommons.org/licenses/pddl/",
   "title": "Open Data Commons Public Domain Dedication and License v1.0"
 }]
-```      
+```
 
 * `name`: The `name` `MUST` be an [Open Definition license ID][od-licenses]
 * `path`: A [url-or-path][] string, that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
@@ -246,7 +246,7 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
   "title": "World Bank and OECD",
   "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
 }]
-```    
+```
 
 * `title`: title of the source (e.g. document or organization name)
 * `path`: A [url-or-path][] string, that is  a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
@@ -263,12 +263,12 @@ The people or organizations who contributed to this Data Package. It `MUST` be a
   "path": "http://www.bloggs.com",
   "role": "author"
 }]
-```      
+```
 
 * `title`: name/title of the contributor (name for person, name/title of organization)
 * `path`: a fully qualified http URL pointing to a relevant location online for the contributor
 * `email`: An email address
-* `role`: a string describing the role of the contributor. It `MUST` be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
+* `role`: a string describing the role of the contributor. It's `RECOMMENDED` to be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
   * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
 * `organization`: a string describing the organization this contributor is affiliated to.
 
