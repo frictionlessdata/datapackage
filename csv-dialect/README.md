@@ -48,7 +48,7 @@ A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the followin
 * `nullSequence` - specifies the null sequence (for example `\N`). Not set by default
 * `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `false`
 * `header` - indicates whether the file includes a header row. If `true` the first row in the file is a header row, not data. Default = `true`
-* `commentChar` - indicates a one-character string to ignore any line whose row begins with this character
+* `commentChar` - indicates a one-character string to ignore any line whose row begins with this character. Not set by default
 * `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
 * `csvddfVersion` - a number, in n.n format, e.g., `1.2`. If not present, consumers should assume latest schema version.
 
