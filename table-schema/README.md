@@ -503,7 +503,7 @@ properties.
       <code>string</code>
     </td>
     <td>
-      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field <code>MUST</code> conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
+      A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field <code>MUST</code> conform to the standard <a href="http://www.w3.org/TR/xmlschema-2/#regexs">XML Schema regular expression syntax</a>.
     </td>
   </tr>
   <tr>
