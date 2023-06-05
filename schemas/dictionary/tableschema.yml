@@ -100,7 +100,7 @@ tableSchema:
 tableSchemaField:
   title: Table Schema Field
   type: object
-  anyOf:
+  oneOf:
   - "$ref": "#/definitions/tableSchemaFieldString"
   - "$ref": "#/definitions/tableSchemaFieldNumber"
   - "$ref": "#/definitions/tableSchemaFieldInteger"
