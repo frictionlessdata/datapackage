@@ -436,6 +436,7 @@ tableSchemaFieldNumber:
     If both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).
   required:
   - name
+  - type
   properties:
     name:
       "$ref": "#/definitions/tableSchemaFieldName"
