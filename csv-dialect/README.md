@@ -40,7 +40,7 @@ Some related work can be found in [this comparison of csv dialect support](https
 
 A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the following properties:
 
-* `delimiter` - specifies the character sequence which should separate fields (aka columns). Default = `,`. Example `\t`.
+* `delimiter` - specifies the character sequence which should separate fields (aka columns). Default = `,`. Example `\t`. If not present, consumers should assume that it's `,`.
 * `lineTerminator` - specifies the character sequence which should terminate rows. Default = `\r\n`
 * `quoteChar` - specifies a one-character string to use as the quoting character. Default = `"`
 * `doubleQuote` - controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = `true`
