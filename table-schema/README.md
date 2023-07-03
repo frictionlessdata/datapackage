@@ -656,7 +656,7 @@ Here's an example:
         ],
         "foreignKeys": [
           {
-            "fields": "state-code"
+            "fields": "state-code",
             "reference": {
               "resource": "state-codes",
               "fields": "code"
