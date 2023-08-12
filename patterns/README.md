@@ -1099,7 +1099,7 @@ discussed frequently in numerous contexts, and is nearly identical to the patter
 [missing values per field](https://specs.frictionlessdata.io/patterns/#missing-values-per-field)
 appearing in this document above.
 
-Our proposal to add a field-specific `ordered` property has been raised
+Our proposal to add a field-specific `enumOrdered` property has been raised
 [here](https://github.com/frictionlessdata/specs/issues/739) and
 [here](https://github.com/frictionlessdata/specs/issues/156).
 
@@ -1135,10 +1135,10 @@ We propose three extensions:
    between so-called *system missing values* (e.g., "Not applicable") and
    other values that you may wish to include in certain tabulations/analyses
    but exclude from others (e.g., "Don't know" or "Refused").
-2. Add an optional field-specific `ordered` property, which can be used when
-   contructing a categorical (or factor) to indicate that the variable is
+2. Add an optional field-specific `enumOrdered` property, which can be used
+   when contructing a categorical (or factor) to indicate that the variable is
    ordinal.
-3. Add an optional field-specific `encoding` property for use when data are
+3. Add an optional field-specific `enumLabels` property for use when data are
    stored using integer or other codes rather than using the category labels.
    This contains an object mapping the codes appearing in the data (keys) to
    what they mean (values), and can be used by software to construct
@@ -1166,7 +1166,7 @@ Here is an example using extensions (1) and (2):
           "Excellent",
         ]
       }
-      "ordered": true
+      "enumOrdered": true
       "missingValues": ["Don't know","Refused"]
     }
   ],
@@ -1182,11 +1182,11 @@ be created automatically based on the ordering of the values in the `enum`
 array, and the field level `missingValues` can be incorporated into the value
 labels or categoricals if desired. In those cases where it is desired to have
 more control over how the value labels are constructed, this information can
-be stored in a separate encodings file in JSON format or as part of a custom
-extension to the table schema. Since such instructions do not describe the
-data themselves (but only how a specific software package should handle them),
-and since they are often software- and/or user-specific, we argue that they
-should not be included in the official table schema.
+be stored in a separate file in JSON format or as part of a custom extension
+to the table schema. Since such instructions do not describe the data
+themselves (but only how a specific software package should handle them), and
+since they are often software- and/or user-specific, we argue that they should
+not be included in the official table schema.
 
 Alternatively, those who wish to store their data in encoded form (e.g., this
 is the default for data exports from [REDCap](https://projectredcap.org), a
@@ -1200,9 +1200,9 @@ extension (3) to do so:
       "name": "physical_health",
       "type": "integer",
       "enum": [1,2,3,4,5]
-      "ordered": true
+      "enumOrdered": true
       "missingValues": ["Don't know","Refused"]
-      "encoding": {
+      "enumLabels": {
         "1": "Poor",
         "2": "Fair",
         "3": "Good",
@@ -1215,9 +1215,9 @@ extension (3) to do so:
 }
 ```
 
-Note that although the field type is `integer`, the keys in the encoding
-object must be enclosed in double quotes because this is required by the JSON
-specification.
+Note that although the field type is `integer`, the keys in the `enumLabels`
+object must be wrapped in double quotes because this is required by the JSON
+file format.
 
 A second variant of the example above is the following:
 
@@ -1228,9 +1228,9 @@ A second variant of the example above is the following:
       "name": "physical_health",
       "type": "integer",
       "enum": [1,2,3,4,5]
-      "ordered": true
+      "enumOrdered": true
       "missingValues": [".a",".b"]
-      "encoding": {
+      "enumLabels": {
         "1": "Poor",
         "2": "Fair",
         "3": "Good",
@@ -1251,30 +1251,6 @@ labels. The values `.a`, `.b`, etc. are known as *extended missing values*
 (both integer and float) in addition to the system missing value ("`.`"); in
 SPSS these would be replaced with designated numbers (e.g., -97, -98 and -99).
 
-Note that one might argue that the encoding property should instead be
-specified as:
-
-```
-{
-  "encoding": {
-    "Poor": 1,
-    "Fair": 2,
-    "Good": 3,
-    "Very good": 4,
-    "Excellent": 5
-}
-```
-
-since that represents the encoding that has been applied to the data, and the
-table in the example is what is now necessary to *decode* the data. However,
-there are at least three arguments in favor of the proposed specification.
-First, it is the way value labels are uniformly written (e.g., in Stata, SAS
-and SPSS). Second, it automatically imposes the necessary constraint that the
-codes are unique (since a JSON object's keys must be unique). Third, it
-simplifies working with the encoding programmatically, since it can be read as
-an associative array and then applied directly to decode to the data (e.g.,
-using `DataFrame.replace()` in Pandas).
-
 ### Specification
 
 1. A field MAY have a `missingValues` property that MUST be an `array` where
@@ -1285,26 +1261,27 @@ using `DataFrame.replace()` in Pandas).
    with the values specified at the resource level appearing in the same order
    *after* those specified at the field level.
 
-2. A field with an `enum` constraint or an `encoding` property MAY have an
-   `ordered` property that MUST be a boolean. A value of `true` indicates that
-   the field should be treated as having an ordinal scale of measurement, with
-   the ordering given by the order of the field's `enum` array or by the
-   lexical order of the `encoding` object's keys, with the latter taking
-   precedence. Fields without an `enum` constraint or an `encoding` property
-   or for which the encoding object's keys do not include all values observed
+2. A field with an `enum` constraint or an `enumLabels` property MAY have an
+   `enumOrdered` property that MUST be a boolean. A value of `true` indicates
+   that the field should be treated as having an ordinal scale of measurement,
+   with the ordering given by the order of the field's `enum` array or by the
+   lexical order of the `enumLabels` object's keys, with the latter taking
+   precedence. Fields without an `enum` constraint or an `enumLabels` property
+   or for which the `enumLabels` keys do not include all values observed
    in the data (excluding any values specified in either the field level or
-   resource level `missingValues` property) SHOULD NOT have an `ordered`
+   resource level `missingValues` property) MUST NOT have an `enumOrdered`
    property since in that case the correct ordering of the data is ambiguous.
-   The absence of an `ordered` property MUST NOT be taken to imply
-   `ordered: false`.
+   The absence of an `enumOrdered` property MUST NOT be taken to imply
+   `enumOrdered: false`.
 
-3. A field MAY have an `encoding` property that MUST be an object. This
+3. A field MAY have an `enumLabels` property that MUST be an object. This
    property SHOULD be used to indicate how the values in the data (represented
    by the object's keys) are to be labeled or translated (represented by the
-   corresponding value). The object's keys MAY include values that do not
-   appear in the data and MAY omit some values that do appear in the data. For
-   clarity and to avoid unintentional loss of information, the object's values
-   SHOULD be unique.
+   corresponding value). As required by the JSON format, the object's keys
+   must be listed as strings (i.e., wrapped in double quotes). The keys MAY
+   include values that do not appear in the data and MAY omit some values that
+   do appear in the data. For clarity and to avoid unintentional loss of
+   information, the object's values SHOULD be unique.
 
 ### Suggested implementations
 
@@ -1333,49 +1310,50 @@ other software listed above are straightforward.
 
 #### Software that supports value labels (Stata, SAS or SPSS)
 
-1. In cases where a field has an `enum` constraint but no `encoding` property,
-   automatically generate a value label mapping the integers 1, 2, 3, ... to
-   the `enum` values in order, use this to encode the field (thereby changing
-   its type from `string` to `integer`), and attach the value label to the
-   field. Provide option to skip automatically dropping field level
-   `missingValues` and instead add them in order to the end of the value label,
-   encoded using extended missing values if supported.
+1. In cases where a field has an `enum` constraint but no `enumLabels`
+   property, automatically generate a value label mapping the integers 1, 2,
+   3, ... to the `enum` values in order, use this to encode the field (thereby
+   changing its type from `string` to `integer`), and attach the value label
+   to the field. Provide option to skip automatically dropping field level
+   `missingValues` and instead add them in order to the end of the value
+   label, encoded using extended missing values if supported.
 
 2. In cases where the data are stored in encoded form (e.g., as integers) and
-   a corresponding `encoding` property is present, and assuming that the keys
-   in the encoding object are limited to integers and extended missing values
-   (if supported), use the `encoding` object to generate a value label and
-   attach it to the field.  As with (1), provide option to skip automatically
-   dropping field level `missingValues` and instead add them in order to the
-   end of the value label, encoded using extended missing values if supported.
+   a corresponding `enumLabels` property is present, and assuming that the
+   keys in the `enumLabels` object are limited to integers and extended
+   missing values (if supported), use the `enumLabels` object to generate a
+   value label and attach it to the field. As with (1), provide option to skip
+   automatically dropping field level `missingValues` and instead add them in
+   order to the end of the value label, encoded using extended missing values
+   if supported.
 
 3. Although none of Stata, SAS or SPSS currently permit designating a specific
    variable as ordered, Stata permits attaching arbitrary metadata to
-   individual variables. Thus, in cases where the `ordered` property is
+   individual variables. Thus, in cases where the `enumOrdered` property is
    present, this information can be stored in Stata to inform the analyst and
    to permit loss of information when generating Frictionless data packages
    from within Stata.
 
 #### Software that supports categoricals or factors (Pandas, R, Julia)
 
-1. In cases where a field has an `enum` constraint but no `encoding` property,
-   automatically define a categorical or factor using the `enum` values in
-   order, and convert the variable to categorical or factor type using this
-   definition. Provide option to skip automatically dropping field level
-   `missingValues` and instead add them in order to the end of the `enum`
-   values when defining the categorical or factor.
+1. In cases where a field has an `enum` constraint but no `enumLabels`
+   property, automatically define a categorical or factor using the `enum`
+   values in order, and convert the variable to categorical or factor type
+   using this definition. Provide option to skip automatically dropping field
+   level `missingValues` and instead add them in order to the end of the
+   `enum` values when defining the categorical or factor.
 
 2. In cases where the data are stored in encoded form (e.g., as integers) and
-   a corresponding `encoding` property is present, translate the data using
-   the `encoding` object, define a categorical or factor using the values of
-   the `encoding` object in lexical order of the keys, and convert the
+   a corresponding `enumLabels` property is present, translate the data using
+   the `enumLabels` object, define a categorical or factor using the values of
+   the `enumLabels` object in lexical order of the keys, and convert the
    variable to categorical or factor type using this definition. Provide
    option to skip automatically dropping field level `missingValues` and
-   instead add them to the end of the `encoding` values when defining the
+   instead add them to the end of the `enumLabels` values when defining the
    categorical or factor.
 
-3. In cases where a field has an `ordered` property, use that when defining
-   the categorical or factor.
+3. In cases where a field has an `enumOrdered` property, use that when
+   defining the categorical or factor.
 
 #### All software
 
@@ -1389,12 +1367,12 @@ handle tabular data. Specifically:
    flexibility in specifying missing values that can benefit reading
    Frictionless data into any software.
 
-2. The `encoding` property may be used to support any type of encoding, even
-   in cases where value labels or categoricals are not being used. For example,
-   it is standard practice in software for analyzing genetic data to code sex
-   as 0, 1 and 2 (corresponding to "Unknown", "Male" and "Female") and
-   affection status as 0, 1 and 2 (corresponding to "Unknown", "Unaffected"
-   and "Affected"). In such cases, the `encoding` property may be used to
-   confirm that the data follow the standard convention or to indicate that
-   they deviate from it; it may also be used to translate those codes into
-   human-readable values, if desired.
+2. The `enumLabels` property may be used to support the use of enums even
+   in cases where value labels or categoricals are not being used. For
+   example, it is standard practice in software for analyzing genetic data to
+   code sex as 0, 1 and 2 (corresponding to "Unknown", "Male" and "Female")
+   and affection status as 0, 1 and 2 (corresponding to "Unknown",
+   "Unaffected" and "Affected"). In such cases, the `enumLabels` property may
+   be used to confirm that the data follow the standard convention or to
+   indicate that they deviate from it; it may also be used to translate those
+   codes into human-readable values, if desired.
