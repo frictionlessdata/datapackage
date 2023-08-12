@@ -1201,7 +1201,6 @@ extension (3) to do so:
       "type": "integer",
       "enum": [1,2,3,4,5]
       "enumOrdered": true
-      "missingValues": ["Don't know","Refused"]
       "enumLabels": {
         "1": "Poor",
         "2": "Fair",
@@ -1209,6 +1208,7 @@ extension (3) to do so:
         "4": "Very good",
         "5": "Excellent"
       }
+      "missingValues": ["Don't know","Refused"]
     }
   ],
   "missingValues": ["Not applicable","No answer"]
@@ -1229,7 +1229,6 @@ A second variant of the example above is the following:
       "type": "integer",
       "enum": [1,2,3,4,5]
       "enumOrdered": true
-      "missingValues": [".a",".b"]
       "enumLabels": {
         "1": "Poor",
         "2": "Fair",
@@ -1239,6 +1238,7 @@ A second variant of the example above is the following:
         ".a": "Don't know",
         ".b": "Refused"
       }
+      "missingValues": [".a",".b"]
     }
   ],
   "missingValues": ["."]
