@@ -1,0 +1,28 @@
+{
+  "name": "datapackage.org",
+  "type": "module",
+  "private": true,
+  "version": "2.0.0a1",
+  "scripts": {
+    "build": "astro build",
+    "format": "eslint --fix . && prettier --write .",
+    "generate": "astro sync",
+    "lint": "eslint . && prettier --check .",
+    "preview": "astro preview",
+    "start": "astro dev --open",
+    "test": "npm run lint",
+    "update": "ncu -u"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.9.1",
+    "@trivago/prettier-plugin-sort-imports": "4.2.0",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
+    "astro": "^3.0.13",
+    "eslint": "8.49.0",
+    "eslint-plugin-astro": "0.29.0",
+    "npm-check-updates": "16.14.2",
+    "prettier": "3.0.3",
+    "prettier-plugin-astro": "0.12.0"
+  }
+}
