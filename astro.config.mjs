@@ -10,8 +10,8 @@ export default defineConfig({
     starlight({
       title: "Data Package Standard",
       logo: {
-        light: "/assets/logo-light-orange.png",
-        dark: "/assets/logo-dark-orange.png",
+        light: "/assets/logo-light.png",
+        dark: "/assets/logo-dark.png",
         replacesTitle: true,
       },
       social: {
