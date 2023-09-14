@@ -6,11 +6,12 @@
 :root[data-theme="light"] {
   --purple-hsl: 209, 85%, 65%;
   --sl-color-text-accent: #dca45b;
+  --sl-color-banner-bg: #85898c;
 }
 
 /* Firefox */
 * {
-  scrollbar-color: #dca45b transparent;
+  scrollbar-color: var(--sl-color-text-accent) transparent;
 }
 
 /* Webkit */
@@ -29,5 +30,5 @@ body::-webkit-scrollbar-track {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: #dca45b;
+  background: var(--sl-color-text-accent);
 }
