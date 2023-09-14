@@ -22,7 +22,11 @@ export default defineConfig({
       sidebar: [
         {
           label: "Specifications",
-          autogenerate: { directory: "specs" },
+          autogenerate: { directory: "specifications" },
+        },
+        {
+          label: "Extensions",
+          autogenerate: { directory: "extensions" },
         },
       ],
     }),
