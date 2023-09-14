@@ -28,6 +28,10 @@ export default defineConfig({
           label: "Extensions",
           autogenerate: { directory: "extensions" },
         },
+        {
+          label: "Patterns",
+          autogenerate: { directory: "patterns" },
+        },
       ],
     }),
   ],
