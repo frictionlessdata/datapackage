@@ -13,7 +13,7 @@ hero:
     file: ../../assets/hero.png
   actions:
     - text: Get Started
-      link: /documentation/getting-started/
+      link: /specs/data-package/
       icon: right-arrow
       variant: primary
     - text: View on GitHub
@@ -22,8 +22,26 @@ hero:
 ---
 
 import About from "../../components/about.astro"
+import { CardGrid, Card } from "@astrojs/starlight/components"
 
----
+<CardGrid stagger>
+  <Card title="Data Package" icon="open-book">
+    A simple container format for describing a coherent collection of data in a single
+    package
+  </Card>
+  <Card title="Data Resource" icon="rocket">
+    A simple format to describe and package a single data resource such as a individual
+    table or file.
+  </Card>
+  <Card title="Table Dialect" icon="document">
+    Table Dialect defines a simple format to describe the various dialects of tabular
+    files in a language agnostic manner.
+  </Card>
+  <Card title="Table Schema" icon="puzzle">
+    A simple format to declare a schema for tabular data. The schema is designed to be
+    expressible in JSON.
+  </Card>
+</CardGrid>
 
 <About title="Brought to you by">
 We are building a world open by design where all knowledge is accessible to everyone

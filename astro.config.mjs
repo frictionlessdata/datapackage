@@ -18,14 +18,11 @@ export default defineConfig({
         github: "https://github.com/frictionlessdata/open-data-editor",
       },
       customCss: ["/assets/styles.css"],
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       sidebar: [
         {
-          label: "Documentation",
-          autogenerate: { directory: "documentation" },
-        },
-        {
-          label: "Contributing",
-          autogenerate: { directory: "contributing" },
+          label: "Specifications",
+          autogenerate: { directory: "specs" },
         },
       ],
     }),
