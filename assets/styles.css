@@ -1,0 +1,23 @@
+/* Firefox */
+* {
+  scrollbar-color: #0288d1 transparent;
+}
+
+/* Webkit */
+/* Make scrollbars transparent except for main page scrollbar. */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #0288d1;
+}

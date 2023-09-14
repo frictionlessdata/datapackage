@@ -10,14 +10,14 @@ export default defineConfig({
     starlight({
       title: "Data Package Standard",
       logo: {
-        light: "/src/assets/logo-light-orange.png",
-        dark: "/src/assets/logo-dark-orange.png",
+        light: "/assets/logo-light-orange.png",
+        dark: "/assets/logo-dark-orange.png",
         replacesTitle: true,
       },
       social: {
         github: "https://github.com/frictionlessdata/open-data-editor",
       },
-      customCss: ["/src/assets/styles.css"],
+      customCss: ["/assets/styles.css"],
       sidebar: [
         {
           label: "Documentation",
