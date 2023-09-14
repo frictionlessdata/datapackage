@@ -20,16 +20,19 @@ export default defineConfig({
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       sidebar: [
+        { label: "Standard", autogenerate: { directory: "standard" } },
         {
           label: "Specifications",
           autogenerate: { directory: "specifications" },
         },
         {
           label: "Extensions",
+          collapsed: true,
           autogenerate: { directory: "extensions" },
         },
         {
           label: "Patterns",
+          collapsed: true,
           autogenerate: { directory: "patterns" },
         },
       ],
