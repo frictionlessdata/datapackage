@@ -41,6 +41,11 @@ export default defineConfig({
           collapsed: true,
           autogenerate: { directory: "patterns" },
         },
+        {
+          label: "Guides",
+          collapsed: true,
+          autogenerate: { directory: "guides" },
+        },
       ],
     }),
   ],
