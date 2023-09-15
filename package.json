@@ -9,7 +9,7 @@
     "generate": "astro sync",
     "lint": "eslint . && prettier --check .",
     "preview": "astro preview --port 8080",
-    "start": "astro dev --port 8080",
+    "start": "astro dev --open --port 8080",
     "test": "npm run lint",
     "update": "ncu -u"
   },

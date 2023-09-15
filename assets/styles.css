@@ -1,6 +1,7 @@
 :root {
   --purple-hsl: 209, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --scrollbar-color: #ddd;
 }
 
 :root[data-theme="light"] {
@@ -11,7 +12,7 @@
 
 /* Firefox */
 * {
-  scrollbar-color: var(--sl-color-text-accent) transparent;
+  scrollbar-color: var(--scrollbar-color) transparent;
 }
 
 /* Webkit */
@@ -30,5 +31,5 @@ body::-webkit-scrollbar-track {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: var(--sl-color-text-accent);
+  background: var(--scrollbar-color);
 }
