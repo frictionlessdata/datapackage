@@ -2,6 +2,21 @@
 title: Table Schema
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/table-schema.json">table-schema.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1</td>
+  </tr>
+</table>
+
 A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON
 
 ## Language

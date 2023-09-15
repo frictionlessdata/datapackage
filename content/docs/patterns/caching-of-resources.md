@@ -3,10 +3,10 @@ title: Caching of Resources
 ---
 
 <table>
-    <tr>
-        <th>Author(s)</th>
-        <td>TODO</td>
-    </tr>
+  <tr>
+    <th>Author(s)</th>
+    <td>TODO</td>
+  </tr>
 </table>
 
 All Frictionless Data specifications allow for referencing resources via http or a local filesystem.

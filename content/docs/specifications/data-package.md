@@ -2,6 +2,21 @@
 title: Data Package
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/data-package.json">data-package.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1</td>
+  </tr>
+</table>
+
 A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
 
 ## Language

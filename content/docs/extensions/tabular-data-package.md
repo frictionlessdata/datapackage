@@ -2,6 +2,21 @@
 title: Tabular Data Package
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock, Martin Keegan</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/tabular-data-package.json">tabular-data-package.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1</td>
+  </tr>
+</table>
+
 A simple format for describing tabular-style data for publishing and sharing.
 
 ## Language
@@ -42,7 +57,8 @@ More informally:
 
 > CSV is the ultimate simple, standard data format - streamable,
 > text-based, no need for proprietary tools etc [@rufuspollock (Rufus
-> Pollock)]
+>
+> > Pollock)]
 
 ## Specification
 

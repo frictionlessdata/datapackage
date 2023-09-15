@@ -2,9 +2,20 @@
 title: Fiscal Data Package
 ---
 
-:::warning
+:::caution
 This is a draft specification and still under development. If you have comments or suggestions please file them in the [issue tracker][issues]. If you have explicit changes please fork the [git repo][repo] and submit a pull request.
 :::
+
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock, Tryggvi Björgvinsson, Steve Bennett, Adam Kariv, Dan Fowler</td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1.0-rc.1</td>
+  </tr>
+</table>
 
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs/issues

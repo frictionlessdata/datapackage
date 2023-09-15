@@ -2,6 +2,21 @@
 title: Data Resource
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/data-resource.json">data-resource.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1</td>
+  </tr>
+</table>
+
 A simple format to describe and package a single data resource such as a individual table or file.
 
 ## Language

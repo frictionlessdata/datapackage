@@ -2,6 +2,13 @@
 title: Nested Resources
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>TODO</td>
+  </tr>
+</table>
+
 Some datasets need to contain a Zip file (or tar, other formats) containing a
 set of files.
 

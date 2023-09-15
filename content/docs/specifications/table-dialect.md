@@ -2,6 +2,21 @@
 title: Table Dialect
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Rufus Pollock</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/csv-dialect.json">csv-dialect.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1.2</td>
+  </tr>
+</table>
+
 CSV Dialect defines a simple format to describe the various dialects of CSV files in a language agnostic manner. It aims to deal with a reasonably large subset of the features which differ between dialects, such as terminator strings, quoting rules, escape rules and so on
 
 ## Language

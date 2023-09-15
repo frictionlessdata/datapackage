@@ -2,6 +2,13 @@
 title: Missing Values per Field
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>TODO</td>
+  </tr>
+</table>
+
 Characters representing missing values in a table can be defined for all fields in a [Tabular Data Resource](http://frictionlessdata.io/specs/tabular-data-resource/) using the [`missingValues`](http://frictionlessdata.io/specs/table-schema/#missing-values) property in a Table Schema. Values that match the `missingValues` are treated as `null`.
 
 The Missing values per field pattern allows different missing values to be specified for each field in a Table Schema. If not specified, each field inherits from values assigned to `missingValues` at the Tabular Data Resource level.

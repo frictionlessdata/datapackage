@@ -2,6 +2,21 @@
 title: Tabular Data Resource
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>Paul Walsh, Rufus Pollock</td>
+  </tr>
+  <tr>
+    <th>JSON Schema</th>
+    <td><a href="https://specs.frictionlessdata.io/schemas/tabular-data-resource.json">tabular-data-resource.json</a></td>
+  </tr>
+  <tr>
+    <th>Version</th>
+    <td>1</td>
+  </tr>
+</table>
+
 A simple format to describe a single tabular data resource such as a CSV file. It includes support both for metadata such as author and title and a schema to describe the data, for example the types of the fields/columns in the data.
 
 ## Language

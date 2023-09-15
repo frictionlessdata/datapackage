@@ -2,6 +2,13 @@
 title: Unique Constraints
 ---
 
+<table>
+  <tr>
+    <th>Author(s)</th>
+    <td>TODO</td>
+  </tr>
+</table>
+
 A `primaryKey` uniquely identifies each row in a table. Per SQL standards, it
 cannot contain `null` values. This pattern implements the SQL UNIQUE constraint
 by introducing a `uniqueKeys` array, defining one or more row uniqueness
