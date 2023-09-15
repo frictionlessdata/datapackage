@@ -10,6 +10,11 @@
   --sl-color-banner-bg: #85898c;
 }
 
+:root[data-theme="dark"] {
+  --sl-color-banner-bg: #85898c;
+  --sl-color-text-accent: #dca45b;
+}
+
 /* Firefox */
 * {
   scrollbar-color: var(--scrollbar-color) transparent;
