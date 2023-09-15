@@ -17,10 +17,10 @@ export default defineConfig({
       social: {
         github: "https://github.com/frictionlessdata/open-data-editor",
       },
-      editLink: {
-        baseUrl: "https://github.com/roll/datapackage.org/edit/main/",
-      },
-      lastUpdated: true,
+      // editLink: {
+      // baseUrl: "https://github.com/frictionlessdata/datapackage.org/edit/main/",
+      // },
+      // lastUpdated: true,
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       sidebar: [
