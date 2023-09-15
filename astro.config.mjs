@@ -17,6 +17,8 @@ export default defineConfig({
       social: {
         github: "https://github.com/frictionlessdata/open-data-editor",
       },
+      // TODO: enable when this issue is resolved
+      // https://github.com/withastro/starlight/issues/718
       // editLink: {
       // baseUrl: "https://github.com/frictionlessdata/datapackage.org/edit/main/",
       // },
