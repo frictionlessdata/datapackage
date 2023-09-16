@@ -1,38 +1,26 @@
 ---
 import { Image } from 'astro:assets';
-import dryad from '../assets/dryad.png';
-import owid from '../assets/owid-light.png';
-import dataworld from '../assets/data-world-logo.png';
-import bcodmo from '../assets/bcodmo.png';
-import pudl from '../assets/pudl.png';
-import elife from '../assets/elife-logo.png';
-import oxford from '../assets/oxford-drg.png';
-import ukds from '../assets/ukds-logo.png';
-import odb from '../assets/odb.png';
-import cmoa from '../assets/cmoa-logo.png';
-import librariesHacked from '../assets/libraries-hacked-logo.png';
-import chicago from '../assets/chicago.png';
-import validata from '../assets/validata.png';
+import {adoption} from '../assets'
 ---
 
 <ul>
-    <li><Image src={dryad} alt="Dryad"></li>
-    <li><Image src={owid} alt="Our World in Data"></li>
-    <li><Image src={dataworld} alt="Data World"></li>
+    <li><Image src={adoption.dryad} alt="Dryad"></li>
+    <li><Image src={adoption.owid} alt="Our World in Data"></li>
+    <li><Image src={adoption.dataworld} alt="Data World"></li>
 </ul>
 <ul style="margin-top: 0">
-    <li><Image src={bcodmo} alt="BCO-DMO"></li>
-    <li><Image src={pudl} alt="PUDL"></li>
-    <li><Image src={elife} alt="Elife"></li>
-    <li><Image src={oxford} alt="Oxford"></li>
-    <li><Image src={ukds} alt="UKDS"></li>
+    <li><Image src={adoption.bcodmo} alt="BCO-DMO"></li>
+    <li><Image src={adoption.pudl} alt="PUDL"></li>
+    <li><Image src={adoption.elife} alt="Elife"></li>
+    <li><Image src={adoption.oxford} alt="Oxford"></li>
+    <li><Image src={adoption.ukds} alt="UKDS"></li>
 </ul>
 <ul style="margin-top: 0">
-    <li><Image src={odb} alt="Open Data Blend"></li>
-    <li><Image src={cmoa} alt="CMOA"></li>
-    <li><Image src={librariesHacked} alt="Libraries Hacked"></li>
-    <li><Image src={chicago} alt="The University of Chicago"></li>
-    <li><Image src={validata} alt="Validata"></li>
+    <li><Image src={adoption.odb} alt="Open Data Blend"></li>
+    <li><Image src={adoption.cmoa} alt="CMOA"></li>
+    <li><Image src={adoption.librariesHacked} alt="Libraries Hacked"></li>
+    <li><Image src={adoption.chicago} alt="The University of Chicago"></li>
+    <li><Image src={adoption.validata} alt="Validata"></li>
 </ul>
 
 <style>

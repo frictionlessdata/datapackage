@@ -4,30 +4,7 @@ sidebar:
   order: 6
 ---
 
-import bcodmo from "../../../assets/bcodmo.png"
-import cambridge from "../../../assets/cambridge.png"
-import causanatura from "../../../assets/causanatura.png"
-import chicago from "../../../assets/chicago.png"
-import cmoa from "../../../assets/cmoa-logo.png"
-import dataCurator from "../../../assets/data-curator.png"
-import dataRetriever from "../../../assets/data-retriever.png"
-import dataworld from "../../../assets/data-world-logo.png"
-import dm4t from "../../../assets/dm4t.png"
-import dryad from "../../../assets/dryad.png"
-import elife from "../../../assets/elife-logo.png"
-import etalab from "../../../assets/etalab.png"
-import hubmap from "../../../assets/hubmap.png"
-import librariesHacked from "../../../assets/libraries-hacked-logo.png"
-import nimblelearn from "../../../assets/nimblelearn.png"
-import odb from "../../../assets/odb.png"
-import owid from "../../../assets/owid-light.png"
-import oxford from "../../../assets/oxford-drg.png"
-import pnnl from "../../../assets/pnnl.png"
-import pudl from "../../../assets/pudl.png"
-import ukds from "../../../assets/ukds-logo.png"
-import uop from "../../../assets/uop-logo.png"
-import validata from "../../../assets/validata.png"
-import zegami from "../../../assets/zegami.png"
+import { adoption } from "../../../assets"
 import ImageLinkCard from "../../../components/image-link-card.astro"
 import { LinkCard, CardGrid } from "@astrojs/starlight/components"
 
@@ -40,13 +17,13 @@ Data portals adopting Data Package standard to increase accessibility of publush
 <CardGrid>
   <ImageLinkCard
     title="Dryad"
-    imageSrc={dryad.src}
+    imageSrc={adoption.dryad.src}
     description="A pilot project to integrate Frictionless Data Validation within Dryad, a curated resource that enhances the discoverability, reusability, and citation of research data"
     href="https://blog.okfn.org/2020/11/18/dryad-and-frictionless-data-collaboration/"
   />
   <ImageLinkCard
     title="Our World in Data"
-    imageSrc={owid.src}
+    imageSrc={adoption.owid.src}
     description="Our World in Data publushes their datasets using Data Package standard. Most datasets included here are annual time series data for social and economic indicators by country."
     href="https://github.com/owid/owid-datasets"
   />
@@ -59,70 +36,70 @@ We work closely with data researchers and institutions to help them integrate Fr
 <CardGrid>
 <ImageLinkCard
   title="BCO-DMO"
-  imageSrc={bcodmo.src}
+  imageSrc={adoption.bcodmo.src}
   description="A pilot collaboration with the Biological and Chemical Oceanography Data Management Office (BCO-DMO)."
   href="https://frictionlessdata.io/blog/2020/02/10/frictionless-data-pipelines-for-open-ocean/"
 />
 
 <ImageLinkCard
   title="PUDL"
-  imageSrc={pudl.src}
+  imageSrc={adoption.pudl.src}
   description="A pilot collaboration with the Public Utility Data Liberation project (PUDL), aimed at simplifying the usability of US energy data."
   href="https://frictionlessdata.io/blog/2020/03/18/frictionless-data-pilot-study/"
 />
 
 <ImageLinkCard
   title="Data Readiness Group"
-  imageSrc={oxford.src}
+  imageSrc={adoption.oxford.src}
   description="A pilot collaboration with Dr. Philippe Rocca-Serra's Data Readiness Group at Oxford, focusing on streamlining the reporting of scientific experimental results using Data Package specifications."
   href="https://blog.okfn.org/2020/07/21/clarifying-the-semantics-of-data-matrices-and-results-tables-a-frictionless-data-pilot/"
 />
 
 <ImageLinkCard
   title="Data Management for TEDDINET"
-  imageSrc={dm4t.src}
+  imageSrc={adoption.dm4t.src}
   description="A pilot collaboration applying Frictionless Data approaches to address data legacy challenges within the TEDDINET project, a research network dedicated to transforming energy demand in buildings."
   href="https://frictionlessdata.io/blog/2017/12/19/dm4t/"
 />
 
 <ImageLinkCard
   title="Western Pennsylvania Regional Data Center"
-  imageSrc={uop.src}
+  imageSrc={adoption.uop.src}
   description="A pilot collaboration to showcase an implementation that expounds on the quality and description of datasets in CKAN-based open data portals with the Western Pennsylvania Regional Data Center - a part of The University of Pittsburgh Center for Urban and Social Research."
   href="https://frictionlessdata.io/blog/2017/12/15/university-of-pittsburgh/"
 />
 
 <ImageLinkCard
   title="UK Data Service"
-  imageSrc={ukds.src}
+  imageSrc={adoption.ukds.src}
   description="A pilot collaboration to utilize Frictionless Data software for assessing and reporting on data quality, as well as generating visualizations from data and metadata within the UK data context."
   href="https://frictionlessdata.io/blog/2017/12/12/ukds/"
 />
 
 <ImageLinkCard
   title="eLife"
-  imageSrc={elife.src}
+  imageSrc={adoption.elife.src}
   description="A pilot collaboration to explore the use of the goodtables library for validating all scientific research datasets hosted by eLife and advocating for open data reuse in Life and Biomedical sciences."
   href="https://frictionlessdata.io/blog/2017/10/24/elife/"
 />
 
 <ImageLinkCard
   title="University of Cambridge - Retinal Mosaics"
-  imageSrc={cambridge.src}
+  imageSrc={adoption.cambridge.src}
   description="A pilot collaboration to trial Frictionless software for packaging and reading data, supporting computational techniques in the investigation of nervous system development."
   href="https://frictionlessdata.io/blog/2017/08/15/university-of-cambridge/"
 />
 
 <ImageLinkCard
   title="Pacific Northwest National Laboratory - Active Data Biology"
-  imageSrc={pnnl.src}
+  imageSrc={adoption.pnnl.src}
   description="A pilot collaboration to explore the use of Frictionless Data's specifications and software for generating schemas for tabular data and validating metadata within a biological application hosted on GitHub."
   href="https://frictionlessdata.io/blog/2017/06/26/pacific-northwest-national-laboratory-active-data-biology/"
 />
 
 <ImageLinkCard
   title="Causa Natura - Pescando Datos"
-  imageSrc={causanatura.src}
+  imageSrc={adoption.causanatura.src}
   description="A pilot collaboration to employ data validation software within the Causa Natura project, enhancing data quality to support fisher communities and advocacy groups."
   href="https://frictionlessdata.io/blog/2017/08/15/causa-natura-pescando-datos/"
 />
@@ -133,138 +110,125 @@ We work closely with data researchers and institutions to help them integrate Fr
 Here is a list of projects that our community has created on top of Data Package. If you would like your project to be featured here, let us know!
 
 <CardGrid>
-<ImageLinkCard
-  title="Libraries Hacked"
-  imageSrc={librariesHacked.src}
-  description="Libraries hacked is a project started in 2014 to promote the use of open data in libraries."
-  href="https://frictionlessdata.io/blog/2022/02/07/libraries-hacked/"
-/>
-
-<ImageLinkCard
-  title="Open Data Blend"
-  imageSrc={odb.src}
-  description="Open Data Blend is a set of open data services that aim to make large and complex UK open data easier to analyze."
-  href="https://frictionlessdata.io/blog/2021/07/12/open-data-blend/"
-/>
-
-<ImageLinkCard
-  title="Data Curator"
-  imageSrc={dataCurator.src}
-  description="Data Curator is a simple desktop data editor to help describe, validate and share usable open data."
-  href="https://frictionlessdata.io/blog/2019/03/01/datacurator/"
-/>
-
-<ImageLinkCard
-  title="HubMAP"
-  imageSrc={hubmap.src}
-  description="HuBMAP is creating an open, global atlas of the human body at the cellular level."
-  href="https://frictionlessdata.io/blog/2021/02/04/tableschema-to-template/"
-/>
-
-<ImageLinkCard
-  title="Etalab"
-  imageSrc={etalab.src}
-  description="Etalab, a department of the French interministerial digital service, launched schema.data.gouv.fr."
-  href="https://frictionlessdata.io/blog/2020/05/22/etalab-case-study-schemas-data-gouv-fr/"
-/>
-
+  <ImageLinkCard
+    title="Libraries Hacked"
+    imageSrc={adoption.librariesHacked.src}
+    description="Libraries hacked is a project started in 2014 to promote the use of open data in libraries."
+    href="https://frictionlessdata.io/blog/2022/02/07/libraries-hacked/"
+  />
+  <ImageLinkCard
+    title="HubMAP"
+    imageSrc={adoption.hubmap.src}
+    description="HuBMAP is creating an open, global atlas of the human body at the cellular level."
+    href="https://frictionlessdata.io/blog/2021/02/04/tableschema-to-template/"
+  />
+  <ImageLinkCard
+    title="Etalab"
+    imageSrc={adoption.etalab.src}
+    description="Etalab, a department of the French interministerial digital service, launched schema.data.gouv.fr."
+    href="https://frictionlessdata.io/blog/2020/05/22/etalab-case-study-schemas-data-gouv-fr/"
+  />
 <ImageLinkCard
   title="Nimble Learn - datapackage-m"
-  imageSrc={nimblelearn.src}
+  imageSrc={adoption.nimblelearn.src}
   description="A set of functions written in Power Query M for working with Tabular Data Packages in Power BI Desktop and Power Query for Excel."
   href="https://frictionlessdata.io/blog/2018/07/20/nimblelearn/"
 />
 
 <ImageLinkCard
   title="Nimble Learn - Datapackage-connector"
-  imageSrc={nimblelearn.src}
+  imageSrc={adoption.nimblelearn.src}
   description="Power BI Custom Connector that loads one or more tables from Tabular Data Packages into Power BI."
   href="https://frictionlessdata.io/blog/2019/07/22/nimblelearn-dpc/"
 />
-
 <ImageLinkCard
   title="Zegami"
-  imageSrc={zegami.src}
+  imageSrc={adoption.zegami.src}
   description="Zegami is using Frictionless Data specifications for data management and syntactic analysis on their visual data analysis platform."
   href="https://frictionlessdata.io/blog/2017/09/28/zegami/"
 />
 
 <ImageLinkCard
   title="Center for Data Science and Public Policy, Workforce Data Initiative"
-  imageSrc={chicago.src}
+  imageSrc={adoption.chicago.src}
   description="Supporting state and local workforce boards in managing and publishing data."
   href="https://frictionlessdata.io/blog/2017/08/15/center-for-data-science-and-public-policy-workforce-data-initiative/"
 />
 
 <ImageLinkCard
   title="Cell Migration Standardization Organization"
-  imageSrc={csmo.src}
+  imageSrc={adoption.cmso.src}
   description="Using Frictionless Data specs to package cell migration data and load it into Pandas for data analysis and creation of visualizations."
   href="https://frictionlessdata.io/blog/2017/05/23/cmso/"
 />
 
 <ImageLinkCard
   title="Collections as Data Facets - Carnegie Museum of Art Collection Data"
-  imageSrc={cmoa.src}
+  imageSrc={adoption.cmoa.src}
   description="Use of Frictionless Data specifications in the release of Carnegie Museum of Arts’ Collection Data for public access & creative use."
   href="https://frictionlessdata.io/blog/2017/08/09/collections-as-data/"
 />
 
 <ImageLinkCard
   title="OpenML"
-  imageSrc={openml.src}
+  imageSrc={adoption.openml.src}
   description="OpenML is an online platform and service for machine learning, whose goal is to make ML and data analysis simple."
   href="https://frictionlessdata.io/blog/2017/12/04/openml/"
 />
 
 <ImageLinkCard
   title="The Data Retriever"
-  imageSrc={dataRetriever.src}
+  imageSrc={adoption.dataRetriever.src}
   description="Data Retriever uses Frictionless Data specifications to generate and package metadata for publicly available data."
   href="https://frictionlessdata.io/blog/2017/05/24/the-data-retriever/"
 />
 
 <ImageLinkCard
   title="Tesera"
-  imageSrc={tesera.src}
+  imageSrc={adoption.tesera.src}
   description="Tesera uses Frictionless Data specifications to package data in readiness for use in different systems and components."
   href="https://frictionlessdata.io/blog/2016/11/15/tesera/"
 />
 
 <ImageLinkCard
   title="data.world"
-  imageSrc={dataworld.src}
+  imageSrc={adoption.dataworld.src}
   description="data.world uses Frictionless Data specifications to generate schema and metadata related to an uploaded dataset and containerize all three in a Tabular Data Package."
   href="https://frictionlessdata.io/blog/2017/04/11/dataworld/"
 />
 
-<LinkCard
+<ImageLinkCard
   title="John Snow Labs"
-  description="<img src='../../assets/john-snow-labs-logo.png' /> John Snow Labs uses Frictionless Data specifications to avail data to users for analysis."
+  imageSrc={adoption.johnSnowLabs.src}
+  description="John Snow Labs uses Frictionless Data specifications to avail data to users for analysis."
   href="https://frictionlessdata.io/blog/2017/03/28/john-snow-labs/"
 />
 
-<LinkCard
+<ImageLinkCard
   title="Open Power System Data"
-  description="<img src='../../assets/opsd-logo.png' /> Open Power System Data uses Frictionless Data specifications to avail energy data for analysis and modeling."
+  imageSrc={adoption.opsd.src}
+  description="Open Power System Data uses Frictionless Data specifications to avail energy data for analysis and modeling."
   href="https://frictionlessdata.io/blog/2016/11/15/open-power-system-data/"
 />
 
-<LinkCard
+<ImageLinkCard
   title="Dataship"
-  description="<img src='../../assets/dataship-logo.png' /> Dataship used Frictionless Data specifications as the basis for its easy to execute, edit and share notebooks for data analysis."
+  imageSrc={adoption.dataship.src}
+  description="Dataship used Frictionless Data specifications as the basis for its easy to execute, edit and share notebooks for data analysis."
   href="https://frictionlessdata.io/blog/2016/11/15/dataship/"
 />
 
-<LinkCard
+<ImageLinkCard
   title="European Commission"
-  description="<img src='../../assets/european-commission.svg' /> The European Commission launched a CSV schema validator using the tabular data package specification, as part of the ISA² Interoperability Testbed."
+  imageSrc={adoption.eucom.src}
+  description="The European Commission launched a CSV schema validator using the tabular data package specification, as part of the ISA² Interoperability Testbed."
   href="https://frictionlessdata.io/blog/2021/06/28/frictionless-specs-european-commission/"
 />
 
-<LinkCard
+<ImageLinkCard
   title="Validata"
-  description="<img src='../../assets/validata.png' /> OpenDataFrance created Validata, a platform for local public administration in France to validate CSV files on the web, using the tabular data package specification."
+  imageSrc={adoption.validata.src}
+  description="OpenDataFrance created Validata, a platform for local public administration in France to validate CSV files on the web, using the tabular data package specification."
   href="https://frictionlessdata.io/blog/2020/04/23/table-schema-catalog/"
 />
 </CardGrid>

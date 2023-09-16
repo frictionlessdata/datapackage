@@ -4,14 +4,24 @@ sidebar:
   order: 5
 ---
 
+import { software } from "../../../assets"
+import ImageLinkCard from "../../../components/image-link-card.astro"
 import { LinkCard, CardGrid } from "@astrojs/starlight/components"
 
 ## Visual
 
-<LinkCard
+<ImageLinkCard
   title="Open Data Editor"
-  description="<img src='../../assets/odet.png' /> <br /> No-code application to explore and publish all kinds of data: datasets, tables, charts, maps, stories, and more. Forever free and open source project powered by open standards and generative AI."
+  imageSrc={software.odet.src}
+  description="<br /> No-code application to explore and publish all kinds of data: datasets, tables, charts, maps, stories, and more. Forever free and open source project powered by open standards and generative AI."
   href="https://opendataeditor.org"
+/>
+
+<ImageLinkCard
+  title="Data Curator"
+  imageSrc={software.dataCurator.src}
+  description="Data Curator is a simple desktop data editor to help describe, validate and share usable open data."
+  href="https://frictionlessdata.io/blog/2019/03/01/datacurator/"
 />
 
 ## Python
