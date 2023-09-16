@@ -17,6 +17,10 @@ hero:
       link: /standard/introduction/
       icon: right-arrow
       variant: primary
+    - text: Use Cases
+      link: /standard/adoption/
+      icon: rocket
+      variant: secondary
     - text: View on GitHub
       link: https://github.com/frictionlessdata/datapackage.org
       icon: external
@@ -29,30 +33,47 @@ banner:
 ---
 
 import About from "../../components/about.astro"
-import { CardGrid, Card } from "@astrojs/starlight/components"
+import Adoption from "../../components/adoption.astro"
+import { CardGrid, LinkCard, Card } from "@astrojs/starlight/components"
 
-<CardGrid stagger>
-  <Card title="Data Package" icon="open-book">
-    A simple container format for describing a coherent collection of data in a single
-    package
-  </Card>
-  <Card title="Data Resource" icon="rocket">
-    A simple format to describe and package a single data resource such as a individual
-    table or file.
-  </Card>
-  <Card title="Table Dialect" icon="document">
-    Table Dialect defines a simple format to describe the various dialects of tabular
-    files in a language agnostic manner.
-  </Card>
-  <Card title="Table Schema" icon="puzzle">
-    A simple format to declare a schema for tabular data. The schema is designed to be
-    expressible in JSON.
-  </Card>
-</CardGrid>
+## Standard
+
+The Data Package Standard is a comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner -- [READ MORE](/standard/specifications)
+
+<div style="marding-top: 5em; margin-bottom: 5em">
+  <CardGrid>
+    <Card title="Data Package" icon="open-book">
+      A simple container format for describing a coherent collection of data in a single
+      package
+    </Card>
+    <Card title="Data Resource" icon="rocket">
+      A simple format to describe and package a single data resource such as a individual
+      table or file.
+    </Card>
+    <Card title="Table Dialect" icon="document">
+      Table Dialect defines a simple format to describe the various dialects of tabular
+      files in a language agnostic manner.
+    </Card>
+    <Card title="Table Schema" icon="puzzle">
+      A simple format to declare a schema for tabular data. The schema is designed to be
+      expressible in JSON.
+    </Card>
+  </CardGrid>
+</div>
+
+## Software
+
+Data Package is backed by a comprehensive list of software products supporting the standard. From our no-code visual tool **Open Data Editor** to low-level drivers for 10 programming languages -- [READ MORE](/standard/software)
+
+[![Open Data Editor](../../assets/odet.png)](https://docs.google.com/presentation/d/1VEVBCnxAouNXA0jEcyCjrXtx2R_t-QmFzSZCp3UlqD8)
+
+## Adoption
+
+Data Package use cases encompass a wide range of scenarios where this standardized data packaging format proves invaluable for efficient data management, sharing, and analysis -- [READ MORE](/standard/adoption)
+
+<Adoption />
 
 <About title="Brought to you by">
-We are building a world open by design where all knowledge is accessible to everyone
-
-[Learn about Open Knowledge](https://okfn.org)
-
+  We are building a world open by design where all knowledge is accessible to everyone
+  [Learn about Open Knowledge](https://okfn.org)
 </About>

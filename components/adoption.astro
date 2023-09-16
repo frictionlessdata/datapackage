@@ -1,0 +1,50 @@
+<ul>
+   <li><img src="../assets/dryad.png" alt="Dryad"></li>
+   <li><img src="../assets/owid-light.png" alt="Our World in Data"></li>
+   <li><img src="../assets/data-world-logo.png" alt="Data World"></li>
+</ul>
+<ul>
+   <li><img src="../assets/bcodmo.png" alt="BCO-DMO"></li>
+   <li><img src="../assets/pudl.png" alt="PUDL"></li>
+   <li><img src="../assets/elife-logo.png" alt="Elife"></li>
+   <li><img src="../assets/oxford-drg.png" alt="Oxford"></li>
+   <li><img src="../assets/ukds-logo.png" alt="UKDS"></li>
+   <li><img src="../assets/odb.png" alt="Open Data Blend"></li>
+   <li><img src="../assets/cmoa-logo.png" alt="CMOA"></li>
+   <li><img src="../assets/libraries-hacked-logo.png" alt="Libraries Hacked"></li>
+   <li><img src="../assets/chicago.png" alt="The University of Chicago"></li>
+   <li><img src="../assets/validata.png" alt="Validata"></li>
+</ul>
+
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: space-between;
+    }
+
+    ul li {
+        flex-basis: calc(20% - 16px); /* Adjust the width as needed */
+        margin-bottom: 16px;
+        flex-grow: 1; /* Expand image to fill remaining vertical space */
+        height: 100%
+    }
+
+    ul li img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border: dashed 1px #ccc;
+        border-radius: 15px;
+        padding: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+        ul li {
+            flex-basis: calc(50% - 16px); /* Adjust for two columns on smaller screens */
+        }
+    }
+</style>
