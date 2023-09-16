@@ -6,7 +6,7 @@ sidebar:
 
 In our increasingly data-driven world, the ability to manage, share, and analyze data effectively has become paramount. Organizations across various domains, from research institutions and governmental agencies to businesses and non-profit organizations, are generating and utilizing vast amounts of data to inform decisions, solve complex problems, and drive innovation. However, this data abundance brings with it a unique set of challenges, particularly when it comes to ensuring data quality, interoperability, and accessibility.
 
-## Data Package
+## The Standard
 
 The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package project consists of this parts:
 
