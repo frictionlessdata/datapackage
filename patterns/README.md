@@ -1095,7 +1095,7 @@ under a separate proposal.
 ### Implementations
 
 We note that our proposal regarding field-specific missing values has been
-discussed frequently in numerous contexts, and is nearly identical to the pattern
+discussed frequently in numerous contexts, and is similar to the pattern
 [missing values per field](https://specs.frictionlessdata.io/patterns/#missing-values-per-field)
 appearing in this document above.
 
@@ -1124,17 +1124,20 @@ to support internal implementations (e.g., our group is doing so).
 
 We propose three extensions:
 
-1. Add an optional field-specific `missingValues` property. This is necessary
-   so that such values can be included in the definition of a categorical
-   (e.g., `["Yes", "No", "Don't know", "Refused"]`) or a value label, but
-   still ignored by software without such features. Note that unlike the
-   [missing values per field](https://specs.frictionlessdata.io/patterns/#missing-values-per-field)
-   pattern above, we propose that field-specific missing values be *added* to
-   the values appearing in the `missingValues` property at the resource level,
-   rather than replacing them. This is so that software can distinguish
-   between so-called *system missing values* (e.g., "Not applicable") and
-   other values that you may wish to include in certain tabulations/analyses
-   but exclude from others (e.g., "Don't know" or "Refused").
+1. Add an optional field-specific `missingValues` property. This may be used
+   to distinguish between so-called *system missing values* (which may be
+   listed in the resource level `missingValues` property) and other values
+   that convey meaning but are typically excluded when fitting statistical
+   models (which may be specified in the field-specific `missingValues`
+   property). The latter may be represented by *extended missing values*
+   (`.a`, `.b`, `.c`, etc.) in Stata and SAS, or by negative integers that are
+   then designated as missing (e.g., by using the `MISSING VALUES` command in
+   SPSS). For example, values such as "NA", "Not applicable", ".", etc. may be
+   specified in the resource level `missingValues` property, while values such
+   as "Don't know" and "Refused"—often used when generating tabular summaries
+   and occasionally used when fitting certain statistical models—may be
+   specified in the corresponding field level `missingValues` property. See
+   notes regarding this property below.
 2. Add an optional field-specific `enumOrdered` property, which can be used
    when contructing a categorical (or factor) to indicate that the variable is
    ordinal.
@@ -1144,6 +1147,21 @@ We propose three extensions:
    what they mean (values), and can be used by software to construct
    corresponding value labels or categoricals (when supported) or to translate
    the values when reading the data.
+
+Important notes regarding field-specific `missingValues` property:
+
+1. Note that although resource level `missingValues` are converted to `null`
+   before type-specific string conversion, we are *not* proposing that all
+   software be immediately required to do the same for field-specific
+   `missingValues`. This is to ensure backward compatability with current
+   software. See [this comment](https://github.com/frictionlessdata/specs/pull/844#discussion_r1291539445)
+   and the surrounding discussion for more details.
+2. Unlike the [missing values per field](https://specs.frictionlessdata.io/patterns/#missing-values-per-field)
+   pattern above, we propose that software that does implement field-specific
+   missing values *add* them to the values appearing in the `missingValues`
+   property at the resource level (i.e., `missingValues` cascade), rather than
+   replacing them (see discussion in favor of cascading
+   [here](https://github.com/frictionlessdata/specs/issues/551)).
 
 As none of the three proposed properties is part of the current
 [table schema](https://specs.frictionlessdata.io//table-schema/), the proposed
