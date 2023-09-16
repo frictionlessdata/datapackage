@@ -29,6 +29,7 @@ import uop from "./adoption/uop.png"
 import validata from "./adoption/validata.png"
 import zegami from "./adoption/zegami.png"
 import dataCurator from "./software/data-curator.png"
+import flatterer from "./software/flatterer.png"
 import odet from "./software/odet.png"
 
 export const adoption = {
@@ -67,4 +68,5 @@ export const adoption = {
 export const software = {
   odet,
   dataCurator,
+  flatterer,
 }

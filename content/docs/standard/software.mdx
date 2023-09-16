@@ -17,12 +17,21 @@ import { LinkCard, CardGrid } from "@astrojs/starlight/components"
   href="https://opendataeditor.org"
 />
 
+<CardGrid>
 <ImageLinkCard
   title="Data Curator"
   imageSrc={software.dataCurator.src}
   description="Data Curator is a simple desktop data editor to help describe, validate and share usable open data."
-  href="https://frictionlessdata.io/blog/2019/03/01/datacurator/"
+  href="https://github.com/qcif/data-curator"
 />
+
+<ImageLinkCard
+  title="Flatterer"
+  imageSrc={software.flatterer.src}
+  description="An opinionated JSON to CSV/XLSX/SQLITE/PARQUET/POSTGRES converter which tries to make a useful relational output for data analysis."
+  href="https://flatterer.opendata.coop/"
+/>
+</CardGrid>
 
 ## Python
 
