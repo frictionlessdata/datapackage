@@ -8,7 +8,7 @@ In our increasingly data-driven world, the ability to manage, share, and analyze
 
 ## The Standard
 
-The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package project consists of this parts:
+The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package standard consists of these parts:
 
 1. **Specifications**: Comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner
 
@@ -16,7 +16,7 @@ The Data Package Standard emerges as a solution to these challenges, offering a 
 
 3. **Patterns**: Various approaches for solving common problems, in ways that are not (yet) specified as a formal Data Package specification.
 
-4. **Software**: Rich set of tooling from visual interfaces to low-level implementations for 10 programming languages.
+4. **Guides**: The least formal part of the standard containing various guides on how to get started with Data Package or how to extend Data Package standard.
 
 ## Key Principles
 
