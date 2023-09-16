@@ -4,16 +4,27 @@ sidebar:
   order: 5
 ---
 
-## Python
-
 import { LinkCard, CardGrid } from "@astrojs/starlight/components"
+
+## Desktop
+
+<LinkCard
+  title="Open Data Editor"
+  description="<img src='../../assets/odet.png' /> <br /> No-code application to explore and publish all kinds of data: datasets, tables, charts, maps, stories, and more. Forever free and open source project powered by open standards and generative AI."
+  href="https://opendataeditor.org"
+/>
+
+## Python
 
 <CardGrid>
   <LinkCard
     title="frictionless-py"
-    description="A simple container format for describing a coherent collection of data in a single
-    package"
-    href="/specifications/data-package"
+    description="Data management framework for Python that provides functionality to describe, extract, validate, and transform tabular data"
+    href="https://framework.frictionlessdata.io/"
   />
-  <LinkCard title="Data Resource" href="/specifications/data-resource/" />
+  <LinkCard
+    title="dataflows"
+    description="DataFlows is a simple, intuitive lightweight framework for building data processing flows in python."
+    href="https://github.com/datahq/dataflows"
+  />
 </CardGrid>

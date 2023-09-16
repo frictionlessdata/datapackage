@@ -6,14 +6,17 @@ sidebar:
 
 In our increasingly data-driven world, the ability to manage, share, and analyze data effectively has become paramount. Organizations across various domains, from research institutions and governmental agencies to businesses and non-profit organizations, are generating and utilizing vast amounts of data to inform decisions, solve complex problems, and drive innovation. However, this data abundance brings with it a unique set of challenges, particularly when it comes to ensuring data quality, interoperability, and accessibility.
 
-## The Standard
+## Data Package
 
-The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved.
+The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package project consists of this parts:
 
-1. **Specifications**: ...
-2. **Extensions**: ...
-3. **Patterns**: ...
-4. **Software**: ...
+1. **Specifications**: Comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner
+
+2. **Extensions**: Data practitioners can extend the standard by incorporating custom metadata, validation rules, or specific constraints to suit their data's peculiarities.
+
+3. **Patterns**: Various approaches for solving common problems, in ways that are not (yet) specified as a formal Data Package specification.
+
+4. **Software**: Rich set of tooling from visual interfaces to low-level implementations for 10 programming languages.
 
 ## Key Principles
 
