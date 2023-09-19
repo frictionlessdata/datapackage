@@ -28,6 +28,7 @@ import ukds from "./adoption/ukds.png"
 import uop from "./adoption/uop.png"
 import validata from "./adoption/validata.png"
 import zegami from "./adoption/zegami.png"
+import okfn from "./funding/okfn.png"
 import dataCurator from "./software/data-curator.png"
 import flatterer from "./software/flatterer.png"
 import odet from "./software/odet.png"
@@ -63,6 +64,10 @@ export const adoption = {
   uop,
   validata,
   zegami,
+}
+
+export const funding = {
+  okfn,
 }
 
 export const software = {
