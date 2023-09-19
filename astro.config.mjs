@@ -17,6 +17,7 @@ export default defineConfig({
       social: {
         github: "https://github.com/frictionlessdata/open-data-editor",
       },
+      favicon: "favicon.png",
       // TODO: enable when this issue is resolved
       // https://github.com/withastro/starlight/issues/718
       // editLink: {
