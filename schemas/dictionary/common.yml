@@ -198,7 +198,10 @@ contributor:
       description: An organizational affiliation for this contributor.
       type: string
     role:
-      type: string
+      oneOf: [
+        { "$ref": "#/definitions/role" },
+        { "$ref": "#/definitions/roleArray" }
+      ]
       default: contributor
   required:
   - title
@@ -273,6 +276,13 @@ licenses:
           }
         ]
       }
+role:
+  type: string
+roleArray:
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/role"
 source:
   title: Source
   description: A source file.

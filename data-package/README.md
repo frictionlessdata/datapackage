@@ -268,13 +268,13 @@ The people or organizations who contributed to this Data Package. It `MUST` be a
 * `title`: name/title of the contributor (name for person, name/title of organization)
 * `path`: a fully qualified http URL pointing to a relevant location online for the contributor
 * `email`: An email address
-* `role`: a string describing the role of the contributor. It's `RECOMMENDED` to be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
+* `role`: a string or array of strings describing the role(s) of the contributor. It's `RECOMMENDED` to be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
   * Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
 * `organization`: a string describing the organization this contributor is affiliated to.
 
 ##### `keywords`
 
-An Array of string keywords to assist users searching for the package in catalogs.
+An array of string keywords to assist users searching for the package in catalogs.
 
 ##### `image`
 
