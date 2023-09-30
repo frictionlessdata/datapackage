@@ -1115,7 +1115,7 @@ to support internal implementations (e.g., our group is doing so).
 
 ### Proposed extensions
 
-We propose two extensions:
+We propose two extensions to [Table Schema](https://specs.frictionlessdata.io/table-schema/):
 
 1. Add an optional field-specific `enumOrdered` property, which can be used
    when contructing a categorical (or factor) to indicate that the variable is
