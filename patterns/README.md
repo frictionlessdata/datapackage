@@ -1058,7 +1058,7 @@ heavily on them (e.g., social sciences, epidemiology, clinical research,
 etc.). Thus, before these disciplines can begin to use Frictionless in a
 meaningful way, both the standards and the software tools need to support
 these features. This pattern addresses necessary extensions to the
-[table schema](https://specs.frictionlessdata.io//table-schema/).
+[Table Schema](https://specs.frictionlessdata.io//table-schema/).
 
 ### Principles
 
