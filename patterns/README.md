@@ -1127,7 +1127,7 @@ We propose two extensions to [Table Schema](https://specs.frictionlessdata.io/ta
    corresponding value labels or categoricals (when supported) or to translate
    the values when reading the data.
 
-As neither of these proposed properties is part of the current
+These extensions are fully backward compatible, since they are optional and
 [table schema](https://specs.frictionlessdata.io//table-schema/), the proposed
 extensions are fully backward compatible.
 
