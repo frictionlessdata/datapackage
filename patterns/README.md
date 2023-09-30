@@ -1344,6 +1344,8 @@ human-readable values, if desired.
 
 ### Notes
 
+While this pattern is designed as an extension to [Table Schema](https://specs.frictionlessdata.io/table-schema/) fields, it could also be used to document `enum` values of properties in [profiles](https://specs.frictionlessdata.io/profiles/), such as contributor roles.
+
 This pattern originally included a proposal to add an optional field-specific
 `missingValues` property similar to that described in the pattern
 "[missing values per field](https://specs.frictionlessdata.io/patterns/#missing-values-per-field)"
