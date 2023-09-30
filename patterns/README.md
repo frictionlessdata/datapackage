@@ -1079,7 +1079,7 @@ they are based:
    workflows, etc. for working with Frictionless packages).
 
 It is worth emphasizing that the scope of the proposed extensions is strictly
-limited to the information necessaary to make use of the features for working
+limited to the information necessary to make use of the features for working
 with categorical data provided by the software packages listed above. Previous
 discussions of this issue have occasionally included references to additional
 variable-level metadata (e.g., multiple sets of category labels such as both
