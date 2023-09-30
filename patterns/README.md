@@ -1111,7 +1111,7 @@ Finally, while we are unaware of any existing implementations intended for
 general use, it is likely that many users are already exploiting the fact that
 arbitrary fields may be added to the
 [table schema](https://specs.frictionlessdata.io//table-schema/)
-to support internal implementations (e.g., our group is doing so).
+to support internal implementations.
 
 ### Proposed extensions
 
