@@ -1128,7 +1128,7 @@ We propose two extensions to [Table Schema](https://specs.frictionlessdata.io/ta
    the values when reading the data.
 
 These extensions are fully backward compatible, since they are optional and
-[table schema](https://specs.frictionlessdata.io//table-schema/), the proposed
+not providing them is valid.
 extensions are fully backward compatible.
 
 Here is an example of a categorical variable using extension (1):
