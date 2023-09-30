@@ -1031,7 +1031,7 @@ A field MAY have a `missingValues` property that MUST be an `array` where each e
 
 None known.
 
-## Facilitate use of value labels (Stata, SAS and SPSS), categoricals (Python) and factors (R) in software that supports them
+## Table Schema: Enum labels and ordering
 
 ### Overview
 
