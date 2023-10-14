@@ -1182,7 +1182,7 @@ extension (2) to do so:
       "constraints": {
         "enum": [1,2,3,4,5]
       }
-      "enumOrdered": true
+      "enumOrdered": true,
       "enumLabels": {
         "1": "Poor",
         "2": "Fair",
@@ -1211,7 +1211,7 @@ A second variant of the example above is the following:
       "constraints": {
         "enum": [1,2,3,4,5]
       }
-      "enumOrdered": true
+      "enumOrdered": true,
       "enumLabels": {
         "1": "Poor",
         "2": "Fair",
