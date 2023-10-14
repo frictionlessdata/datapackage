@@ -1179,7 +1179,9 @@ extension (2) to do so:
     {
       "name": "physical_health",
       "type": "integer",
-      "enum": [1,2,3,4,5]
+      "constraints": {
+        "enum": [1,2,3,4,5]
+      }
       "enumOrdered": true
       "enumLabels": {
         "1": "Poor",
@@ -1206,7 +1208,9 @@ A second variant of the example above is the following:
     {
       "name": "physical_health",
       "type": "integer",
-      "enum": [1,2,3,4,5]
+      "constraints": {
+        "enum": [1,2,3,4,5]
+      }
       "enumOrdered": true
       "enumLabels": {
         "1": "Poor",
