@@ -1,5 +1,5 @@
 ---
-title: Table Schema: Enum labels and ordering
+title: Enum labels and ordering
 ---
 
 <table>
