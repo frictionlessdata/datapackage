@@ -6,7 +6,6 @@ title: Enum Labels and Ordering
   <tr>
     <th>Author(s)</th>
     <td>Phil Schumm</td>
-    <td>TODO</td>
   </tr>
 </table>
 
