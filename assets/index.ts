@@ -12,6 +12,7 @@ import dryad from "./adoption/dryad.png"
 import elife from "./adoption/elife.png"
 import etalab from "./adoption/etalab.png"
 import eucom from "./adoption/eucom.png"
+import github from "./adoption/github.png"
 import hubmap from "./adoption/hubmap.png"
 import johnSnowLabs from "./adoption/john-snow-labs.png"
 import librariesHacked from "./adoption/libraries-hacked.png"
@@ -48,6 +49,7 @@ export const adoption = {
   elife,
   etalab,
   eucom,
+  github,
   hubmap,
   johnSnowLabs,
   librariesHacked,
