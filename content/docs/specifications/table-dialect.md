@@ -8,12 +8,8 @@ title: Table Dialect
     <td>Rufus Pollock</td>
   </tr>
   <tr>
-    <th>JSON Schema</th>
-    <td><a href="https://specs.frictionlessdata.io/schemas/csv-dialect.json">csv-dialect.json</a></td>
-  </tr>
-  <tr>
-    <th>Version</th>
-    <td>1.2</td>
+    <th>Profile</th>
+    <td><a href="/profiles/table-dialect.json">table-dialect.json</a></td>
   </tr>
 </table>
 

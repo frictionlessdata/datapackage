@@ -1,0 +1,305 @@
+---
+profile:
+  title: Profile
+  description: The profile of this descriptor.
+  context: Every Package and Resource descriptor has a profile. The default profile,
+    if none is declared, is `data-package` for Package and `data-resource` for Resource.
+  type: string
+  examples:
+    - |
+      {
+        "profile": "tabular-data-package"
+      }
+    - |
+      {
+        "profile": "http://example.com/my-profiles-json-schema.json"
+      }
+name:
+  title: Name
+  description: An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.
+  type: string
+  pattern: "^([-a-z0-9._/])+$"
+  context: This is ideally a url-usable and human-readable name. Name `SHOULD` be
+    invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.
+  examples:
+    - |
+      {
+        "name": "my-nice-name"
+      }
+id:
+  title: ID
+  description: A property reserved for globally unique identifiers. Examples of
+    identifiers that are unique include UUIDs and DOIs.
+  context: A common usage pattern for Data Packages is as a packaging format within
+    the bounds of a system or platform. In these cases, a unique identifier for
+    a package is desired for common data handling workflows, such as updating an
+    existing package. While at the level of the specification, global uniqueness
+    cannot be validated, consumers using the `id` property `MUST` ensure identifiers
+    are globally unique.
+  type: string
+  examples:
+    - |
+      {
+        "id": "b03ec84-77fd-4270-813b-0c698943f7ce"
+      }
+    - |
+      {
+        "id": "http://dx.doi.org/10.1594/PANGAEA.726855"
+      }
+title:
+  title: Title
+  description: A human-readable title.
+  type: string
+  examples:
+    - |
+      {
+        "title": "My Package Title"
+      }
+email:
+  title: Email
+  description: An email address.
+  type: string
+  format: email
+  examples:
+    - |
+      {
+        "email": "example@example.com"
+      }
+description:
+  title: Description
+  description: A text description. Markdown is encouraged.
+  type: string
+  examples:
+    - |
+      {
+        "description": "# My Package description\nAll about my package."
+      }
+example:
+  title: Example
+  description: An example value for the field.
+  type: string
+  examples:
+    - |
+      {
+        "example": "Put here an example value for your field"
+      }
+homepage:
+  title: Home Page
+  description: The home on the web that is related to this data package.
+  type: string
+  format: uri
+  examples:
+    - |
+      {
+        "homepage": "http://example.com/"
+      }
+version:
+  title: Version
+  description: A unique version number for this descriptor.
+  type: string
+  examples:
+    - |
+      {
+        "version": "0.0.1"
+      }
+    - |
+      {
+        "version": "1.0.1-beta"
+      }
+path:
+  title: Path
+  description: A fully qualified URL, or a POSIX file path.
+  type: string
+  pattern: "^(?=^[^.\/~])(^((?!\\.{2}).)*$).*$"
+  examples:
+    - |
+      {
+        "path": "file.csv"
+      }
+    - |
+      {
+        "path": "http://example.com/file.csv"
+      }
+  context: "Implementations need to negotiate the type of path provided, and dereference
+    the data accordingly."
+data:
+  title: Data
+  description: Inline data for this resource.
+created:
+  title: Created
+  description: The datetime on which this descriptor was created.
+  context: The datetime must conform to the string formats for datetime as described
+    in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)
+  type: string
+  format: date-time
+  examples:
+    - |
+      {
+        "created": "1985-04-12T23:20:50.52Z"
+      }
+keywords:
+  title: Keywords
+  description: A list of keywords that describe this package.
+  type: array
+  minItems: 1
+  items:
+    type: string
+  examples:
+    - |
+      {
+        "keywords": [
+          "data",
+          "fiscal",
+          "transparency"
+        ]
+      }
+image:
+  title: Image
+  description: A image to represent this package.
+  type: string
+  examples:
+    - |
+      {
+        "image": "http://example.com/image.jpg"
+      }
+    - |
+      {
+        "image": "relative/to/image.jpg"
+      }
+anySchema:
+  title: Schema
+  description: A schema for this resource.
+  type:
+    - string
+    - object
+countryCode:
+  title: ISO 3166-1 Alpha-2 Country code
+  description: A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.
+  oneOf:
+    - type: string
+      pattern: "^[A-Z]{2}$"
+    - type: array
+      minItems: 1
+      items:
+        type: string
+        pattern: "^[A-Z]{2}$"
+contributor:
+  title: Contributor
+  description: A contributor to this descriptor.
+  properties:
+    title:
+      "$ref": "#/definitions/title"
+    path:
+      "$ref": "#/definitions/path"
+    email:
+      "$ref": "#/definitions/email"
+    organization:
+      title: Organization
+      description: An organizational affiliation for this contributor.
+      type: string
+    role:
+      type: string
+      default: contributor
+  required:
+    - title
+  context: Use of this property does not imply that the person was the original
+    creator of, or a contributor to, the data in the descriptor, but refers to the
+    composition of the descriptor itself.
+contributors:
+  title: Contributors
+  description: The contributors to this descriptor.
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/contributor"
+  examples:
+    - |
+      {
+        "contributors": [
+          {
+            "title": "Joe Bloggs"
+          }
+        ]
+      }
+    - |
+      {
+        "contributors": [
+          {
+            "title": "Joe Bloggs",
+            "email": "joe@example.com",
+            "role": "author"
+          }
+        ]
+      }
+license:
+  title: License
+  description: A license for this descriptor.
+  type: object
+  anyOf:
+    - required:
+        - name
+    - required:
+        - path
+  properties:
+    name:
+      title: Open Definition license identifier
+      description: MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/
+      type: string
+      pattern: "^([-a-zA-Z0-9._])+$"
+    path:
+      "$ref": "#/definitions/path"
+    title:
+      "$ref": "#/definitions/title"
+  context: Use of this property does not imply that the person was the original
+    creator of, or a contributor to, the data in the descriptor, but refers to the
+    composition of the descriptor itself.
+licenses:
+  title: Licenses
+  description: The license(s) under which this package is published.
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/license"
+  context: This property is not legally binding and does not guarantee that the
+    package is licensed under the terms defined herein.
+  examples:
+    - |
+      {
+        "licenses": [
+          {
+            "name": "odc-pddl-1.0",
+            "path": "http://opendatacommons.org/licenses/pddl/",
+            "title": "Open Data Commons Public Domain Dedication and License v1.0"
+          }
+        ]
+      }
+source:
+  title: Source
+  description: A source file.
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      "$ref": "#/definitions/title"
+    path:
+      "$ref": "#/definitions/path"
+    email:
+      "$ref": "#/definitions/email"
+sources:
+  title: Sources
+  description: The raw sources for this resource.
+  type: array
+  minItems: 0
+  items:
+    "$ref": "#/definitions/source"
+  examples:
+    - |
+      {
+        "sources": [
+          {
+            "title": "World Bank and OECD",
+            "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
+          }
+        ]
+      }

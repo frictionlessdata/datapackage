@@ -4,7 +4,7 @@
   "private": true,
   "version": "2.0.0a1",
   "scripts": {
-    "build": "astro build",
+    "build": "astro build && node build.js",
     "format": "eslint --fix . && prettier --write .",
     "generate": "astro sync",
     "lint": "eslint . && prettier --check .",
@@ -13,16 +13,20 @@
     "test": "npm run lint",
     "update": "ncu -u"
   },
-  "dependencies": {
-    "@astrojs/starlight": "^0.9.1",
+  "devDependencies": {
+    "@astrojs/starlight": "0.9.1",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
-    "astro": "^3.0.13",
+    "astro": "3.0.13",
     "eslint": "8.49.0",
     "eslint-plugin-astro": "0.29.0",
+    "fs-extra": "11.2.0",
+    "glob": "10.3.10",
+    "js-yaml": "4.1.0",
+    "json-schema-ref-parser": "9.0.9",
     "npm-check-updates": "16.14.2",
-    "prettier": "3.0.3",
+    "prettier": "3.1.0",
     "prettier-plugin-astro": "0.12.0"
   }
 }
