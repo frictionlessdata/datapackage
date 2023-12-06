@@ -1,5 +1,7 @@
 ---
 title: Data Resource
+sidebar:
+  order: 2
 ---
 
 <table>

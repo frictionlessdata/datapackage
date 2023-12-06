@@ -1,5 +1,7 @@
 ---
 title: Table Schema
+sidebar:
+  order: 4
 ---
 
 <table>

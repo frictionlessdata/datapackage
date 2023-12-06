@@ -1,5 +1,7 @@
 ---
 title: Data Package
+sidebar:
+  order: 1
 ---
 
 <table>

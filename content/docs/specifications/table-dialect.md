@@ -1,5 +1,7 @@
 ---
 title: Table Dialect
+sidebar:
+  order: 3
 ---
 
 <table>

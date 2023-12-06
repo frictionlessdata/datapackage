@@ -1,4 +1,3 @@
----
 tableDialect:
   title: CSV Dialect
   description: The CSV dialect descriptor.
