@@ -10,8 +10,8 @@ export default defineConfig({
     starlight({
       title: "Data Package Standard",
       logo: {
-        light: "/assets/logo-light.png",
-        dark: "/assets/logo-dark.png",
+        light: "/assets/logo-light.svg",
+        dark: "/assets/logo-dark.svg",
         replacesTitle: true,
       },
       social: {
@@ -22,7 +22,7 @@ export default defineConfig({
         baseUrl: "https://github.com/frictionlessdata/datapackage/edit/main/",
       },
       lastUpdated: true,
-      customCss: ["/assets/styles.css"],
+      customCss: ["typeface-hk-grotesk/index.css", "/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       sidebar: [
         { label: "Standard", autogenerate: { directory: "standard" } },

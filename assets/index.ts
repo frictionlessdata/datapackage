@@ -32,7 +32,7 @@ import zegami from "./adoption/zegami.png"
 import okfn from "./funding/okfn.png"
 import dataCurator from "./software/data-curator.png"
 import flatterer from "./software/flatterer.png"
-import odet from "./software/odet.png"
+import ode from "./software/ode.png"
 
 export const adoption = {
   bcodmo,
@@ -73,7 +73,7 @@ export const funding = {
 }
 
 export const software = {
-  odet,
+  ode,
   dataCurator,
   flatterer,
 }

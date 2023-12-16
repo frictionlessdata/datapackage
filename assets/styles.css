@@ -1,4 +1,5 @@
 :root {
+  /* --sl-font: "HK-Grotesk", sans-serif; */
   --purple-hsl: 209, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
   --scrollbar-color: #ddd;
