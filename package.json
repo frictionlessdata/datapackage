@@ -14,11 +14,11 @@
     "update": "ncu -u"
   },
   "devDependencies": {
-    "@astrojs/starlight": "0.9.1",
+    "@astrojs/starlight": "0.15.0",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
-    "astro": "3.0.13",
+    "astro": "4.0.6",
     "eslint": "8.49.0",
     "eslint-plugin-astro": "0.29.0",
     "fs-extra": "11.2.0",
