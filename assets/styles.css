@@ -7,13 +7,13 @@
 
 :root[data-theme="light"] {
   --purple-hsl: 209, 85%, 65%;
-  --sl-color-text-accent: #dca45b;
-  --sl-color-banner-bg: #85898c;
+  --sl-color-text-accent: #61d2fe;
+  --sl-color-banner-bg: #dca45b;
 }
 
 :root[data-theme="dark"] {
-  --sl-color-banner-bg: #85898c;
-  --sl-color-text-accent: #dca45b;
+  --sl-color-text-accent: #61d2fe;
+  --sl-color-banner-bg: #dca45b;
 }
 
 /* Firefox */
