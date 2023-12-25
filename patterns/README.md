@@ -1395,3 +1395,64 @@ substantial limitation when creating value labels or categoricals, since
 system missing values can typically be easily distinguished from other missing
 values when exported in CSV format (e.g., "." in Stata or SAS, "NA" in R, or
 "" in Pandas).
+
+## Table Schema: Relationship between Fields
+
+### Overview
+
+La structure des tabular dataset est simple : un ensemble de Fields regroupé dans un tableau.
+
+Pourtant, les données présentes sont souvent complexes et traduisent une interdépendance entre les Fields (voir explications dans l'Internet-Draft [NTV tabular format (NTV-TAB)](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2)).
+
+Prenons l'exemple du dataset suivant:
+
+| country | region         | code  | population   |
+|---------|----------------|-------|--------------|
+| France  | European Union | FR    | 65 eu 449    |
+| Spain   | European Union | ES    | 48           |
+| Estonia | European Union | ES    | 1.3          |
+| Nigeria | Africa         | NI    | 223 afr 1460 |
+
+Le schéma de données pour ce dataset indique dans le Field Descriptor "description" :
+
+* Field "code": "country code alpha-2"
+* Field "population": "region population in 2022 (millions)"
+
+Si maintenant, on regarde les données on constate que ce jeu de données n'est pas consistent car il contient deux erreurs de structure:
+
+* Le code doit être unique pour chaque pays, on ne peut donc avoir ES pour Spain et Estonia,
+* La population de European Union ne peut avoir deux valeurs différentes (449 et 48)
+
+Ces erreurs de structure rendent les données inexploitables et pourtant elles ne sont pas détectées dans la validation du jeu de données (dans la version actuelle de Table Schema, il n'y a pas de descripteurs pour exprimer cette dépendance entre deux champs).
+
+L'objet de cette spécification est donc d'une part d'exprimer ces contraintes de structure dans le schéma de données et d'autre part de définir les contrôles associés à la validation du jeu de données.
+
+### Contexte
+
+Ce sujet a été étudié et traité pour les bases de données et à conduit d'une part à la mise d'une méthodologie de spécification des relations et d'autre part à la mise en oeuvre des bases de données relationnelles consistantes.
+
+La méthodologie repose principalement sur les [Entity–relationship model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) :
+
+> An entity–relationship model (or ER model) describes interrelated things of interest in a specific domain of knowledge. A basic ER model is composed of entity types (which classify the things of interest) and specifies relationships that can exist between entities (instances of those entity types).
+
+The Entity–relationship model est déclinée selon the conceptual-logical-physical hierarchy.
+
+Relationships sont exprimées de facon litterale par un nom et de façon numérique par une [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
+
+### Principles
+
+Cette méthodologie appliquée pour les bases de données peut être appliquée également pour les tabular data dont la structure est similaire à celle des tables des bases de données relationnelles mais dont la représentation des relations est différente (voir [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) utilisés dans les représentations tabulaires).
+
+Cette déclinaison est expliquée dans le [Notebook lié](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
+
+Le contrôle de l'application d'une relation pour un jeu de données défini (validation) peut s'effectuer simplement (voir [exemple](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) d'implementation simple).
+
+### Proposed extensions
+
+### Implementations
+
+### Specification
+
+### Suggested implementations
+
+### Notes
