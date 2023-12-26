@@ -1415,21 +1415,21 @@ Prenons l'exemple du dataset suivant:
 
 Le schéma de données pour ce dataset indique dans le Field Descriptor "description" :
 
-* Field "code": "country code alpha-2"
-* Field "population": "region population in 2022 (millions)"
+* pour le Field "code": "country code alpha-2"
+* pour le Field "population": "region population in 2022 (millions)"
 
 Si maintenant, on regarde les données on constate que ce jeu de données n'est pas consistent car il contient deux erreurs de structure:
 
-* Le code doit être unique pour chaque pays, on ne peut donc avoir ES pour Spain et Estonia,
-* La population de European Union ne peut avoir deux valeurs différentes (449 et 48)
+* Le "code" doit être unique pour chaque pays, on ne peut donc avoir "ES" pour "Spain" et "Estonia",
+* La "population" de "European Union" ne peut avoir deux valeurs différentes (449 et 48)
 
-Ces erreurs de structure rendent les données inexploitables et pourtant elles ne sont pas détectées dans la validation du jeu de données (dans la version actuelle de Table Schema, il n'y a pas de descripteurs pour exprimer cette dépendance entre deux champs).
+Ces erreurs de structure rendent les données inexploitables et pourtant elles ne sont pas détectées dans la validation du jeu de données (dans la version actuelle de Table Schema, il n'y a pas de Descriptors pour exprimer cette dépendance entre deux champs).
 
 L'objet de cette spécification est donc d'une part d'exprimer ces contraintes de structure dans le schéma de données et d'autre part de définir les contrôles associés à la validation du jeu de données.
 
 ### Contexte
 
-Ce sujet a été étudié et traité pour les bases de données et à conduit d'une part à la mise d'une méthodologie de spécification des relations et d'autre part à la mise en oeuvre des bases de données relationnelles consistantes.
+Ce sujet a été étudié et traité pour les bases de données et a conduit d'une part à la mise d'une méthodologie de spécification des relations et d'autre part à la mise en oeuvre des bases de données relationnelles consistantes.
 
 La méthodologie repose principalement sur les [Entity–relationship model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) :
 
@@ -1437,17 +1437,146 @@ La méthodologie repose principalement sur les [Entity–relationship model](htt
 
 The Entity–relationship model est déclinée selon the conceptual-logical-physical hierarchy.
 
-Relationships sont exprimées de facon litterale par un nom et de façon numérique par une [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
+The Relationships sont exprimées de facon litterale par un nom et de façon numérique par une [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
 
 ### Principles
+
+Deux aspects sont à traiter :
+
+* expression des relations:
 
 Cette méthodologie appliquée pour les bases de données peut être appliquée également pour les tabular data dont la structure est similaire à celle des tables des bases de données relationnelles mais dont la représentation des relations est différente (voir [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) utilisés dans les représentations tabulaires).
 
 Cette déclinaison est expliquée dans le [Notebook lié](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
 
-Le contrôle de l'application d'une relation pour un jeu de données défini (validation) peut s'effectuer simplement (voir [exemple](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) d'implementation simple).
+L'utilisation d'un modèle de données est un moyen simple pour exprimer les relations mais il n'est pas obligatoire. On peut très bien exprimer directement les relations au niveau du schéma de données.
+
+* validité d'un jeu de données:
+
+Le contrôle de la validité d'une relation pour un jeu de données défini est une des fonctions de [l'analyse des structures tabulaires](https://github.com/loco-philippe/tab-analysis/blob/main/docs/tabular_analysis.pdf). Elle ne nécessite que des fonctions de comptage accessibles pour tout type de langage (voir un [exemple](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) d'implementation simple).
 
 ### Proposed extensions
+
+Une relation est définie par les informations suivantes :
+
+* les deux Fields impliqués,
+* la représentation textuelle de la relation,
+* la nature de la relation
+
+Trois propositions d'extension de Table Schema sont proposées :
+
+1 - New Field Descriptor:
+
+Les propriétés associées au Field Descriptor "relationships"  pourraient être :
+
+* "field" : name of the other Field impliqué
+* "description" : description string (optional)
+* "link": nature de la relationship
+
+Pros
+
+* No mixing with other descriptors
+* Consistent with a field view
+
+Cons
+
+* why choose one Field from the two ?
+
+Examples :
+
+```python
+{ "fields" : [
+    { "name": "country",
+      "relationships": [
+        { "field" : "code",
+          "description" : "is the country code alpha-2 of",
+          "link" : "coupled" }
+      ]
+    }
+    { "name": "region",
+      "relationships": [
+        { "field" : "population",
+          "description" : "is the population of",
+          "link" : "derived"}
+      ]
+    }
+  ]
+}
+
+2 - New Constrainst Descriptor:
+
+Les propriétés associées au Field Descriptor "relationships"  pourraient être :
+
+* "field" : name of the other Field impliqué
+* "description" : description string (optional)
+* "link": nature de la relationship
+
+Pros
+
+* The « constraints » property is consistent with the point
+
+Cons
+
+* The « crossed » link can’t be validate at the data entry
+* Need to add a level in the properties tree
+* why choose one Field from the two ?
+
+Examples :
+
+```python
+{ "fields" : [
+    { "name": "country",
+      "constrainst" : {
+        "relationships": [
+          { "field" : "code",
+            "description" : "is the country code alpha-2 of",
+            "link" : "coupled" }    
+        ]
+      }
+    }
+    { "name": "region",
+      "constrainst" : {
+        "relationships": [
+          { "field" : "population",
+            "description" : "is the population of",
+            "link" : "derived"}
+        ]
+      }
+    }
+  ]
+}
+
+3 - New Table Descriptor:
+
+Les propriétés associées au Table Descriptor "relationships"  pourraient être :
+
+* "fields" : array with the names of the two Fields impliqué
+* "description" : description string (optional)
+* "link": nature de la relationship
+
+Pros
+
+* No mixing with Fields descriptors
+
+Cons
+
+* Need to add a new Table Descriptor
+
+Examples :
+
+```python
+{ "fields": {...},
+  "relationships": [
+    { "fields" : [ "country", "code"],
+      "description" : "is the country code alpha-2 of",
+      "link" : "coupled"
+    }
+    { "fields" : [ "region", "population"],
+      "description" : "is the population of",
+      "link" : "derived"}
+  ]
+}
+```
 
 ### Implementations
 
