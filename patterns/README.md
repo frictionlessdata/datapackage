@@ -20,6 +20,25 @@ sidebar: auto
 
 This document describes various patterns for solving common problems, in ways that are not (yet) specified in any Frictionless Data specification. If we see increased adoption, or wide support, for any pattern, it is a prime candidate for formalising as part of a specification.
 
+## Table of Contents
+
+1. [Private properties](#private-properties)
+2. [Caching of resources](#caching-of-resources)
+3. [Compression of resources](#compression-of-resources)
+4. [Language support](#language-support)
+5. [Translation support](#translation-support)
+6. [Table Schema: Foreign Keys to Data Packages](#table-schema-foreign-keys-to-data-packages)
+7. [Data Package Version](#data-package-version)
+8. [Data Dependencies](#data-dependencies)
+9. [Table Schema: metadata properties](#table-schema-metadata-properties)
+10. [JSON Data Resources](#json-data-resources)
+11. [Describing Data Package Catalogs using the Data Package Format](#describing-data-package-catalogs-using-the-data-package-format)
+12. [Table Schema: Unique constraints](#table-schema-unique-constraints)
+13. [Describing files inside a compressed file such as Zip](#describing-files-inside-a-compressed-file-such-as-zip)
+14. [Missing values per field](#missing-values-per-field)
+15. [Table Schema: Enum labels and ordering](#table-schema-enum-labels-and-ordering)
+16. [Table Schema: Relationship between Fields](#table-schema-relationship-between-fields)
+
 ## Private properties
 
 ### Overview
@@ -1400,11 +1419,11 @@ values when exported in CSV format (e.g., "." in Stata or SAS, "NA" in R, or
 
 ### Overview
 
-La structure des tabular dataset est simple : un ensemble de Fields regroupé dans un tableau.
+The structure of tabular datasets is simple: a set of Fields grouped in a table.
 
-Pourtant, les données présentes sont souvent complexes et traduisent une interdépendance entre les Fields (voir explications dans l'Internet-Draft [NTV tabular format (NTV-TAB)](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2)).
+However, the data present is often complex and reflects an interdependence between Fields (see explanations in the Internet-Draft [NTV tabular format (NTV-TAB)](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2)).
 
-Prenons l'exemple du dataset suivant:
+Let's take the example of the following dataset:
 
 | country | region         | code  | population |
 |---------|----------------|-------|------------|
@@ -1413,79 +1432,79 @@ Prenons l'exemple du dataset suivant:
 | Estonia | European Union | ES    | 449        |
 | Nigeria | Africa         | NI    | 1460       |
 
-Le schéma de données pour ce dataset indique dans le Field Descriptor "description" :
+The data schema for this dataset indicates in the Field Descriptor "description":
 
-* pour le Field "code": "country code alpha-2"
-* pour le Field "population": "region population in 2022 (millions)"
+* for the "code" Field : "country code alpha-2"
+* for the "population" Field: "region population in 2022 (millions)"
 
-Si maintenant, on regarde les données on constate que ce jeu de données n'est pas consistent car il contient deux erreurs de structure:
+If we now look at the data we see that this dataset is not consistent because it contains two structural errors:
 
-* La valeur du Field "code" doit être unique pour chaque pays, on ne peut donc avoir "ES" pour "Spain" et "Estonia",
-* La valeur du Field "population" de "European Union" ne peut avoir deux valeurs différentes (449 et 48)
+* The value of the "code" Field must be unique for each country, we cannot therefore have "ES" for "Spain" and "Estonia",
+* The value of the "population" Field of "European Union" cannot have two different values (449 and 48)
 
-Ces erreurs de structure rendent les données inexploitables et pourtant elles ne sont pas détectées dans la validation du jeu de données (dans la version actuelle de Table Schema, il n'y a pas de Descriptors pour exprimer cette dépendance entre deux champs).
+These structural errors make the data unusable and yet they are not detected in the validation of the dataset (in the current version of Table Schema, there are no Descriptors to express this dependency between two fields).
 
-L'objet de cette spécification est donc d'une part d'exprimer ces contraintes de structure dans le schéma de données et d'autre part de définir les contrôles associés à la validation du jeu de données.
+The purpose of this specification is therefore on the one hand to express these structural constraints in the data schema and on the other hand to define the controls associated with the validation of a dataset.
 
-### Contexte
+### Context
 
-Ce sujet a été étudié et traité pour les bases de données et a conduit d'une part à la définition d'une méthodologie de spécification des relations et d'autre part à la mise en oeuvre des bases de données relationnelles consistantes.
+This subject was studied and treated for databases and led on the one hand to the definition of a methodology for specifying relationships and on the other hand to the implementation of consistent relational databases.
 
-La méthodologie repose principalement sur les [Entity–relationship model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) :
+The methodology is mainly based on the [Entity–relationship model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model):
 
 > *An entity–relationship model (or ER model) describes interrelated things of interest in a specific domain of knowledge. A basic ER model is composed of entity types (which classify the things of interest) and specifies relationships that can exist between entities (instances of those entity types).*
 
-The Entity–relationship model est déclinée selon the conceptual-logical-physical hierarchy.
+The Entity–relationship model is broken down according to the conceptual-logical-physical hierarchy.
 
-The Relationships sont exprimées de facon litterale par un nom et de façon structurée par une [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
+The Relationships are expressed literally by a name and in a structured way by a [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
 
 ### Principles
 
-Deux aspects sont à traiter :
+Two aspects need to be addressed:
 
-* **expression des relations**:
+* **relationship expression**:
 
-  Cette méthodologie appliquée pour les bases de données peut être appliquée également pour les tabular data dont la structure est similaire à celle des tables des bases de données relationnelles mais dont la représentation des relations est différente (voir [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) utilisés dans les représentations tabulaires).
+   This methodology applied for databases can also be applied for tabular data whose structure is similar to that of relational database tables but whose representation of relationships is different (see [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) used in tabular representations).
 
-  Cette déclinaison est expliquée dans le [Notebook lié](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
+   This variation is explained in the [Linked notebook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
 
-  L'utilisation d'un modèle de données est un moyen simple pour exprimer les relations mais il n'est pas obligatoire. On peut très bien exprimer directement les relations au niveau du schéma de données.
+   Using a data model is a simple way to express relationships but it is not required. We can very well express the relationships directly at the data schema level.
 
-* **validité d'un jeu de données**:
+* **validity of a dataset**:
 
-  Le contrôle de la validité d'une relation pour un jeu de données défini est une des fonctions de [l'analyse des structures tabulaires](https://github.com/loco-philippe/tab-analysis/blob/main/docs/tabular_analysis.pdf). Elle ne nécessite que des fonctions de comptage accessibles pour tout type de langage (voir un [exemple](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) d'implementation simple).
+   Checking the validity of a relationship for a defined dataset is one of the functions of [tabular structure analysis](https://github.com/loco-philippe/tab-analysis/blob/main/docs/tabular_analysis.pdf). It only requires counting functions accessible for any type of language (see a simple implementation  [example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb)).
 
 ### Proposed extensions
 
-Une relation est définie par les informations suivantes :
+A relationship is defined by the following information:
 
-* les deux Fields impliqués,
-* la représentation textuelle de la relation,
-* la nature de la relation
+* the two Fields involved,
+* the textual representation of the relationship,
+* the nature of the relationship
 
-Trois propositions d'extension de Table Schema sont proposées :
+Three proposals for extending Table Schema are presented:
 
 * **New Field Descriptor**:
 
-  Un Field Descriptor "relationships" est ajouté.
-  Les propriétés associées à ce Descriptor pourraient être :
+  A `relationships` Field Descriptor is added.
+  The properties associated with this Descriptor could be:
 
-  * "field" : name of the other Field impliqué
-  * "description" : description string (optional)
-  * "link": nature de la relationship
+  * `field`: name of the other Field involved
+  * `description`: description string (optional)
+  * `link`: nature of the relationship
 
-  Pros
+  Pros:
 
   * No mixing with other descriptors
   * Consistent with a field view
 
-  Cons
+  Cons:
 
-  * why choose one Field from the two ?
+  * why choose one Field from the two?
 
-  Examples :
+  Example:
 
-  ```python
+  ```json
   { "fields" : [
       { "name": "country",
         "relationships": [
@@ -1507,26 +1526,26 @@ Trois propositions d'extension de Table Schema sont proposées :
 
 * **New Constraint Property**:
 
-  Une Constraint Property "relationships" est ajoutée.
-  Les propriétés associées à cette Property pourraient être :
+  A `relationships` Property of `constraint` Descriptor is added.
+  The properties associated with this Property could be:
 
-  * "field" : name of the other Field impliqué
-  * "description" : description string (optional)
-  * "link": nature de la relationship
+  * `field`: name of the other Field involved
+  * `description`: description string (optional)
+  * `link`: nature of the relationship
 
-  Pros
+  Pros:
 
-  * The "constraints" property is consistent with the point
+  * The `constraints` Descriptor is consistent with the point
 
-  Cons
+  Cons:
 
-  * This Property is an object (more complex than the other)
+  * This Property is an object (more complex than the other properties)
   * Need to add a level in the properties tree
-  * why choose one Field from the two ?
+  * why choose one Field from the two?
 
-  Examples :
+  Example:
 
-  ```python
+  ```json
   { "fields" : [
       { "name": "country",
         "constrainst" : {
@@ -1552,25 +1571,25 @@ Trois propositions d'extension de Table Schema sont proposées :
 
 * **New Table Descriptor**:
 
-  Un Table Descriptor "relationships" est ajouté.
-  Les propriétés associées à ce Descriptor pourraient être :
+  A `relationships` Table Descriptor is added.
+  The properties associated with this Descriptor could be:
 
-  * "fields" : array with the names of the two Fields impliqué
-  * "description" : description string (optional)
-  * "link": nature de la relationship
+  * `fields`: array with the names of the two Fields involved
+  * `description`: description string (optional)
+  * `link`: nature of the relationship
 
-  Pros
+  Pros:
 
   * No mixing with Fields descriptors
 
-  Cons
+  Cons:
 
   * Need to add a new Table Descriptor
 
-  Examples :
+  Example:
 
-  ```python
-  { "fields": [...],
+  ```json
+  { "fields": [ ],
     "relationships": [
       { "fields" : [ "country", "code"],
         "description" : "is the country code alpha-2 of",
@@ -1585,37 +1604,45 @@ Trois propositions d'extension de Table Schema sont proposées :
 
 ### Specification
 
-Si la solution 3 est retenue (Table Descriptor), la spécification pourrait être la suivante:
+Assuming solution 3 (Table Descriptor), the specification could be as follows:
 
-The Relationships Descriptor MAY be used to define the dependency between fields.
-The Relationships Descriptor, if present, MUST be a JSON object and MUST contain two properties :
+The `relationships` Descriptor MAY be used to define the dependency between fields.
+The `relationships` Descriptor, if present, MUST be an array where each entry in the array is an object and MUST contain two required properties and one optional:
 
-* "fields" : Array with the property "name" of the two fields linked
-* "link" : the nature of the relationship between them
+* `fields` : Array with the property `name` of the two fields linked (required)
+* `link` : String with the nature of the relationship between them (required)
+* `description` : String with the description of the relationship between the two Fields (optional)
 
-The "link" property value MUST be one of the three following :
+The `link` property value MUST be one of the three following :
 
-* "derived" :
+* `derived` :
   * The values of the child field are dependant on the values of the parent field (i.e. a value in the parent field is associated with a single value in the child field).
   * e.g. The "Quarter" field [ "T1", "T2", "T2", "T1", "T2", "T1" ] and the "month" field [ "jan", "apr", "jun", "feb", "may", "jan"] are derived,
   * i.e. if a new entry "jun" is added, the corresponding "quarter" value must be "T2".
 
-* "coupled" :
+* `coupled` :
   * The values of one field are associated to the values of the other field.
   * e.g. The "Nickname" field  [ "jock", "paulo", "lili", "paulo" ] and the "name" field [ "john", "paul", "leah", "paul" ] are  coupled,
   * i.e. if a new entry "lili" is added, the corresponding "Name" value must be "leah" just as if a new entry "leah" is added, the corresponding "nickname" value must be "lili".
 
-* "crossed" :
+* `crossed` :
   This relationship means that all the different values of one field are associated with all the different values of the other field.
   e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Semester" Field [ "S1", "S2", "S1", "S2" ] are crossed
   i.e the year 2020 is associated to semesters "s1" and "s2", just as the semester "s1" is associated with years 2020 and 2021
 
-The Relationships Descriptor, if present, MAY contain one property :
+### implementations
 
-* "description" : String with the description of the relationship between the two Fields.
+The implementation of a new Descriptor is not discussed here (no particular point to address).
 
-### Suggested implementations
+The control implementation is based on the following principles:
 
+* calculation of the number of different values for the two Fields,
+* calculation of the number of different values for the virtual Field composed of tuples of each of the values of the two Fields
+* comparison of these three values to deduce the type of relationship
+* comparison of the calculated relationship type with that defined in the data schema
 
+The [implementation example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) presents a calculation function using the standard python library for datasets with few values as well as a function built with NumPy functions.
 
 ### Notes
+
+If the relationships are defined in a data model, the generation of the relationships in the data schema can be automatic.
