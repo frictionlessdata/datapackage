@@ -1448,7 +1448,7 @@ The purpose of this specification is therefore on the one hand to express these 
 
 ### Context
 
-This subject was studied and treated for databases and led on the one hand to the definition of a methodology for specifying relationships and on the other hand to the implementation of consistent relational databases.
+This subject was studied and treated for databases and led to the definition of a methodology for specifying relationships and to the implementation of consistent relational databases.
 
 The methodology is mainly based on the [Entity–relationship model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model):
 
@@ -1466,19 +1466,19 @@ Two aspects need to be addressed:
 
    This methodology applied for databases can also be applied for tabular data whose structure is similar to that of relational database tables but whose representation of relationships is different (see [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) used in tabular representations).
 
-   This variation is explained in the [Linked notebook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
+   This variation is explained in the [linked notebook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
 
-   Using a data model is a simple way to express relationships but it is not required. We can very well express the relationships directly at the data schema level.
+   Using a data model is a simple way to express relationships but it is not required. We can express the relationships directly at the data schema level.
 
 * **validity of a dataset**:
 
-   Checking the validity of a relationship for a defined dataset is one of the functions of [tabular structure analysis](https://github.com/loco-philippe/tab-analysis/blob/main/docs/tabular_analysis.pdf). It only requires counting functions accessible for any type of language (see a simple implementation  [example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb)).
+   Checking the validity of a relationship for a defined dataset is one of the functions of [tabular structure analysis](https://github.com/loco-philippe/tab-analysis/blob/main/docs/tabular_analysis.pdf). It only requires counting functions accessible for any type of language (see [example of implementation](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb)).
 
 ### Proposed extensions
 
 A relationship is defined by the following information:
 
-* the two Fields involved,
+* the two Fields involved (the order of the Fields is important with the "derived" link),
 * the textual representation of the relationship,
 * the nature of the relationship
 
@@ -1489,7 +1489,7 @@ Three proposals for extending Table Schema are presented:
   A `relationships` Field Descriptor is added.
   The properties associated with this Descriptor could be:
 
-  * `field`: name of the other Field involved
+  * `parent`: name of the other Field involved
   * `description`: description string (optional)
   * `link`: nature of the relationship
 
@@ -1497,10 +1497,11 @@ Three proposals for extending Table Schema are presented:
 
   * No mixing with other descriptors
   * Consistent with a field view
+  * the direction of the relationship is clear
 
   Cons:
 
-  * why choose one Field from the two?
+  * a relationship is not a property of a Field
 
   Example:
 
@@ -1508,14 +1509,14 @@ Three proposals for extending Table Schema are presented:
   { "fields" : [
       { "name": "country",
         "relationships": [
-          { "field" : "code",
+          { "parent" : "code",
             "description" : "is the country code alpha-2 of",
             "link" : "coupled" }
         ]
       }
       { "name": "region",
         "relationships": [
-          { "field" : "population",
+          { "parent" : "population",
             "description" : "is the population of",
             "link" : "derived"}
         ]
@@ -1527,21 +1528,23 @@ Three proposals for extending Table Schema are presented:
 * **New Constraint Property**:
 
   A `relationships` Property of `constraint` Descriptor is added.
+
   The properties associated with this Property could be:
 
-  * `field`: name of the other Field involved
+  * `parent`: name of the other Field involved
   * `description`: description string (optional)
   * `link`: nature of the relationship
 
   Pros:
 
   * The `constraints` Descriptor is consistent with the point
+  * the direction of the relationship is clear
 
   Cons:
 
   * This Property is an object (more complex than the other properties)
   * Need to add a level in the properties tree
-  * why choose one Field from the two?
+  * a relationship is not a property of a Field
 
   Example:
 
@@ -1550,7 +1553,7 @@ Three proposals for extending Table Schema are presented:
       { "name": "country",
         "constrainst" : {
           "relationships": [
-            { "field" : "code",
+            { "parent" : "code",
               "description" : "is the country code alpha-2 of",
               "link" : "coupled" }    
           ]
@@ -1559,7 +1562,7 @@ Three proposals for extending Table Schema are presented:
       { "name": "region",
         "constrainst" : {
           "relationships": [
-            { "field" : "population",
+            { "parent" : "population",
               "description" : "is the population of",
               "link" : "derived"}
           ]
@@ -1585,6 +1588,7 @@ Three proposals for extending Table Schema are presented:
   Cons:
 
   * Need to add a new Table Descriptor
+  * The order of the Fields in the array is important with the "derived" link
 
   Example:
 
@@ -1607,6 +1611,7 @@ Three proposals for extending Table Schema are presented:
 Assuming solution 3 (Table Descriptor), the specification could be as follows:
 
 The `relationships` Descriptor MAY be used to define the dependency between fields.
+
 The `relationships` Descriptor, if present, MUST be an array where each entry in the array is an object and MUST contain two required properties and one optional:
 
 * `fields` : Array with the property `name` of the two fields linked (required)
@@ -1616,19 +1621,22 @@ The `relationships` Descriptor, if present, MUST be an array where each entry in
 The `link` property value MUST be one of the three following :
 
 * `derived` :
-  * The values of the child field are dependant on the values of the parent field (i.e. a value in the parent field is associated with a single value in the child field).
+
+  * The values of the child (second array element) field are dependant on the values of the parent (first array element) field (i.e. a value in the parent field is associated with a single value in the child field).
   * e.g. The "Quarter" field [ "T1", "T2", "T2", "T1", "T2", "T1" ] and the "month" field [ "jan", "apr", "jun", "feb", "may", "jan"] are derived,
   * i.e. if a new entry "jun" is added, the corresponding "quarter" value must be "T2".
 
 * `coupled` :
+
   * The values of one field are associated to the values of the other field.
   * e.g. The "Nickname" field  [ "jock", "paulo", "lili", "paulo" ] and the "name" field [ "john", "paul", "leah", "paul" ] are  coupled,
   * i.e. if a new entry "lili" is added, the corresponding "Name" value must be "leah" just as if a new entry "leah" is added, the corresponding "nickname" value must be "lili".
 
 * `crossed` :
-  This relationship means that all the different values of one field are associated with all the different values of the other field.
-  e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Semester" Field [ "S1", "S2", "S1", "S2" ] are crossed
-  i.e the year 2020 is associated to semesters "s1" and "s2", just as the semester "s1" is associated with years 2020 and 2021
+
+  * This relationship means that all the different values of one field are associated with all the different values of the other field.
+  * e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Semester" Field [ "S1", "S2", "S1", "S2" ] are crossed
+  * i.e the year 2020 is associated to semesters "s1" and "s2", just as the semester "s1" is associated with years 2020 and 2021
 
 ### implementations
 
@@ -1641,8 +1649,11 @@ The control implementation is based on the following principles:
 * comparison of these three values to deduce the type of relationship
 * comparison of the calculated relationship type with that defined in the data schema
 
-The [implementation example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) presents a calculation function using the standard python library for datasets with few values as well as a function built with NumPy functions.
+The [implementation example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) presents calculation function.
+An [analysis tool](https://github.com/loco-philippe/tab-analysis/blob/main/README.md) is also available and accessible from pandas data.
 
 ### Notes
 
 If the relationships are defined in a data model, the generation of the relationships in the data schema can be automatic.
+
+The example presented in the [Overview](#overview) and the rule for converting a Data model into a Table schema are detailed in [this NoteBook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example_schema.ipynb).
