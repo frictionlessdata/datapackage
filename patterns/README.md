@@ -1656,4 +1656,4 @@ An [analysis tool](https://github.com/loco-philippe/tab-analysis/blob/main/READM
 
 If the relationships are defined in a data model, the generation of the relationships in the data schema can be automatic.
 
-The example presented in the [Overview](#overview) and the rule for converting a Data model into a Table schema are detailed in [this NoteBook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example_schema.ipynb).
+The example presented in the [Overview](#overview) and the rule for converting a Data model into a Table schema are detailed in [this NoteBook](https://nbviewer.org/github/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example_schema.ipynb).
