@@ -19,7 +19,7 @@ A simple format to describe and package a single data resource such as a individ
 
 ## Language
 
-The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt" target="_blank" title="RFC 2119">RFC 2119</a>
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
 ## Introduction
 
@@ -83,16 +83,16 @@ A comprehensive Data Resource example with all required, recommended and optiona
 
 ### Descriptor
 
-A Data Resource descriptor MUST be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
+A Data Resource descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
 
-Key properties of the descriptor are described below. A descriptor MAY include any number of properties in additional to those described below as required and optional properties.
+Key properties of the descriptor are described below. A descriptor `MAY` include any number of properties in additional to those described below as required and optional properties.
 
 [RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
 ### Data Location
 
-A resource MUST contain a property describing the location of the
-data associated to the resource. The location of resource data MUST be
+A resource `MUST` contain a property describing the location of the
+data associated to the resource. The location of resource data `MUST` be
 specified by the presence of one (and only one) of these two properties:
 
 - `path`: for data in files located online or locally on disk.
@@ -100,16 +100,16 @@ specified by the presence of one (and only one) of these two properties:
 
 #### `path` Data in Files
 
-`path` MUST be a string -- or an array of strings (see "Data in Multiple
-Files"). Each string MUST be a "url-or-path" as defined in the next section.
+`path` `MUST` be a string -- or an array of strings (see "Data in Multiple
+Files"). Each string `MUST` be a "url-or-path" as defined in the next section.
 
 ##### URL or Path
 
 A "url-or-path" is a `string` with the following additional constraints:
 
 - `MUST` either be a URL or a POSIX path
-- [URLs][url] MUST be fully qualified. MUST be using either http or https scheme. (Absence of a scheme indicates `MUST` be a POSIX path)
-- [POSIX paths][posix] (unix-style with `/` as separator) are supported for referencing local files, with the security restraint that they `MUST` be relative siblings or children of the descriptor. Absolute paths (/) and relative parent paths (../) MUST NOT be used, and implementations SHOULD NOT support these path types.
+- [URLs][url] `MUST` be fully qualified. `MUST` be using either http or https scheme. (Absence of a scheme indicates `MUST` be a POSIX path)
+- [POSIX paths][posix] (unix-style with `/` as separator) are supported for referencing local files, with the security restraint that they `MUST` be relative siblings or children of the descriptor. Absolute paths (/) and relative parent paths (../) `MUST` NOT be used, and implementations SHOULD NOT support these path types.
 
 [url]: https://en.wikipedia.org/wiki/Uniform_Resource_Locator
 [posix]: https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition
@@ -130,23 +130,23 @@ Examples:
 
 For example, suppose a data package hosting service stores packages on disk and allows access via an API. A malicious user uploads a data package with a resource path like `/etc/passwd`. The user then requests the data for that resource and the server naively opens `/etc/passwd` and returns that data to the caller.
 
-Prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors MAY want to automatically convert a `url` property to a `path` property and issue a warning.
+Prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.
 :::
 
 #### Data in Multiple Files
 
-Usually, a resource will have only a single file associated to it. However, sometimes it may be convenient to have a single resource whose data is split across multiple files -- perhaps the data is large and having it in one file would be inconvenient.
+Usually, a resource will have only a single file associated to it. However, sometimes it can be convenient to have a single resource whose data is split across multiple files -- perhaps the data is large and having it in one file would be inconvenient.
 
-To support this use case the `path` property MAY be an array of strings rather
+To support this use case the `path` property `MAY` be an array of strings rather
 than a single string:
 
 ```
 "path": [ "myfile1.csv", "myfile2.csv" ]
 ```
 
-It is NOT permitted to mix fully qualified URLs and relative paths in a `path` array: strings MUST either all be relative paths or all URLs.
+It is NOT permitted to mix fully qualified URLs and relative paths in a `path` array: strings `MUST either all be relative paths or all URLs.
 
-**NOTE:** All files in the array MUST be similar in terms of structure, format etc. Implementors MUST be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
+**NOTE:** All files in the array `MUST` be similar in terms of structure, format etc. Implementors `MUST` be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec][tdp] for more on this.
 
 #### `data` Inline Data
 
@@ -154,12 +154,12 @@ Resource data rather than being stored in external files can be shipped `inline`
 
 The value of the data property can be any type of data. However, restrictions of JSON require that the value be a string so for binary data you will need to encode (e.g. to Base64). Information on the type and encoding of the value of the data property SHOULD be provided by the format (or mediatype) property and the encoding property.
 
-Specifically: the value of the data property MUST be:
+Specifically: the value of the data property `MUST` be:
 
 - EITHER: a **JSON** array or **Object**- the data is then assumed to be JSON data and SHOULD be processed as such
-- OR: a **JSON** string - in this case the format or mediatype properties MUST be provided.
+- OR: a **JSON** string - in this case the format or mediatype properties `MUST` be provided.
 
-Thus, a consumer of resource object MAY assume if no format or mediatype property is provided that the data is JSON and attempt to process it as such.
+Thus, a consumer of resource object `MAY` assume if no format or mediatype property is provided that the data is JSON and attempt to process it as such.
 
 **Examples 1 - inline JSON:**
 
@@ -193,16 +193,16 @@ Thus, a consumer of resource object MAY assume if no format or mediatype propert
 
 #### Required Properties
 
-A descriptor MUST contain the following properties:
+A descriptor `MUST` contain the following properties:
 
 #### `name`
 
-A resource MUST contain a `name` property. The name is a simple name or
+A resource `MUST` contain a `name` property. The name is a simple name or
 identifier to be used for this resource.
 
-- If present, the name MUST be unique amongst all resources in this data
+- If present, the name `MUST` be unique amongst all resources in this data
   package.
-- It MUST consist only of lowercase alphanumeric characters plus ".", "-" and "\_".
+- It `MUST` consist only of lowercase alphanumeric characters plus ".", "-" and "\_".
 - It would be usual for the name to correspond to the file name (minus the
   extension) of the data file the resource describes.
 
@@ -230,7 +230,7 @@ Examples:
 
 #### Optional Properties
 
-A descriptor MAY contain any number of additional properties. Common properties include:
+A descriptor `MAY` contain any number of additional properties. Common properties include:
 
 - `title`: a title or label for the resource.
 - `description`: a description of the resource.
@@ -252,7 +252,7 @@ A descriptor MAY contain any number of additional properties. Common properties 
 
 ### Resource Schemas
 
-A Data Resource MAY have a `schema` property to describe the schema of the resource data.
+A Data Resource `MAY` have a `schema` property to describe the schema of the resource data.
 
 The value for the `schema` property on a `resource` MUST be an `object` representing the schema OR a `string` that identifies the location of the schema.
 

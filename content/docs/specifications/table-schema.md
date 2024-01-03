@@ -19,7 +19,7 @@ A simple format to declare a schema for tabular data. The schema is designed to 
 
 ## Language
 
-The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt" target="_blank" title="RFC 2119">RFC 2119</a>
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
 ## Introduction
 
@@ -57,13 +57,13 @@ In JSON, a table would be:
 
 In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the _physical_ and the _logical_ representation of data.
 
-The _physical representation_ of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation may have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
+The _physical representation_ of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation can have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
 
 The _logical representation_ of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
 
 In this document, we'll explicitly refer to either the _physical_ or _logical_ representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
 
-For example, `constraints` should be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
+For example, `constraints` `SHOULD` be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
 
 ## Descriptor
 
@@ -105,7 +105,7 @@ The following is an illustration of this structure:
 
 A field descriptor `MUST` be a JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
-well as additional information that may be used to validate the field or create
+well as additional information that can be used to validate the field or create
 a user interface for data entry.
 
 Here is an illustration:
@@ -128,7 +128,7 @@ The field descriptor `object` `MAY` contain any number of other properties. Some
 
 ### `name`
 
-The field descriptor MUST contain a `name` property. This property `SHOULD` correspond to the name of field/column in the data file (if it has a name). As such it `SHOULD` be unique (though it is possible, but very bad practice, for the data file to have multiple columns with the same name). `name` `SHOULD NOT` be considered case sensitive in determining uniqueness. However, since it should correspond to the name of the field in the data file it may be important to preserve case.
+The field descriptor `MUST` contain a `name` property. This property `SHOULD` correspond to the name of field/column in the data file (if it has a name). As such it `SHOULD` be unique (though it is possible, but very bad practice, for the data file to have multiple columns with the same name). `name` `SHOULD NOT` be considered case sensitive in determining uniqueness. However, since it corresponds to the name of the field in the data file it may be important to preserve case.
 
 ### `title`
 
@@ -145,8 +145,7 @@ An example value for the field
 ### Types and Formats
 
 `type` and `format` properties are used to give The type of the field (string, number etc) - see below for
-more detail. If type is not provided a consumer should assume a type of
-"string".
+more detail. If type is not provided a consumer `SHOULD` assume a type of "string".
 
 A field's `type` property is a string indicating the type of this field.
 
@@ -195,18 +194,18 @@ The following special string values are permitted (case need not be respected):
 - INF: positive infinity
 - -INF: negative infinity
 
-A number MAY also have a trailing:
+A number `MAY` also have a trailing:
 
-- exponent: this MUST consist of an E followed by an optional + or - sign
+- exponent: this `MUST` consist of an E followed by an optional + or - sign
   followed by one or more decimal digits (0-9)
 
-This lexical formatting may be modified using these additional properties:
+This lexical formatting `MAY` be modified using these additional properties:
 
 - **decimalChar**: A string whose value is used to represent a decimal point
   within the number. The default value is ".".
 - **groupChar**: A string whose value is used to group digits within the
   number. The default value is null. A common value is "," e.g. "100,000".
-- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -220,7 +219,7 @@ Integer values are indicated in the standard way for any valid integer.
 
 Additional properties:
 
-- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -256,16 +255,16 @@ A date without a time.
 `format`:
 
 - **default**: An ISO8601 format string.
-  - date: This MUST be in ISO8601 format YYYY-MM-DD
-  - datetime: a date-time. This MUST be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
+  - date: This `MUST` be in ISO8601 format YYYY-MM-DD
+  - datetime: a date-time. This `MUST` be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
   - time: a time without a date
 - **any**: Any parsable representation of the type. The implementing
   library can attempt to parse the datetime via a range of strategies.
   An example is `dateutil.parser.parse` from the `python-dateutils`
   library.
 - **\<PATTERN\>**: date/time values in this field can be parsed according to
-  `<PATTERN>`. `<PATTERN>` MUST follow the syntax of [standard Python / C
-  strptime][strptime]. (That is, values in the this field should be parsable
+  `<PATTERN>`. `<PATTERN>` `MUST` follow the syntax of [standard Python / C
+  strptime][strptime]. (That is, values in the this field `SHOULD` be parsable
   by Python / C standard `strptime` using `<PATTERN>`). Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
 
 #### time
@@ -317,8 +316,8 @@ extended format PnYnMnDTnHnMnS, where nY represents the number of years, nM the
 number of months, nD the number of days, 'T' is the date/time separator, nH the
 number of hours, nM the number of minutes and nS the number of seconds. The
 number of seconds can include decimal digits to arbitrary precision. Date and
-time elements including their designator may be omitted if their value is zero,
-and lower order elements may also be omitted for reduced precision.
+time elements including their designator `MAY` be omitted if their value is zero,
+and lower order elements `MAY` also be omitted for reduced precision.
 
 `format`: no options (other than the default).
 
@@ -345,7 +344,7 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
 #### any
 
-Any `type` or `format` is accepted. When converting from physical to logical representation, the behaviour should be similar to String field type.
+Any `type` or `format` is accepted. When converting from physical to logical representation, the behaviour `SHOULD` be similar to String field type.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -353,10 +352,10 @@ Any `type` or `format` is accepted. When converting from physical to logical rep
 
 ### Rich Types
 
-A richer, "semantic", description of the "type" of data in a given column MAY
+A richer, "semantic", description of the "type" of data in a given column `MAY`
 be provided using a `rdfType` property on a field descriptor.
 
-The value of the `rdfType` property MUST be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
+The value of the `rdfType` property `MUST` be the URI of a RDF Class, that is an instance or subclass of [RDF Schema Class object][rdfs-class]
 
 Here is an example using the Schema.org RDF Class `http://schema.org/Country`:
 
@@ -434,7 +433,7 @@ properties.
       All
     </td>
     <td>
-      If <code>true</code>, then all values for that field MUST be unique within the data file in which it is found.
+      If <code>true</code>, then all values for that field `MUST` be unique within the data file in which it is found.
     </td>
   </tr>
   <tr>
@@ -518,7 +517,7 @@ properties.
       All
     </td>
     <td>
-      The value of the field must exactly match a value in the <code>enum</code> array.
+      The value of the field `MUST` exactly match a value in the <code>enum</code> array.
     </td>
   </tr>
 </table>
@@ -526,7 +525,7 @@ properties.
 **Implementors**:
 
 - Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
-- A constraints descriptor may contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
+- A constraints descriptor `MAY` contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
 - Constraints `MUST` be applied on the logical representation of field values and constraint values.
 
 ## Other Properties
@@ -537,11 +536,11 @@ In additional to field descriptors, there are the following "table level" proper
 
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
-`missingValues` dictates which string values should be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion.
+`missingValues` dictates which string values `MUST` be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion.
 The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place.
 Providing the empty list `[]` means that no conversion to null will be done, on any value.
 
-`missingValues` MUST be an `array` where each entry is a `string`.
+`missingValues` `MUST` be an `array` where each entry is a `string`.
 
 **Why strings**: `missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.
 
@@ -563,14 +562,14 @@ primary key is equivalent to adding `required: true` to their
 The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
 
-The `primaryKey`, if present, MUST be:
+The `primaryKey`, if present, `MUST` be:
 
 - Either: an array of strings with each string corresponding to one of the
   field `name` values in the `fields` array (denoting that the primary key is
   made up of those fields). It is acceptable to have an array with a single
   value (indicating just one field in the primary key). Strictly, order of
-  values in the array does not matter. However, it is RECOMMENDED that one
-  follow the order the fields in the `fields` has as client applications may
+  values in the array does not matter. However, it is `RECOMMENDED` that one
+  follow the order the fields in the `fields` has as client applications `MAY`
   utilize the order of the primary key list (e.g. in concatenating values
   together).
 - Or: a single string corresponding to one of the field `name` values in
@@ -615,12 +614,12 @@ connect to values a field (or fields) on this or a separate table (resource).
 They are directly modelled on the concept of foreign keys in SQL.
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
-array must be a `foreignKey`. A `foreignKey` `MUST` be a `object` and MUST have the following properties:
+array `MUST` be a `foreignKey`. A `foreignKey` `MUST` be a `object` and `MUST` have the following properties:
 
 - `fields` - `fields` is a string or array specifying the
   field or fields on this resource that form the source part of the foreign
   key. The structure of the string or array is as per `primaryKey` above.
-- `reference` - `reference` MUST be a `object`. The `object`
+- `reference` - `reference` `MUST` be a `object`. The `object`
   - `MUST` have a property `resource` which is the name of the resource within
     the current data package (i.e. the data package within which this Table
     Schema is located). For self-referencing foreign keys, i.e. references

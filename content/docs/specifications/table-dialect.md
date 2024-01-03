@@ -19,7 +19,7 @@ CSV Dialect defines a simple format to describe the various dialects of CSV file
 
 ## Language
 
-The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt" target="_blank" title="RFC 2119">RFC 2119</a>
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
 ## Introduction
 
@@ -41,17 +41,17 @@ Some related work can be found in [this comparison of csv dialect support](https
 
 A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the following properties:
 
-- `delimiter` - specifies the character sequence which should separate fields (aka columns). Default = `,`. Example `\t`. If not present, consumers should assume that it's `,`.
-- `lineTerminator` - specifies the character sequence which should terminate rows. Default = `\r\n`
+- `delimiter` - specifies the character sequence which separates fields (aka columns). Default = `,`. Example `\t`. If not present, the default is `,`.
+- `lineTerminator` - specifies the character sequence which terminates rows. Default = `\r\n`
 - `quoteChar` - specifies a one-character string to use as the quoting character. Default = `"`
-- `doubleQuote` - controls the handling of quotes inside fields. If true, two consecutive quotes should be interpreted as one. Default = `true`
+- `doubleQuote` - controls the handling of quotes inside fields. If true, two consecutive quotes are interpreted as one. Default = `true`
 - `escapeChar` - specifies a one-character string to use for escaping (for example, `\`), mutually exclusive with `quoteChar`. Not set by default
 - `nullSequence` - specifies the null sequence (for example `\N`). Not set by default
-- `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter should be treated as part of the following field. Default = `false`
+- `skipInitialSpace` - specifies how to interpret whitespace which immediately follows a delimiter; if `false`, it means that whitespace immediately after a delimiter is treated as part of the following field. Default = `false`
 - `header` - indicates whether the file includes a header row. If `true` the first row in the file is a header row, not data. Default = `true`
 - `commentChar` - indicates a one-character string to ignore any line whose row begins with this character. Not set by default
-- `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` should not be equated. Default = `false`
-- `csvddfVersion` - a number, in n.n format, e.g., `1.2`. If not present, consumers should assume latest schema version.
+- `caseSensitiveHeader` - indicates that case in the header is meaningful. For example, columns `CAT` and `Cat` are not equated. Default = `false`
+- `csvddfVersion` - a number, in n.n format, e.g., `1.2`. If not present, default is the latest schema version.
 
 ### Example
 

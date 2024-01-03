@@ -19,7 +19,7 @@ A simple container format for describing a coherent collection of data in a sing
 
 ## Language
 
-The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt" target="_blank" title="RFC 2119">RFC 2119</a>
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
 ## Introduction
 
@@ -32,7 +32,7 @@ The Data Package metadata is stored in a "descriptor". This descriptor is what m
 
 In addition to this descriptor a data package will include other resources such as data files. The Data Package specification does NOT impose any requirements on their form or structure and can therefore be used for packaging **any kind of data**.
 
-The data included in the package may be provided as:
+The data included in the package can be provided as:
 
 - Files bundled locally with the package descriptor
 - Remote resources, referenced by URL
@@ -138,7 +138,7 @@ Packaged data resources are described in the `resources` property of the package
 
 #### Required Properties
 
-The `resources` property is required, with at least one resource.
+The `resources` property is `REQUIRED`, with at least one resource.
 
 #### Recommended Properties
 
@@ -148,7 +148,7 @@ In addition to the required properties, the following properties `SHOULD` be inc
 
 A short url-usable (and preferably human-readable) name of the package. This `MUST` be lower-case and contain only alphanumeric characters along with ".", "\_" or "-" characters. It will function as a unique identifier and therefore `SHOULD` be unique in relation to any registry in which this package will be deposited (and preferably globally unique).
 
-The name `SHOULD` be invariant, meaning that it `SHOULD NOT` change when a data package is updated, unless the new package version should be considered a distinct package, e.g. due to significant changes in structure or interpretation. Version distinction `SHOULD` be left to the version property. As a corollary, the name also `SHOULD NOT` include an indication of time range covered.
+The name `SHOULD` be invariant, meaning that it `SHOULD NOT` change when a data package is updated, unless the new package version `SHOULD` be considered a distinct package, e.g. due to significant changes in structure or interpretation. Version distinction `SHOULD` be left to the version property. As a corollary, the name also `SHOULD NOT` include an indication of time range covered.
 
 ##### `id`
 
@@ -227,7 +227,7 @@ A `string` providing a title or one sentence description for this package
 
 ##### `description`
 
-A description of the package. The description `MUST` be [markdown][] formatted -- this also allows for simple plain text as plain text is itself valid markdown. The first paragraph (up to the first double line break) should be usable as summary information for the package.
+A description of the package. The description `MUST` be [markdown][] formatted -- this also allows for simple plain text as plain text is itself valid markdown. The first paragraph (up to the first double line break) `SHOULD` be usable as summary information for the package.
 
 ##### `homepage`
 
@@ -235,7 +235,7 @@ A URL for the home on the web that is related to this data package.
 
 ##### `version`
 
-A version string identifying the version of the package. It should conform to the [Semantic Versioning][semver] requirements and should follow the [Data Package Version](/patterns/#data-package-version) pattern.
+A version string identifying the version of the package. It `SHOULD` conform to the [Semantic Versioning][semver] requirements and `SHOULD` follow the [Data Package Version](/patterns/#data-package-version) pattern.
 
 ##### `sources`
 
@@ -280,7 +280,7 @@ An Array of string keywords to assist users searching for the package in catalog
 
 An image to use for this data package. For example, when showing the package in a listing.
 
-The value of the image property `MUST` be a string pointing to the location of the image. The string must be a [url-or-path][], that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
+The value of the image property `MUST` be a string pointing to the location of the image. The string `MUST` be a [url-or-path][], that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 
 ##### `created`
 
@@ -288,7 +288,7 @@ The datetime on which this was created.
 
 Note: semantics may vary between publishers -- for some this is the datetime the data was created, for others the datetime the package was created.
 
-The datetime must conform to the string formats for datetime as described in [RFC3339][]. Example:
+The datetime `MUST` conform to the string formats for datetime as described in [RFC3339][]. Example:
 
 ```javascript
 {
