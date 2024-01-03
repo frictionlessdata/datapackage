@@ -25,6 +25,9 @@ dataPackage:
     homepage:
       "$ref": "#/definitions/homepage"
       propertyOrder: 60
+    version:
+      "$ref": "#/definitions/version"
+      propertyOrder: 65
     created:
       "$ref": "#/definitions/created"
       propertyOrder: 70
@@ -76,6 +79,9 @@ tabularDataPackage:
     homepage:
       "$ref": "#/definitions/homepage"
       propertyOrder: 60
+    version:
+      "$ref": "#/definitions/version"
+      propertyOrder: 65
     created:
       "$ref": "#/definitions/created"
       propertyOrder: 70
