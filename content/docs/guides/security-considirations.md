@@ -45,7 +45,7 @@ Resources in the format on the top as:
 - yellow: potentially dangerous
 - green: safe to use
 
-![alt text](security_matrix.png)
+![Security Matrix](./assets/security-matrix.png)
 
 ### Descriptor source is a URL
 
