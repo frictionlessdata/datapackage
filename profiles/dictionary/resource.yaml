@@ -120,7 +120,7 @@ tabularDataResource:
       options:
         hidden: true
     dialect:
-      "$ref": "#/definitions/csvDialect"
+      "$ref": "#/definitions/tableDialect"
       propertyOrder: 50
     format:
       "$ref": "#/definitions/format"
