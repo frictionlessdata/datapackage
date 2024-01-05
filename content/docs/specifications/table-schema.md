@@ -472,7 +472,7 @@ properties.
       integer, number, date, time and datetime, year, yearmonth
     </td>
     <td>
-      <code>integer, number, date, time, datetime, year, yearmonth</code>
+      <code>integer, number, date, time, datetime, duration, year, yearmonth</code>
     </td>
     <td>
       Specifies a minimum value for a field. This is different to <code>minLength</code> which checks the number of items in the value. A <code>minimum</code> value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the <code>type</code> of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a <code>minimum</code> value constraint is specified then the field descriptor <code>MUST</code> contain a <code>type</code> key.
@@ -486,7 +486,7 @@ properties.
       integer, number, date, time and datetime, year, yearmonth
     </td>
     <td>
-      <code>integer, number, date, time and datetime, year, yearmonth</code>
+      <code>integer, number, date, time and datetime, duration, year, yearmonth</code>
     </td>
     <td>
       As for <code>minimum</code>, but specifies a maximum value for a field.
