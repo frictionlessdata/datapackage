@@ -69,7 +69,7 @@ For example, `constraints` `SHOULD` be tested on the logical representation of d
 
 A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
 
-It `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The order of elements in `fields` array `SHOULD` be the order of fields in the CSV file. The number of elements in `fields` array `SHOULD` be the same as the number of fields in the CSV file.
+It `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The order of elements in `fields` array `MUST` be the order of fields in the data source. The number of elements in `fields` array `MUST` be the same as the number of fields in data source. For unordered data sources the order of fields `SHOULD` be specified in Table Dialect, otherwise the behavior is implementation-specific.
 
 The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties (not defined in this specification).
 
