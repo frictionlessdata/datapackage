@@ -237,9 +237,7 @@ A descriptor `MAY` contain any number of additional properties. Common propertie
 - `format`: 'csv', 'xls', 'json' etc. Would be expected to be the standard file
   extension for this type of resource.
 - `mediatype`: the mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
-- `encoding`: specify the character encoding of the resource's data file. The values should be one of
-  the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no
-  value for this key is specified then the default is UTF-8.
+- `encoding`: the character encoding of resource's data file (only applicable for textual files). The value `SHOULD` be one of the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no value for this property is specified then the encoding `SHOULD` be detected on the implementation level. It is `RECOMMENDED` to use UTF-8 (without BOM) as a default encoding for textual files.
 - `bytes`: size of the file in bytes.
 - `hash`: the MD5 hash for this resource. Other algorithms can be indicated by prefixing
   the hash's value with the algorithm name in lower-case. For example:
