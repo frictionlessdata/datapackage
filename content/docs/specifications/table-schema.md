@@ -469,7 +469,7 @@ properties.
       <code>minimum</code>
     </td>
     <td>
-      integer, number, date, time and datetime, year, yearmonth
+      integer, number, date, time, datetime, duration, year, yearmonth
     </td>
     <td>
       <code>integer, number, date, time, datetime, duration, year, yearmonth</code>
@@ -483,10 +483,10 @@ properties.
       <code>maximum</code>
     </td>
     <td>
-      integer, number, date, time and datetime, year, yearmonth
+      integer, number, date, time, datetime, duration, year, yearmonth
     </td>
     <td>
-      <code>integer, number, date, time and datetime, duration, year, yearmonth</code>
+      <code>integer, number, date, time, datetime, duration, year, yearmonth</code>
     </td>
     <td>
       As for <code>minimum</code>, but specifies a maximum value for a field.
