@@ -247,6 +247,7 @@ A descriptor `MAY` contain any number of additional properties. Common propertie
       "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
 
 - `sources`: as for [Data Package metadata][dp].
+- `contributors`: as for [Data Package metadata][dp].
 - `licenses`: as for [Data Package metadata][dp]. If not specified the resource
   inherits from the data package.
 

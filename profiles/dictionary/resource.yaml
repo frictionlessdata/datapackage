@@ -41,6 +41,11 @@ dataResource:
       propertyOrder: 140
       options:
         hidden: true
+    contributors:
+      "$ref": "#/definitions/contributors"
+      propertyOrder: 145
+      options:
+        hidden: true
     licenses:
       "$ref": "#/definitions/licenses"
       description: The license(s) under which the resource is published.
