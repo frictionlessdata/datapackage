@@ -285,6 +285,8 @@ source:
       "$ref": "#/definitions/path"
     email:
       "$ref": "#/definitions/email"
+    version:
+      type: string
 sources:
   title: Sources
   description: The raw sources for this resource.
