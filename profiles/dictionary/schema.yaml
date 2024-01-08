@@ -452,6 +452,8 @@ tableSchemaFieldNumber:
       default: default
     bareNumber:
       "$ref": "#/definitions/tableSchemaBareNumber"
+    finiteNumber:
+      "$ref": "#/definitions/tableSchemaFiniteNumber"
     decimalChar:
       type: string
       description: A string whose value is used to represent a decimal point within the number. The default value is `.`.
@@ -1192,4 +1194,7 @@ tableSchemaBareNumber:
   type: boolean
   title: bareNumber
   description: a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+  default: true
+tableSchemaFiniteNumber:
+  type: boolean
   default: true
