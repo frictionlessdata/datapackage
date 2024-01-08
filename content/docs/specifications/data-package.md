@@ -239,9 +239,9 @@ A version string identifying the version of the package. It `SHOULD` conform to 
 
 ##### `sources`
 
-The raw sources for this data package. It `MUST` be an array of Source objects. Each Source object `MUST` have a `title` and `MAY` have `path` and/or `email` properties. Example:
+The raw sources for this data package. It `MUST` be an array of Source objects. A Source object `MUST` have at least one property. A Source object is `RECOMMENDED` to have `title` property and `MAY` contain `path` and `email` properties. Example:
 
-```javascript
+```json
 "sources": [{
   "title": "World Bank and OECD",
   "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
@@ -254,7 +254,7 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
 
 ##### `contributors`
 
-The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have a `title` property and MAY contain `path`, `email`, `role` and `organization` properties. An example of the object structure is as follows:
+The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is RECOMMENDED to have `title` property and MAY contain `path`, `email`, `role`, and `organization` properties. An example of the object structure is as follows:
 
 ```javascript
 "contributors": [{
