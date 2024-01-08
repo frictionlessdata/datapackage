@@ -204,7 +204,7 @@ This lexical formatting `MAY` be modified using these additional properties:
 - **decimalChar**: A string whose value is used to represent a decimal point
   within the number. The default value is ".".
 - **groupChar**: A string whose value is used to group digits within the
-  number. The default value is null. A common value is "," e.g. "100,000".
+  number. This property does not have a default value. A common value is "," e.g. "100,000".
 - **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
@@ -217,8 +217,10 @@ The field contains integers - that is whole numbers.
 
 Integer values are indicated in the standard way for any valid integer.
 
-Additional properties:
+This lexical formatting `MAY` be modified using these additional properties:
 
+- **groupChar**: A string whose value is used to group digits within the
+  integer. This property does not have a default value. A common value is "," e.g. "100,000".
 - **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
