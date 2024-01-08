@@ -145,14 +145,14 @@ An example value for the field
 ### Types and Formats
 
 `type` and `format` properties are used to give The type of the field (string, number etc) - see below for
-more detail. If type is not provided a consumer `SHOULD` assume a type of "string".
+more detail. If type is not provided a consumer `SHOULD` assume a type of "any".
 
 A field's `type` property is a string indicating the type of this field.
 
 A field's `format` property is a string, indicating a format for the field type.
 
 Both `type` and `format` are optional: in a field descriptor, the absence of a
-`type` property indicates that the field is of the type "string", and the
+`type` property indicates that the field is of the type "any", and the
 absence of a `format` property indicates that the field's type `format` is
 "default".
 
