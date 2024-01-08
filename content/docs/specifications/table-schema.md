@@ -493,6 +493,34 @@ properties.
   </tr>
   <tr>
     <td>
+      <code>exclusiveMinimum</code>
+    </td>
+    <td>
+      integer, number, date, time, datetime, duration, year, yearmonth
+    </td>
+    <td>
+      <code>integer, number, date, time, datetime, duration, year, yearmonth</code>
+    </td>
+    <td>
+      As for <code>minimum</code>, but for expressing exclusive range.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>exclusiveMaximum</code>
+    </td>
+    <td>
+      integer, number, date, time, datetime, duration, year, yearmonth
+    </td>
+    <td>
+      <code>integer, number, date, time, datetime, duration, year, yearmonth</code>
+    </td>
+    <td>
+      As for <code>maximum</code>, but for expressing exclusive range.
+    </td>
+  </tr>
+  <tr>
+    <td>
       <code>pattern</code>
     </td>
     <td>

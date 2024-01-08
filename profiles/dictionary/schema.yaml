@@ -399,6 +399,14 @@ tableSchemaFieldInteger:
           oneOf:
             - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
             - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
+        exclusiveMinimum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumInteger"
+        exclusiveMaximum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -479,6 +487,14 @@ tableSchemaFieldNumber:
           oneOf:
             - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
             - "$ref": "#/definitions/tableSchemaConstraintMaximumNumber"
+        exclusiveMinimum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumNumber"
+        exclusiveMaximum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumNumber"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -537,6 +553,10 @@ tableSchemaFieldDate:
         minimum:
           "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+        exclusiveMinimum:
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+        exclusiveMaximum:
           "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
@@ -603,6 +623,10 @@ tableSchemaFieldTime:
           "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
           "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+        exclusiveMinimum:
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+        exclusiveMaximum:
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -659,6 +683,10 @@ tableSchemaFieldDateTime:
         minimum:
           "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+        exclusiveMinimum:
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+        exclusiveMaximum:
           "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
@@ -721,6 +749,14 @@ tableSchemaFieldYear:
           oneOf:
             - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
             - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
+        exclusiveMinimum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMinimumInteger"
+        exclusiveMaximum:
+          oneOf:
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+            - "$ref": "#/definitions/tableSchemaConstraintMaximumInteger"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -778,6 +814,10 @@ tableSchemaFieldYearMonth:
         minimum:
           "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+        exclusiveMinimum:
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+        exclusiveMaximum:
           "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
@@ -837,6 +877,10 @@ tableSchemaFieldDuration:
         minimum:
           "$ref": "#/definitions/tableSchemaConstraintMinimumString"
         maximum:
+          "$ref": "#/definitions/tableSchemaConstraintMaximumString"
+        exclusiveMinimum:
+          "$ref": "#/definitions/tableSchemaConstraintMinimumString"
+        exclusiveMaximum:
           "$ref": "#/definitions/tableSchemaConstraintMaximumString"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
