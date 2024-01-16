@@ -1458,6 +1458,8 @@ The Entity–relationship model is broken down according to the conceptual-logic
 
 The Relationships are expressed literally by a name and in a structured way by a [cardinality](https://en.wikipedia.org/wiki/Cardinality_(data_modeling)).
 
+The Entity–relationship model for the example presented in the [Overview](#overview) is detailed in [this NoteBook](https://nbviewer.org/github/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example_schema.ipynb).
+
 ### Principles
 
 Two aspects need to be addressed:
@@ -1466,7 +1468,7 @@ Two aspects need to be addressed:
 
    This methodology applied for databases can also be applied for tabular data whose structure is similar to that of relational database tables but whose representation of relationships is different (see [patterns](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2) used in tabular representations).
 
-   This variation is explained in the [linked notebook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb).
+   This variation is explained in the [linked notebook](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/methodology.ipynb) and presented in the [example](https://nbviewer.org/github/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example_schema.ipynb).
 
    Using a data model is a simple way to express relationships but it is not required. We can express the relationships directly at the data schema level.
 
