@@ -1625,20 +1625,20 @@ The `link` property value MUST be one of the three following :
 * `derived` :
 
   * The values of the child (second array element) field are dependant on the values of the parent (first array element) field (i.e. a value in the parent field is associated with a single value in the child field).
-  * e.g. The "Quarter" field [ "T1", "T2", "T2", "T1", "T2", "T1" ] and the "month" field [ "jan", "apr", "jun", "feb", "may", "jan"] are derived,
-  * i.e. if a new entry "jun" is added, the corresponding "quarter" value must be "T2".
+  * e.g. The "name" field [ "john", "paul", "leah", "paul" ] and the "Nickname" field  [ "jock", "paulo", "lili", "paulo" ] are derived,
+  * i.e. if a new entry "leah" is added, the corresponding "nickname" value must be "lili".
 
 * `coupled` :
 
   * The values of one field are associated to the values of the other field.
-  * e.g. The "Nickname" field  [ "jock", "paulo", "lili", "paulo" ] and the "name" field [ "john", "paul", "leah", "paul" ] are  coupled,
-  * i.e. if a new entry "lili" is added, the corresponding "Name" value must be "leah" just as if a new entry "leah" is added, the corresponding "nickname" value must be "lili".
+  * e.g. The "Country" field  [ "france", "spain", "estonia", "spain" ] and the "code alpha-2" field [ "FR", "ES", "EE", "ES" ] are  coupled,
+  * i.e. if a new entry "estonia" is added, the corresponding "code alpha-2" value must be "EE" just as if a new entry "EE" is added, the corresponding "Country" value must be "estonia".
 
 * `crossed` :
 
   * This relationship means that all the different values of one field are associated with all the different values of the other field.
-  * e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Semester" Field [ "S1", "S2", "S1", "S2" ] are crossed
-  * i.e the year 2020 is associated to semesters "s1" and "s2", just as the semester "s1" is associated with years 2020 and 2021
+  * e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Population" Field [ "estonia", "spain", "estonia", "spain" ] are crossed
+  * i.e the year 2020 is associated to population of "spain" and "estonia", just as the population of "estonia" is associated with years 2020 and 2021
 
 ### implementations
 
