@@ -239,7 +239,7 @@ A version string identifying the version of the package. It `SHOULD` conform to 
 
 ##### `sources`
 
-The raw sources for this data package. It `MUST` be an array of Source objects. A Source object `MUST` have at least one property. A Source object is `RECOMMENDED` to have `title` property and `MAY` contain `path` and `email` properties. Example:
+The raw sources for this data package. It `MUST` be an array of Source objects. A Source object `MUST` have at least one property. A Source object is `RECOMMENDED` to have `title` property and `MAY` have `path`, `email`, and `version` properties. Example:
 
 ```json
 "sources": [{
@@ -251,6 +251,7 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
 - `title`: title of the source (e.g. document or organization name)
 - `path`: A [url-or-path][] string, that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
 - `email`: An email address
+- `version`: A version of the source
 
 ##### `contributors`
 
