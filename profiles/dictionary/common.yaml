@@ -199,8 +199,7 @@ contributor:
     role:
       type: string
       default: contributor
-  required:
-    - title
+  minProperties: 1
   context: Use of this property does not imply that the person was the original
     creator of, or a contributor to, the data in the descriptor, but refers to the
     composition of the descriptor itself.
@@ -276,8 +275,7 @@ source:
   title: Source
   description: A source file.
   type: object
-  required:
-    - title
+  minProperties: 1
   properties:
     title:
       "$ref": "#/definitions/title"
