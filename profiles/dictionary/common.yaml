@@ -124,6 +124,15 @@ path:
 data:
   title: Data
   description: Inline data for this resource.
+tabularData:
+  title: Tabular Data
+  description: Inline data for this tabular resource.
+  type: array
+  minItems: 1
+  items:
+    type:
+      - array
+      - object
 created:
   title: Created
   description: The datetime on which this descriptor was created.

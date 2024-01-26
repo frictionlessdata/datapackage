@@ -93,7 +93,7 @@ tabularDataResource:
       "$ref": "#/definitions/resourcePath"
       propertyOrder: 30
     data:
-      "$ref": "#/definitions/data"
+      "$ref": "#/definitions/tabularData"
       propertyOrder: 230
     schema:
       "$ref": "#/definitions/tableSchema"
