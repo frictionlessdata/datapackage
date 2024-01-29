@@ -1539,7 +1539,7 @@ Three proposals for extending Table Schema are presented:
 
   Pros:
 
-  * The `constraints` Descriptor is consistent with the point
+  * The `constraints` Descriptor is consistent with the purpose of the proposal
   * The direction of the relationship is clear
 
   Cons:
