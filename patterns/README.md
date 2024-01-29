@@ -1631,7 +1631,7 @@ The `link` property value MUST be one of the three following :
 * `coupled` :
 
   * The values of one field are associated to the values of the other field.
-  * e.g. The "Country" field  [ "france", "spain", "estonia", "spain" ] and the "code alpha-2" field [ "FR", "ES", "EE", "ES" ] are  coupled,
+  * e.g. The "Country" field [ "france", "spain", "estonia", "spain" ] and the "code alpha-2" field [ "FR", "ES", "EE", "ES" ] are  coupled,
   * i.e. if a new entry "estonia" is added, the corresponding "code alpha-2" value must be "EE" just as if a new entry "EE" is added, the corresponding "Country" value must be "estonia".
 
 * `crossed` :
