@@ -25,7 +25,7 @@ module.exports = {
     },
   },
   themeConfig: {
-    logo: "/img/frictionless-full-logo-blackfont.svg",
+    logo: "/img/logo-light.svg",
     // repo: "https://github.com/frictionlessdata",
     // repoLabel: "GitHub",
     docsRepo: "https://github.com/frictionlessdata/specs",
