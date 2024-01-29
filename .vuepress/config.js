@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 
 module.exports = {
-  title: "Frictionless Standards",
+  title: "Data Package (v1)",
   description: "",
   postcss: {
     plugins: [

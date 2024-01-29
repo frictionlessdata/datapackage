@@ -1,22 +1,16 @@
-# Frictionless Standards
+# Data Package (v1)
 
-At the core of [Frictionless][site] is a set of patterns for describing data including  Table Schema (for tables), Data Resource (for files), and Data Package (for datasets).
+> [Data Package (v2)](https://datapackage.org/) is being under active development. Please read the [announcement](https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/)
 
-**This site houses the formal *specifications* of these patterns.**
-
-For more info about the project as a whole, please visit [frictionlessdata.io][site]
-
-## Overview
-
-### What's a Data Package?
+## What's a Data Package?
 
 A Data Package is a simple container format used to describe and package a collection of data (a dataset).
 
 A Data Package can contain any kind of data. At the same time, Data Packages can be specialized and enriched for specific types of data so there are, for example, Tabular Data Packages for tabular data, Geo Data Packages for geo data etc.
 
-### Data Package Specs Suite
+## Data Package Specs Suite
 
-When you look more closely you'll see that Data Package is actually a *suite* of specifications. This suite is made of small specs, many of them usuable on their own, that you can also combine together.
+When you look more closely you'll see that Data Package is actually a _suite_ of specifications. This suite is made of small specs, many of them usuable on their own, that you can also combine together.
 
 This approach also reflects our philosophy of "small pieces, loosely joined" as well as "make the simple things simple and complex things possible": it easy to just use the piece you need as well to scale up to more complex needs.
 
@@ -26,13 +20,11 @@ We also broke down the Data Package spec into Data Package itself and Data Resou
 
 **Example: Data Resource spec + Table Schema spec becomes a Tabular Data Resource spec**
 
-
-``` mermaid
+```mermaid
    graph TD
-   
+
    dr[Data Resource] --add table schema--> tdr[Tabular Data Resource]
 ```
-
 
 **Example: How a Tabular Data Package is composed out of other specs**
 
@@ -47,7 +39,6 @@ graph TD
 
   style tdp fill:#f9f,stroke:#333,stroke-width:4px;
 ```
-
 
 ## Design Philosophy
 
@@ -71,7 +62,6 @@ Reuse and build on existing standards and formats.
 
 Support a broad range of languages, technologies and infrastructures -- avoid being tied to any one specific system.
 
-
 ## Contribute
 
 Contributions, comments and corrections are warmly welcomed. Most work proceeds in an RFC-style manner with discussion in the [issue tracker][issues].
@@ -87,7 +77,7 @@ Material is kept in a [git repo on GitHub][repo] - fork and submit a pull reques
 
 This repository is the canonical repository for the core Frictionless Data specifications. The repository features:
 
-- [JSON Schema](http://json-schema.org) representations of all specifications. These are used both in the site itself, to generate the specification pages, and likewise in the *schema registry* that is used by a range of libraries that implement the specifications.
+- [JSON Schema](http://json-schema.org) representations of all specifications. These are used both in the site itself, to generate the specification pages, and likewise in the _schema registry_ that is used by a range of libraries that implement the specifications.
 
 ### Quick start
 
