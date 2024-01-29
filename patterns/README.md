@@ -1562,7 +1562,7 @@ Three proposals for extending Table Schema are presented:
         }
       }
       { "name": "region",
-        "constrainst" : {
+        "constraints" : {
           "relationships": [
             { "parent" : "population",
               "description" : "is the population of",
