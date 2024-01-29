@@ -1640,7 +1640,7 @@ The `link` property value MUST be one of the three following :
   * e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Population" Field [ "estonia", "spain", "estonia", "spain" ] are crossed
   * i.e the year 2020 is associated to population of "spain" and "estonia", just as the population of "estonia" is associated with years 2020 and 2021
 
-### implementations
+### Implementations
 
 The implementation of a new Descriptor is not discussed here (no particular point to address).
 
