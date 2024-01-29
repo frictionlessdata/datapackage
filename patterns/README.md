@@ -1540,7 +1540,7 @@ Three proposals for extending Table Schema are presented:
   Pros:
 
   * The `constraints` Descriptor is consistent with the point
-  * the direction of the relationship is clear
+  * The direction of the relationship is clear
 
   Cons:
 
