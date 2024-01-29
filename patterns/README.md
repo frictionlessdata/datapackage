@@ -1529,7 +1529,7 @@ Three proposals for extending Table Schema are presented:
 
 * **New Constraint Property**:
 
-  A `relationships` Property of `constraint` Descriptor is added.
+  A `relationships` Property of `constraints` Descriptor is added.
 
   The properties associated with this Property could be:
 
