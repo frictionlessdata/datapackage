@@ -1553,7 +1553,7 @@ Three proposals for extending Table Schema are presented:
   ```json
   { "fields" : [
       { "name": "country",
-        "constrainst" : {
+        "constraints" : {
           "relationships": [
             { "parent" : "code",
               "description" : "is the country code alpha-2 of",
