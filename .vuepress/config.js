@@ -25,7 +25,7 @@ module.exports = {
     },
   },
   themeConfig: {
-    logo: "/img/frictionless-logo.png",
+    logo: "/img/frictionless-full-logo-blackfont.svg",
     // repo: "https://github.com/frictionlessdata",
     // repoLabel: "GitHub",
     docsRepo: "https://github.com/frictionlessdata/specs",
@@ -95,10 +95,14 @@ module.exports = {
       { text: "Back to the main site", link: "https://frictionlessdata.io/" },
     ],
   },
-  plugins: [
-    ["@vuepress/back-to-top"],
-  ],
+  plugins: [["@vuepress/back-to-top"]],
   head: [
-    ["script", { src: "https://plausible.io/js/script.js", "data-domain": "specs.frictionlessdata.io"}],
+    [
+      "script",
+      {
+        src: "https://plausible.io/js/script.js",
+        "data-domain": "specs.frictionlessdata.io",
+      },
+    ],
   ],
 };
