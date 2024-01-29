@@ -1616,7 +1616,7 @@ The `relationships` Descriptor MAY be used to define the dependency between fiel
 
 The `relationships` Descriptor, if present, MUST be an array where each entry in the array is an object and MUST contain two required properties and one optional:
 
-* `fields` : Array with the property `name` of the two fields linked (required)
+* `fields`: Array with the property `name` of the two fields linked (required)
 * `link` : String with the nature of the relationship between them (required)
 * `description` : String with the description of the relationship between the two Fields (optional)
 
