@@ -1499,7 +1499,7 @@ Three proposals for extending Table Schema are presented:
 
   * No mixing with other descriptors
   * Consistent with a field view
-  * the direction of the relationship is clear
+  * The direction of the relationship is clear
 
   Cons:
 
