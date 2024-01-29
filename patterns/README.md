@@ -1503,7 +1503,7 @@ Three proposals for extending Table Schema are presented:
 
   Cons:
 
-  * a relationship is not a property of a Field
+  * A relationship is not a property of a Field
 
   Example:
 
