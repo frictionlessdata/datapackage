@@ -53,17 +53,17 @@ In JSON, a table would be:
       ...
     ]
 
-#### Physical and logical representation
+#### Lexical and logical values of data
 
-In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the _physical_ and the _logical_ representation of data.
+In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of _lexical values_ and the _logical values_ of data.
 
-The _physical representation_ of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation can have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
+A _lexical value_ of data refers to the representation of data as text, for example, in a CSV or JSON file. Lexical values can have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
 
-The _logical representation_ of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
+A _logical value_ of data refers to an abstract value such as primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical values of data, as well as about ways of conversion from and to corresponding lexical values.
 
-In this document, we'll explicitly refer to either the _physical_ or _logical_ representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
+In this document, we'll explicitly refer to either the _lexical_ or _logical_ values in places where it prevents ambiguity for those engaging with the specification, especially implementors.
 
-For example, `constraints` `SHOULD` be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
+For example, `constraints` `SHOULD` be tested on the logical value, whereas a property like `missingValues` applies to the lexical value.
 
 ## Descriptor
 
@@ -181,7 +181,7 @@ The field contains strings, that is, sequences of characters.
 
 The field contains numbers of any kind including decimals.
 
-The lexical formatting follows that of decimal in [XMLSchema][xsd-decimal]: a
+The lexical values follow that of decimal in [XMLSchema][xsd-decimal]: a
 non-empty finite-length sequence of decimal digits separated by a period as a
 decimal indicator. An optional leading sign is allowed. If the sign is omitted,
 "+" is assumed. Leading and trailing zeroes are optional. If the fractional
@@ -199,13 +199,13 @@ A number `MAY` also have a trailing:
 - exponent: this `MUST` consist of an E followed by an optional + or - sign
   followed by one or more decimal digits (0-9)
 
-This lexical formatting `MAY` be modified using these additional properties:
+This lexical values `MAY` be modified using these additional properties:
 
 - **decimalChar**: A string whose value is used to represent a decimal point
   within the number. The default value is ".".
 - **groupChar**: A string whose value is used to group digits within the
   number. The default value is null. A common value is "," e.g. "100,000".
-- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the lexical value of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -219,7 +219,7 @@ Integer values are indicated in the standard way for any valid integer.
 
 Additional properties:
 
-- **bareNumber**: a boolean field with a default of `true`. If `true` the physical contents of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
+- **bareNumber**: a boolean field with a default of `true`. If `true` the lexical value of this field `MUST` follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors `MUST` therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.
 
 `format`: no options (other than the default).
 
@@ -227,7 +227,7 @@ Additional properties:
 
 The field contains boolean (true/false) data.
 
-In the physical representations of data where boolean values are represented with strings, the values set in `trueValues` and `falseValues` are to be cast to their logical representation as booleans. `trueValues` and `falseValues` are arrays which can be customised to user need. The default values for these are in the additional properties section below.
+Logical boolean values are represented with lexical string values. The lexical values set in `trueValues` and `falseValues` are to be cast to their logical values as booleans. `trueValues` and `falseValues` are arrays which can be customised to user need. The default values for these are in the additional properties section below.
 
 The boolean field can be customised with these additional properties:
 
@@ -343,7 +343,7 @@ The field contains a JSON object according to GeoJSON or TopoJSON spec.
 
 #### any
 
-Any `type` or `format` is accepted. When converting from physical to logical representation, the behaviour `SHOULD` be similar to String field type.
+Any `type` or `format` is accepted. When converting from lexical to logical values, the behaviour `SHOULD` be similar to String field type.
 
 [strptime]: https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
 [iso8601-duration]: https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -387,7 +387,7 @@ The `constraints` property on Table Schema Fields can be used by consumers to li
 
 [tdr]: http://specs.frictionlessdata.io/tabular-data-resource/
 
-All constraints `MUST` be tested against the logical representation of data, and the physical representation of constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
+All constraints `MUST` be tested against the logical values of data, and the lexical constraint values `MAY` be primitive types as possible in JSON, or represented as strings that are castable with the `type` and `format` rules of the field.
 
 A constraints descriptor `MUST` be a JSON `object` and `MAY` contain one or more of the following
 properties.
@@ -418,7 +418,7 @@ properties.
       All
     </td>
     <td>
-      Indicates whether this field cannot be <code>null</code>. If required is <code>false</code> (the default), then <code>null</code> is allowed. See the section on <code>missingValues</code> for how, in the physical representation of the data, strings can represent <code>null</code> values.
+      Indicates whether this field cannot be <code>null</code>. If required is <code>false</code> (the default), then <code>null</code> is allowed. See the section on <code>missingValues</code> for how logical <code>null</code> values can be represented by lexical string values.
     </td>
   </tr>
   <tr>
