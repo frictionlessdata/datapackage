@@ -142,6 +142,30 @@ A description for this field e.g. "The recipient of the funds"
 
 An example value for the field
 
+### `missingValues`
+
+A list of missing values for this field as per [Missing Values](#missing-values) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
+
+For example, for the Table Schema below:
+
+```json
+"fields": [
+  {
+    "name": "column1"
+  },
+  {
+    "name": "column2",
+    "missingValues": ["-"]
+  }
+],
+"missingValues": ["", "NA"]
+```
+
+A data consumer `MUST`:
+
+- interpret `""` and `NA` as missing values for `column1`
+- interpret only `-` as a missing value for `column2`
+
 ### Types and Formats
 
 `type` and `format` properties are used to give The type of the field (string, number etc) - see below for

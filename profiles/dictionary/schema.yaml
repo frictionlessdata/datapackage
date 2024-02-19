@@ -243,6 +243,8 @@ tableSchemaFieldString:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `string`.
       enum:
@@ -320,6 +322,8 @@ tableSchemaFieldBoolean:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `boolean`.
       enum:
@@ -367,6 +371,8 @@ tableSchemaFieldInteger:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `integer`.
       enum:
@@ -449,6 +455,8 @@ tableSchemaFieldNumber:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `number`.
       enum:
@@ -527,6 +535,8 @@ tableSchemaFieldDate:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `date`.
       enum:
@@ -596,6 +606,8 @@ tableSchemaFieldTime:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `time`.
       enum:
@@ -657,6 +669,8 @@ tableSchemaFieldDateTime:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `datetime`.
       enum:
@@ -719,6 +733,8 @@ tableSchemaFieldYear:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `year`.
       enum:
@@ -791,6 +807,8 @@ tableSchemaFieldYearMonth:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `yearmonth`.
       enum:
@@ -854,6 +872,8 @@ tableSchemaFieldDuration:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `duration`.
       enum:
@@ -906,6 +926,8 @@ tableSchemaFieldObject:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `object`.
       enum:
@@ -956,6 +978,8 @@ tableSchemaFieldArray:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `array`.
       enum:
@@ -1006,6 +1030,8 @@ tableSchemaFieldGeoJSON:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `geojson`.
       enum:
@@ -1067,6 +1093,8 @@ tableSchemaFieldGeoPoint:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `geopoint`.
       enum:
@@ -1130,6 +1158,8 @@ tableSchemaFieldAny:
       "$ref": "#/definitions/description"
     example:
       "$ref": "#/definitions/example"
+    missingValues:
+      "$ref": "#/definitions/tableSchemaMissingValues"
     type:
       description: The type keyword, which `MUST` be a value of `any`.
       enum:
