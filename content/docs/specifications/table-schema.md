@@ -274,44 +274,35 @@ The field contains data that is a valid JSON format arrays.
 
 `format`: no options (other than the default).
 
-#### date
+#### datetime
 
-A date without a time.
+The field contains a date with a time.
 
 `format`:
 
-- **default**: An ISO8601 format string.
-  - date: This `MUST` be in ISO8601 format YYYY-MM-DD
-  - datetime: a date-time. This `MUST` be in ISO 8601 format of YYYY-MM-DDThh:mm:ssZ in UTC time
-  - time: a time without a date
-- **any**: Any parsable representation of the type. The implementing
-  library can attempt to parse the datetime via a range of strategies.
-  An example is `dateutil.parser.parse` from the `python-dateutils`
-  library.
-- **\<PATTERN\>**: date/time values in this field can be parsed according to
-  `<PATTERN>`. `<PATTERN>` `MUST` follow the syntax of [standard Python / C
-  strptime][strptime]. (That is, values in the this field `SHOULD` be parsable
-  by Python / C standard `strptime` using `<PATTERN>`). Example for `"format": "%d/%m/%y"` which would correspond to dates like: `30/11/14`
+- **default**: The lexical representation `MUST` be in a form defined by [XML Schema](https://www.w3.org/TR/xmlschema-2/#dateTime) containing required date and time parts, followed by optional milliseconds and timezone parts, for example, `2024-01-26T15:00:00` or `2024-01-26T15:00:00.300-05:00`.
+- **\<PATTERN\>**: values in this field can be parsed according to `<PATTERN>`. `<PATTERN>` `MUST` follow the syntax of [standard Python / C strptime][strptime]. Values in the this field `SHOULD` be parsable by Python / C standard `strptime` using `<PATTERN>`. Example for `"format": ""%d/%m/%Y %H:%M:%S"` which would correspond to a date with time like: `12/11/2018 09:15:32`.
+- **any**: Any parsable representation of the value. The implementing library can attempt to parse the datetime via a range of strategies. An example is `dateutil.parser.parse` from the `python-dateutils` library. It is `NOT RECOMMENDED` to use `any` format as it might cause interoperability issues.
+
+#### date
+
+The field contains a date without a time.
+
+`format`:
+
+- **default**: The lexical representation `MUST` be `yyyy-mm-dd` e.g. `2024-01-26`
+- **\<PATTERN\>**: The same as for `datetime`
+- **any**: The same as for `datetime`
 
 #### time
 
-A time without a date.
+The field contains a time without a date.
 
 `format`:
 
-- **default**: An ISO8601 time string e.g. `hh:mm:ss`
-- **any**: as for `date`
-- **\<PATTERN\>**: as for `date`
-
-#### datetime
-
-A date with a time.
-
-`format`:
-
-- **default**: An ISO8601 format string e.g. `YYYY-MM-DDThh:mm:ssZ` in UTC time
-- **any**: as for `date`
-- **\<PATTERN\>**: as for `date`
+- **default**: The lexical representation `MUST` be `hh:mm:ss` e.g. `15:00:00`
+- **\<PATTERN\>**: The same as for `datetime`
+- **any**: The same as for `datetime`
 
 #### year
 
