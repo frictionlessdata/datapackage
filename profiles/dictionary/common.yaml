@@ -15,9 +15,8 @@ profile:
       }
 name:
   title: Name
-  description: An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.
+  description: An identifier string.
   type: string
-  pattern: "^([-a-z0-9._/])+$"
   context: This is ideally a url-usable and human-readable name. Name `SHOULD` be
     invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.
   examples:
