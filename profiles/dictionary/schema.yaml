@@ -967,6 +967,8 @@ tableSchemaFieldObject:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
           "$ref": "#/definitions/tableSchemaConstraintMaxLength"
+        jsonSchema:
+          "$ref": "#/definitions/tableSchemaConstraintJsonSchema"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -1019,6 +1021,8 @@ tableSchemaFieldArray:
           "$ref": "#/definitions/tableSchemaConstraintMinLength"
         maxLength:
           "$ref": "#/definitions/tableSchemaConstraintMaxLength"
+        jsonSchema:
+          "$ref": "#/definitions/tableSchemaConstraintJsonSchema"
     rdfType:
       "$ref": "#/definitions/tableSchemaRdfType"
   examples:
@@ -1202,6 +1206,9 @@ tableSchemaConstraintRequired:
 tableSchemaConstraintUnique:
   type: boolean
   description: When `true`, each value for the property `MUST` be unique.
+tableSchemaConstraintJsonSchema:
+  type: object
+  description: A valid JSON Schema object to validate field values. If a field value conforms to the provided JSON Schema then this field value is valid.
 tableSchemaConstraintPattern:
   type: string
   description: A regular expression pattern to test each value of the property against, where a truthy response indicates validity.
