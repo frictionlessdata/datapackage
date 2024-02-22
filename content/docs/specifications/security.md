@@ -1,7 +1,7 @@
 ---
-title: Security Considerations
+title: Security
 sidebar:
-  order: 3
+  order: 7
 ---
 
 <table>
@@ -11,7 +11,7 @@ sidebar:
   </tr>
 </table>
 
-Security considerations around Data Packages and Data Resources
+Security considerations around Data Packages and Data Resources.
 
 ## Language
 
