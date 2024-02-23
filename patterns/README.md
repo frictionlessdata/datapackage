@@ -1484,95 +1484,13 @@ A relationship is defined by the following information:
 * the textual representation of the relationship,
 * the nature of the relationship
 
-Three proposals for extending Table Schema are presented:
+Three proposals for extending Table Schema are being considered:
 
-* **New Field Descriptor**:
+* New Field Descriptor
+* New Constraint Property
+* New Table Descriptor
 
-  A `relationships` Field Descriptor is added.
-  The properties associated with this Descriptor could be:
-
-  * `parent`: name of the other Field involved
-  * `description`: description string (optional)
-  * `link`: nature of the relationship
-
-  Pros:
-
-  * No mixing with other descriptors
-  * Consistent with a field view
-  * The direction of the relationship is clear
-
-  Cons:
-
-  * A relationship is not a property of a Field
-
-  Example:
-
-  ```json
-  { "fields" : [
-      { "name": "country",
-        "relationships": [
-          { "parent" : "code",
-            "description" : "is the country code alpha-2 of",
-            "link" : "coupled" }
-        ]
-      }
-      { "name": "region",
-        "relationships": [
-          { "parent" : "population",
-            "description" : "is the population of",
-            "link" : "derived"}
-        ]
-      }
-    ]
-  }
-  ```
-
-* **New Constraint Property**:
-
-  A `relationships` Property of `constraints` Descriptor is added.
-
-  The properties associated with this Property could be:
-
-  * `parent`: name of the other Field involved
-  * `description`: description string (optional)
-  * `link`: nature of the relationship
-
-  Pros:
-
-  * The `constraints` Descriptor is consistent with the purpose of the proposal
-  * The direction of the relationship is clear
-
-  Cons:
-
-  * This Property is an object (more complex than the other properties)
-  * Need to add a level in the properties tree
-  * a relationship is not a property of a Field
-
-  Example:
-
-  ```json
-  { "fields" : [
-      { "name": "country",
-        "constraints" : {
-          "relationships": [
-            { "parent" : "code",
-              "description" : "is the country code alpha-2 of",
-              "link" : "coupled" }    
-          ]
-        }
-      }
-      { "name": "region",
-        "constraints" : {
-          "relationships": [
-            { "parent" : "population",
-              "description" : "is the population of",
-              "link" : "derived"}
-          ]
-        }
-      }
-    ]
-  }
-  ```
+After discussions only the third is retained (a relationship between fields associated to a Field) and presented below:
 
 * **New Table Descriptor**:
 
@@ -1653,6 +1571,7 @@ The control implementation is based on the following principles:
 
 The [implementation example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) presents calculation function.
 An [analysis tool](https://github.com/loco-philippe/tab-analysis/blob/main/README.md) is also available and accessible from pandas data.
+An example of implementation as `custom_check` is available [here](https://nbviewer.org/github/loco-philippe/Environmental-Sensing/blob/main/property_relationship/relationship_descriptor.ipynb).
 
 ### Notes
 
