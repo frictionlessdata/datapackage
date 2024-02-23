@@ -1,5 +1,5 @@
 ---
-title: Terminology
+title: Glossary
 sidebar:
   order: 6
 ---

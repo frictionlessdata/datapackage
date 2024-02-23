@@ -1,5 +1,5 @@
 ---
-title: Metadata Profile
+title: Extensions
 sidebar:
   order: 5
 ---
