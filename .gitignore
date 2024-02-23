@@ -155,3 +155,4 @@ tmp/
 .vim
 .vercel
 .astro
+.user/
