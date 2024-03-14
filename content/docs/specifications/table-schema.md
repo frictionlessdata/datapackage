@@ -630,49 +630,31 @@ primary key is equivalent to adding `required: true` to their
 The `primaryKey` entry in the schema `object` is optional. If present it specifies
 the primary key for this table.
 
-The `primaryKey`, if present, `MUST` be:
-
-- Either: an array of strings with each string corresponding to one of the
-  field `name` values in the `fields` array (denoting that the primary key is
-  made up of those fields). It is acceptable to have an array with a single
-  value (indicating just one field in the primary key). Strictly, order of
-  values in the array does not matter. However, it is `RECOMMENDED` that one
-  follow the order the fields in the `fields` has as client applications `MAY`
-  utilize the order of the primary key list (e.g. in concatenating values
-  together).
-- Or: a single string corresponding to one of the field `name` values in
-  the `fields` array (indicating that this field is the primary key). Note that
-  this version corresponds to the array form with a single value (and can be
-  seen as simply a more convenient way of specifying a single field primary
-  key).
+The `primaryKey`, if present, `MUST` be an array of strings with each string corresponding to one of the field `name` values in the `fields` array (denoting that the primary key is made up of those fields). It is acceptable to have an array with a single value (indicating just one field in the primary key). Strictly, order of values in the array does not matter. However, it is `RECOMMENDED` that one follow the order the fields in the `fields` has as client applications `MAY` utilize the order of the primary key list (e.g. in concatenating values together).
 
 Here's an example:
 
-      "fields": [
-        {
-          "name": "a"
-        },
-        ...
-      ],
-      "primaryKey": "a"
+```json
+"schema": {
+  "fields": [
+    {
+      "name": "a"
+    },
+    {
+      "name": "b"
+    },
+    {
+      "name": "c"
+    },
+    ...
+  ],
+  "primaryKey": ["a", "c"]
+}
+```
 
-Here's an example with an array primary key:
-
-    "schema": {
-      "fields": [
-        {
-          "name": "a"
-        },
-        {
-          "name": "b"
-        },
-        {
-          "name": "c"
-        },
-        ...
-      ],
-      "primaryKey": ["a", "c"]
-     }
+:::note[Backward Compatibility]
+Data consumer MUST support the `primaryKey` property in a form of a single string e.g. `primaryKey: a` which was a part of the `v1.0` of the specification.
+:::
 
 ### Unique Keys
 
@@ -725,88 +707,88 @@ They are directly modelled on the concept of foreign keys in SQL.
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the
 array `MUST` be a `foreignKey`. A `foreignKey` `MUST` be a `object` and `MUST` have the following properties:
 
-- `fields` - `fields` is a string or array specifying the
+- `fields` - `fields` is an array of strings specifying the
   field or fields on this resource that form the source part of the foreign
-  key. The structure of the string or array is as per `primaryKey` above.
+  key. The structure of the array is as per `primaryKey` above.
 - `reference` - `reference` `MUST` be a `object`. The `object`
   - `MUST` have a property `resource` which is the name of the resource within
     the current data package (i.e. the data package within which this Table
     Schema is located). For self-referencing foreign keys, i.e. references
     between fields in this Table Schema, the value of `resource` `MUST` be `""`
     (i.e. the empty string).
-  - `MUST` have a property `fields` which is a string if the outer `fields` is a
-    string, else an array of the same length as the outer `fields`, describing the
-    field (or fields) references on the destination resource. The structure of
-    the string or array is as per `primaryKey` above.
+  - `MUST` have a property `fields` which is an array of strings of the same length as the outer `fields`, describing the field (or fields) references on the destination resource. The structure of the array is as per `primaryKey` above.
 
 Here's an example:
 
-```javascript
-  // these are resources inside a Data Package
-  "resources": [
-    {
-      "name": "state-codes",
-      "schema": {
-        "fields": [
-          {
-            "name": "code"
+```json
+"resources": [
+  {
+    "name": "state-codes",
+    "schema": {
+      "fields": [
+        {
+          "name": "code"
+        }
+      ]
+    }
+  },
+  {
+    "name": "population-by-state",
+    "schema": {
+      "fields": [
+        {
+          "name": "state-code"
+        }
+        ...
+      ],
+      "foreignKeys": [
+        {
+          "fields": ["state-code"],
+          "reference": {
+            "resource": "state-codes",
+            "fields": ["code"]
           }
-        ]
-      }
-    },
-    {
-      "name": "population-by-state"
-      "schema": {
-        "fields": [
-          {
-            "name": "state-code"
-          }
-          ...
-        ],
-        "foreignKeys": [
-          {
-            "fields": "state-code",
-            "reference": {
-              "resource": "state-codes",
-              "fields": "code"
-            }
-          }
-        ]
-    ...
+        }
+      ]
+  ...
 ```
 
 An example of a self-referencing foreign key:
 
-```javascript
-  "resources": [
-    {
-      "name": "xxx",
-      "schema": {
-        "fields": [
-          {
-            "name": "parent"
-          },
-          {
-            "name": "id"
+```json
+"resources": [
+  {
+    "name": "xxx",
+    "schema": {
+      "fields": [
+        {
+          "name": "parent"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "fields": ["parent"],
+          "reference": {
+            "resource": "",
+            "fields": ["id"]
           }
-        ],
-        "foreignKeys": [
-          {
-            "fields": "parent"
-            "reference": {
-              "resource": "",
-              "fields": "id"
-            }
-          }
-        ]
-      }
+        }
+      ]
     }
-  ]
+  }
+]
 ```
 
 **Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
 
 [dp]: http://specs.frictionlessdata.io/data-package/
+
+:::note[Backward Compatibility]
+Data consumer MUST support the `foreignKey.fields` and `foreignKey.reference.fields` properties in a form of a single string e.g. `fields: a` which was a part of the `v1.0` of the specification.
+:::
 
 ## Appendix: Related Work
 
