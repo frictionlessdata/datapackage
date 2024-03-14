@@ -200,6 +200,10 @@ contributor:
       "$ref": "#/definitions/path"
     email:
       "$ref": "#/definitions/email"
+    givenName:
+      type: string
+    familyName:
+      type: string
     organization:
       title: Organization
       description: An organizational affiliation for this contributor.

@@ -257,9 +257,9 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
 
 ##### `contributors`
 
-The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is RECOMMENDED to have `title` property and MAY contain `path`, `email`, `role`, and `organization` properties. An example of the object structure is as follows:
+The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is RECOMMENDED to have `title` property and MAY contain `givenName`, `familyName`, `path`, `email`, `role`, and `organization` properties. An example of the object structure is as follows:
 
-```javascript
+```json
 "contributors": [{
   "title": "Joe Bloggs",
   "email": "joe@bloggs.com",
@@ -268,12 +268,18 @@ The people or organizations who contributed to this Data Package. It `MUST` be a
 }]
 ```
 
-- `title`: name/title of the contributor (name for person, name/title of organization)
+- `title`: name of the contributor.
+- `givenName`: name a person has been given, if the contributor is a person.
+- `familyName`: familial name that a person inherits, if the contributor is a person.
 - `path`: a fully qualified http URL pointing to a relevant location online for the contributor
 - `email`: An email address
 - `role`: a string describing the role of the contributor. It's `RECOMMENDED` to be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
   - Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
 - `organization`: a string describing the organization this contributor is affiliated to.
+
+References:
+
+- [Citation Style Language](https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html#name-fields)
 
 ##### `keywords`
 
