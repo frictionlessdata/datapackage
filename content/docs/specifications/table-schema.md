@@ -711,12 +711,8 @@ array `MUST` be a `foreignKey`. A `foreignKey` `MUST` be a `object` and `MUST` h
   field or fields on this resource that form the source part of the foreign
   key. The structure of the array is as per `primaryKey` above.
 - `reference` - `reference` `MUST` be a `object`. The `object`
-  - `MUST` have a property `resource` which is the name of the resource within
-    the current data package (i.e. the data package within which this Table
-    Schema is located). For self-referencing foreign keys, i.e. references
-    between fields in this Table Schema, the value of `resource` `MUST` be `""`
-    (i.e. the empty string).
   - `MUST` have a property `fields` which is an array of strings of the same length as the outer `fields`, describing the field (or fields) references on the destination resource. The structure of the array is as per `primaryKey` above.
+  - `MAY` have a property `resource` which is the name of the resource within the current data package, i.e. the data package within which this Table Schema is located. For referencing another data resource the `resource` property `MUST` be provided. For self-referencing, i.e. references between fields in this Table Schema, the `resource` property `MUST` be omitted.
 
 Here's an example:
 
@@ -726,9 +722,7 @@ Here's an example:
     "name": "state-codes",
     "schema": {
       "fields": [
-        {
-          "name": "code"
-        }
+        {"name": "code"}
       ]
     }
   },
@@ -736,10 +730,7 @@ Here's an example:
     "name": "population-by-state",
     "schema": {
       "fields": [
-        {
-          "name": "state-code"
-        }
-        ...
+        {"name": "state-code"}
       ],
       "foreignKeys": [
         {
@@ -750,7 +741,9 @@ Here's an example:
           }
         }
       ]
-  ...
+    }
+  }
+]
 ```
 
 An example of a self-referencing foreign key:
@@ -761,18 +754,13 @@ An example of a self-referencing foreign key:
     "name": "xxx",
     "schema": {
       "fields": [
-        {
-          "name": "parent"
-        },
-        {
-          "name": "id"
-        }
+        {"name": "parent"},
+        {"name": "id"}
       ],
       "foreignKeys": [
         {
           "fields": ["parent"],
           "reference": {
-            "resource": "",
             "fields": ["id"]
           }
         }
@@ -782,12 +770,14 @@ An example of a self-referencing foreign key:
 ]
 ```
 
-**Comment**: Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package][dp]. It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
-
-[dp]: http://specs.frictionlessdata.io/data-package/
+Foreign Keys create links between one Table Schema and another Table Schema, and implicitly between the data tables described by those Table Schemas. If the foreign key is referring to another Table Schema how is that other Table Schema discovered? The answer is that a Table Schema will usually be embedded inside some larger descriptor for a dataset, in particular as the schema for a resource in the resources array of a [Data Package](http://specs.frictionlessdata.io/data-package/). It is the use of Table Schema in this way that permits a meaningful use of a non-empty `resource` property on the foreign key.
 
 :::note[Backward Compatibility]
-Data consumer MUST support the `foreignKey.fields` and `foreignKey.reference.fields` properties in a form of a single string e.g. `fields: a` which was a part of the `v1.0` of the specification.
+If the value of the `foreignKey.reference.resource` property is an empty string `""` a data consumer MUST interpret it as an omited property as an empty string for self-referencing was a part of the `v1.0` of the specification.
+:::
+
+:::note[Backward Compatibility]
+Data consumer MUST support the `foreignKey.fields` and `foreignKey.reference.fields` properties in a form of a single string e.g. `"fields": "a"` which was a part of the `v1.0` of the specification.
 :::
 
 ## Appendix: Related Work
