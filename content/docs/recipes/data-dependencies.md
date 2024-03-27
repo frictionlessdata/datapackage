@@ -2,13 +2,6 @@
 title: Data Dependencies
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 Consider a situation where data packages are part of a tool chain that, say, loads all of the data into an SQL db. You can then imagine a situation where one requires package A which requires package B + C.
 
 In this case you want to specify that A depends on B and C -- and that "installing" A should install B and C. This is the purpose of `dataDependencies` property.

@@ -2,13 +2,6 @@
 title: Language Support
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 Language support is a different concern to translation support. Language support deals with declaring the default language of a descriptor and the data it contains in the resources array. Language support makes no claim about the presence of translations when one or more languages are supported in a descriptor or in data. Via the introduction of a `languages` array to any descriptor, we can declare the default language, and any other languages that `SHOULD` be found in the descriptor and the data.
 
 ## Implementations

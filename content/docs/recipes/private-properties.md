@@ -2,13 +2,6 @@
 title: Private Properties
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 [issues]: https://github.com/frictionlessdata/specs/issues
 [repo]: https://github.com/frictionlessdata/specs
 

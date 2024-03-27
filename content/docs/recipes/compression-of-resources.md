@@ -2,13 +2,6 @@
 title: Compression of Resources
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 It can be argued that applying compression to data resources can make data package publishing more cost-effective and sustainable. Compressing data resources gives publishers the benefit of reduced storage and bandwidth costs and gives consumers the benefit of shorter download times.
 
 ## Implementations

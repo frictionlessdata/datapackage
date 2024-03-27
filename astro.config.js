@@ -36,9 +36,9 @@ export default defineConfig({
           autogenerate: { directory: "extensions" },
         },
         {
-          label: "Patterns",
+          label: "Recipes",
           collapsed: true,
-          autogenerate: { directory: "patterns" },
+          autogenerate: { directory: "recipes" },
         },
         {
           label: "Guides",

@@ -2,13 +2,6 @@
 title: Caching of Resources
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 All Frictionless Data specifications allow for referencing resources via http or a local filesystem.
 
 In the case of remote resources via http, there is always the possibility that the remote server will be unavailable, or, that the resource itself will be temporarily or permanently removed.

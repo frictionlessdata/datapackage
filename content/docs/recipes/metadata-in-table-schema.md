@@ -2,13 +2,6 @@
 title: Metadata in Table Schema
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 ## Overview
 
 Table Schemas need their own metadata to be stand-alone and interpreted without relying on other contextual information (Data Package metadata for example). Adding metadata to describe schemas in a structured way would help users to understand them and would increase their sharing and reuse.

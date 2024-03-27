@@ -237,7 +237,7 @@ A URL for the home on the web that is related to this data package.
 
 ##### `version`
 
-A version string identifying the version of the package. It `SHOULD` conform to the [Semantic Versioning][semver] requirements and `SHOULD` follow the [Data Package Version](/patterns/#data-package-version) pattern.
+A version string identifying the version of the package. It `SHOULD` conform to the [Semantic Versioning][semver] requirements and `SHOULD` follow the [Data Package Version](/recipes/#data-package-version) recipe.
 
 ##### `sources`
 

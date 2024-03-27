@@ -2,13 +2,6 @@
 title: Translation Support
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 Following on from a general pattern for language support, and the explicit support of metadata translations in Frictionless Data descriptors, it would be desirable to support translations in source data.
 
 We currently have two patterns for this in discussion. Both patterns arise from real-world implementations that are not specifically tied to Frictionless Data.

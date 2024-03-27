@@ -14,7 +14,7 @@ The Data Package Standard emerges as a solution to these challenges, offering a 
 
 2. **Extensions**: Data practitioners can extend the standard by incorporating custom metadata, validation rules, or specific constraints to suit their data's peculiarities.
 
-3. **Patterns**: Various approaches for solving common problems, in ways that are not (yet) specified as a formal Data Package specification.
+3. **Recipes**: Various approaches for solving common problems, in ways that are not specified as a formal Data Package specification.
 
 4. **Guides**: The least formal part of the standard containing various guides on how to get started with Data Package or how to extend Data Package standard.
 

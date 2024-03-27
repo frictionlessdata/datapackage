@@ -2,13 +2,6 @@
 title: Data Catalog
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 There are scenarios where one needs to describe a collection of data packages, such as when building an online registry, or when building a pipeline that ingests multiple datasets.
 
 In these scenarios, the collection can be described using a "Catalog", where each dataset is represented as a single resource which has:

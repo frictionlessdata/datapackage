@@ -2,13 +2,6 @@
 title: Data Package Version
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 ## Specification
 
 The Data Package version format follows the [Semantic Versioning](http://semver.org) specification format: MAJOR.MINOR.PATCH

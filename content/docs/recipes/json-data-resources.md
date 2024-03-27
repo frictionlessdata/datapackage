@@ -2,13 +2,6 @@
 title: JSON Data Resources
 ---
 
-<table>
-  <tr>
-    <th>Author(s)</th>
-    <td>TODO</td>
-  </tr>
-</table>
-
 A simple format to describe a single structured JSON data resource. It includes support both for metadata such as author and title and a [schema](https://json-schema.org/) to describe the data.
 
 ## Introduction
