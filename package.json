@@ -28,7 +28,6 @@
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
-    "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typeface-hk-grotesk": "^1.0.0"
