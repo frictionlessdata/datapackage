@@ -1,19 +1,23 @@
 {
   "name": "datapackage.org",
   "type": "module",
-  "private": true,
   "version": "2.0.0a1",
+  "engines": {
+    "node": "^20.0.0",
+    "pnpm": "^8.0.0"
+  },
   "scripts": {
     "build": "astro build && node build.js",
+    "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' +",
     "format": "eslint --fix . && prettier --write .",
     "generate": "astro sync",
     "lint": "eslint . && prettier --check .",
     "preview": "astro preview --port 8080",
     "start": "astro dev --open --port 8080",
-    "test": "npm run lint",
-    "update": "ncu -u"
+    "test": "npm run lint"
   },
   "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.5.4",
     "@astrojs/starlight": "^0.21.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
@@ -24,7 +28,6 @@
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
-    "json-schema-ref-parser": "^9.0.9",
     "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",

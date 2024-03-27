@@ -1,7 +1,7 @@
+import JsonSchema from "@apidevtools/json-schema-ref-parser"
 import fs from "fs-extra"
 import { glob } from "glob"
 import yaml from "js-yaml"
-import JsonSchema from "json-schema-ref-parser"
 import nodePath from "path"
 
 const BUILD_DIR = "build/profiles"
