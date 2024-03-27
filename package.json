@@ -17,6 +17,7 @@
     "test": "npm run lint"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^4.3.2",
     "@apidevtools/json-schema-ref-parser": "^11.5.4",
     "@astrojs/starlight": "^0.21.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -30,6 +31,7 @@
     "js-yaml": "^4.1.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
+    "rehype-autolink-headings": "^7.1.0",
     "typeface-hk-grotesk": "^1.0.0"
   }
 }
