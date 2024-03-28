@@ -4,7 +4,7 @@ title: Fiscal Data Package
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Paul Walsh, Rufus Pollock, Tryggvi Björgvinsson, Steve Bennett, Adam Kariv, Dan Fowler</td>
   </tr>
 </table>

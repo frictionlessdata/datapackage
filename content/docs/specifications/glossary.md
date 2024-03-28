@@ -1,8 +1,16 @@
 ---
 title: Glossary
 sidebar:
+  hidden: true
   order: 6
 ---
+
+<table>
+  <tr>
+    <th>Authors</th>
+    <td>Paul Walsh, Rufus Pollock</td>
+  </tr>
+</table>
 
 A dictionary of special terms for the Data Package Standard.
 

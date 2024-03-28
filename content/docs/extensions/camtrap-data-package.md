@@ -4,7 +4,7 @@ title: Camera Trap Data Package
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Peter Desmet, Jakub W. Bubnicki, Camtrap DP Development Team</td>
   </tr>
 </table>

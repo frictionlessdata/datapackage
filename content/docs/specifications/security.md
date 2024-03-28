@@ -6,7 +6,7 @@ sidebar:
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Johannes Jander</td>
   </tr>
 </table>

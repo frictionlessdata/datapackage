@@ -6,7 +6,7 @@ sidebar:
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Paul Walsh, Rufus Pollock</td>
   </tr>
   <tr>

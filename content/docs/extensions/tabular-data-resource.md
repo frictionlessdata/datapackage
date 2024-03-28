@@ -4,7 +4,7 @@ title: Tabular Data Resource
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Paul Walsh, Rufus Pollock</td>
   </tr>
 </table>

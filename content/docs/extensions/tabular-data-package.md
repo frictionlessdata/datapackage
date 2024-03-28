@@ -4,7 +4,7 @@ title: Tabular Data Package
 
 <table>
   <tr>
-    <th>Author(s)</th>
+    <th>Authors</th>
     <td>Paul Walsh, Rufus Pollock, Martin Keegan</td>
   </tr>
 </table>

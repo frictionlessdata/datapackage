@@ -1,6 +1,7 @@
 ---
 title: Extensions
 sidebar:
+  hidden: true
   order: 5
 ---
 
