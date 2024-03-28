@@ -1,60 +1,75 @@
 tableDialect:
-  title: CSV Dialect
-  description: The CSV dialect descriptor.
-  type:
-    - string
-    - object
-  required:
-    - delimiter
-    - doubleQuote
+  title: Table Dialect
+  description: The Table dialect descriptor.
+  type: object
   properties:
-    csvddfVersion:
-      "$ref": "#/definitions/csvddfVersion"
-    delimiter:
-      "$ref": "#/definitions/delimiter"
-    doubleQuote:
-      "$ref": "#/definitions/doubleQuote"
-    lineTerminator:
-      "$ref": "#/definitions/lineTerminator"
-    nullSequence:
-      "$ref": "#/definitions/nullSequence"
-    quoteChar:
-      "$ref": "#/definitions/quoteChar"
-    escapeChar:
-      "$ref": "#/definitions/escapeChar"
-    skipInitialSpace:
-      "$ref": "#/definitions/skipInitialSpace"
     header:
       "$ref": "#/definitions/header"
+    headerRows:
+      "$ref": "#/definitions/headerRows"
+    headerJoin:
+      "$ref": "#/definitions/headerJoin"
+    commentRows:
+      "$ref": "#/definitions/commentRows"
     commentChar:
       "$ref": "#/definitions/commentChar"
-    caseSensitiveHeader:
-      "$ref": "#/definitions/caseSensitiveHeader"
+    delimiter:
+      "$ref": "#/definitions/delimiter"
+    lineTerminator:
+      "$ref": "#/definitions/lineTerminator"
+    quoteChar:
+      "$ref": "#/definitions/quoteChar"
+    doubleQuote:
+      "$ref": "#/definitions/doubleQuote"
+    escapeChar:
+      "$ref": "#/definitions/escapeChar"
+    nullSequence:
+      "$ref": "#/definitions/nullSequence"
+    skipInitialSpace:
+      "$ref": "#/definitions/skipInitialSpace"
+    property:
+      "$ref": "#/definitions/property"
+    itemType:
+      "$ref": "#/definitions/itemType"
+    itemKeys:
+      "$ref": "#/definitions/itemKeys"
+    sheetNumber:
+      "$ref": "#/definitions/sheetNumber"
+    sheetName:
+      "$ref": "#/definitions/sheetName"
+header:
+  title: Header
+  description: Specifies if the file includes a header row, always as the first row in the file.
+  type: boolean
+  default: true
   examples:
     - |
       {
-        "dialect": {
-          "delimiter": ";"
-        }
+        "header": true
       }
+headerRows:
+  type: array
+  default: [1]
+  items:
+    type: integer
+    minimum: 1
+headerJoin:
+  type: string
+  default: " "
+commentRows:
+  type: array
+  default: [1]
+  items:
+    type: integer
+    minimum: 1
+commentChar:
+  title: Comment Character
+  description: Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.
+  type: string
+  examples:
     - |
       {
-        "dialect": {
-          "delimiter": "\t",
-          "quoteChar": "'",
-          "commentChar": "#"
-        }
-      }
-csvddfVersion:
-  title: CSV Dialect schema version
-  description: A number to indicate the schema version of CSV Dialect. Version 1.0 was
-    named CSV Dialect Description Format and used different field names.
-  type: number
-  default: 1.2
-  examples::
-    - |
-      {
-        "csvddfVersion": "1.2"
+        "commentChar": "#"
       }
 delimiter:
   title: Delimiter
@@ -70,18 +85,6 @@ delimiter:
       {
         "delimiter": ";"
       }
-doubleQuote:
-  title: Double Quote
-  description: Specifies the handling of quotes inside fields.
-  context: If Double Quote is set to true, two consecutive quotes must be interpreted
-    as one.
-  type: boolean
-  default: true
-  examples:
-    - |
-      {
-        "doubleQuote": true
-      }
 lineTerminator:
   title: Line Terminator
   description: Specifies the character sequence that must be used to terminate rows.
@@ -96,14 +99,17 @@ lineTerminator:
       {
         "lineTerminator": "\n"
       }
-nullSequence:
-  title: Null Sequence
-  description: Specifies the null sequence, for example, `\N`.
-  type: string
+doubleQuote:
+  title: Double Quote
+  description: Specifies the handling of quotes inside fields.
+  context: If Double Quote is set to true, two consecutive quotes must be interpreted
+    as one.
+  type: boolean
+  default: true
   examples:
     - |
       {
-        "nullSequence": "\N"
+        "doubleQuote": true
       }
 quoteChar:
   title: Quote Character
@@ -124,6 +130,15 @@ escapeChar:
       {
         "escapeChar": "\\"
       }
+nullSequence:
+  title: Null Sequence
+  description: Specifies the null sequence, for example, `\N`.
+  type: string
+  examples:
+    - |
+      {
+        "nullSequence": "\N"
+      }
 skipInitialSpace:
   title: Skip Initial Space
   description: Specifies the interpretation of whitespace immediately following
@@ -136,35 +151,19 @@ skipInitialSpace:
       {
         "skipInitialSpace": true
       }
-header:
-  title: Header
-  description: Specifies if the file includes a header row, always as the first
-    row in the file.
-  type: boolean
-  default: true
-  examples:
-    - |
-      {
-        "header": true
-      }
-commentChar:
-  title: Comment Character
-  description: Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.
+property:
   type: string
-  examples:
-    - |
-      {
-        "commentChar": "#"
-      }
-caseSensitiveHeader:
-  title: Case Sensitive Header
-  description: Specifies if the case of headers is meaningful.
-  context: Use of case in source CSV files is not always an intentional decision.
-    For example, should "CAT" and "Cat" be considered to have the same meaning.
-  type: boolean
-  default: false
-  examples:
-    - |
-      {
-        "caseSensitiveHeader": true
-      }
+itemType:
+  type: string
+  enum:
+    - array
+    - object
+itemKeys:
+  type: array
+  items:
+    type: string
+sheetNumber:
+  type: integer
+  minimum: 1
+sheetName:
+  type: string
