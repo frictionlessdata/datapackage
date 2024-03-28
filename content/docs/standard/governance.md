@@ -6,7 +6,7 @@ sidebar:
 
 The Data Package Standard is governed by a working group made of [Frictionless](https://frictionlessdata.io/) community members coming from different disciplines. The composition of the working group is [publicly accessible on GitHub](https://github.com/orgs/frictionlessdata/teams/data-package-working-group/members?query=).
 
-The working group works asynchronously, using a review model for any changes in the specifications. We also hold [monthly update calls](https://forms.gle/UEqGnYKESqqw1LeW7) for the working group, which are of course not compulsory, and which are also open to the broader community. 
+The working group works asynchronously, using a review model for any changes in the specifications. We also hold [monthly update calls](https://forms.gle/UEqGnYKESqqw1LeW7) for the working group, which are of course not compulsory, and which are also open to the broader community.
 
 ## How we decide
 

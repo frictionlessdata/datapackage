@@ -4,7 +4,7 @@
   "version": "2.0.0a1",
   "engines": {
     "node": "^20.0.0",
-    "pnpm": "^8.0.0"
+    "npm": "^10.0.0"
   },
   "scripts": {
     "build": "astro build && node build.js",
@@ -14,11 +14,12 @@
     "lint": "eslint . && prettier --check .",
     "preview": "astro preview --port 8080",
     "start": "astro dev --open --port 8080",
+    "update": "ncu -u",
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^4.3.2",
     "@apidevtools/json-schema-ref-parser": "^11.5.4",
+    "@astrojs/markdown-remark": "^4.3.2",
     "@astrojs/starlight": "^0.21.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
@@ -29,6 +30,7 @@
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
+    "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "rehype-autolink-headings": "^7.1.0",

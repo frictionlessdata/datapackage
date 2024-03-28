@@ -6,24 +6,12 @@ Data Package is a standard containing a set of lightweight specifications for de
 
 One can contribute by clicking on the "Edit Page" button on a site page and create a pull request directly on Github.
 
-Prerequisite for running the project locally:
+Running the project locally:
 
 ```bash
-brew install corepack # MacOs only
-sudo corepack enable
-```
-
-Base commands:
-
-```bash
-pnpm install
+npm install
 npm start
-```
-
-Building profiles:
-
-```bash
-node build.js
+npm run build
 ```
 
 ## Funding

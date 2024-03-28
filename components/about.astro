@@ -1,40 +1,40 @@
 ---
-import {funding} from '../assets'
-import {Image} from 'astro:assets'
+import { funding } from "../assets"
+import { Image } from "astro:assets"
 
 interface Props {
-	title: string;
+  title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <article class="sl-flex not-content" aria-labelledby="about-astro-heading">
-	<small id="about-astro-heading">
-		{title}
-		<span class="sr-only">Astro</span>
-	</small>
-    <Image src={funding.okfn} alt="Open Knowledge Foundation" />
-	<slot />
+  <small id="about-astro-heading">
+    {title}
+    <span class="sr-only">Astro</span>
+  </small>
+  <Image src={funding.okfn} alt="Open Knowledge Foundation" />
+  <slot />
 </article>
 
 <style>
-	article {
-		max-width: 40rem;
-		margin-inline: auto;
-		padding-block: 5rem;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		gap: 0.5rem;
-	}
-	article > :global(*) {
-		max-width: 50ch;
-	}
-	small {
-		color: var(--sl-color-gray-3);
-	}
-	svg {
-		width: 15rem;
-	}
+  article {
+    max-width: 40rem;
+    margin-inline: auto;
+    padding-block: 5rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  article > :global(*) {
+    max-width: 50ch;
+  }
+  small {
+    color: var(--sl-color-gray-3);
+  }
+  svg {
+    width: 15rem;
+  }
 </style>
