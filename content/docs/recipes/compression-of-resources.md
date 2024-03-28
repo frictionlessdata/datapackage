@@ -5,7 +5,7 @@ title: Compression of Resources
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Michael Amadi</td>
   </tr>
 </table>
 

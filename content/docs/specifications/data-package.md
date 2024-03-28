@@ -7,7 +7,7 @@ sidebar:
 <table>
   <tr>
     <th>Authors</th>
-    <td>Paul Walsh, Rufus Pollock</td>
+    <td>Paul Walsh, Rufus Pollock, Evgeny Karev, Peter Desmet</td>
   </tr>
   <tr>
     <th>Profile</th>

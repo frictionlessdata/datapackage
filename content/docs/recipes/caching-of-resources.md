@@ -5,7 +5,7 @@ title: Caching of Resources
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Paul Walsh, Rufus Pollock</td>
   </tr>
 </table>
 

@@ -5,7 +5,7 @@ title: Enum Labels and Ordering
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Phil Schumm, Peter Desmet</td>
   </tr>
 </table>
 

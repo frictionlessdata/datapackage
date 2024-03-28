@@ -5,7 +5,7 @@ title: Metadata in Table Schema
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Christophe Benz, Johan Richer</td>
   </tr>
 </table>
 

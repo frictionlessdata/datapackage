@@ -5,7 +5,7 @@ title: Data Dependencies
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Rufus Pollock</td>
   </tr>
 </table>
 

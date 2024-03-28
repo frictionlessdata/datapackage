@@ -5,7 +5,7 @@ title: Translation Support
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Paul Walsh</td>
   </tr>
 </table>
 

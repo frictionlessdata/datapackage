@@ -5,7 +5,7 @@ title: Private Properties
 <table>
   <tr>
     <th>Authors</th>
-    <td>TODO</td>
+    <td>Paul Walsh, Rufus Pollock</td>
   </tr>
 </table>
 
