@@ -11,7 +11,6 @@ Running the project locally:
 ```bash
 npm install
 npm start
-npm run build
 ```
 
 ## Funding
