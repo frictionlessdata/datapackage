@@ -69,9 +69,7 @@ For example, `constraints` `SHOULD` be tested on the logical representation of d
 
 A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
 
-It `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor (as defined below). The order of elements in `fields` array `SHOULD` be the order of fields in the CSV file. The number of elements in `fields` array `SHOULD` be the same as the number of fields in the CSV file.
-
-The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties (not defined in this specification).
+The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties not defined in this specification.
 
 The following is an illustration of this structure:
 
@@ -101,7 +99,25 @@ The following is an illustration of this structure:
 }
 ```
 
-## Field Descriptors
+## Properties
+
+### `fields`
+
+A Table Schema descriptor `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a field descriptor as defined below.
+
+The way Table Schema `fields` are mapped onto the data source fields are defined by the `fieldsMatch` property. By default, the most strict approach is applied, i.e. fields in the data source `MUST` completely match the elements in the `fields` array, both in number and order. Using different options below, a data producer can relax requirements for the data source.
+
+### `fieldsMatch`
+
+A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be a string with the following possible values and the `exact` value by default:
+
+- **exact** (default): The data source `MUST` have exactly the same fields as defined in the `fields` array. Fields `MUST` be mapped by their order.
+- **equal**: The data source `MUST` have exactly the same fields as defined in the `fields` array. Fields `MUST` be mapped by their names.
+- **subset**: The data source `MUST` have all the fields defined in the `fields` array, but `MAY` have more. Fields `MUST` be mapped by their names.
+- **superset**: The data source `MUST` only have fields defined in the `fields` array, but `MAY` have fewer. Fields `MUST` be mapped by their names.
+- **partial**: The data source `MUST` have at least one field defined in the `fields` array. Fields `MUST` be mapped by their names.
+
+## Field Properties
 
 A field descriptor `MUST` be a JSON `object` that describes a single field. The
 descriptor provides additional human-readable documentation for a field, as
@@ -128,7 +144,11 @@ The field descriptor `object` `MAY` contain any number of other properties. Some
 
 ### `name`
 
-The field descriptor `MUST` contain a `name` property. This property `SHOULD` correspond to the name of field/column in the data file (if it has a name). As such it `SHOULD` be unique (though it is possible, but very bad practice, for the data file to have multiple columns with the same name). `name` `SHOULD NOT` be considered case sensitive in determining uniqueness. However, since it corresponds to the name of the field in the data file it may be important to preserve case.
+The field descriptor `MUST` contain a `name` property and it `MUST` be unique amongst other field names in this Table Schema. This property `SHOULD` correspond to the name of a column in the data file if it has a name.
+
+:::note[Backward Compatibility]
+If the `name` properties are not unique amongst a Table Schema a data consumer `MUST NOT` interpret it as an invalid descriptor as duplicate `name` properties were allowed in the `v1.0` of the specification.
+:::
 
 ### `title`
 

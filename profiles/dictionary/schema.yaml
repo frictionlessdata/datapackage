@@ -40,6 +40,8 @@ tableSchema:
               }
             ]
           }
+    fieldsMatch:
+      "$ref": "#/definitions/tableSchemaFieldsMatch"
     primaryKey:
       "$ref": "#/definitions/tableSchemaPrimaryKey"
     uniqueKeys:
@@ -116,6 +118,17 @@ tableSchemaField:
     - "$ref": "#/definitions/tableSchemaFieldArray"
     - "$ref": "#/definitions/tableSchemaFieldDuration"
     - "$ref": "#/definitions/tableSchemaFieldAny"
+tableSchemaFieldsMatch:
+  type: array
+  item:
+    type: string
+    enum:
+      - exact
+      - equal
+      - subset
+      - superset
+      - partial
+    default: exact
 tableSchemaPrimaryKey:
   oneOf:
     - type: array
