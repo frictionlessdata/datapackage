@@ -81,9 +81,15 @@ A comprehensive Data Resource example with all required, recommended and optiona
 }
 ```
 
-### Descriptor
+## Descriptor
 
-A Data Resource descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627][]).
+On logical level, Data Resource descriptor is represented by a data structure. The data structure `MUST` be a JSON-serializable `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+On physical level, Data Resource descriptor is represented by a file. A data producer `MAY` use any suitable serialization format. A data consumer `MUST` support JSON serialization format and `MAY` support other serialization formats like YAML or TOML.
+
+JSON is the serialization format that `MUST` be used for publishing a Data Resource while other serialization formats can be used in projects or systems internally if supported by corresponding implementations.
+
+This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a serialized Data Resource.
 
 Key properties of the descriptor are described below. A descriptor `MAY` include any number of properties in additional to those described below as required and optional properties.
 

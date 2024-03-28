@@ -81,14 +81,18 @@ Several example data packages can be found in the [datasets organization on gith
 
 ### Descriptor
 
+On logical level, Data Package descriptor is represented by a data structure. The data structure `MUST` be a JSON-serializable `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+On physical level, Data Package descriptor is represented by a file. A data producer `MAY` use any suitable serialization format and `SHOULD` name the file `datapackage.json`. A data consumer `MUST` support JSON serialization format and `MAY` support other serialization formats like YAML or TOML.
+
+JSON is the serialization format that `MUST` be used for publishing a Data Package while other serialization formats can be used in projects or systems internally if supported by corresponding implementations.
+
+This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a serialized Data Package. It is good practice and a common convention to name the file `datapackage.json`.
+
 The descriptor is the central file in a Data Package. It provides:
 
 - General metadata such as the package's title, license, publisher etc
 - A list of the data "resources" that make up the package including their location on disk or online and other relevant information (including, possibly, schema information about these data resources in a structured form)
-
-A Data Package descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627][]). When available as a file it `MUST` be named `datapackage.json` and it `MUST` be placed in the top-level directory (relative to any other resources provided as part of the data package).
-
-[RFC 4627]: http://www.ietf.org/rfc/rfc4627.txt
 
 The descriptor `MUST` contain a `resources` property describing the data resources.
 

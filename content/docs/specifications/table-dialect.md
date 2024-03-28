@@ -37,7 +37,15 @@ CSV Dialect is useful for programmes which might have to deal with multiple dial
 
 Some related work can be found in [this comparison of csv dialect support](https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing), this [example of similar JSON format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
 
-## Specification
+## Descriptor
+
+On logical level, Table Dialect descriptor is represented by a data structure. The data structure `MUST` be a JSON-serializable `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+On physical level, Table Dialect descriptor is represented by a file. A data producer `MAY` use any suitable serialization format. A data consumer `MUST` support JSON serialization format and `MAY` support other serialization formats like YAML or TOML.
+
+JSON is the serialization format that `MUST` be used for publishing a Table Dialect while other serialization formats can be used in projects or systems internally if supported by corresponding implementations.
+
+This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a serialized Table Dialect.
 
 A CSV Dialect descriptor, `dialect`, `MUST` be a JSON `object` with the following properties:
 

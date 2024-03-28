@@ -67,7 +67,17 @@ For example, `constraints` `SHOULD` be tested on the logical representation of d
 
 ## Descriptor
 
-A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
+On logical level, Table Schema descriptor is represented by a data structure. The data structure `MUST` be a JSON-serializable `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+On physical level, Table Schema descriptor is represented by a file. A data producer `MAY` use any suitable serialization format. A data consumer `MUST` support JSON serialization format and `MAY` support other serialization formats like YAML or TOML.
+
+JSON is the serialization format that `MUST` be used for publishing a Table Schema while other serialization formats can be used in projects or systems internally if supported by corresponding implementations.
+
+This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a serialized Table Schema.
+
+## Metadata
+
+### Fields
 
 The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties not defined in this specification.
 
