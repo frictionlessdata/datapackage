@@ -45,6 +45,7 @@ pids
 .vim/
 .yarn/
 .user/
+.astro/
 .cache/
 .clinic/
 .vscode/
