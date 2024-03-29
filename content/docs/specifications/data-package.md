@@ -257,14 +257,14 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
 
 ##### `contributors`
 
-The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is RECOMMENDED to have `title` property and MAY contain `givenName`, `familyName`, `path`, `email`, `role`, and `organization` properties. An example of the object structure is as follows:
+The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is RECOMMENDED to have `title` property and MAY contain `givenName`, `familyName`, `path`, `email`, `roles`, and `organization` properties. An example of the object structure is as follows:
 
 ```json
 "contributors": [{
   "title": "Joe Bloggs",
   "email": "joe@bloggs.com",
   "path": "http://www.bloggs.com",
-  "role": "author"
+  "roles": ["creator"]
 }]
 ```
 
@@ -273,13 +273,18 @@ The people or organizations who contributed to this Data Package. It `MUST` be a
 - `familyName`: familial name that a person inherits, if the contributor is a person.
 - `path`: a fully qualified http URL pointing to a relevant location online for the contributor
 - `email`: An email address
-- `role`: a string describing the role of the contributor. It's `RECOMMENDED` to be one of: `author`, `publisher`, `maintainer`, `wrangler`, and `contributor`. Defaults to `contributor`.
-  - Note on semantics: use of the "author" property does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
+- `roles`: an array of strings describing the roles of the contributor. A role is `RECOMMENDED` to follow an established vocabulary, such as [DataCite Metadata Schema's contributorRole](https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype) or [CreDIT](https://credit.niso.org/). Useful roles to indicate are: `creator`, `contact`, `rightsHolder`, and `dataCurator`.
 - `organization`: a string describing the organization this contributor is affiliated to.
+
+Use of the "creator" role does not imply that that person was the original creator of the data in the data package - merely that they created and/or maintain the data package. It is common for data packages to "package" up data from elsewhere. The original origin of the data can be indicated with the `sources` property - see above.
 
 References:
 
 - [Citation Style Language](https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html#name-fields)
+
+:::note[Backward Compatibility]
+If the `roles` property is not provided a data consumer MUST fall back to using `role` property which was a part of the `v1.0` of the specification. This property has the same semantics but it is a string allowing to specify only a single role.
+:::
 
 ##### `keywords`
 

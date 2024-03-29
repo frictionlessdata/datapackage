@@ -208,9 +208,11 @@ contributor:
       title: Organization
       description: An organizational affiliation for this contributor.
       type: string
-    role:
-      type: string
-      default: contributor
+    roles:
+      type: array
+      minItems: 1
+      items:
+        type: string
   minProperties: 1
   context: Use of this property does not imply that the person was the original
     creator of, or a contributor to, the data in the descriptor, but refers to the
