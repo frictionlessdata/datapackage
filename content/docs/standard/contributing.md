@@ -1,5 +1,7 @@
 ---
 title: Contributing
+sidebar:
+  order: 9
 ---
 
 :::caution
