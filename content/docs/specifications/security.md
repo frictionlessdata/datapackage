@@ -17,7 +17,7 @@ Security considerations around Data Packages and Data Resources.
 
 The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
-## Library users
+## Usage Perspective
 
 Data packages is a container format that allows the creator to specify payload data (Resources) either as JSON
 objects/arrays or via pointers. There are two pointer formats:
@@ -36,7 +36,7 @@ ONLY in a trusted environment (eg. your own computer during development of Data 
 all kinds of Resource pointers. In every other environment, you MUST keep the various attack scenarios in mind and
 filter out potentially dangerous Resource pointer types
 
-## Dangerous Descriptor/Resource pointer combinations
+### Dangerous Descriptor/Resource pointer combinations
 
 How to read the table: if your "datapackage.json"-file comes from one of the sources on the left, you should treat
 Resources in the format on the top as:
@@ -47,7 +47,7 @@ Resources in the format on the top as:
 
 ![Security Matrix](./assets/security-matrix.png)
 
-### Descriptor source is a URL
+#### Descriptor source is a URL
 
 If your descriptor is loaded via URL, and the server to which the URL points is not fully trusted, you
 SHOULD NOT allow Data Packages with Resource pointers in
@@ -64,7 +64,7 @@ each could point to very large CSV files hosted somewhere. The Data Package proc
 those CSV files which might overwhelm the user's computer. If an attacker were able to spread such a malicious
 Data Package, this could exhaust the resources of a hosting service.
 
-### Descriptor source is a local relative path
+#### Descriptor source is a local relative path
 
 If your descriptor is loaded via a local relative path, and the source of the Data Package is not fully trusted, you
 SHOULD NOT allow Data Packages with Resource pointers in
@@ -82,7 +82,7 @@ as well as crafting malicious Data Packages. In the above table, this case is th
 If Data Package parsing is part of a service offered to computers across subnets on the same LAN or even open to the
 internet, it NEVER safe to accept Data Packages containing URL-based Resource pointers.
 
-### Descriptor source is a local relative path
+#### Descriptor source is a local relative path
 
 While it is never safe to accept absolute file paths for Resources, it is perfectly safe to accept them for Descriptor
 files. If your descriptor is loaded via a local absolute path, and the source of the Data Package is not fully
@@ -101,7 +101,7 @@ as well as crafting malicious Data Packages. In the above table, this case is th
 If Data Package parsing is part of a service offered to computers across subnets on the same LAN or even open to the
 internet, it NEVER safe to accept Data Packages containing URL-based Resource pointers.
 
-### Descriptor source is a JSON object
+#### Descriptor source is a JSON object
 
 If the Descriptor is not loaded from file but created in-memory and the source of the Data Package is not fully
 trusted, you SHOULD NOT allow Data Packages with Resource pointers in
@@ -120,13 +120,13 @@ as well as crafting malicious Data Packages. In the above table, this case is th
 If Data Package parsing is part of a service offered to computers across subnets on the same LAN or even open to the
 internet, it NEVER safe to accept Data Packages containing URL-based Resource pointers.
 
-### Descriptor source is a self-created JSON object
+#### Descriptor source is a self-created JSON object
 
 If the Descriptor is not loaded from file or created via a third-party application but by your software, it is
 generally assumed you know what you do and therefore, loading Resources from URLs or file is considered safe. You
 still SHOULD NOT use absolute paths as a matter of precaution - and implementing libraries should filter them out.
 
-## Library creators
+## Implemention Perspective
 
 Two kinds of Resource pointers can never be guaranteed to be totally safe:
 

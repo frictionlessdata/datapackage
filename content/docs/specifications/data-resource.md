@@ -98,7 +98,7 @@ A resource `MUST` contain a property describing the location of the data associa
 
 #### Single File
 
-If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in [URL of Path](#url-or-path) section.
+If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in the [URL of Path](../glossary/#url-or-path) definition.
 
 #### Multiple Files
 
@@ -227,34 +227,6 @@ A Data Resource `MAY` have a `schema` property to describe the schema of the res
 
 The value for the `schema` property on a `resource` MUST be an `object` representing the schema OR a `string` that identifies the location of the schema.
 
-If a `string` it must be a [url-or-path as defined above](#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the location specified by this url-or-path string `MUST` be a JSON document containing the schema.
+If a `string` it must be a [URL or Path](../glossary/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the location specified by this [URL or Path](../glossary/#url-or-path) string `MUST` be a JSON document containing the schema.
 
 NOTE: the Data Package specification places no restrictions on the form of the schema Object. This flexibility enables specific communities to define schemas appropriate for the data they manage. As an example, the [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) specification requires the schema to conform to [Table Schema](../table-schema/).
-
-## URL or Path
-
-A `url-or-path` is a `string` with the following additional constraints:
-
-- `MUST` either be a URL or a POSIX path
-- [URLs](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) `MUST` be fully qualified. `MUST` be using either http or https scheme. (Absence of a scheme indicates `MUST` be a POSIX path)
-- [POSIX paths](https://en.wikipedia.org/wiki/Path_%28computing%29#POSIX_pathname_definition) (unix-style with `/` as separator) are supported for referencing local files, with the security restraint that they `MUST` be relative siblings or children of the descriptor. Absolute paths `/`, relative parent paths `../`, hidden folders starting from a dot `.hidden` `MUST` NOT be used.
-
-Example of a fully qualified url:
-
-```json
-{
-  "path": "http://ex.datapackages.org/big-csv/my-big.csv"
-}
-```
-
-Example of a relative path that this will work both as a relative path on disk and online:
-
-```json
-{
-  "path": "my-data-directory/my-csv.csv"
-}
-```
-
-:::caution[Security]
-`/` (absolute path) and `../` (relative parent path) are forbidden to avoid security vulnerabilities when implementing data package software. These limitations on resource `path` ensure that resource paths only point to files within the data package directory and its subdirectories. This prevents data package software being exploited by a malicious user to gain unintended access to sensitive information. For example, suppose a data package hosting service stores packages on disk and allows access via an API. A malicious user uploads a data package with a resource path like `/etc/passwd`. The user then requests the data for that resource and the server naively opens `/etc/passwd` and returns that data to the caller.
-:::

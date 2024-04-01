@@ -34,13 +34,13 @@ This change allows omitting `title` property for the `contributor` and `source` 
 
 ##### Added `contributor.given/familyName`
 
-This change adds two new properties to the `contributor` object: `givenName` and `familyName`. Please read more about [`package.contributors`](../../specifications/data-resource/#contributors) property.
+This change adds two new properties to the `contributor` object: `givenName` and `familyName`. Please read more about [`package.contributors`](../../specifications/data-package/#contributors) property.
 
 > [Pull Request -- #20](https://github.com/frictionlessdata/datapackage/pull/20)
 
 ##### Added `contributor.roles` property
 
-This change adds a new `contributors.roles` property that replaces `contributor.role`. Please read more about [`package.contributors`](../../specifications/data-resource/#contributors) property.
+This change adds a new `contributors.roles` property that replaces `contributor.role`. Please read more about [`package.contributors`](../../specifications/data-package/#contributors) property.
 
 > [Pull Request -- #18](https://github.com/frictionlessdata/datapackage/pull/18)
 
@@ -54,7 +54,7 @@ This change adds omitted `version` property to the Data Package profiles.
 
 ##### Relaxed `resource.name` rules but keep it required and unique
 
-This change relaxes requirements to `resource.name` allowing it to be any string. This property still needs to present and be unique among resources. Please read more about [`resource.name`](../../specifications/data-resource/#name) property.
+This change relaxes requirements to `resource.name` allowing it to be any string. This property still needs to present and be unique among resources. Please read more about [`resource.name`](../../specifications/data-resource/#name-required) property.
 
 > [Pull Request -- #27](https://github.com/frictionlessdata/datapackage/pull/27)
 
@@ -110,7 +110,7 @@ This change adds a new constraint for the `object` and `array` fields. Please re
 
 ##### Support `groupChar` for integer field type
 
-This change adds support for providing integers with group chars. Please read more about [`field.groupChar`](../../specifications/table-schema/#groupchar) property.
+This change adds support for providing integers with group chars. Please read more about [`field.groupChar`](../../specifications/table-schema/#integer) property.
 
 > [Pull Request -- #6](https://github.com/frictionlessdata/datapackage/pull/6)
 

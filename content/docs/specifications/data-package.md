@@ -173,7 +173,7 @@ Here is an example:
 ```
 
 - `name`: The `name` `MUST` be an [Open Definition license ID](http://licenses.opendefinition.org/)
-- `path`: A [url-or-path](../data-resource/#url-or-path) string, that is a fully qualified HTTP address, or a relative POSIX path.
+- `path`: A [URL or Path](../glossary/#url-or-path) string, that is a fully qualified HTTP address, or a relative POSIX path.
 - `title`: A human-readable title.
 
 ### `profile`
@@ -210,7 +210,7 @@ A URL for the home on the web that is related to this data package.
 
 An image to use for this data package. For example, when showing the package in a listing.
 
-The value of the image property `MUST` be a string pointing to the location of the image. The string `MUST` be a [url-or-path](../data-resource/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
+The value of the image property `MUST` be a string pointing to the location of the image. The string `MUST` be a [URL or Path](../glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
 
 ### `version`
 
@@ -277,6 +277,6 @@ The raw sources for this data package. It `MUST` be an array of Source objects. 
 ```
 
 - `title`: title of the source (e.g. document or organization name)
-- `path`: A [url-or-path][] string, that is a fully qualified HTTP address, or a relative POSIX path (see [the url-or-path definition in Data Resource for details][url-or-path]).
+- `path`: A [URL or Path](../glossary/#url-or-path) string, that is a fully qualified HTTP address, or a relative POSIX path.
 - `email`: An email address
 - `version`: A version of the source

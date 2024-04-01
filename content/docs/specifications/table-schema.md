@@ -349,7 +349,7 @@ See [Field Constraints](#field-constraints)
 
 #### `missingValues`
 
-A list of missing values for this field as per [Missing Values](#missing-values) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
+A list of missing values for this field as per [Missing Values](#missingvalues) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
 
 For example, for the Table Schema below:
 
