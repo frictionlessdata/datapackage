@@ -395,7 +395,6 @@ The corresponding Table Schema is:
       "type": "string",
       "rdfType": "http://schema.org/Country"
     }
-    ...
   }
 }
 ```
