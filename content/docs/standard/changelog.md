@@ -70,6 +70,14 @@ This change fixes definition in the Data Resource specification to explicitly fo
 
 > [Pull Request -- #19](https://github.com/frictionlessdata/datapackage/pull/19)
 
+#### Table Dialect
+
+##### First version of the specification
+
+This change adds a new specification Table Dialect that superseeds and extends the CSV Dialect specification to work with other formats like JSON or Excel.
+
+> [Pull Request -- #41](https://github.com/frictionlessdata/datapackage/pull/41)
+
 #### Table Schema
 
 ##### Added `schema.fieldsMatch` property
