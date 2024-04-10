@@ -21,40 +21,11 @@ A simple format to describe and package a single data resource such as a individ
 
 The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
 
-## Example
+## Descriptor
 
-A minimal Data Resource looks as follows:
+Data Resource descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
-With data accessible via the local filesystem.
-
-```json
-{
-  "name": "resource-name",
-  "path": "resource-path.csv"
-}
-```
-
-With data accessible via http.
-
-```json
-{
-  "name": "resource-name",
-  "path": "http://example.com/resource-path.csv"
-}
-```
-
-A minimal Data Resource pointing to some inline data looks as follows.
-
-```json
-{
-  "name": "resource-name",
-  "data": {
-    "resource-name-data": [{ "a": 1, "b": 2 }]
-  }
-}
-```
-
-A comprehensive Data Resource example with all required, recommended and optional properties looks as follows.
+An example of a Data Resource descriptor:
 
 ```json
 {
@@ -72,10 +43,6 @@ A comprehensive Data Resource example with all required, recommended and optiona
   "licenses": [ ... ]
 }
 ```
-
-## Descriptor
-
-A Data Resource descriptor `MUST` be a valid JSON `object`. (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
 
 ## Properties
 

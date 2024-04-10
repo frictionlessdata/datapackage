@@ -19,6 +19,38 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Definitions
 
+### Descriptor
+
+The Data Package Standard uses a concept of a `descriptor` to represent metadata defined according to the core specefications such as Data Package or Table Schema.
+
+On logical level, a descriptor is represented by a data structure. The data structure `MUST` be a JSON `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+On physical level, a descriptor is represented by a file. The file `MUST` contains a valid JSON `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+
+This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a file containing a descriptor.
+
+:::note[File Formats]
+A descriptor `MAY` be serialized using alternative formats like YAML or TOML as an internal part of some project or system if supported by corresponding implementations. A descriptor `SHOULD NOT` be externally published in any other format rather than JSON.
+:::
+
+#### Custom Properties
+
+The Data Package specifications define a set of standard properties to be used and allows custom properties to be added. It is `RECOMMENDED` to use `namespace:property` naming convention for custom properties.
+
+Adherence to a specification does not imply that additional, non-specified properties cannot be used: a descriptor `MAY` include any number of properties in additional to those described as required and optional properties. For example, if you were storing time series data and wanted to list the temporal coverage of the data in the Data Package you could add a property `temporal` (cf [Dublin Core](http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal)):
+
+```json
+{
+  "dc:temporal": {
+    "name": "19th Century",
+    "start": "1800-01-01",
+    "end": "1899-12-31"
+  }
+}
+```
+
+This flexibility enables specific communities to extend metadata as appropriate for the data they manage. As an example, the [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) specification extends Data Package to the case where all the data is tabular and stored in CSV.
+
 ### URL or Path
 
 A `URL or Path` is a `string` with the following additional constraints:

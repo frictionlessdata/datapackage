@@ -71,11 +71,9 @@ For example, `constraints` `SHOULD` be tested on the logical representation of d
 
 ## Descriptor
 
-A Table Schema is represented by a descriptor. The descriptor `MUST` be a JSON `object` (JSON is defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)).
+Table Schema descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
-The descriptor `MAY` have the additional properties set out below and `MAY` contain any number of other properties not defined in this specification.
-
-The following is an illustration of this structure:
+An example of a Table Schema descriptor:
 
 ```json
 {
@@ -92,7 +90,7 @@ The following is an illustration of this structure:
     ...
   ],
   "missingValues": [ ... ],
-  "primaryKey": [ ... ]
+  "primaryKey": [ ... ],
   "foreignKeys": [... ]
 }
 ```
