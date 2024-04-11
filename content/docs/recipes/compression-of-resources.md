@@ -57,6 +57,6 @@ Example of a compressed resource with the `compression` property:
 }
 ```
 
-:::tip NOTE
+:::note
 Resource properties e.g. bytes, hash etc apply to the compressed object -- not to the original uncompressed object.
 :::
