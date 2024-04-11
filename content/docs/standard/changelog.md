@@ -74,7 +74,7 @@ This change fixes definition in the Data Resource specification to explicitly fo
 
 ##### First version of the specification
 
-This change adds a new specification Table Dialect that superseeds and extends the CSV Dialect specification to work with other formats like JSON or Excel.
+This change adds a new specification Table Dialect that superseeds and extends the CSV Dialect specification to work with other formats like JSON or Excel. Please refer to the [Table Dialect](../../specifications/table-dialect) specification.
 
 > [Pull Request -- #41](https://github.com/frictionlessdata/datapackage/pull/41)
 
