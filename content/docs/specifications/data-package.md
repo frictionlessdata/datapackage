@@ -114,6 +114,16 @@ The `resources` property is `REQUIRED`, with at least one resource.
 
 Packaged data resources are described in the `resources` property of the package descriptor. This property `MUST` be an array of `objects`. Each object `MUST` follow the [Data Resource ](../data-resource/) specification.
 
+### `$schema`
+
+A root level Data Package descriptor `MAY` have a `$schema` property that `MUST` point to a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+
+The default value is `https://datapackage.org/profiles/1.0/datapackage.json` and the recommended value is `https://datapackage.org/profiles/2.0/datapackage.json`.
+
+:::note[Backward Compatibility]
+If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
+:::
+
 ### `name`
 
 The name is a simple name or identifier to be used for this package in relation to any registry in which this package will be deposited.
@@ -164,24 +174,6 @@ An example of using the `licenses` property:
   "path": "http://opendatacommons.org/licenses/pddl/",
   "title": "Open Data Commons Public Domain Dedication and License v1.0"
 }]
-```
-
-### `profile`
-
-A string identifying the profile of this descriptor as per the [profiles](https://specs.frictionlessdata.io/profiles/) specification.
-
-Examples:
-
-```json
-{
-  "profile": "tabular-data-package"
-}
-```
-
-```json
-{
-  "profile": "http://example.com/my-profiles-json-schema.json"
-}
 ```
 
 ### `title`

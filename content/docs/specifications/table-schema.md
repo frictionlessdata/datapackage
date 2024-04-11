@@ -105,7 +105,13 @@ A Table Schema descriptor `MAY` contain these standard properties:
 
 A Table Schema descriptor `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a [field descriptor](#field) as defined below.
 
-The way Table Schema `fields` are mapped onto the data source fields are defined by the `fieldsMatch` property. By default, the most strict approach is applied, i.e. fields in the data source `MUST` completely match the elements in the `fields` array, both in number and order. Using different options below, a data producer can relax requirements for the data source.
+The way Table Schema `fields` are mapped onto the data source fields are defined by the `fieldsMatch` property. By default, the most strict approach is applied, i.e. fields in the data source `MUST` completely match the elements in the `fields` array, both in number and order. Using different options of the `fieldsMatch` property, a data producer can relax requirements for the data source.
+
+#### `$schema`
+
+A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST` point to a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+
+The default value is `https://datapackage.org/profiles/1.0/tableschema.json` and the recommended value is `https://datapackage.org/profiles/2.0/tableschema.json`.
 
 #### `fieldsMatch`
 

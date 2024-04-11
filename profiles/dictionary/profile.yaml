@@ -1,7 +1,0 @@
-metadataProfile:
-  title: Metadata Profile
-  description: Metadata Profile
-  type: object
-  properties:
-    title:
-      type: string

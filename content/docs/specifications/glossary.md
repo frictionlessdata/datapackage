@@ -19,13 +19,30 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Definitions
 
+### Profile
+
+A profile is a URL that `MUST`:
+
+- resolves to a valid JSON Schema descriptor under the `draft-07` version
+- be versioned and immutable i.e. once published under some version it cannot be changed
+
+A profile is both used as a metadata version identifier and the location of a JSON Schema against which a descriptor having it as a root level `$schema` property `MUST` be valid and `MUST` be validated.
+
+Similarly to [JSON Schema](https://json-schema.org/understanding-json-schema/reference/schema#schema), the `$schema` property has effect only on the root level of a descriptor. For example, if a Table Dialect is published as a file it can include a `$schema` property that affects its validation. If the same dialect is an object inlined into a Data Package descriptor, the dialect's `$schema` property `MUST` be ignored and the descriptor as whole `MUST` be validated against a root level `$schema` property provided by the package.
+
+Data Package Standard employes profiles as a mechanism for creating extensions as per [Extensions](../extensions) specification.
+
+:::note[Implementation Note]
+It is recommended to cache profiles using their URL as a unique key.
+:::
+
 ### Descriptor
 
 The Data Package Standard uses a concept of a `descriptor` to represent metadata defined according to the core specefications such as Data Package or Table Schema.
 
 On logical level, a descriptor is represented by a data structure. The data structure `MUST` be a JSON `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
 
-On physical level, a descriptor is represented by a file. The file `MUST` contains a valid JSON `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
+On physical level, a descriptor is represented by a file. The file `MUST` contain a valid JSON `object` as defined in [RFC 4627](http://www.ietf.org/rfc/rfc4627.txt).
 
 This specification does not define any discoverability mechanisms. Any URI can be used to directly reference a file containing a descriptor.
 
