@@ -152,6 +152,7 @@ The default value is `https://datapackage.org/profiles/1.0/dataresource.json` an
 
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
+:::
 
 #### `title`
 
