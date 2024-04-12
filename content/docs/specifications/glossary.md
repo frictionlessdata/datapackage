@@ -66,7 +66,7 @@ Adherence to a specification does not imply that additional, non-specified prope
 }
 ```
 
-This flexibility enables specific communities to extend metadata as appropriate for the data they manage. As an example, the [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) specification extends Data Package to the case where all the data is tabular and stored in CSV.
+This flexibility enables specific communities to extend Data Packages as appropriate for the data they manage. As an example, the [Fiscal Data Package](https://fiscal.datapackage.org) specification extends Data Package for publishing and consuming fiscal data.
 
 ### URL or Path
 

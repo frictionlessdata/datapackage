@@ -51,60 +51,6 @@ dataPackage:
       propertyOrder: 200
       options:
         hidden: true
-tabularDataPackage:
-  title: Tabular Data Package
-  description: Tabular Data Package
-  type: object
-  required:
-    - resources
-    - profile
-  properties:
-    profile:
-      "$ref": "#/definitions/profile"
-      enum: ["tabular-data-package"]
-      propertyOrder: 10
-    name:
-      "$ref": "#/definitions/name"
-      propertyOrder: 20
-    id:
-      "$ref": "#/definitions/id"
-      propertyOrder: 30
-    title:
-      "$ref": "#/definitions/title"
-      propertyOrder: 40
-    description:
-      "$ref": "#/definitions/description"
-      propertyOrder: 50
-      format: textarea
-    homepage:
-      "$ref": "#/definitions/homepage"
-      propertyOrder: 60
-    version:
-      "$ref": "#/definitions/version"
-      propertyOrder: 65
-    created:
-      "$ref": "#/definitions/created"
-      propertyOrder: 70
-    contributors:
-      "$ref": "#/definitions/contributors"
-      propertyOrder: 80
-    keywords:
-      "$ref": "#/definitions/keywords"
-      propertyOrder: 90
-    image:
-      "$ref": "#/definitions/image"
-      propertyOrder: 100
-    licenses:
-      "$ref": "#/definitions/licenses"
-      propertyOrder: 110
-    resources:
-      "$ref": "#/definitions/tabularDataResources"
-      propertyOrder: 120
-    sources:
-      "$ref": "#/definitions/sources"
-      propertyOrder: 200
-      options:
-        hidden: true
 dataResources:
   title: Data Resources
   description: An `array` of Data Resource objects, each compliant with the [Data Resource](/data-resource/) specification.
