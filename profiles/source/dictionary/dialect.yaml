@@ -3,6 +3,10 @@ tableDialect:
   description: The Table dialect descriptor.
   type: object
   properties:
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/tabledialect.json
+      propertyOrder: 10
     header:
       "$ref": "#/definitions/header"
     headerRows:

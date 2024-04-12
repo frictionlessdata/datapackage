@@ -1,13 +1,13 @@
 {
   "name": "datapackage.org",
   "type": "module",
-  "version": "2.0.0-draft.1",
+  "version": "2.0-draft",
   "engines": {
     "node": "^20.0.0",
     "npm": "^10.0.0"
   },
   "scripts": {
-    "build": "astro build && node build.js",
+    "build": "astro build && node profiles/build.js",
     "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' +",
     "format": "eslint --fix . && prettier --write .",
     "generate": "astro sync",

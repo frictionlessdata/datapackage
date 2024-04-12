@@ -11,7 +11,7 @@ sidebar:
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/table-dialect.json">table-dialect.json</a></td>
+    <td><a href="/profiles/2.0/tabledialect.json">https://datapackage.org/profiles/2.0/tabledialect.json</a></td>
   </tr>
 </table>
 

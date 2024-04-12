@@ -11,6 +11,10 @@ tableSchema:
   required:
     - fields
   properties:
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/tableschema.json
+      propertyOrder: 10
     fields:
       type: array
       minItems: 1

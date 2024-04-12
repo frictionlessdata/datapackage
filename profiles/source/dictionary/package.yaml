@@ -5,9 +5,9 @@ dataPackage:
   required:
     - resources
   properties:
-    profile:
-      "$ref": "#/definitions/profile"
-      default: "data-package"
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/datapackage.json
       propertyOrder: 10
     name:
       "$ref": "#/definitions/name"
@@ -67,27 +67,6 @@ dataResources:
             "data": [
               "data.csv"
             ],
-            "mediatype": "text/csv"
-          }
-        ]
-      }
-tabularDataResources:
-  title: Tabular Data Resources
-  description: An `array` of Tabular Data Resource objects, each compliant with the [Tabular Data Resource](/tabular-data-resource/) specification.
-  type: array
-  minItems: 1
-  items:
-    "$ref": "#/definitions/dataResource"
-  examples:
-    - |
-      {
-        "resources": [
-          {
-            "name": "my-data",
-            "data": [
-              "data.csv"
-            ],
-            "schema": "tableschema.json",
             "mediatype": "text/csv"
           }
         ]

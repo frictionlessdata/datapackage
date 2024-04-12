@@ -6,7 +6,7 @@ sidebar:
 
 This document includes all meaningful changes made to the **specifications** consisting the Data Package Standard. It does not track changes made to other documents like recipes or guides.
 
-## v2.0.0-draft.1
+## v2.0-draft
 
 > April 1, 2024
 

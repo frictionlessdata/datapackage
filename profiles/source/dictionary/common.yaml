@@ -1,18 +1,7 @@
-profile:
+$schema:
   title: Profile
   description: The profile of this descriptor.
-  context: Every Package and Resource descriptor has a profile. The default profile,
-    if none is declared, is `data-package` for Package and `data-resource` for Resource.
   type: string
-  examples:
-    - |
-      {
-        "profile": "tabular-data-package"
-      }
-    - |
-      {
-        "profile": "http://example.com/my-profiles-json-schema.json"
-      }
 name:
   title: Name
   description: An identifier string.

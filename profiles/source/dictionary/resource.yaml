@@ -10,10 +10,10 @@ dataResource:
         - name
         - path
   properties:
-    profile:
-      "$ref": "#/definitions/profile"
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/dataresource.json
       propertyOrder: 10
-      default: "data-resource"
     name:
       "$ref": "#/definitions/name"
       propertyOrder: 20
