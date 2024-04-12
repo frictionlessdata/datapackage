@@ -569,4 +569,4 @@ Table Dialect is also orthogonal to the character encoding used in the CSV file.
 
 ## References
 
-Some related work can be found in [this comparison of csv dialect support](https://docs.google.com/spreadsheet/ccc?key=0AmU3V2vcPKrIdEhoU1NQSWtoQmJwcUNCelJtdkx2bFE&usp=sharing), this [example of similar JSON format](http://panda.readthedocs.org/en/latest/api.html#data-uploads), and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
+Some related work can be found in [similar JSON format](http://panda.readthedocs.org/en/latest/api.html#data-uploads) and in Python's [PEP 305](http://www.python.org/dev/peps/pep-0305/).
