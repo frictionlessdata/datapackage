@@ -23,9 +23,9 @@ dataResource:
     data:
       "$ref": "#/definitions/data"
       propertyOrder: 230
-    schema:
-      "$ref": "#/definitions/anySchema"
-      propertyOrder: 40
+    type:
+      "$ref": "#/definitions/resourceType"
+      propertyOrder: 235
     title:
       "$ref": "#/definitions/title"
       propertyOrder: 50
@@ -64,83 +64,14 @@ dataResource:
     hash:
       "$ref": "#/definitions/hash"
       propertyOrder: 120
-      options:
-        hidden: true
-tabularDataResource:
-  title: Tabular Data Resource
-  description: A Tabular Data Resource.
-  type: object
-  oneOf:
-    - required:
-        - name
-        - data
-        - schema
-        - profile
-    - required:
-        - name
-        - path
-        - schema
-        - profile
-  properties:
-    profile:
-      "$ref": "#/definitions/profile"
-      enum: ["tabular-data-resource"]
-      propertyOrder: 10
-    name:
-      "$ref": "#/definitions/name"
-      propertyOrder: 20
-    path:
-      "$ref": "#/definitions/resourcePath"
-      propertyOrder: 30
-    data:
-      "$ref": "#/definitions/tabularData"
-      propertyOrder: 230
-    schema:
-      "$ref": "#/definitions/tableSchema"
-      propertyOrder: 40
-    title:
-      "$ref": "#/definitions/title"
-      propertyOrder: 50
-    description:
-      "$ref": "#/definitions/description"
-      propertyOrder: 60
-      format: textarea
-    homepage:
-      "$ref": "#/definitions/homepage"
-      propertyOrder: 70
-    sources:
-      "$ref": "#/definitions/sources"
-      propertyOrder: 140
-      options:
-        hidden: true
-    licenses:
-      "$ref": "#/definitions/licenses"
-      description: The license(s) under which the resource is published.
-      propertyOrder: 150
       options:
         hidden: true
     dialect:
       "$ref": "#/definitions/tableDialect"
-      propertyOrder: 50
-    format:
-      "$ref": "#/definitions/format"
-      propertyOrder: 80
-    mediatype:
-      "$ref": "#/definitions/mediatype"
-      propertyOrder: 90
-    encoding:
-      "$ref": "#/definitions/encoding"
-      propertyOrder: 100
-    bytes:
-      "$ref": "#/definitions/bytes"
-      propertyOrder: 110
-      options:
-        hidden: true
-    hash:
-      "$ref": "#/definitions/hash"
-      propertyOrder: 120
-      options:
-        hidden: true
+      propertyOrder: 130
+    schema:
+      "$ref": "#/definitions/tableSchema"
+      propertyOrder: 140
 pathArray:
   type: array
   minItems: 1
@@ -180,6 +111,10 @@ resourcePath:
       {
         "path": "http://example.com/file.csv"
       }
+resourceType:
+  type: string
+  enum:
+    - table
 format:
   title: Format
   description: The file format of this resource.

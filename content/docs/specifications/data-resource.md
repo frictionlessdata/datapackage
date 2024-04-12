@@ -48,7 +48,11 @@ An example of a Data Resource descriptor:
 
 Standard properties of the descriptor are described below. A descriptor `MAY` include any number of properties in additional to those described below as required and optional properties.
 
-### `name` [required]
+### General
+
+The properties below are applicable to any Data Resource.
+
+#### `name` [required]
 
 A resource `MUST` contain a `name` property. The name is a simple name or identifier to be used for this resource.
 
@@ -56,18 +60,18 @@ A resource `MUST` contain a `name` property. The name is a simple name or identi
 - It `SHOULD` be human-readable and consist only of lowercase alphanumeric characters plus `.`, `-` and `\_`.
 - It would be usual for the name to correspond to the file name (minus the extension) of the data file the resource describes.
 
-### `path` or `data` [required]
+#### `path` or `data` [required]
 
 A resource `MUST` contain a property describing the location of the data associated to the resource. The location of resource data `MUST` be specified by the presence of one (and only one) of these two properties:
 
 - `path`: for data in files located online or locally on disk.
 - `data`: for data inline in the descriptor itself.
 
-#### Single File
+##### Single File
 
 If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in the [URL of Path](../glossary/#url-or-path) definition.
 
-#### Multiple Files
+##### Multiple Files
 
 Usually, a resource will have only a single file associated to it. However, sometimes it can be convenient to have a single resource whose data is split across multiple files -- perhaps the data is large and having it in one file would be inconvenient.
 
@@ -85,7 +89,7 @@ It is NOT permitted to mix fully qualified URLs and relative paths in a `path` a
 All files in the array `MUST` be similar in terms of structure, format etc. Implementors `MUST` be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec](https://specs.frictionlessdata.io/tabular-data-package/) for more on this.
 :::
 
-#### Inline Data
+##### Inline Data
 
 Resource data rather than being stored in external files can be shipped `inline` on a Resource using the `data` property.
 
@@ -128,6 +132,18 @@ Or inline CSV:
 Prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.
 :::
 
+#### `type`
+
+A Data Resource descriptor `MAY` contain a property `type` that `MUST` be a string with the following possible values:
+
+- `table`: indicates that the resource is tabular as per [Tabular Data](../glossary/#tabular-data) definition. Please read more about [Tabular Resource](#tabular) properties.
+
+If property `type` is not provided, the resource is considered to be a non-specific file. An implementation `MAY` provide some additional interfaces, for example, tabular, to non-specific files if `type` can be detected from the data source or format.
+
+:::note[Backward Compatibility]
+If a resource has `profile` property that equals to `tabular-data-resource` or `https://specs.frictionlessdata.io/schemas/tabular-data-resource.json`, an implementation `MUST` treat it as `type` property were set to `table`
+:::
+
 ### `$schema`
 
 A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` point to a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
@@ -136,33 +152,32 @@ The default value is `https://datapackage.org/profiles/1.0/dataresource.json` an
 
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
-:::
 
-### `title`
+#### `title`
 
 Title or label for the resource.
 
-### `description`
+#### `description`
 
 Description of the resource.
 
-### `format`
+#### `format`
 
 Would be expected to be the standard file extension for this type of resource.For example, `csv`, `xls`, `json` etc.
 
-### `mediatype`
+#### `mediatype`
 
 Te mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
 
-### `encoding`
+#### `encoding`
 
 The character encoding of resource's data file (only applicable for textual files). The value `SHOULD` be one of the "Preferred MIME Names" for [a character encoding registered with IANA](http://www.iana.org/assignments/character-sets/character-sets.xhtml). If no value for this property is specified then the encoding `SHOULD` be detected on the implementation level. It is `RECOMMENDED` to use UTF-8 (without BOM) as a default encoding for textual files.
 
-### `bytes`
+#### `bytes`
 
 Size of the file in bytes.
 
-### `hash`
+#### `hash`
 
 The MD5 hash for this resource. Other algorithms can be indicated by prefixing the hash's value with the algorithm name in lower-case. For example:
 
@@ -172,20 +187,77 @@ The MD5 hash for this resource. Other algorithms can be indicated by prefixing t
 }
 ```
 
-### `sources`
+#### `sources`
 
 List of data sources as for [Data Package](../data-package/#sources).
 
-### `licenses`
+#### `licenses`
 
 List of licenses as for [Data Package](../data-package/#licenses). If not specified the resource inherits from the data package.
 
-### `schema`
+### Tabular
 
-A Data Resource `MAY` have a `schema` property to describe the schema of the resource data.
+The properties below are applicable to any Tabular Data Resource.
 
-The value for the `schema` property on a `resource` MUST be an `object` representing the schema OR a `string` that identifies the location of the schema.
+#### `data`
 
-If a `string` it must be a [URL or Path](../glossary/#url-or-path), that is a fully qualified http URL or a relative POSIX path. The file at the location specified by this [URL or Path](../glossary/#url-or-path) string `MUST` be a JSON document containing the schema.
+If the `data` property is used for providing data for a Tabular Data Resource than it `MUST` be an `array` where each item in the array `MUST` be either:
 
-NOTE: the Data Package specification places no restrictions on the form of the schema Object. This flexibility enables specific communities to define schemas appropriate for the data they manage. As an example, the [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) specification requires the schema to conform to [Table Schema](../table-schema/).
+- an array where each entry in the array is the value for that cell in the table OR
+- an object where each key corresponds to the header for that row and the value corresponds to the cell value for that row for that header.
+
+Array of arrays example:
+
+```json
+[
+  ["A", "B", "C"],
+  [1, 2, 3],
+  [4, 5, 6]
+]
+```
+
+Array of objects example:
+
+```json
+[
+  { "A": 1, "B": 2, "C": 3 },
+  { "A": 4, "B": 5, "C": 6 }
+]
+```
+
+#### `dialect`
+
+A Tabular Data Resource `MAY` have a `dialect` property to describe a tabular dialect of the resource data. If provided, the `dialect` property `MUST` be a [Table Dialect](../table-dialect) descriptor in a form of an object or [URL-or-Path](../glossary/#url-or-path).
+
+An example of a resource with a dialect:
+
+```json
+{
+  "name": "table",
+  "type": "table",
+  "path": "table.csv",
+  "dialect": {
+    "delimiter": ";"
+  }
+}
+```
+
+#### `schema`
+
+A Tabular Data Resource `SHOULD` have a `schema` property to describe a tabular schema of the resource data. If provided, the `schema` property `MUST` be a [Table Schema](../table-schema) descriptor in a form of an object or [URL-or-Path](../glossary/#url-or-path).
+
+An example of a resource with a schema:
+
+```json
+{
+  "name": "table",
+  "type": "table",
+  "path": "table.csv",
+  "schema": {
+    "fields": [
+      { "name": "id", "type": "integer" },
+      { "name": "name", "type": "string" }
+    ]
+  }
+}
+```
