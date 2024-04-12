@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "CSV Dialect",
-  "description": "The CSV dialect descriptor.",
+  "title": "Table Dialect",
+  "description": "The table dialect descriptor.",
   "properties": {
     "csvddfVersion": {
       "title": "CSV Dialect schema version",

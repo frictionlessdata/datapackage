@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Tabular Data Resource",
-  "description": "A Tabular Data Resource.",
+  "title": "Data Resource",
+  "description": "A Data Resource.",
   "type": "object",
   "oneOf": [
     {
