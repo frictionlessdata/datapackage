@@ -158,7 +158,7 @@ This change fixes `minimum` and `maximum` constraint for the `duration` field ty
 
 > [Pull Request -- #8](https://github.com/frictionlessdata/datapackage/pull/8)
 
-## v1.0.0
+## v1.0
 
 > September 5, 2017
 
