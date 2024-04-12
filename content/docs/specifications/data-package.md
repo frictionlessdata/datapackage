@@ -128,7 +128,7 @@ If the `$schema` property is not provided but a descriptor has the `profile` pro
 
 The name is a simple name or identifier to be used for this package in relation to any registry in which this package will be deposited.
 
-- It `SHOULD` be human-readable and consist only of lowercase alphanumeric characters plus ".", "-" and "\_".
+- It `SHOULD` be human-readable and consist only of lowercase English alphanumeric characters plus `.`, `-` and `_`.
 - It `SHOULD` be unique in relation to any registry in which this package will be deposited (and preferably globally unique).
 - It `SHOULD` be invariant, meaning that it `SHOULD NOT` change when a data package is updated, unless the new package version `SHOULD` be considered a distinct package, e.g. due to significant changes in structure or interpretation. Version distinction `SHOULD` be left to the version property. As a corollary, the name also `SHOULD NOT` include an indication of time range covered.
 
