@@ -129,7 +129,7 @@ Or inline CSV:
 ```
 
 :::note[Backward Compatibility]
-Prior to release 1.0.0-beta.18 (Nov 17 2016) there was a `url` property distinct from `path`. In order to support backwards compatibility, implementors `MAY` want to automatically convert a `url` property to a `path` property and issue a warning.
+If `path` property is not provided but there is a `url` property as was defined in Data Package Standard (v0), an implementation `MUST` treat it as the `path` property equivalent.
 :::
 
 #### `type`
@@ -144,7 +144,7 @@ If property `type` is not provided, the resource is considered to be a non-speci
 If a resource has `profile` property that equals to `tabular-data-resource` or `https://specs.frictionlessdata.io/schemas/tabular-data-resource.json`, an implementation `MUST` treat it as `type` property were set to `table`
 :::
 
-### `$schema`
+#### `$schema`
 
 A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` point to a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 

@@ -335,6 +335,10 @@ Both `type` and `format` are optional: in a field descriptor, the absence of a `
 
 Types are based on the [type set of json-schema](http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1) with some additions and minor modifications (cf other type lists include those in [Elasticsearch types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)).
 
+:::note[Backward Compatibility]
+If `format` property start with `fmt:` prefix, an implementation `MUST` remove the prefix as it was the way of providing temporal formats in Data Package Standard (v0).
+:::
+
 #### `title`
 
 A human readable label or title for the field
