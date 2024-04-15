@@ -52,7 +52,7 @@ A descriptor `MAY` be serialized using alternative formats like YAML or TOML as 
 
 #### Custom Properties
 
-The Data Package specifications define a set of standard properties to be used and allows custom properties to be added. It is `RECOMMENDED` to use `namespace:property` naming convention for custom properties. It is `RECOMMENDED` to use [Camel Case](https://developer.mozilla.org/en-US/docs/Glossary/Camel_case) convention for naming custom properties.
+The Data Package specifications define a set of standard properties to be used and allows custom properties to be added. It is `RECOMMENDED` to use `namespace:property` naming convention for custom properties. It is `RECOMMENDED` to use [lower camel case](https://en.wikipedia.org/wiki/Camel_case) convention for naming custom properties, for example, `namespace:propertyName`.
 
 Adherence to a specification does not imply that additional, non-specified properties cannot be used: a descriptor `MAY` include any number of properties in additional to those described as required and optional properties. For example, if you were storing time series data and wanted to list the temporal coverage of the data in the Data Package you could add a property `temporal` (cf [Dublin Core](http://dublincore.org/documents/usageguide/qualifiers.shtml#temporal)):
 
