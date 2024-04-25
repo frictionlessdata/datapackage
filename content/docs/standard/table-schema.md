@@ -278,19 +278,19 @@ If present, it `MUST` be a non-empty and lower-case string, containaing only alp
 
 #### `title`
        
-The `title` property is a human-readable title for the schema.
+The `title` property is a nicer, human-readable title for the schema.
 
 If present, it `MUST` be a non-empty string, and not exceed 100 characters.
 
 #### `description`
        
-The `description` property is a text description for this schema.
+The `description` property is a text description for the schema.
 
 If present, it `MUST` be a non-empty string.
 
 #### `homepage`
        
-The `homepage` property gives a reference URL related to this schema. 
+The `homepage` property gives a reference URL related to the schema. 
 
 If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). 
 
@@ -306,7 +306,7 @@ The `sources` property contains documentation sources related to the schema.
 
 If present, it `MUST` be a non-empty json array of objects, each of which `MUST` have the properties "title" and "path".
 
-The "title" properties give a human-readable title to the source, and MUST be a non empty string. The "path" properties are the link 
+The "title" properties give a human-readable title to the source, and MUST be a non empty string. The "path" properties are the link to the resources, and MUST be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
 
 #### `keywords`
 
@@ -316,7 +316,7 @@ If present, it `MUST` be a non-empty array of strings.
  
 #### `resources`
 
-The `resources` property contains links to example data resources. This allows schemas to be shared with data resources to illustrate them, with valid and even invalid files.
+The `resources` property contains links to example data resources. This allows the schema to be shared with data resources to illustrate it, with valid and even invalid files.
 
 If present, it `MUST` be a non-empty array of objects. Each object `MUST` have a "title" and a "path" property. The "title" properties are human-readable strings. The "path" property is the fully-qualified URL to the resource, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
 
@@ -324,13 +324,13 @@ If present, it `MUST` be a non-empty array of objects. Each object `MUST` have a
 
 The `created` property contains the date on which the schema was created. 
 
-If present, it `MUST` be an [ISO 8601] date (YYYY-MM-DD).
+If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) date (YYYY-MM-DD).
  
 #### `lastModified`
        
 The `lastModified` property contains the date on which the scheam was last modified.
 
-If present, it `MUST` be an [ISO 8601] date (YYYY-MM-DD).
+If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) date (YYYY-MM-DD).
 
 #### `version`
 
