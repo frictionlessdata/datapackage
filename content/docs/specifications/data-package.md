@@ -266,3 +266,15 @@ An example of the object structure is as follows:
   "path": "http://data.worldbank.org/indicator/NY.GDP.MKTP.CD"
 }]
 ```
+
+## Related Work
+
+Data Package draws content and/or inspiration from, among others, the following specifications and implementations:
+
+- [DataCite](https://schema.datacite.org/)
+- [Zenodo](https://zenodo.org/)
+- [DCAT](https://www.w3.org/TR/vocab-dcat-3/)
+- [CKAN](https://ckan.org/)
+- [OAI-ORE](https://www.openarchives.org/ore/)
+- [DataONE](https://dataone-architecture-documentation.readthedocs.io/en/latest/design/DataPackage.html)
+- [Research Object Bundle](https://www.researchobject.org/specifications/bundle/)
