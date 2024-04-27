@@ -200,7 +200,9 @@ List of licenses as for [Data Package](../data-package/#licenses). If not specif
 
 The properties below are applicable to any Tabular Data Resource.
 
-#### `data`
+#### `path` or `data` [required]
+
+If the `path` property is used for providing data than it `MUST` contain [Tabular Data](../glossary/#tabular-data).
 
 If the `data` property is used for providing data for a Tabular Data Resource than it `MUST` be an `array` where each item in the array `MUST` be either:
 
