@@ -77,7 +77,7 @@ Several example data packages can be found in the [datasets organization on gith
 
 Data Package descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
-When available as a file a descriptor `MUST` be named `datapackage.json` and it `MUST` be placed in the top-level directory (relative to any other resources provided as part of the data package).
+When a data package is available as a physical or virtual directory containing files, a descriptor `MUST` be named `datapackage.json` and it `MUST` be placed on the top-level of the file structure (relative to any other resources provided as part of the data package).
 
 The descriptor is the central file in a Data Package. It provides:
 
