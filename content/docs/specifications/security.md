@@ -7,7 +7,7 @@ sidebar:
 <table>
   <tr>
     <th>Authors</th>
-    <td>Johannes Jander</td>
+    <td>Johannes Jander, Data Package Working Group</td>
   </tr>
 </table>
 
