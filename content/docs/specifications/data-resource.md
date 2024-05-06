@@ -190,7 +190,7 @@ The MD5 hash for this resource. Other algorithms can be indicated by prefixing t
 
 #### `sources`
 
-List of data sources as for [Data Package](../data-package/#sources).
+List of data sources as for [Data Package](../data-package/#sources). If not specified the resource inherits from the data package.
 
 #### `licenses`
 
