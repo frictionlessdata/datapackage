@@ -1,5 +1,7 @@
 ---
 title: Enum Labels and Ordering
+sidebar:
+  hidden: true
 ---
 
 <table>

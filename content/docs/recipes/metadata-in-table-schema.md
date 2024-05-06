@@ -1,5 +1,7 @@
 ---
 title: Metadata in Table Schema
+sidebar:
+  hidden: true
 ---
 
 <table>
