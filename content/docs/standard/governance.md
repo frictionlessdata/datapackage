@@ -27,7 +27,7 @@ The composition of the working group:
 - **Paul Walsh** (Link Digital)
 - **Pieter Huybrechts** (Research Institute for Nature and Forest (INBO))
 
-## Advisory Members
+### Advisory Members
 
 - **Martin Durant** (Anaconda, inc.)
 - **Adam Kariv** (The Public Knowledge Workshop)
