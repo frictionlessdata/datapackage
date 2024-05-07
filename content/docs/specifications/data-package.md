@@ -19,7 +19,7 @@ A simple container format for describing a coherent collection of data in a sing
 
 ## Language
 
-The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 ## Introduction
 
@@ -221,8 +221,8 @@ An Array of string keywords to assist users searching for the package in catalog
 The people or organizations who contributed to this Data Package. It `MUST` be an array. Each entry is a Contributor and `MUST` be an `object`. A Contributor `MUST` have at least one property. A Contributor is `RECOMMENDED` to have `title` property and `MAY` contain `givenName`, `familyName`, `path`, `email`, `roles`, and `organization` properties:
 
 - `title`: A string containing a name of the contributor.
-- `givenName`: A string containing name a person has been given, if the contributor is a person.
-- `familyName`: A string containing familial name that a person inherits, if the contributor is a person.
+- `givenName`: A string containing the name a person has been given, if the contributor is a person.
+- `familyName`: A string containing the familial name that a person inherits, if the contributor is a person.
 - `path`: A fully qualified URL pointing to a relevant location online for the contributor.
 - `email`: A string containing an email address.
 - `roles`: An array of strings describing the roles of the contributor. A role is `RECOMMENDED` to follow an established vocabulary, such as [DataCite Metadata Schema's contributorRole](https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype) or [CreDIT](https://credit.niso.org/). Useful roles to indicate are: `creator`, `contact`, `rightsHolder`, and `dataCurator`.
