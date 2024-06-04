@@ -1,0 +1,33 @@
+{
+  "name": "name-of-package",
+  "id": "https://example.org/id/1234",
+  "licenses": [{
+    "name": "ODC-PDDL-1.0",
+    "path": "http://opendatacommons.org/licenses/pddl/",
+    "title": "Open Data Commons Public Domain Dedication and License v1.0"
+  }],
+  "title": "A nice title",
+  "description": "whatever...",
+  "homepage": "http://example.org",
+  "version": "1.2.3",
+  "sources": [{
+    "title": "Sample Source",
+    "path": "http://example.org/source",
+    "email": "archive@example.org",
+    "version": "0.0.1"
+  }],
+  "contributors": [{
+    "title": "Ex Ample",
+    "email": "ex@example.org",
+    "path": "http://example.org/staff/ex",
+    "organization": "Acme",
+    "role": "author"
+  }],
+  "keywords": [ "example", "stuff" ],
+  "image": "http://example.org/image.png",
+  "created": "1985-04-12T23:20:50.52Z",
+  "resources": [{
+    "name": "resource-name",
+    "path": "http://example.org/resource-path.csv"
+  }]
+}
