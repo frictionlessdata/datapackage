@@ -662,6 +662,9 @@
               },
               "sheetName": {
                 "type": "string"
+              },
+              "table": {
+                "type": "string"
               }
             }
           },
