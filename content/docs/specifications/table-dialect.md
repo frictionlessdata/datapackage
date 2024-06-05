@@ -23,7 +23,7 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Introduction
 
-Table Dialect defines set of properties that can be used by data producers and data consumers to ensure data interoperability in various tabular data formats such as CSV, JSON, or Excel. The main goal of this specification is to define a common language for defining tabular data dialects. It is not expected that all the properties are supported by all the Data Package implementations. An implementation `MUST` choose the most suitable strategy for communicating to the users if some relevant feature is not supported.
+Table Dialect defines set of properties that can be used by data producers and data consumers to ensure data interoperability in various [Tabular Data](../glossary/#tabular-data) formats such as CSV, JSON, or Excel. The main goal of this specification is to define a common language for defining tabular data dialects. It is not expected that all the properties are supported by all the Data Package implementations. An implementation `MUST` choose the most suitable strategy for communicating to the users if some relevant feature is not supported.
 
 Table Dialect is useful for programmes which might have to deal with multiple dialects of tabular files, but which can rely on being told out-of-band which dialect will be used in a given input stream. This reduces the need for heuristic inference of dialects, and simplifies the implementation of readers, which must juggle dialect inference, schema inference, unseekable input streams, character encoding issues, and the lazy reading of very large input streams.
 

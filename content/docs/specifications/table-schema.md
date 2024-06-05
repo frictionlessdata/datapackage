@@ -25,49 +25,10 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data. Table Schema is well suited for use cases around handling and validating tabular data in text formats such as CSV, but its utility extends well beyond this core usage, towards a range of applications where data benefits from a portable schema format.
 
-## Concepts
+This specification heavily relies on the following concepts:
 
-### Tabular Data
-
-Tabular data consists of a set of rows. Each row has a set of fields (columns). We usually expect that each row has the same set of fields and thus we can talk about _the_ fields for the table as a whole.
-
-In case of tables in spreadsheets or CSV files we often interpret the first row as a header row, giving the names of the fields. By contrast, in other situations, e.g. tables in SQL databases, the field names are explicitly designated.
-
-To illustrate, here's a classic spreadsheet table:
-
-```text
-field     field
-  |         |
-  |         |
-  V         V
-
- A     |    B    |    C    |    D      <--- Row (Header)
- ------------------------------------
- valA  |   valB  |  valC   |   valD    <--- Row
- ...
-```
-
-In JSON, a table would be:
-
-```json
-[
-  { "A": value, "B": value, ... },
-  { "A": value, "B": value, ... },
-  ...
-]
-```
-
-### Data Representation
-
-In order to talk about the representation and processing of tabular data from text-based sources, it is useful to introduce the concepts of the _physical_ and the _logical_ representation of data.
-
-The _physical representation_ of data refers to the representation of data as text on disk, for example, in a CSV or JSON file. This representation can have some _type_ information (JSON, where the primitive types that JSON supports can be used) or not (CSV, where all data is represented in string form).
-
-The _logical representation_ of data refers to the "ideal" representation of the data in terms of primitive types, data structures, and relations, all as defined by the specification. We could say that the specification is about the logical representation of data, as well as about ways in which to handle conversion of a physical representation to a logical one.
-
-In this document, we'll explicitly refer to either the _physical_ or _logical_ representation in places where it prevents ambiguity for those engaging with the specification, especially implementors.
-
-For example, `constraints` `SHOULD` be tested on the logical representation of data, whereas a property like `missingValues` applies to the physical representation of the data.
+- [Tabular Data](../glossary/#tabular-data)
+- [Data Representation](../glossary/#data-representation)
 
 ## Descriptor
 
