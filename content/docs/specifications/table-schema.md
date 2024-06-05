@@ -366,7 +366,7 @@ An example value for the field
 
 See [Field Constraints](#field-constraints)
 
-#### `categories` / `categoriesOrdered`
+#### `categories`
 
 `string` and `integer` field types `MAY` include a `categories` property to restrict the field to a finite set of possible values (similar to an [`enum`](#enum) constraint) and indicate that the field `MAY` be loaded as a categorical data type if supported by the implementation. The `categories` property `MUST` be either (a) an array of unique values or (b) an array of objects, each with a unique `value` property. The logical representation of data in the field `MUST` exactly match one of the values in `categories`.
 
@@ -394,6 +394,10 @@ If `categories` is (b) an array of objects, each object `MAY` also have a `label
 }
 ```
 
+An `enum` constraint `MAY` be added to a field with a `categories` property, but if so, the `enum` values `MUST` be a subset of the values in `categories`.
+
+#### `categoriesOrdered`
+
 When the `categories` property is defined, it `MAY` be accompanied by a `categoriesOrdered` property in the field definition. When present, the `categoriesOrdered` property `MUST` be `boolean`. When `categoriesOrdered` is `true`, implementations `SHOULD` regard the order of appearance of the values in the `categories` property as their natural order. For example:
 
 ```json
@@ -412,8 +416,6 @@ When the `categories` property is defined, it `MAY` be accompanied by a `categor
 ```
 
 When the property `categoriesOrdered` is `false`, implementations `SHOULD` assume that the categories do not have a natural order; when the property is not present, no assumption about the ordered nature of the values `SHOULD` be made.
-
-An `enum` constraint `MAY` be added to a field with a `categories` property, but if so, the `enum` values `MUST` be a subset of the values in `categories`.
 
 #### `missingValues`
 
