@@ -127,11 +127,20 @@ A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be 
 
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
-`missingValues` dictates which string values `MUST` be treated as `null` values. This conversion to `null` is done before any other attempted type-specific string conversion. The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. Providing the empty list `[]` means that no conversion to null will be done, on any value.
+`missingValues` dictates which values `SHOULD` be treated as missing values. Depending on implementation support for representing missing values, implementations `MAY` offer different ways of handling missingness when loading a field, including but not limited to: converting all missing values to `null`, loading missing values inline with a field's logical values, or loading the missing values for a field in a separate, additional column.
 
-`missingValues` `MUST` be an `array` where each entry is a `string`.
+`missingValues` `MUST` be an `array` where each entry is a unique `string`, or an `array` where each entry is an `object`.
 
-**Why strings**: `missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.
+If an `array` of `object`s is provided, each object `MUST` have a unique `value` and optional unique `label` property. The `value` property `MUST` be a `string` that represents the missing value. The optional `label` property `MUST` be a `string` that provides a human-readable label for the missing value. For example:
+
+```json
+"missingValues": [
+  { "value": "", "label": "OMITTED" },
+  { "value": "-99", "label": "REFUSED" }
+]
+```
+
+**Why strings**: `missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing values which are not of their type, for example a `number` field to have missing values indicated by `-`.
 
 Examples:
 
@@ -140,6 +149,8 @@ Examples:
 "missingValues": ["-"]
 "missingValues": ["NaN", "-"]
 ```
+
+When implementations choose to convert missing values to null, this conversion to `null` `MUST` be done before any other attempted type-specific string conversion. The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. Providing the empty list `[]` means that no conversion to null will be done, on any value.
 
 #### `primaryKey`
 
@@ -354,6 +365,55 @@ An example value for the field
 #### `constraints`
 
 See [Field Constraints](#field-constraints)
+
+#### `categories` / `categoriesOrdered`
+
+`string` and `integer` field types `MAY` include a `categories` property to restrict the field to a finite set of possible values (similar to an [`enum`](#enum) constraint) and indicate that the field `MAY` be loaded as a categorical data type if supported by the implementation. The `categories` property `MUST` be either (a) an array of unique values or (b) an array of objects, each with a unique `value` property. The logical representation of data in the field `MUST` exactly match one of the values in `categories`.
+
+Suppose we have a field `fruit` with possible values `"apple"`, `"orange"`, or `"banana"`. The field definition would look like this if `categories` is (a) an array of values:
+
+```json
+{
+  "name": "fruit",
+  "type": "string",
+  "categories": ["apple", "orange", "banana"]
+}
+```
+
+If `categories` is (b) an array of objects, each object `MAY` also have a `label` property, which when present, `MUST` be a `string`. Labels `MUST` be unique within `categories` definitions. In our example, this allows us to store our fruit with values `0`, `1`, and `2` in an `integer` field and label them as `"apple"`, `"orange"`, and `"banana"`:
+
+```json
+{
+  "name": "fruit",
+  "type": "integer",
+  "categories": [
+    { "value": 0, "label": "apple" },
+    { "value": 1, "label": "orange" },
+    { "value": 2, "label": "banana" }
+  ]
+}
+```
+
+When the `categories` property is defined, it `MAY` be accompanied by a `categoriesOrdered` property in the field definition. When present, the `categoriesOrdered` property `MUST` be `boolean`. When `categoriesOrdered` is `true`, implementations `SHOULD` regard the order of appearance of the values in the `categories` property as their natural order. For example:
+
+```json
+{
+  "name": "agreementLevel",
+  "type": "integer",
+  "categories": [
+    { "value": 1, "label": "Strongly Disagree" },
+    { "value": 2 },
+    { "value": 3 },
+    { "value": 4 },
+    { "value": 5, "label": "Strongly Agree" }
+  ],
+  "categoriesOrdered": true
+}
+```
+
+When the property `categoriesOrdered` is `false`, implementations `SHOULD` assume that the categories do not have a natural order; when the property is not present, no assumption about the ordered nature of the values `SHOULD` be made.
+
+An `enum` constraint `MAY` be added to a field with a `categories` property, but if so, the `enum` values `MUST` be a subset of the values in `categories`.
 
 #### `missingValues`
 
