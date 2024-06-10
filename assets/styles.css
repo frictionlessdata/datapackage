@@ -1,5 +1,4 @@
 :root {
-  /* --sl-font: "HK-Grotesk", sans-serif; */
   --purple-hsl: 209, 60%, 60%;
   --overlay-blurple: hsla(var(--purple-hsl), 0.2);
   --scrollbar-color: #ddd;
@@ -7,13 +6,15 @@
 
 :root[data-theme="light"] {
   --purple-hsl: 209, 85%, 65%;
-  --sl-color-text-accent: #61d2fe;
-  --sl-color-banner-bg: #dca45b;
+  --sl-color-text-accent: #1971c2;
+  --sl-color-banner-bg: #1971c2;
+  --sl-color-bg-inline-code: #f6f8fa;
 }
 
 :root[data-theme="dark"] {
-  --sl-color-text-accent: #61d2fe;
-  --sl-color-banner-bg: #dca45b;
+  --sl-color-text-accent: #4dabf7;
+  --sl-color-banner-bg: #4dabf7;
+  --sl-color-bg-inline-code: #23262f;
 }
 
 /* Firefox */

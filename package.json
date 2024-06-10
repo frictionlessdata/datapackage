@@ -19,21 +19,20 @@
   },
   "devDependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.5.4",
-    "@astrojs/markdown-remark": "^4.3.2",
-    "@astrojs/starlight": "^0.21.2",
+    "@astrojs/markdown-remark": "^5.1.0",
+    "@astrojs/starlight": "^0.23.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
-    "astro": "^4.5.10",
+    "astro": "^4.9.3",
     "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^0.33.1",
+    "eslint-plugin-astro": "^1.2.0",
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
     "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "rehype-autolink-headings": "^7.1.0",
-    "typeface-hk-grotesk": "^1.0.0"
+    "prettier-plugin-astro": "^0.14.0",
+    "rehype-autolink-headings": "^7.1.0"
   }
 }

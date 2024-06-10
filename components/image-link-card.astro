@@ -13,6 +13,6 @@ const { title, description, imageSrc, ...rest } = Astro.props
 
 <LinkCard
   title={title}
-  description={`<img src="${imageSrc}" /> ${description}`}
+  description={`<img src="${imageSrc}" alt="${title}" /> ${description}`}
   {...rest}
 />
