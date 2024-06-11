@@ -266,66 +266,70 @@ If the value of the `foreignKey.reference.resource` property is an empty string 
 Data consumer MUST support the `foreignKey.fields` and `foreignKey.reference.fields` properties in a form of a single string e.g. `"fields": "a"` which was a part of the `v1.0` of the specification.
 :::
 
-### Schema metadata
-
-In addition, a Table Schema descriptor `MAY` contain these additional optional standard properties giving contextual information to the schema:
-
 #### `name`
 
-The `name` property is an URL-friendly identifier string for the schema. 
+The name is an URL-friendly identifier string to be used for the schema. 
 
-If present, it `MUST` be a non-empty and lower-case string, containaing only alphanumeric characters along with the dash "-" character. It `MUST` not exceed 100 characters.
+If present :
+
+- it `MUST` be a non-empty and lower-case string, containaing only lowercase 
+  English alphanumeric characters plus dashes `-`.
+- It `MUST` not exceed 100 characters.
+- It would be usual for the name to correspond to the file name or an URL 
+  segment under which the schema is distributed.
 
 #### `title`
        
-The `title` property is a nicer, human-readable title for the schema.
-
-If present, it `MUST` be a non-empty string, and not exceed 100 characters.
+A string providing a title or one sentence description for this schema.
 
 #### `description`
        
-The `description` property is a text description for the schema.
-
-If present, it `MUST` be a non-empty string.
+A description of the schema. The description MUST be markdown formatted — this 
+also allows for simple plain text as plain text is itself valid markdown. The 
+first paragraph (up to the first double line break) SHOULD be usable as 
+summary information for the package.
 
 #### `homepage`
        
-The `homepage` property gives a reference URL related to the schema. 
+A URL for the home on the web that is related to this data package.
 
 If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). 
 
 #### `path`
 
-The `homepage` property gives a direct path to the schema itself.
+The `path` property gives a direct path to the schema itself.
 
 If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). The response body content `MUST` be exactly the schema.
 
 #### `sources`
 
-The `sources` property contains documentation sources related to the schema. 
-
-If present, it `MUST` be a non-empty json array of objects, each of which `MUST` have the properties "title" and "path".
-
-The "title" properties give a human-readable title to the source, and MUST be a non empty string. The "path" properties are the link to the resources, and MUST be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
+List of documentation sources as for [Data 
+Package](https://datapackage.org/specifications/data-package/#sources). If not 
+specified the resource inherits from the data package.
 
 #### `keywords`
 
 The `keywords` property is a list of short keywords related to the schema.
 
 If present, it `MUST` be a non-empty array of strings.
- 
-#### `resources`
 
-The `resources` property contains links to example data resources. This allows the schema to be shared with data resources to illustrate it, with valid and even invalid files.
+#### `examples`
 
-If present, it `MUST` be a non-empty array of objects. Each object `MUST` have a "title" and a "path" property. The "title" properties are human-readable strings. The "path" property is the fully-qualified URL to the resource, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
+The `examples` property contains links to example data resources. This allows 
+the schema to be shared with data resources to illustrate it, with valid and 
+even invalid files.
+
+If present, it `MUST` be a non-empty array of objects. Each object `MUST` have 
+a "title" and a "path" property. The "title" properties are human-readable 
+strings. The "path" property is the URL to the resource, it `MUST` be a fully 
+qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
 
 #### `created`
 
 The `created` property contains the date on which the schema was created. 
 
 If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) date (YYYY-MM-DD).
- 
+
 #### `lastModified`
        
 The `lastModified` property contains the date on which the scheam was last modified.
@@ -334,18 +338,18 @@ If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-tim
 
 #### `version`
 
-The `version` property stores the version number of the schema. 
+The `version` property stores the version of the schema, as for [Data 
+Package](https://datapackage.org/specifications/data-package/#version). If not 
+specified the schema inherits from the data package.
 
-If present, it `MUST` follow the [semantic versioning 2.0.0](https://semver.org/) format, possibly prefixed with the letter "v".
-       
-Examples: "2.3.0" or "v2.3.0" or "2.3.0-beta"
  
 #### `contributors`
 
-The `contributors` property contains a list of contributors to the schema. 
+The `contributors` property stores people or oganizations that contributed to 
+the schema, as for [Data 
+Package](https://datapackage.org/specifications/data-package/#contributors).  
+If not specified the schema inherits from the data package.
 
-If present, it `MUST` be a non-empty array of objects. Each object `MUST` have the property "title", and `MAY` have the additional properties "email", "organisation" and "role". All properties `MUST` be non-empty strings if present.
- 
 ### Field
 
 A field descriptor `MUST` be a JSON `object` that describes a single field. The descriptor provides additional human-readable documentation for a field, as well as additional information that can be used to validate the field or create a user interface for data entry.
@@ -354,7 +358,8 @@ Here is an illustration:
 
 ```json
 {
-  "name": "name of field (e.g. column name)",
+  "name": "name of field (e.g. column name), as for [Data 
+Package](https://datapackage.org/specifications/data-package/#version)
   "title": "A nicer human readable label or title for the field",
   "type": "A string specifying the type",
   "format": "A string specifying a format",
