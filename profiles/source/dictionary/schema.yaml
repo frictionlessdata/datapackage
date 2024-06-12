@@ -224,9 +224,20 @@ tableSchemaFalseValues:
     type: string
   default: ["false", "False", "FALSE", "0"]
 tableSchemaMissingValues:
-  type: array
-  items:
-    type: string
+  anyOf:
+    - type: array
+      items:
+        type: string
+    - type: array
+      items:
+        type: object
+        required:
+          - value
+        properties:
+          value:
+            type: string
+          label:
+            type: string
   default:
     - ""
   description: Values that when encountered in the source, should be considered
@@ -269,6 +280,10 @@ tableSchemaFieldString:
       "$ref": "#/definitions/example"
     missingValues:
       "$ref": "#/definitions/tableSchemaMissingValues"
+    categories:
+      "$ref": "#/definitions/tableSchemaCategoriesString"
+    categoriesOrdered:
+      "$ref": "#/definitions/tableSchemaCategoriesOrdered"
     type:
       description: The type keyword, which `MUST` be a value of `string`.
       enum:
@@ -397,6 +412,10 @@ tableSchemaFieldInteger:
       "$ref": "#/definitions/example"
     missingValues:
       "$ref": "#/definitions/tableSchemaMissingValues"
+    categories:
+      "$ref": "#/definitions/tableSchemaCategoriesInteger"
+    categoriesOrdered:
+      "$ref": "#/definitions/tableSchemaCategoriesOrdered"
     type:
       description: The type keyword, which `MUST` be a value of `integer`.
       enum:
@@ -1363,3 +1382,35 @@ tableSchemaGroupChar:
   type: string
   title: groupChar
   description: A string whose value is used to group digits within the number. This property does not have a default value. A common value is `,` e.g. '100,000'.
+tableSchemaCategoriesString:
+  anyOf:
+    - type: array
+      items:
+        type: string
+    - type: array
+      items:
+        type: object
+        required:
+          - value
+        properties:
+          value:
+            type: string
+          label:
+            type: string
+tableSchemaCategoriesInteger:
+  anyOf:
+    - type: array
+      items:
+        type: integer
+    - type: array
+      items:
+        type: object
+        required:
+          - value
+        properties:
+          value:
+            type: integer
+          label:
+            type: string
+tableSchemaCategoriesOrdered:
+  type: boolean
