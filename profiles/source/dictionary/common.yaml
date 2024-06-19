@@ -97,7 +97,21 @@ path:
   title: Path
   description: A fully qualified URL, or a POSIX file path.
   type: string
-  pattern: "^(?=^[^.\/~])(^((?!\\.{2}).)*$).*$"
+  # https://regex101.com/r/sLZLeK/3
+  pattern: '^((?=[^./~])(?!file:)((?!\/\.\.\/)(?!\\)(?!:\/\/).)*|(http|ftp)s?:\/\/.*)$'
+  # ^ — start of string
+  # ( — two alternatives, the POSIX path or the (HTTP|FTP)(S) URL
+  #   (?=[^./~]) — first character of POSIX path is not . / or ~
+  #   (?!file:) — must not start with file:
+  #   (
+  #     (?!/\.\./) — must not contain /../
+  #     (?!\\) — must not contain backslashes
+  #     (?!:\/\/) — must not contain URL-like schemes, ftp:// etc.
+  #     . — a character
+  #   )* — repeat to the end
+  # |
+  #   (http|ftp)s?:\/\/.* — or must start http://, https://, ftp://, or ftps://
+  # )$ — end of string
   examples:
     - |
       {
