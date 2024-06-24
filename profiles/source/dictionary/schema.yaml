@@ -89,8 +89,6 @@ tableSchema:
       "$ref": "#/definitions/description"
     homepage:
       "$ref": "#/definitions/homepage"
-    sources:
-      "$ref": "#/definitions/sources"
     keywords:
       "$ref": "#/definitions/keywords"
     examples:

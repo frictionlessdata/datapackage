@@ -285,11 +285,6 @@ A URL for the home on the web that is related to this data package.
 
 If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). 
 
-#### `sources`
-
-List of documentation sources as for [Data 
-Package](https://datapackage.org/specifications/data-package/#sources).
-
 #### `keywords`
 
 The `keywords` property is a list of short keywords related to the schema.

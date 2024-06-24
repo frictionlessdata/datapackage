@@ -2892,54 +2892,6 @@
             "{\n  \"homepage\": \"http://example.com/\"\n}\n"
           ]
         },
-        "sources": {
-          "title": "Sources",
-          "description": "The raw sources for this resource.",
-          "type": "array",
-          "minItems": 0,
-          "items": {
-            "title": "Source",
-            "description": "A source file.",
-            "type": "object",
-            "minProperties": 1,
-            "properties": {
-              "title": {
-                "title": "Title",
-                "description": "A human-readable title.",
-                "type": "string",
-                "examples": [
-                  "{\n  \"title\": \"My Package Title\"\n}\n"
-                ]
-              },
-              "path": {
-                "title": "Path",
-                "description": "A fully qualified URL, or a POSIX file path.",
-                "type": "string",
-                "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
-                "examples": [
-                  "{\n  \"path\": \"file.csv\"\n}\n",
-                  "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
-                ],
-                "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
-              },
-              "email": {
-                "title": "Email",
-                "description": "An email address.",
-                "type": "string",
-                "format": "email",
-                "examples": [
-                  "{\n  \"email\": \"example@example.com\"\n}\n"
-                ]
-              },
-              "version": {
-                "type": "string"
-              }
-            }
-          },
-          "examples": [
-            "{\n  \"sources\": [\n    {\n      \"title\": \"World Bank and OECD\",\n      \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"
-          ]
-        },
         "keywords": {
           "title": "Keywords",
           "description": "A list of keywords that describe this descriptor.",
@@ -2999,16 +2951,6 @@
           "format": "date-time",
           "examples": [
             "{\n  \"created\": \"1985-04-12T23:20:50.52Z\"\n}\n"
-          ]
-        },
-        "updated": {
-          "title": "Updated",
-          "description": "The datetime on which this descriptor was last updated.",
-          "context": "The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)",
-          "type": "string",
-          "format": "date-time",
-          "examples": [
-            "{\n  \"updated\": \"1985-04-12T23:20:50.52Z\"\n}\n"
           ]
         },
         "version": {
