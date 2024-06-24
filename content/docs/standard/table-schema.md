@@ -314,8 +314,9 @@ even invalid files.
 
 If present, it `MUST` be a non-empty array of objects. Each object `MUST` have 
 a "title" and a "path" property. The "title" properties are human-readable 
-strings. The "path" property is the URL to the resource, it `MUST` be a fully 
-qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
+strings. The "path" property is the URL to the example resource, it `MUST` be 
+a fully qualified URL as described in [RFC 
+1738](https://www.ietf.org/rfc/rfc1738.txt).
 
 #### `created`
 
