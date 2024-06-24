@@ -268,15 +268,7 @@ Data consumer MUST support the `foreignKey.fields` and `foreignKey.reference.fie
 
 #### `name`
 
-The name is an URL-friendly identifier string to be used for the schema. 
-
-If present :
-
-- it `MUST` be a non-empty and lower-case string, containaing only lowercase 
-  English alphanumeric characters plus dashes `-`.
-- It `MUST` not exceed 100 characters.
-- It would be usual for the name to correspond to the file name or an URL 
-  segment under which the schema is distributed.
+A simple name or identifier as for [Data Package](https://datapackage.org/specifications/data-package/#name)
 
 #### `title`
        
@@ -284,10 +276,8 @@ A string providing a title or one sentence description for this schema.
 
 #### `description`
        
-A description of the schema. The description MUST be markdown formatted — this 
-also allows for simple plain text as plain text is itself valid markdown. The 
-first paragraph (up to the first double line break) SHOULD be usable as 
-summary information for the package.
+A description of the schema as for [Data 
+Package](https://datapackage.org/specifications/data-package/#description).
 
 #### `homepage`
        
