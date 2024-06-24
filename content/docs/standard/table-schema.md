@@ -320,15 +320,9 @@ qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt).
 
 #### `created`
 
-The `created` property contains the date on which the schema was created. 
-
-If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) date (YYYY-MM-DD).
-
-#### `lastModified`
-       
-The `lastModified` property contains the date on which the scheam was last modified.
-
-If present, it `MUST` be an [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) date (YYYY-MM-DD).
+The `created` property contains the datetime on which the schema was created, 
+or last updated, as for [Data 
+Package](https://datapackage.org/specifications/data-package/#created)
 
 #### `version`
 

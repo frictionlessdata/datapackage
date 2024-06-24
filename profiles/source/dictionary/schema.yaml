@@ -97,8 +97,6 @@ tableSchema:
       "$ref": "#/definitions/tableSchemaExamples"
     created:
       "$ref": "#/definitions/created"
-    updated:
-      "$ref": "#/definitions/tableSchemaUpdated"
     version:
       "$ref": "#/definitions/version"
     contributors:
@@ -312,19 +310,6 @@ tableSchemaExample:
     path:
       "$ref": "#/definitions/path"
   required: ["title", "path"]
-tableSchemaUpdated:
-  title: Updated
-  description: The datetime on which this descriptor was last updated.
-  context: The datetime must conform to the string formats for datetime as described
-    in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)
-  type: string
-  format: date-time
-  examples:
-    - |
-      {
-        "updated": "1985-04-12T23:20:50.52Z"
-      }
-
 tableSchemaFieldString:
   type: object
   title: String Field
