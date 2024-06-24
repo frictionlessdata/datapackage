@@ -295,12 +295,6 @@ A URL for the home on the web that is related to this data package.
 
 If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). 
 
-#### `path`
-
-The `path` property gives a direct path to the schema itself.
-
-If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https://www.ietf.org/rfc/rfc1738.txt). The response body content `MUST` be exactly the schema.
-
 #### `sources`
 
 List of documentation sources as for [Data 
