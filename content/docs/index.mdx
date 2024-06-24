@@ -6,11 +6,11 @@ template: splash
 editUrl: false
 hero:
   tagline: |
-    <strong>Data Package</strong> is a <strong>standard</strong>
-    containing a set of <strong>lightweight specifications</strong>
-    for describing datasets and individual data files.
-    In other words, data package is a data definition language (DDL) and data API
-    that enables and ensures <strong>data quality, accessibility, and interoperability</strong>.
+    Data Package is a <strong>standard</strong> consisting of a set of 
+    <strong>simple yet extensible specifications</strong> 
+    to describe datasets, data files and tabular data.
+    It is a data definition language (DDL) and data API that facilitates 
+    <strong>data quality, accessibility, and interoperability</strong>.
   image:
     file: ../../assets/hero.png
     alt: Data Packages Illustration
@@ -30,7 +30,7 @@ banner:
   content: |
     <p>
       It's a live draft of the <strong>Data Package (v2) standard</strong>.
-      Please read the <a href="https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/" target="_blank">announcement</a>
+      Please read the <a href="https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/" target="_blank">announcement</a>.
     </p>
 ---
 
@@ -40,24 +40,20 @@ import { CardGrid, LinkCard, Card } from "@astrojs/starlight/components"
 
 ## Standard
 
-The Data Package Standard is a comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner -- [EXPLORE THE STANDARD](/standard/specifications)
+The Data Package standard is a comprehensive set of **specifications** that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner -- [EXPLORE THE STANDARD](/standard/specifications)
 
 <CardGrid>
   <Card title="Data Package" icon="open-book">
-    A simple container format for describing a coherent collection of data in a single
-    package
+    A simple container format to describe a coherent collection of data (a dataset), including  its contributors, licenses, etc.
   </Card>
   <Card title="Data Resource" icon="rocket">
-    A simple format to describe and package a single data resource such as a individual
-    table or file.
+    A simple format to describe a data resource such as a individual table or file, including its name, format, path, etc.
   </Card>
   <Card title="Table Dialect" icon="document">
-    Table Dialect defines a simple format to describe the various dialects of tabular
-    files in a language agnostic manner.
+    A simple format to describe the dialect of a tabular data file, including its delimiter, header rows, escape characters, etc.
   </Card>
   <Card title="Table Schema" icon="puzzle">
-    A simple format to declare a schema for tabular data. The schema is designed to be
-    expressible in JSON.
+    A simple format to describe tabular data, including field names, types, constraints, missing values, foreign keys, etc.
   </Card>
 </CardGrid>
 
@@ -65,7 +61,7 @@ The Data Package Standard is a comprehensive set of specifications that collecti
 
 ## Software
 
-Data Package is backed by a rich software toolkit supporting the standard. From no-code visual tool **Open Data Editor** to low-level drivers for 10 programming languages -- [EXPLORE THE SOFTWARE](/standard/software)
+Data Package is backed by a suite of software tools supporting the standard. From the no-code visual tool **Open Data Editor** to low-level drivers for 10 programming languages -- [EXPLORE THE SOFTWARE](/standard/software)
 
 [![Open Data Editor](../../assets/software/ode.png)](https://opendataeditor.okfn.org)
 
@@ -73,7 +69,7 @@ Data Package is backed by a rich software toolkit supporting the standard. From 
 
 ## Adoption
 
-Data Package use cases encompass a wide range of scenarios where this standardized data packaging format proves invaluable for efficient data management, sharing, and analysis -- [EXPLORE THE ADOPTION](/standard/adoption)
+Data Package is used for a wide range of scenarios where this standardized data packaging format proves invaluable for efficient data management, sharing, and analysis -- [EXPLORE THE ADOPTION](/standard/adoption)
 
 <Adoption />
 
