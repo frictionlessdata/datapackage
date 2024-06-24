@@ -7,7 +7,8 @@
     "npm": "^10.0.0"
   },
   "scripts": {
-    "build": "astro build && npm run profiles",
+    "anchors": "node anchors/build.js",
+    "build": "astro build && npm run profiles && npm run anchors",
     "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' +",
     "format": "eslint --fix . && prettier --write .",
     "generate": "astro sync",
@@ -34,6 +35,7 @@
     "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.14.0",
-    "rehype-autolink-headings": "^7.1.0"
+    "rehype-autolink-headings": "^7.1.0",
+    "replace-in-file": "^8.0.0"
   }
 }
