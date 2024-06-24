@@ -77,7 +77,7 @@ Delimited formats is a group of textual formats such as CSV and TSV. Their chara
 - [headerRows](#headerRows): `1` by default
 - [headerJoin](#headerJoin): ` ` by default
 - [commentRows](#commentRows): undefined by default
-- [commentChar](#commentChar): undefined by default 
+- [commentChar](#commentChar): undefined by default
 - [delimiter](#delimiter): `,` by default
 - [lineTerminator](#lineTerminator): `\r\n` by default
 - [quoteChar](#quoteChar): `"` by default
