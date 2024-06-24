@@ -298,8 +298,7 @@ If present, it `MUST` be a fully qualified URL as described in [RFC 1738](https:
 #### `sources`
 
 List of documentation sources as for [Data 
-Package](https://datapackage.org/specifications/data-package/#sources). If not 
-specified the resource inherits from the data package.
+Package](https://datapackage.org/specifications/data-package/#sources).
 
 #### `keywords`
 
@@ -328,7 +327,7 @@ Package](https://datapackage.org/specifications/data-package/#created)
 
 The `version` property stores the version of the schema, as for [Data 
 Package](https://datapackage.org/specifications/data-package/#version). If not 
-specified the schema inherits from the data package.
+specified the schema inherits from the data package if distributed in a data package descriptor.
 
  
 #### `contributors`
@@ -336,7 +335,8 @@ specified the schema inherits from the data package.
 The `contributors` property stores people or oganizations that contributed to 
 the schema, as for [Data 
 Package](https://datapackage.org/specifications/data-package/#contributors).  
-If not specified the schema inherits from the data package.
+If not specified the schema inherits from the data package if distributed in a 
+data package descriptor.
 
 ### Field
 
