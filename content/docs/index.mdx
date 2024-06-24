@@ -6,10 +6,10 @@ template: splash
 editUrl: false
 hero:
   tagline: |
-    Data Package is a <strong>standard</strong> consisting of a set of 
-    <strong>simple yet extensible specifications</strong> 
+    Data Package is a <strong>standard</strong> consisting of a set of
+    <strong>simple yet extensible specifications</strong>
     to describe datasets, data files and tabular data.
-    It is a data definition language (DDL) and data API that facilitates 
+    It is a data definition language (DDL) and data API that facilitates
     <strong>data quality, accessibility, and interoperability</strong>.
   image:
     file: ../../assets/hero.png
@@ -36,6 +36,7 @@ banner:
 
 import About from "../../components/about.astro"
 import Adoption from "../../components/adoption.astro"
+import ClickableCard from "../../components/clickable-card.astro"
 import { CardGrid, LinkCard, Card } from "@astrojs/starlight/components"
 
 ## Standard
@@ -43,18 +44,30 @@ import { CardGrid, LinkCard, Card } from "@astrojs/starlight/components"
 The Data Package standard is a comprehensive set of **specifications** that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner -- [EXPLORE THE STANDARD](/standard/specifications)
 
 <CardGrid>
-  <Card title="Data Package" icon="open-book">
-    A simple container format to describe a coherent collection of data (a dataset), including  its contributors, licenses, etc.
-  </Card>
-  <Card title="Data Resource" icon="rocket">
-    A simple format to describe a data resource such as a individual table or file, including its name, format, path, etc.
-  </Card>
-  <Card title="Table Dialect" icon="document">
-    A simple format to describe the dialect of a tabular data file, including its delimiter, header rows, escape characters, etc.
-  </Card>
-  <Card title="Table Schema" icon="puzzle">
-    A simple format to describe tabular data, including field names, types, constraints, missing values, foreign keys, etc.
-  </Card>
+  <ClickableCard
+    title="Data Package"
+    icon="open-book"
+    href="/specifications/data-package"
+  >
+    A simple container format to describe a coherent collection of data (a dataset),
+    including its contributors, licenses, etc.
+  </ClickableCard>
+  <ClickableCard title="Data Resource" icon="rocket" href="/specifications/data-resource">
+    A simple format to describe a data resource such as a individual table or file,
+    including its name, format, path, etc.
+  </ClickableCard>
+  <ClickableCard
+    title="Table Dialect"
+    icon="document"
+    href="/specifications/table-dialect"
+  >
+    A simple format to describe the dialect of a tabular data file, including its
+    delimiter, header rows, escape characters, etc.
+  </ClickableCard>
+  <ClickableCard title="Table Schema" icon="puzzle" href="/specifications/table-schema">
+    A simple format to describe tabular data, including field names, types, constraints,
+    missing values, foreign keys, etc.
+  </ClickableCard>
 </CardGrid>
 
 <div style="margin-bottom: 5em"></div>
