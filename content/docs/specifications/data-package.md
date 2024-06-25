@@ -108,13 +108,13 @@ A file containing a Data Package descriptor `MAY` have other name rather than `d
 
 A Data Package descriptor `MUST` have `resoures` property and `SHOULD` have `name`, `id`, `licenses`, and `profile` properties.
 
-### `resources` [required]
+### `resources` [required] {#resources}
 
 The `resources` property is `REQUIRED`, with at least one resource.
 
 Packaged data resources are described in the `resources` property of the package descriptor. This property `MUST` be an array of `objects`. Each object `MUST` follow the [Data Resource ](../data-resource/) specification.
 
-### `$schema`
+### `$schema` {#dollar-schema}
 
 A root level Data Package descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 

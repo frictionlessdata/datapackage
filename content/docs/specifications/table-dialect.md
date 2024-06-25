@@ -132,7 +132,7 @@ Database formats is a group of formats accessing data from databases like SQLite
 
 ## Properties
 
-### `$schema`
+### `$schema` {#dollar-schema}
 
 A root level Table Dialect descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 

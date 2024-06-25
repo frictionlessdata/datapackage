@@ -7,8 +7,7 @@
     "npm": "^10.0.0"
   },
   "scripts": {
-    "anchors": "node anchors/build.js",
-    "build": "astro build && npm run profiles && npm run anchors",
+    "build": "astro build && npm run profiles",
     "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' +",
     "format": "eslint --fix . && prettier --write .",
     "generate": "astro sync",
@@ -20,22 +19,23 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@apidevtools/json-schema-ref-parser": "^11.5.4",
-    "@astrojs/markdown-remark": "^5.1.0",
-    "@astrojs/starlight": "^0.23.4",
+    "@apidevtools/json-schema-ref-parser": "^11.6.4",
+    "@astrojs/markdown-remark": "^5.1.1",
+    "@astrojs/starlight": "^0.24.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "astro": "^4.9.3",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
+    "astro": "^4.11.1",
     "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-astro": "^1.2.2",
     "fs-extra": "^11.2.0",
-    "glob": "^10.3.10",
+    "glob": "^10.4.2",
     "js-yaml": "^4.1.0",
-    "npm-check-updates": "^16.14.18",
-    "prettier": "^3.2.5",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "rehype-autolink-headings": "^7.1.0",
-    "replace-in-file": "^8.0.0"
+    "remark-custom-heading-id": "^2.0.0",
+    "replace-in-file": "^8.0.1"
   }
 }

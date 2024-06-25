@@ -52,7 +52,7 @@ Standard properties of the descriptor are described below. A descriptor `MAY` in
 
 The properties below are applicable to any Data Resource.
 
-#### `name` [required]
+#### `name` [required] {#name}
 
 A resource `MUST` contain a `name` property. The name is a simple name or identifier to be used for this resource.
 
@@ -60,7 +60,7 @@ A resource `MUST` contain a `name` property. The name is a simple name or identi
 - It `SHOULD` be human-readable and consist only of lowercase English alphanumeric characters plus `.`, `-` and `_`.
 - It would be usual for the name to correspond to the file name (minus the extension) of the data file the resource describes.
 
-#### `path` or `data` [required]
+#### `path` or `data` [required] {#path-or-data}
 
 A resource `MUST` contain a property describing the location of the data associated to the resource. The location of resource data `MUST` be specified by the presence of one (and only one) of these two properties:
 
@@ -144,7 +144,7 @@ If property `type` is not provided, the resource is considered to be a non-speci
 If a resource has `profile` property that equals to `tabular-data-resource` or `https://specs.frictionlessdata.io/schemas/tabular-data-resource.json`, an implementation `MUST` treat it as `type` property were set to `table`
 :::
 
-#### `$schema`
+#### `$schema` {#dollar-schema}
 
 A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
@@ -200,7 +200,7 @@ List of licenses as for [Data Package](../data-package/#licenses). If not specif
 
 The properties below are applicable to any Tabular Data Resource.
 
-#### `path` or `data` [required]
+#### `path` or `data` [required] {#tabular-path-or-data}
 
 If the `path` property is used for providing data than it `MUST` contain [Tabular Data](../glossary/#tabular-data).
 

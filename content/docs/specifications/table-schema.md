@@ -62,13 +62,13 @@ An example of a Table Schema descriptor:
 
 A Table Schema descriptor `MAY` contain these standard properties:
 
-#### `fields` [required]
+#### `fields` [required] {#fields}
 
 A Table Schema descriptor `MUST` contain a property `fields`. `fields` `MUST` be an array where each entry in the array is a [field descriptor](#field) as defined below.
 
 The way Table Schema `fields` are mapped onto the data source fields are defined by the `fieldsMatch` property. By default, the most strict approach is applied, i.e. fields in the data source `MUST` completely match the elements in the `fields` array, both in number and order. Using different options of the `fieldsMatch` property, a data producer can relax requirements for the data source.
 
-#### `$schema`
+#### `$schema` {#dollar-schema}
 
 A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
@@ -287,7 +287,7 @@ Here is an illustration:
 
 The field descriptor `object` `MAY` contain any number of other properties. Some specific properties are defined below. Of these, only the `name` property is `REQUIRED`.
 
-#### `name` [required]
+#### `name` [required] {#name}
 
 The field descriptor `MUST` contain a `name` property and it `MUST` be unique amongst other field names in this Table Schema. This property `SHOULD` correspond to the name of a column in the data file if it has a name.
 
