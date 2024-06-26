@@ -283,7 +283,7 @@ tableSchemaMissingValues:
       }
 tableSchemaExamples:
   title: Examples
-  description: Links to example data resources
+  description: Links to example data files
   type: array
   minItems: 0
   items:
@@ -300,7 +300,7 @@ tableSchemaExamples:
       }
 tableSchemaExample:
   title: Example
-  description: Link to an example data resource
+  description: Link to an example data file
   type: object
   properties:
     title:

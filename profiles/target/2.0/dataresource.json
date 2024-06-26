@@ -2906,12 +2906,12 @@
         },
         "examples": {
           "title": "Examples",
-          "description": "Links to example data resources",
+          "description": "Links to example data files",
           "type": "array",
           "minItems": 0,
           "items": {
             "title": "Example",
-            "description": "Link to an example data resource",
+            "description": "Link to an example data file",
             "type": "object",
             "properties": {
               "title": {
@@ -2926,7 +2926,7 @@
                 "title": "Path",
                 "description": "A fully qualified URL, or a POSIX file path.",
                 "type": "string",
-                "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
+                "pattern": "^((?=[^./~])(?!file:)((?!\\/\\.\\.\\/)(?!\\\\)(?!:\\/\\/).)*|(http|ftp)s?:\\/\\/.*)$",
                 "examples": [
                   "{\n  \"path\": \"file.csv\"\n}\n",
                   "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
@@ -2983,7 +2983,7 @@
                 "title": "Path",
                 "description": "A fully qualified URL, or a POSIX file path.",
                 "type": "string",
-                "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
+                "pattern": "^((?=[^./~])(?!file:)((?!\\/\\.\\.\\/)(?!\\\\)(?!:\\/\\/).)*|(http|ftp)s?:\\/\\/.*)$",
                 "examples": [
                   "{\n  \"path\": \"file.csv\"\n}\n",
                   "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
