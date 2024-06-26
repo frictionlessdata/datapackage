@@ -7,7 +7,7 @@ sidebar:
 There are many alternatives when it comes to Data Package Standard implementations. We will cover a few the most popular options which will be a good starting point.
 
 :::tip
-Please take a look at the full list of Data Package [Software](../../standard/software/) to find other implementations.
+Please take a look at the full list of Data Package [Software](/overview/software/) to find other implementations.
 :::
 
 ## Open Data Editor

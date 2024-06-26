@@ -27,12 +27,12 @@ Table Schema is a simple language- and implementation-agnostic way to declare a 
 
 This specification heavily relies on the following concepts:
 
-- [Tabular Data](../glossary/#tabular-data)
-- [Data Representation](../glossary/#data-representation)
+- [Tabular Data](/standard/glossary/#tabular-data)
+- [Data Representation](/standard/glossary/#data-representation)
 
 ## Descriptor
 
-Table Schema descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
+Table Schema descriptor `MUST` be a descriptor as per [Descriptor](/standard/glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
 An example of a Table Schema descriptor:
 
@@ -70,7 +70,7 @@ The way Table Schema `fields` are mapped onto the data source fields are defined
 
 #### `$schema` {#dollar-schema}
 
-A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
 The default value is `https://datapackage.org/profiles/1.0/tableschema.json` and the recommended value is `https://datapackage.org/profiles/2.0/tableschema.json`.
 

@@ -122,8 +122,8 @@ Data packages can also be declared inline in the data catalog:
 }
 ```
 
-[dr]: /data-resource/
-[dp]: /data-package/
+[dr]: /standard/data-resource/
+[dp]: /standard/data-package/
 
 ## Implementations
 

@@ -75,7 +75,7 @@ Several example data packages can be found in the [datasets organization on gith
 
 ## Descriptor
 
-Data Package descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
+Data Package descriptor `MUST` be a descriptor as per [Descriptor](/standard/glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
 When a data package is available as a physical or virtual directory containing files, a descriptor `MUST` be named `datapackage.json` and it `MUST` be placed on the top-level of the file structure (relative to any other resources provided as part of the data package).
 
@@ -112,11 +112,11 @@ A Data Package descriptor `MUST` have `resoures` property and `SHOULD` have `nam
 
 The `resources` property is `REQUIRED`, with at least one resource.
 
-Packaged data resources are described in the `resources` property of the package descriptor. This property `MUST` be an array of `objects`. Each object `MUST` follow the [Data Resource ](../data-resource/) specification.
+Packaged data resources are described in the `resources` property of the package descriptor. This property `MUST` be an array of `objects`. Each object `MUST` follow the [Data Resource ](/standard/data-resource/) specification.
 
 ### `$schema` {#dollar-schema}
 
-A root level Data Package descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+A root level Data Package descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
 The default value is `https://datapackage.org/profiles/1.0/datapackage.json` and the recommended value is `https://datapackage.org/profiles/2.0/datapackage.json`.
 
@@ -163,7 +163,7 @@ This property is not legally binding and does not guarantee the package is licen
 `licenses` `MUST` be an array. Each item in the array is a License. Each `MUST` be an `object`. The object `MUST` contain a `name` property and/or a `path` property, and it `MAY` contain a `title` property:
 
 - `name`: A string containing an [Open Definition license ID](http://licenses.opendefinition.org/)
-- `path`: A [URL or Path](../glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
+- `path`: A [URL or Path](/standard/glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
 - `title`: A string containing human-readable title.
 
 An example of using the `licenses` property:
@@ -192,11 +192,11 @@ A URL for the home on the web that is related to this data package.
 
 An image to use for this data package. For example, when showing the package in a listing.
 
-The value of the image property `MUST` be a string pointing to the location of the image. The string `MUST` be a [URL or Path](../glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
+The value of the image property `MUST` be a string pointing to the location of the image. The string `MUST` be a [URL or Path](/standard/glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
 
 ### `version`
 
-A version string identifying the version of the package. It `SHOULD` conform to the [Semantic Versioning](http://semver.org) requirements and `SHOULD` follow the [Data Package Version](../../recipes/data-package-version) recipe.
+A version string identifying the version of the package. It `SHOULD` conform to the [Semantic Versioning](http://semver.org) requirements and `SHOULD` follow the [Data Package Version](/recipes/data-package-version) recipe.
 
 ### `created`
 
@@ -254,7 +254,7 @@ If the `roles` property is not provided a data consumer MUST fall back to using 
 The raw sources for this data package. It `MUST` be an array of Source objects. A Source object `MUST` have at least one property. A Source object is `RECOMMENDED` to have `title` property and `MAY` have `path`, `email`, and `version` properties:
 
 - `title`: A string containing a title of the source (e.g. document or organization name).
-- `path`: A [URL or Path](../glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
+- `path`: A [URL or Path](/standard/glossary/#url-or-path), that is a fully qualified HTTP address, or a relative POSIX path.
 - `email`: A string containing an email address.
 - `version`: A string containing a version of the source.
 

@@ -30,7 +30,7 @@ A profile is both used as a metadata version identifier and the location of a JS
 
 Similarly to [JSON Schema](https://json-schema.org/understanding-json-schema/reference/schema#schema), the `$schema` property has effect only on the root level of a descriptor. For example, if a Table Dialect is published as a file it can include a `$schema` property that affects its validation. If the same dialect is an object inlined into a Data Package descriptor, the dialect's `$schema` property `MUST` be ignored and the descriptor as whole `MUST` be validated against a root level `$schema` property provided by the package.
 
-Data Package Standard employes profiles as a mechanism for creating extensions as per [Extensions](../extensions) specification.
+Data Package Standard employes profiles as a mechanism for creating extensions as per [Extensions](/standard/extensions) specification.
 
 :::note[Implementation Note]
 It is recommended to cache profiles using their URL as a unique key.

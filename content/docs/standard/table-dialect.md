@@ -23,7 +23,7 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Introduction
 
-Table Dialect defines set of properties that can be used by data producers and data consumers to ensure data interoperability in various [Tabular Data](../glossary/#tabular-data) formats such as CSV, JSON, or Excel. The main goal of this specification is to define a common language for defining tabular data dialects.
+Table Dialect defines set of properties that can be used by data producers and data consumers to ensure data interoperability in various [Tabular Data](/standard/glossary/#tabular-data) formats such as CSV, JSON, or Excel. The main goal of this specification is to define a common language for defining tabular data dialects.
 
 It is not expected that all the properties are supported by all the Data Package implementations. An implementation `MUST` choose the most suitable strategy for communicating to the users if some relevant feature is not supported.
 
@@ -35,7 +35,7 @@ Table Dialect supersedes [CSV Dialect](https://specs.frictionlessdata.io/csv-dia
 
 ## Descriptor
 
-Table Dialect descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
+Table Dialect descriptor `MUST` be a descriptor as per [Descriptor](/standard/glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
 An example of a Table Dialect descriptor:
 
@@ -134,7 +134,7 @@ Database formats is a group of formats accessing data from databases like SQLite
 
 ### `$schema` {#dollar-schema}
 
-A root level Table Dialect descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+A root level Table Dialect descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
 The default value is `https://datapackage.org/profiles/1.0/tabledialect.json` and the recommended value is `https://datapackage.org/profiles/2.0/tabledialect.json`.
 
@@ -618,7 +618,7 @@ With this dialect definition:
 
 ## Excluded
 
-Table Dialect has nothing to do with the names, contents or types of the headers or data within the CSV file (see [Table Schema](../table-schema/) instead), only how it is formatted. However, Table Dialect does allow the presence or absence of a header to be specified, similarly to [RFC4180](http://www.ietf.org/rfc/rfc4180.txt).
+Table Dialect has nothing to do with the names, contents or types of the headers or data within the CSV file (see [Table Schema](/standard/table-schema/) instead), only how it is formatted. However, Table Dialect does allow the presence or absence of a header to be specified, similarly to [RFC4180](http://www.ietf.org/rfc/rfc4180.txt).
 
 Table Dialect is also orthogonal to the character encoding used in the CSV file. Note that it is possible for files in CSV format to contain data in more than one encoding.
 

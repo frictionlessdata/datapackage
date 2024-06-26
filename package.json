@@ -35,7 +35,7 @@
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "rehype-autolink-headings": "^7.1.0",
-    "remark-custom-heading-id": "^2.0.0",
-    "replace-in-file": "^8.0.1"
+    "starlight-links-validator": "^0.9.0",
+    "remark-custom-heading-id": "^2.0.0"
   }
 }

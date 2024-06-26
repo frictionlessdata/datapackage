@@ -28,9 +28,9 @@ A domain-specific extension is the way to enrich Data Package's metadata to meet
 
 ## Extension
 
-The Data Package Standard has a simple yet powerful extension mechanism based on the [Profile](../glossary/#profile) concept. An extension is, generally speaking, a project that provides one or more domain-specific profiles to the Data Package Standard specifications.
+The Data Package Standard has a simple yet powerful extension mechanism based on the [Profile](/standard/glossary/#profile) concept. An extension is, generally speaking, a project that provides one or more domain-specific profiles to the Data Package Standard specifications.
 
-From user-perspective, a custom profile can be provided as a `$schema` property in a corresponding specification [Descriptor](../glossary/#descriptor). Having a profile instructs implementation to validate a descriptor using JSON Schema rules of the profile.
+From user-perspective, a custom profile can be provided as a `$schema` property in a corresponding specification [Descriptor](/standard/glossary/#descriptor). Having a profile instructs implementation to validate a descriptor using JSON Schema rules of the profile.
 
 Usually, Data Package is the specification that is extended. As a container format, it is the most natural target for metadata enrichment. At the same time, technically any of the core specifications can be extended. For example, if you build a Table Schema catalog, it is possible to extend a Table Schema specification using the same approach as described below.
 
@@ -51,7 +51,7 @@ For example, we will create a Spatial Data Package that requires a `geopoint` ma
 
 ### Profile
 
-First of all, we need to create a Data Package profile. Note that it includes a default data package profile as per the [specification requirement](../data-package/#schema):
+First of all, we need to create a Data Package profile. Note that it includes a default data package profile as per the [specification requirement](/standard/data-package/#schema):
 
 ```json
 {

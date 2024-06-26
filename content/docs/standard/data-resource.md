@@ -23,7 +23,7 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Descriptor
 
-Data Resource descriptor `MUST` be a descriptor as per [Descriptor](../glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
+Data Resource descriptor `MUST` be a descriptor as per [Descriptor](/standard/glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
 
 An example of a Data Resource descriptor:
 
@@ -69,7 +69,7 @@ A resource `MUST` contain a property describing the location of the data associa
 
 ##### Single File
 
-If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in the [URL of Path](../glossary/#url-or-path) definition.
+If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in the [URL of Path](/standard/glossary/#url-or-path) definition.
 
 ##### Multiple Files
 
@@ -136,7 +136,7 @@ If `path` property is not provided but there is a `url` property as was defined 
 
 A Data Resource descriptor `MAY` contain a property `type` that `MUST` be a string with the following possible values:
 
-- `table`: indicates that the resource is tabular as per [Tabular Data](../glossary/#tabular-data) definition. Please read more about [Tabular Resource](#tabular) properties.
+- `table`: indicates that the resource is tabular as per [Tabular Data](/standard/glossary/#tabular-data) definition. Please read more about [Tabular Resource](#tabular) properties.
 
 If property `type` is not provided, the resource is considered to be a non-specific file. An implementation `MAY` provide some additional interfaces, for example, tabular, to non-specific files if `type` can be detected from the data source or format.
 
@@ -146,7 +146,7 @@ If a resource has `profile` property that equals to `tabular-data-resource` or `
 
 #### `$schema` {#dollar-schema}
 
-A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](../glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
 The default value is `https://datapackage.org/profiles/1.0/dataresource.json` and the recommended value is `https://datapackage.org/profiles/2.0/dataresource.json`.
 
@@ -190,11 +190,11 @@ The MD5 hash for this resource. Other algorithms can be indicated by prefixing t
 
 #### `sources`
 
-List of data sources as for [Data Package](../data-package/#sources). If not specified the resource inherits from the data package.
+List of data sources as for [Data Package](/standard/data-package/#sources). If not specified the resource inherits from the data package.
 
 #### `licenses`
 
-List of licenses as for [Data Package](../data-package/#licenses). If not specified the resource inherits from the data package.
+List of licenses as for [Data Package](/standard/data-package/#licenses). If not specified the resource inherits from the data package.
 
 ### Tabular
 
@@ -202,7 +202,7 @@ The properties below are applicable to any Tabular Data Resource.
 
 #### `path` or `data` [required] {#tabular-path-or-data}
 
-If the `path` property is used for providing data than it `MUST` contain [Tabular Data](../glossary/#tabular-data).
+If the `path` property is used for providing data than it `MUST` contain [Tabular Data](/standard/glossary/#tabular-data).
 
 If the `data` property is used for providing data for a Tabular Data Resource than it `MUST` be an `array` where each item in the array `MUST` be either:
 
@@ -230,7 +230,7 @@ Array of objects example:
 
 #### `dialect`
 
-A Tabular Data Resource `MAY` have a `dialect` property to describe a tabular dialect of the resource data. If provided, the `dialect` property `MUST` be a [Table Dialect](../table-dialect) descriptor in a form of an object or [URL-or-Path](../glossary/#url-or-path).
+A Tabular Data Resource `MAY` have a `dialect` property to describe a tabular dialect of the resource data. If provided, the `dialect` property `MUST` be a [Table Dialect](/standard/table-dialect) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
 
 An example of a resource with a dialect:
 
@@ -247,7 +247,7 @@ An example of a resource with a dialect:
 
 #### `schema`
 
-A Tabular Data Resource `SHOULD` have a `schema` property to describe a tabular schema of the resource data. If provided, the `schema` property `MUST` be a [Table Schema](../table-schema) descriptor in a form of an object or [URL-or-Path](../glossary/#url-or-path).
+A Tabular Data Resource `SHOULD` have a `schema` property to describe a tabular schema of the resource data. If provided, the `schema` property `MUST` be a [Table Schema](/standard/table-schema) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
 
 An example of a resource with a schema:
 

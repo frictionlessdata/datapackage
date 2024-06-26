@@ -4,6 +4,8 @@ import { defineConfig } from "astro/config"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import { remarkHeadingId } from "remark-custom-heading-id"
 
+// import starlightLinksValidator from "starlight-links-validator"
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://datapackage.org",
@@ -28,12 +30,11 @@ export default defineConfig({
       lastUpdated: true,
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
+      // The link validator is useful for debugging but it cleates a lot of false positives
+      // plugins: [starlightLinksValidator()],
       sidebar: [
+        { label: "Overview", autogenerate: { directory: "overview" } },
         { label: "Standard", autogenerate: { directory: "standard" } },
-        {
-          label: "Specifications",
-          autogenerate: { directory: "specifications" },
-        },
         {
           label: "Extensions",
           collapsed: true,

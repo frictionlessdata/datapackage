@@ -15,12 +15,12 @@ This pattern allows users to link values in a field (or fields) in a Tabular Dat
 
 ## Specification
 
-The [`foreignKeys`](../../specifications/table-schema/#foreignkeys) array MAY have a property `package`. This property MUST be, either:
+The [`foreignKeys`](/standard/table-schema/#foreignkeys) array MAY have a property `package`. This property MUST be, either:
 
 - a string that is a fully qualified HTTP address to a Data Package `datapackage.json` file
-- a data package [`name`](../../specifications/data-package/#name) that can be resolved by a canonical data package registry
+- a data package [`name`](/standard/data-package/#name) that can be resolved by a canonical data package registry
 
-If the referenced data package has an [`id`](../../specifications/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
+If the referenced data package has an [`id`](/standard/data-package/#id) that is a fully qualified HTTP address, it SHOULD be used as the `package` value.
 
 For example:
 

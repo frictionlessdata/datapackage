@@ -1,7 +1,7 @@
 ---
 title: Introduction
 sidebar:
-  order: 1
+  order: 0
 ---
 
 In our increasingly data-driven world, the ability to manage, share, and analyze data effectively has become paramount. Organizations across various domains, from research institutions and governmental agencies to businesses and non-profit organizations, are generating and utilizing vast amounts of data to inform decisions, solve complex problems, and drive innovation. However, this data abundance brings with it a unique set of challenges, particularly when it comes to ensuring data quality, interoperability, and accessibility.
