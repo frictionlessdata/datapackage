@@ -4,7 +4,7 @@ Data Package is a standard consisting of a set of simple yet extensible specific
 
 ## Contributing
 
-One can contribute by clicking on the "Edit Page" button on a site page and create a pull request directly on Github.
+One can contribute to the documentation by clicking on the "Edit Page" button on a site page and create a pull request directly on Github.
 
 Running the project locally:
 
