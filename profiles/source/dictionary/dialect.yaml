@@ -1,0 +1,177 @@
+tableDialect:
+  title: Table Dialect
+  description: The Table dialect descriptor.
+  type: object
+  properties:
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/tabledialect.json
+      propertyOrder: 10
+    header:
+      "$ref": "#/definitions/header"
+    headerRows:
+      "$ref": "#/definitions/headerRows"
+    headerJoin:
+      "$ref": "#/definitions/headerJoin"
+    commentRows:
+      "$ref": "#/definitions/commentRows"
+    commentChar:
+      "$ref": "#/definitions/commentChar"
+    delimiter:
+      "$ref": "#/definitions/delimiter"
+    lineTerminator:
+      "$ref": "#/definitions/lineTerminator"
+    quoteChar:
+      "$ref": "#/definitions/quoteChar"
+    doubleQuote:
+      "$ref": "#/definitions/doubleQuote"
+    escapeChar:
+      "$ref": "#/definitions/escapeChar"
+    nullSequence:
+      "$ref": "#/definitions/nullSequence"
+    skipInitialSpace:
+      "$ref": "#/definitions/skipInitialSpace"
+    property:
+      "$ref": "#/definitions/property"
+    itemType:
+      "$ref": "#/definitions/itemType"
+    itemKeys:
+      "$ref": "#/definitions/itemKeys"
+    sheetNumber:
+      "$ref": "#/definitions/sheetNumber"
+    sheetName:
+      "$ref": "#/definitions/sheetName"
+    table:
+      "$ref": "#/definitions/table"
+header:
+  title: Header
+  description: Specifies if the file includes a header row, always as the first row in the file.
+  type: boolean
+  default: true
+  examples:
+    - |
+      {
+        "header": true
+      }
+headerRows:
+  type: array
+  default: [1]
+  items:
+    type: integer
+    minimum: 1
+headerJoin:
+  type: string
+  default: " "
+commentRows:
+  type: array
+  default: [1]
+  items:
+    type: integer
+    minimum: 1
+commentChar:
+  title: Comment Character
+  description: Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.
+  type: string
+  examples:
+    - |
+      {
+        "commentChar": "#"
+      }
+delimiter:
+  title: Delimiter
+  description: A character sequence to use as the field separator.
+  type: string
+  default: ","
+  examples:
+    - |
+      {
+        "delimiter": ","
+      }
+    - |
+      {
+        "delimiter": ";"
+      }
+lineTerminator:
+  title: Line Terminator
+  description: Specifies the character sequence that must be used to terminate rows.
+  type: string
+  default: "\r\n"
+  examples:
+    - |
+      {
+        "lineTerminator": "\r\n"
+      }
+    - |
+      {
+        "lineTerminator": "\n"
+      }
+doubleQuote:
+  title: Double Quote
+  description: Specifies the handling of quotes inside fields.
+  context: If Double Quote is set to true, two consecutive quotes must be interpreted
+    as one.
+  type: boolean
+  default: true
+  examples:
+    - |
+      {
+        "doubleQuote": true
+      }
+quoteChar:
+  title: Quote Character
+  description: Specifies a one-character string to use as the quoting character.
+  type: string
+  default: '"'
+  examples:
+    - |
+      {
+        "quoteChar": "'"
+      }
+escapeChar:
+  title: Escape Character
+  description: Specifies a one-character string to use as the escape character.
+  type: string
+  examples:
+    - |
+      {
+        "escapeChar": "\\"
+      }
+nullSequence:
+  title: Null Sequence
+  description: Specifies the null sequence, for example, `\N`.
+  type: string
+  examples:
+    - |
+      {
+        "nullSequence": "\N"
+      }
+skipInitialSpace:
+  title: Skip Initial Space
+  description: Specifies the interpretation of whitespace immediately following
+    a delimiter. If false, whitespace immediately after a delimiter should be treated
+    as part of the subsequent field.
+  type: boolean
+  default: false
+  examples:
+    - |
+      {
+        "skipInitialSpace": true
+      }
+property:
+  type: string
+itemType:
+  type: string
+  enum:
+    - array
+    - object
+itemKeys:
+  type: array
+  items:
+    type: string
+sheetNumber:
+  type: integer
+  minimum: 1
+sheetName:
+  type: string
+table:
+  type: string

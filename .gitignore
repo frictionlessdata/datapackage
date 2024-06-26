@@ -1,0 +1,54 @@
+# Mac
+.DS_Store
+
+# Node
+node_modules/
+jspm_packages/
+.lock-wscript
+build/Release
+.node_repl_history
+*.tgz
+.npm
+*.so
+
+# Testing
+coverage
+htmlcov/
+lib-cov
+.tox/
+.coverage
+.coverage.*
+.cache
+.nyc_output
+coverage.xml
+*,cover
+.hypothesis/
+.eslintcache
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Translations
+*.mo
+*.pot
+
+# Extra
+.env
+.vim/
+.yarn/
+.user/
+.astro/
+.cache/
+.clinic/
+.vscode/
+.wrangler/
+dist/
+build/

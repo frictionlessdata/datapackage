@@ -1,0 +1,97 @@
+---
+title: Data Package
+description: |
+  Data Package standard.
+template: splash
+editUrl: false
+hero:
+  tagline: |
+    Data Package is a <strong>standard</strong> consisting of a set of
+    <strong>simple yet extensible specifications</strong>
+    to describe datasets, data files and tabular data.
+    It is a data definition language (DDL) and data API that facilitates
+    <strong> findability, accessibility, interoperability, and reusability (FAIR)</strong> of data.
+  image:
+    file: ../../assets/hero.png
+    alt: Data Packages Illustration
+  actions:
+    - text: Get Started
+      link: /overview/introduction/
+      icon: right-arrow
+      variant: primary
+    - text: Use Cases
+      link: /overview/adoption/
+      icon: rocket
+      variant: secondary
+    - text: View on GitHub
+      link: https://github.com/frictionlessdata/datapackage
+      icon: external
+banner:
+  content: |
+    <p>
+      This is a live draft of the <strong>Data Package (v2) standard</strong>.
+      Please read the <a href="/blog/2023-11-15-v2-announcement">announcement</a>.
+    </p>
+---
+
+import About from "../../components/About.astro"
+import Adoption from "../../components/Adoption.astro"
+import ClickableCard from "../../components/ClickableCard.astro"
+import { CardGrid, LinkCard, Card } from "@astrojs/starlight/components"
+
+<h2>Standard</h2>
+
+The Data Package standard is a comprehensive set of **specifications** that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner -- [EXPLORE THE STANDARD](/standard/data-package)
+
+<CardGrid>
+  <ClickableCard title="Data Package" icon="open-book" href="/standard/data-package">
+    A simple container format to describe a coherent collection of data (a dataset),
+    including its contributors, licenses, etc.
+  </ClickableCard>
+  <ClickableCard title="Data Resource" icon="rocket" href="/standard/data-resource">
+    A simple format to describe a data resource such as a individual table or file,
+    including its name, format, path, etc.
+  </ClickableCard>
+  <ClickableCard title="Table Dialect" icon="document" href="/standard/table-dialect">
+    A simple format to describe the dialect of a tabular data file, including its
+    delimiter, header rows, escape characters, etc.
+  </ClickableCard>
+  <ClickableCard title="Table Schema" icon="puzzle" href="/standard/table-schema">
+    A simple format to describe tabular data, including field names, types, constraints,
+    missing values, foreign keys, etc.
+  </ClickableCard>
+</CardGrid>
+
+<div style="margin-bottom: 5em"></div>
+
+<h2>Software</h2>
+
+Data Package is backed by a suite of software tools supporting the standard. From the no-code visual tool **Open Data Editor** to low-level drivers for 10 programming languages -- [EXPLORE THE SOFTWARE](/overview/software)
+
+[![Open Data Editor](../../assets/software/ode.png)](https://opendataeditor.okfn.org)
+
+<div style="margin-bottom: 5em"></div>
+
+<h2>Adoption</h2>
+
+Data Package is used for a wide range of scenarios where this standardized data packaging format proves invaluable for efficient data management, sharing, and analysis -- [EXPLORE THE ADOPTION](/overview/adoption)
+
+<Adoption />
+
+<div style="margin-bottom: 5em"></div>
+
+<h2>Documentation</h2>
+
+Read the Data Package documentation to learn more about the standard:
+
+<CardGrid>
+  <LinkCard title="Standard" href="/standard/data-package" />
+  <LinkCard title="Extensions" href="/extensions/camtrap-data-package" />
+  <LinkCard title="Recipes" href="/recipes/caching-of-resources" />
+  <LinkCard title="Guides" href="/guides/using-data-package" />
+</CardGrid>
+
+<About title="Brought to you by">
+  We are building a world open by design where all knowledge is accessible to everyone
+  [Learn about Open Knowledge](https://okfn.org)
+</About>

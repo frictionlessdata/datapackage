@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "semi": false,
+  "printWidth": 90,
+  "arrowParens": "avoid",
+  "trailingComma": "es5",
+  "plugins": ["prettier-plugin-astro", "@trivago/prettier-plugin-sort-imports"]
+}

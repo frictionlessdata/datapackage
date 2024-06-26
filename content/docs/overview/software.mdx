@@ -1,0 +1,170 @@
+---
+title: Software
+sidebar:
+  order: 5
+---
+
+import { software } from "../../../assets"
+import ImageLinkCard from "../../../components/ImageLinkCard.astro"
+import { LinkCard, CardGrid } from "@astrojs/starlight/components"
+
+:::tip[Contribution Note]
+Please let us know if there are Data Package aware software not listed below. Just open an issue or create a pull request to contibute.
+:::
+
+Data Package is backed by a comprehensive list of software products supporting the standard. From no-code visual tool **Open Data Editor** to low-level drivers for 10 programming languages. Here is the list of available software:
+
+## Visual
+
+<ImageLinkCard
+  title="Open Data Editor"
+  imageSrc={software.ode.src}
+  description="<br /> No-code application to explore and publish all kinds of data: datasets, tables, charts, maps, stories, and more. Forever free and open source project powered by open standards and generative AI."
+  href="https://opendataeditor.okfn.org"
+/>
+
+<CardGrid>
+<ImageLinkCard
+  title="Data Curator"
+  imageSrc={software.dataCurator.src}
+  description="Data Curator is a simple desktop data editor to help describe, validate and share usable open data."
+  href="https://github.com/qcif/data-curator"
+/>
+
+<ImageLinkCard
+  title="Flatterer"
+  imageSrc={software.flatterer.src}
+  description="An opinionated JSON to CSV/XLSX/SQLITE/PARQUET/POSTGRES converter which tries to make a useful relational output for data analysis."
+  href="https://flatterer.opendata.coop/"
+/>
+</CardGrid>
+
+## Python
+
+<CardGrid>
+  <LinkCard
+    title="frictionless-py"
+    description="Data management framework for Python that provides functionality to describe, extract, validate, and transform tabular data"
+    href="https://framework.frictionlessdata.io/"
+  />
+  <LinkCard
+    title="dataflows"
+    description="DataFlows is a simple, intuitive lightweight framework for building data processing flows in python."
+    href="https://github.com/datahq/dataflows"
+  />
+</CardGrid>
+
+## JavaScript
+
+<CardGrid>
+  <LinkCard
+    title="frictionless-js"
+    description="A lightweight, standardized library accessing files and datasets, especially tabular ones (CSV, Excel)."
+    href="https://github.com/frictionlessdata/frictionless-js"
+  />
+  <LinkCard
+    title="datapackage-render-js"
+    description="React components for rendering Data Package Views."
+    href="https://github.com/frictionlessdata/datapackage-render-js"
+  />
+</CardGrid>
+
+## R
+
+<CardGrid>
+  <LinkCard
+    title="frictionless-r"
+    description="R package to read and write Frictionless Data Packages"
+    href="https://docs.ropensci.org/frictionless/"
+  />
+</CardGrid>
+
+## Ruby
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-rb"
+    description="Ruby library and tools for working with datapackages"
+    href="https://github.com/frictionlessdata/datapackage-rb"
+  />
+  <LinkCard
+    title="tableschema-rb"
+    description="A Ruby library for working with JSON Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-rb"
+  />
+</CardGrid>
+
+## PHP
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-php"
+    description="A php library for working with Data Package."
+    href="https://github.com/frictionlessdata/datapackage-php"
+  />
+  <LinkCard
+    title="tableschema-php"
+    description="A php library for working with Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-php"
+  />
+</CardGrid>
+
+## Java
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-java"
+    description="A Java library for working with Frictionless Data Data Packages."
+    href="https://github.com/frictionlessdata/datapackage-java"
+  />
+  <LinkCard
+    title="tableschema-java"
+    description="A Java library for working with Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-java"
+  />
+</CardGrid>
+
+## Swift
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-swift"
+    description="A Swift library for working with Data Package."
+    href="https://github.com/frictionlessdata/datapackage-swift"
+  />
+  <LinkCard
+    title="tableschema-swift"
+    description="A Swift library for working with Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-swift"
+  />
+</CardGrid>
+
+## Go
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-go"
+    description="A Go library for working with Data Package."
+    href="https://github.com/frictionlessdata/datapackage-go"
+  />
+  <LinkCard
+    title="tableschema-go"
+    description="A Go library for working with Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-go"
+  />
+</CardGrid>
+
+## Julia
+
+<CardGrid>
+  <LinkCard
+    title="datapackage-jl"
+    description="A Julia library for working with Data Package."
+    href="https://github.com/frictionlessdata/datapackage-jl"
+  />
+  <LinkCard
+    title="tableschema-jl"
+    description="A Julia library for working with Table Schema."
+    href="https://github.com/frictionlessdata/tableschema-jl"
+  />
+</CardGrid>

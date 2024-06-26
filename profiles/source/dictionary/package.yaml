@@ -1,0 +1,73 @@
+dataPackage:
+  title: Data Package
+  description: Data Package
+  type: object
+  required:
+    - resources
+  properties:
+    $schema:
+      "$ref": "#/definitions/$schema"
+      default: https://datapackage.org/profiles/1.0/datapackage.json
+      propertyOrder: 10
+    name:
+      "$ref": "#/definitions/name"
+      propertyOrder: 20
+    id:
+      "$ref": "#/definitions/id"
+      propertyOrder: 30
+    title:
+      "$ref": "#/definitions/title"
+      propertyOrder: 40
+    description:
+      "$ref": "#/definitions/description"
+      propertyOrder: 50
+      format: textarea
+    homepage:
+      "$ref": "#/definitions/homepage"
+      propertyOrder: 60
+    version:
+      "$ref": "#/definitions/version"
+      propertyOrder: 65
+    created:
+      "$ref": "#/definitions/created"
+      propertyOrder: 70
+    contributors:
+      "$ref": "#/definitions/contributors"
+      propertyOrder: 80
+    keywords:
+      "$ref": "#/definitions/keywords"
+      propertyOrder: 90
+    image:
+      "$ref": "#/definitions/image"
+      propertyOrder: 100
+    licenses:
+      "$ref": "#/definitions/licenses"
+      propertyOrder: 110
+    resources:
+      "$ref": "#/definitions/dataResources"
+      propertyOrder: 120
+    sources:
+      "$ref": "#/definitions/sources"
+      propertyOrder: 200
+      options:
+        hidden: true
+dataResources:
+  title: Data Resources
+  description: An `array` of Data Resource objects, each compliant with the [Data Resource](/data-resource/) specification.
+  type: array
+  minItems: 1
+  items:
+    "$ref": "#/definitions/dataResource"
+  examples:
+    - |
+      {
+        "resources": [
+          {
+            "name": "my-data",
+            "data": [
+              "data.csv"
+            ],
+            "mediatype": "text/csv"
+          }
+        ]
+      }

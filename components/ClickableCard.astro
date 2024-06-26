@@ -1,0 +1,18 @@
+---
+import { Card } from "@astrojs/starlight/components"
+
+interface Props {
+  title: string
+  description: string
+  icon: any
+  href: string
+}
+
+const { href, ...rest } = Astro.props
+---
+
+<a href={href} style={{ textDecoration: "inherit", color: "inherit" }}>
+  <Card {...rest}>
+    <slot />
+  </Card>
+</a>

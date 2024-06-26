@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import { LinkCard } from "@astrojs/starlight/components"
+
+interface Props extends Omit<HTMLAttributes<"a">, "title"> {
+  title: string
+  imageSrc: string
+  description?: string
+}
+
+const { title, description, imageSrc, ...rest } = Astro.props
+---
+
+<LinkCard
+  title={title}
+  description={`<img src="${imageSrc}" alt="${title}" /> ${description}`}
+  {...rest}
+/>

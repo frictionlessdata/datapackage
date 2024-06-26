@@ -1,0 +1,51 @@
+:root {
+  --purple-hsl: 209, 60%, 60%;
+  --overlay-blurple: hsla(var(--purple-hsl), 0.2);
+  --scrollbar-color: #ddd;
+}
+
+:root[data-theme="light"] {
+  --purple-hsl: 209, 85%, 65%;
+  --sl-color-text-accent: #1971c2;
+  --sl-color-banner-bg: #1971c2;
+  --sl-color-bg-inline-code: #f6f8fa;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-text-accent: #4dabf7;
+  --sl-color-banner-bg: #4dabf7;
+  --sl-color-bg-inline-code: #23262f;
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+/* Webkit */
+/* Make scrollbars transparent except for main page scrollbar. */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--scrollbar-color);
+}
+
+/* Style the Markdown heading links. */
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) > a {
+  color: var(--sl-color-white);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

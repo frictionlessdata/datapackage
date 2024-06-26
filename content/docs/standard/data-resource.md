@@ -1,0 +1,266 @@
+---
+title: Data Resource
+sidebar:
+  order: 2
+---
+
+<table>
+  <tr>
+    <th>Authors</th>
+    <td>Rufus Pollock, Paul Walsh, Adam Kariv, Evgeny Karev, Peter Desmet, Data Package Working Group</td>
+  </tr>
+  <tr>
+    <th>Profile</th>
+    <td><a href="/profiles/2.0/dataresource.json">https://datapackage.org/profiles/2.0/dataresource.json</a></td>
+  </tr>
+</table>
+
+A simple format to describe and package a single data resource such as a individual table or file. The essence of a Data Resource is a locator for the data it describes. A range of other properties can be declared to provide a richer set of metadata.
+
+## Language
+
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
+
+## Descriptor
+
+Data Resource descriptor `MUST` be a descriptor as per [Descriptor](/standard/glossary/#descriptor) definition. A list of standard properties that can be included into a descriptor is defined in the [Properties](#properties) section.
+
+An example of a Data Resource descriptor:
+
+```json
+{
+  "name": "solar-system",
+  "path": "http://example.com/solar-system.csv",
+  "title": "The Solar System",
+  "description": "My favourite data about the solar system.",
+  "format": "csv",
+  "mediatype": "text/csv",
+  "encoding": "utf-8",
+  "bytes": 1,
+  "hash": ...,
+  "schema": ...,
+  "sources": [ ... ],
+  "licenses": [ ... ]
+}
+```
+
+## Properties
+
+Standard properties of the descriptor are described below. A descriptor `MAY` include any number of properties in additional to those described below as required and optional properties.
+
+### General
+
+The properties below are applicable to any Data Resource.
+
+#### `name` [required] {#name}
+
+A resource `MUST` contain a `name` property. The name is a simple name or identifier to be used for this resource.
+
+- It `MUST` be unique amongst all resources in this data package.
+- It `SHOULD` be human-readable and consist only of lowercase English alphanumeric characters plus `.`, `-` and `_`.
+- It would be usual for the name to correspond to the file name (minus the extension) of the data file the resource describes.
+
+#### `path` or `data` [required] {#path-or-data}
+
+A resource `MUST` contain a property describing the location of the data associated to the resource. The location of resource data `MUST` be specified by the presence of one (and only one) of these two properties:
+
+- `path`: for data in files located online or locally on disk.
+- `data`: for data inline in the descriptor itself.
+
+##### Single File
+
+If a resource have only a single file then `path` `MUST` be a string that a "url-or-path" as defined in the [URL of Path](/standard/glossary/#url-or-path) definition.
+
+##### Multiple Files
+
+Usually, a resource will have only a single file associated to it. However, sometimes it can be convenient to have a single resource whose data is split across multiple files -- perhaps the data is large and having it in one file would be inconvenient.
+
+To support this use case the `path` property `MAY` be an array of strings rather than a single string:
+
+```json
+{
+  "path": ["myfile1.csv", "myfile2.csv"]
+}
+```
+
+It is NOT permitted to mix fully qualified URLs and relative paths in a `path` array: strings `MUST` either all be relative paths or all URLs.
+
+:::note
+All files in the array `MUST` be similar in terms of structure, format etc. Implementors `MUST` be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec](https://specs.frictionlessdata.io/tabular-data-package/) for more on this.
+:::
+
+##### Inline Data
+
+Resource data rather than being stored in external files can be shipped `inline` on a Resource using the `data` property.
+
+The value of the data property can be any type of data. However, restrictions of JSON require that the value be a string so for binary data you will need to encode (e.g. to Base64). Information on the type and encoding of the value of the data property SHOULD be provided by the format (or mediatype) property and the encoding property.
+
+The value of the data property `MUST` be either:
+
+- **JSON array or object**: the data is then assumed to be JSON data and SHOULD be processed as such
+- **JSON string**: in this case the format or mediatype properties `MUST` be provided.
+
+Thus, a consumer of resource object `MAY` assume if no format or mediatype property is provided that the data is JSON and attempt to process it as such.
+
+For example, inline JSON:
+
+```json
+{
+  "resources": [
+    {
+      "format": "json",
+      "data": [{ "a": 1, "b": 2 }]
+    }
+  ]
+}
+```
+
+Or inline CSV:
+
+```json
+{
+  "resources": [
+    {
+      "format": "csv",
+      "data": "A,B,C\n1,2,3\n4,5,6"
+    }
+  ]
+}
+```
+
+:::note[Backward Compatibility]
+If `path` property is not provided but there is a `url` property as was defined in Data Package Standard (v0), an implementation `MUST` treat it as the `path` property equivalent.
+:::
+
+#### `type`
+
+A Data Resource descriptor `MAY` contain a property `type` that `MUST` be a string with the following possible values:
+
+- `table`: indicates that the resource is tabular as per [Tabular Data](/standard/glossary/#tabular-data) definition. Please read more about [Tabular Resource](#tabular) properties.
+
+If property `type` is not provided, the resource is considered to be a non-specific file. An implementation `MAY` provide some additional interfaces, for example, tabular, to non-specific files if `type` can be detected from the data source or format.
+
+:::note[Backward Compatibility]
+If a resource has `profile` property that equals to `tabular-data-resource` or `https://specs.frictionlessdata.io/schemas/tabular-data-resource.json`, an implementation `MUST` treat it as `type` property were set to `table`
+:::
+
+#### `$schema` {#dollar-schema}
+
+A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
+
+The default value is `https://datapackage.org/profiles/1.0/dataresource.json` and the recommended value is `https://datapackage.org/profiles/2.0/dataresource.json`.
+
+:::note[Backward Compatibility]
+If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
+:::
+
+#### `title`
+
+Title or label for the resource.
+
+#### `description`
+
+Description of the resource.
+
+#### `format`
+
+Would be expected to be the standard file extension for this type of resource.For example, `csv`, `xls`, `json` etc.
+
+#### `mediatype`
+
+Te mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
+
+#### `encoding`
+
+The character encoding of resource's data file (only applicable for textual files). The value `SHOULD` be one of the "Preferred MIME Names" for [a character encoding registered with IANA](http://www.iana.org/assignments/character-sets/character-sets.xhtml). If no value for this property is specified then the encoding `SHOULD` be detected on the implementation level. It is `RECOMMENDED` to use UTF-8 (without BOM) as a default encoding for textual files.
+
+#### `bytes`
+
+Size of the file in bytes.
+
+#### `hash`
+
+The MD5 hash for this resource. Other algorithms can be indicated by prefixing the hash's value with the algorithm name in lower-case. For example:
+
+```json
+{
+  "hash": "sha1:8843d7f92416211de9ebb963ff4ce28125932878"
+}
+```
+
+#### `sources`
+
+List of data sources as for [Data Package](/standard/data-package/#sources). If not specified the resource inherits from the data package.
+
+#### `licenses`
+
+List of licenses as for [Data Package](/standard/data-package/#licenses). If not specified the resource inherits from the data package.
+
+### Tabular
+
+The properties below are applicable to any Tabular Data Resource.
+
+#### `path` or `data` [required] {#tabular-path-or-data}
+
+If the `path` property is used for providing data than it `MUST` contain [Tabular Data](/standard/glossary/#tabular-data).
+
+If the `data` property is used for providing data for a Tabular Data Resource than it `MUST` be an `array` where each item in the array `MUST` be either:
+
+- an array where each entry in the array is the value for that cell in the table OR
+- an object where each key corresponds to the header for that row and the value corresponds to the cell value for that row for that header.
+
+Array of arrays example:
+
+```json
+[
+  ["A", "B", "C"],
+  [1, 2, 3],
+  [4, 5, 6]
+]
+```
+
+Array of objects example:
+
+```json
+[
+  { "A": 1, "B": 2, "C": 3 },
+  { "A": 4, "B": 5, "C": 6 }
+]
+```
+
+#### `dialect`
+
+A Tabular Data Resource `MAY` have a `dialect` property to describe a tabular dialect of the resource data. If provided, the `dialect` property `MUST` be a [Table Dialect](/standard/table-dialect) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
+
+An example of a resource with a dialect:
+
+```json
+{
+  "name": "table",
+  "type": "table",
+  "path": "table.csv",
+  "dialect": {
+    "delimiter": ";"
+  }
+}
+```
+
+#### `schema`
+
+A Tabular Data Resource `SHOULD` have a `schema` property to describe a tabular schema of the resource data. If provided, the `schema` property `MUST` be a [Table Schema](/standard/table-schema) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
+
+An example of a resource with a schema:
+
+```json
+{
+  "name": "table",
+  "type": "table",
+  "path": "table.csv",
+  "schema": {
+    "fields": [
+      { "name": "id", "type": "integer" },
+      { "name": "name", "type": "string" }
+    ]
+  }
+}
+```
