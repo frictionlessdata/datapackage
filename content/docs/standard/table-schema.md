@@ -294,10 +294,14 @@ If present, it `MUST` be a non-empty array of strings.
 #### `examples`
 
 The `examples` property contains links to example data resources. This allows 
-the schema to be shared with data resources to illustrate it.
+the schema to be shared with data resources to illustrate it, with valid and 
+even invalid files.
 
-If present, it `MUST` be a non-empty array of [Data 
-Resource](https://datapackage.org/standard/data-resource/) descriptors.
+If present, it `MUST` be a non-empty array of objects. Each object `MUST` have 
+a "title" and a "path" property. The "title" properties are human-readable 
+strings. The "path" property is the URL to the example resource, it `MUST` be 
+a fully qualified URL as described in [RFC 
+1738](https://www.ietf.org/rfc/rfc1738.txt).
 
 #### `created`
 
