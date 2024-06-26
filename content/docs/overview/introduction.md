@@ -4,13 +4,17 @@ sidebar:
   order: 0
 ---
 
+:::tip[FAIR Data Exchange]
+The Data Package standard facilitates **findability, accessibility, interoperability, and reusability** of data making it perfect for [FAIR Data Exchange](https://en.wikipedia.org/wiki/FAIR_data).
+:::
+
 In our increasingly data-driven world, the ability to manage, share, and analyze data effectively has become paramount. Organizations across various domains, from research institutions and governmental agencies to businesses and non-profit organizations, are generating and utilizing vast amounts of data to inform decisions, solve complex problems, and drive innovation. However, this data abundance brings with it a unique set of challenges, particularly when it comes to ensuring data quality, interoperability, and accessibility.
 
-## The Standard
+## The Project
 
-The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package standard consists of these parts:
+The Data Package Standard emerges as a solution to these challenges, offering a structured and versatile framework for organizing, documenting, and distributing data. Whether you are a data scientist, researcher, data engineer, or data steward, the Data Package Standard is designed to streamline your data management processes and facilitate collaboration, making data more discoverable and usable for everyone involved. In-general, the Data Package project consists of these parts:
 
-1. **Specifications**: Comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner
+1. **Standard**: Comprehensive set of specifications that collectively define a framework for organizing, documenting, and sharing data in a structured and interoperable manner
 
 2. **Extensions**: Data practitioners can extend the standard by incorporating custom metadata, validation rules, or specific constraints to suit their data's peculiarities.
 
