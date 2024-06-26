@@ -12,11 +12,11 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `package.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#47](https://github.com/frictionlessdata/datapackage-v2-draft/pull/47)).
+[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#47](https://github.com/frictionlessdata/datapackage-v2-draft/pull/47)).
+[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.sources` (updated)
 
@@ -28,7 +28,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `dialect.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#47](https://github.com/frictionlessdata/datapackage-v2-draft/pull/47)).
+[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
@@ -36,7 +36,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#47](https://github.com/frictionlessdata/datapackage-v2-draft/pull/47)).
+[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `schema.missingValues` (updated)
 
