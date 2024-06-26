@@ -31,7 +31,9 @@ export default defineConfig({
       lastUpdated: true,
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
-      // The link validator is useful for debugging but it cleates a lot of false positives
+      components: {
+        SocialIcons: "./components/SocialIcons.astro",
+      },
       plugins: [
         starlightBlog({
           authors: {
@@ -43,6 +45,7 @@ export default defineConfig({
             },
           },
         }),
+        // The link validator is useful for debugging but it cleates a lot of false positives
         // starlightLinksValidator(),
       ],
       sidebar: [
