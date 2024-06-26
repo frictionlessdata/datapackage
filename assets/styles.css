@@ -49,3 +49,7 @@ body::-webkit-scrollbar-track {
     text-decoration: underline;
   }
 }
+
+article.card {
+  border-radius: 15px;
+}

@@ -12,9 +12,8 @@ const { title } = Astro.props
 <article class="sl-flex not-content" aria-labelledby="about-astro-heading">
   <small id="about-astro-heading">
     {title}
-    <span class="sr-only">Astro</span>
   </small>
-  <Image src={funding.okfn} alt="Open Knowledge Foundation" />
+  <div><Image src={funding.okfn} alt="Open Knowledge Foundation" /></div>
   <slot />
 </article>
 
@@ -36,5 +35,14 @@ const { title } = Astro.props
   }
   svg {
     width: 15rem;
+  }
+  img {
+    border-radius: 15px;
+  }
+  div {
+    padding: 5px;
+    padding-bottom: 0;
+    border-radius: 15px;
+    border: dashed 1px #ccc;
   }
 </style>
