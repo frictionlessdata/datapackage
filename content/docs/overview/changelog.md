@@ -24,7 +24,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `homepage` (new)
 
-[`homepage`](/standard/table-schema/#description) URL for the home on the web that is related to the schema.
+[`homepage`](/standard/table-schema/#homepage) URL for the home on the web that is related to the schema.
 
 ##### `keywords` (new)
 
