@@ -74,7 +74,7 @@ A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST`
 
 The default value is `https://datapackage.org/profiles/1.0/tableschema.json` and the recommended value is `https://datapackage.org/profiles/2.0/tableschema.json`.
 
-#### `fieldsMatch`
+#### `fieldsMatch` {#fieldsMatch}
 
 A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be a string with the following possible values and the `exact` value by default:
 
@@ -84,7 +84,7 @@ A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be 
 - **superset**: The data source `MUST` only have fields defined in the `fields` array, but `MAY` have fewer. Fields `MUST` be mapped by their names.
 - **partial**: The data source `MUST` have at least one field defined in the `fields` array. Fields `MUST` be mapped by their names.
 
-#### `missingValues`
+#### `missingValues` {#missingValues}
 
 Many datasets arrive with missing data values, either because a value was not collected or it never existed. Missing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.
 
@@ -113,7 +113,7 @@ Examples:
 
 When implementations choose to convert missing values to null, this conversion to `null` `MUST` be done before any other attempted type-specific string conversion. The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. Providing the empty list `[]` means that no conversion to null will be done, on any value.
 
-#### `primaryKey`
+#### `primaryKey` {#primaryKey}
 
 A primary key is a field or set of fields that uniquely identifies each row in the table. Per SQL standards, the fields cannot be `null`, so their use in the primary key is equivalent to adding `required: true` to their [`constraints`](#constraints).
 
@@ -145,7 +145,7 @@ Here's an example:
 Data consumer MUST support the `primaryKey` property in a form of a single string e.g. `primaryKey: a` which was a part of the `v1.0` of the specification.
 :::
 
-#### `uniqueKeys`
+#### `uniqueKeys` {#uniqueKeys}
 
 A unique key is a field or a set of fields that are required to have unique logical values in each row in the table. It is directly modeled on the concept of unique constraint in SQL.
 
@@ -186,7 +186,7 @@ All the field values that are on the logical level are considered to be `null` v
 
 In contrast with `field.constraints.unique`, `uniqueKeys` allows to define uniqueness as a combination of fields. Both properties `SHOULD` be assessed separately.
 
-#### `foreignKeys`
+#### `foreignKeys` {#foreignKeys}
 
 A foreign key is a reference where values in a field (or fields) on the table ('resource' in data package terminology) described by this Table Schema connect to values a field (or fields) on this or a separate table (resource). They are directly modelled on the concept of foreign keys in SQL.
 
@@ -357,7 +357,7 @@ If `categories` is (b) an array of objects, each object `MAY` also have a `label
 
 An `enum` constraint `MAY` be added to a field with a `categories` property, but if so, the `enum` values `MUST` be a subset of the values in `categories`.
 
-#### `categoriesOrdered`
+#### `categoriesOrdered` {#categoriesOrdered}
 
 When the `categories` property is defined, it `MAY` be accompanied by a `categoriesOrdered` property in the field definition. When present, the `categoriesOrdered` property `MUST` be `boolean`. When `categoriesOrdered` is `true`, implementations `SHOULD` regard the order of appearance of the values in the `categories` property as their natural order. For example:
 
@@ -378,7 +378,7 @@ When the `categories` property is defined, it `MAY` be accompanied by a `categor
 
 When the property `categoriesOrdered` is `false`, implementations `SHOULD` assume that the categories do not have a natural order; when the property is not present, no assumption about the ordered nature of the values `SHOULD` be made.
 
-#### `missingValues`
+#### `missingValues` {#field-missingValues}
 
 A list of missing values for this field as per [Missing Values](#missingvalues) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
 
@@ -402,7 +402,7 @@ A data consumer `MUST`:
 - interpret `""` and `NA` as missing values for `column1`
 - interpret only `-` as a missing value for `column2`
 
-#### `rdfType`
+#### `rdfType` {#rdfType}
 
 A richer, "semantic", description of the "type" of data in a given column `MAY` be provided using a `rdfType` property on a field descriptor.
 
@@ -644,14 +644,14 @@ Indicates whether this field cannot be `null`. If required is `false` (the defau
 
 If `true`, then all values for that field `MUST` be unique within the data file in which it is found.
 
-### `minLength`
+### `minLength` {#minLength}
 
 - **Type**: integer
 - **Fields**: collections (string, array, object)
 
 An integer that specifies the minimum length of a value.
 
-### `maxLength`
+### `maxLength` {#maxLength}
 
 - **Type**: integer
 - **Fields**: collections (string, array, object)
@@ -672,21 +672,21 @@ Specifies a minimum value for a field. This is different to `minLength` which ch
 
 As for `minimum`, but specifies a maximum value for a field.
 
-### `exclusiveMinimum`
+### `exclusiveMinimum` {#exclusiveMinimum}
 
 - **Type**: integer, number, date, time, datetime, duration, year, yearmonth
 - **Fields**: integer, number, date, time, datetime, duration, year, yearmonth
 
 As for `minimum`, but for expressing exclusive range.
 
-### `exclusiveMaximum`
+### `exclusiveMaximum` {#exclusiveMaximum}
 
 - **Type**: integer, number, date, time, datetime, duration, year, yearmonth
 - **Fields**: integer, number, date, time, datetime, duration, year, yearmonth
 
 As for `maximum`, but for expressing exclusive range.
 
-### `jsonSchema`
+### `jsonSchema` {#jsonSchema}
 
 - **Type**: object
 - **Fields**: array, object
