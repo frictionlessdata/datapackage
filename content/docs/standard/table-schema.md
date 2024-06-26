@@ -380,7 +380,7 @@ When the property `categoriesOrdered` is `false`, implementations `SHOULD` 
 
 #### `missingValues` {#field-missingValues}
 
-A list of missing values for this field as per [Missing Values](#missingvalues) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
+A list of missing values for this field as per [Missing Values](#missingValues) definition. If this property is defined, it takes precedence over the schema-level property and completely replaces it for the field without combining the values.
 
 For example, for the Table Schema below:
 
