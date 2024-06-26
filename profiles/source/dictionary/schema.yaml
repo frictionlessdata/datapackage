@@ -283,21 +283,31 @@ tableSchemaMissingValues:
       }
 tableSchemaExamples:
   title: Examples
-  description: Data Resource descriptors (without "schema" property) to illustrate the  schema
+  description: Links to example data resources
   type: array
   minItems: 0
   items:
-    "$ref": "#/definitions/dataResourceWithoutSchema"
+    "$ref": "#/definitions/tableSchemaExample"
   examples:
     - |
       {
         "examples": [
           {
-            "name": "some-data",
-            "path": "http://example.com/some-data.csv"
+            "title": "Valid data",
+            "path": "http://example.com/valid-data.csv"
           }
         ]
       }
+tableSchemaExample:
+  title: Example
+  description: Link to an example data resource
+  type: object
+  properties:
+    title:
+      "$ref": "#/definitions/title"
+    path:
+      "$ref": "#/definitions/path"
+  required: ["title", "path"]
 tableSchemaFieldString:
   type: object
   title: String Field

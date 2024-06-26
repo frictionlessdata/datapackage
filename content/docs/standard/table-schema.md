@@ -297,7 +297,7 @@ The `examples` property contains links to example data resources. This allows
 the schema to be shared with data resources to illustrate it.
 
 If present, it `MUST` be a non-empty array of [Data 
-Resource](https://datapackage.org/standard/data-resource/) descriptors (without "schema" properties).
+Resource](https://datapackage.org/standard/data-resource/) descriptors.
 
 #### `created`
 

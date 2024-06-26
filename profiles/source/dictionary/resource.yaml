@@ -1,8 +1,4 @@
 dataResource:
-  allOf:
-    - dataResourceWithoutSchema
-    - schemaProperty
-dataResourceWithoutSchema:
   title: Data Resource
   description: Data Resource.
   type: object
@@ -73,9 +69,6 @@ dataResourceWithoutSchema:
     dialect:
       "$ref": "#/definitions/tableDialect"
       propertyOrder: 130
-schemaProperty:
-  type: object
-  properties:
     schema:
       "$ref": "#/definitions/tableSchema"
       propertyOrder: 140
