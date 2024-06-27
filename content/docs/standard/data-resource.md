@@ -1,5 +1,6 @@
 ---
 title: Data Resource
+description: A simple format to describe and package a single data resource such as a individual table or file. The essence of a Data Resource is a locator for the data it describes. A range of other properties can be declared to provide a richer set of metadata.
 sidebar:
   order: 2
 ---

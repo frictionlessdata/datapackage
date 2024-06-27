@@ -1,5 +1,6 @@
 ---
 title: Table Schema
+description: Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data.
 sidebar:
   order: 4
 ---

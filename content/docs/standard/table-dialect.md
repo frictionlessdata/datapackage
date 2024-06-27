@@ -1,5 +1,6 @@
 ---
 title: Table Dialect
+description: Table Dialect describes how tabular data is stored in a file. It supports delimited text files like CSV, semi-structured formats like JSON and YAML, and spreadsheets like Microsoft Excel.
 sidebar:
   order: 3
 ---

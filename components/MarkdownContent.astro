@@ -1,0 +1,12 @@
+---
+import type { Props } from "@astrojs/starlight/props"
+import Default from "@astrojs/starlight/components/MarkdownContent.astro"
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+<script>
+  import { addBackToTop } from "vanilla-back-to-top"
+
+  addBackToTop({ backgroundColor: "#3272C2", scrollDuration: 200 })
+</script>

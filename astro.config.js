@@ -15,6 +15,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Data Package Standard",
+      description:
+        "Data Package is a standard consisting of a set of simple yet extensible specifications to describe datasets, data files and tabular data. It is a data definition language (DDL) and data API that facilitates findability, accessibility, interoperability, and reusability (FAIR) of data.",
       logo: {
         light: "/assets/logo-light.svg",
         dark: "/assets/logo-dark.svg",
@@ -32,6 +34,7 @@ export default defineConfig({
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       components: {
+        MarkdownContent: "./components/MarkdownContent.astro",
         SocialIcons: "./components/SocialIcons.astro",
       },
       plugins: [

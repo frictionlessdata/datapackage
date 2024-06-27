@@ -1,5 +1,6 @@
 ---
 title: Glossary
+description: A glossary of terms used in the Data Package standard.
 sidebar:
   order: 6
 ---

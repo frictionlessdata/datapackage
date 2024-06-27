@@ -1,5 +1,6 @@
 ---
 title: Extensions
+description: The Data Package Standard extensibility features for domain-specific needs.
 sidebar:
   order: 5
 ---
