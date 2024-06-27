@@ -21,7 +21,6 @@
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.6.4",
     "@astrojs/markdown-remark": "^5.1.1",
-    "@astrojs/react": "^3.6.0",
     "@astrojs/starlight": "^0.24.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
