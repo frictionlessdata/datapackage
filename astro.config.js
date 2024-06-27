@@ -1,4 +1,5 @@
 import { rehypeHeadingIds } from "@astrojs/markdown-remark"
+import react from "@astrojs/react"
 import starlight from "@astrojs/starlight"
 import { defineConfig } from "astro/config"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
@@ -13,6 +14,7 @@ export default defineConfig({
   srcDir: ".",
   outDir: "build",
   integrations: [
+    react(),
     starlight({
       title: "Data Package Standard",
       description:
@@ -34,6 +36,7 @@ export default defineConfig({
       customCss: ["/assets/styles.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
       components: {
+        MarkdownContent: "./components/MarkdownContent.astro",
         SocialIcons: "./components/SocialIcons.astro",
       },
       plugins: [
