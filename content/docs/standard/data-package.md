@@ -1,5 +1,6 @@
 ---
 title: Data Package
+description: A simple container format for describing a coherent collection of data in a single 'package'. It provides the basis for convenient delivery, installation and management of datasets.
 sidebar:
   order: 1
 ---

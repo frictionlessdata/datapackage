@@ -1,5 +1,6 @@
 ---
 title: Security
+description: Security considerations around Data Packages and Data Resources.
 sidebar:
   order: 7
 ---
