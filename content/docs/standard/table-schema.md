@@ -709,7 +709,7 @@ The value of the field `MUST` exactly match one of the values in the `enum` arra
 - Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 - A constraints descriptor `MAY` contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
 - Constraints `MUST` be applied on the logical representation of field values and constraint values.
-  :::
+:::
 
 ## Related Work
 
