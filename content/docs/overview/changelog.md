@@ -46,11 +46,11 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 [`missingValues`](/standard/table-schema/#missingValues) now allow to specify labeled missingness ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
-##### `schema.categories` (new)
+##### `field.categories` (new)
 
 [`categories`](/standard/table-schema/#categories) adds support for categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
-##### `schema.categoriesOrdered` (new)
+##### `field.categoriesOrdered` (new)
 
 [`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds support for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
