@@ -12,7 +12,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `package.$schema` (new)
 
-[`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### Tabular Data Package (removed)
 
@@ -20,7 +20,7 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
+[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
 
 ##### `resource.sources` (updated)
 
@@ -32,7 +32,7 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 ##### `dialect.$schema` (new)
 
-[`$schema`](/standard/table-dialect/#dollar-schema) replaces `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
@@ -40,7 +40,7 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 ##### `schema.$schema` (new)
 
-[`$schema`](/standard/table-schema/#dollar-schema) replace `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-schema/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `schema.missingValues` (updated)
 
