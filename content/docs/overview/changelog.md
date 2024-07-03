@@ -14,6 +14,10 @@ This document includes all meaningful changes made to the **Data Package standar
 
 [`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
+##### Tabular Data Package (removed)
+
+The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`$package.profile: "tabular-data-package"`) is removed. It did not add any benefits over defining `$resource.profile: "tabular-data-resource"` for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
+
 ##### `resource.$schema` (new)
 
 [`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
