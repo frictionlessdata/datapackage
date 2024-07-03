@@ -12,11 +12,11 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `package.$schema` (new)
 
-[`$schema`](/standard/data-package/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/data-resource/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.sources` (updated)
 
@@ -28,7 +28,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `dialect.$schema` (new)
 
-[`$schema`](/standard/table-dialect/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-dialect/#dollar-schema) replaces `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
@@ -36,7 +36,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.$schema` (new)
 
-[`$schema`](/standard/table-schema/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-schema/#dollar-schema) replace `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `schema.missingValues` (updated)
 
@@ -48,7 +48,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.categoriesOrdered` (new)
 
-[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds suport for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
+[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds support for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
 ## v2.0-draft
 
