@@ -12,15 +12,15 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `package.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-package/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-resource/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `resource.sources` (updated)
 
-[`sources`](/standard/resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
+[`sources`](/standard/data-resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
 
 ##### `resource.type` (new)
 
@@ -28,7 +28,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `dialect.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-dialect/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
@@ -36,7 +36,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-schema/#dollar-schema) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `schema.missingValues` (updated)
 
