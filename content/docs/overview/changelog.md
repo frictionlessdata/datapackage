@@ -16,7 +16,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
 
 ##### `resource.sources` (updated)
 
@@ -24,7 +24,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `resource.type` (new)
 
-[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)).
+[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)). `resource.type: "table"` replaces `resource.profile: "tabular-data-resource"`.
 
 ##### `dialect.$schema` (new)
 
