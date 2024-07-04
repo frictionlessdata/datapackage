@@ -12,23 +12,27 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `package.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+
+##### Tabular Data Package (removed)
+
+The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`$package.profile: "tabular-data-package"`) is removed. It did not add any benefits over defining `$resource.profile: "tabular-data-resource"` for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
 
 ##### `resource.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
 
 ##### `resource.sources` (updated)
 
-[`sources`](/standard/resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
+[`sources`](/standard/data-resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
 
 ##### `resource.type` (new)
 
-[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)).
+[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)). `resource.type: "table"` replaces `resource.profile: "tabular-data-resource"`.
 
 ##### `dialect.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
@@ -36,19 +40,19 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.$schema` (new)
 
-[`$schema`](/standard/glossary/#profile) replaced `profile` property with new extensions semantics ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-schema/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `schema.missingValues` (updated)
 
 [`missingValues`](/standard/table-schema/#missingValues) now allow to specify labeled missingness ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
-##### `schema.categories` (new)
+##### `field.categories` (new)
 
 [`categories`](/standard/table-schema/#categories) adds support for categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
-##### `schema.categoriesOrdered` (new)
+##### `field.categoriesOrdered` (new)
 
-[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds suport for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
+[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds support for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
 ## v2.0-draft
 
