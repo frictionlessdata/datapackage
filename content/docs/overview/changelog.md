@@ -6,6 +6,48 @@ sidebar:
 
 This document includes all meaningful changes made to the **Data Package standard**. It does not cover changes made to other documents like Recipes or Guides.
 
+## v2.1-draft
+
+### Table Schema
+
+##### `name` (new)
+
+[`name`](/standard/table-schema/#name) is a simple name or identifier.
+
+##### `title` (new)
+
+[`title`](/standard/table-schema/#title) is a string providing a title or one sentence description for the schema.
+
+##### `description` (new)
+
+[`description`](/standard/table-schema/#description) is a description of the schema.
+
+##### `homepage` (new)
+
+[`homepage`](/standard/table-schema/#description) URL for the home on the web that is related to the schema.
+
+##### `keywords` (new)
+
+[`keywords`](/standard/specification/table-schema/#keywords) is a list of short keywords related to the schema.
+
+##### `examples` (new)
+
+[`examples`](/standard/table-schema/#examples) contains links to example data files. This allows the schema to be shared with data resources to illustrate it.
+
+##### `created` (new)
+
+[`created`](/standard/table-schema/#created) is the datetime on which the schema was created. 
+
+##### `version` (new)
+
+[`version`](/standard/table-schema/#version) stores the version of the schema.
+
+##### `contributors` (new)
+
+[`contributors`](/standard/table-schema/#contributors) stores people or oganizations that contributed to the schema.
+ 
+An adjusted [Metadata in Table Schema](https://specs.frictionlessdata.io/patterns/#table-schema-metadata-properties) pattern has been promoted to the standard ([#63](https://github.com/frictionlessdata/datapackage/pull/960)).
+
 ## v2.0
 
 > June 26, 2024
