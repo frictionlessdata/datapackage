@@ -46,7 +46,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 [`contributors`](/standard/table-schema/#contributors) stores people or oganizations that contributed to the schema.
  
-An adjusted [Metadata in Table Schema](https://specs.frictionlessdata.io/patterns/#table-schema-metadata-properties) pattern has been promoted to the standard ([#63](https://github.com/frictionlessdata/datapackage/pull/960)).
+An adjusted [Metadata in Table Schema](https://specs.frictionlessdata.io/patterns/#table-schema-metadata-properties) pattern has been promoted to the standard ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ## v2.0
 
