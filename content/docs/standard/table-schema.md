@@ -330,8 +330,7 @@ Here is an illustration:
 
 ```json
 {
-  "name": "name of field (e.g. column name), as for [Data 
-Package](https://datapackage.org/specifications/data-package/#version)
+  "name": "name of field (e.g. column name)",
   "title": "A nicer human readable label or title for the field",
   "type": "A string specifying the type",
   "format": "A string specifying a format",
