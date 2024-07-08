@@ -31,7 +31,7 @@ The composition of the working group:
 
 - **Martin Durant** (Anaconda, inc.)
 - **Adam Kariv** (The Public Knowledge Workshop)
-- **Johan Richer** (Coopérative pour un numérique d'intérêt général)
+- **Johan Richer** ([multi.coop](https://www.multi.coop/))
 
 ## Decision Making
 
