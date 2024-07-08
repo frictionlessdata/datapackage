@@ -193,9 +193,7 @@ A foreign key is a reference where values in a field (or fields) on the table ('
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the array `MUST` be a `foreignKey`. A `foreignKey` `MUST` be a `object` and `MUST` have the following properties:
 
-- `fields` - `fields` is an array of strings specifying the
-  field or fields on this resource that form the source part of the foreign
-  key. The structure of the array is as per `primaryKey` above.
+- `fields` - `fields` is an array of strings specifying the field or fields on this resource that form the source part of the foreign key. The structure of the array is as per `primaryKey` above.
 - `reference` - `reference` `MUST` be a `object`. The `object`
   - `MUST` have a property `fields` which is an array of strings of the same length as the outer `fields`, describing the field (or fields) references on the destination resource. The structure of the array is as per `primaryKey` above.
   - `MAY` have a property `resource` which is the name of the resource within the current data package, i.e. the data package within which this Table Schema is located. For referencing another data resource the `resource` property `MUST` be provided. For self-referencing, i.e. references between fields in this Table Schema, the `resource` property `MUST` be omitted.
@@ -434,8 +432,7 @@ The corresponding Table Schema is:
 
 ## Field Types
 
-The type list with associated formats and other related properties is as
-follows.
+The type list with associated formats and other related properties is as follows.
 
 ### `string`
 
@@ -565,8 +562,7 @@ The field contains data describing a geographic point.
 Supported formats:
 
 - **default**: A string of the pattern "lon, lat", where each value is a number, and `lon` is the longitude and `lat` is the latitude (note the space is optional after the `,`). E.g. `"90.50, 45.50"`.
-- **array**: A JSON array, or a string parsable as a JSON array, of exactly two items, where each item is a number, and the first item is `lon` and the second
-  item is `lat` e.g. `[90.50, 45.50]`
+- **array**: A JSON array, or a string parsable as a JSON array, of exactly two items, where each item is a number, and the first item is `lon` and the second item is `lat` e.g. `[90.50, 45.50]`
 - **object**: A JSON object with exactly two keys, `lat` and `lon` and each value is a number e.g. `{"lon": 90.50, "lat": 45.50}`
 
 ### `geojson`
@@ -713,7 +709,7 @@ The value of the field `MUST` exactly match one of the values in the `enum` arra
 - Implementations `SHOULD` report an error if an attempt is made to evaluate a value against an unsupported constraint.
 - A constraints descriptor `MAY` contain multiple constraints, in which case implementations `MUST` apply all the constraints when determining if a field value is valid.
 - Constraints `MUST` be applied on the logical representation of field values and constraint values.
-  :::
+:::
 
 ## Related Work
 

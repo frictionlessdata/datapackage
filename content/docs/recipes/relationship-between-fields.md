@@ -160,7 +160,9 @@ The control implementation is based on the following principles:
 - comparison of the calculated relationship type with that defined in the data schema
 
 The [implementation example](https://github.com/loco-philippe/Environmental-Sensing/blob/main/property_relationship/example.ipynb) presents calculation function.
+
 An [analysis tool](https://github.com/loco-philippe/tab-analysis/blob/main/README.md) is also available and accessible from pandas data.
+
 An example of implementation as `custom_check` is available [here](https://nbviewer.org/github/loco-philippe/Environmental-Sensing/blob/main/property_relationship/relationship_descriptor.ipynb).
 
 ## Notes

@@ -17,9 +17,7 @@ A **JSON Data Resource** is a type of [Data Resource][dr] specialized for descri
 
 JSON Data Resource extends [Data Resource][dr] in following key ways:
 
-- The `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
-  either as a JSON object directly under the property, or a string referencing another
-  JSON document containing the JSON Schema
+- The `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification, either as a JSON object directly under the property, or a string referencing another JSON document containing the JSON Schema
 
 ## Examples
 
@@ -121,12 +119,8 @@ A JSON Data Resource MUST be a [Data Resource][dr], that is it MUST conform to t
 
 In addition:
 
-- The Data Resource `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification,
-  either as a JSON object directly under the property, or a string referencing another
-  JSON document containing the JSON Schema
-
-* There `MUST` be a `profile` property with the value `json-data-resource`
-
+- The Data Resource `schema` property MUST follow the [JSON Schema](https://json-schema.org/) specification, either as a JSON object directly under the property, or a string referencing another JSON document containing the JSON Schema
+- There `MUST` be a `profile` property with the value `json-data-resource`
 - The data the Data Resource describes MUST, if non-inline, be a JSON file
 
 ## JSON file requirements
