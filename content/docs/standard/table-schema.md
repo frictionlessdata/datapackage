@@ -302,7 +302,7 @@ A version string identifying the version of the schema (cf. [Data Package](https
  
 #### `contributors`
 
-The people or oganizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)). If not specified the schema inherits from the Data Package if distributed in a Data Package descriptor.
+The people or organizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)). If not specified the schema inherits from the Data Package if distributed in a Data Package descriptor.
 
 ### Field
 
