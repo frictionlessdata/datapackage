@@ -189,7 +189,7 @@ In contrast with `field.constraints.unique`, `uniqueKeys` allows to define uniqu
 
 #### `foreignKeys` {#foreignKeys}
 
-A foreign key is a reference where values in a field (or fields) on the table ('resource' in data package terminology) described by this Table Schema connect to values a field (or fields) on this or a separate table (resource). They are directly modelled on the concept of foreign keys in SQL.
+A foreign key is a reference where values in a field (or fields) on the table ('resource' in Data Package terminology) described by this Table Schema connect to values a field (or fields) on this or a separate table (resource). They are directly modelled on the concept of foreign keys in SQL.
 
 The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the array `MUST` be a `foreignKey`. A `foreignKey` `MUST` be a `object` and `MUST` have the following properties:
 
@@ -198,7 +198,7 @@ The `foreignKeys` property, if present, `MUST` be an Array. Each entry in the ar
   key. The structure of the array is as per `primaryKey` above.
 - `reference` - `reference` `MUST` be a `object`. The `object`
   - `MUST` have a property `fields` which is an array of strings of the same length as the outer `fields`, describing the field (or fields) references on the destination resource. The structure of the array is as per `primaryKey` above.
-  - `MAY` have a property `resource` which is the name of the resource within the current data package, i.e. the data package within which this Table Schema is located. For referencing another data resource the `resource` property `MUST` be provided. For self-referencing, i.e. references between fields in this Table Schema, the `resource` property `MUST` be omitted.
+  - `MAY` have a property `resource` which is the name of the resource within the current Data Package, i.e. the Data Package within which this Table Schema is located. For referencing another Data Resource the `resource` property `MUST` be provided. For self-referencing, i.e. references between fields in this Table Schema, the `resource` property `MUST` be omitted.
 
 Here's an example:
 
@@ -288,7 +288,7 @@ An array of string keywords to assist users searching for the schema in catalogs
 
 #### `examples`
 
-Links to example files using the schema. This allows the schema to be shared with data resources to illustrate it.
+Links to example files using the schema. This allows the schema to be shared with Data Resources to illustrate it.
 
 If present, it `MUST` be a non-empty array of objects. Each object is a partial [Data Resource](https://datapackage.org/standard/data-resource/) that `MUST` at least have the `title` and `path` property. The `path` must be a URL.
 
@@ -298,11 +298,11 @@ The datetime on which the schema was created (cf. [Data Package](https://datapac
 
 #### `version`
 
-A version string identifying the version of the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#version)). If not specified, the schema inherits from the data package if distributed in a data package descriptor.
+A version string identifying the version of the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#version)). If not specified, the schema inherits from the Data Package if distributed in a Data Package descriptor.
  
 #### `contributors`
 
-The people or oganizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)).  If not specified the schema inherits from the data package if distributed in a data package descriptor.
+The people or oganizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)). If not specified the schema inherits from the Data Package if distributed in a Data Package descriptor.
 
 ### Field
 
