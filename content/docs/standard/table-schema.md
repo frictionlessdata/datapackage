@@ -288,9 +288,9 @@ An array of string keywords to assist users searching for the schema in catalogs
 
 #### `examples`
 
-Links to example files using the schema. This allows the schema to be shared with Data Resources to illustrate it.
+A list of Data Resources that use and illustrate the schema.
 
-If present, it `MUST` be a non-empty array of objects. Each object is a partial [Data Resource](https://datapackage.org/standard/data-resource/) that `MUST` at least have the `title` and `path` property. The `path` must be a URL.
+If present, it `MUST` be a non-empty array of objects. Each object is a [Data Resource](https://datapackage.org/standard/data-resource/) that `MUST` at least have the `name` and `path` property. The `path` must be a URL.
 
 #### `created`
 
