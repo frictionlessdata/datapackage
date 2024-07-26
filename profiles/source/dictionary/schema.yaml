@@ -303,11 +303,11 @@ tableSchemaExample:
   description: A Data Resource that uses and illustrates the schema.
   type: object
   properties:
-    title:
-      "$ref": "#/definitions/title"
+    name:
+      "$ref": "#/definitions/name"
     path:
       "$ref": "#/definitions/path"
-  required: ["title", "path"]
+  required: ["name", "path"]
 tableSchemaFieldString:
   type: object
   title: String Field
