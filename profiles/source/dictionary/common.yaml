@@ -72,7 +72,7 @@ example:
       }
 homepage:
   title: Home Page
-  description: The home on the web that is related to this resource.
+  description: The home on the web that is related to this descriptor.
   type: string
   format: uri
   examples:
