@@ -293,7 +293,7 @@ tableSchemaExamples:
       {
         "examples": [
           {
-            "title": "Valid data",
+            "name": "valid-data",
             "path": "http://example.com/valid-data.csv"
           }
         ]
