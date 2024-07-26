@@ -300,7 +300,7 @@ tableSchemaExamples:
       }
 tableSchemaExample:
   title: Example
-  description: Link to an example data file
+  description: A Data Resource that uses and illustrates the schema.
   type: object
   properties:
     title:
