@@ -283,7 +283,7 @@ tableSchemaMissingValues:
       }
 tableSchemaExamples:
   title: Examples
-  description: Links to example data files
+  description: A list of Data Resources that use and illustrate the schema.
   type: array
   minItems: 0
   items:
