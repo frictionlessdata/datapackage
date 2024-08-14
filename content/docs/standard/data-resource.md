@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 FrictionlessData https://datapackage.org/
+
+SPDX-License-Identifier: Unlicense
+-->
+
 ---
 title: Data Resource
 description: A simple format to describe and package a single data resource such as an individual table or file. The essence of a Data Resource is a locator for the data it describes. A range of other properties can be declared to provide a richer set of metadata.
