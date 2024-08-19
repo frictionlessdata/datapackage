@@ -23,7 +23,7 @@ The composition of the working group:
 - **Kyle Husmann** (Pennsylvania State University)
 - **Keith Hughitt** (National Institutes of Health)
 - **Jakob Voß** (Verbundzentrale des GBV (VZG))
-- **Ethan Welty** (Falling Fruit)
+- **Ethan Welty** (World Glacier Monitoring Service (WGMS))
 - **Paul Walsh** (Link Digital)
 - **Pieter Huybrechts** (Research Institute for Nature and Forest (INBO))
 
