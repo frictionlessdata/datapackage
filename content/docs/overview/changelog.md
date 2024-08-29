@@ -16,7 +16,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### Tabular Data Package (removed)
 
-The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`$package.profile: "tabular-data-package"`) is removed. It did not add any benefits over defining `$resource.profile: "tabular-data-resource"` for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
+The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`package.profile: "tabular-data-package"`) is removed. It did not add any benefits over defining `resource.profile: "tabular-data-resource"` for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
 
 ##### `resource.$schema` (new)
 
@@ -30,9 +30,9 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 [`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)). `resource.type: "table"` replaces `resource.profile: "tabular-data-resource"`.
 
-##### `dialect.$schema` (new)
+##### `dialect.schema` (new)
 
-[`$schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
