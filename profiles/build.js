@@ -1,11 +1,12 @@
 import JsonSchema from "@apidevtools/json-schema-ref-parser"
+import { readPackage } from "@npmcli/package-json/lib/read-package.js"
 import fs from "fs-extra"
 import { glob } from "glob"
 import yaml from "js-yaml"
 import nodePath from "path"
 import process from "process"
 
-const VERSION = "2.0"
+const VERSION = (await readPackage("./package.json")).version
 const SOURCE_DIR = "profiles/source"
 const TARGET_DIR = `profiles/target`
 const VERSION_DIR = `${TARGET_DIR}/${VERSION}`

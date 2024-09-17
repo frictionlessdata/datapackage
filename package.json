@@ -1,7 +1,7 @@
 {
   "name": "datapackage.org",
   "type": "module",
-  "version": "2.0-draft",
+  "version": "2.1",
   "engines": {
     "node": "^20.0.0",
     "npm": "^10.0.0"
@@ -22,6 +22,7 @@
     "@apidevtools/json-schema-ref-parser": "^11.6.4",
     "@astrojs/markdown-remark": "^5.1.1",
     "@astrojs/starlight": "^0.24.4",
+    "@npmcli/package-json": "^5.2.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
     "@typescript-eslint/parser": "^7.14.1",
