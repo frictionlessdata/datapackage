@@ -6,6 +6,14 @@ sidebar:
 
 This document includes all meaningful changes made to the **Data Package standard**. It does not cover changes made to other documents like Recipes or Guides.
 
+## v2.1
+
+> Sep 17, 2024
+
+##### `schema.fieldsMatch` (fixed)
+
+The `schema.fieldsMatch` property definition has been fixed in the Table Schema profile ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
+
 ## v2.0
 
 > June 26, 2024

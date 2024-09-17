@@ -12,7 +12,7 @@ sidebar:
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/2.0/tableschema.json">https://datapackage.org/profiles/2.0/tableschema.json</a></td>
+    <td><a href="/profiles/2.1/tableschema.json">https://datapackage.org/profiles/2.1/tableschema.json</a></td>
   </tr>
 </table>
 
