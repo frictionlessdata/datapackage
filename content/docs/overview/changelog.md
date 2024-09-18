@@ -8,65 +8,17 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ## v2.0
 
+This release includes a rich set of specification improvements to make Data Package a finished product (see [announcement](https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/)). All changes were reviewed and accepted by the Data Package Working Group.
+
 > June 26, 2024
+
+##### Tabular Data Package (removed)
+
+The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`package.profile: "tabular-data-package"`) is removed. It does not add any benefits over defining `type: "table"` (previously `resource.profile: "tabular-data-resource"`) for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
 
 ##### `package.$schema` (new)
 
 [`$schema`](/standard/data-package/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
-
-##### Tabular Data Package (removed)
-
-The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-package/) (`package.profile: "tabular-data-package"`) is removed. It did not add any benefits over defining `resource.profile: "tabular-data-resource"` for its resources, which is more modular ([#52](https://github.com/frictionlessdata/datapackage-v2-draft/pull/52)).
-
-##### `resource.$schema` (new)
-
-[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
-
-##### `resource.sources` (updated)
-
-[`sources`](/standard/data-resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
-
-##### `resource.type` (new)
-
-[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)). `resource.type: "table"` replaces `resource.profile: "tabular-data-resource"`.
-
-##### `dialect.schema` (new)
-
-[`schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
-
-##### `dialect.table` (new)
-
-[`table`](/standard/table-dialect/#table) allows to specify a table in a database ([#64](https://github.com/frictionlessdata/datapackage-v2-draft/pull/64)).
-
-##### `schema.$schema` (new)
-
-[`$schema`](/standard/table-schema/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
-
-##### `schema.missingValues` (updated)
-
-[`missingValues`](/standard/table-schema/#missingValues) now allow to specify labeled missingness ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
-
-##### `field.categories` (new)
-
-[`categories`](/standard/table-schema/#categories) adds support for categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
-
-##### `field.categoriesOrdered` (new)
-
-[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds support for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
-
-## v2.0-draft
-
-> April 1, 2024
-
-The Data Package (v2) draft release includes a rich set of the specification improvements accepted by the Data Package Working Group during the active phase of the Data Package (v2) work.
-
-##### Table Dialect (new)
-
-[Table Dialect](/standard/table-dialect) is a new specification that superseeds and extends the CSV Dialect specification. It support other formats like JSON or Excel ([#41](https://github.com/frictionlessdata/datapackage-v2-draft/pull/41)).
-
-##### `package.version` (updated)
-
-[`version`](/standard/data-package/#version) is now included in the specification, while in Data Package v1 it was erroneously only part of the documentation ([#3](https://github.com/frictionlessdata/datapackage-v2-draft/pull/3)).
 
 ##### `package.contributors` (updated)
 
@@ -76,6 +28,10 @@ The Data Package (v2) draft release includes a rich set of the specification imp
 - `contributor.givenName` and `contributor.familyName` are new properties to specify the given and family name of contributor, if it is a person ([#20](https://github.com/frictionlessdata/datapackage-v2-draft/pull/20)).
 - `contributor.role` has been deprecated in favour of `contributor.roles`, see further ([#18](https://github.com/frictionlessdata/datapackage-v2-draft/pull/18)).
 - `contributor.roles` is a new property that allows to specify multiple roles per contributor, rather than having to duplicate the contributor. It recommendeds to follow an established vocabulary and has suggested values that are different from the deprecated `contributor.role` ([#18](https://github.com/frictionlessdata/datapackage-v2-draft/pull/18)).
+
+##### `package.version` (updated)
+
+[`version`](/standard/data-package/#version) is now included in the specification, while in Data Package v1 it was erroneously only part of the documentation ([#3](https://github.com/frictionlessdata/datapackage-v2-draft/pull/3)).
 
 ##### `package.sources` (updated)
 
@@ -92,13 +48,45 @@ The Data Package (v2) draft release includes a rich set of the specification imp
 
 [path](/standard/data-resource/#path-or-data-required) now explicitely forbids hidden folders (starting with dot `.`) ([#19](https://github.com/frictionlessdata/datapackage-v2-draft/pull/19)).
 
+##### `resource.type` (new)
+
+[`type`](/standard/data-resource/#type) allows to specify the resource type ([#51](https://github.com/frictionlessdata/datapackage-v2-draft/pull/51)). `resource.type: "table"` replaces `resource.profile: "tabular-data-resource"`.
+
+##### `resource.$schema` (new)
+
+[`$schema`](/standard/data-resource/#dollar-schema) replaces the `profile` property and allows easier extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)). See also [resource.type](#resource-type-new).
+
 ##### `resource.encoding` (updated)
 
 [encoding](/standard/data-resource/#encoding)'s definition has been updated to support binary formats like Parquet ([#15](https://github.com/frictionlessdata/datapackage-v2-draft/pull/15)).
 
+##### `resource.sources` (updated)
+
+[`sources`](/standard/data-resource/#sources) now inherits from a containing data package ([#57](https://github.com/frictionlessdata/datapackage-v2-draft/pull/57)).
+
+##### Table Dialect (new)
+
+[Table Dialect](/standard/table-dialect) is a new specification that superseeds and extends the CSV Dialect specification. It support other formats like JSON or Excel ([#41](https://github.com/frictionlessdata/datapackage-v2-draft/pull/41)).
+
+##### `dialect.schema` (new)
+
+[`schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+
+##### `dialect.table` (new)
+
+[`table`](/standard/table-dialect/#table) allows to specify a table in a database ([#64](https://github.com/frictionlessdata/datapackage-v2-draft/pull/64)).
+
+##### `schema.$schema` (new)
+
+[`$schema`](/standard/table-schema/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+
 ##### `schema.fieldsMatch` (new)
 
 [fieldsMatch](/standard/table-schema/#fieldsMatch) allows to specify how fields in a Table Schema match the fields in the data source. The default (`exact`) matches the Data Package v1 behaviour, but other values (e.g. `subset`, `superset`) allow to define fewer or more fields and match on field names. This new property extends and makes explicit the `schema_sync` option in Frictionless Framework ([#39](https://github.com/frictionlessdata/datapackage-v2-draft/pull/39)).
+
+##### `schema.missingValues` (updated)
+
+[`missingValues`](/standard/table-schema/#missingValues) now allow to specify labeled missingness ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
 ##### `schema.primaryKey` (updated)
 
@@ -114,6 +102,14 @@ The Data Package (v2) draft release includes a rich set of the specification imp
 
 - It should now always be an array of strings, not a string ([#28](https://github.com/frictionlessdata/datapackage-v2-draft/pull/28)).
 - `foreignKeys.reference.resource` can now be omitted for self-referencing foreign keys. Previously it required setting `resource` to an empty string ([#29](https://github.com/frictionlessdata/datapackage-v2-draft/pull/29)).
+
+##### `field.categories` (new)
+
+[`categories`](/standard/table-schema/#categories) adds support for categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
+
+##### `field.categoriesOrdered` (new)
+
+[`categoriesOrdered`](/standard/table-schema/#categoriesOrdered) adds support for ordered categorical data for the `string` and `integer` field types ([#68](https://github.com/frictionlessdata/datapackage-v2-draft/pull/68)).
 
 ##### `field.missingValues` (new)
 
