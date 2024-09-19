@@ -89,16 +89,16 @@ tableSchema:
       "$ref": "#/definitions/description"
     homepage:
       "$ref": "#/definitions/homepage"
-    keywords:
-      "$ref": "#/definitions/keywords"
-    examples:
-      "$ref": "#/definitions/tableSchemaExamples"
     created:
       "$ref": "#/definitions/created"
     version:
       "$ref": "#/definitions/version"
+    keywords:
+      "$ref": "#/definitions/keywords"
     contributors:
       "$ref": "#/definitions/contributors"
+    examples:
+      "$ref": "#/definitions/tableSchemaExamples"
   examples:
     - |
       {

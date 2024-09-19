@@ -282,27 +282,27 @@ A description of the schema (cf. [Data Package](https://datapackage.org/standard
        
 A URL for the home on the web that is related to the schema.
 
+#### `version`
+
+A version string identifying the version of the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#version)). If not specified, the schema inherits from the Data Package if distributed in a Data Package descriptor.
+
+#### `created`
+
+The datetime on which the schema was created (cf. [Data Package](https://datapackage.org/standard/data-package/#created)).
+
 #### `keywords`
 
 An array of string keywords to assist users searching for the schema in catalogs.
+ 
+#### `contributors`
+
+The people or organizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)). If not specified the schema inherits from the Data Package if distributed in a Data Package descriptor.
 
 #### `examples`
 
 A list of Data Resources that use and illustrate the schema.
 
 If present, it `MUST` be a non-empty array of objects. Each object is a [Data Resource](https://datapackage.org/standard/data-resource/) that `MUST` at least have the `name` and `path` property. The `path` must be a URL.
-
-#### `created`
-
-The datetime on which the schema was created (cf. [Data Package](https://datapackage.org/standard/data-package/#created)).
-
-#### `version`
-
-A version string identifying the version of the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#version)). If not specified, the schema inherits from the Data Package if distributed in a Data Package descriptor.
- 
-#### `contributors`
-
-The people or organizations that contributed to the schema (cf. [Data Package](https://datapackage.org/standard/data-package/#contributors)). If not specified the schema inherits from the Data Package if distributed in a Data Package descriptor.
 
 ### Field
 

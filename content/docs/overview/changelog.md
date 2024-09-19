@@ -24,25 +24,25 @@ This document includes all meaningful changes made to the **Data Package standar
 
 [`homepage`](/standard/table-schema/#homepage)  allows to specify a homepage for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-##### `schema.keywords` (new)
+##### `schema.version` (new)
 
-[`keywords`](/standard/table-schema/#keywords) allows to specify keywords for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
-
-##### `schema.examples` (new)
-
-[`examples`](/standard/table-schema/#examples) allows to specify a list of illustrative data resources that use a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+[`version`](/standard/table-schema/#version) allows to specify a version for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ##### `schema.created` (new)
 
 [`created`](/standard/table-schema/#created) allows to specify when a schema was created ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-##### `schema.version` (new)
+##### `schema.keywords` (new)
 
-[`version`](/standard/table-schema/#version) allows to specify a version for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+[`keywords`](/standard/table-schema/#keywords) allows to specify keywords for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ##### `schema.contributors` (new)
 
 [`contributors`](/standard/table-schema/#contributors) allows to specify contributors for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+
+##### `schema.examples` (new)
+
+[`examples`](/standard/table-schema/#examples) allows to specify a list of illustrative data resources that use a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ## v2.0
 
