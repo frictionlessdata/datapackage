@@ -8,45 +8,41 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ## v2.1-draft
 
-### Table Schema
+##### `schema.name` (new)
 
-##### `name` (new)
+[`name`](/standard/table-schema/#name) allows to specify a name for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`name`](/standard/table-schema/#name) is a simple name or identifier.
+##### `schema.title` (new)
 
-##### `title` (new)
+[`title`](/standard/table-schema/#title) allows to specify a title for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`title`](/standard/table-schema/#title) is a string providing a title or one sentence description for the schema.
+##### `schema.description` (new)
 
-##### `description` (new)
+[`description`](/standard/table-schema/#description)  allows to specify a description for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`description`](/standard/table-schema/#description) is a description of the schema.
+##### `schema.homepage` (new)
 
-##### `homepage` (new)
+[`homepage`](/standard/table-schema/#homepage)  allows to specify a homepage for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`homepage`](/standard/table-schema/#homepage) URL for the home on the web that is related to the schema.
+##### `schema.keywords` (new)
 
-##### `keywords` (new)
+[`keywords`](/standard/table-schema/#keywords) allows to specify keywords for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`keywords`](/standard/specification/table-schema/#keywords) is a list of short keywords related to the schema.
+##### `schema.examples` (new)
 
-##### `examples` (new)
+[`examples`](/standard/table-schema/#examples) allows to specify a list of illustrative data resources that use a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`examples`](/standard/table-schema/#examples) contains links to example data files. This allows the schema to be shared with data resources to illustrate it.
+##### `schema.created` (new)
 
-##### `created` (new)
+[`created`](/standard/table-schema/#created) allows to specify when a schema was created ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`created`](/standard/table-schema/#created) is the datetime on which the schema was created. 
+##### `schema.version` (new)
 
-##### `version` (new)
+[`version`](/standard/table-schema/#version) allows to specify a version for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
-[`version`](/standard/table-schema/#version) stores the version of the schema.
+##### `schema.contributors` (new)
 
-##### `contributors` (new)
-
-[`contributors`](/standard/table-schema/#contributors) stores people or oganizations that contributed to the schema.
- 
-An adjusted [Metadata in Table Schema](https://specs.frictionlessdata.io/patterns/#table-schema-metadata-properties) pattern has been promoted to the standard ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+[`contributors`](/standard/table-schema/#contributors) allows to specify contributors for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ## v2.0
 
