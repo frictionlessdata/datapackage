@@ -10,7 +10,7 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.fieldsMatch` (fixed)
 
-The `schema.fieldsMatch` property definition has been fixed in the Table Schema profile ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
+[fieldsMatch](/standard/table-schema/#fieldsMatch) has been corrected from array to string to match its definition ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
 
 ## v2.0
 
