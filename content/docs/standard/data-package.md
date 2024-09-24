@@ -12,7 +12,7 @@ sidebar:
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/2.0/datapackage.json">https://datapackage.org/profiles/2.0/datapackage.json</a></td>
+    <td><a href="/profiles/2.1/datapackage.json">https://datapackage.org/profiles/2.1/datapackage.json</a></td>
   </tr>
 </table>
 
@@ -119,7 +119,7 @@ Packaged data resources are described in the `resources` property of the package
 
 A root level Data Package descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
-The default value is `https://datapackage.org/profiles/1.0/datapackage.json` and the recommended value is `https://datapackage.org/profiles/2.0/datapackage.json`.
+The default value is `https://datapackage.org/profiles/1.0/datapackage.json` and the recommended value is `https://datapackage.org/profiles/2.1/datapackage.json`.
 
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.

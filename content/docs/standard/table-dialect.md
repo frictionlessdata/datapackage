@@ -12,7 +12,7 @@ sidebar:
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/2.0/tabledialect.json">https://datapackage.org/profiles/2.0/tabledialect.json</a></td>
+    <td><a href="/profiles/2.1/tabledialect.json">https://datapackage.org/profiles/2.1/tabledialect.json</a></td>
   </tr>
 </table>
 
@@ -137,7 +137,7 @@ Database formats is a group of formats accessing data from databases like SQLite
 
 A root level Table Dialect descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
-The default value is `https://datapackage.org/profiles/1.0/tabledialect.json` and the recommended value is `https://datapackage.org/profiles/2.0/tabledialect.json`.
+The default value is `https://datapackage.org/profiles/1.0/tabledialect.json` and the recommended value is `https://datapackage.org/profiles/2.1/tabledialect.json`.
 
 ### `header`
 

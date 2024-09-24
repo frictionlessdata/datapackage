@@ -6,6 +6,8 @@ sidebar:
 
 This document includes all meaningful changes made to the **Data Package standard**. It does not cover changes made to other documents like Recipes or Guides.
 
+## v2.1
+
 ## v2.0
 
 This release includes a rich set of specification improvements to make Data Package a finished product (see [announcement](https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/)). All changes were reviewed and accepted by the Data Package Working Group.

@@ -12,7 +12,7 @@ sidebar:
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/2.0/dataresource.json">https://datapackage.org/profiles/2.0/dataresource.json</a></td>
+    <td><a href="/profiles/2.1/dataresource.json">https://datapackage.org/profiles/2.1/dataresource.json</a></td>
   </tr>
 </table>
 
@@ -149,7 +149,7 @@ If a resource has `profile` property that equals to `tabular-data-resource` or `
 
 A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
-The default value is `https://datapackage.org/profiles/1.0/dataresource.json` and the recommended value is `https://datapackage.org/profiles/2.0/dataresource.json`.
+The default value is `https://datapackage.org/profiles/1.0/dataresource.json` and the recommended value is `https://datapackage.org/profiles/2.1/dataresource.json`.
 
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
