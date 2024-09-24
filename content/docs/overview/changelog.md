@@ -8,6 +8,10 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ## v2.1
 
+##### `schema.fieldsMatch` (fixed)
+
+The `schema.fieldsMatch` property definition has been fixed in the Table Schema profile ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
+
 ## v2.0
 
 This release includes a rich set of specification improvements to make Data Package a finished product (see [announcement](https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/)). All changes were reviewed and accepted by the Data Package Working Group.
