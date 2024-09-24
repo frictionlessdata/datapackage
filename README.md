@@ -25,8 +25,7 @@ When the PR is merged, Github Actions will automatically:
 
 - Create a new release on Github.
 - Deploy the new version of the site.
-- Sync the `next` branch with the `main` branch.
-- Update the `next` branch with the new version number and generated files.
+- Bootstrap a new `next` branch with the new version number and generated files.
 
 ## Development
 
