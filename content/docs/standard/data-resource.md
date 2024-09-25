@@ -165,11 +165,11 @@ Description of the resource.
 
 #### `format`
 
-Would be expected to be the standard file extension for this type of resource.For example, `csv`, `xls`, `json` etc.
+Would be expected to be the standard file extension for this type of resource. For example, `csv`, `xls`, `json` etc.
 
 #### `mediatype`
 
-Te mediatype/mimetype of the resource e.g. "text/csv", or "application/vnd.ms-excel". Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
+The mediatype/mimetype of the resource e.g. `text/csv`, or `application/vnd.ms-excel`. Mediatypes are maintained by the Internet Assigned Numbers Authority (IANA) in a [media type registry](https://www.iana.org/assignments/media-types/media-types.xhtml).
 
 #### `encoding`
 
