@@ -2268,18 +2268,15 @@
       ]
     },
     "fieldsMatch": {
-      "type": "array",
-      "item": {
-        "type": "string",
-        "enum": [
-          "exact",
-          "equal",
-          "subset",
-          "superset",
-          "partial"
-        ],
-        "default": "exact"
-      }
+      "type": "string",
+      "enum": [
+        "exact",
+        "equal",
+        "subset",
+        "superset",
+        "partial"
+      ],
+      "default": "exact"
     },
     "primaryKey": {
       "oneOf": [
