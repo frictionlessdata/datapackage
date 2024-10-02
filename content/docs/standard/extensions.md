@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 FrictionlessData https://datapackage.org/
+
+SPDX-License-Identifier: Unlicense
+-->
+
 ---
 title: Extensions
 description: The Data Package Standard extensibility features for domain-specific needs.

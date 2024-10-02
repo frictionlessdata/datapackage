@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 FrictionlessData https://datapackage.org/
+
+SPDX-License-Identifier: Unlicense
+-->
+
 ---
 title: How to extend Data Package
 sidebar:

@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 FrictionlessData https://datapackage.org/
+
+SPDX-License-Identifier: Unlicense
+-->
+
 ---
 title: Table Schema
 description: Table Schema is a simple language- and implementation-agnostic way to declare a schema for tabular data.
