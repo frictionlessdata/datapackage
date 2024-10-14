@@ -32,6 +32,7 @@ The composition of the working group:
 - **Martin Durant** (Anaconda, inc.)
 - **Adam Kariv** (The Public Knowledge Workshop)
 - **Johan Richer** ([multi.coop](https://www.multi.coop/))
+- **Steve Diggs** ([California Digital Library](https://cdlib.org/))
 
 ## Decision Making
 
