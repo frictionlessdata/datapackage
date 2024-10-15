@@ -61,7 +61,7 @@ Category Table Resources can be referenced by name in the `categories` property 
 }
 ```
 
-As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, references to Category Table Resources in external packages can be made by specifying the `categories` property as an object with a `package` and `resource` property, both required to be of type `string`. For example:
+As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, references to Category Table Resources in external packages can be made by providing the `categories` property an object with a `package` and `resource` property, both of type `string`. For example:
 
 ```json
 {
@@ -74,15 +74,25 @@ As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, ref
 }
 ```
 
+When `package` is omitted, implementations `SHOULD` assume resource references the current data package. The `resource` property `MUST` be a valid Category Table Resource name in the referenced package.
+
 ## Constraints
 
-In a Category Table Resource, the field referenced by the `valueField` property `MUST` validated with `"required": true` and `"unique": true` field constraints. Similarly, when `labelField` is specified, the field it references `MUST` be of type `string` and be validated with the `"unique": true` field constraint.
+In a Category Table Resource, the field referenced by the `value` property `MUST` validated with `"required": true` and `"unique": true` field constraints. Similarly, when `label` is specified, the field it references `MUST` be of type `string` and be validated with the `"unique": true` field constraint.
 
-Fields in a focal data resource referencing a Category Table Resource via the `categories` property `MUST` have a type identical to the type of the corresponding `value` field in the Category Table Resource.
+Fields in a focal data resource referencing a Category Table Resource via the `categories` property `MUST` have a type identical to the type of the corresponding `value` field in the Category Table Resource. For example, the following is an invalid references to the `fruit-codes` Category Table Resource because the `type` of the categorical field being defined is `integer` while the `value` field in the `fruit-codes` Category Table Resource is of type `string`:
+
+```json
+{
+  "name": "fruit",
+  "type": "integer",
+  "categories": "fruit-codes"
+}
+```
 
 ## Internationalization
 
-Alternate transations of the category labels can be provided by way of the [Language Support](/recipes/language-support) recipe. The following example shows how the fruit-codes table from the previous example could be extended to support multiple languages:
+Alternate translations of the category labels can be provided by way of the [Language Support](/recipes/language-support) recipe. The following example shows how the fruit-codes table from the previous example could be extended to support multiple languages:
 
 ```json
 {
