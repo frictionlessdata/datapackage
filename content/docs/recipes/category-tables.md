@@ -78,4 +78,34 @@ As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, ref
 
 In a Category Table Resource, the field referenced by the `valueField` property `MUST` validated with `"required": true` and `"unique": true` field constraints. Similarly, when `labelField` is specified, the field it references `MUST` be of type `string` and be validated with the `"unique": true` field constraint.
 
-Fields referencing a Category Table Resource via the `categories` property `MUST` be of a type that matches the `valueField` type of the Category Table Resource.
+Fields referencing a Category Table Resource via the `categories` property `MUST` be of a type that matches the `value` type of the Category Table Resource.
+
+## Internationalization
+
+Alternate transations of the category labels can be provided by way of the [Language Support](/recipes/language-support) recipe. The following example shows how the fruit-codes table from the previous example could be extended to support multiple languages:
+
+```json
+{
+  "name": "fruit-codes",
+  "type": "table",
+  "languages": ["en", "nl"],
+  "categoryFieldMap": {
+    "value": "code",
+    "label": "name",
+    "ordered": false
+  },
+  "languages": ["en", "nl"],
+  "schema": {
+    "fields": [
+      { "name": "code", "type": "string" },
+      { "name": "name", "type": "string" },
+      { "name": "name@nl", "type": "string" }
+    ]
+  },
+  "data": [
+    { "code": "A", "name": "Apple", "name@nl": "Appel" },
+    { "code": "B", "name": "Banana", "name@nl": "Banaan" },
+    { "code": "C", "name": "Cherry", "name@nl": "Kers" }
+  ]
+}
+```
