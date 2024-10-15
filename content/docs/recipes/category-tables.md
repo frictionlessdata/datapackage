@@ -94,7 +94,6 @@ Alternate transations of the category labels can be provided by way of the [Lang
     "label": "name",
     "ordered": false
   },
-  "languages": ["en", "nl"],
   "schema": {
     "fields": [
       { "name": "code", "type": "string" },
