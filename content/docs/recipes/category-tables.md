@@ -5,7 +5,7 @@ title: Category Tables
 <table>
   <tr>
     <th>Authors</th>
-    <td>Kyle Husmann, Jan van der Laan, Albert-Jan, Phil Schumm</td>
+    <td>Kyle Husmann, Jan van der Laan, Albert-Jan Roskam, Phil Schumm</td>
   </tr>
 </table>
 
