@@ -51,7 +51,7 @@ This specification does not define any discoverability mechanisms. Any URI can b
 A descriptor `MAY` be serialized using alternative formats like YAML or TOML as an internal part of some project or system if supported by corresponding implementations. A descriptor `SHOULD NOT` be externally published in any other format rather than JSON.
 :::
 
-#### Custom Properties
+### Custom Properties
 
 The Data Package specifications define a set of standard properties to be used and allows custom properties to be added. It is `RECOMMENDED` to use `namespace:property` naming convention for custom properties. It is `RECOMMENDED` to use [lower camel case](https://en.wikipedia.org/wiki/Camel_case) convention for naming custom properties, for example, `namespace:propertyName`.
 
