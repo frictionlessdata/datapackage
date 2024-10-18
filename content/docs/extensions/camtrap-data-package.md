@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 FrictionlessData https://datapackage.org/
+
+SPDX-License-Identifier: Unlicense
+-->
+
 ---
 title: Camera Trap Data Package
 ---
