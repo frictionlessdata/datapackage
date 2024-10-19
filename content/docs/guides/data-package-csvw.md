@@ -1,5 +1,5 @@
 ---
-title: How does Data Package compare to CSVW
+title: How does Data Package compare with CSVW
 sidebar:
   order: 3
 ---
