@@ -59,7 +59,7 @@ Below is a list of all properties defined in CSVW’s [Metadata Vocabulary for T
 
 ### Table Groups
 
-:::tip
+:::note
 Data Package can define more than groups of tables. A [package](/standard/data-package/) can be a set of resources of any type. [Data Resource](/standard/data-resource/) therefore supports features that CSVW does not, such as [format](/standard/data-resource/#format), [mediatype](/standard/data-resource/#mediatype), and [hash](/standard/data-resource/#hash).
 :::
 
@@ -90,7 +90,7 @@ Data Package can define more than groups of tables. A [package](/standard/data-p
 
 ### Schemas
 
-:::tip
+:::note
 Data Package [Table Schema](/standard/table-schema/) has features that CSVW schema does not, including [fieldMatch](/standard/table-schema/#fieldsMatch) for matching a schema with data, [missingValues](/standard/table-schema/#missingValues) for multiple (and labelled) missing values, and [uniqueKeys](/standard/table-schema/#uniqueKeys).
 :::
 
@@ -138,7 +138,7 @@ Common properties can be added in Data Package as [custom properties](/standard/
 
 ### Dialect Descriptions
 
-:::tip
+:::note
 Data Package [Table Dialect](/standard/table-dialect/) was used as inspiration for CSVW dialect. It has features that CSVW dialect does not, since it covers tabular data formats beyond delimited text files, such as spreadsheets and databases. For delimited text files it supports [headerJoin](/standard/table-dialect/#headerJoin), [doubleQuote](/standard/table-dialect/#doubleQuote), [escapeChar](/standard/table-dialect/#escapeChar), and [nullSequence](/standard/table-dialect/#nullSequence), which CSVW does not.
 :::
 
@@ -168,7 +168,7 @@ Not supported in Data Package.
 
 CSVW defines data types as built-in data types and derived data types. A derived data type extends a built-in data type with formats, constraints, etc. Data Package does not make that distinction, but rather defines a number of [Field Types](/standard/table-schema/#field-types). Depending on the type, it can be extended with a `format` and [constraints](/standard/table-schema/#field-constraints).
 
-:::tip
+:::note
 Data Package [Table Schema](/standard/table-schema/) supports data types that CSVW does not, such as (labelled) [categories](/standard/table-schema/#categories) and [geojson](/standard/table-schema/#geojson). It also supports a number of constraints that CSVW does not, such as [unique](/standard/table-schema/#unique) values, [pattern](/standard/table-schema/#pattern) for regex comparison and [enum](/standard/table-schema/#enum) for controlled values, which allow rigorous data validation.
 :::
 
