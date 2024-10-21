@@ -23,7 +23,7 @@ CSVW is a set of specifications to describe delimited text files (CSV, TSV) only
 
 ## Maintenance
 
-Data Package was published in 2012, updated to v1.0 in 2017 and v2.0 in 2024. It is maintained by a [working group](/overview/governance/). Requests for changes can be proposed by anyone as a [GitHub issue](https://github.com/frictionlessdata/datapackage) or pull request and is [decided upon](/overview/governance/#decision-making) by the working group.
+Data Package was published in 2012, updated to v1.0 in 2017 and v2.0 in 2024. It is maintained by the [Open Knowledge Foundation (OKFN)](https://okfn.org/). Requests for changes can be proposed by anyone as a [GitHub pull request](https://github.com/frictionlessdata/datapackage/pulls) and are [decided upon](/overview/governance/#decision-making) by a [working group](/overview/governance/) which includes members from several organizations.
 
 CSVW was published in 2016. Its working group was closed at the time. There is currently a community group, but it does [not have the mandate](https://github.com/w3c/csvw?tab=readme-ov-file#the-present) to make changes to the standard.
 
