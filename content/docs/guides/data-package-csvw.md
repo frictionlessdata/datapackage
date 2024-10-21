@@ -39,7 +39,7 @@ CSVW makes extensive use of other standards (such as [JSON-LD](https://www.w3.or
 
 ## Linking Data with Metadata
 
-Data Package metadata are described in a [descriptor file](https://csvw.datapackage-6gp.pages.dev/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](https://csvw.datapackage-6gp.pages.dev/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
+Data Package metadata are described in a [descriptor file](/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
 
 CSVW defines [different methods](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#locating-metadata) of locating metadata.
 
