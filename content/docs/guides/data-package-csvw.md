@@ -37,6 +37,11 @@ Data Package defines its own properties for often-used properties (such as descr
 
 CSVW makes extensive use of other standards (such as [JSON-LD](https://www.w3.org/TR/json-ld/), [XML Schema Datatypes](https://www.w3.org/TR/xmlschema11-2/), Compact URIs) and defines how to use those. It also has specifications on how to transform CSVW to [JSON](https://www.w3.org/TR/2015/REC-csv2json-20151217/) and [RDF](https://www.w3.org/TR/2015/REC-csv2rdf-20151217/). CSVW is not defined as a JSON Schema.
 
+## Linking Data with Metadata
+
+Data Package metadata are described in a [descriptor file](https://csvw.datapackage-6gp.pages.dev/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](https://csvw.datapackage-6gp.pages.dev/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
+
+CSVW defines [different methods](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#locating-metadata) of locating metadata.
 
 ## Mapping between CSVW and Data Package Properties
 
@@ -190,5 +195,3 @@ Data Package [Table Schema](/standard/table-schema/) supports data types that CS
 | [maxExclusive](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#datatype-maxExclusive) | Yes | As [exclusiveMaximum](/standard/table-schema/#exclusiveMaximum) field constraint |
 | [@id](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#datatype-id) | Custom property |  |
 | [@type](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#datatype-type) | No |  |
-
-### 
