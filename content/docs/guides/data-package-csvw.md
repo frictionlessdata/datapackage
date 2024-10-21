@@ -31,11 +31,12 @@ CSVW was published in 2016. Its working group was closed at the time. There is c
 
 TODO
 
-## Building on Other Standards
+## Extensibility and Use of Other Standards
 
-Data Package defines its own properties for often-used properties (such as description, contributors, licences, sources), none of which are required. Users can include properties from other standards as [custom properties](/standard/glossary/#custom-properties). It is also possible to add or extend properties by referencing a JSON schema in [@schema](/standard/data-package/#dollar-schema), which are then automatically picked up by validation software.
+Data Package defines its own properties for often-used properties (such as description, contributors, licences, sources), none of which are required. Users can include properties from other standards as [custom properties](/standard/glossary/#custom-properties). Data Package is defined as a JSON Schema and is designed to be extensible: developers can add or extend properties by referencing a JSON schema in [@schema](/standard/data-package/#dollar-schema), which are then automatically picked up by validation software.
 
-CSVW makes extensive use of other standards (such as [JSON-LD](https://www.w3.org/TR/json-ld/), [XML Schema Datatypes](https://www.w3.org/TR/xmlschema11-2/), Compact URIs) and defines how to use those.
+CSVW makes extensive use of other standards (such as [JSON-LD](https://www.w3.org/TR/json-ld/), [XML Schema Datatypes](https://www.w3.org/TR/xmlschema11-2/), Compact URIs) and defines how to use those. It also has specifications on how to transform CSVW to [JSON](https://www.w3.org/TR/2015/REC-csv2json-20151217/) and [RDF](https://www.w3.org/TR/2015/REC-csv2rdf-20151217/). CSVW is not defined as a JSON Schema.
+
 
 ## Mapping between CSVW and Data Package Properties
 
