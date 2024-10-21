@@ -19,7 +19,7 @@ Below we give an overview of the (dis)similarities between the CSVW and Data Pac
 
 Data Package is a set of specifications to describe datasets, data files and tabular data. It can describe data files that are not tabular and includes extra specifications for those that are (i.e. [Table Dialect](/standard/table-dialect/) and [Table Schema](/standard/table-schema/)).
 
-CSVW is a set of specifications to describe delimited text files (CSV, TSV) only.
+CSVW is a set of specifications to describe delimited text files (CSV, TSV) only (i.e. [Model for Tabular Data and Metadata on the Web](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/) and [Metadata Vocabulary for Tabular Data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/)).
 
 ## Maintenance
 
