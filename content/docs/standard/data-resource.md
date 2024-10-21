@@ -87,7 +87,7 @@ To support this use case the `path` property `MAY` be an array of strings rather
 It is NOT permitted to mix fully qualified URLs and relative paths in a `path` array: strings `MUST` either all be relative paths or all URLs.
 
 :::note
-All files in the array `MUST` be similar in terms of structure, format etc. Implementors `MUST` be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec](https://specs.frictionlessdata.io/tabular-data-package/) for more on this.
+All files in the array `MUST` be the same in terms of structure, format, dialect, etc. Implementations MUST be able to concatenate the files in the simplest way and treat the result as one large file.
 :::
 
 ##### Inline Data
