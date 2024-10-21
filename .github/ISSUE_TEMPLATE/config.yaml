@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💡 Feature Request
+    url: https://github.com/frictionlessdata/datapackage/discussions/new?category=ideas
+    about: Suggest an improvement you’d like to see added to the Data Package Standard
+  - name: 🚀 Implementation
+    url: https://github.com/frictionlessdata/datapackage/discussions/new?category=show-and-tell
+    about: Schare your Data Package implementation or related project with the community
+  - name: 💁 Question
+    url: https://github.com/frictionlessdata/datapackage/discussions/new?category=q-a
+    about: Ask a question about the Data Package Standard
+  - name: 👾 Chat
+    url: https://join.slack.com/t/frictionlessdata/shared_invite/zt-17kpbffnm-tRfDW_wJgOw8tJVLvZTrBg
+    about: Join the Data Package community on Slack!

@@ -1,0 +1,30 @@
+name: "\U0001F333 General Issue"
+description: Project, website, or documentation related issue or improvement
+labels: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to improve the Data Package project! Please fill out this form as completely as possible.
+  - type: input
+    id: version
+    attributes:
+      label: What Data Package version are you using?
+      placeholder: v2
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Issue
+      description: A clear and concise description of what the issue or possible improvement is.
+    validations:
+      required: true
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Participation
+      options:
+        - label: I am willing to submit a pull request for this issue.
+          required: false
