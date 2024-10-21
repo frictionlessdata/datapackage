@@ -1,5 +1,5 @@
 ---
-title: How does Data Package compare with CSVW
+title: Comparison with CSVW
 sidebar:
   order: 3
 ---
@@ -11,7 +11,9 @@ sidebar:
   </tr>
 </table>
 
-In 2016, a working group chartered by W3C created a set of recommendations for documenting and accessing CSV files, collectively called [CSVW on the Web (CSVW)](https://www.w3.org/TR/2016/NOTE-tabular-data-primer-20160225/). These show extensive similarities with the Data Package standard. Below we give an overview of the (dis)similarities between the two.
+In 2016, a working group chartered by W3C created a set of recommendations for documenting and accessing CSV files, collectively called [CSVW on the Web (CSVW)](https://www.w3.org/TR/2016/NOTE-tabular-data-primer-20160225/). These show extensive similarities with the Data Package standard.
+
+Below we give an overview of the (dis)similarities between the CSVW and Data Package.
 
 ## Scope
 
