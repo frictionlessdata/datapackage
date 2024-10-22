@@ -52,9 +52,9 @@ for (const path of glob.sync(`${VERSION_DIR}/*.json`)) {
 
 // Ensure correct versions in the docs
 await replaceInFile({
-  files: ["content/docs/standard/*.md"],
-  from: /\/profiles\/\d.\d\//g,
-  to: `/profiles/${version}/`,
+  files: ["content/docs/standard/*.mdx"],
+  from: /profile: \/profiles\/\d.\d\//g,
+  to: `profile: /profiles/${version}/`,
 })
 
 // Delete dictionary
