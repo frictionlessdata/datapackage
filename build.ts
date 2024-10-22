@@ -4,7 +4,7 @@ const root = execa({ preferLocal: true, stdout: ["inherit"] })
 
 // Build website
 
-await root`astro build`
+await root`npx astro build`
 
 // Copy profiles
 
