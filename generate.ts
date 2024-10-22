@@ -1,23 +1,19 @@
+import { version } from "./package.json"
 import JsonSchema from "@apidevtools/json-schema-ref-parser"
-// @ts-ignore
-import { readPackage } from "@npmcli/package-json/lib/read-package.js"
 import fs from "fs-extra"
 import { glob } from "glob"
 import yaml from "js-yaml"
 import nodePath from "path"
 import process from "process"
+import { replaceInFile } from "replace-in-file"
 
-const VERSION = (await readPackage("./package.json")).version
 const SOURCE_DIR = "profiles/source"
 const TARGET_DIR = `profiles/target`
-const VERSION_DIR = `${TARGET_DIR}/${VERSION}`
-const BUILD_DIR = "build/profiles"
+const VERSION_DIR = `${TARGET_DIR}/${version}`
 const EXCLUDE_FILES = ["dictionary.json"]
 
 // Ensure directories
 fs.ensureDirSync(VERSION_DIR)
-fs.ensureDirSync(BUILD_DIR)
-fs.emptyDirSync(BUILD_DIR)
 
 // Init dictionary
 const dictionary = {
@@ -54,8 +50,12 @@ for (const path of glob.sync(`${VERSION_DIR}/*.json`)) {
   fs.writeFileSync(path, contents)
 }
 
+// Ensure correct versions in the docs
+await replaceInFile({
+  files: ["content/docs/standard/*.md"],
+  from: /\/profiles\/\d.\d\//g,
+  to: `/profiles/${version}/`,
+})
+
 // Delete dictionary
 fs.removeSync(`${VERSION_DIR}/dictionary.json`)
-
-// Copy to build
-fs.cpSync(TARGET_DIR, BUILD_DIR, { recursive: true })
