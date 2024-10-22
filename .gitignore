@@ -7,3 +7,5 @@ package-lock.json
 .idea
 .vuepress/dist/*
 .vercel
+.astro/
+build/
