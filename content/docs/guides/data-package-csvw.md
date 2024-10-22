@@ -17,33 +17,33 @@ Below we give an overview of the (dis)similarities between the CSVW and Data Pac
 
 ## Scope
 
-Data Package is a set of specifications to describe datasets, data files and tabular data. It can describe data files that are not tabular and includes extra specifications for those that are (i.e. [Table Dialect](/standard/table-dialect/) and [Table Schema](/standard/table-schema/)).
-
 CSVW is a set of specifications to describe delimited text files (CSV, TSV) only (i.e. [Model for Tabular Data and Metadata on the Web](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/) and [Metadata Vocabulary for Tabular Data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/)).
+
+Data Package is a set of specifications to describe datasets, data files and tabular data. It can describe data files that are not tabular and includes extra specifications for those that are (i.e. [Table Dialect](/standard/table-dialect/) and [Table Schema](/standard/table-schema/)).
 
 ## Maintenance
 
-Data Package was published in 2012, updated to v1.0 in 2017 and v2.0 in 2024. It is maintained by the [Open Knowledge Foundation (OKFN)](https://okfn.org/). Requests for changes can be proposed by anyone as a [GitHub pull request](https://github.com/frictionlessdata/datapackage/pulls) and are [decided upon](/overview/governance/#decision-making) by a [working group](/overview/governance/) which includes members from several organizations.
-
 CSVW was published in 2016. Its working group was closed at the time. There is currently a community group, but it does [not have the mandate](https://github.com/w3c/csvw?tab=readme-ov-file#the-present) to make changes to the standard.
+
+Data Package was published in 2012, updated to v1.0 in 2017 and v2.0 in 2024. It is maintained by the [Open Knowledge Foundation (OKFN)](https://okfn.org/). Requests for changes can be proposed by anyone as a [GitHub pull request](https://github.com/frictionlessdata/datapackage/pulls) and are [decided upon](/overview/governance/#decision-making) by a [working group](/overview/governance/) which includes members from several organizations.
 
 ## Adoption and Software Support
 
-Data Package has been adopted by a wide range of [organizations and projects](/overview/adoption/), many of which have extended the standard and created software. [Software libraries](/overview/software/) are available for 9 programming languages (Go, Java, Javascript, Julia, PHP, Python, R, Ruby, Swift), with [Python](https://github.com/frictionlessdata/frictionless-py) the most popular (708 stars). These are all maintained as open source software under the [Frictionless Data organization](https://github.com/frictionlessdata) on GitHub. Of note is the [Open Data Editor](https://opendataeditor.okfn.org/): a fully-featured Data Package editor for non-technical users.
+We could not find documentation on CSVW adoption, but Swirrl maintains a website at [csvw.org](https://csvw.org/) that explains the standard and provides an overview of [software tools](https://csvw.org/tools.html). A number of these are conversion tools, but software libraries are available for 4 programming languages (Java, Python, R, Ruby), with [Python](https://github.com/cldf/csvw) the most popular (37 stars). Of note is [CSV lint](https://csvlint.io/): an online tool to validate CSV files.
 
-We could not find documentation on CSVW adoption, but Swirrl maintains a website at [csvw.org](https://csvw.org/) that explains the standard and provides an overview of [software tools](https://csvw.org/tools.html). A number of these are conversion tools, but software libraries are available for 4 programming languages (Java, Python, R, Ruby), with [Python](https://github.com/cldf/csvw) the most popular (37 stars). Of note is the [CSV lint](https://csvlint.io/) tool: an online tool to validate CSV files.
+Data Package has been adopted by a wide range of [organizations and projects](/overview/adoption/), many of which have extended the standard and created software. [Software libraries](/overview/software/) are available for 9 programming languages (Go, Java, Javascript, Julia, PHP, Python, R, Ruby, Swift), with [Python](https://github.com/frictionlessdata/frictionless-py) the most popular (708 stars). These are all maintained as open source software under the [Frictionless Data organization](https://github.com/frictionlessdata) on GitHub. Of note is the [Open Data Editor](https://opendataeditor.okfn.org/): a fully-featured Data Package editor for non-technical users.
 
 ## Extensibility and Use of Other Standards
 
-Data Package defines its own properties for often-used properties (such as description, contributors, licences, sources), none of which are required. Users can include properties from other standards as [custom properties](/standard/glossary/#custom-properties). There is also [software](https://frictionlessdata.github.io/dplib-py/plugins/ckan/) available to convert Data Package to other metadata standards, such as DataCite and DCAT. Data Package is defined as a JSON Schema and is designed to be extensible: developers can add or extend properties by referencing a JSON schema in [@schema](/standard/data-package/#dollar-schema), which are then automatically picked up by validation software.
-
 CSVW makes extensive use of other standards (such as [JSON-LD](https://www.w3.org/TR/json-ld/), [XML Schema Datatypes](https://www.w3.org/TR/xmlschema11-2/), Compact URIs) and defines how to use those. It also has specifications on how to transform CSVW to [JSON](https://www.w3.org/TR/2015/REC-csv2json-20151217/) and [RDF](https://www.w3.org/TR/2015/REC-csv2rdf-20151217/). CSVW is not defined as a JSON Schema.
+
+Data Package defines its own properties for often-used properties (such as description, contributors, licences, sources), none of which are required. Users can include properties from other standards as [custom properties](/standard/glossary/#custom-properties). Data Package is defined as a JSON Schema and is designed to be extensible: developers can add or extend properties by referencing a JSON schema in [@schema](/standard/data-package/#dollar-schema), which are then automatically picked up by validation software. There is also [software](https://frictionlessdata.github.io/dplib-py/plugins/ckan/) available to convert Data Package to other metadata standards, such as DataCite and DCAT.
 
 ## Linking Data with Metadata
 
-Data Package metadata are described in a [descriptor file](/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
-
 CSVW defines [different methods](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#locating-metadata) of locating metadata.
+
+Data Package metadata are described in a [descriptor file](/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
 
 ## Mapping between CSVW and Data Package Properties
 
