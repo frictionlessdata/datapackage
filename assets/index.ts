@@ -14,6 +14,7 @@ import etalab from "./adoption/etalab.png"
 import eucom from "./adoption/eucom.png"
 import gapminder2 from "./adoption/gapminder2.png"
 import gapminder from "./adoption/gapminder.png"
+import gbif from "./adoption/gbif.png"
 import github from "./adoption/github.png"
 import hubmap from "./adoption/hubmap.png"
 import johnSnowLabs from "./adoption/john-snow-labs.png"
@@ -53,6 +54,7 @@ export const adoption = {
   eucom,
   gapminder,
   gapminder2,
+  gbif,
   github,
   hubmap,
   johnSnowLabs,
