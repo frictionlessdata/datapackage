@@ -1,0 +1,7 @@
+id,title,schema,schema_path,specification
+data-package,Data Package,https://specs.frictionlessdata.io/schemas/data-package.json,data-package.json,https://specs.frictionlessdata.io/data-package/
+tabular-data-package,Tabular Data Package,https://specs.frictionlessdata.io/schemas/tabular-data-package.json,tabular-data-package.json,http://specs.frictionlessdata.io/tabular-data-package/
+fiscal-data-package,Fiscal Data Package,https://specs.frictionlessdata.io/schemas/fiscal-data-package.json,fiscal-data-package.json,https://specs.frictionlessdata.io/fiscal-data-package/
+data-resource,Data Resource,https://specs.frictionlessdata.io/schemas/data-resource.json,data-resource.json,https://specs.frictionlessdata.io/data-resource
+tabular-data-resource,Tabular Data Resource,https://specs.frictionlessdata.io/schemas/tabular-data-resource.json,tabular-data-resource.json,https://specs.frictionlessdata.io/tabular-data-resource
+table-schema,Table Schema,https://specs.frictionlessdata.io/schemas/table-schema.json,table-schema.json,https://specs.frictionlessdata.io/table-schema/
