@@ -7,7 +7,7 @@
     "npm": "^10.0.0"
   },
   "scripts": {
-    "build": "vite-node build.ts",
+    "build": "astro build",
     "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' +",
     "format": "eslint --fix . && prettier --write .",
     "generate": "vite-node generate.ts",
@@ -31,7 +31,6 @@
     "astro": "4.16.6",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "1.2.2",
-    "execa": "9.4.1",
     "fs-extra": "11.2.0",
     "glob": "10.4.2",
     "js-yaml": "4.1.0",
