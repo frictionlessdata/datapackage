@@ -7,8 +7,8 @@ import nodePath from "path"
 import process from "process"
 import { replaceInFile } from "replace-in-file"
 
-const SOURCE_DIR = "profiles/source"
-const TARGET_DIR = `profiles/target`
+const SOURCE_DIR = "profiles"
+const TARGET_DIR = `public/profiles`
 const VERSION_DIR = `${TARGET_DIR}/${version}`
 const EXCLUDE_FILES = ["dictionary.json"]
 
