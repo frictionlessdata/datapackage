@@ -1,4 +1,5 @@
 import JsonSchema from "@apidevtools/json-schema-ref-parser"
+// @ts-ignore
 import { readPackage } from "@npmcli/package-json/lib/read-package.js"
 import fs from "fs-extra"
 import { glob } from "glob"
@@ -26,7 +27,7 @@ const dictionary = {
 
 // Fill dictionary
 for (const path of glob.sync(`${SOURCE_DIR}/dictionary/*.yaml`)) {
-  const contents = fs.readFileSync(path)
+  const contents = fs.readFileSync(path).toString()
   Object.assign(dictionary.definitions, yaml.load(contents))
 }
 
@@ -44,7 +45,7 @@ for (const path of glob.sync(`${SOURCE_DIR}/*.json`)) {
 for (const path of glob.sync(`${VERSION_DIR}/*.json`)) {
   const name = nodePath.basename(path)
   if (EXCLUDE_FILES.includes(name)) continue
-  const rawSchema = JSON.parse(fs.readFileSync(path))
+  const rawSchema = JSON.parse(fs.readFileSync(path).toString())
   const cwd = process.cwd()
   process.chdir(VERSION_DIR)
   const schema = await JsonSchema.dereference(rawSchema)
