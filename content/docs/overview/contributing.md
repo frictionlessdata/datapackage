@@ -58,9 +58,10 @@ The Data Package project is based on Astro Starlight static-site generator and u
 4. **Start a dev server**: Run `npm start` to see the changes locally.
 5. **Make changes**: Make your changes to the codebase.
 6. **Generate profiles**: Run `npm run generate` to generate the profiles.
-7. **Run tests**: Run `npm test` to run the tests.
-8. **Commit changes**: Commit your changes to your forked repository.
-9. **Create a pull request**: Create a pull request from your forked repository to the appropriate branch of the main repository (see the Branching Model above).
+7. **Format style**: Run `npm run format` to format the style.
+8. **Run tests**: Run `npm test` to run the tests.
+9. **Commit changes**: Commit your changes to your forked repository.
+10. **Create a pull request**: Create a pull request from your forked repository to the appropriate branch of the main repository (see the Branching Model above).
 
 When a pull request is created, it will be reviewed by the Data Package maintainers. Github Automation creates a live preview site for every new pull request. Once the pull request is approved, it will be merged into the main repository.
 
