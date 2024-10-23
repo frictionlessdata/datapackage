@@ -3,20 +3,30 @@ title: Data Resource
 description: A simple format to describe and package a single data resource such as an individual table or file. The essence of a Data Resource is a locator for the data it describes. A range of other properties can be declared to provide a richer set of metadata.
 sidebar:
   order: 2
+profile: /profiles/2.0/dataresource.json
+authors:
+  - Rufus Pollock
+  - Paul Walsh
+  - Adam Kariv
+  - Evgeny Karev
+  - Peter Desmet
+  - Data Package Working Group
 ---
 
 <table>
   <tr>
     <th>Authors</th>
-    <td>Rufus Pollock, Paul Walsh, Adam Kariv, Evgeny Karev, Peter Desmet, Data Package Working Group</td>
+    <td>{frontmatter.authors.join(", ")}</td>
   </tr>
   <tr>
     <th>Profile</th>
-    <td><a href="/profiles/2.0/dataresource.json">https://datapackage.org/profiles/2.0/dataresource.json</a></td>
+    <td>
+      <a href={frontmatter.profile}>{frontmatter.profile}</a>
+    </td>
   </tr>
 </table>
 
-A simple format to describe and package a single data resource such as an individual table or file. The essence of a Data Resource is a locator for the data it describes. A range of other properties can be declared to provide a richer set of metadata.
+<p>{frontmatter.description}</p>
 
 ## Language
 
@@ -87,7 +97,7 @@ To support this use case the `path` property `MAY` be an array of strings rather
 It is NOT permitted to mix fully qualified URLs and relative paths in a `path` array: strings `MUST` either all be relative paths or all URLs.
 
 :::note
-All files in the array `MUST` be similar in terms of structure, format etc. Implementors `MUST` be able to concatenate together the files in the simplest way and treat the result as one large file. For tabular data there is the issue of header rows. See the [Tabular Data Package spec](https://specs.frictionlessdata.io/tabular-data-package/) for more on this.
+All files in the array `MUST` be the same in terms of structure, format, dialect, etc. Implementations MUST be able to concatenate the files in the simplest way and treat the result as one large file.
 :::
 
 ##### Inline Data
