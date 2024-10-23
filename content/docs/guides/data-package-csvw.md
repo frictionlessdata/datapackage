@@ -45,7 +45,7 @@ CSVW defines [different methods](https://www.w3.org/TR/2015/REC-tabular-metadata
 
 Data Package metadata are described in a [descriptor file](/standard/data-package/#descriptor) named `datapackage.json`. This file links to the data file(s) using [resource.path](/standard/data-resource/#path-or-data) and can reference external dialects, schemas, and (domain-specific) specifications.
 
-## Mapping between CSVW and Data Package Properties
+## Property Comparison
 
 Below is a list of all properties defined in CSVW’s [Metadata Vocabulary for Tabular Data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/) (version 20151217) and how these are supported in Data Package (v2.0).
 
