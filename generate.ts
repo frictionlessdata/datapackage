@@ -1,21 +1,19 @@
+import { version } from "./package.json"
 import JsonSchema from "@apidevtools/json-schema-ref-parser"
 import fs from "fs-extra"
 import { glob } from "glob"
 import yaml from "js-yaml"
 import nodePath from "path"
 import process from "process"
+import { replaceInFile } from "replace-in-file"
 
-const VERSION = "2.0"
-const SOURCE_DIR = "profiles/source"
-const TARGET_DIR = `profiles/target`
-const VERSION_DIR = `${TARGET_DIR}/${VERSION}`
-const BUILD_DIR = "build/profiles"
+const SOURCE_DIR = "profiles"
+const TARGET_DIR = `public/profiles`
+const VERSION_DIR = `${TARGET_DIR}/${version}`
 const EXCLUDE_FILES = ["dictionary.json"]
 
 // Ensure directories
 fs.ensureDirSync(VERSION_DIR)
-fs.ensureDirSync(BUILD_DIR)
-fs.emptyDirSync(BUILD_DIR)
 
 // Init dictionary
 const dictionary = {
@@ -25,7 +23,7 @@ const dictionary = {
 
 // Fill dictionary
 for (const path of glob.sync(`${SOURCE_DIR}/dictionary/*.yaml`)) {
-  const contents = fs.readFileSync(path)
+  const contents = fs.readFileSync(path).toString()
   Object.assign(dictionary.definitions, yaml.load(contents))
 }
 
@@ -43,7 +41,7 @@ for (const path of glob.sync(`${SOURCE_DIR}/*.json`)) {
 for (const path of glob.sync(`${VERSION_DIR}/*.json`)) {
   const name = nodePath.basename(path)
   if (EXCLUDE_FILES.includes(name)) continue
-  const rawSchema = JSON.parse(fs.readFileSync(path))
+  const rawSchema = JSON.parse(fs.readFileSync(path).toString())
   const cwd = process.cwd()
   process.chdir(VERSION_DIR)
   const schema = await JsonSchema.dereference(rawSchema)
@@ -52,8 +50,12 @@ for (const path of glob.sync(`${VERSION_DIR}/*.json`)) {
   fs.writeFileSync(path, contents)
 }
 
+// Ensure correct versions in the docs
+await replaceInFile({
+  files: ["content/docs/standard/*.mdx"],
+  from: /profile: \/profiles\/\d.\d\//g,
+  to: `profile: /profiles/${version}/`,
+})
+
 // Delete dictionary
 fs.removeSync(`${VERSION_DIR}/dictionary.json`)
-
-// Copy to build
-fs.cpSync(TARGET_DIR, BUILD_DIR, { recursive: true })

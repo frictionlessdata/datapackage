@@ -9,12 +9,9 @@ title: Files Inside Archives
   </tr>
 </table>
 
-Some datasets need to contain a Zip file (or tar, other formats) containing a
-set of files.
+Some datasets need to contain a Zip file (or tar, other formats) containing a set of files.
 
-This might happen for practical reasons (datasets containing thousands of files)
-or for technical limitations (for example, currently Zenodo doesn't support subdirectories and
-datasets might need subdirectory structures to be useful).
+This might happen for practical reasons (datasets containing thousands of files) or for technical limitations (for example, currently Zenodo doesn't support subdirectories and datasets might need subdirectory structures to be useful).
 
 ## Implementations
 
@@ -22,8 +19,7 @@ There are no known implementations at present.
 
 ## Specification
 
-The `resources` in a `data-package` can contain "recursive resources": identifying
-a new resource.
+The `resources` in a `data-package` can contain "recursive resources": identifying a new resource.
 
 ## Example
 
@@ -67,9 +63,6 @@ For a `.tar.gz` it would be the same changing the `"format"` and the
 
 ## Types of files
 
-Support for `Zip` and `tar.gz` might be enough: hopefully everything can be
-re-packaged using these formats.
+Support for `Zip` and `tar.gz` might be enough: hopefully everything can be re-packaged using these formats.
 
-To keep the implementation and testing testing: only one recursive level is
-possible. A `resource` can list `resources` inside (like in the example). But
-the inner resources cannot contain resources again.
+To keep the implementation and testing testing: only one recursive level is possible. A `resource` can list `resources` inside (like in the example). But the inner resources cannot contain resources again.
