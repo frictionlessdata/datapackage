@@ -22,11 +22,11 @@ This document includes all meaningful changes made to the **Data Package standar
 
 ##### `schema.description` (new)
 
-[`description`](/standard/table-schema/#description)  allows to specify a description for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+[`description`](/standard/table-schema/#description) allows to specify a description for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ##### `schema.homepage` (new)
 
-[`homepage`](/standard/table-schema/#homepage)  allows to specify a homepage for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
+[`homepage`](/standard/table-schema/#homepage) allows to specify a homepage for a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
 
 ##### `schema.version` (new)
 
