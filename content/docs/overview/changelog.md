@@ -6,7 +6,11 @@ sidebar:
 
 This document includes all meaningful changes made to the **Data Package standard**. It does not cover changes made to other documents like Recipes or Guides.
 
-## v2.2-draft
+## v2.1
+
+##### `schema.fieldsMatch` (fixed)
+
+[fieldsMatch](/standard/table-schema/#fieldsMatch) has been corrected from array to string to match its definition ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
 
 ##### `schema.name` (new)
 
@@ -43,12 +47,6 @@ This document includes all meaningful changes made to the **Data Package standar
 ##### `schema.examples` (new)
 
 [`examples`](/standard/table-schema/#examples) allows to specify a list of illustrative data resources that use a schema ([#961](https://github.com/frictionlessdata/datapackage/pull/961)).
-
-## v2.1
-
-##### `schema.fieldsMatch` (fixed)
-
-[fieldsMatch](/standard/table-schema/#fieldsMatch) has been corrected from array to string to match its definition ([#965](https://github.com/frictionlessdata/datapackage/issues/965)).
 
 ## v2.0
 
