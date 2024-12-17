@@ -42,7 +42,7 @@ The differences are:
 
 Tabular Data supports four data types that overlap with [Table Schema data types](/standard/table-schema/#field-types):
 
-- `number` subset of Table Schema [number](/standard/table-schema/#number) (no NaN, INF, or -INF)
+- `number` subset of Table Schema [number](/standard/table-schema/#number) (no `NaN`, `INF`, or `-INF`)
 - `boolean` same as Table Schema [boolean](/standard/table-schema/#boolean)
 - `string` subset of Table Schema [string](/standard/table-schema/#string) (limited to 400 characters at most and must not include `\n` or `\t`)
 - `localized ` refers to an object that maps language codes to strings with same limitations as `string` type.
