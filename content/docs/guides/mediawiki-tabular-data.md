@@ -48,7 +48,7 @@ Tabular Data supports four data types that overlap with [Table Schema data types
 - `localized ` refers to an object that maps language codes to strings with same limitations as `string` type.
   This type is not supported in Table Schema.
 
-Indiviual values in a MediaWiki Tabular Data table can always be `null`, while in Table Schema you need to explicitly list values that should be considered missing in [schema.missingValues](/standard/table-schema/#missingValues).
+Individual values in a MediaWiki Tabular Data table can always be `null`, while in Table Schema you need to explicitly list values that should be considered missing in [schema.missingValues](/standard/table-schema/#missingValues).
 
 ### Schema Properties
 
