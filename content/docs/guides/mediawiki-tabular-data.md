@@ -26,7 +26,7 @@ MediaWiki Tabular Data has three required and two optional top-level properties.
 | - (implied by page name)                                                                                                                   | [name](/standard/data-resource/#name) (required) is a string                          |
 | [description](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (optional) is a localized string                          | [description](/standard/data-resource/#description) (optional) is a CommonMark string |
 | [data](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (required)                                                       | [data](/standard/data-resource/#name) (optional)                                      |
-| [license](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (required) is the string `CC-1.0` or another known identifier | [licenses](/standard/data-resource/#licenses) (optional) is an array                  |
+| [license](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (required) is the string `CC0-1.0` or another known identifier | [licenses](/standard/data-resource/#licenses) (optional) is an array                  |
 | [schema](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (required) as [described below](#schema-properties)            | [schema](/standard/data-resource/#schema) (optional) can have multiple forms          |
 | [sources](https://www.mediawiki.org/wiki/Help:Tabular_data#Top-level_fields) (optional) is a string with Wiki markup                       | [sources](/standard/data-resource/#sources) (optional) is a an array of objects       |
 
