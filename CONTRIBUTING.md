@@ -86,7 +86,7 @@ This section outlines the rules for backward compatibility in the Data Package s
 ### Property changes
 
 1. A property MUST NOT change `type`
-2. A property MAY allow additional `type` (array) @roll you want to [avoid this as a rule](https://github.com/frictionlessdata/specs/issues/873), but it does offer flexibility, cf. https://github.com/frictionlessdata/specs/issues/804#issuecomment-1913486995
+2. A property MAY allow additional `type` (array)
 3. A property MUST NOT become `required`
 4. A property MAY become optional. Example: https://github.com/frictionlessdata/datapackage/pull/7
 5. A property MUST NOT add `enum`
