@@ -51,17 +51,27 @@ For example, the following is a valid Category Table Resource:
 
 ## Usage
 
-Category Table Resources can be referenced by name in the `categories` property of a field definition in a Tabular Data Resource. For example, the following is a valid field definition that references the `fruit-codes` Category Table Resource defined above:
+Category Table Resources are used by providing the `categories` property of a categorical field descriptor with an `object` with the following properties:
+
+- There `MUST` be a `resource` property of type `string` that specifies the name of the Category Table Resource to be used.
+
+- There `MAY` be an optional `package` property of type `string` that specifies the package containing the Category Table Resource to be used. As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, the `package` property `MUST` be either a fully qualified HTTP address to a Data Package `datapackage.json` file or a data package name that can be resolved by a canonical data package registry. If omitted, implementations `SHOULD` assume the Category Table Resource is in the current data package.
+
+- There `MAY` be an optional `encodedAs` property of type `string` that specifies whether the values of the focal categorical field reference the `value` or `label` field of the Category Table Resource. When `encodedAs` is `"value"`, the values of the focal categorical field are mapped to the values of the `value` field in the Category Table Resource. When `encodedAs` is `"label"`, the values of the focal categorical field are mapped to the values of the `label` field in the Category Table Resource. When `encodedAs` is omitted, implementations `SHOULD` assume the values of the categorical field are the values of the `value` field in the Category Table Resource.
+
+For example, the following field definition references the `fruit-codes` Category Table Resource defined above if it was in the same data package used the `value`s of the Category Table Resource (in this case, the `code` field of `fruit-codes`):
 
 ```json
 {
   "name": "fruit",
   "type": "string",
-  "categories": "fruit-codes"
+  "categories": {
+    "resource": "fruit-codes"
+  }
 }
 ```
 
-As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, references to Category Table Resources in external packages can be made by providing the `categories` property an object with a `package` and `resource` property, both of type `string`. For example:
+Alternatively, if the `fruit-codes` Category Table Resource was in an external data package and used the Category Table Resource's `label`s to represent the field's options (in this case, the `name` field of `fruit-codes`), the field definition would be:
 
 ```json
 {
@@ -69,12 +79,11 @@ As with the [External Foreign Keys](/recipes/external-foreign-keys/) recipe, ref
   "type": "string",
   "categories": {
     "package": "http://example.com/package.json",
-    "resource": "fruit-codes"
+    "resource": "fruit-codes",
+    "encodedAs": "label"
   }
 }
 ```
-
-When `package` is omitted, implementations `SHOULD` assume resource references the current data package. The `resource` property `MUST` be a valid Category Table Resource name in the referenced package.
 
 ## Constraints
 
