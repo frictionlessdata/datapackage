@@ -5,7 +5,7 @@ title: Relationship between Fields
 <table>
   <tr>
     <th>Authors</th>
-    <td>Philippe Thomy, Peter Desmet</td>
+    <td>Philippe Thomy</td>
   </tr>
 </table>
 
