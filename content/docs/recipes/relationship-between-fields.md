@@ -103,15 +103,19 @@ After discussions only the third is retained (a relationship between fields asso
   Example:
 
   ```json
-  { "fields": [ ],
+  {
+    "fields": [ ],
     "relationships": [
-      { "fields" : [ "country", "code"],
+      {
+        "fields" : ["country", "code"],
         "description" : "is the country code alpha-2 of",
         "link" : "coupled"
       }
-      { "fields" : [ "region", "population"],
+      {
+        "fields" : ["region", "population"],
         "description" : "is the population of",
-        "link" : "derived"}
+        "link" : "derived"
+      }
     ]
   }
   ```
