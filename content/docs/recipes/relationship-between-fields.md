@@ -5,13 +5,13 @@ title: Relationship between Fields
 <table>
   <tr>
     <th>Authors</th>
-    <td>Philippe Thomy, Peter Desmet</td>
+    <td>Philippe Thomy</td>
   </tr>
 </table>
 
-The structure of tabular datasets is simple: a set of Fields grouped in a table.
+The structure of tabular datasets is simple: a set of fields grouped in a table.
 
-However, the data present is often complex and reflects an interdependence between Fields (see explanations in the Internet-Draft [NTV tabular format (NTV-TAB)](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2)).
+However, the data present is often complex and reflects an interdependence between fields (see explanations in the Internet-Draft [NTV tabular format (NTV-TAB)](https://www.ietf.org/archive/id/draft-thomy-ntv-tab-00.html#section-2)).
 
 Let's take the example of the following dataset:
 
@@ -22,15 +22,15 @@ Let's take the example of the following dataset:
 | Estonia | European Union | ES   | 449        |
 | Nigeria | Africa         | NI   | 1460       |
 
-The data schema for this dataset indicates in the Field Descriptor "description":
+The data schema for this dataset has the following `description`:
 
-- for the "code" Field : "country code alpha-2"
-- for the "population" Field: "region population in 2022 (millions)"
+- for the `code` field : "country code alpha-2"
+- for the `population` field: "region population in 2022 (millions)"
 
 If we now look at the data we see that this dataset is not consistent because it contains two structural errors:
 
-- The value of the "code" Field must be unique for each country, we cannot therefore have "ES" for "Spain" and "Estonia",
-- The value of the "population" Field of "European Union" cannot have two different values (449 and 48)
+- The value of the `code` Ffeld must be unique for each country, we cannot therefore have "ES" for "Spain" and "Estonia",
+- The value of the `population` field of "European Union" cannot have two different values (449 and 48)
 
 These structural errors make the data unusable and yet they are not detected in the validation of the dataset (in the current version of Table Schema, there are no Descriptors to express this dependency between two fields).
 
@@ -70,92 +70,96 @@ Two aspects need to be addressed:
 
 A relationship is defined by the following information:
 
-- the two Fields involved (the order of the Fields is important with the "derived" link),
+- the two fields involved (the order of the fields is important with the `derived` link),
 - the textual representation of the relationship,
 - the nature of the relationship
 
 Three proposals for extending Table Schema are being considered:
 
-- New Field Descriptor
-- New Constraint Property
-- New Table Descriptor
+- New field descriptor
+- New constraint property
+- New table descriptor
 
-After discussions only the third is retained (a relationship between fields associated to a Field) and presented below:
+After discussions only the third is retained (a relationship between fields associated to a field) and presented below:
 
-- **New Table Descriptor**:
+- **New table descriptor**:
 
-  A `relationships` Table Descriptor is added.
-  The properties associated with this Descriptor could be:
+  A `relationships` table descriptor is added.
+  The properties associated with this descriptor could be:
 
-  - `fields`: array with the names of the two Fields involved
+  - `fields`: array with the names of the two fields involved
   - `description`: description string (optional)
   - `link`: nature of the relationship
 
   Pros:
 
-  - No mixing with Fields descriptors
+  - No mixing with fields descriptors
 
   Cons:
 
-  - Need to add a new Table Descriptor
-  - The order of the Fields in the array is important with the "derived" link
+  - Need to add a new table descriptor
+  - The order of the fields in the array is important with the `derived` link
 
   Example:
 
   ```json
-  { "fields": [ ],
+  {
+    "fields": [ ],
     "relationships": [
-      { "fields" : [ "country", "code"],
+      {
+        "fields" : ["country", "code"],
         "description" : "is the country code alpha-2 of",
         "link" : "coupled"
       }
-      { "fields" : [ "region", "population"],
+      {
+        "fields" : ["region", "population"],
         "description" : "is the population of",
-        "link" : "derived"}
+        "link" : "derived"
+      }
     ]
   }
   ```
 
 ## Specification
 
-Assuming solution 3 (Table Descriptor), the specification could be as follows:
+Assuming solution 3 (table descriptor), the specification could be as follows:
 
-The `relationships` Descriptor MAY be used to define the dependency between fields.
+The `relationships` descriptor MAY be used to define the dependency between fields.
 
-The `relationships` Descriptor, if present, MUST be an array where each entry in the array is an object and MUST contain two required properties and one optional:
+The `relationships` descriptor, if present, MUST be an array where each entry in the array is an object and MUST contain two required properties and one optional:
 
 - `fields`: Array with the property `name` of the two fields linked (required)
 - `link` : String with the nature of the relationship between them (required)
-- `description` : String with the description of the relationship between the two Fields (optional)
+- `description` : String with the description of the relationship between the two fields (optional)
 
 The `link` property value MUST be one of the three following :
 
-- `derived` :
+- `derived`:
 
   - The values of the child (second array element) field are dependant on the values of the parent (first array element) field (i.e. a value in the parent field is associated with a single value in the child field).
-  - e.g. The "name" field [ "john", "paul", "leah", "paul" ] and the "Nickname" field [ "jock", "paulo", "lili", "paulo" ] are derived,
-  - i.e. if a new entry "leah" is added, the corresponding "nickname" value must be "lili".
+  - e.g. The `name` field ["john", "paul", "leah", "paul"] and the `nickname` field ["jock", "paulo", "lili", "paulo"] are derived,
+  - i.e. if a new entry "leah" is added, the corresponding `nickname` value must be "lili".
 
-- `coupled` :
+- `coupled`:
 
   - The values of one field are associated to the values of the other field.
-  - e.g. The "Country" field [ "france", "spain", "estonia", "spain" ] and the "code alpha-2" field [ "FR", "ES", "EE", "ES" ] are coupled,
-  - i.e. if a new entry "estonia" is added, the corresponding "code alpha-2" value must be "EE" just as if a new entry "EE" is added, the corresponding "Country" value must be "estonia".
+  - e.g. The `Country` field ["france", "spain", "estonia", "spain"] and the `code alpha-2` field ["FR", "ES", "EE", "ES"] are coupled,
+  - i.e. if a new entry "estonia" is added, the corresponding `code alpha-2` value must be "EE" just as if a new entry "EE" is added, the corresponding `Country` value must be "estonia".
 
-- `crossed` :
+- `crossed`:
 
   - This relationship means that all the different values of one field are associated with all the different values of the other field.
-  - e.g. the "Year" Field [ 2020, 2020, 2021, 2021] and the "Population" Field [ "estonia", "spain", "estonia", "spain" ] are crossed
+  - e.g. the `Year` field [2020, 2020, 2021, 2021] and the `Population` field [ "estonia", "spain", "estonia", "spain"] are crossed
   - i.e the year 2020 is associated to population of "spain" and "estonia", just as the population of "estonia" is associated with years 2020 and 2021
 
 ## Implementations
 
-The implementation of a new Descriptor is not discussed here (no particular point to address).
+The implementation of a new descriptor is not discussed here (no particular point to address).
 
 The control implementation is based on the following principles:
 
-- calculation of the number of different values for the two Fields,
-- calculation of the number of different values for the virtual Field composed of tuples of each of the values of the two Fields
+- calculation of the number of different values for the two fields,
+- calculation of the number of different values for the virtual field composed of tuples of each of the values of the two fields
 - comparison of these three values to deduce the type of relationship
 - comparison of the calculated relationship type with that defined in the data schema
 
