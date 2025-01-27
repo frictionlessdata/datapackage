@@ -117,7 +117,7 @@ A file containing a Data Package descriptor `MAY` have other name rather than `d
 
 ## Properties
 
-A Data Package descriptor `MUST` have `resoures` property and `SHOULD` have `name`, `id`, `licenses`, and `profile` properties.
+A Data Package descriptor `MUST` have [`resoures`](#resources) property and `SHOULD` have [`name`](#name), [`id`](#id), [`licenses`](#licenses), and `profile` properties.
 
 ### `resources` [required] {#resources}
 
@@ -193,7 +193,7 @@ A `string` providing a title or one sentence description for this package
 
 ### `description`
 
-A description of the package. The description `MUST` be [markdown](http://commonmark.org/) formatted -- this also allows for simple plain text as plain text is itself valid markdown. The first paragraph (up to the first double line break) `SHOULD` be usable as summary information for the package.
+A description of the package in [CommonMark Markdown](https://spec.commonmark.org/current/) syntax. As any sequence of characters is a valid CommonMark document, this allows for simple plain text. The first paragraph `SHOULD` be separated by a blank line from following content to be usable as summary information of the package.
 
 ### `homepage`
 
@@ -236,7 +236,7 @@ The people or organizations who contributed to this Data Package. It `MUST` be a
 - `familyName`: A string containing the familial name that a person inherits, if the contributor is a person.
 - `path`: A fully qualified URL pointing to a relevant location online for the contributor.
 - `email`: A string containing an email address.
-- `roles`: An array of strings describing the roles of the contributor. A role is `RECOMMENDED` to follow an established vocabulary, such as [DataCite Metadata Schema's contributorRole](https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype) or [CreDIT](https://credit.niso.org/). Useful roles to indicate are: `creator`, `contact`, `rightsHolder`, and `dataCurator`.
+- `roles`: An array of strings describing the roles of the contributor. A role is `RECOMMENDED` to follow an established vocabulary, such as [DataCite Metadata Schema's contributorRole](https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype) or [CRediT](https://credit.niso.org/). Useful roles to indicate are: `creator`, `contact`, `rightsHolder`, and `dataCurator`.
 - `organization`: A string describing the organization this contributor is affiliated to.
 
 An example of the object structure is as follows:

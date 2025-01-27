@@ -86,7 +86,7 @@ Data Package can define more than groups of tables. A [package](/standard/data-p
 
 ### Tables
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [url](http://table-url) | Yes | As [resource.path](/standard/data-resource/#path-or-data) |
 | [dialect](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#table-dialect) | Yes | As [resource.dialect](/standard/data-resource/#dialect) |
@@ -104,7 +104,7 @@ Data Package can define more than groups of tables. A [package](/standard/data-p
 Data Package [Table Schema](/standard/table-schema/) has features that CSVW schema does not, including [fieldMatch](/standard/table-schema/#fieldsMatch) for matching a schema with data, [missingValues](/standard/table-schema/#missingValues) for multiple (and labelled) missing values, and [uniqueKeys](/standard/table-schema/#uniqueKeys).
 :::
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [columns](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#schema-columns) | Yes | As [schema.fields](/standard/table-schema/#fields) |
 | [foreignKeys](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#schema-foreignKeys) | Yes | As [schema.foreignKeys](/standard/table-schema/#foreignKeys) |
@@ -115,7 +115,7 @@ Data Package [Table Schema](/standard/table-schema/) has features that CSVW sche
 
 ### Columns
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [name](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#column-name) | Yes | As [field.name](/standard/table-schema/#name) |
 | [suppressOutput](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#column-suppressOutput) | No |  |
@@ -128,7 +128,7 @@ Data Package [Table Schema](/standard/table-schema/) has features that CSVW sche
 
 Data Package properties do not inherit from their parent, unless otherwise specified (e.g. [resource.sources](/standard/data-resource/#sources)). The properties listed below only exist at one level in Data Package, except for `missingValues`.
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [aboutUrl](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#cell-aboutUrl) | Custom property |  |
 | [datatype](http://cell-datatype) | Yes | As [field.type](/standard/table-schema/#type-and-format) |
@@ -152,7 +152,7 @@ Common properties can be added in Data Package as [custom properties](/standard/
 Data Package [Table Dialect](/standard/table-dialect/) was used as inspiration for CSVW dialect. It has features that CSVW dialect does not, since it covers tabular data formats beyond delimited text files, such as spreadsheets and databases. For delimited text files it supports [headerJoin](/standard/table-dialect/#headerJoin), [doubleQuote](/standard/table-dialect/#doubleQuote), [escapeChar](/standard/table-dialect/#escapeChar), and [nullSequence](/standard/table-dialect/#nullSequence), which CSVW does not.
 :::
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [commentPrefix](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-commentPrefix) | Yes | As [dialect.commentChar](/standard/table-dialect/#commentChar) |
 | [delimiter](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-delimiter) | Yes | As [dialect.delimiter](/standard/table-dialect/#delimiter) |
@@ -182,7 +182,7 @@ CSVW defines data types as built-in data types and derived data types. A derived
 Data Package [Table Schema](/standard/table-schema/) supports data types that CSVW does not, such as (labelled) [categories](/standard/table-schema/#categories) and [geojson](/standard/table-schema/#geojson). It also supports a number of constraints that CSVW does not, such as [unique](/standard/table-schema/#unique) values, [pattern](/standard/table-schema/#pattern) for regex comparison and [enum](/standard/table-schema/#enum) for controlled values, which allow rigorous data validation.
 :::
 
-| CSVW property | Data package support | Details |
+| CSVW property | Data Package support | Details |
 | ---- | ---- | ---- |
 | [base](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#datatype-base) | No | All types are defined as [field.type](/standard/table-schema/#type-and-format) |
 | [format](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#datatype-format) | Yes | As [field.format](/standard/table-schema/#type-and-format) |

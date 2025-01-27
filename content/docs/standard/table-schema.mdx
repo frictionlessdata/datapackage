@@ -647,12 +647,54 @@ A constraints descriptor `MUST` be a JSON `object` and `MAY` contain one or more
 
 Indicates whether this field cannot be `null`. If required is `false` (the default), then `null` is allowed. See the section on `missingValues` for how, in the physical representation of the data, strings can represent `null` values.
 
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "required": true } }
+  ]
+}
+```
+
+Will be invalid because the `name` field is missing a value for the second row.
+
 ### `unique`
 
 - **Type**: boolean
 - **Fields**: all
 
 If `true`, then all values for that field `MUST` be unique within the data file in which it is found.
+
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,apple
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "unique": true } }
+  ]
+}
+```
+
+Will be invalid because the `name` field has a duplicate value.
 
 ### `minLength` {#minLength}
 
@@ -661,12 +703,54 @@ If `true`, then all values for that field `MUST` be unique within the data file 
 
 An integer that specifies the minimum length of a value.
 
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,plum
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "minLength": 5 } }
+  ]
+}
+```
+
+Will be invalid because the `name` field has a value that is too short.
+
 ### `maxLength` {#maxLength}
 
 - **Type**: integer
 - **Fields**: collections (string, array, object)
 
 An integer that specifies the maximum length of a value.
+
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,grapefruit
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "maxLength": 5 } }
+  ]
+}
+```
+
+Will be invalid because the `name` field has a value that is too long.
 
 ### `minimum`
 
@@ -675,12 +759,56 @@ An integer that specifies the maximum length of a value.
 
 Specifies a minimum value for a field. This is different to `minLength` which checks the number of items in the value. A `minimum` value constraint checks whether a field value is greater than or equal to the specified value. The range checking depends on the `type` of the field. E.g. an integer field may have a minimum value of 100; a date field might have a minimum date. If a `minimum` value constraint is specified then the field descriptor `MUST` contain a `type` key.
 
+For example, this data file:
+
+```csv
+id,name,price
+1,apple,100
+2,orange,50
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string" },
+    { "name": "price", "type": "integer", "constraints": { "minimum": 100 } }
+  ]
+}
+```
+
+Will be invalid because the `price` field has a value that is too low.
+
 ### `maximum`
 
 - **Type**: integer, number, date, time, datetime, duration, year, yearmonth
 - **Fields**: integer, number, date, time, datetime, duration, year, yearmonth
 
 As for `minimum`, but specifies a maximum value for a field.
+
+For example, this data file:
+
+```csv
+id,name,price
+1,apple,100
+2,orange,150
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string" },
+    { "name": "price", "type": "integer", "constraints": { "maximum": 100 } }
+  ]
+}
+```
+
+Will be invalid because the `price` field has a value that is too high.
 
 ### `exclusiveMinimum` {#exclusiveMinimum}
 
@@ -689,12 +817,56 @@ As for `minimum`, but specifies a maximum value for a field.
 
 As for `minimum`, but for expressing exclusive range.
 
+For example, this data file:
+
+```csv
+id,name,price
+1,apple,100
+2,orange,0
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string" },
+    { "name": "price", "type": "integer", "constraints": { "exclusiveMinimum": 0 } }
+  ]
+}
+```
+
+Will be invalid because the `price` field has a value that is too low.
+
 ### `exclusiveMaximum` {#exclusiveMaximum}
 
 - **Type**: integer, number, date, time, datetime, duration, year, yearmonth
 - **Fields**: integer, number, date, time, datetime, duration, year, yearmonth
 
 As for `maximum`, but for expressing exclusive range.
+
+For example, this data file:
+
+```csv
+id,name,price
+1,apple,100
+2,orange,150
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string" },
+    { "name": "price", "type": "integer", "constraints": { "exclusiveMaximum": 150 } }
+  ]
+}
+```
+
+Will be invalid because the `price` field has a value that is too high.
 
 ### `jsonSchema` {#jsonSchema}
 
@@ -703,6 +875,39 @@ As for `maximum`, but for expressing exclusive range.
 
 A valid JSON Schema object to validate field values. If a field value conforms to the provided JSON Schema then this field value is valid.
 
+For example, this data file:
+
+```csv
+id,name,price
+1,apple,{"value": 100}
+2,orange,{"value": "bad"}
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string" },
+    {
+      "name": "price",
+      "type": "object",
+      "constraints": {
+        "jsonSchema": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "integer" }
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+Will be invalid because the `price` field has a value that is not an integer.
+
 ### `pattern`
 
 - **Type**: string
@@ -710,12 +915,54 @@ A valid JSON Schema object to validate field values. If a field value conforms t
 
 A regular expression that can be used to test field values. If the regular expression matches then the value is valid. The values of this field `MUST` conform to the standard [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs).
 
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,orange
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "pattern": "^a.*$" } }
+  ]
+}
+```
+
+Will be invalid because the `name` field has a value that does not match the pattern.
+
 ### `enum`
 
 - **Type**: array
 - **Fields**: all
 
 The value of the field `MUST` exactly match one of the values in the `enum` array.
+
+For example, this data file:
+
+```csv
+id,name
+1,apple
+2,orange
+```
+
+With this schema definition:
+
+```json
+{
+  "fields": [
+    { "name": "id", "type": "integer" },
+    { "name": "name", "type": "string", "constraints": { "enum": ["apple"] } }
+  ]
+}
+```
+
+Will be invalid because the `name` field has a value that is not in the `enum` array.
 
 :::note[Implementation Note]
 
