@@ -127,3 +127,24 @@ Alternate translations of the category labels can be provided by way of the [Lan
   ]
 }
 ```
+
+
+## Discussion
+
+Being able to define lists of categories in a separate data resource has a number of advantages:
+
+- In case of a large number of categories it is often easier to maintain these in files, such as CSV files. This also keeps the `datapackage.json` file compact and readable for humans.
+
+- The data set in the category table resource can store additional information besides the 'value' and 'label'. For example, the categories could have descriptions or the categories could form a hierarchy.
+
+- It is also possible to store additional meta data in the category table resource. For example, it is possible to indicate the source, license, version and owner of the data resource. This is important for many 'official' categories lists where there can be many similar versions maintained by different organisations.
+
+- When different fields use the same categories they can all refer to the same category table resource. First, this allows to reuse of the categories.  Second, by referring to the same data resource, the field descriptors can indicate that the categories are comparable between fields.
+
+- It is possible to refer to category table resources in other data packages.  This makes it, for example, possible to create centrally maintained repositories of categories.
+
+It is assumed that the category table resource, is a tabular data resource.  However, any data format that has some tabular structure -- has a 'value' and 'label' field -- can be used to store the categories. This also allows implementers to support other data types than just CSV.
+
+One such example is [SDMX](https://sdmx.org/). SDMX is used by many statistical agencies to disseminate their data. SDMX has the concept of CodeList which serves the same purpose as the 'categories' field of the field descriptor. A CodeList has a tabular structure where each code consists of an 'id' and 'name' (names can be multilingual), which correspond to 'value' and 'label' respectively.  Therefore, it is possible to refer to an SDMX CodeList from a Category Table Resource.
+
+
