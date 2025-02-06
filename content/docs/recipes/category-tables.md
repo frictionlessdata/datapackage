@@ -95,7 +95,9 @@ Fields in a focal data resource referencing a Category Table Resource via the `c
 {
   "name": "fruit",
   "type": "integer",
-  "categories": "fruit-codes"
+  "categories": {
+    "resource": "fruit-codes"
+  }
 }
 ```
 
