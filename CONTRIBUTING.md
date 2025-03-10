@@ -36,7 +36,7 @@ The Data Package project uses two main branches:
 
 - **`main`**: This is the main public branch. The live https://datapackage.org website is built from this branch. Following pull requests types are allowed: documentation updates, chore improvements, and other minor changes.
 
-- **`next`**: This is the development branch. New features and changes are implemented in this branch. It also includes all the bug fixes, that need to update profiles, as Data Package follows the immutable public profiles model.
+- **`next`**: This is the development branch. New features and changes are implemented in this branch. It also includes all the bug fixes that need to update profiles, as Data Package follows the immutable public profiles model.
 
 ### Releasing model
 
