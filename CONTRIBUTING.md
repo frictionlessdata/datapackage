@@ -96,7 +96,7 @@ This section outlines the rules for backward compatibility in the Data Package s
 
 ### Table schema changes
 
-1. A field type MUST NOT change default `format`. Example: does https://github.com/frictionlessdata/datapackage/pull/23 align with this?
+1. A field type MUST NOT change default `format`
 2. A field type MUST NOT remove `format` pattern options
 3. A field type MAY add `format` pattern options
 
