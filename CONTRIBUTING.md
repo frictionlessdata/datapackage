@@ -22,9 +22,9 @@ The Data Package standard is developed using a research and development model. T
 
 There are two main feedback trackers for the Data Package standard:
 
-- **[Data Package Discussions](https://github.com/frictionlessdata/datapackage/discussions)**: This is where general discussions and new feature proposals to the Data Package standard take place. You can use this forum to share your ideas, ask questions, and provide feedback. Using discussions and the voting mechanism, the community and the Data Package Working Group can help prioritize issues and feature requests. The discussions are a good place to design and share a feature draft or implementation details. Generally speaking, this is a research phase.
+1. **[Data Package Discussions](https://github.com/frictionlessdata/datapackage/discussions)**: This is where general discussions and new feature proposals to the Data Package standard take place. You can use this forum to share your ideas, ask questions, and provide feedback. Using discussions and the voting mechanism, the community and the Data Package Working Group can help prioritize issues and feature requests. The discussions are a good place to design and share a feature draft or implementation details. Generally speaking, this is a research phase.
 
-- **[Data Package Issues](https://github.com/frictionlessdata/datapackage/issues)**: This is where bugs, general improvements, and specific feature requests are tracked. The issues here must be actionable and have a clear scope. The Data Package maintainers might move an issue to the Discussions if it needs to be discussed or voted first or close the issue if it is not planned to be implemented. Generally speaking, this is the development phase.
+1. **[Data Package Issues](https://github.com/frictionlessdata/datapackage/issues)**: This is where bugs, general improvements, and specific feature requests are tracked. The issues here must be actionable and have a clear scope. The Data Package maintainers might move an issue to the Discussions if it needs to be discussed or voted first or close the issue if it is not planned to be implemented. Generally speaking, this is the development phase.
 
 ## Branching and releasing
 
@@ -34,9 +34,9 @@ The term `profile` is used to refer to the Data Package profiles -- JSONSchema f
 
 The Data Package project uses two main branches:
 
-- **`main`**: This is the main public branch. The live https://datapackage.org website is built from this branch. The following types of pull requests are allowed: documentation updates, chore improvements, and other minor changes.
+1. **`main`**: This is the main public branch. The live https://datapackage.org website is built from this branch. The following types of pull requests are allowed: documentation updates, chore improvements, and other minor changes.
 
-- **`next`**: This is the development branch. New features and changes are implemented in this branch. It also includes all the bug fixes that need to update profiles, as Data Package follows the immutable public profiles model.
+1. **`next`**: This is the development branch. New features and changes are implemented in this branch. It also includes all the bug fixes that need to update profiles, as Data Package follows the immutable public profiles model.
 
 ### Releasing model
 
@@ -67,9 +67,9 @@ When a pull request is created, it will be reviewed by the Data Package maintain
 
 Note that the project uses two different types of produced artifacts:
 
-- **npm run generate**: This command generates the profiles from the `profiles` folder and sync profile version in the specs. It is required to run this command after changing the YAML/JSON files in `profiles` folder, and the output has to be committed to the repository.
+1. **npm run generate**: This command generates the profiles from the `profiles` folder and sync profile version in the specs. It is required to run this command after changing the YAML/JSON files in `profiles` folder, and the output has to be committed to the repository.
 
-- **npm run build**: This command builds the project and generates the static site. This command is run by automation and the output is not commited to the repository. As a contributor, you don't need to run this command although you can use `npm run preview` to debug the site built in production-mode locally.
+1. **npm run build**: This command builds the project and generates the static site. This command is run by automation and the output is not commited to the repository. As a contributor, you don't need to run this command although you can use `npm run preview` to debug the site built in production-mode locally.
 
 ## Backward compatibility
 
