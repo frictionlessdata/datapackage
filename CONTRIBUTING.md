@@ -12,7 +12,7 @@ There are many ways to contribute to the Data Package standard. Here are a few:
 
 - **Participate in discussions**: Share your ideas and feedback in the [Data Package Discusions](https://github.com/frictionlessdata/datapackage/discussions). We use a voting system to prioritize issues and feature requests.
 
-- **Report issues**: If you find a bug or have a feature request, please report it in the [GitHub issue tracker](https://github.com/frictionlessdata/datapackage/issues). There a few predefined issue templates to help you get started.
+- **Report issues**: If you find a bug or have a feature request, please report it in the [GitHub issue tracker](https://github.com/frictionlessdata/datapackage/issues). There are a few predefined issue templates to help you get started.
 
 - **Contribute to the repository**: You can contribute to the Data Package standard repository. Please read this guide for more details on the process.
 
