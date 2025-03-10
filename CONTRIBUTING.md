@@ -44,7 +44,7 @@ This process is used for a new Data Package version release:
 
 - A maintainer creates a new pull request named `Release vX.Y` from the `next` branch to the `main` branch that includes a version bump in `package.json` with `npm run generate` command run to update the profiles.
 
-- All pull request meant to be included in the release should be merged into the `next` branch following standard [review/voting process](/overview/governance#decision-making). It is recommended to include a changelog entry as a part of a pull request. Maintrainers merge these pull requests using "Squash and merge" strategy.
+- All pull request meant to be included in the release should be merged into the `next` branch following standard [review/voting process](/overview/governance#decision-making). It is recommended to include a changelog entry as a part of a pull request. Maintainers merge these pull requests using the "Squash and merge" strategy.
 
 - When the `Release vX.Y` is ready to be released, the maintainer ensure the changelog correctness, resolves conflicts if needed, and merges the `next` branch into the `main` branch using "Create a merge commit" strategy. After the website successfully builds, the maintainer creates a new tag and release on GitHub linking the changelog entry with release notes for the version released.
 
