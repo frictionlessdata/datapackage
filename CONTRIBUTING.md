@@ -24,7 +24,7 @@ There are two main feedback trackers for the Data Package standard:
 
 - **[Data Package Discussions](https://github.com/frictionlessdata/datapackage/discussions)**: This is where general discussions and new feature proposals to the Data Package standard take place. You can use this forum to share your ideas, ask questions, and provide feedback. Using discussions and the voting mechanism, the community and the Data Package Working Group can help prioritize issues and feature requests. The discussions are a good place to design and share a feature draft or implementation details. Generally speaking, this is a research phase.
 
-- **[Data Package Issues](https://github.com/frictionlessdata/datapackage/issues)**: This is where bugs, general improvements, and specific feature requests are tracked. The issues here must be actionable and have a clear scope. The Data Package maintainers might move an issue to the Discussions if it needs to be discussed or voted first or close one if it is not planned to implement. Generally speaking, this is a development phase.
+- **[Data Package Issues](https://github.com/frictionlessdata/datapackage/issues)**: This is where bugs, general improvements, and specific feature requests are tracked. The issues here must be actionable and have a clear scope. The Data Package maintainers might move an issue to the Discussions if it needs to be discussed or voted first or close one if it is not planned to implement. Generally speaking, this is the development phase.
 
 ## Branching and releasing
 
