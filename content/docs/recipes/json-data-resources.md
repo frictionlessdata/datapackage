@@ -94,7 +94,7 @@ A comprehensive JSON Data Resource example with all required, recommended and op
       },
       "name": {
         "type": "string"
-      }
+      },
       "description": {
         "type": "string"
       }
