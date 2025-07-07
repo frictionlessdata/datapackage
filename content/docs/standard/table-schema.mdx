@@ -88,6 +88,10 @@ A root level Table Schema descriptor `MAY` have a `$schema` property that `MUST`
 
 The default value is `https://datapackage.org/profiles/1.0/tableschema.json` and the recommended value is `https://datapackage.org/profiles/2.0/tableschema.json`.
 
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
+
 #### `fieldsMatch` {#fieldsMatch}
 
 A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be a string with the following possible values and the `exact` value by default:
@@ -97,6 +101,10 @@ A Table Schema descriptor `MAY` contain a property `fieldsMatch` that `MUST` be 
 - **subset**: The data source `MUST` have all the fields defined in the `fields` array, but `MAY` have more. Fields `MUST` be mapped by their names.
 - **superset**: The data source `MUST` only have fields defined in the `fields` array, but `MAY` have fewer. Fields `MUST` be mapped by their names.
 - **partial**: The data source `MUST` have at least one field defined in the `fields` array. Fields `MUST` be mapped by their names.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 #### `missingValues` {#missingValues}
 
@@ -126,6 +134,10 @@ Examples:
 ```
 
 When implementations choose to convert missing values to null, this conversion to `null` `MUST` be done before any other attempted type-specific string conversion. The default value `[ "" ]` means that empty strings will be converted to null before any other processing takes place. Providing the empty list `[]` means that no conversion to null will be done, on any value.
+
+:::tip[Version Compatibility]
+Extended to support labeled missingness in `v2.0`.
+:::
 
 #### `primaryKey` {#primaryKey}
 
@@ -199,6 +211,10 @@ All the field values that are on the logical level are considered to be `null` v
 **Relation to `constraints.unique`**
 
 In contrast with `field.constraints.unique`, `uniqueKeys` allows to define uniqueness as a combination of fields. Both properties `SHOULD` be assessed separately.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 #### `foreignKeys` {#foreignKeys}
 
@@ -369,6 +385,10 @@ If `categories` is (b) an array of objects, each object `MAY` also have a `label
 
 An `enum` constraint `MAY` be added to a field with a `categories` property, but if so, the `enum` values `MUST` be a subset of the values in `categories`.
 
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
+
 #### `categoriesOrdered` {#categoriesOrdered}
 
 When the `categories` property is defined, it `MAY` be accompanied by a `categoriesOrdered` property in the field definition. When present, the `categoriesOrdered` property `MUST` be `boolean`. When `categoriesOrdered` is `true`, implementations `SHOULD` regard the order of appearance of the values in the `categories` property as their natural order. For example:
@@ -389,6 +409,10 @@ When the `categories` property is defined, it `MAY` be accompanied by a `categor
 ```
 
 When the property `categoriesOrdered` is `false`, implementations `SHOULD` assume that the categories do not have a natural order; when the property is not present, no assumption about the ordered nature of the values `SHOULD` be made.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 #### `missingValues` {#field-missingValues}
 
@@ -413,6 +437,10 @@ A data consumer `MUST`:
 
 - interpret `""` and `NA` as missing values for `column1`
 - interpret only `-` as a missing value for `column2`
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 #### `rdfType` {#rdfType}
 
@@ -521,6 +549,10 @@ The list field can be customised with these additional properties:
 
 - **delimiter**: specifies the character sequence which separates lexically represented list items. If not present, the default is `,` (comma).
 - **itemType**: specifies the list item type in terms of existent Table Schema types. If present, it `MUST` be one of `string`, `integer`, `boolean`, `number`, `datetme`, `date`, and `time`. If not present, the default is `string`. A data consumer `MUST` process list items as it were individual values of the corresponding data type. Note, that on lexical level only default formats are supported, for example, for a list with `itemType` set to `date`, items have to be in default form for dates i.e. `yyyy-mm-dd`.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 ### `datetime`
 
@@ -839,6 +871,10 @@ With this schema definition:
 
 Will be invalid because the `price` field has a value that is too low.
 
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
+
 ### `exclusiveMaximum` {#exclusiveMaximum}
 
 - **Type**: integer, number, date, time, datetime, duration, year, yearmonth
@@ -867,6 +903,10 @@ With this schema definition:
 ```
 
 Will be invalid because the `price` field has a value that is too high.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 ### `jsonSchema` {#jsonSchema}
 
@@ -907,6 +947,10 @@ With this schema definition:
 ```
 
 Will be invalid because the `price` field has a value that is not an integer.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 ### `pattern`
 

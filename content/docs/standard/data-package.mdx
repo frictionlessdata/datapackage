@@ -131,6 +131,10 @@ A root level Data Package descriptor `MAY` have a `$schema` property that `MUST`
 
 The default value is `https://datapackage.org/profiles/1.0/datapackage.json` and the recommended value is `https://datapackage.org/profiles/2.0/datapackage.json`.
 
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
+
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
 :::
