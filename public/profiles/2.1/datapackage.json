@@ -28,7 +28,7 @@
       "propertyOrder": 30,
       "title": "ID",
       "description": "A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.",
-      "context": "A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.",
+      "context": "A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique. When providing a DOI, it is `RECOMMENDED` to provide the full URL (e.g. `https://doi.org/10.5281/zenodo.10053903`).",
       "type": "string",
       "examples": [
         "{\n  \"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"\n}\n",
