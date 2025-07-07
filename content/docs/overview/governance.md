@@ -14,7 +14,7 @@ The composition of the working group:
 
 ### Vetoing Members
 
-- **Evgeny Karev** (on-behalf of Open Knowledge Foundation)
+- **Evgeny Karev** ([Datist](https://datist.io/))
 - **Peter Desmet** (Research Institute for Nature and Forest (INBO))
 
 ### Voting Members
