@@ -148,6 +148,7 @@ If `path` property is not provided but there is a `url` property as was defined 
 A Data Resource descriptor `MAY` contain a property `type` that `MUST` be a string with the following possible values:
 
 - `table`: indicates that the resource is tabular as per [Tabular Data](/standard/glossary/#tabular-data) definition. Please read more about [Tabular Resource](#tabular) properties.
+- `json`: indicates that the resource is JSON as per [JSON Data](/standard/glossary/#json-data) definition. Please read more about [JSON Resource](#json) properties.
 
 If property `type` is not provided, the resource is considered to be a non-specific file. An implementation `MAY` provide some additional interfaces, for example, tabular, to non-specific files if `type` can be detected from the data source or format.
 
@@ -211,6 +212,10 @@ List of licenses as for [Data Package](/standard/data-package/#licenses). If not
 
 The properties below are applicable to any Tabular Data Resource.
 
+#### `type` {#tabular-type}
+
+A Tabular Data Resource descriptor `SHOULD` contain a property `type` that `MUST` be `table`.
+
 #### `path` or `data` [required] {#tabular-path-or-data}
 
 If the `path` property is used for providing data than it `MUST` contain [Tabular Data](/standard/glossary/#tabular-data).
@@ -272,6 +277,41 @@ An example of a resource with a schema:
       { "name": "id", "type": "integer" },
       { "name": "name", "type": "string" }
     ]
+  }
+}
+```
+
+### JSON
+
+The properties below are applicable to any JSON Data Resource.
+
+#### `type` {#json-type}
+
+A JSON Data Resource descriptor `SHOULD` contain a property `type` that `MUST` be `json`.
+
+#### `path` or `data` [required] {#json-path-or-data}
+
+If the `path` property is used for providing data than it `MUST` contain [JSON Data](/standard/glossary/#json-data).
+
+If the `data` property is used for providing data for a JSON Data Resource than it `MUST` be an inline instance of [JSON Data](/standard/glossary/#json-data).
+
+#### `jsonSchema`
+
+A JSON Data Resource `MAY` have a `jsonSchema` property to provide a JSONSchema of the resource data. If provided, the `jsonSchema` property `MUST` be a valid [JSON Schema](https://json-schema.org) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
+
+An example of a resource with a JSON Schema:
+
+```json
+{
+  "name": "data",
+  "type": "table",
+  "path": "data.json",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "first_name": { "type": "string" },
+      "last_name": { "type": "string" }
+    }
   }
 }
 ```
