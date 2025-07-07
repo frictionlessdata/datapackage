@@ -151,6 +151,10 @@ A Data Resource descriptor `MAY` contain a property `type` that `MUST` be a stri
 
 If property `type` is not provided, the resource is considered to be a non-specific file. An implementation `MAY` provide some additional interfaces, for example, tabular, to non-specific files if `type` can be detected from the data source or format.
 
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
+
 :::note[Backward Compatibility]
 If a resource has `profile` property that equals to `tabular-data-resource` or `https://specs.frictionlessdata.io/schemas/tabular-data-resource.json`, an implementation `MUST` treat it as `type` property were set to `table`
 :::
@@ -160,6 +164,10 @@ If a resource has `profile` property that equals to `tabular-data-resource` or `
 A root level Data Resource descriptor `MAY` have a `$schema` property that `MUST` be a profile as per [Profile](/standard/glossary/#profile) definition that `MUST` include all the metadata constraints required by this specification.
 
 The default value is `https://datapackage.org/profiles/1.0/dataresource.json` and the recommended value is `https://datapackage.org/profiles/2.0/dataresource.json`.
+
+:::tip[Version Compatibility]
+Added to the standard in `v2.0`.
+:::
 
 :::note[Backward Compatibility]
 If the `$schema` property is not provided but a descriptor has the `profile` property a data consumer `MUST` validate the descriptor according to the [Profiles](https://specs.frictionlessdata.io/profiles/) specification.
