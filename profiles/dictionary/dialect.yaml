@@ -43,6 +43,8 @@ tableDialect:
       "$ref": "#/definitions/sheetName"
     table:
       "$ref": "#/definitions/table"
+    namespace:
+      "$ref": "#/definitions/namespace"
 header:
   title: Header
   description: Specifies if the file includes a header row, always as the first row in the file.
@@ -174,4 +176,6 @@ sheetNumber:
 sheetName:
   type: string
 table:
+  type: string
+namespace:
   type: string
