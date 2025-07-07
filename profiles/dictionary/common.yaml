@@ -16,7 +16,7 @@ name:
 id:
   title: ID
   description: A property reserved for globally unique identifiers. Examples of
-    identifiers that are unique include UUIDs and DOI links.
+    identifiers that are unique include UUIDs and DOIs.
   context: A common usage pattern for Data Packages is as a packaging format within
     the bounds of a system or platform. In these cases, a unique identifier for
     a package is desired for common data handling workflows, such as updating an
