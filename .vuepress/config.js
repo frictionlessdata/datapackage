@@ -92,7 +92,7 @@ module.exports = {
           { text: "Implementation", link: "/guides/implementation/" },
         ],
       },
-      { text: "Back to the main site", link: "https://frictionlessdata.io/" },
+      { text: "Data Package (v2)", link: "https://datapackage.org" },
     ],
   },
   plugins: [["@vuepress/back-to-top"]],

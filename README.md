@@ -1,7 +1,5 @@
 # Data Package (v1)
 
-> [Data Package (v2)](https://datapackage.org/) is being under active development. Please read the [announcement](https://frictionlessdata.io/blog/2023/11/15/frictionless-specs-update/)
-
 ## What's a Data Package?
 
 A Data Package is a simple container format used to describe and package a collection of data (a dataset).

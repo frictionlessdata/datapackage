@@ -134,7 +134,9 @@ $navbar-horizontal-padding = 1.5rem
     top $navbar-vertical-padding
     display flex
     .external
-      opacity: 0.5
+      color #1a98ff
+      font-weight bold
+      text-decoration underline
     .search-box
       flex: 0 0 auto
       vertical-align top
