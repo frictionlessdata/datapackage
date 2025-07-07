@@ -44,4 +44,13 @@ Consensus is reached and the issue is closed if at least ⅔ of the working grou
 
 The community manager at OKFN will reach out to working group members who did not participate in the discussion to make sure their opinion is also captured. Reminders of your participation will be handled with care. Members of the working group can expect a gentle and considerate approach, such as receiving an email once every two weeks highlighting any issues where your vote is pending. The goal is to keep them informed without causing any unnecessary inconvenience.
 
-Decision-making on the technical maintenance of the specs will be centralised by OKFN.
+## Maintenance
+
+The project is maintained by a dedicated subgroup within the working group. The current active maintainers are:
+
+- **Evgeny Karev** ([Datist](https://datist.io/))
+- **Peter Desmet** (Research Institute for Nature and Forest (INBO))
+
+## Releasing
+
+Once a new version of the standard is ready with all applicable changes are approved by the working group, all the maintainers need to approve the release to publish it. No working group voting required for the release itself.
