@@ -141,6 +141,7 @@ Database formats is a group of formats accessing data from databases like SQLite
 
 - [$schema](#dollar-schema): `https://datapackage.org/profiles/1.0/tabledialect.json` by default
 - [table](#table): undefined by default
+- [namespace](#namespace): undefined by default
 
 ## Properties
 
@@ -623,6 +624,28 @@ With this dialect definition:
 ```json
 {
   "table": "table2"
+}
+```
+
+`SHOULD` output the data from the second table.
+
+### `namespace`
+
+A Table Dialect descriptor `MAY` have the `namespace` property that `MUST` be a string; undefined by default. This property specifies a database schema (namespace).
+
+For example, the database with the tables below:
+
+```txt
+raw.table
+cleaned.table
+```
+
+With this dialect definition:
+
+```json
+{
+  "table": "table",
+  "namespace": "cleaned"
 }
 ```
 
