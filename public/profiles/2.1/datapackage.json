@@ -323,7 +323,8 @@
             "propertyOrder": 235,
             "type": "string",
             "enum": [
-              "table"
+              "table",
+              "json"
             ]
           },
           "title": {
@@ -3403,6 +3404,15 @@
             },
             "examples": [
               "{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"
+            ]
+          },
+          "jsonSchema": {
+            "propertyOrder": 140,
+            "title": "JSON schema",
+            "description": "A JSON Schema for this resource, compliant with the JSON Schema specification.",
+            "type": [
+              "string",
+              "object"
             ]
           }
         }

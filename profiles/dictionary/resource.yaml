@@ -72,6 +72,9 @@ dataResource:
     schema:
       "$ref": "#/definitions/tableSchema"
       propertyOrder: 140
+    jsonSchema:
+      "$ref": "#/definitions/jsonSchema"
+      propertyOrder: 140
 pathArray:
   type: array
   minItems: 1
@@ -115,6 +118,7 @@ resourceType:
   type: string
   enum:
     - table
+    - json
 format:
   title: Format
   description: The file format of this resource.
@@ -170,3 +174,9 @@ hash:
       {
         "hash": "SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0"
       }
+jsonSchema:
+  title: JSON schema
+  description: A JSON Schema for this resource, compliant with the JSON Schema specification.
+  type:
+    - string
+    - object
