@@ -297,20 +297,20 @@ If the `data` property is used for providing data for a JSON Data Resource than 
 
 #### `jsonSchema`
 
-A JSON Data Resource `MAY` have a `jsonSchema` property to provide a JSONSchema of the resource data. If provided, the `jsonSchema` property `MUST` be a valid [JSON Schema](https://json-schema.org) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
+A JSON Data Resource `MAY` have a `jsonSchema` property to provide a JSON Schema of the resource data. If provided, the `jsonSchema` property `MUST` be a valid [JSON Schema](https://json-schema.org) descriptor in a form of an object or [URL-or-Path](/standard/glossary/#url-or-path).
 
 An example of a resource with a JSON Schema:
 
 ```json
 {
   "name": "data",
-  "type": "table",
+  "type": "json",
   "path": "data.json",
   "jsonSchema": {
     "type": "object",
     "properties": {
-      "first_name": { "type": "string" },
-      "last_name": { "type": "string" }
+      "givenName": { "type": "string" },
+      "familyName": { "type": "string" }
     }
   }
 }
