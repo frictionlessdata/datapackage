@@ -28,7 +28,7 @@
     "@types/js-yaml": "4.0.9",
     "@typescript-eslint/eslint-plugin": "7.14.1",
     "@typescript-eslint/parser": "7.14.1",
-    "astro": "4.16.18",
+    "astro": "4.16.19",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "1.2.2",
     "fs-extra": "11.2.0",
