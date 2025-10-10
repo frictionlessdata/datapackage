@@ -26,7 +26,7 @@ export default defineConfig({
       social: {
         github: "https://github.com/frictionlessdata/datapackage",
       },
-      favicon: "favicon.ico",
+      favicon: "favicon.svg",
       editLink: {
         baseUrl: "https://github.com/frictionlessdata/datapackage/edit/main/",
       },
@@ -72,51 +72,19 @@ export default defineConfig({
       ],
       head: [
         {
+          tag: "link",
+          attrs: {
+            rel: "icon",
+            href: "/favicon.png",
+            sizes: "256x256",
+          },
+        },
+        {
           tag: "script",
           attrs: {
             src: "https://plausible.io/js/script.js",
             "data-domain": "datapackage.org",
             defer: true,
-          },
-        },
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: "/favicon-16x16.png",
-            sizes: "16x16",
-          },
-        },
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: "/favicon-32x32.png",
-            sizes: "32x32",
-          },
-        },
-        {
-          tag: "link",
-          attrs: {
-            rel: "apple-touch-icon",
-            href: "/apple-touch-icon.png",
-            sizes: "180x180",
-          },
-        },
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: "/android-chrome-192x192.png",
-            sizes: "192x192",
-          },
-        },
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: "/android-chrome-512x512.png",
-            sizes: "512x512",
           },
         },
       ],

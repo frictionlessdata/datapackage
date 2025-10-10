@@ -14,7 +14,7 @@
     "lint": "eslint . && prettier --check .",
     "prepare": "husky",
     "preview": "npm run build && astro preview --open --port 8080",
-    "start": "astro dev --open --port 8080",
+    "start": "astro dev",
     "update": "ncu -u",
     "test": "npm run lint",
     "type": "tsc"
