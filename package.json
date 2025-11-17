@@ -34,7 +34,7 @@
     "fs-extra": "11.2.0",
     "glob": "10.4.2",
     "husky": "9.1.6",
-    "js-yaml": "4.1.0",
+    "js-yaml": "4.1.1",
     "npm-check-updates": "16.14.20",
     "prettier": "3.3.2",
     "prettier-plugin-astro": "0.14.0",
