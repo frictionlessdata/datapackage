@@ -13,8 +13,8 @@
     "generate": "vite-node scripts/generate.ts",
     "lint": "eslint . && prettier --check .",
     "prepare": "husky",
-    "preview": "npm run build && astro preview --open --port 8080",
-    "start": "astro dev",
+    "preview": "npm run build && astro preview --open --port 5000",
+    "start": "astro dev --port 5000",
     "update": "ncu -u",
     "test": "npm run lint",
     "type": "tsc"

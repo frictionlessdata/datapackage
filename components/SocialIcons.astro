@@ -10,6 +10,10 @@ import Default from "@astrojs/starlight/components/SocialIcons.astro"
 
 <Default {...Astro.props}><slot /></Default>
 
+<div class="validator">
+  <a href="https://datapackage-validator.datist.io"><strong>Validator</strong></a>
+</div>
+
 <!-- Add styles to mimic the default links appearance. -->
 <style>
   a {
@@ -20,5 +24,14 @@ import Default from "@astrojs/starlight/components/SocialIcons.astro"
 
   a:hover {
     opacity: 0.66;
+  }
+
+  div.validator {
+    border-left: 1px solid var(--sl-color-gray-5);
+    padding-left: 1rem;
+  }
+
+  div.validator a {
+    text-decoration: none;
   }
 </style>
