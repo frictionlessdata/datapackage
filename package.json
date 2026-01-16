@@ -35,7 +35,7 @@
     "glob": "10.4.2",
     "husky": "9.1.6",
     "js-yaml": "4.1.1",
-    "npm-check-updates": "16.14.20",
+    "npm-check-updates": "19.3.1",
     "prettier": "3.3.2",
     "prettier-plugin-astro": "0.14.0",
     "rehype-autolink-headings": "7.1.0",
