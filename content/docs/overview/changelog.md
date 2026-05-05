@@ -68,9 +68,9 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 
 [Table Dialect](/standard/table-dialect) is a new specification that superseeds and extends the CSV Dialect specification. It support other formats like JSON or Excel ([#41](https://github.com/frictionlessdata/datapackage-v2-draft/pull/41)).
 
-##### `dialect.schema` (new)
+##### `dialect.$schema` (new)
 
-[`schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
+[`$schema`](/standard/table-dialect/#dollar-schema) allows extension and versioning ([#42](https://github.com/frictionlessdata/datapackage-v2-draft/pull/42)).
 
 ##### `dialect.table` (new)
 
