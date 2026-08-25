@@ -27,7 +27,7 @@ The [Tabular Data Package](https://specs.frictionlessdata.io/tabular-data-packag
 - `contributor.title` is no longer required ([#7](https://github.com/frictionlessdata/datapackage-v2-draft/pull/7)).
 - `contributor.givenName` and `contributor.familyName` are new properties to specify the given and family name of contributor, if it is a person ([#20](https://github.com/frictionlessdata/datapackage-v2-draft/pull/20)).
 - `contributor.role` has been deprecated in favour of `contributor.roles`, see further ([#18](https://github.com/frictionlessdata/datapackage-v2-draft/pull/18)).
-- `contributor.roles` is a new property that allows to specify multiple roles per contributor, rather than having to duplicate the contributor. It recommendeds to follow an established vocabulary and has suggested values that are different from the deprecated `contributor.role` ([#18](https://github.com/frictionlessdata/datapackage-v2-draft/pull/18)).
+- `contributor.roles` is a new property that allows to specify multiple roles per contributor, rather than having to duplicate the contributor. It recommends to follow an established vocabulary and has suggested values that are different from the deprecated `contributor.role` ([#18](https://github.com/frictionlessdata/datapackage-v2-draft/pull/18)).
 
 ##### `package.version` (updated)
 
