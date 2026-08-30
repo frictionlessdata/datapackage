@@ -269,6 +269,7 @@ tableSchemaFieldString:
   description: The field contains strings, that is, sequences of characters.
   required:
     - name
+    - type
   properties:
     name:
       "$ref": "#/definitions/tableSchemaFieldName"
@@ -1256,7 +1257,6 @@ tableSchemaFieldAny:
     the type/format/constraint requirements of the specification.
   required:
     - name
-    - type
   properties:
     name:
       "$ref": "#/definitions/tableSchemaFieldName"
